@@ -1,0 +1,14 @@
+= J-Voting
+
+image:https://travis-ci.com/oliviercailloux/J-Voting.svg?branch=master["Build Status", link="https://travis-ci.com/oliviercailloux/J-Voting"]
+
+A Java project developed during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in http://www.mido.dauphine.fr/[MIDO] M2 MIAGE). The code is jointly copyrighted by Olivier Cailloux and the following students:
+
+* Quentin Sauvage
+* Adèle Thorner
+* Laetitia Courgey
+* Vincent Navales
+
+The code is hereby published under the MIT License, with their permission.
+
+
