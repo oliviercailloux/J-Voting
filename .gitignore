@@ -1,19 +1,6 @@
-/target/
-/bin/
-/.classpath
-/.settings/
-/.project
-*.stackdump
-/out.log
-**/presentation.aux
-**/presentation.bbl
-**/presentation.blg
-**/presentation.fdb_latexmk
-**/presentation.fls
-**/presentation.log
-**/presentation.nav
-**/presentation.snm
-**/presentation.synctex.gz
+.classpath
+.project
+.settings/
+target/
+out.log
 
-**/presentation.toc
-**/presentation.vrb
