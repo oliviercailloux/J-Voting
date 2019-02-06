@@ -1,6 +1,8 @@
 = J-Voting
 
 image:https://travis-ci.com/oliviercailloux/J-Voting.svg?branch=master["Build Status", link="https://travis-ci.com/oliviercailloux/J-Voting"]
+image:https://maven-badges.herokuapp.com/maven-central/io.github.oliviercailloux.y2018/j-voting/badge.svg["Artifact on Maven Central", link="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.github.oliviercailloux.y2018%22%20a%3A%22j-voting%22"]
+image:http://www.javadoc.io/badge/io.github.oliviercailloux.y2018/j-voting.svg["Javadocs", link="http://www.javadoc.io/doc/io.github.oliviercailloux.y2018/j-voting"]
 
 A Java project developed during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in http://www.mido.dauphine.fr/[MIDO] M2 MIAGE). The code is jointly copyrighted by Olivier Cailloux and the following students:
 
