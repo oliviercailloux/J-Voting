@@ -6,7 +6,7 @@
 	<!-- Can’t use oliviercailloux.pom as parent because it brings junit 5 -->
 	<groupId>io.github.oliviercailloux.y2018</groupId>
 	<artifactId>j-voting</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>J-Voting</name>
 	<description>General classes for dealing with social choice theory.</description>
 	<url>https://github.com/oliviercailloux/J-Voting</url>
