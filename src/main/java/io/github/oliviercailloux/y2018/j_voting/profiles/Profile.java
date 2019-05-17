@@ -8,8 +8,8 @@ package io.github.oliviercailloux.y2018.j_voting.profiles;
  */
 public interface Profile extends ProfileI {
 
-	@Override
-	public default boolean isComplete() {
-		return true;
-	}
+    @Override
+    public default boolean isComplete() {
+        return true;
+    }
 }
