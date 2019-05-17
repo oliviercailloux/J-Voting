@@ -38,18 +38,18 @@ Tasks are not totally ordered in the description because they are not really dep
 
 === Tasks
 .*Primary tasks* (not ordered)
-* README update for new id group and remove inappropriate things
-* Pass to JUnit 5
-* Format files & code
-* Debug import SWT library for OSX and Windows
-* Rename all packages
-* Rework the Overide of toString(), equals() and hashCode()
-* Pass to parent pom oliviercailloux
-* Clean code and Eclipse Warnings suppression
-* Replace constructors with static methods
-* Propose a series of interfaces for preferences. There are 8 interfaces in all : CompletePreference, AntiSymmetricCompletePreference, Preference, StrictPreference, MutablePreference, MutableStrictPreference, ImmutablePreference ImmutableStrictPreference
-* Rename the current Preference and StrictPreference classes to CompletePreferenceImpl and StrictCompletePreferenceImpl
-* ODSProfile : Possibility to open a spreadsheet containing a profile and read a strict or non-rigid profile. Ties are recorded using several columns for a given voter
+* 1#  README update for new groupeid and remove inappropriate things && modify LICENSE file
+* 2#  Pass to JUnit 5
+* 3#  Format files & code
+* 4#  Debug import SWT library for OSX and Windows
+* 5#  Rename all packages
+* 6#  Rework the Overide of toString(), equals() and hashCode()
+* 7#  Pass to parent pom oliviercailloux
+* 8#  Clean code and Eclipse Warnings suppression
+* 9#  Replace constructors with static methods
+* 10# Propose a series of interfaces for preferences. There are 8 interfaces in all : CompletePreference, AntiSymmetricCompletePreference, Preference, StrictPreference, MutablePreference, MutableStrictPreference, ImmutablePreference ImmutableStrictPreference
+* 11# Rename the current Preference and StrictPreference classes to CompletePreferenceImpl and StrictCompletePreferenceImpl
+* 12# ODSProfile : Possibility to open a spreadsheet containing a profile and read a strict or non-rigid profile. Ties are recorded using several columns for a given voter
 
 .*Secondary tasks (Without pull request)*
 * Setup Eclipse environment : Formatter, Sonarlint
