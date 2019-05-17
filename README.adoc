@@ -38,7 +38,7 @@ Tasks are not totally ordered in the description because they are not really dep
 === Tasks
 .*Primary tasks* (not ordered)
 * 1#  README update for new groupeid and remove inappropriate things && modify LICENSE file => *DONE*
-* 2#  Pass to JUnit 5
+* 2#  Pass to JUnit 5 => *DONE*
 * 3#  Format files & code => *DONE*
 * 4#  Debug import SWT library for OSX and Windows
 * 5#  Rename all packages
