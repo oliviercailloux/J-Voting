@@ -13,7 +13,7 @@ The code is hereby published under the MIT License, with their permission.
 
 
 == PLAN
-After the 4 iterations, we would like to improve the existing code as much as possible (optimization, new features).
+During the 4 iterations, we would like to improve the existing code as much as possible (optimization, new features).
 Two main categories of new features are to be considered:
 
 * a new interface system for voting preferences: set them up, implement them and create a new hierarchy of profiles.
