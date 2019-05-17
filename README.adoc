@@ -10,3 +10,56 @@ image:http://www.javadoc.io/badge/{groupId}/{artifactId}.svg["Javadocs", link="h
 A Java project developed during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in http://www.mido.dauphine.fr/[MIDO] M2 MIAGE).
 
 The code is hereby published under the MIT License, with their permission.
+
+
+== PLAN
+During the 4 iterations, we would like to improve the existing code as much as possible (optimization, new features).
+Two main categories of new features are to be considered:
+
+* a new interface system for voting preferences: set them up, implement them and create a new hierarchy of profiles.
+* a more complete file management system for preference representation: different formats, automatic exports and imports to manage longer and more complex preferences, possibility to use files present on the web.
+
+We will not focus on the GUI of the application.
+
+Of course, this is only a first approach. It will certainly evolve as the project progresses: we will of course keep you informed of any future modifications and clarifications.
+
+== Livraison 1
+The main purpose of this iteration is to appropriate the code already written, upgrade the project (change the groupid, switch to junit5, debug SWT for OSX and Windows, rename the packages, switch to pom oliviercailloux as a parent, etc.). Then clean the code as well as rewrite the equals(), hashCode() and tostring() functions and fix Eclipse warnings. Finally, we going to work on the 2 main improvements :
+
+* new preferences interfaces
+* import of profile files in ODS format respecting SOC format
+
+Tasks are not totally ordered in the description because they are not really dependent.
+
+=== Teams :
+* *SM/PO team* : Théo CHENNEBAULT
+* *Team 1* : Anael DRAY / Emilie CHHEAN
+* *Team 2* : Louis LEDOUX / Mattéo LOUBET
+
+=== Tasks
+.*Primary tasks* (not ordered)
+* 1#  README update for new groupeid and remove inappropriate things && modify LICENSE file
+* 2#  Pass to JUnit 5
+* 3#  Format files & code
+* 4#  Debug import SWT library for OSX and Windows
+* 5#  Rename all packages
+* 6#  Rework the Overide of toString(), equals() and hashCode()
+* 7#  Pass to parent pom oliviercailloux
+* 8#  Clean code and Eclipse Warnings suppression
+* 9#  Replace constructors with static methods
+* 10# Propose a series of interfaces for preferences. There are 8 interfaces in all : CompletePreference, AntiSymmetricCompletePreference, Preference, StrictPreference, MutablePreference, MutableStrictPreference, ImmutablePreference ImmutableStrictPreference
+* 11# Rename the current Preference and StrictPreference classes to CompletePreferenceImpl and StrictCompletePreferenceImpl
+* 12# ODSProfile : Possibility to open a spreadsheet containing a profile and read a strict or non-rigid profile. Ties are recorded using several columns for a given voter
+
+.*Secondary tasks (Without pull request)*
+* Setup Eclipse environment : Formatter, Sonarlint
+* Add Travis CI
+
+== Livraison 2
+Work on ODSProfile unit tests and implementation of Preferences interfaces.
+
+== Livraison 3
+...
+
+== Livraison 4
+...
