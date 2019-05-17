@@ -139,44 +139,22 @@ public class Borda implements SocialWelfareFunction {
 
     @Override
     public int hashCode() {
-        LOGGER.debug("hashCode");
         return Objects.hash(scores);
     }
 
-    /**
-     * @param mset1 <code>not null</code>
-     * @param       mset2<code>not null</code>
-     * @return true if the multisets have the same alternatives with the same
-     *         scores
-     */
     @Override
-    public boolean equals(Object o1) {
-        LOGGER.debug("equals");
-        Preconditions.checkNotNull(o1);
-        if (!(o1 instanceof Borda)) {
-            LOGGER.debug("returns false");
+    public boolean equals(Object o) {
+        // self check
+        if (this == o)
+            return true;
+        // Check not null
+        if (o == null)
             return false;
-        }
-        Borda borda = (Borda) o1;
-        Multiset<Alternative> mset1 = borda.scores;
-        Multiset<Alternative> mset2 = this.scores;
-        Iterable<Alternative> alternativesList = mset1.elementSet();
-        for (Alternative a : alternativesList) {
-            if (!mset2.contains(a)) {
-                LOGGER.debug("not same alternatives -> false");
-                return false;
-            }
-            if (!(mset2.count(a) == mset1.count(a))) {
-                LOGGER.debug("not same scores -> false");
-                return false;
-            }
-            mset2.remove(a, mset2.count(a));
-        }
-        if (mset2.size() != 0) {
-            LOGGER.debug("not same alternatives -> false");
+        // Check class type and cast o
+        if (this.getClass() != o.getClass())
             return false;
-        }
-        LOGGER.debug("returns true");
-        return true;
+        Borda borda = (Borda) o;
+        // check field
+        return this.scores.equals(borda.scores);
     }
 }

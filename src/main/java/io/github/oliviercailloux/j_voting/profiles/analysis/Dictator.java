@@ -50,7 +50,6 @@ public class Dictator implements SocialWelfareFunction {
 
     @Override
     public int hashCode() {
-        LOGGER.debug("hashCode");
         return Objects.hash(dictator);
     }
 
@@ -59,14 +58,18 @@ public class Dictator implements SocialWelfareFunction {
      * @return true if both Dictators have the same voter as dictator.
      */
     @Override
-    public boolean equals(Object o1) {
-        LOGGER.debug("equals");
-        Preconditions.checkNotNull(o1);
-        if (!(o1 instanceof Dictator)) {
-            LOGGER.debug("returns false");
+    public boolean equals(Object o) {
+        // self check
+        if (this == o)
+            return true;
+        // Check not null
+        if (o == null)
             return false;
-        }
-        Dictator d1 = (Dictator) o1;
-        return (d1.getDictator()).equals(this.dictator);
+        // Check class type and cast o
+        if (this.getClass() != o.getClass())
+            return false;
+        Dictator dict = (Dictator) o;
+        // check field
+        return this.getDictator() == dict.getDictator();
     }
 }
