@@ -56,7 +56,7 @@ public class SOCColumnsGUI extends ColumnsDefaultGUI {
                     alternativeToAdd = newAlternativeText.getText();
                     addAlternativeButton.setEnabled(true);
                 } catch (IllegalArgumentException iae) {
-                    LOGGER.debug("Illegal Argument Exception : " + iae);
+                    LOGGER.debug("Illegal Argument Exception : {}", iae);
                     addAlternativeButton.setEnabled(false);
                 }
             }

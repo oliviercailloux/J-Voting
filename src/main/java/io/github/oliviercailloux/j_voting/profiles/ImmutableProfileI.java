@@ -66,13 +66,6 @@ public class ImmutableProfileI implements ProfileI {
         return votes;
     }
 
-    // @Override
-    /*
-     * public boolean contains(Voter v) { LOGGER.debug("contains:");
-     * Preconditions.checkNotNull(v); LOGGER.debug("parameter voter : {}",v);
-     * for(Voter voter : getAllVoters()) { if(v.equals(voter)) { return true; }
-     * } return false; }
-     */
     @Override
     public NavigableSet<Voter> getAllVoters() {
         LOGGER.debug("getAllVoters:");

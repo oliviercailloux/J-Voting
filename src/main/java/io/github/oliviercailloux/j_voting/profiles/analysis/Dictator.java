@@ -17,14 +17,14 @@ import io.github.oliviercailloux.j_voting.profiles.ImmutableProfileI;
  */
 public class Dictator implements SocialWelfareFunction {
 
-    private Voter dictator;
+    private Voter dictatorname;
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(Borda.class.getName());
 
     public Dictator(Voter v) {
         LOGGER.debug("Dictator");
         Preconditions.checkNotNull(v);
-        dictator = v;
+        dictatorname = v;
     }
 
     /**
@@ -36,21 +36,21 @@ public class Dictator implements SocialWelfareFunction {
     public Preference getSocietyPreference(ImmutableProfileI profile) {
         LOGGER.debug("getSocietyStrictPreference");
         Preconditions.checkNotNull(profile);
-        Preconditions.checkArgument(profile.getProfile().containsKey(dictator));
+        Preconditions.checkArgument(profile.getProfile().containsKey(dictatorname));
         LOGGER.debug("parameter profile : {}", profile);
-        LOGGER.debug("Dictator : {}", dictator);
-        LOGGER.debug("return preference : {}", profile.getPreference(dictator));
-        return profile.getPreference(dictator);
+        LOGGER.debug("Dictator : {}", dictatorname);
+        LOGGER.debug("return preference : {}", profile.getPreference(dictatorname));
+        return profile.getPreference(dictatorname);
     }
 
     public Voter getDictator() {
         LOGGER.debug("getDictator");
-        return dictator;
+        return dictatorname;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dictator);
+        return Objects.hash(dictatorname);
     }
 
     /**

@@ -71,7 +71,7 @@ public class MainGUI {
         selectFileToReadButton.setLayoutData(gridData);
         createSOCButtons();
         createSOIButtons();
-        if (fileToRead == "") {
+        if (fileToRead.equals("")) {
             mainShell.setText("Profile editing - No profile loaded");
             // remove SOI buttons
             soicolumnsGUIButton.setVisible(false);
