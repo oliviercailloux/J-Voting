@@ -258,7 +258,7 @@ public class ProfileDefaultGUI {
                 try {
                     voterToModify = Integer.parseInt(text.getText());
                 } catch (IllegalArgumentException iae) {
-                    LOGGER.debug("Illegal Argument Exception : " + iae);
+                    LOGGER.debug("Illegal Argument Exception : {}", iae);
                 }
             }
         });

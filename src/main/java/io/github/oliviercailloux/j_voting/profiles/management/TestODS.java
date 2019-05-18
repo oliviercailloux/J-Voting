@@ -30,7 +30,6 @@ public class TestODS {
         new TestODS().generateSpreadsheetDocument();
     }
 
-    @SuppressWarnings("unused")
     public void generateSpreadsheetDocument() throws Exception {
         try (InputStream inputStream = TestODS.class
                         .getResourceAsStream("demo9_data.ods");
