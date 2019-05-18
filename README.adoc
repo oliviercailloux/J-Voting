@@ -41,7 +41,7 @@ Tasks are not totally ordered in the description because they are not really dep
 * 2#  Pass to JUnit 5 => *DONE*
 * 3#  Format files & code => *DONE*
 * 4#  Debug import SWT library for OSX and Windows => *DONE*
-* 5#  Rename all packages
+* 5#  Rename all packages => *DONE*
 * 6#  Rework the Overide of toString(), equals() and hashCode()
 * 7#  Pass to parent pom oliviercailloux
 * 8#  Clean code and Eclipse Warnings suppression
