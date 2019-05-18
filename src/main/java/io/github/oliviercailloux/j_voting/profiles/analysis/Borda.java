@@ -14,7 +14,7 @@ import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.Preference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfileI;
 import io.github.oliviercailloux.j_voting.profiles.ProfileI;
@@ -49,7 +49,7 @@ public class Borda implements SocialWelfareFunction {
      * @return a Preference with the alternatives sorted
      */
     @Override
-    public Preference getSocietyPreference(ImmutableProfileI profile) {
+    public CompletePreferenceImpl getSocietyPreference(ImmutableProfileI profile) {
         LOGGER.debug("getSocietyStrictPreference");
         Preconditions.checkNotNull(profile);
         LOGGER.debug("parameter SProfile : {}", profile);
@@ -65,7 +65,7 @@ public class Borda implements SocialWelfareFunction {
                 tempscores.remove(a, tempscores.count(a));
             }
         }
-        Preference pref = new Preference(al);
+        CompletePreferenceImpl pref = new CompletePreferenceImpl(al);
         LOGGER.debug("return AScores : {}", pref);
         return pref;
     }
@@ -77,12 +77,12 @@ public class Borda implements SocialWelfareFunction {
      *              the preference to the multiset for the alternatives in this
      *              StrictPreference
      */
-    public void setScores(Preference pref) {
+    public void setScores(CompletePreferenceImpl pref) {
         LOGGER.debug("getScorePref");
         Preconditions.checkNotNull(pref);
         LOGGER.debug("parameter SPref : {}", pref);
         int size = pref.getPreferencesNonStrict().size();
-        for (Alternative a : Preference
+        for (Alternative a : CompletePreferenceImpl
                         .toAlternativeSet(pref.getPreferencesNonStrict())) {
             scores.add(a, size - pref.getAlternativeRank(a) + 1);
         }

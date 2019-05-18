@@ -10,7 +10,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.StrictPreference;
+import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
 
 public class StrictPreferenceTest {
 
@@ -23,7 +23,7 @@ public class StrictPreferenceTest {
         prefs.add(a1);
         prefs.add(a2);
         prefs.add(a3);
-        StrictPreference p = new StrictPreference(prefs);
+        StrictCompletePreferenceImpl p = new StrictCompletePreferenceImpl(prefs);
         assertEquals(p.getAlternatives(), prefs);
     }
 
@@ -42,7 +42,7 @@ public class StrictPreferenceTest {
         set1.add(a1);
         set2.add(a2);
         set3.add(a3);
-        List<Set<Alternative>> list = StrictPreference
+        List<Set<Alternative>> list = StrictCompletePreferenceImpl
                         .listAlternativeToListSetAlternative(prefs);
         assertEquals(set1, list.get(0));
         assertEquals(set2, list.get(1));
@@ -58,7 +58,7 @@ public class StrictPreferenceTest {
         prefs.add(a1);
         prefs.add(a2);
         prefs.add(a3);
-        StrictPreference strict = new StrictPreference(prefs);
+        StrictCompletePreferenceImpl strict = new StrictCompletePreferenceImpl(prefs);
         assertEquals(strict.toString(), "1,2,3");
     }
 
@@ -71,7 +71,7 @@ public class StrictPreferenceTest {
         prefs.add(a1);
         prefs.add(a2);
         prefs.add(a3);
-        StrictPreference strict = new StrictPreference(prefs);
+        StrictCompletePreferenceImpl strict = new StrictCompletePreferenceImpl(prefs);
         assertEquals(strict.getAlternative(1), a2);
     }
 }

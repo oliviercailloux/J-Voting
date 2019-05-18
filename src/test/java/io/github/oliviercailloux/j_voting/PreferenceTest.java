@@ -11,11 +11,11 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.Preference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
 
 public class PreferenceTest {
 
-    public static Preference createPreferenceToTest() {
+    public static CompletePreferenceImpl createPreferenceToTest() {
         Alternative a1 = new Alternative(1);
         Alternative a2 = new Alternative(2);
         Alternative a3 = new Alternative(3);
@@ -33,7 +33,7 @@ public class PreferenceTest {
         list.add(set1);
         list.add(set2);
         list.add(set3);
-        return new Preference(list);
+        return new CompletePreferenceImpl(list);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class PreferenceTest {
 
     @Test
     public void testEqualsPreference() {
-        Preference p1 = createPreferenceToTest();
+        CompletePreferenceImpl p1 = createPreferenceToTest();
         Alternative a1 = new Alternative(1);
         Alternative a2 = new Alternative(2);
         Alternative a3 = new Alternative(3);
@@ -94,7 +94,7 @@ public class PreferenceTest {
         list.add(set1);
         list.add(set2);
         list.add(set3);
-        Preference p2 = new Preference(list);
+        CompletePreferenceImpl p2 = new CompletePreferenceImpl(list);
         assertTrue(p1.equals(p2));
     }
 
@@ -123,7 +123,7 @@ public class PreferenceTest {
         list.add(set1);
         list.add(set2);
         list.add(set3);
-        Preference pref = new Preference(list);
+        CompletePreferenceImpl pref = new CompletePreferenceImpl(list);
         assertTrue(pref.hasSameAlternatives(createPreferenceToTest()));
     }
 
@@ -144,7 +144,7 @@ public class PreferenceTest {
         list.add(set1);
         list.add(set2);
         list.add(set3);
-        Preference p = new Preference(list);
+        CompletePreferenceImpl p = new CompletePreferenceImpl(list);
         assertTrue(p.isIncludedIn(createPreferenceToTest()));
     }
 
@@ -161,7 +161,7 @@ public class PreferenceTest {
         set.add(a3);
         set.add(a4);
         set.add(a5);
-        assertEquals(Preference.toAlternativeSet(
+        assertEquals(CompletePreferenceImpl.toAlternativeSet(
                         createPreferenceToTest().getPreferencesNonStrict()),
                         set);
     }
@@ -206,7 +206,7 @@ public class PreferenceTest {
 
     @Test
     public void testSizeListSetAlternative() {
-        assertEquals(Preference.size(
+        assertEquals(CompletePreferenceImpl.size(
                         createPreferenceToTest().getPreferencesNonStrict()), 5);
     }
 
@@ -230,7 +230,7 @@ public class PreferenceTest {
         list.add(s1);
         list.add(s2);
         list.add(s3);
-        Preference p = new Preference(list);
+        CompletePreferenceImpl p = new CompletePreferenceImpl(list);
         assertTrue(p.isStrict());
     }
 

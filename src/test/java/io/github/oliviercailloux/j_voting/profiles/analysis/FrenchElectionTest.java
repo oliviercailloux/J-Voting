@@ -10,8 +10,8 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.Preference;
-import io.github.oliviercailloux.j_voting.StrictPreference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableStrictProfileI;
 import io.github.oliviercailloux.j_voting.profiles.analysis.FrenchElection;
@@ -35,7 +35,7 @@ public class FrenchElectionTest {
         l1.add(s1);
         l1.add(s2);
         l1.add(s3);
-        Preference pref1 = new Preference(l1);
+        CompletePreferenceImpl pref1 = new CompletePreferenceImpl(l1);
         List<Alternative> list1 = new ArrayList<>();
         List<Alternative> list2 = new ArrayList<>();
         List<Alternative> list3 = new ArrayList<>();
@@ -49,9 +49,9 @@ public class FrenchElectionTest {
         list3.add(a3);
         list3.add(a2);
         list3.add(a4);
-        StrictPreference p1 = new StrictPreference(list1);
-        StrictPreference p2 = new StrictPreference(list2);
-        StrictPreference p3 = new StrictPreference(list3);
+        StrictCompletePreferenceImpl p1 = new StrictCompletePreferenceImpl(list1);
+        StrictCompletePreferenceImpl p2 = new StrictCompletePreferenceImpl(list2);
+        StrictCompletePreferenceImpl p3 = new StrictCompletePreferenceImpl(list3);
         Voter v1 = new Voter(1);
         Voter v2 = new Voter(2);
         Voter v3 = new Voter(3);

@@ -10,8 +10,8 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.Preference;
-import io.github.oliviercailloux.j_voting.StrictPreference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfile;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfileI;
@@ -58,8 +58,8 @@ public class ProfileBuilderTest {
         list1.add(s2);
         list2.add(s3);
         list2.add(s4);
-        Preference pref1 = new Preference(list1);
-        Preference pref2 = new Preference(list2);
+        CompletePreferenceImpl pref1 = new CompletePreferenceImpl(list1);
+        CompletePreferenceImpl pref2 = new CompletePreferenceImpl(list2);
         profileBuilder.addVote(v1, pref1);
         profileBuilder.addVote(v2, pref1);
         profileBuilder.addVote(v3, pref1);
@@ -102,8 +102,8 @@ public class ProfileBuilderTest {
         list1.add(s2);
         list2.add(s3);
         list2.add(s4);
-        Preference pref1 = new Preference(list1);
-        Preference pref2 = new Preference(list2);
+        CompletePreferenceImpl pref1 = new CompletePreferenceImpl(list1);
+        CompletePreferenceImpl pref2 = new CompletePreferenceImpl(list2);
         profileBuilder.addVote(v1, pref1);
         profileBuilder.addVote(v2, pref1);
         profileBuilder.addVote(v3, pref1);
@@ -136,8 +136,8 @@ public class ProfileBuilderTest {
         list1.add(a3);
         list2.add(a3);
         list2.add(a2);
-        StrictPreference pref1 = new StrictPreference(list1);
-        StrictPreference pref2 = new StrictPreference(list2);
+        StrictCompletePreferenceImpl pref1 = new StrictCompletePreferenceImpl(list1);
+        StrictCompletePreferenceImpl pref2 = new StrictCompletePreferenceImpl(list2);
         profileBuilder.addVote(v1, pref1);
         profileBuilder.addVote(v2, pref1);
         profileBuilder.addVote(v3, pref1);
@@ -173,8 +173,8 @@ public class ProfileBuilderTest {
         list2.add(a3);
         list2.add(a2);
         list2.add(a1);
-        StrictPreference pref1 = new StrictPreference(list1);
-        StrictPreference pref2 = new StrictPreference(list2);
+        StrictCompletePreferenceImpl pref1 = new StrictCompletePreferenceImpl(list1);
+        StrictCompletePreferenceImpl pref2 = new StrictCompletePreferenceImpl(list2);
         profileBuilder.addVote(v1, pref1);
         profileBuilder.addVote(v2, pref1);
         profileBuilder.addVote(v3, pref1);

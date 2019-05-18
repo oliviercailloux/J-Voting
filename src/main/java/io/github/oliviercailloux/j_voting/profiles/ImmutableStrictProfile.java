@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Preconditions;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.Preference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 
 /**
@@ -29,7 +29,7 @@ public class ImmutableStrictProfile extends ImmutableStrictProfileI
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(ImmutableStrictProfile.class.getName());
 
-    public ImmutableStrictProfile(Map<Voter, ? extends Preference> map) {
+    public ImmutableStrictProfile(Map<Voter, ? extends CompletePreferenceImpl> map) {
         super(checkCompleteMap(map));
     }
 
@@ -42,8 +42,8 @@ public class ImmutableStrictProfile extends ImmutableStrictProfileI
     @Override
     public Set<Alternative> getAlternatives() {
         LOGGER.debug("getAlternatives :");
-        Preference p = votes.values().iterator().next();
-        return Preference.toAlternativeSet(p.getPreferencesNonStrict());
+        CompletePreferenceImpl p = votes.values().iterator().next();
+        return CompletePreferenceImpl.toAlternativeSet(p.getPreferencesNonStrict());
     }
 
     /**
@@ -76,7 +76,7 @@ public class ImmutableStrictProfile extends ImmutableStrictProfileI
         LOGGER.debug("getIthAlternativesOfUniquePreferences :");
         Preconditions.checkNotNull(i);
         List<Alternative> listIthAlternatives = new ArrayList<>();
-        for (Preference p : getUniquePreferences()) {
+        for (CompletePreferenceImpl p : getUniquePreferences()) {
             listIthAlternatives.add(p.getAlternative(i));
         }
         return listIthAlternatives;
@@ -95,9 +95,9 @@ public class ImmutableStrictProfile extends ImmutableStrictProfileI
             }
             soc.append(getNbVoters() + "," + getSumVoteCount() + ","
                             + getNbUniquePreferences() + "\n");
-            for (Preference pref : this.getUniquePreferences()) {
+            for (CompletePreferenceImpl pref : this.getUniquePreferences()) {
                 soc.append(getNbVoterForPreference(pref));
-                for (Alternative a : Preference.toAlternativeSet(
+                for (Alternative a : CompletePreferenceImpl.toAlternativeSet(
                                 pref.getPreferencesNonStrict())) {
                     soc.append("," + a);
                 }

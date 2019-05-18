@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Preconditions;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.Preference;
-import io.github.oliviercailloux.j_voting.StrictPreference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableStrictProfileI;
 import io.github.oliviercailloux.j_voting.profiles.StrictProfileI;
@@ -54,7 +54,7 @@ public class StrictProfileBuilder extends ProfileBuilder {
      *             IllegalArgumentException.
      */
     @Override
-    public void addVote(Voter v, Preference pref) {
+    public void addVote(Voter v, CompletePreferenceImpl pref) {
         LOGGER.debug("addProfile:");
         Preconditions.checkNotNull(v);
         Preconditions.checkNotNull(pref);
@@ -77,7 +77,7 @@ public class StrictProfileBuilder extends ProfileBuilder {
         for (Voter v : votes.keySet()) {
             List<Alternative> alters = new ArrayList<>();
             alters.add(votes.get(v).getAlternative(0));
-            StrictPreference prefOneAlter = new StrictPreference(alters);
+            StrictCompletePreferenceImpl prefOneAlter = new StrictCompletePreferenceImpl(alters);
             addVote(v, prefOneAlter);
         }
         return new ImmutableStrictProfileI(votes);

@@ -1,6 +1,6 @@
 package io.github.oliviercailloux.j_voting.profiles.analysis;
 
-import io.github.oliviercailloux.j_voting.Preference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfileI;
 
 public interface SocialWelfareFunction {
@@ -11,5 +11,5 @@ public interface SocialWelfareFunction {
      * @return a Preference with the society's preference from the profile. This
      *         Preference cannot be empty.
      */
-    public Preference getSocietyPreference(ImmutableProfileI profile);
+    public CompletePreferenceImpl getSocietyPreference(ImmutableProfileI profile);
 }

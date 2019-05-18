@@ -16,8 +16,8 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Preconditions;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.Preference;
-import io.github.oliviercailloux.j_voting.StrictPreference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 
 /**
@@ -29,12 +29,12 @@ public class ImmutableStrictProfileI extends ImmutableProfileI
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(ImmutableStrictProfileI.class.getName());
 
-    public ImmutableStrictProfileI(Map<Voter, ? extends Preference> map) {
+    public ImmutableStrictProfileI(Map<Voter, ? extends CompletePreferenceImpl> map) {
         super(checkStrictMap(map));
     }
 
     @Override
-    public StrictPreference getPreference(Voter v) {
+    public StrictCompletePreferenceImpl getPreference(Voter v) {
         LOGGER.debug("getPreference:");
         Preconditions.checkNotNull(v);
         if (!votes.containsKey(v)) {
@@ -53,7 +53,7 @@ public class ImmutableStrictProfileI extends ImmutableProfileI
         }
         List<String> list = new ArrayList<>();
         for (Voter v : getAllVoters()) {
-            StrictPreference p = getPreference(v);
+            StrictCompletePreferenceImpl p = getPreference(v);
             LOGGER.debug("the voter {} votes for the preference {}", v, p);
             if (i >= p.size()) {
                 list.add("");
@@ -71,7 +71,7 @@ public class ImmutableStrictProfileI extends ImmutableProfileI
         LOGGER.debug("getIthAlternativesOfUniquePrefAsString");
         Preconditions.checkNotNull(i);
         List<String> list = new ArrayList<>();
-        for (Preference p : getUniquePreferences()) {
+        for (CompletePreferenceImpl p : getUniquePreferences()) {
             String alter = "";
             if (i < p.size()) {
                 alter = p.getAlternative(i).toString();
@@ -95,9 +95,9 @@ public class ImmutableStrictProfileI extends ImmutableProfileI
             }
             soi.append(getNbVoters() + "," + getSumVoteCount() + ","
                             + getNbUniquePreferences() + "\n");
-            for (Preference pref : this.getUniquePreferences()) {
+            for (CompletePreferenceImpl pref : this.getUniquePreferences()) {
                 soi.append(getNbVoterForPreference(pref));
-                for (Alternative a : Preference.toAlternativeSet(
+                for (Alternative a : CompletePreferenceImpl.toAlternativeSet(
                                 pref.getPreferencesNonStrict())) {
                     soi.append("," + a);
                 }
