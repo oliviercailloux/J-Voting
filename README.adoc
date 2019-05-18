@@ -40,7 +40,7 @@ Tasks are not totally ordered in the description because they are not really dep
 * 1#  README update for new groupeid and remove inappropriate things && modify LICENSE file => *DONE*
 * 2#  Pass to JUnit 5 => *DONE*
 * 3#  Format files & code => *DONE*
-* 4#  Debug import SWT library for OSX and Windows
+* 4#  Debug import SWT library for OSX and Windows => *DONE*
 * 5#  Rename all packages
 * 6#  Rework the Overide of toString(), equals() and hashCode()
 * 7#  Pass to parent pom oliviercailloux
