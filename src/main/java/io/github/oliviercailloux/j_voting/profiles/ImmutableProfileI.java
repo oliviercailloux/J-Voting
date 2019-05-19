@@ -8,7 +8,6 @@ import java.util.NavigableSet;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Set;
-import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.slf4j.Logger;
@@ -159,35 +158,22 @@ public class ImmutableProfileI implements ProfileI {
 
     @Override
     public boolean equals(Object o) {
-        LOGGER.debug("equals:");
-        Preconditions.checkNotNull(o);
-        if (!(o instanceof ProfileI)) {
+        // self check
+        if (this == o)
+            return true;
+        // Check not null
+        if (o == null)
             return false;
-        }
-        ProfileI prof = (ImmutableProfileI) o;
-        SortedSet<Voter> set1 = prof.getAllVoters();
-        SortedSet<Voter> set2 = getAllVoters();
-        if (set1.size() != set2.size()) {
-            LOGGER.debug("false : not as many voters.");
+        // Check class type and cast o
+        if (this.getClass() != o.getClass())
             return false;
-        }
-        for (Voter v : set1) {
-            if (!votes.containsKey(v)) {
-                LOGGER.debug("false : at least a voter not in both profiles.");
-                return false;
-            }
-            if (!prof.getPreference(v).equals(getPreference(v))) {
-                LOGGER.debug("false : voter did not vote for the same preference.");
-                return false;
-            }
-        }
-        LOGGER.debug("true");
-        return true;
+        ImmutableProfileI immu = (ImmutableProfileI) o;
+        // check field
+        return this.getAllVoters().equals(immu.getAllVoters());
     }
 
     @Override
     public int hashCode() {
-        LOGGER.debug("hasCode:");
         return Objects.hash(votes);
     }
 

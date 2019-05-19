@@ -32,8 +32,7 @@ public class Voter implements Comparable<Voter> {
     }
 
     /**
-     *
-     *
+     * 
      * @param v2 not <code> null </code>
      * @return an integer : 0 if the voters have the same id, <0 if the calling
      *         voter is smaller than the parameter, else >0.
@@ -52,14 +51,19 @@ public class Voter implements Comparable<Voter> {
      * @return whether two voters are equal, ie have the same id.
      */
     @Override
-    public boolean equals(Object voter) {
-        LOGGER.debug("Voter - equals : ");
-        Preconditions.checkNotNull(voter);
-        if (!(voter instanceof Voter)) {
+    public boolean equals(Object o) {
+        // self check
+        if (this == o)
+            return true;
+        // Check not null
+        if (o == null)
             return false;
-        }
-        Voter v = (Voter) voter;
-        return (v.getId() == id);
+        // Check class type and cast o
+        if (this.getClass() != o.getClass())
+            return false;
+        Voter voter = (Voter) o;
+        // check field
+        return this.getId() == voter.getId();
     }
 
     @Override

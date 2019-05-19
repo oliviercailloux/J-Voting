@@ -31,14 +31,14 @@ public class StrictPreference extends Preference {
 
     @Override
     public String toString() {
-        LOGGER.debug("toString : ");
-        String s = "";
+        StringBuilder s = new StringBuilder();
         for (Set<Alternative> set : preference) {
-            for (Alternative a : set) {
-                s += a.toString() + ",";
+            for (Alternative alter : set) {
+                s.append(alter.toString() + ",");
             }
         }
-        return s.substring(0, s.length() - 1);
+        s.delete(s.length() - 1, s.length());
+        return s.toString();
     }
 
     /**

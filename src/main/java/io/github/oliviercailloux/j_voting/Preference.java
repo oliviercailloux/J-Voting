@@ -67,23 +67,18 @@ public class Preference {
         return preference;
     }
 
-    /**
-     * @return the string representing a preference.
-     */
     @Override
     public String toString() {
-        LOGGER.debug("toString:");
-        String s = "";
+        StringBuilder s = new StringBuilder();
         for (Set<Alternative> set : preference) {
-            s += "{";
+            s.append("{");
             for (Alternative alter : set) {
-                s += alter.getId() + ",";
+                s.append(alter.getId() + ",");
             }
-            s = s.substring(0, s.length() - 1) + "},";
+            s.delete(s.length() - 1, s.length()).append("},");
         }
-        s = s.substring(0, s.length() - 1);
-        LOGGER.debug("preference string : {}", s);
-        return s;
+        s.delete(s.length() - 1, s.length());
+        return s.toString();
     }
 
     /**
@@ -95,38 +90,20 @@ public class Preference {
         return size(preference);
     }
 
-    /**
-     * @param p <code>not null</code>
-     * @return whether the calling preference is equal to the preference as a
-     *         parameter.
-     */
     @Override
-    public boolean equals(Object pref) {
-        LOGGER.debug("equals:");
-        Preconditions.checkNotNull(pref);
-        if (!(pref instanceof Preference)) {
-            LOGGER.debug("not a preference");
-            return false;
-        }
-        Preference p = (Preference) pref;
-        LOGGER.debug("parameter preference : {}", p);
-        if (this.size() == p.size() && preference.size() == p
-                        .getPreferencesNonStrict().size()) { // same number of
-                                                             // alternatives and
-                                                             // same number of
-                                                             // sets
-            for (int i = 0; i < this.preference.size(); i++) {
-                if (!preference.get(i)
-                                .equals(p.getPreferencesNonStrict().get(i))) {
-                    LOGGER.debug("return false");
-                    return false;
-                }
-            }
-            LOGGER.debug("return true");
+    public boolean equals(Object o) {
+        // self check
+        if (this == o)
             return true;
-        }
-        LOGGER.debug("return false");
-        return false;
+        // Check not null
+        if (o == null)
+            return false;
+        // Check class type and cast o
+        if (this.getClass() != o.getClass())
+            return false;
+        Preference pref = (Preference) o;
+        // check field
+        return this.preference.equals(pref.preference);
     }
 
     @Override
