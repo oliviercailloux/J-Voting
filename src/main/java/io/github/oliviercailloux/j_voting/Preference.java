@@ -22,7 +22,7 @@ public class Preference {
 
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(Preference.class.getName());
-    protected List<Set<Alternative>> preferenceid;
+    protected List<Set<Alternative>> preference;
 
     /**
      * @param preferences <code>not null</code> a list of sets of alternatives.
@@ -40,7 +40,7 @@ public class Preference {
             throw new IllegalArgumentException(
                             "A preference cannot contain several times the same alternative.");
         }
-        this.preferenceid = preference;
+        this.preference = preference;
     }
 
     /**
@@ -52,11 +52,11 @@ public class Preference {
                     throws IndexOutOfBoundsException {
         LOGGER.debug("getAlternative");
         Preconditions.checkNotNull(position);
-        if (position >= preferenceid.size()) {
+        if (position >= preference.size()) {
             throw new IndexOutOfBoundsException(
                             "This position doesn't exist in the Preference");
         }
-        return preferenceid.get(position).iterator().next();
+        return preference.get(position).iterator().next();
     }
 
     /**
@@ -64,13 +64,13 @@ public class Preference {
      */
     public List<Set<Alternative>> getPreferencesNonStrict() {
         LOGGER.debug("getPreferencesNonStrict :");
-        return preferenceid;
+        return preference;
     }
 
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        for (Set<Alternative> set : preferenceid) {
+        for (Set<Alternative> set : preference) {
             s.append("{");
             for (Alternative alter : set) {
                 s.append(alter.getId() + ",");
@@ -87,7 +87,7 @@ public class Preference {
      */
     public int size() {
         LOGGER.debug("size :");
-        return size(preferenceid);
+        return size(preference);
     }
 
     @Override
@@ -103,12 +103,12 @@ public class Preference {
             return false;
         Preference pref = (Preference) o;
         // check field
-        return this.preferenceid.equals(pref.preferenceid);
+        return this.preference.equals(pref.preference);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(preferenceid);
+        return Objects.hash(preference);
     }
 
     /**
@@ -120,7 +120,7 @@ public class Preference {
         LOGGER.debug("contains:");
         Preconditions.checkNotNull(alter);
         LOGGER.debug("parameter alternative : {}", alter);
-        return (toAlternativeSet(preferenceid).contains(alter));
+        return (toAlternativeSet(preference).contains(alter));
     }
 
     /**
@@ -144,7 +144,7 @@ public class Preference {
         LOGGER.debug("isIncludedIn:");
         Preconditions.checkNotNull(p);
         LOGGER.debug("parameter preference : {}", p);
-        for (Alternative alter : toAlternativeSet(preferenceid)) {
+        for (Alternative alter : toAlternativeSet(preference)) {
             if (!p.contains(alter)) {
                 LOGGER.debug("return false");
                 return false;
@@ -167,7 +167,7 @@ public class Preference {
             throw new IllegalArgumentException("Alternative not in the set");
         }
         int rank = 1;
-        for (Set<Alternative> set : preferenceid) {
+        for (Set<Alternative> set : preference) {
             if (set.contains(alter)) {
                 LOGGER.debug("alternative rank : {}", rank);
                 break;
@@ -223,7 +223,7 @@ public class Preference {
      */
     public boolean isStrict() {
         LOGGER.debug("isStrict:");
-        return (preferenceid.size() == size(preferenceid));
+        return (preference.size() == size(preference));
     }
 
     /**
@@ -238,7 +238,7 @@ public class Preference {
             throw new IllegalArgumentException("the preference is not strict.");
         }
         List<Alternative> list = new ArrayList<>();
-        for (Set<Alternative> set : preferenceid) {
+        for (Set<Alternative> set : preference) {
             for (Alternative a : set) {
                 list.add(a);
             }

@@ -32,7 +32,7 @@ public class StrictPreference extends Preference {
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        for (Set<Alternative> set : preferenceid) {
+        for (Set<Alternative> set : preference) {
             for (Alternative alter : set) {
                 s.append(alter.toString() + ",");
             }
@@ -47,7 +47,7 @@ public class StrictPreference extends Preference {
      */
     public List<Alternative> getAlternatives() {
         LOGGER.debug("getAlternatives :");
-        return listSetAlternativeToList(preferenceid);
+        return listSetAlternativeToList(preference);
     }
 
     /**
@@ -99,10 +99,10 @@ public class StrictPreference extends Preference {
         LOGGER.debug("getAlternative");
         Preconditions.checkNotNull(position);
         LOGGER.debug("position : {}", position);
-        if (position >= preferenceid.size()) {
+        if (position >= preference.size()) {
             throw new IndexOutOfBoundsException(
                             "This position doesn't exist in the Preference");
         }
-        return preferenceid.get(position).iterator().next();
+        return preference.get(position).iterator().next();
     }
 }

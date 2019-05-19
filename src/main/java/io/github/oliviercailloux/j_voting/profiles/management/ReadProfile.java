@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.TableItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.io.CharStreams;
@@ -107,7 +108,8 @@ public class ReadProfile {
             for (TableItem item : Iterables
                             .skip(Arrays.asList(table.getItems()), 1)) {
                 String altText = item.getText(column);
-                if (altText != null && !altText.equals("")) {
+                if (!Objects.equal(altText, null)
+                                && !Objects.equal(altText, "")) {
                     newPrefString.append("," + altText);
                 }
             }

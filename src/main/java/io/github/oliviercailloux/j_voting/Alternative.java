@@ -1,5 +1,8 @@
 package io.github.oliviercailloux.j_voting;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.base.Preconditions;
 
 /**
@@ -8,6 +11,9 @@ import com.google.common.base.Preconditions;
  */
 public class Alternative {
 
+    @SuppressWarnings("unused")
+    private static final Logger LOGGER = LoggerFactory
+                    .getLogger(Alternative.class.getName());
     private int id;
 
     /**
