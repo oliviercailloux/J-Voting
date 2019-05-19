@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
 
-public class PreferenceTest {
+public class CompletePreferenceImplTest {
 
     public static CompletePreferenceImpl createPreferenceToTest() {
         Alternative a1 = new Alternative(1);

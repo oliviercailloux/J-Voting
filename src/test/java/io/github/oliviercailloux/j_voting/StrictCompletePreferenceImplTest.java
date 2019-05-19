@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
 
-public class StrictPreferenceTest {
+public class StrictCompletePreferenceImplTest {
 
     @Test
     public void testGetPreferences() {
