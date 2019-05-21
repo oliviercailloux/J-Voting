@@ -10,7 +10,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.StrictPreference;
+import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableStrictProfileI;
 import io.github.oliviercailloux.j_voting.profiles.management.StrictProfileBuilder;
@@ -36,9 +36,9 @@ public class StrictProfileBuilderTest {
         list3.add(a3);
         list3.add(a2);
         list3.add(a4);
-        StrictPreference p1 = new StrictPreference(list1);
-        StrictPreference p2 = new StrictPreference(list2);
-        StrictPreference p3 = new StrictPreference(list3);
+        StrictCompletePreferenceImpl p1 = new StrictCompletePreferenceImpl(list1);
+        StrictCompletePreferenceImpl p2 = new StrictCompletePreferenceImpl(list2);
+        StrictCompletePreferenceImpl p3 = new StrictCompletePreferenceImpl(list3);
         Voter v1 = new Voter(1);
         Voter v2 = new Voter(2);
         Voter v3 = new Voter(3);
@@ -54,16 +54,16 @@ public class StrictProfileBuilderTest {
         profBuild.addVote(v6, p3);
         ImmutableStrictProfileI resultProf = profBuild
                         .createOneAlternativeProfile();
-        Map<Voter, StrictPreference> map = new HashMap<>();
+        Map<Voter, StrictCompletePreferenceImpl> map = new HashMap<>();
         List<Alternative> l1 = new ArrayList<>();
         List<Alternative> l2 = new ArrayList<>();
         List<Alternative> l3 = new ArrayList<>();
         l1.add(a1);
         l2.add(a2);
         l3.add(a3);
-        StrictPreference pref1 = new StrictPreference(l1);
-        StrictPreference pref2 = new StrictPreference(l2);
-        StrictPreference pref3 = new StrictPreference(l3);
+        StrictCompletePreferenceImpl pref1 = new StrictCompletePreferenceImpl(l1);
+        StrictCompletePreferenceImpl pref2 = new StrictCompletePreferenceImpl(l2);
+        StrictCompletePreferenceImpl pref3 = new StrictCompletePreferenceImpl(l3);
         map.put(v1, pref1);
         map.put(v2, pref1);
         map.put(v3, pref1);

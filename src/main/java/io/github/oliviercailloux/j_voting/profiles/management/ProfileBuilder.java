@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
 
-import io.github.oliviercailloux.j_voting.Preference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfile;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfileI;
@@ -28,7 +28,7 @@ public class ProfileBuilder {
 
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(ProfileBuilder.class.getName());
-    protected Map<Voter, Preference> votes;
+    protected Map<Voter, CompletePreferenceImpl> votes;
     protected int nextVoterId = 1;
 
     public ProfileBuilder() {
@@ -56,7 +56,7 @@ public class ProfileBuilder {
      * 
      *             adds the preference pref for the voter v in the map.
      */
-    public void addVote(Voter v, Preference pref) {
+    public void addVote(Voter v, CompletePreferenceImpl pref) {
         LOGGER.debug("addProfile:");
         Preconditions.checkNotNull(v);
         Preconditions.checkNotNull(pref);
@@ -72,7 +72,7 @@ public class ProfileBuilder {
      * @param nbVoters <code>not null</code> the number of voters that voted for
      *                 the preference as parameter
      */
-    public void addVotes(Preference pref, int nbVoters) {
+    public void addVotes(CompletePreferenceImpl pref, int nbVoters) {
         LOGGER.debug("AddVotes");
         Preconditions.checkNotNull(pref);
         Preconditions.checkNotNull(nbVoters);
@@ -149,11 +149,11 @@ public class ProfileBuilder {
      * @return a map of voters and preferences (cast to the most general class :
      *         Preference)
      */
-    public static Map<Voter, Preference> castMapExtendsToRegularVoterPref(
-                    Map<Voter, ? extends Preference> map) {
+    public static Map<Voter, CompletePreferenceImpl> castMapExtendsToRegularVoterPref(
+                    Map<Voter, ? extends CompletePreferenceImpl> map) {
         LOGGER.debug("castMapToRegularVoterPref");
         Preconditions.checkNotNull(map);
-        Map<Voter, Preference> result = new HashMap<>();
+        Map<Voter, CompletePreferenceImpl> result = new HashMap<>();
         for (Voter v : map.keySet()) {
             LOGGER.debug("adds the voter {} and his preference {}", v,
                             map.get(v));

@@ -16,7 +16,7 @@ import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.Preference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfileI;
 import io.github.oliviercailloux.j_voting.profiles.ProfileI;
@@ -25,7 +25,7 @@ import io.github.oliviercailloux.j_voting.profiles.analysis.Borda;
 public class BordaTest {
 
     public static ImmutableProfileI createIPIToTest() {
-        Map<Voter, Preference> profile = new HashMap<>();
+        Map<Voter, CompletePreferenceImpl> profile = new HashMap<>();
         Alternative a1 = new Alternative(1);
         Alternative a2 = new Alternative(2);
         Alternative a3 = new Alternative(3);
@@ -51,8 +51,8 @@ public class BordaTest {
         list1.add(s2);
         list2.add(s3);
         list2.add(s4);
-        Preference pref1 = new Preference(list1);
-        Preference pref2 = new Preference(list2);
+        CompletePreferenceImpl pref1 = new CompletePreferenceImpl(list1);
+        CompletePreferenceImpl pref2 = new CompletePreferenceImpl(list2);
         profile.put(v1, pref1);
         profile.put(v2, pref1);
         profile.put(v3, pref1);
@@ -78,7 +78,7 @@ public class BordaTest {
         list1.add(s2);
         list1.add(s1);
         list1.add(s3);
-        Preference pref1 = new Preference(list1);
+        CompletePreferenceImpl pref1 = new CompletePreferenceImpl(list1);
         assertEquals(new Borda().getSocietyPreference(prof), pref1);
     }
 
@@ -96,7 +96,7 @@ public class BordaTest {
         s2.add(a3);
         list1.add(s1);
         list1.add(s2);
-        Preference pref1 = new Preference(list1);
+        CompletePreferenceImpl pref1 = new CompletePreferenceImpl(list1);
         b.setScores(pref1);
         Multiset<Alternative> m = b.getMultiSet();
         assertEquals(m.count(a1), 2);

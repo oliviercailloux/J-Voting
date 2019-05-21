@@ -18,10 +18,10 @@ import com.google.common.base.Preconditions;
  * twice the same alternative.
  *
  */
-public class Preference {
+public class CompletePreferenceImpl {
 
     private static final Logger LOGGER = LoggerFactory
-                    .getLogger(Preference.class.getName());
+                    .getLogger(CompletePreferenceImpl.class.getName());
     protected List<Set<Alternative>> preference;
 
     /**
@@ -31,7 +31,7 @@ public class Preference {
      *                    alternative is present several times, an
      *                    IllegalArgumentException is thrown.
      */
-    public Preference(List<Set<Alternative>> preference) {
+    public CompletePreferenceImpl(List<Set<Alternative>> preference) {
         LOGGER.debug("Preference constructor");
         Preconditions.checkNotNull(preference);
         LOGGER.debug("parameter : {}", preference);
@@ -101,7 +101,7 @@ public class Preference {
         // Check class type and cast o
         if (this.getClass() != o.getClass())
             return false;
-        Preference pref = (Preference) o;
+        CompletePreferenceImpl pref = (CompletePreferenceImpl) o;
         // check field
         return this.preference.equals(pref.preference);
     }
@@ -128,7 +128,7 @@ public class Preference {
      * @return whether the preferences are about the same alternatives exactly
      *         (not necessarily in the same order).
      */
-    public boolean hasSameAlternatives(Preference p) {
+    public boolean hasSameAlternatives(CompletePreferenceImpl p) {
         LOGGER.debug("hasSameAlternatives:");
         Preconditions.checkNotNull(p);
         LOGGER.debug("parameter preference : {}", p);
@@ -140,7 +140,7 @@ public class Preference {
      * @return whether the parameter preference contains all the alternatives in
      *         the calling preference
      */
-    public boolean isIncludedIn(Preference p) {
+    public boolean isIncludedIn(CompletePreferenceImpl p) {
         LOGGER.debug("isIncludedIn:");
         Preconditions.checkNotNull(p);
         LOGGER.debug("parameter preference : {}", p);
@@ -232,7 +232,7 @@ public class Preference {
      *         is strict. If the preference is not strict it throws an
      *         IllegalArgumentException.
      */
-    public StrictPreference toStrictPreference() {
+    public StrictCompletePreferenceImpl toStrictPreference() {
         LOGGER.debug("toStrictPreference");
         if (!isStrict()) {
             throw new IllegalArgumentException("the preference is not strict.");
@@ -244,6 +244,6 @@ public class Preference {
             }
         }
         LOGGER.debug("list : {}", list);
-        return new StrictPreference(list);
+        return new StrictCompletePreferenceImpl(list);
     }
 }

@@ -26,7 +26,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.io.CharStreams;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.StrictPreference;
+import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ProfileI;
 
@@ -86,7 +86,7 @@ public class ReadProfile {
             }
             LOGGER.debug("lines with the number of votes for each StrictPreference : {}",
                             profiles);
-            StrictPreference listeAlternatives = getAlternatives(alternatives);
+            StrictCompletePreferenceImpl listeAlternatives = getAlternatives(alternatives);
             List<Integer> listInt = getStatsVoters(lineNbVoters);
             return buildProfile(profiles, listeAlternatives, listInt.get(0));
         }
@@ -114,7 +114,7 @@ public class ReadProfile {
                 }
             }
             Voter voter = new Voter(column + 1);
-            StrictPreference newPref = new ReadProfile()
+            StrictCompletePreferenceImpl newPref = new ReadProfile()
                             .createStrictPreferenceFrom(
                                             newPrefString.toString());
             profileBuilder.addVote(voter, newPref);
@@ -143,7 +143,7 @@ public class ReadProfile {
                 }
             }
             Voter voter = new Voter(item + 1);
-            StrictPreference newPref = new ReadProfile()
+            StrictCompletePreferenceImpl newPref = new ReadProfile()
                             .createStrictPreferenceFrom(
                                             newPrefString.toString());
             profileBuilder.addVote(voter, newPref);
@@ -201,7 +201,7 @@ public class ReadProfile {
      * @return the Alternatives, in the list of strings, given as a
      *         StrictPreference.
      */
-    private StrictPreference getAlternatives(List<String> listOfStrings) {
+    private StrictCompletePreferenceImpl getAlternatives(List<String> listOfStrings) {
         LOGGER.debug("GetAlternatives :");
         Preconditions.checkNotNull(listOfStrings);
         LOGGER.debug("parameter : file = {}", listOfStrings);
@@ -210,7 +210,7 @@ public class ReadProfile {
             LOGGER.debug("next Alternative : {}", alternative);
             alternatives.add(new Alternative(Integer.parseInt(alternative)));
         }
-        StrictPreference listAlternatives = new StrictPreference(alternatives);
+        StrictCompletePreferenceImpl listAlternatives = new StrictCompletePreferenceImpl(alternatives);
         LOGGER.debug("returns listAlternatives : {}", listAlternatives);
         return listAlternatives;
     }
@@ -242,7 +242,7 @@ public class ReadProfile {
      *                          alternatives)
      * @return the StrictPreference given in the line s1
      */
-    public StrictPreference getPreferences(StrictPreference listeAlternatives,
+    public StrictCompletePreferenceImpl getPreferences(StrictCompletePreferenceImpl listeAlternatives,
                     String s1) {
         LOGGER.debug("GetPreferences");
         Preconditions.checkNotNull(listeAlternatives);
@@ -265,7 +265,7 @@ public class ReadProfile {
                                 "The line s1 contains an alternative that is not in the profile's alternatives");
             }
         }
-        return new StrictPreference(pref);
+        return new StrictCompletePreferenceImpl(pref);
     }
 
     /**
@@ -274,7 +274,7 @@ public class ReadProfile {
      * @return the strictPreference in the string. The string only contains the
      *         alternatives.
      */
-    public StrictPreference createStrictPreferenceFrom(
+    public StrictCompletePreferenceImpl createStrictPreferenceFrom(
                     String stringPreference) {
         LOGGER.debug("GetPreferences");
         Preconditions.checkNotNull(stringPreference);
@@ -289,7 +289,7 @@ public class ReadProfile {
         }
         if (pref.isEmpty())
             throw new IllegalArgumentException("The preference is empty.");
-        return new StrictPreference(pref);
+        return new StrictCompletePreferenceImpl(pref);
     }
 
     /**
@@ -301,7 +301,7 @@ public class ReadProfile {
      * @return the created StrictProfile
      */
     public ProfileI buildProfile(List<String> file,
-                    StrictPreference listAlternatives, int nbVoters) {
+                    StrictCompletePreferenceImpl listAlternatives, int nbVoters) {
         LOGGER.debug("BuildProfiles :");
         Preconditions.checkNotNull(file);
         Preconditions.checkNotNull(listAlternatives);
@@ -315,7 +315,7 @@ public class ReadProfile {
                                 "the first string of file is an alternative line.");
             }
             String[] lineAsArray = line.split(",");
-            StrictPreference pref = getPreferences(listAlternatives, line);
+            StrictCompletePreferenceImpl pref = getPreferences(listAlternatives, line);
             LOGGER.debug("to add : {} votes for the StrictPreference {}",
                             lineAsArray[0].trim(), pref);
             profile.addVotes(pref, Integer.parseInt(lineAsArray[0].trim()));

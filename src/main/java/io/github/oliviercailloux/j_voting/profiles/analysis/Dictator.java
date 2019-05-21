@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
 
-import io.github.oliviercailloux.j_voting.Preference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfileI;
 
@@ -33,7 +33,7 @@ public class Dictator implements SocialWelfareFunction {
      * @return the dictator's preference
      */
     @Override
-    public Preference getSocietyPreference(ImmutableProfileI profile) {
+    public CompletePreferenceImpl getSocietyPreference(ImmutableProfileI profile) {
         LOGGER.debug("getSocietyStrictPreference");
         Preconditions.checkNotNull(profile);
         Preconditions.checkArgument(profile.getProfile().containsKey(dictator));

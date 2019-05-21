@@ -47,7 +47,7 @@ Tasks are not totally ordered in the description because they are not really dep
 * 8#  Clean code and Eclipse Warnings suppression => *DONE*
 * 9#  Replace constructors with static methods
 * 10# Propose a series of interfaces for preferences. There are 8 interfaces in all : CompletePreference, AntiSymmetricCompletePreference, Preference, StrictPreference, MutablePreference, MutableStrictPreference, ImmutablePreference ImmutableStrictPreference
-* 11# Rename the current Preference and StrictPreference classes to CompletePreferenceImpl and StrictCompletePreferenceImpl
+* 11# Rename the current Preference and StrictPreference classes to CompletePreferenceImpl and StrictCompletePreferenceImpl -> *DONE*
 * 12# ODSProfile : Possibility to open a spreadsheet containing a profile and read a strict or non-rigid profile. Ties are recorded using several columns for a given voter
 
 .*Secondary tasks (Without pull request)*

@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.Preference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.StrictProfileI;
 
@@ -57,8 +57,8 @@ public class SOIRowsGUI extends ProfileDefaultGUI {
         List<String> line = new ArrayList<>();
         for (Voter v : allVoters) {
             line.add("Voter " + v.getId());
-            Preference pref = strictProfile.getPreference(v);
-            Iterable<Alternative> allPref = Preference
+            CompletePreferenceImpl pref = strictProfile.getPreference(v);
+            Iterable<Alternative> allPref = CompletePreferenceImpl
                             .toAlternativeSet(pref.getPreferencesNonStrict());
             for (Alternative a : allPref) {
                 line.add(a.toString());

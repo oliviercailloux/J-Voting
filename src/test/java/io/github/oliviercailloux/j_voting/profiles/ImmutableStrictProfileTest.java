@@ -11,7 +11,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.StrictPreference;
+import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableStrictProfile;
 
@@ -22,7 +22,7 @@ public class ImmutableStrictProfileTest {
      * @return an ImmutableStrictProfileI to test
      */
     public static ImmutableStrictProfile createISPToTest() {
-        Map<Voter, StrictPreference> profile = new HashMap<>();
+        Map<Voter, StrictCompletePreferenceImpl> profile = new HashMap<>();
         Alternative a1 = new Alternative(1);
         Alternative a2 = new Alternative(2);
         Alternative a3 = new Alternative(3);
@@ -40,8 +40,8 @@ public class ImmutableStrictProfileTest {
         list2.add(a3);
         list2.add(a2);
         list2.add(a1);
-        StrictPreference pref1 = new StrictPreference(list1);
-        StrictPreference pref2 = new StrictPreference(list2);
+        StrictCompletePreferenceImpl pref1 = new StrictCompletePreferenceImpl(list1);
+        StrictCompletePreferenceImpl pref2 = new StrictCompletePreferenceImpl(list2);
         profile.put(v1, pref1);
         profile.put(v2, pref1);
         profile.put(v3, pref1);

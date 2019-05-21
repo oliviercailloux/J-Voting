@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
 
-import io.github.oliviercailloux.j_voting.Preference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfileI;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableStrictProfileI;
 import io.github.oliviercailloux.j_voting.profiles.StrictProfileI;
@@ -24,7 +24,7 @@ public class FrenchElection implements SocialWelfareFunction {
                     .getLogger(FrenchElection.class.getName());
 
     @Override
-    public Preference getSocietyPreference(ImmutableProfileI profile) {
+    public CompletePreferenceImpl getSocietyPreference(ImmutableProfileI profile) {
         LOGGER.debug("getSocietyPreference");
         Preconditions.checkNotNull(profile);
         if (!profile.isStrict()) {

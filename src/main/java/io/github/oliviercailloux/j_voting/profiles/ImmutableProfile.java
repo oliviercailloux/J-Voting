@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.Preference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 
 /**
@@ -18,14 +18,14 @@ public class ImmutableProfile extends ImmutableProfileI implements Profile {
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(ImmutableProfile.class.getName());
 
-    public ImmutableProfile(Map<Voter, ? extends Preference> votes) {
+    public ImmutableProfile(Map<Voter, ? extends CompletePreferenceImpl> votes) {
         super(checkCompleteMap(votes));
     }
 
     @Override
     public Set<Alternative> getAlternatives() {
         LOGGER.debug("getAlternatives:");
-        Preference p = votes.values().iterator().next();
-        return Preference.toAlternativeSet(p.getPreferencesNonStrict());
+        CompletePreferenceImpl p = votes.values().iterator().next();
+        return CompletePreferenceImpl.toAlternativeSet(p.getPreferencesNonStrict());
     }
 }

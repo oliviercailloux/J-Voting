@@ -12,8 +12,8 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.Preference;
-import io.github.oliviercailloux.j_voting.StrictPreference;
+import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableStrictProfileI;
 
@@ -24,7 +24,7 @@ public class ImmutableStrictProfileITest {
      * @return an ImmutableStrictProfileI to test
      */
     public static ImmutableStrictProfileI createISPIToTest() {
-        Map<Voter, StrictPreference> profile = new HashMap<>();
+        Map<Voter, StrictCompletePreferenceImpl> profile = new HashMap<>();
         Alternative a1 = new Alternative(1);
         Alternative a2 = new Alternative(2);
         Alternative a3 = new Alternative(3);
@@ -41,8 +41,8 @@ public class ImmutableStrictProfileITest {
         list1.add(a3);
         list2.add(a3);
         list2.add(a2);
-        StrictPreference pref1 = new StrictPreference(list1);
-        StrictPreference pref2 = new StrictPreference(list2);
+        StrictCompletePreferenceImpl pref1 = new StrictCompletePreferenceImpl(list1);
+        StrictCompletePreferenceImpl pref2 = new StrictCompletePreferenceImpl(list2);
         profile.put(v1, pref1);
         profile.put(v2, pref1);
         profile.put(v3, pref1);
@@ -56,8 +56,8 @@ public class ImmutableStrictProfileITest {
      * 
      * @return a map of Voter and Preference to test
      */
-    public static Map<Voter, Preference> createNonStrictMap() {
-        Map<Voter, Preference> map = new HashMap<>();
+    public static Map<Voter, CompletePreferenceImpl> createNonStrictMap() {
+        Map<Voter, CompletePreferenceImpl> map = new HashMap<>();
         Alternative a1 = new Alternative(1);
         Alternative a2 = new Alternative(2);
         Alternative a3 = new Alternative(3);
@@ -78,8 +78,8 @@ public class ImmutableStrictProfileITest {
         list2.add(s3);
         list2.add(s2);
         list2.add(s1);
-        Preference p1 = new Preference(list1);
-        Preference p2 = new Preference(list2);
+        CompletePreferenceImpl p1 = new CompletePreferenceImpl(list1);
+        CompletePreferenceImpl p2 = new CompletePreferenceImpl(list2);
         map.put(v1, p1);
         map.put(v2, p1);
         map.put(v3, p2);
@@ -90,8 +90,8 @@ public class ImmutableStrictProfileITest {
      * 
      * @return a map of Voter and StrictPreference to test
      */
-    public static Map<Voter, StrictPreference> createStrictMap() {
-        Map<Voter, StrictPreference> map = new HashMap<>();
+    public static Map<Voter, StrictCompletePreferenceImpl> createStrictMap() {
+        Map<Voter, StrictCompletePreferenceImpl> map = new HashMap<>();
         Alternative a1 = new Alternative(1);
         Alternative a2 = new Alternative(2);
         Alternative a3 = new Alternative(3);
@@ -106,8 +106,8 @@ public class ImmutableStrictProfileITest {
         list2.add(a3);
         list2.add(a2);
         list2.add(a1);
-        StrictPreference p1 = new StrictPreference(list1);
-        StrictPreference p2 = new StrictPreference(list2);
+        StrictCompletePreferenceImpl p1 = new StrictCompletePreferenceImpl(list1);
+        StrictCompletePreferenceImpl p2 = new StrictCompletePreferenceImpl(list2);
         map.put(v1, p1);
         map.put(v2, p1);
         map.put(v3, p2);
@@ -124,7 +124,7 @@ public class ImmutableStrictProfileITest {
         list1.add(a1);
         list1.add(a2);
         list1.add(a3);
-        StrictPreference pref1 = new StrictPreference(list1);
+        StrictCompletePreferenceImpl pref1 = new StrictCompletePreferenceImpl(list1);
         assertEquals(pref1, createISPIToTest().getPreference(v1));
     }
 }

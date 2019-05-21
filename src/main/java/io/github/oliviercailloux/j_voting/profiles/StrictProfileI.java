@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 
-import io.github.oliviercailloux.j_voting.StrictPreference;
+import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 
 /**
@@ -20,7 +20,7 @@ public interface StrictProfileI extends ProfileI {
      * @return the StrictPreference of the voter v in the profile.
      */
     @Override
-    public StrictPreference getPreference(Voter v);
+    public StrictCompletePreferenceImpl getPreference(Voter v);
 
     @Override
     public default boolean isStrict() {
