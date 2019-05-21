@@ -29,7 +29,7 @@ public class SWFCommander {
      */
     public static StrictCompletePreferenceImpl askPreference() throws IOException {
         LOGGER.debug("askPreference");
-        LOGGER.info(("Enter a StrictPreference complete"));
+        System.out.println("Enter a StrictPreference complete");
         try (Scanner scan = new Scanner(System.in)) {
             LOGGER.debug("Scanner OK");
             String vote = scan.nextLine();
