@@ -56,7 +56,7 @@ public class Borda implements SocialWelfareFunction {
         setScores(profile);
         LOGGER.debug("return AScores : {}", scores);
         List<Set<Alternative>> al = new ArrayList<>();
-        Set<Alternative> s = new HashSet<>();
+        Set<Alternative> s;
         Multiset<Alternative> tempscores = scores;
         while (!tempscores.isEmpty()) {
             s = getMax(tempscores);

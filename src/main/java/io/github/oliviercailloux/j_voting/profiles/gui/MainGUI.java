@@ -19,6 +19,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.Objects;
+
 /**
  * Home GUI allowing to load a profile and then select how to display it
  */
@@ -71,7 +73,7 @@ public class MainGUI {
         selectFileToReadButton.setLayoutData(gridData);
         createSOCButtons();
         createSOIButtons();
-        if (fileToRead == "") {
+        if (Objects.equal(fileToRead, "")) {
             mainShell.setText("Profile editing - No profile loaded");
             // remove SOI buttons
             soicolumnsGUIButton.setVisible(false);

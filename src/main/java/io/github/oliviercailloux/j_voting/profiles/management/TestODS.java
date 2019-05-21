@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.StrictPreference;
 import io.github.oliviercailloux.j_voting.Voter;
 
 /**
@@ -31,7 +30,6 @@ public class TestODS {
         new TestODS().generateSpreadsheetDocument();
     }
 
-    @SuppressWarnings("unused")
     public void generateSpreadsheetDocument() throws Exception {
         try (InputStream inputStream = TestODS.class
                         .getResourceAsStream("demo9_data.ods");
@@ -47,18 +45,14 @@ public class TestODS {
                     voters.add(new Voter(Integer.parseInt(firstCellText
                                     .substring(firstCellText.length() - 1,
                                                     firstCellText.indexOf(
-                                                                    " ")))));
+                                                                    ' ')))));
                     for (int alt = Integer.parseInt(column.getCellByIndex(1)
                                     .getDisplayText()); alt < column
                                                     .getCellCount(); alt++) {
                         alternatives.add(new Alternative(alt));
                     }
-                    StrictPreference pref = new StrictPreference(alternatives);
                 }
             }
-            String preference = spreadsheetDoc.getTableByName("B")
-                            .getCellRangeByPosition("A2", "end").toString();
-            // what does toString() return ?
             Cell positionCell = spreadsheetDoc.getTableByName("B")
                             .getCellByPosition("E1");
             LOGGER.info("Found: {}.", positionCell.getDisplayText());

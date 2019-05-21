@@ -88,23 +88,22 @@ public class ImmutableStrictProfile extends ImmutableStrictProfileI
         Preconditions.checkNotNull(output);
         try (Writer writer = new BufferedWriter(
                         new OutputStreamWriter(output))) {
-            String soc = "";
-            soc += getNbAlternatives() + "\n";
+            StringBuilder soc = new StringBuilder();
+            soc.append(getNbAlternatives() + "\n");
             for (Alternative alter : getAlternatives()) {
-                soc += alter.getId() + "\n";
+                soc.append(alter.getId() + "\n");
             }
-            soc += getNbVoters() + "," + getSumVoteCount() + ","
-                            + getNbUniquePreferences() + "\n";
+            soc.append(getNbVoters() + "," + getSumVoteCount() + ","
+                            + getNbUniquePreferences() + "\n");
             for (Preference pref : this.getUniquePreferences()) {
-                soc += getNbVoterForPreference(pref);
+                soc.append(getNbVoterForPreference(pref));
                 for (Alternative a : Preference.toAlternativeSet(
                                 pref.getPreferencesNonStrict())) {
-                    soc = soc + "," + a;
+                    soc.append("," + a);
                 }
-                soc = soc + "\n";
+                soc.append("\n");
             }
             writer.append(soc);
-            writer.close();
         }
     }
 }

@@ -20,4 +20,11 @@ public class Generator {
         }
         return builder.build();
     }
+
+    /**
+     * Create private constructor because of the static class
+     */
+    private Generator() {
+        throw new IllegalStateException("Utility Class");
+    }
 }

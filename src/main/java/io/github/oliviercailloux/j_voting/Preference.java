@@ -223,10 +223,7 @@ public class Preference {
      */
     public boolean isStrict() {
         LOGGER.debug("isStrict:");
-        if (preference.size() == size(preference)) {
-            return true;
-        }
-        return false;
+        return (preference.size() == size(preference));
     }
 
     /**

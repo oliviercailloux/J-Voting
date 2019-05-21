@@ -59,12 +59,12 @@ public class SWFCommander {
             StrictPreference strictPreference = askPreference();
             LOGGER.debug("strictPreference :{}", strictPreference);
             prof.addVote(v, strictPreference);
-            System.out.println("Continue ? (yes/no)");
+            LOGGER.info("Continue ? (yes/no)");
             try (Scanner scn = new Scanner(System.in)) {
                 String answer = scn.nextLine();
                 // user can answer "yes" or just "y" to continue
-                if (answer.trim().toLowerCase() != ("yes")
-                                && answer.trim().toLowerCase() != ("y")) {
+                if (answer.trim().equalsIgnoreCase(("yes"))
+                                && answer.trim().equalsIgnoreCase("y")) {
                     LOGGER.debug("answered no to continue.");
                     keepGoing = false;
                 }
@@ -72,7 +72,7 @@ public class SWFCommander {
             voterId++;
             ImmutableProfileI profile = (ImmutableProfileI) prof
                             .createProfileI();
-            System.out.println(swf.getSocietyPreference(profile));
+            LOGGER.info(swf.getSocietyPreference(profile).toString());
         }
     }
 }

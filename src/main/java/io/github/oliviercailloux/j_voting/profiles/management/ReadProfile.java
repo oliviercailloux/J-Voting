@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -12,7 +13,6 @@ import java.util.List;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-// import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.eclipse.swt.widgets.Table;
@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.TableItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Charsets;
+import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.io.CharStreams;
@@ -54,7 +54,7 @@ public class ReadProfile {
         LOGGER.debug("CreateProfileFromReadFile : ");
         Preconditions.checkNotNull(is);
         try (InputStreamReader isr = new InputStreamReader(is,
-                        Charsets.UTF_8)) {
+                        StandardCharsets.UTF_8)) {
             List<String> fileRead = CharStreams.readLines(isr);
             Iterator<String> it = fileRead.iterator();
             String lineNbVoters;
@@ -68,7 +68,7 @@ public class ReadProfile {
             for (int i = 1; i <= nbAlternatives; i++) {// get the lines with the
                                                        // alternatives
                 String nextAlternative = it.next().trim();
-                int indexOfFirstComma = nextAlternative.indexOf(",");
+                int indexOfFirstComma = nextAlternative.indexOf(',');
                 if (indexOfFirstComma != -1) {
                     String nextAlternativeNumber = nextAlternative.substring(0,
                                     indexOfFirstComma);
@@ -103,17 +103,20 @@ public class ReadProfile {
         ProfileBuilder profileBuilder = new ProfileBuilder();
         int nbColumns = table.getColumnCount();
         for (int column = 0; column < nbColumns; column++) {// browse columns
-            String newPrefString = table.getItem(0).getText(column);
+            StringBuilder newPrefString = new StringBuilder(
+                            table.getItem(0).getText(column));
             for (TableItem item : Iterables
                             .skip(Arrays.asList(table.getItems()), 1)) {
                 String altText = item.getText(column);
-                if (altText != null && altText != "") {
-                    newPrefString += "," + altText;
+                if (!Objects.equal(altText, null)
+                                && !Objects.equal(altText, "")) {
+                    newPrefString.append("," + altText);
                 }
             }
             Voter voter = new Voter(column + 1);
             StrictPreference newPref = new ReadProfile()
-                            .createStrictPreferenceFrom(newPrefString);
+                            .createStrictPreferenceFrom(
+                                            newPrefString.toString());
             profileBuilder.addVote(voter, newPref);
         }
         return profileBuilder.createProfileI().restrictProfile();
@@ -131,16 +134,18 @@ public class ReadProfile {
         int nbItems = table.getItemCount();
         int nbColumns = table.getColumnCount();
         for (int item = 0; item < nbItems; item++) {// browse columns
-            String newPrefString = table.getItem(item).getText(0);
+            StringBuilder newPrefString = new StringBuilder(
+                            table.getItem(item).getText(0));
             for (int column = 1; column < nbColumns; column++) {
                 String altText = table.getItem(item).getText(column);
-                if (altText != null && altText != "") {
-                    newPrefString += "," + altText;
+                if (altText != null && altText.equals("")) {
+                    newPrefString.append("," + altText);
                 }
             }
             Voter voter = new Voter(item + 1);
             StrictPreference newPref = new ReadProfile()
-                            .createStrictPreferenceFrom(newPrefString);
+                            .createStrictPreferenceFrom(
+                                            newPrefString.toString());
             profileBuilder.addVote(voter, newPref);
         }
         return profileBuilder.createProfileI().restrictProfile();
@@ -159,7 +164,7 @@ public class ReadProfile {
     public ProfileI createProfileFromURL(URL url) throws IOException {
         LOGGER.debug("CreateProfileFromURL : ");
         Preconditions.checkNotNull(url);
-        LOGGER.debug("parameter : URL = {}", url.toString());
+        LOGGER.debug("parameter : URL = {}", url);
         Client client = ClientBuilder.newClient();
         Response response = client.target(url.toString()).request().get();
         try (InputStream is = (InputStream) response.getEntity()) {
@@ -182,10 +187,10 @@ public class ReadProfile {
         Preconditions.checkNotNull(is);
         LOGGER.debug("parameter : InputStream = {}", is);
         try (InputStreamReader isr = new InputStreamReader(is,
-                        Charsets.UTF_8)) {
+                        StandardCharsets.UTF_8)) {
             List<String> fileRead = CharStreams.readLines(isr);
             for (String line : fileRead) {
-                System.out.println(line);
+                LOGGER.info(line);
             }
         }
     }
@@ -282,9 +287,8 @@ public class ReadProfile {
             LOGGER.debug("next alternative {}", alter.getId());
             pref.add(alter);
         }
-        if (pref.size() == 0) {
+        if (pref.isEmpty())
             throw new IllegalArgumentException("The preference is empty.");
-        }
         return new StrictPreference(pref);
     }
 
