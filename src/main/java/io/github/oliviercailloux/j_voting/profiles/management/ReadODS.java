@@ -21,7 +21,6 @@ public class ReadODS {
 
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(ReadODS.class.getName());
-    private static Table table;
 
     public static void main(String[] args) throws Exception {
         checkFormat("./testods.ods");
@@ -36,17 +35,18 @@ public class ReadODS {
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
         LOGGER.debug("Open Spreadsheet");
-        table = spreadsheetDoc.getSheetByIndex(0);
+        Table table = spreadsheetDoc.getSheetByIndex(0);
         LOGGER.debug("Get sheet index 0 done");
         if (table.getCellByPosition(1, 0).getStringValue().equals(""))
-            readSpreadsheetDocument();
+            readSpreadsheetDocument(table);
         else if (table.getCellByPosition(0, 0).getStringValue().equals(""))
-            readFormat1();
+            readFormat1(table);
         else
-            readFormat2();
+            readFormat2(table);
     }
 
-    public static void readSpreadsheetDocument() throws Exception {
+    public static StringBuilder readSpreadsheetDocument(Table table)
+                    throws Exception {
         StringBuilder stringBuilder = new StringBuilder();
         int nbAlternatives = Integer.parseInt(
                         table.getCellByPosition(0, 0).getStringValue());
@@ -79,15 +79,15 @@ public class ReadODS {
             }
             stringBuilder.deleteCharAt(stringBuilder.length() - 1).append("\n");
         }
-        System.out.println(stringBuilder);
+        return stringBuilder;
     }
 
-    public static void readFormat1() throws Exception {
+    public static void readFormat1(Table table) throws Exception {
         System.out.println("1");
         // TODO
     }
 
-    public static void readFormat2() throws Exception {
+    public static void readFormat2(Table table) throws Exception {
         // TODO
         System.out.println("2");
     }
