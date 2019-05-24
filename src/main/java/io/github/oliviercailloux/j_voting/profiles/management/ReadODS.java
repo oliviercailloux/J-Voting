@@ -23,14 +23,14 @@ public class ReadODS {
                     .getLogger(ReadODS.class.getName());
 
     public static void main(String[] args) throws Exception {
-        checkFormat("./testods.ods");
-        checkFormat("./facon1.ods");
-        checkFormat("./facon2.ods");
+        System.out.println(checkFormat(
+                        ReadODS.class.getResourceAsStream("./testods.ods")));
+        checkFormat(ReadODS.class.getResourceAsStream("./facon1.ods"));
+        checkFormat(ReadODS.class.getResourceAsStream("./facon2.ods"));
     }
 
-    public static void checkFormat(String inputString) throws Exception {
-        InputStream inputStream = ReadODS.class
-                        .getResourceAsStream(inputString);
+    public static StringBuilder checkFormat(InputStream inputStream)
+                    throws Exception {
         LOGGER.debug("Open Stream");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
@@ -38,11 +38,10 @@ public class ReadODS {
         Table table = spreadsheetDoc.getSheetByIndex(0);
         LOGGER.debug("Get sheet index 0 done");
         if (table.getCellByPosition(1, 0).getStringValue().equals(""))
-            readSpreadsheetDocument(table);
+            return readSpreadsheetDocument(table);
         else if (table.getCellByPosition(0, 0).getStringValue().equals(""))
-            readFormat1(table);
-        else
-            readFormat2(table);
+            return readFormat1(table);
+        return readFormat2(table);
     }
 
     public static StringBuilder readSpreadsheetDocument(Table table)
@@ -82,13 +81,15 @@ public class ReadODS {
         return stringBuilder;
     }
 
-    public static void readFormat1(Table table) throws Exception {
+    public static StringBuilder readFormat1(Table table) throws Exception {
         System.out.println("1");
         // TODO
+        return null;
     }
 
-    public static void readFormat2(Table table) throws Exception {
+    public static StringBuilder readFormat2(Table table) throws Exception {
         // TODO
         System.out.println("2");
+        return null;
     }
 }

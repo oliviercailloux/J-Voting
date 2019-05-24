@@ -53,7 +53,6 @@ class ReadODSTest {
                                         + "17 voters for preference 5 : 3>1>2\n"
                                         + "11 voters for preference 6 : 3>2>1"
                                         + "\n");
-        System.out.println(stringBuilder);
         assertTrue(Objects.equal(stringBuilder.toString(),
                         stringBuilderReadODS.toString()));
     }
