@@ -29,8 +29,7 @@ public class ReadODS {
         checkFormat(ReadODS.class.getResourceAsStream("./facon2.ods"));
     }
 
-    public static StringBuilder checkFormat(InputStream inputStream)
-                    throws Exception {
+    public static String checkFormat(InputStream inputStream) throws Exception {
         LOGGER.debug("Open Stream");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
@@ -44,8 +43,7 @@ public class ReadODS {
         return readFormat2(table);
     }
 
-    public static StringBuilder readSpreadsheetDocument(Table table)
-                    throws Exception {
+    public static String readSpreadsheetDocument(Table table) throws Exception {
         StringBuilder stringBuilder = new StringBuilder();
         int nbAlternatives = Integer.parseInt(
                         table.getCellByPosition(0, 0).getStringValue());
@@ -78,18 +76,18 @@ public class ReadODS {
             }
             stringBuilder.deleteCharAt(stringBuilder.length() - 1).append("\n");
         }
-        return stringBuilder;
+        return stringBuilder.toString();
     }
 
-    public static StringBuilder readFormat1(Table table) throws Exception {
+    public static String readFormat1(Table table) throws Exception {
         System.out.println("1");
         // TODO
-        return null;
+        return "";
     }
 
-    public static StringBuilder readFormat2(Table table) throws Exception {
+    public static String readFormat2(Table table) throws Exception {
         // TODO
         System.out.println("2");
-        return null;
+        return "";
     }
 }

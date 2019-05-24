@@ -29,8 +29,30 @@ class ReadODSTest {
     }
 
     @Test
-    void testCheckFormat() {
-        fail("Not yet implemented");
+    void testCheckFormat() throws Exception {
+        InputStream inputStream = ReadODS.class
+                        .getResourceAsStream("./testods.ods");
+        InputStream inputStream2 = ReadODS.class
+                        .getResourceAsStream("./facon1.ods");
+        InputStream inputStream3 = ReadODS.class
+                        .getResourceAsStream("./facon2.ods");
+        String stringCompare = "There are 3 alternatives\n"
+                        + "List of alternatives : [1, 2, 3]\n"
+                        + "There are 6 differents orders\n"
+                        + "263 voters for preference 1 : 2>1>3\n"
+                        + "249 voters for preference 2 : 1>2>3\n"
+                        + "78 voters for preference 3 : 1>3>2\n"
+                        + "46 voters for preference 4 : 2>3>1\n"
+                        + "17 voters for preference 5 : 3>1>2\n"
+                        + "11 voters for preference 6 : 3>2>1\n";
+        String stringCompare2 = "";
+        String stringCompare3 = "";
+        assertTrue(Objects.equal(stringCompare,
+                        ReadODS.checkFormat(inputStream)));
+        assertTrue(Objects.equal(stringCompare2,
+                        ReadODS.checkFormat(inputStream2)));
+        assertTrue(Objects.equal(stringCompare3,
+                        ReadODS.checkFormat(inputStream3)));
     }
 
     @Test
@@ -40,21 +62,17 @@ class ReadODSTest {
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
         Table table = spreadsheetDoc.getSheetByIndex(0);
-        StringBuilder stringBuilderReadODS = ReadODS
-                        .readSpreadsheetDocument(table);
-        StringBuilder stringBuilder = new StringBuilder(
-                        "There are 3 alternatives\n"
-                                        + "List of alternatives : [1, 2, 3]\n"
-                                        + "There are 6 differents orders\n"
-                                        + "263 voters for preference 1 : 2>1>3\n"
-                                        + "249 voters for preference 2 : 1>2>3\n"
-                                        + "78 voters for preference 3 : 1>3>2\n"
-                                        + "46 voters for preference 4 : 2>3>1\n"
-                                        + "17 voters for preference 5 : 3>1>2\n"
-                                        + "11 voters for preference 6 : 3>2>1"
-                                        + "\n");
-        assertTrue(Objects.equal(stringBuilder.toString(),
-                        stringBuilderReadODS.toString()));
+        String stringrReadODS = ReadODS.readSpreadsheetDocument(table);
+        String stringCompare = "There are 3 alternatives\n"
+                        + "List of alternatives : [1, 2, 3]\n"
+                        + "There are 6 differents orders\n"
+                        + "263 voters for preference 1 : 2>1>3\n"
+                        + "249 voters for preference 2 : 1>2>3\n"
+                        + "78 voters for preference 3 : 1>3>2\n"
+                        + "46 voters for preference 4 : 2>3>1\n"
+                        + "17 voters for preference 5 : 3>1>2\n"
+                        + "11 voters for preference 6 : 3>2>1" + "\n";
+        assertTrue(Objects.equal(stringCompare, stringrReadODS));
     }
 
     @Test
