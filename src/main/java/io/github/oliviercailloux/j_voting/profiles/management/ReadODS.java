@@ -9,6 +9,8 @@ import java.util.Set;
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.CellRange;
 import org.odftoolkit.simple.table.Table;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 
@@ -19,15 +21,32 @@ import io.github.oliviercailloux.j_voting.Alternative;
  */
 public class ReadODS {
 
+    private static final Logger LOGGER = LoggerFactory
+                    .getLogger(ReadODS.class.getName());
+    private static Table sheet;
+
     public static void main(String[] args) throws Exception {
-        readSpreadsheetDocument("testods.ods");
+        checkFormat();
     }
 
-    public static void readSpreadsheetDocument(String file) throws Exception {
-        InputStream inputStream = ReadODS.class.getResourceAsStream(file);
+    public static void checkFormat() throws Exception {
+        String ok = "./testods.ods";
+        InputStream inputStream = ReadODS.class.getResourceAsStream(ok);
+        LOGGER.debug("Open Stream");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
-        Table sheet = spreadsheetDoc.getSheetByIndex(0);
+        LOGGER.debug("Open Spreadsheet");
+        sheet = spreadsheetDoc.getSheetByIndex(0);
+        LOGGER.debug("Get sheet index 0 done");
+        if (sheet.getCellByPosition(1, 0).getStringValue().equals(""))
+            readSpreadsheetDocument();
+        else if (sheet.getCellByPosition(0, 0).getStringValue().equals(""))
+            readFormat1();
+        else
+            readFormat2();
+    }
+
+    public static void readSpreadsheetDocument() throws Exception {
         int nbCandidates = Integer.parseInt(
                         sheet.getCellByPosition(0, 0).getStringValue());
         List<Alternative> alter = new ArrayList<>(nbCandidates);
@@ -54,8 +73,14 @@ public class ReadODS {
                                 .getCellByPosition(j, i).getStringValue())
                                 - 1));
                 System.out.print(prefRange.getCellByPosition(j, i)
-                                .getStringValue() + "; ");
+                                .getStringValue() + " > ");
             }
         }
+    }
+
+    public static void readFormat1() throws Exception {
+    }
+
+    public static void readFormat2() throws Exception {
     }
 }
