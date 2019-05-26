@@ -100,7 +100,7 @@ public class ReadProfile {
     public ProfileI createProfileFromColumnsTable(Table table) {
         LOGGER.debug("createProfileFromColumnsTable : ");
         Preconditions.checkNotNull(table);
-        ProfileBuilder profileBuilder = new ProfileBuilder();
+        ProfileBuilder profileBuilder = ProfileBuilder.createProfileBuilder();
         int nbColumns = table.getColumnCount();
         for (int column = 0; column < nbColumns; column++) {// browse columns
             StringBuilder newPrefString = new StringBuilder(
@@ -113,7 +113,7 @@ public class ReadProfile {
                     newPrefString.append("," + altText);
                 }
             }
-            Voter voter = new Voter(column + 1);
+            Voter voter = Voter.createVoter(column + 1);
             StrictCompletePreferenceImpl newPref = new ReadProfile()
                             .createStrictPreferenceFrom(
                                             newPrefString.toString());
@@ -130,7 +130,7 @@ public class ReadProfile {
     public ProfileI createProfileFromRowsTable(Table table) {
         LOGGER.debug("createProfileFromRowsTable : ");
         Preconditions.checkNotNull(table);
-        ProfileBuilder profileBuilder = new ProfileBuilder();
+        ProfileBuilder profileBuilder = ProfileBuilder.createProfileBuilder();
         int nbItems = table.getItemCount();
         int nbColumns = table.getColumnCount();
         for (int item = 0; item < nbItems; item++) {// browse columns
@@ -142,7 +142,7 @@ public class ReadProfile {
                     newPrefString.append("," + altText);
                 }
             }
-            Voter voter = new Voter(item + 1);
+            Voter voter = Voter.createVoter(item + 1);
             StrictCompletePreferenceImpl newPref = new ReadProfile()
                             .createStrictPreferenceFrom(
                                             newPrefString.toString());
@@ -208,9 +208,9 @@ public class ReadProfile {
         List<Alternative> alternatives = new ArrayList<>();
         for (String alternative : listOfStrings) {
             LOGGER.debug("next Alternative : {}", alternative);
-            alternatives.add(new Alternative(Integer.parseInt(alternative)));
+            alternatives.add(Alternative.createAlternative(Integer.parseInt(alternative)));
         }
-        StrictCompletePreferenceImpl listAlternatives = new StrictCompletePreferenceImpl(alternatives);
+        StrictCompletePreferenceImpl listAlternatives = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(alternatives);
         LOGGER.debug("returns listAlternatives : {}", listAlternatives);
         return listAlternatives;
     }
@@ -253,8 +253,7 @@ public class ReadProfile {
         List<Alternative> pref = new ArrayList<>();
         for (String alternative : Iterables.skip(Arrays.asList(alternatives),
                         1)) {
-            Alternative alter = new Alternative(
-                            Integer.parseInt(alternative.trim()));
+            Alternative alter = Alternative.createAlternative(Integer.parseInt(alternative.trim()));
             LOGGER.debug("next alternative {}", alter.getId());
             if (listeAlternatives.contains(alter)) {
                 LOGGER.debug("correct alternative");
@@ -265,7 +264,7 @@ public class ReadProfile {
                                 "The line s1 contains an alternative that is not in the profile's alternatives");
             }
         }
-        return new StrictCompletePreferenceImpl(pref);
+        return StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(pref);
     }
 
     /**
@@ -282,14 +281,13 @@ public class ReadProfile {
         String[] s2 = stringPreference.split(",");
         List<Alternative> pref = new ArrayList<>();
         for (String strAlt : s2) {
-            Alternative alter = new Alternative(
-                            Integer.parseInt(strAlt.trim()));
+            Alternative alter = Alternative.createAlternative(Integer.parseInt(strAlt.trim()));
             LOGGER.debug("next alternative {}", alter.getId());
             pref.add(alter);
         }
         if (pref.isEmpty())
             throw new IllegalArgumentException("The preference is empty.");
-        return new StrictCompletePreferenceImpl(pref);
+        return StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(pref);
     }
 
     /**
@@ -306,7 +304,7 @@ public class ReadProfile {
         Preconditions.checkNotNull(file);
         Preconditions.checkNotNull(listAlternatives);
         Preconditions.checkNotNull(nbVoters);
-        StrictProfileBuilder profile = new StrictProfileBuilder();
+        StrictProfileBuilder profile = StrictProfileBuilder.createStrictProfileBuilder();
         for (String line : file) {
             LOGGER.debug("next line : {}", line);
             if (!line.contains(",")) {// if the line doesn't contain "," it's

@@ -17,12 +17,20 @@ public class Alternative {
     private int id;
 
     /**
-     * Creates a new Alternative with the id given as a parameter
+     * Factory method for Alternative
      * 
-     * @param id int <code>not null</code>
+     * @param id <code> not null </code>
+     * @return new Alternative
      */
-    public Alternative(int id) {
-        this.id = Preconditions.checkNotNull(id);
+    public static Alternative createAlternative(int id) {
+        LOGGER.debug("Alternative Factory");
+        Preconditions.checkNotNull(id);
+        return new Alternative(id);
+    }
+
+    private Alternative(int id) {
+        LOGGER.debug("Alternative constructor");
+        this.id = id;
     }
 
     /**

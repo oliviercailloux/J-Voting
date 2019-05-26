@@ -16,22 +16,22 @@ public class StrictCompletePreferenceImplTest {
 
     @Test
     public void testGetPreferences() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
         List<Alternative> prefs = new ArrayList<>();
         prefs.add(a1);
         prefs.add(a2);
         prefs.add(a3);
-        StrictCompletePreferenceImpl p = new StrictCompletePreferenceImpl(prefs);
+        StrictCompletePreferenceImpl p = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(prefs);
         assertEquals(p.getAlternatives(), prefs);
     }
 
     @Test
     public void testListAlternativeToListSetAlternative() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
         List<Alternative> prefs = new ArrayList<>();
         prefs.add(a1);
         prefs.add(a2);
@@ -51,27 +51,27 @@ public class StrictCompletePreferenceImplTest {
 
     @Test
     public void testToString() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
         List<Alternative> prefs = new ArrayList<>();
         prefs.add(a1);
         prefs.add(a2);
         prefs.add(a3);
-        StrictCompletePreferenceImpl strict = new StrictCompletePreferenceImpl(prefs);
+        StrictCompletePreferenceImpl strict = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(prefs);
         assertEquals(strict.toString(), "1,2,3");
     }
 
     @Test
     public void testGetAlternative() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
         List<Alternative> prefs = new ArrayList<>();
         prefs.add(a1);
         prefs.add(a2);
         prefs.add(a3);
-        StrictCompletePreferenceImpl strict = new StrictCompletePreferenceImpl(prefs);
+        StrictCompletePreferenceImpl strict = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(prefs);
         assertEquals(strict.getAlternative(1), a2);
     }
 }

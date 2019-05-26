@@ -20,15 +20,15 @@ public class ImmutableProfileTest {
 
     public static ImmutableProfile createIPToTest() {
         Map<Voter, CompletePreferenceImpl> profile = new HashMap<>();
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Voter v1 = new Voter(1);
-        Voter v2 = new Voter(2);
-        Voter v3 = new Voter(3);
-        Voter v4 = new Voter(4);
-        Voter v5 = new Voter(5);
-        Voter v6 = new Voter(6);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
+        Voter v1 = Voter.createVoter(1);
+        Voter v2 = Voter.createVoter(2);
+        Voter v3 = Voter.createVoter(3);
+        Voter v4 = Voter.createVoter(4);
+        Voter v5 = Voter.createVoter(5);
+        Voter v6 = Voter.createVoter(6);
         List<Set<Alternative>> list1 = new ArrayList<>();
         List<Set<Alternative>> list2 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();
@@ -45,15 +45,15 @@ public class ImmutableProfileTest {
         list1.add(s2);
         list2.add(s3);
         list2.add(s4);
-        CompletePreferenceImpl pref1 = new CompletePreferenceImpl(list1);
-        CompletePreferenceImpl pref2 = new CompletePreferenceImpl(list2);
+        CompletePreferenceImpl pref1 = CompletePreferenceImpl.createCompletePreferenceImpl(list1);
+        CompletePreferenceImpl pref2 = CompletePreferenceImpl.createCompletePreferenceImpl(list2);
         profile.put(v1, pref1);
         profile.put(v2, pref1);
         profile.put(v3, pref1);
         profile.put(v4, pref1);
         profile.put(v5, pref2);
         profile.put(v6, pref2);
-        return new ImmutableProfile(profile);
+        return ImmutableProfile.createImmutableProfile(profile);
     }
 
     @Test
@@ -64,9 +64,9 @@ public class ImmutableProfileTest {
     @Test
     public void testGetAlternatives() {
         Set<Alternative> alters = new HashSet<>();
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
         alters.add(a1);
         alters.add(a2);
         alters.add(a3);

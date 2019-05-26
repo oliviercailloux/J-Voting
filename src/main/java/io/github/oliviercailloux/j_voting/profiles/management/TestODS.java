@@ -42,14 +42,14 @@ public class TestODS {
                     List<Alternative> alternatives = new ArrayList<>();
                     String firstCellText = column.getCellByIndex(0)
                                     .getDisplayText();
-                    voters.add(new Voter(Integer.parseInt(firstCellText
+                    voters.add(Voter.createVoter(Integer.parseInt(firstCellText
                                     .substring(firstCellText.length() - 1,
                                                     firstCellText.indexOf(
                                                                     ' ')))));
                     for (int alt = Integer.parseInt(column.getCellByIndex(1)
                                     .getDisplayText()); alt < column
                                                     .getCellCount(); alt++) {
-                        alternatives.add(new Alternative(alt));
+                        alternatives.add(Alternative.createAlternative(alt));
                     }
                 }
             }

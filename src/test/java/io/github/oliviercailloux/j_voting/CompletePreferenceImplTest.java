@@ -16,11 +16,11 @@ import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
 public class CompletePreferenceImplTest {
 
     public static CompletePreferenceImpl createPreferenceToTest() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Alternative a4 = new Alternative(4);
-        Alternative a5 = new Alternative(5);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a4 = Alternative.createAlternative(4);
+        Alternative a5 = Alternative.createAlternative(5);
         Set<Alternative> set1 = new HashSet<>();
         Set<Alternative> set2 = new HashSet<>();
         Set<Alternative> set3 = new HashSet<>();
@@ -33,16 +33,16 @@ public class CompletePreferenceImplTest {
         list.add(set1);
         list.add(set2);
         list.add(set3);
-        return new CompletePreferenceImpl(list);
+        return CompletePreferenceImpl.createCompletePreferenceImpl(list);
     }
 
     @Test
     public void testGetPreferencesNonStrict() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Alternative a4 = new Alternative(4);
-        Alternative a5 = new Alternative(5);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a4 = Alternative.createAlternative(4);
+        Alternative a5 = Alternative.createAlternative(5);
         Set<Alternative> set1 = new HashSet<>();
         Set<Alternative> set2 = new HashSet<>();
         Set<Alternative> set3 = new HashSet<>();
@@ -77,11 +77,11 @@ public class CompletePreferenceImplTest {
     @Test
     public void testEqualsPreference() {
         CompletePreferenceImpl p1 = createPreferenceToTest();
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Alternative a4 = new Alternative(4);
-        Alternative a5 = new Alternative(5);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a4 = Alternative.createAlternative(4);
+        Alternative a5 = Alternative.createAlternative(5);
         Set<Alternative> set1 = new HashSet<>();
         Set<Alternative> set2 = new HashSet<>();
         Set<Alternative> set3 = new HashSet<>();
@@ -94,23 +94,23 @@ public class CompletePreferenceImplTest {
         list.add(set1);
         list.add(set2);
         list.add(set3);
-        CompletePreferenceImpl p2 = new CompletePreferenceImpl(list);
+        CompletePreferenceImpl p2 = CompletePreferenceImpl.createCompletePreferenceImpl(list);
         assertTrue(p1.equals(p2));
     }
 
     @Test
     public void testContains() {
-        Alternative a = new Alternative(4);
+        Alternative a = Alternative.createAlternative(4);
         assertTrue(createPreferenceToTest().contains(a));
     }
 
     @Test
     public void testHasSameAlternatives() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Alternative a4 = new Alternative(4);
-        Alternative a5 = new Alternative(5);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a4 = Alternative.createAlternative(4);
+        Alternative a5 = Alternative.createAlternative(5);
         Set<Alternative> set1 = new HashSet<>();
         Set<Alternative> set2 = new HashSet<>();
         Set<Alternative> set3 = new HashSet<>();
@@ -123,16 +123,16 @@ public class CompletePreferenceImplTest {
         list.add(set1);
         list.add(set2);
         list.add(set3);
-        CompletePreferenceImpl pref = new CompletePreferenceImpl(list);
+        CompletePreferenceImpl pref = CompletePreferenceImpl.createCompletePreferenceImpl(list);
         assertTrue(pref.hasSameAlternatives(createPreferenceToTest()));
     }
 
     @Test
     public void testIsIncludedIn() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Alternative a4 = new Alternative(4);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a4 = Alternative.createAlternative(4);
         Set<Alternative> set1 = new HashSet<>();
         Set<Alternative> set2 = new HashSet<>();
         Set<Alternative> set3 = new HashSet<>();
@@ -144,17 +144,17 @@ public class CompletePreferenceImplTest {
         list.add(set1);
         list.add(set2);
         list.add(set3);
-        CompletePreferenceImpl p = new CompletePreferenceImpl(list);
+        CompletePreferenceImpl p = CompletePreferenceImpl.createCompletePreferenceImpl(list);
         assertTrue(p.isIncludedIn(createPreferenceToTest()));
     }
 
     @Test
     public void testToAlternativeSet() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Alternative a4 = new Alternative(4);
-        Alternative a5 = new Alternative(5);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a4 = Alternative.createAlternative(4);
+        Alternative a5 = Alternative.createAlternative(5);
         Set<Alternative> set = new HashSet<>();
         set.add(a1);
         set.add(a2);
@@ -168,11 +168,11 @@ public class CompletePreferenceImplTest {
 
     @Test
     public void testAlternativeSetEqual() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Alternative a4 = new Alternative(4);
-        Alternative a5 = new Alternative(5);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a4 = Alternative.createAlternative(4);
+        Alternative a5 = Alternative.createAlternative(5);
         Set<Alternative> set = new HashSet<>();
         set.add(a1);
         set.add(a2);
@@ -190,11 +190,11 @@ public class CompletePreferenceImplTest {
 
     @Test
     public void testAlternativeSetContains() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Alternative a4 = new Alternative(4);
-        Alternative a5 = new Alternative(5);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a4 = Alternative.createAlternative(4);
+        Alternative a5 = Alternative.createAlternative(5);
         Set<Alternative> set = new HashSet<>();
         set.add(a1);
         set.add(a2);
@@ -217,9 +217,9 @@ public class CompletePreferenceImplTest {
 
     @Test
     public void testIsStrictTrue() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
+        Alternative a1 = Alternative.createAlternative(1);
+        Alternative a2 = Alternative.createAlternative(2);
+        Alternative a3 = Alternative.createAlternative(3);
         Set<Alternative> s1 = new HashSet<>();
         Set<Alternative> s2 = new HashSet<>();
         Set<Alternative> s3 = new HashSet<>();
@@ -230,13 +230,13 @@ public class CompletePreferenceImplTest {
         list.add(s1);
         list.add(s2);
         list.add(s3);
-        CompletePreferenceImpl p = new CompletePreferenceImpl(list);
+        CompletePreferenceImpl p = CompletePreferenceImpl.createCompletePreferenceImpl(list);
         assertTrue(p.isStrict());
     }
 
     @Test
     public void testGetAlternativeRank() {
         assertEquals(createPreferenceToTest()
-                        .getAlternativeRank(new Alternative(4)), 3);
+                        .getAlternativeRank(Alternative.createAlternative(4)), 3);
     }
 }

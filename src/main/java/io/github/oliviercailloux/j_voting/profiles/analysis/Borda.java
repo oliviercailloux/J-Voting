@@ -25,13 +25,34 @@ public class Borda implements SocialWelfareFunction {
                     .getLogger(Borda.class.getName());
     private Multiset<Alternative> scores;
 
-    public Borda(Multiset<Alternative> tempscores) {
-        LOGGER.debug("Borda");
+    /**
+     * Factory method for Borda with parameter tempscores
+     * 
+     * @param tempscores : allow <code>null</code> values
+     * @return new Borda
+     */
+    public static Borda createBorda(Multiset<Alternative> tempscores) {
+        if (Objects.equals(tempscores, null))
+            return createBorda();
+        return new Borda(tempscores);
+    }
+
+    /**
+     * Factory method for Borda without parameter
+     * 
+     * @return new Borda
+     */
+    public static Borda createBorda() {
+        return new Borda();
+    }
+
+    private Borda(Multiset<Alternative> tempscores) {
+        LOGGER.debug("Borda constructor");
         scores = tempscores;
     }
 
-    public Borda() {
-        LOGGER.debug("emptyBorda");
+    private Borda() {
+        LOGGER.debug("emptyBorda constructor");
         scores = HashMultiset.create();
     }
 
@@ -49,7 +70,8 @@ public class Borda implements SocialWelfareFunction {
      * @return a Preference with the alternatives sorted
      */
     @Override
-    public CompletePreferenceImpl getSocietyPreference(ImmutableProfileI profile) {
+    public CompletePreferenceImpl getSocietyPreference(
+                    ImmutableProfileI profile) {
         LOGGER.debug("getSocietyStrictPreference");
         Preconditions.checkNotNull(profile);
         LOGGER.debug("parameter SProfile : {}", profile);
@@ -65,7 +87,8 @@ public class Borda implements SocialWelfareFunction {
                 tempscores.remove(a, tempscores.count(a));
             }
         }
-        CompletePreferenceImpl pref = new CompletePreferenceImpl(al);
+        CompletePreferenceImpl pref = CompletePreferenceImpl
+                        .createCompletePreferenceImpl(al);
         LOGGER.debug("return AScores : {}", pref);
         return pref;
     }
@@ -115,7 +138,7 @@ public class Borda implements SocialWelfareFunction {
         Preconditions.checkNotNull(tempscores);
         Set<Alternative> set = new HashSet<>();
         Iterable<Alternative> alternativesList = tempscores.elementSet();
-        Alternative alternativeMax = new Alternative(0);
+        Alternative alternativeMax = Alternative.createAlternative(0);
         boolean first = true;
         for (Alternative a : alternativesList) {
             if (first) {

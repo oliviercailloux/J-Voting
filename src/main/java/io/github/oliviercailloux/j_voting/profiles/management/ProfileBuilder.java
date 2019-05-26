@@ -2,6 +2,7 @@ package io.github.oliviercailloux.j_voting.profiles.management;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,22 +32,14 @@ public class ProfileBuilder {
     protected Map<Voter, CompletePreferenceImpl> votes;
     protected int nextVoterId = 1;
 
-    public ProfileBuilder() {
+    protected ProfileBuilder() {
         LOGGER.debug("constructor empty:");
-        votes = new HashMap<>();
+        this.votes = new HashMap<>();
     }
 
-    /**
-     * 
-     * @param prof not <code> null </code>
-     * 
-     *             initiates a ProfileBuilder from a Profile.
-     */
-    public ProfileBuilder(ProfileI prof) {
-        LOGGER.debug("constructor ProfileI:");
-        Preconditions.checkNotNull(prof);
+    private ProfileBuilder(ProfileI prof) {
         LOGGER.debug("parameter prof : {}", prof);
-        votes = castMapExtendsToRegularVoterPref(prof.getProfile());
+        this.votes = castMapExtendsToRegularVoterPref(prof.getProfile());
     }
 
     /**
@@ -80,7 +73,7 @@ public class ProfileBuilder {
                         pref);
         for (int m = 0; m < nbVoters; m++) {// we create as many profiles as
                                             // voters
-            Voter v = new Voter(nextVoterId);
+            Voter v = Voter.createVoter(nextVoterId);
             LOGGER.debug("adds the voter {} and the pref as parameter to the profile",
                             nextVoterId);
             nextVoterId++;
@@ -94,7 +87,7 @@ public class ProfileBuilder {
      */
     public ProfileI createProfileI() {
         LOGGER.debug("createProfileI:");
-        return new ImmutableProfileI(votes);
+        return ImmutableProfileI.createImmutableProfileI(votes);
     }
 
     /**
@@ -108,7 +101,7 @@ public class ProfileBuilder {
             throw new IllegalArgumentException(
                             "The built profile is not complete.");
         }
-        return new ImmutableProfile(votes);
+        return ImmutableProfile.createImmutableProfile(votes);
     }
 
     /**
@@ -122,7 +115,7 @@ public class ProfileBuilder {
             throw new IllegalArgumentException(
                             "The built profile is not strict.");
         }
-        return new ImmutableStrictProfileI(votes);
+        return ImmutableStrictProfileI.createImmutableStrictProfileI(votes);
     }
 
     /**
@@ -139,7 +132,7 @@ public class ProfileBuilder {
             throw new IllegalArgumentException(
                             "The built profile is not strict.");
         }
-        return new ImmutableStrictProfile(votes);
+        return ImmutableStrictProfile.createImmutableStrictProfile(votes);
     }
 
     /**
@@ -160,5 +153,26 @@ public class ProfileBuilder {
             result.put(v, map.get(v));
         }
         return result;
+    }
+
+    /**
+     * Factory method without parameter
+     * 
+     * @return new ProfileBuilder
+     */
+    public static ProfileBuilder createProfileBuilder() {
+        return new ProfileBuilder();
+    }
+
+    /**
+     * Factory method with parameter prof
+     * 
+     * @param prof
+     * @return new ProfileBuilder
+     */
+    public static ProfileBuilder createProfileBuilder(ProfileI prof) {
+        if (Objects.equals(prof, null))
+            return createProfileBuilder();
+        return new ProfileBuilder(prof);
     }
 }
