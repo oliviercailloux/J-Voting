@@ -107,7 +107,7 @@ public class ReadODS {
         if (Objects.equals(table, null))
             throw new IllegalArgumentException("table can't be null");
         StringBuilder stringBuilder = new StringBuilder();
-        List<Alternative> alternatives = getNbAlternatives(table);
+        List<Alternative> alternatives = getAlternatives(table);
         stringBuilder.append("There are " + alternatives.size()
                         + " alternatives\n" + "List of alternatives : "
                         + alternatives + "\n");
@@ -168,7 +168,7 @@ public class ReadODS {
         if (Objects.equals(table, null))
             throw new IllegalArgumentException("table can't be null");
         StringBuilder stringBuilder = new StringBuilder();
-        List<Alternative> alternatives = getNbAlternatives(table);
+        List<Alternative> alternatives = getAlternatives(table);
         stringBuilder.append("There are " + alternatives.size()
                         + " alternatives\n" + "List of alternatives : "
                         + alternatives + "\n");
@@ -188,7 +188,7 @@ public class ReadODS {
         return stringBuilder.toString();
     }
 
-    private static List<Alternative> getNbAlternatives(Table table) {
+    private static List<Alternative> getAlternatives(Table table) {
         List<Alternative> alternatives = new ArrayList<>();
         while (!table.getCellByPosition(0, alternatives.size() + 1)
                         .getStringValue().equals("")) {
