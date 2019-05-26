@@ -26,12 +26,12 @@ public class ReadODS {
                     .getLogger(ReadODS.class.getName());
 
     public static void main(String[] args) throws Exception {
-        // System.out.println(checkFormatandPrint(
-        // ReadODS.class.getResourceAsStream("./testods.ods")));
-        // System.out.println(checkFormatandPrint(
-        // ReadODS.class.getResourceAsStream("./facon1.ods")));
-        // System.out.println(checkFormatandPrint(
-        // ReadODS.class.getResourceAsStream("./facon2.ods")));
+        System.out.println(checkFormatandPrint(
+                        ReadODS.class.getResourceAsStream("./testods.ods")));
+        System.out.println(checkFormatandPrint(
+                        ReadODS.class.getResourceAsStream("./facon1.ods")));
+        System.out.println(checkFormatandPrint(
+                        ReadODS.class.getResourceAsStream("./facon2.ods")));
     }
 
     /**
@@ -72,7 +72,8 @@ public class ReadODS {
                         table.getCellByPosition(0, 0).getStringValue());
         List<Alternative> alternatives = new ArrayList<>(nbAlternatives);
         for (int i = 1; i <= nbAlternatives; i++)
-            alternatives.add(new Alternative(i));
+            alternatives.add(new Alternative(Integer.valueOf(
+                            table.getCellByPosition(0, i).getStringValue())));
         stringBuilder.append("There are " + nbAlternatives + " alternatives\n"
                         + "List of alternatives : " + alternatives + "\n");
         int nbOrders = Integer
@@ -192,7 +193,12 @@ public class ReadODS {
         List<Alternative> alternatives = new ArrayList<>();
         while (!table.getCellByPosition(0, alternatives.size() + 1)
                         .getStringValue().equals("")) {
-            alternatives.add(new Alternative(alternatives.size()));
+            alternatives.add(
+                            new Alternative(Integer.valueOf(table
+                                            .getCellByPosition(0,
+                                                            alternatives.size()
+                                                                            + 1)
+                                            .getStringValue())));
         }
         return alternatives;
     }

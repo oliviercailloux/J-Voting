@@ -29,13 +29,13 @@ class ReadODSTest {
                         + "17 voters for preference 5 : 3>1>2\n"
                         + "11 voters for preference 6 : 3>2>1\n";
         stringCompare2 = "There are 5 alternatives\n"
-                        + "List of alternatives : [0, 1, 2, 3, 4]\n"
+                        + "List of alternatives : [1, 2, 3, 4, 5]\n"
                         + "There are 6 voters\n" + "Voter 1 : 1>3>{2,4}>5\n"
                         + "Voter 2 : {1,2}>3>5>4\n" + "Voter 3 : 5>3>4>2>1\n"
                         + "Voter 4 : 5>3>4>2>1\n" + "Voter 5 : 3>5>4>{1,2}\n"
                         + "Voter 6 : {1,2,3}>4>5\n";
         stringCompare3 = "There are 5 alternatives\n"
-                        + "List of alternatives : [0, 1, 2, 3, 4]\n"
+                        + "List of alternatives : [1, 3, 2, 4, 5]\n"
                         + "There are 6 voters\n" + "Voter 1 : 1>3>2>4>5\n"
                         + "Voter 2 : 2>5>1>2>3\n" + "Voter 3 : 4>2>3>5>1\n"
                         + "Voter 4 : 5>1>2>3>4\n" + "Voter 5 : 2>3>4>5>1\n"
