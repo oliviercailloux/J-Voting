@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.odftoolkit.simple.SpreadsheetDocument;
@@ -25,12 +26,12 @@ public class ReadODS {
                     .getLogger(ReadODS.class.getName());
 
     public static void main(String[] args) throws Exception {
-        System.out.println(checkFormatandPrint(
-                        ReadODS.class.getResourceAsStream("./testods.ods")));
-        System.out.println(checkFormatandPrint(
-                        ReadODS.class.getResourceAsStream("./facon1.ods")));
-        System.out.println(checkFormatandPrint(
-                        ReadODS.class.getResourceAsStream("./facon2.ods")));
+        // System.out.println(checkFormatandPrint(
+        // ReadODS.class.getResourceAsStream("./testods.ods")));
+        // System.out.println(checkFormatandPrint(
+        // ReadODS.class.getResourceAsStream("./facon1.ods")));
+        // System.out.println(checkFormatandPrint(
+        // ReadODS.class.getResourceAsStream("./facon2.ods")));
     }
 
     /**
@@ -41,6 +42,8 @@ public class ReadODS {
      */
     public static String checkFormatandPrint(InputStream inputStream)
                     throws Exception {
+        if (Objects.equals(inputStream, null))
+            throw new IllegalArgumentException("InputStream can't be null");
         LOGGER.debug("Open Stream");
         LOGGER.debug(inputStream.toString());
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
@@ -61,7 +64,9 @@ public class ReadODS {
      * @return
      * @throws Exception
      */
-    public static String printFormatLikeSOC(Table table) throws Exception {
+    public static String printFormatLikeSOC(Table table) {
+        if (Objects.equals(table, null))
+            throw new IllegalArgumentException("table can't be null");
         StringBuilder stringBuilder = new StringBuilder();
         int nbAlternatives = Integer.parseInt(
                         table.getCellByPosition(0, 0).getStringValue());
@@ -98,8 +103,9 @@ public class ReadODS {
      * @return
      * @throws Exception
      */
-    public static String printFormatWithEqualsPref(Table table)
-                    throws Exception {
+    public static String printFormatWithEqualsPref(Table table) {
+        if (Objects.equals(table, null))
+            throw new IllegalArgumentException("table can't be null");
         StringBuilder stringBuilder = new StringBuilder();
         List<Alternative> alternatives = getNbAlternatives(table);
         stringBuilder.append("There are " + alternatives.size()
@@ -158,8 +164,9 @@ public class ReadODS {
      * @return
      * @throws Exception
      */
-    public static String printFormatWithoutEqualsPref(Table table)
-                    throws Exception {
+    public static String printFormatWithoutEqualsPref(Table table) {
+        if (Objects.equals(table, null))
+            throw new IllegalArgumentException("table can't be null");
         StringBuilder stringBuilder = new StringBuilder();
         List<Alternative> alternatives = getNbAlternatives(table);
         stringBuilder.append("There are " + alternatives.size()
