@@ -25,29 +25,43 @@ public class ReadODS {
                     .getLogger(ReadODS.class.getName());
 
     public static void main(String[] args) throws Exception {
-        System.out.println(checkFormat(
+        System.out.println(checkFormatandPrint(
                         ReadODS.class.getResourceAsStream("./testods.ods")));
-        System.out.println(checkFormat(
+        System.out.println(checkFormatandPrint(
                         ReadODS.class.getResourceAsStream("./facon1.ods")));
-        System.out.println(checkFormat(
+        System.out.println(checkFormatandPrint(
                         ReadODS.class.getResourceAsStream("./facon2.ods")));
     }
 
-    public static String checkFormat(InputStream inputStream) throws Exception {
+    /**
+     * 
+     * @param inputStream
+     * @return
+     * @throws Exception
+     */
+    public static String checkFormatandPrint(InputStream inputStream)
+                    throws Exception {
         LOGGER.debug("Open Stream");
+        LOGGER.debug(inputStream.toString());
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
         LOGGER.debug("Open Spreadsheet");
         Table table = spreadsheetDoc.getSheetByIndex(0);
         LOGGER.debug("Get sheet index 0 done");
         if (table.getCellByPosition(1, 0).getStringValue().equals(""))
-            return readSpreadsheetDocument(table);
+            return printFormatLikeSOC(table);
         else if (table.getCellByPosition(0, 0).getStringValue().equals(""))
-            return readFormat1(table);
-        return readFormat2(table);
+            return printFormatWithEqualsPref(table);
+        return printFormatWithoutEqualsPref(table);
     }
 
-    public static String readSpreadsheetDocument(Table table) throws Exception {
+    /**
+     * 
+     * @param table
+     * @return
+     * @throws Exception
+     */
+    public static String printFormatLikeSOC(Table table) throws Exception {
         StringBuilder stringBuilder = new StringBuilder();
         int nbAlternatives = Integer.parseInt(
                         table.getCellByPosition(0, 0).getStringValue());
@@ -59,12 +73,10 @@ public class ReadODS {
         int nbOrders = Integer
                         .parseInt(table.getCellByPosition(2, nbAlternatives + 1)
                                         .getStringValue());
-        // Set<Alternative> pref = new LinkedHashSet<>(nbCandidates);
         stringBuilder.append("There are " + nbOrders + " different orders\n");
         CellRange prefRange = table.getCellRangeByPosition(1,
                         nbAlternatives + 2, nbAlternatives,
                         nbOrders + nbAlternatives + 1);
-        // List<Alternative> ordersList = new ArrayList<>(nbOrders);
         for (int i = 0; i < prefRange.getRowNumber(); i++) {
             int nbVoters = Integer.parseInt(
                             table.getCellByPosition(0, i + nbAlternatives + 2)
@@ -72,9 +84,6 @@ public class ReadODS {
             stringBuilder.append(nbVoters + " voters for preference " + (i + 1)
                             + " : ");
             for (int j = 0; j < prefRange.getColumnNumber(); j++) {
-                // ordersList.add(alternatives.get(Integer.valueOf(prefRange
-                // .getCellByPosition(j, i).getStringValue())
-                // - 1));
                 stringBuilder.append(prefRange.getCellByPosition(j, i)
                                 .getStringValue() + ">");
             }
@@ -83,13 +92,23 @@ public class ReadODS {
         return stringBuilder.toString();
     }
 
-    public static String readFormat1(Table table) throws Exception {
-        // TODO
+    /**
+     * 
+     * @param table
+     * @return
+     * @throws Exception
+     */
+    public static String printFormatWithEqualsPref(Table table)
+                    throws Exception {
         StringBuilder stringBuilder = new StringBuilder();
-        int nbAlternatives = getNbAlternatives(table);
-        int nbTotVoters = getnbTotVoters(table, 1);
+        List<Alternative> alternatives = getNbAlternatives(table);
+        stringBuilder.append("There are " + alternatives.size()
+                        + " alternatives\n" + "List of alternatives : "
+                        + alternatives + "\n");
+        int nbTotVoters = getnbTotVoters(table);
+        stringBuilder.append("There are " + nbTotVoters + " voters\n");
         CellRange prefRange = table.getCellRangeByPosition(1, 1, nbTotVoters,
-                        nbAlternatives);
+                        alternatives.size());
         for (int j = 0; j < prefRange.getColumnNumber(); j++) {
             int max = Integer.parseInt(
                             prefRange.getCellByPosition(j, 0).getStringValue());
@@ -101,7 +120,7 @@ public class ReadODS {
             }
             stringBuilder.append("Voter " + (j + 1) + " : ");
             int nbChoice = 1;
-            Set<Alternative> set = new LinkedHashSet<>();
+            Set<Alternative> set;
             while (nbChoice <= max) {
                 set = new LinkedHashSet<>();
                 for (int i = 0; i < prefRange.getRowNumber(); i++) {
@@ -133,12 +152,23 @@ public class ReadODS {
         return stringBuilder.toString();
     }
 
-    public static String readFormat2(Table table) throws Exception {
+    /**
+     * 
+     * @param table
+     * @return
+     * @throws Exception
+     */
+    public static String printFormatWithoutEqualsPref(Table table)
+                    throws Exception {
         StringBuilder stringBuilder = new StringBuilder();
-        int nbAlternatives = getNbAlternatives(table);
-        int nbTotVoters = getnbTotVoters(table, 0);
+        List<Alternative> alternatives = getNbAlternatives(table);
+        stringBuilder.append("There are " + alternatives.size()
+                        + " alternatives\n" + "List of alternatives : "
+                        + alternatives + "\n");
+        int nbTotVoters = getnbTotVoters(table);
+        stringBuilder.append("There are " + nbTotVoters + " voters\n");
         CellRange prefRange = table.getCellRangeByPosition(0, 1,
-                        nbTotVoters - 1, nbAlternatives);
+                        nbTotVoters - 1, alternatives.size());
         for (int j = 0; j < prefRange.getColumnNumber(); j++) {
             stringBuilder.append("Voter " + (j + 1) + " : ");
             for (int i = 0; i < prefRange.getRowNumber(); i++) {
@@ -151,25 +181,23 @@ public class ReadODS {
         return stringBuilder.toString();
     }
 
-    private static int getNbAlternatives(Table table) {
-        int nbAlternatives = 0;
-        List<Alternative> alternatives = new ArrayList<>(nbAlternatives);
-        while (!table.getCellByPosition(0, nbAlternatives + 1).getStringValue()
-                        .equals("")) {
-            nbAlternatives++;
-            alternatives.add(new Alternative(nbAlternatives));
+    private static List<Alternative> getNbAlternatives(Table table) {
+        List<Alternative> alternatives = new ArrayList<>();
+        while (!table.getCellByPosition(0, alternatives.size() + 1)
+                        .getStringValue().equals("")) {
+            alternatives.add(new Alternative(alternatives.size()));
         }
-        System.out.println("There are " + nbAlternatives + " alternatives\n"
-                        + "List of alternatives : " + alternatives);
-        return nbAlternatives;
+        return alternatives;
     }
 
-    private static int getnbTotVoters(Table table, int position) {
+    private static int getnbTotVoters(Table table) {
         int nbTotVoters = 0;
-        while (!table.getCellByPosition(nbTotVoters + position, 0)
-                        .getStringValue().equals(""))
+        int start = (table.getCellByPosition(0, 0).getStringValue().equals(""))
+                        ? 1
+                        : 0;
+        while (!table.getCellByPosition(nbTotVoters + start, 0).getStringValue()
+                        .equals(""))
             nbTotVoters++;
-        System.out.println(("There are " + nbTotVoters + " voters"));
         return nbTotVoters;
     }
 }
