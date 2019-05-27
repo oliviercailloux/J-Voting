@@ -1,0 +1,1 @@
+To modify the diagram, open the document "Preference-Interfaces.xml" on draw.io
