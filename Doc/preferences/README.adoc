@@ -1,1 +1,5 @@
-To modify the diagram, open the document "Preference-Interfaces.xml" on draw.io
+To edit Diagram :
+~~~~~~~~~~~~~~~~
+* Go to 
+https://www.draw.io/[^] website
+* Import _Preference-Interfaces.xml_
