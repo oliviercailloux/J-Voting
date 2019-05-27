@@ -68,12 +68,12 @@ We going to work on the two main improvements :
 * *Team 2* : Théo CHENNEBAULT / Emilie CHHEAN
 
 === Tasks
-* 1#  ODSProfile : clear code
+* 1#  ODSProfile : clear code 
 * 2#  ODSProfile : add 2 new format types of .ODS
 * 3#  Interfaces : create new folder "preferences" to store futures interfaces
 * 4#  Interfaces : ameliorate diagram with your advices
 * 5#  Interfaces : implement new general interfaces for preferences
-* 6#  Replace constructors with static methods
+* 6#  Replace constructors with static methods => *DONE*
 * 7#  ODSProfileTest : Junit tests for ODSProfile
 * 8#  Create doc for differents .ODS formats
 
