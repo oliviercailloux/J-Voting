@@ -85,17 +85,13 @@ public class CompletePreferenceImpl {
 
     @Override
     public boolean equals(Object o) {
-        // self check
         if (this == o)
             return true;
-        // Check not null
         if (o == null)
             return false;
-        // Check class type and cast o
         if (this.getClass() != o.getClass())
             return false;
         CompletePreferenceImpl pref = (CompletePreferenceImpl) o;
-        // check field
         return this.preference.equals(pref.preference);
     }
 

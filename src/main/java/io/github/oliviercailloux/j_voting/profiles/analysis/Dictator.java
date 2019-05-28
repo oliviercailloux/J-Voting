@@ -71,17 +71,13 @@ public class Dictator implements SocialWelfareFunction {
      */
     @Override
     public boolean equals(Object o) {
-        // self check
         if (this == o)
             return true;
-        // Check not null
         if (o == null)
             return false;
-        // Check class type and cast o
         if (this.getClass() != o.getClass())
             return false;
         Dictator dict = (Dictator) o;
-        // check field
         return this.getDictator() == dict.getDictator();
     }
 }
