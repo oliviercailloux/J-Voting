@@ -32,6 +32,6 @@ public class FrenchElection implements SocialWelfareFunction {
                             "A french election can only happen with a strict profile.");
         }
         ImmutableStrictProfileI newProf = StrictProfileBuilder.createStrictProfileBuilder((StrictProfileI) profile).createOneAlternativeProfile();
-        return Borda.createBorda().getSocietyPreference(newProf);
+        return Borda.withScores().getSocietyPreference(newProf);
     }
 }

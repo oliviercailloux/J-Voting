@@ -26,9 +26,9 @@ public class ImmutableProfileITest {
 
     public static ImmutableProfileI createIPIToTest() {
         Map<Voter, CompletePreferenceImpl> profile = new HashMap<>();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);
@@ -65,10 +65,10 @@ public class ImmutableProfileITest {
     @Test
     public void testGetMaxSizeOfPreference() {
         ImmutableProfileI ipi = createIPIToTest();
-        Alternative a = Alternative.createAlternative(4);
-        Alternative a1 = Alternative.createAlternative(5);
-        Alternative a2 = Alternative.createAlternative(6);
-        Alternative a3 = Alternative.createAlternative(7);
+        Alternative a = Alternative.withId(4);
+        Alternative a1 = Alternative.withId(5);
+        Alternative a2 = Alternative.withId(6);
+        Alternative a3 = Alternative.withId(7);
         List<Set<Alternative>> list = new ArrayList<>();
         Set<Alternative> s = new HashSet<>();
         s.add(a);
@@ -87,9 +87,9 @@ public class ImmutableProfileITest {
 
     @Test
     public void testGetPreference() {
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         List<Set<Alternative>> list1 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();
@@ -139,9 +139,9 @@ public class ImmutableProfileITest {
 
     @Test
     public void testGetUniquePreferences() {
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         List<Set<Alternative>> list1 = new ArrayList<>();
         List<Set<Alternative>> list2 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();
@@ -188,9 +188,9 @@ public class ImmutableProfileITest {
 
     @Test
     public void testGetNbVoterByPreference() {
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         List<Set<Alternative>> list1 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();
         Set<Alternative> s2 = new HashSet<>();
@@ -206,9 +206,9 @@ public class ImmutableProfileITest {
     @Test
     public void testEqualsObject() {
         Map<Voter, CompletePreferenceImpl> profile = new HashMap<>();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);

@@ -27,7 +27,7 @@ public class Dictator implements SocialWelfareFunction {
      * @param v <code>not null</code>
      * @return new Dictator
      */
-    public static Dictator createDictator(Voter v) {
+    public static Dictator about(Voter v) {
         LOGGER.debug("Dictator Factory");
         Preconditions.checkNotNull(v);
         return new Dictator(v);

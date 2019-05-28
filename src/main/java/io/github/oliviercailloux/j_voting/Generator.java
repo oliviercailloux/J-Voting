@@ -8,7 +8,7 @@ public class Generator {
         final ImmutableSet.Builder<Alternative> builder = ImmutableSet
                         .builder();
         for (int i = 1; i <= m; ++i) {
-            builder.add(Alternative.createAlternative(i));
+            builder.add(Alternative.withId(i));
         }
         return builder.build();
     }

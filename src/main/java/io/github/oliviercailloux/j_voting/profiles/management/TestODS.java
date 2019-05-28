@@ -49,7 +49,7 @@ public class TestODS {
                     for (int alt = Integer.parseInt(column.getCellByIndex(1)
                                     .getDisplayText()); alt < column
                                                     .getCellCount(); alt++) {
-                        alternatives.add(Alternative.createAlternative(alt));
+                        alternatives.add(Alternative.withId(alt));
                     }
                 }
             }

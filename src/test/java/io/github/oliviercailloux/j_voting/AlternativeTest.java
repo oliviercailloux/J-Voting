@@ -14,7 +14,7 @@ public class AlternativeTest {
      */
     @Test
     public void testGetId() {
-        Alternative a = Alternative.createAlternative(7);
+        Alternative a = Alternative.withId(7);
         assertEquals(a.getId(), 7);
     }
 
@@ -24,8 +24,8 @@ public class AlternativeTest {
      */
     @Test
     public void testEqualsAlternative() {
-        Alternative a = Alternative.createAlternative(7);
-        Alternative b = Alternative.createAlternative(7);
+        Alternative a = Alternative.withId(7);
+        Alternative b = Alternative.withId(7);
         assertEquals(a, b);
     }
 
@@ -35,7 +35,7 @@ public class AlternativeTest {
      */
     @Test
     public void testToString() {
-        Alternative a = Alternative.createAlternative(7);
+        Alternative a = Alternative.withId(7);
         assertEquals(a.toString(), Integer.toString(7));
     }
 }

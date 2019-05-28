@@ -21,10 +21,10 @@ public class FrenchElectionTest {
 
     @Test
     public void testGetSocietyPreference() {
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
-        Alternative a4 = Alternative.createAlternative(4);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
+        Alternative a4 = Alternative.withId(4);
         List<Set<Alternative>> l1 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();
         Set<Alternative> s2 = new HashSet<>();

@@ -26,9 +26,9 @@ public class BordaTest {
 
     public static ImmutableProfileI createIPIToTest() {
         Map<Voter, CompletePreferenceImpl> profile = new HashMap<>();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);
@@ -65,9 +65,9 @@ public class BordaTest {
     @Test
     public void testgetSocietyPreference() {
         ImmutableProfileI prof = createIPIToTest();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         List<Set<Alternative>> list1 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();
         Set<Alternative> s2 = new HashSet<>();
@@ -79,15 +79,15 @@ public class BordaTest {
         list1.add(s1);
         list1.add(s3);
         CompletePreferenceImpl pref1 = CompletePreferenceImpl.createCompletePreferenceImpl(list1);
-        assertEquals(Borda.createBorda().getSocietyPreference(prof), pref1);
+        assertEquals(Borda.withScores().getSocietyPreference(prof), pref1);
     }
 
     @Test
     public void testSetScoresPref() {
-        Borda b = Borda.createBorda();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Borda b = Borda.withScores();
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         List<Set<Alternative>> list1 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();
         Set<Alternative> s2 = new HashSet<>();
@@ -106,11 +106,11 @@ public class BordaTest {
 
     @Test
     public void testSetScoresProfile() {
-        Borda b = Borda.createBorda();
+        Borda b = Borda.withScores();
         ProfileI p = createIPIToTest();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         b.setScores(p);
         Multiset<Alternative> m = b.getMultiSet();
         assertEquals(m.count(a1), 10);
@@ -121,16 +121,16 @@ public class BordaTest {
     @Test
     public void testgetMax() {
         HashMultiset<Alternative> listScores = HashMultiset.create();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         listScores.add(a1, 7);
         listScores.add(a2, 5);
         listScores.add(a3, 7);
         Set<Alternative> set = new HashSet<>();
         set.add(a1);
         set.add(a3);
-        assertEquals(Borda.createBorda().getMax(listScores), set);
+        assertEquals(Borda.withScores().getMax(listScores), set);
     }
 
     @Test
@@ -138,9 +138,9 @@ public class BordaTest {
         HashMultiset<Alternative> mset1 = HashMultiset.create();
         HashMultiset<Alternative> mset2 = HashMultiset.create();
         HashMultiset<Alternative> mset3 = HashMultiset.create();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         mset1.add(a1, 2);
         mset1.add(a2, 1);
         mset1.add(a3, 5);
@@ -150,9 +150,9 @@ public class BordaTest {
         mset3.add(a1, 1);
         mset3.add(a2, 2);
         mset3.add(a3, 3);
-        Borda b1 = Borda.createBorda(mset1);
-        Borda b2 = Borda.createBorda(mset2);
-        Borda b3 = Borda.createBorda(mset3);
+        Borda b1 = Borda.withScores(mset1);
+        Borda b2 = Borda.withScores(mset2);
+        Borda b3 = Borda.withScores(mset3);
         assertEquals(b1, b2);
         assertTrue(!(b1.equals(b3)));
     }

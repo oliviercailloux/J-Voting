@@ -22,7 +22,7 @@ public class Alternative {
      * @param id <code> not null </code>
      * @return new Alternative
      */
-    public static Alternative createAlternative(int id) {
+    public static Alternative withId(int id) {
         LOGGER.debug("Alternative Factory");
         Preconditions.checkNotNull(id);
         return new Alternative(id);

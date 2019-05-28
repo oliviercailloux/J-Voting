@@ -19,10 +19,10 @@ public class StrictProfileBuilderTest {
 
     @Test
     public void testCreateOneAlternativeProfile() {
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
-        Alternative a4 = Alternative.createAlternative(4);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
+        Alternative a4 = Alternative.withId(4);
         List<Alternative> list1 = new ArrayList<>();
         List<Alternative> list2 = new ArrayList<>();
         List<Alternative> list3 = new ArrayList<>();

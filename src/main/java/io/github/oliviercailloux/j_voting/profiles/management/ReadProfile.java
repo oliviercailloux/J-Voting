@@ -208,7 +208,7 @@ public class ReadProfile {
         List<Alternative> alternatives = new ArrayList<>();
         for (String alternative : listOfStrings) {
             LOGGER.debug("next Alternative : {}", alternative);
-            alternatives.add(Alternative.createAlternative(Integer.parseInt(alternative)));
+            alternatives.add(Alternative.withId(Integer.parseInt(alternative)));
         }
         StrictCompletePreferenceImpl listAlternatives = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(alternatives);
         LOGGER.debug("returns listAlternatives : {}", listAlternatives);
@@ -253,7 +253,7 @@ public class ReadProfile {
         List<Alternative> pref = new ArrayList<>();
         for (String alternative : Iterables.skip(Arrays.asList(alternatives),
                         1)) {
-            Alternative alter = Alternative.createAlternative(Integer.parseInt(alternative.trim()));
+            Alternative alter = Alternative.withId(Integer.parseInt(alternative.trim()));
             LOGGER.debug("next alternative {}", alter.getId());
             if (listeAlternatives.contains(alter)) {
                 LOGGER.debug("correct alternative");
@@ -281,7 +281,7 @@ public class ReadProfile {
         String[] s2 = stringPreference.split(",");
         List<Alternative> pref = new ArrayList<>();
         for (String strAlt : s2) {
-            Alternative alter = Alternative.createAlternative(Integer.parseInt(strAlt.trim()));
+            Alternative alter = Alternative.withId(Integer.parseInt(strAlt.trim()));
             LOGGER.debug("next alternative {}", alter.getId());
             pref.add(alter);
         }

@@ -23,9 +23,9 @@ public class ImmutableStrictProfileTest {
      */
     public static ImmutableStrictProfile createISPToTest() {
         Map<Voter, StrictCompletePreferenceImpl> profile = new HashMap<>();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);
@@ -59,9 +59,9 @@ public class ImmutableStrictProfileTest {
     @Test
     public void testGetAlternatives() {
         Set<Alternative> alters = new HashSet<>();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         alters.add(a1);
         alters.add(a2);
         alters.add(a3);

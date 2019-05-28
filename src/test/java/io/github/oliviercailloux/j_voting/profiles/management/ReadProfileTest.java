@@ -23,9 +23,9 @@ public class ReadProfileTest {
     @Test
     public void testGetPreferences() {
         ReadProfile rp = new ReadProfile();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         List<Alternative> alternatives = new ArrayList<>();
         alternatives.add(a1);
         alternatives.add(a2);
@@ -42,9 +42,9 @@ public class ReadProfileTest {
     @Test
     public void testAddVotes() {
         StrictProfileBuilder p = StrictProfileBuilder.createStrictProfileBuilder();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         List<Alternative> alternatives = new ArrayList<>();
@@ -66,9 +66,9 @@ public class ReadProfileTest {
         List<String> file = new ArrayList<>();
         file.add("2,1,2,3");
         file.add("1,3,2,1");
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);
@@ -96,9 +96,9 @@ public class ReadProfileTest {
         ReadProfile rp = new ReadProfile();
         ProfileI profile = rp.createProfileFromStream(
                         getClass().getResourceAsStream("profileToRead.soc"));
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);
@@ -125,9 +125,9 @@ public class ReadProfileTest {
         ReadProfile rp = new ReadProfile();
         String fileURLAsString = "https://raw.githubusercontent.com/Perciii/J-Voting/master/src/test/resources/io/github/oliviercailloux/y2018/j_voting/profiles/management/profileToRead.soc";
         ProfileI profile = rp.createProfileFromURL(new URL(fileURLAsString));
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);

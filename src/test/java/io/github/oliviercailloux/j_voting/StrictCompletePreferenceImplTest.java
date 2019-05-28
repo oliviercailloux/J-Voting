@@ -16,9 +16,9 @@ public class StrictCompletePreferenceImplTest {
 
     @Test
     public void testGetPreferences() {
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         List<Alternative> prefs = new ArrayList<>();
         prefs.add(a1);
         prefs.add(a2);
@@ -29,9 +29,9 @@ public class StrictCompletePreferenceImplTest {
 
     @Test
     public void testListAlternativeToListSetAlternative() {
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         List<Alternative> prefs = new ArrayList<>();
         prefs.add(a1);
         prefs.add(a2);
@@ -51,9 +51,9 @@ public class StrictCompletePreferenceImplTest {
 
     @Test
     public void testToString() {
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         List<Alternative> prefs = new ArrayList<>();
         prefs.add(a1);
         prefs.add(a2);
@@ -64,9 +64,9 @@ public class StrictCompletePreferenceImplTest {
 
     @Test
     public void testGetAlternative() {
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         List<Alternative> prefs = new ArrayList<>();
         prefs.add(a1);
         prefs.add(a2);

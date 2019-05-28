@@ -33,9 +33,9 @@ public class ProfileBuilderTest {
     public void testCreateProfileI() {
         // ---beginning of creation of a ProfileI with ProfileBuilder
         ProfileBuilder profileBuilder = ProfileBuilder.createProfileBuilder();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);
@@ -77,9 +77,9 @@ public class ProfileBuilderTest {
     public void testCreateProfile() {
         // ---beginning of creation of a Profile with ProfileBuilder
         ProfileBuilder profileBuilder = ProfileBuilder.createProfileBuilder();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);
@@ -120,9 +120,9 @@ public class ProfileBuilderTest {
     public void testCreateStrictProfileI() {
         // ---beginning of creation of a StrictProfileI with ProfileBuilder
         ProfileBuilder profileBuilder = ProfileBuilder.createProfileBuilder();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);
@@ -156,9 +156,9 @@ public class ProfileBuilderTest {
     public void testCreateStrictProfile() {
         // ---beginning of creation of a StrictProfile with ProfileBuilder
         ProfileBuilder profileBuilder = ProfileBuilder.createProfileBuilder();
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);

@@ -31,9 +31,9 @@ public class Borda implements SocialWelfareFunction {
      * @param tempscores : allow <code>null</code> values
      * @return new Borda
      */
-    public static Borda createBorda(Multiset<Alternative> tempscores) {
+    public static Borda withScores(Multiset<Alternative> tempscores) {
         if (Objects.equals(tempscores, null))
-            return createBorda();
+            return withScores();
         return new Borda(tempscores);
     }
 
@@ -42,18 +42,13 @@ public class Borda implements SocialWelfareFunction {
      * 
      * @return new Borda
      */
-    public static Borda createBorda() {
-        return new Borda();
+    public static Borda withScores() {
+        return new Borda(HashMultiset.create());
     }
 
     private Borda(Multiset<Alternative> tempscores) {
         LOGGER.debug("Borda constructor");
         scores = tempscores;
-    }
-
-    private Borda() {
-        LOGGER.debug("emptyBorda constructor");
-        scores = HashMultiset.create();
     }
 
     /**
@@ -138,7 +133,7 @@ public class Borda implements SocialWelfareFunction {
         Preconditions.checkNotNull(tempscores);
         Set<Alternative> set = new HashSet<>();
         Iterable<Alternative> alternativesList = tempscores.elementSet();
-        Alternative alternativeMax = Alternative.createAlternative(0);
+        Alternative alternativeMax = Alternative.withId(0);
         boolean first = true;
         for (Alternative a : alternativesList) {
             if (first) {

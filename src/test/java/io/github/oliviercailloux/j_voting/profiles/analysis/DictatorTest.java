@@ -25,10 +25,10 @@ public class DictatorTest {
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);
-        Dictator d1 = Dictator.createDictator(v1);
-        Alternative a1 = Alternative.createAlternative(1);
-        Alternative a2 = Alternative.createAlternative(2);
-        Alternative a3 = Alternative.createAlternative(3);
+        Dictator d1 = Dictator.about(v1);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         List<Set<Alternative>> list1 = new ArrayList<>();
         List<Set<Alternative>> list2 = new ArrayList<>();
         List<Set<Alternative>> list3 = new ArrayList<>();
@@ -60,9 +60,9 @@ public class DictatorTest {
     public void equalsTest() {
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
-        Dictator d1 = Dictator.createDictator(v1);
-        Dictator d2 = Dictator.createDictator(v2);
-        Dictator d3 = Dictator.createDictator(v1);
+        Dictator d1 = Dictator.about(v1);
+        Dictator d2 = Dictator.about(v2);
+        Dictator d3 = Dictator.about(v1);
         assertEquals(d1, d3);
         assertTrue(!d1.equals(d2));
     }
@@ -71,7 +71,7 @@ public class DictatorTest {
     public void equalsVoterTest() {
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
-        Dictator d1 = Dictator.createDictator(v1);
+        Dictator d1 = Dictator.about(v1);
         assertEquals(d1.getDictator(), v1);
         assertTrue(!d1.getDictator().equals(v2));
     }
