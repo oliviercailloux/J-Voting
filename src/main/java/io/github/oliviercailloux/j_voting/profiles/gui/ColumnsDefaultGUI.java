@@ -60,7 +60,7 @@ public class ColumnsDefaultGUI extends ProfileDefaultGUI {
         ReadProfile rp = new ReadProfile();
         try (FileInputStream is = new FileInputStream(arg)) {
             ProfileI profileI = rp.createProfileFromStream(is);
-            profileBuilder = new ProfileBuilder(profileI);
+            profileBuilder = ProfileBuilder.createProfileBuilder(profileI);
             displayRadioButtons(args);
             saveButton = new Button(mainShell, SWT.PUSH);
             saveButton.setText("Save");
@@ -209,8 +209,7 @@ public class ColumnsDefaultGUI extends ProfileDefaultGUI {
         LOGGER.debug("save :");
         Preconditions.checkNotNull(outputFile);
         File file = new File(outputFile);
-        ProfileBuilder pb = new ProfileBuilder(
-                        new ReadProfile().createProfileFromColumnsTable(table));
+        ProfileBuilder pb = ProfileBuilder.createProfileBuilder(new ReadProfile().createProfileFromColumnsTable(table));
         try (OutputStream outputStream = new FileOutputStream(file)) {
             String fileExtension = file.toString()
                             .substring(file.toString().length() - 3);

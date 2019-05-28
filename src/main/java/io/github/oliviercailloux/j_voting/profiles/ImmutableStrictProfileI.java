@@ -29,8 +29,23 @@ public class ImmutableStrictProfileI extends ImmutableProfileI
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(ImmutableStrictProfileI.class.getName());
 
-    public ImmutableStrictProfileI(Map<Voter, ? extends CompletePreferenceImpl> map) {
-        super(checkStrictMap(map));
+    /**
+     * Factory method for ImmutableStrictProfileI
+     * 
+     * @param map <code>not null</code> and complete
+     * @return new ImmutableStrictProfileI
+     */
+    public static ImmutableStrictProfileI createImmutableStrictProfileI(
+                    Map<Voter, ? extends CompletePreferenceImpl> map) {
+        LOGGER.debug("Factory ImmutableStrictProfileI");
+        checkStrictMap(map);
+        return new ImmutableStrictProfileI(map);
+    }
+
+    protected ImmutableStrictProfileI(
+                    Map<Voter, ? extends CompletePreferenceImpl> map) {
+        super(map);
+        LOGGER.debug("ImmutableStrictProfileI  constructor");
     }
 
     @Override

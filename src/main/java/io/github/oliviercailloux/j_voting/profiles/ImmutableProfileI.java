@@ -29,10 +29,9 @@ public class ImmutableProfileI implements ProfileI {
                     .getLogger(ImmutableProfileI.class.getName());
     protected Map<Voter, ? extends CompletePreferenceImpl> votes;
 
-    public ImmutableProfileI(
+    protected ImmutableProfileI(
                     Map<Voter, ? extends CompletePreferenceImpl> votes) {
-        LOGGER.debug("constructor:");
-        Preconditions.checkNotNull(votes);
+        LOGGER.debug("ImmutableProfileI constructor");
         this.votes = votes;
     }
 
@@ -170,7 +169,7 @@ public class ImmutableProfileI implements ProfileI {
     @Override
     public ProfileI restrictProfile() {
         LOGGER.debug("StricterProfile : ");
-        ProfileBuilder profileBuilder = new ProfileBuilder(this);
+        ProfileBuilder profileBuilder = ProfileBuilder.createProfileBuilder(this);
         if (isComplete()) {
             if (isStrict()) {
                 LOGGER.debug("strict complete profile");
@@ -197,7 +196,7 @@ public class ImmutableProfileI implements ProfileI {
                     Map<Voter, ? extends CompletePreferenceImpl> map) {
         LOGGER.debug("checkCompleteMap:");
         Preconditions.checkNotNull(map);
-        if (!new ImmutableProfileI(map).isComplete()) {
+        if (!createImmutableProfileI(map).isComplete()) {
             throw new IllegalArgumentException("map is incomplete");
         }
         return map;
@@ -213,10 +212,23 @@ public class ImmutableProfileI implements ProfileI {
                     Map<Voter, ? extends CompletePreferenceImpl> map) {
         LOGGER.debug("checkstrictMap:");
         Preconditions.checkNotNull(map);
-        if (!new ImmutableProfileI(map).isStrict()) {
+        if (!createImmutableProfileI(map).isStrict()) {
             throw new IllegalArgumentException("map is not strict");
         }
         return map;
+    }
+
+    /**
+     * Factory method for ImmutableProfileI
+     * 
+     * @param votes <code>not null</code>
+     * @return new ImmutableProfileI
+     */
+    public static ImmutableProfileI createImmutableProfileI(
+                    Map<Voter, ? extends CompletePreferenceImpl> votes) {
+        LOGGER.debug("Factory ImmutableProfileI");
+        Preconditions.checkNotNull(votes);
+        return new ImmutableProfileI(votes);
     }
 
     @Override

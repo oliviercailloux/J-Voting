@@ -21,10 +21,10 @@ public class FrenchElectionTest {
 
     @Test
     public void testGetSocietyPreference() {
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Alternative a4 = new Alternative(4);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
+        Alternative a4 = Alternative.withId(4);
         List<Set<Alternative>> l1 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();
         Set<Alternative> s2 = new HashSet<>();
@@ -35,7 +35,7 @@ public class FrenchElectionTest {
         l1.add(s1);
         l1.add(s2);
         l1.add(s3);
-        CompletePreferenceImpl pref1 = new CompletePreferenceImpl(l1);
+        CompletePreferenceImpl pref1 = CompletePreferenceImpl.createCompletePreferenceImpl(l1);
         List<Alternative> list1 = new ArrayList<>();
         List<Alternative> list2 = new ArrayList<>();
         List<Alternative> list3 = new ArrayList<>();
@@ -49,16 +49,16 @@ public class FrenchElectionTest {
         list3.add(a3);
         list3.add(a2);
         list3.add(a4);
-        StrictCompletePreferenceImpl p1 = new StrictCompletePreferenceImpl(list1);
-        StrictCompletePreferenceImpl p2 = new StrictCompletePreferenceImpl(list2);
-        StrictCompletePreferenceImpl p3 = new StrictCompletePreferenceImpl(list3);
-        Voter v1 = new Voter(1);
-        Voter v2 = new Voter(2);
-        Voter v3 = new Voter(3);
-        Voter v4 = new Voter(4);
-        Voter v5 = new Voter(5);
-        Voter v6 = new Voter(6);
-        StrictProfileBuilder profBuild = new StrictProfileBuilder();
+        StrictCompletePreferenceImpl p1 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list1);
+        StrictCompletePreferenceImpl p2 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list2);
+        StrictCompletePreferenceImpl p3 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list3);
+        Voter v1 = Voter.createVoter(1);
+        Voter v2 = Voter.createVoter(2);
+        Voter v3 = Voter.createVoter(3);
+        Voter v4 = Voter.createVoter(4);
+        Voter v5 = Voter.createVoter(5);
+        Voter v6 = Voter.createVoter(6);
+        StrictProfileBuilder profBuild = StrictProfileBuilder.createStrictProfileBuilder();
         profBuild.addVote(v1, p1);
         profBuild.addVote(v2, p1);
         profBuild.addVote(v3, p1);

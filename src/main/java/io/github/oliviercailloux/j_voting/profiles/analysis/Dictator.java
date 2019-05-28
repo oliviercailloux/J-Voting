@@ -21,10 +21,21 @@ public class Dictator implements SocialWelfareFunction {
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(Borda.class.getName());
 
-    public Dictator(Voter v) {
-        LOGGER.debug("Dictator");
+    /**
+     * Factory method for Dictator
+     * 
+     * @param v <code>not null</code>
+     * @return new Dictator
+     */
+    public static Dictator about(Voter v) {
+        LOGGER.debug("Dictator Factory");
         Preconditions.checkNotNull(v);
-        dictator = v;
+        return new Dictator(v);
+    }
+
+    private Dictator(Voter v) {
+        LOGGER.debug("Dictator constructor");
+        this.dictator = v;
     }
 
     /**

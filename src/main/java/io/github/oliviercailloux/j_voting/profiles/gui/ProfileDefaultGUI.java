@@ -72,7 +72,7 @@ public class ProfileDefaultGUI {
         ReadProfile rp = new ReadProfile();
         try (FileInputStream is = new FileInputStream(arg)) {
             ProfileI profileI = rp.createProfileFromStream(is);
-            profileBuilder = new ProfileBuilder(profileI);
+            profileBuilder = ProfileBuilder.createProfileBuilder(profileI);
             displayRadioButtons(args);
             tableDisplay();
             mainShell.setText("Edit Profile");
@@ -297,7 +297,7 @@ public class ProfileDefaultGUI {
      */
     public void modif() {
         LOGGER.debug("modif :");
-        Voter voter = new Voter(voterToModify);
+        Voter voter = Voter.createVoter(voterToModify);
         LOGGER.debug("New preference for voter v {} : {}", voter, newpref);
         // change preference for this Voter in global ProfileBuilder
         profileBuilder.addVote(voter, newpref);

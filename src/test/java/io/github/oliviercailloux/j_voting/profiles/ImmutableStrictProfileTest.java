@@ -23,15 +23,15 @@ public class ImmutableStrictProfileTest {
      */
     public static ImmutableStrictProfile createISPToTest() {
         Map<Voter, StrictCompletePreferenceImpl> profile = new HashMap<>();
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Voter v1 = new Voter(1);
-        Voter v2 = new Voter(2);
-        Voter v3 = new Voter(3);
-        Voter v4 = new Voter(4);
-        Voter v5 = new Voter(5);
-        Voter v6 = new Voter(6);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
+        Voter v1 = Voter.createVoter(1);
+        Voter v2 = Voter.createVoter(2);
+        Voter v3 = Voter.createVoter(3);
+        Voter v4 = Voter.createVoter(4);
+        Voter v5 = Voter.createVoter(5);
+        Voter v6 = Voter.createVoter(6);
         ArrayList<Alternative> list1 = new ArrayList<>();
         ArrayList<Alternative> list2 = new ArrayList<>();
         list1.add(a1);
@@ -40,15 +40,15 @@ public class ImmutableStrictProfileTest {
         list2.add(a3);
         list2.add(a2);
         list2.add(a1);
-        StrictCompletePreferenceImpl pref1 = new StrictCompletePreferenceImpl(list1);
-        StrictCompletePreferenceImpl pref2 = new StrictCompletePreferenceImpl(list2);
+        StrictCompletePreferenceImpl pref1 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list1);
+        StrictCompletePreferenceImpl pref2 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list2);
         profile.put(v1, pref1);
         profile.put(v2, pref1);
         profile.put(v3, pref1);
         profile.put(v4, pref1);
         profile.put(v5, pref2);
         profile.put(v6, pref2);
-        return new ImmutableStrictProfile(profile);
+        return ImmutableStrictProfile.createImmutableStrictProfile(profile);
     }
 
     @Test
@@ -59,9 +59,9 @@ public class ImmutableStrictProfileTest {
     @Test
     public void testGetAlternatives() {
         Set<Alternative> alters = new HashSet<>();
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         alters.add(a1);
         alters.add(a2);
         alters.add(a3);

@@ -3,6 +3,7 @@ package io.github.oliviercailloux.j_voting.profiles.management;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,20 +27,36 @@ public class StrictProfileBuilder extends ProfileBuilder {
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(StrictProfileBuilder.class.getName());
 
-    public StrictProfileBuilder() {
+    /**
+     * Factory method for StrictProfileBuilder without parameter
+     * 
+     * @return StrictProfileBuilder
+     */
+    public static StrictProfileBuilder createStrictProfileBuilder() {
+        LOGGER.debug("StrictProfileBuilder Factory without parameter");
+        return new StrictProfileBuilder();
+    }
+
+    /**
+     * Factory method for StrictProfileBuilder with parameter
+     * 
+     * @param prof
+     * @return new StrictProfileBuilder
+     */
+    public static StrictProfileBuilder createStrictProfileBuilder(
+                    StrictProfileI prof) {
+        LOGGER.debug("StrictProfileBuilder Factory with parameter");
+        if (Objects.equals(prof, null))
+            return createStrictProfileBuilder();
+        return new StrictProfileBuilder(prof);
+    }
+
+    private StrictProfileBuilder() {
         LOGGER.debug("constructor empty:");
         votes = new HashMap<>();
     }
 
-    /**
-     * 
-     * @param prof a StrictProfileI not <code> null </code>
-     * 
-     *             initiates a ProfileBuilder from a StrictProfile.
-     */
-    public StrictProfileBuilder(StrictProfileI prof) {
-        LOGGER.debug("constructor ProfileI:");
-        Preconditions.checkNotNull(prof);
+    private StrictProfileBuilder(StrictProfileI prof) {
         LOGGER.debug("parameter prof : {}", prof);
         votes = castMapExtendsToRegularVoterPref(prof.getProfile());
     }
@@ -77,9 +94,10 @@ public class StrictProfileBuilder extends ProfileBuilder {
         for (Voter v : votes.keySet()) {
             List<Alternative> alters = new ArrayList<>();
             alters.add(votes.get(v).getAlternative(0));
-            StrictCompletePreferenceImpl prefOneAlter = new StrictCompletePreferenceImpl(alters);
+            StrictCompletePreferenceImpl prefOneAlter = StrictCompletePreferenceImpl
+                            .createStrictCompletePreferenceImpl(alters);
             addVote(v, prefOneAlter);
         }
-        return new ImmutableStrictProfileI(votes);
+        return ImmutableStrictProfileI.createImmutableStrictProfileI(votes);
     }
 }
