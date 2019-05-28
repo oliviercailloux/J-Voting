@@ -49,7 +49,8 @@ public class Borda implements SocialWelfareFunction {
      * @return a Preference with the alternatives sorted
      */
     @Override
-    public CompletePreferenceImpl getSocietyPreference(ImmutableProfileI profile) {
+    public CompletePreferenceImpl getSocietyPreference(
+                    ImmutableProfileI profile) {
         LOGGER.debug("getSocietyStrictPreference");
         Preconditions.checkNotNull(profile);
         LOGGER.debug("parameter SProfile : {}", profile);
@@ -144,17 +145,13 @@ public class Borda implements SocialWelfareFunction {
 
     @Override
     public boolean equals(Object o) {
-        // self check
         if (this == o)
             return true;
-        // Check not null
         if (o == null)
             return false;
-        // Check class type and cast o
         if (this.getClass() != o.getClass())
             return false;
         Borda borda = (Borda) o;
-        // check field
         return this.scores.equals(borda.scores);
     }
 }

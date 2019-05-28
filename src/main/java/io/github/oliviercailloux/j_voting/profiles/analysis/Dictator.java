@@ -33,7 +33,8 @@ public class Dictator implements SocialWelfareFunction {
      * @return the dictator's preference
      */
     @Override
-    public CompletePreferenceImpl getSocietyPreference(ImmutableProfileI profile) {
+    public CompletePreferenceImpl getSocietyPreference(
+                    ImmutableProfileI profile) {
         LOGGER.debug("getSocietyStrictPreference");
         Preconditions.checkNotNull(profile);
         Preconditions.checkArgument(profile.getProfile().containsKey(dictator));
@@ -59,17 +60,13 @@ public class Dictator implements SocialWelfareFunction {
      */
     @Override
     public boolean equals(Object o) {
-        // self check
         if (this == o)
             return true;
-        // Check not null
         if (o == null)
             return false;
-        // Check class type and cast o
         if (this.getClass() != o.getClass())
             return false;
         Dictator dict = (Dictator) o;
-        // check field
         return this.getDictator() == dict.getDictator();
     }
 }
