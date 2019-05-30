@@ -17,28 +17,19 @@ import io.github.oliviercailloux.j_voting.Alternative;
 
 /**
  * Read .ODS file & extract elections data. The .ODS file must be Election Data
- * Format.
- *
+ * Format. For more information on accepted formats, refer to the
+ * Doc/votingFilesFormatsDoc.adoc file
  */
 public class ReadODS {
 
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(ReadODS.class.getName());
 
-    public static void main(String[] args) throws Exception {
-        System.out.println(checkFormatandPrint(
-                        ReadODS.class.getResourceAsStream("./testods.ods")));
-        System.out.println(checkFormatandPrint(
-                        ReadODS.class.getResourceAsStream("./facon1.ods")));
-        System.out.println(checkFormatandPrint(
-                        ReadODS.class.getResourceAsStream("./facon2.ods")));
-    }
-
     /**
+     * Function defining which type of file formatting is used
      * 
-     * @param inputStream
-     * @return
-     * @throws Exception
+     * @param inputStream : ods file
+     * @return : A string to display the characteristics of the file send
      */
     public static String checkFormatandPrint(InputStream inputStream)
                     throws Exception {
@@ -51,6 +42,7 @@ public class ReadODS {
         LOGGER.debug("Open Spreadsheet");
         Table table = spreadsheetDoc.getSheetByIndex(0);
         LOGGER.debug("Get sheet index 0 done");
+        LOGGER.debug("Checking format");
         if (table.getCellByPosition(1, 0).getStringValue().equals(""))
             return printFormatLikeSOC(table);
         else if (table.getCellByPosition(0, 0).getStringValue().equals(""))
@@ -59,10 +51,11 @@ public class ReadODS {
     }
 
     /**
+     * Function returning a string containing a formatting of the voting data
+     * contained in a table in a format similar to SOC
      * 
-     * @param table
-     * @return
-     * @throws Exception
+     * @param table : an ods table containing voting information
+     * @return : A string to display the characteristics of the table send
      */
     public static String printFormatLikeSOC(Table table) {
         if (Objects.equals(table, null))
@@ -99,10 +92,11 @@ public class ReadODS {
     }
 
     /**
+     * Function returning a string containing a formatting of the voting data
+     * contained in a table in the format accepting ties between alternatives
      * 
-     * @param table
-     * @return
-     * @throws Exception
+     * @param table : an ods table containing voting information
+     * @return : A string to display the characteristics of the table send
      */
     public static String printFormatWithEqualsPref(Table table) {
         if (Objects.equals(table, null))
@@ -160,10 +154,12 @@ public class ReadODS {
     }
 
     /**
+     * Function returning a string containing a formatting of the voting data
+     * contained in a table in a format that does not accept ties between
+     * alternatives
      * 
-     * @param table
-     * @return
-     * @throws Exception
+     * @param table : an ods table containing voting information
+     * @return : A string to display the characteristics of the table send
      */
     public static String printFormatWithoutEqualsPref(Table table) {
         if (Objects.equals(table, null))
@@ -189,6 +185,14 @@ public class ReadODS {
         return stringBuilder.toString();
     }
 
+    /**
+     * Function returning the different alternatives of a table passed in
+     * parameter
+     * 
+     * @param table : ods table containing voting informations (looklike SOC
+     *              format excluded)
+     * @return : the list of alternatives
+     */
     private static List<Alternative> getAlternatives(Table table) {
         List<Alternative> alternatives = new ArrayList<>();
         while (!table.getCellByPosition(0, alternatives.size() + 1)
@@ -203,6 +207,13 @@ public class ReadODS {
         return alternatives;
     }
 
+    /**
+     * Function returning the number of Voters of a table passed in parameter
+     * 
+     * @param table : ods table containing voting informations (looklike SOC
+     *              format excluded)
+     * @return : the number of Voters
+     */
     private static int getnbTotVoters(Table table) {
         int nbTotVoters = 0;
         int start = (table.getCellByPosition(0, 0).getStringValue().equals(""))

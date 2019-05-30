@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.InputStream;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Table;
@@ -42,15 +41,11 @@ class ReadODSTest {
                         + "Voter 6 : 1>4>5>2>3\n";
     }
 
-    @BeforeEach
-    void setUpBeforeEach() {
+    @Test
+    void testCheckFormatandPrint() throws Exception {
         inputStream1 = ReadODS.class.getResourceAsStream("./testods.ods");
         inputStream2 = ReadODS.class.getResourceAsStream("./facon1.ods");
         inputStream3 = ReadODS.class.getResourceAsStream("./facon2.ods");
-    }
-
-    @Test
-    void testCheckFormatandPrint() throws Exception {
         assertTrue(Objects.equal(stringCompare1,
                         ReadODS.checkFormatandPrint(inputStream1)));
         assertTrue(Objects.equal(stringCompare2,
@@ -61,6 +56,7 @@ class ReadODSTest {
 
     @Test
     void testPrintFormatLikeSOC() throws Exception {
+        inputStream1 = ReadODS.class.getResourceAsStream("./testods.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream1);
         Table table = spreadsheetDoc.getSheetByIndex(0);
@@ -70,6 +66,7 @@ class ReadODSTest {
 
     @Test
     void testPrintFormatWithEqualsPref() throws Exception {
+        inputStream2 = ReadODS.class.getResourceAsStream("./facon1.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream2);
         Table table = spreadsheetDoc.getSheetByIndex(0);
@@ -79,6 +76,7 @@ class ReadODSTest {
 
     @Test
     void testPrintFormatWithoutEqualsPref() throws Exception {
+        inputStream3 = ReadODS.class.getResourceAsStream("./facon2.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream3);
         Table table = spreadsheetDoc.getSheetByIndex(0);
