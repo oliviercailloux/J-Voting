@@ -22,13 +22,13 @@ public class DictatorTest {
 
     @Test
     public void getSocietyPreferenceTest() {
-        Voter v1 = new Voter(1);
-        Voter v2 = new Voter(2);
-        Voter v3 = new Voter(3);
-        Dictator d1 = new Dictator(v1);
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
+        Voter v1 = Voter.createVoter(1);
+        Voter v2 = Voter.createVoter(2);
+        Voter v3 = Voter.createVoter(3);
+        Dictator d1 = Dictator.about(v1);
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
         List<Set<Alternative>> list1 = new ArrayList<>();
         List<Set<Alternative>> list2 = new ArrayList<>();
         List<Set<Alternative>> list3 = new ArrayList<>();
@@ -44,10 +44,10 @@ public class DictatorTest {
         list1.add(s2);
         list2.add(s2);
         list3.add(s3);
-        CompletePreferenceImpl pref1 = new CompletePreferenceImpl(list1);
-        CompletePreferenceImpl pref2 = new CompletePreferenceImpl(list2);
-        CompletePreferenceImpl pref3 = new CompletePreferenceImpl(list3);
-        ProfileBuilder prof = new ProfileBuilder();
+        CompletePreferenceImpl pref1 = CompletePreferenceImpl.createCompletePreferenceImpl(list1);
+        CompletePreferenceImpl pref2 = CompletePreferenceImpl.createCompletePreferenceImpl(list2);
+        CompletePreferenceImpl pref3 = CompletePreferenceImpl.createCompletePreferenceImpl(list3);
+        ProfileBuilder prof = ProfileBuilder.createProfileBuilder();
         prof.addVote(v1, pref1);
         prof.addVote(v2, pref2);
         prof.addVote(v3, pref3);
@@ -58,20 +58,20 @@ public class DictatorTest {
 
     @Test
     public void equalsTest() {
-        Voter v1 = new Voter(1);
-        Voter v2 = new Voter(2);
-        Dictator d1 = new Dictator(v1);
-        Dictator d2 = new Dictator(v2);
-        Dictator d3 = new Dictator(v1);
+        Voter v1 = Voter.createVoter(1);
+        Voter v2 = Voter.createVoter(2);
+        Dictator d1 = Dictator.about(v1);
+        Dictator d2 = Dictator.about(v2);
+        Dictator d3 = Dictator.about(v1);
         assertEquals(d1, d3);
         assertTrue(!d1.equals(d2));
     }
 
     @Test
     public void equalsVoterTest() {
-        Voter v1 = new Voter(1);
-        Voter v2 = new Voter(2);
-        Dictator d1 = new Dictator(v1);
+        Voter v1 = Voter.createVoter(1);
+        Voter v2 = Voter.createVoter(2);
+        Dictator d1 = Dictator.about(v1);
         assertEquals(d1.getDictator(), v1);
         assertTrue(!d1.getDictator().equals(v2));
     }

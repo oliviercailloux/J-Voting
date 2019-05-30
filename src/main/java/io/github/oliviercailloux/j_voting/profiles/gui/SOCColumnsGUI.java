@@ -102,7 +102,7 @@ public class SOCColumnsGUI extends ColumnsDefaultGUI {
         }
         StrictProfile strictProfile = profileBuilder.createStrictProfile();
         if (strictProfile.getAlternatives().contains(
-                        new Alternative(Integer.parseInt(alternative)))) {
+                        Alternative.withId(Integer.parseInt(alternative)))) {
             MessageBox messageBox = new MessageBox(mainShell, SWT.OK);
             messageBox.setText("Warning");
             messageBox.setMessage("This alternative already exists !");

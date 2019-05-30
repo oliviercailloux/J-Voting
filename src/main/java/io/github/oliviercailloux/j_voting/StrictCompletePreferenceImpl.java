@@ -24,8 +24,8 @@ public class StrictCompletePreferenceImpl extends CompletePreferenceImpl {
     /**
      * @param preferences a list of alternatives.
      */
-    public StrictCompletePreferenceImpl(List<Alternative> preferences) {
-        super(listAlternativeToListSetAlternative(preferences));
+    private StrictCompletePreferenceImpl(List<Alternative> preference) {
+        super(listAlternativeToListSetAlternative(preference));
         LOGGER.debug("StrictPreference constructor");
     }
 
@@ -87,6 +87,17 @@ public class StrictCompletePreferenceImpl extends CompletePreferenceImpl {
         }
         LOGGER.debug("list : {}", alts);
         return alts;
+    }
+
+    /**
+     * Factory method for StrictCompletePreferenceImpl
+     * 
+     * @param preference <code> not null</code> and all different alternatives
+     * @return a new StrictCompletePreferenceImpl
+     */
+    public static StrictCompletePreferenceImpl createStrictCompletePreferenceImpl(
+                    List<Alternative> preference) {
+        return new StrictCompletePreferenceImpl(preference);
     }
 
     /**

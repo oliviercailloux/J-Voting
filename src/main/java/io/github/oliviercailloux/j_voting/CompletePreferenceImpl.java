@@ -31,15 +31,8 @@ public class CompletePreferenceImpl {
      *                    alternative is present several times, an
      *                    IllegalArgumentException is thrown.
      */
-    public CompletePreferenceImpl(List<Set<Alternative>> preference) {
-        LOGGER.debug("Preference constructor");
-        Preconditions.checkNotNull(preference);
-        LOGGER.debug("parameter : {}", preference);
-        if (toAlternativeSet(preference).size() != size(preference)) {
-            LOGGER.debug("alternative several times in the preference");
-            throw new IllegalArgumentException(
-                            "A preference cannot contain several times the same alternative.");
-        }
+    protected CompletePreferenceImpl(List<Set<Alternative>> preference) {
+        LOGGER.debug("Preference Factory");
         this.preference = preference;
     }
 
@@ -92,17 +85,13 @@ public class CompletePreferenceImpl {
 
     @Override
     public boolean equals(Object o) {
-        // self check
         if (this == o)
             return true;
-        // Check not null
         if (o == null)
             return false;
-        // Check class type and cast o
         if (this.getClass() != o.getClass())
             return false;
         CompletePreferenceImpl pref = (CompletePreferenceImpl) o;
-        // check field
         return this.preference.equals(pref.preference);
     }
 
@@ -217,6 +206,25 @@ public class CompletePreferenceImpl {
     }
 
     /**
+     * Factory method for CompletePreferenceImpl
+     *
+     * @param preference <code>not null</code> and all alternatives differents
+     * @return a new CompletePreferenceImpl
+     */
+    public static CompletePreferenceImpl createCompletePreferenceImpl(
+                    List<Set<Alternative>> preference) {
+        LOGGER.debug("Preference Factory");
+        Preconditions.checkNotNull(preference);
+        LOGGER.debug("parameter : {}", preference);
+        if (toAlternativeSet(preference).size() != size(preference)) {
+            LOGGER.debug("alternative several times in the preference");
+            throw new IllegalArgumentException(
+                            "A preference cannot contain several times the same alternative.");
+        }
+        return new CompletePreferenceImpl(preference);
+    }
+
+    /**
      * 
      * @return true if the Preference is Strict (without several alternatives
      *         having the same rank)
@@ -244,6 +252,6 @@ public class CompletePreferenceImpl {
             }
         }
         LOGGER.debug("list : {}", list);
-        return new StrictCompletePreferenceImpl(list);
+        return StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list);
     }
 }

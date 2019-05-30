@@ -16,12 +16,18 @@ public class Voter implements Comparable<Voter> {
                     .getLogger(Voter.class.getName());
 
     /**
-     * Creates a new object Voter with the id given as a parameter
-     *
-     * @param id int <code>not null</code>
+     * Factory method for Voter
+     * 
+     * @param id <code>not null</code>
+     * @return a new Voter
      */
-    public Voter(int id) {
-        this.id = Preconditions.checkNotNull(id);
+    public static Voter createVoter(int id) {
+        Preconditions.checkNotNull(id);
+        return new Voter(id);
+    }
+
+    private Voter(int id) {
+        this.id = id;
     }
 
     /**
@@ -52,17 +58,13 @@ public class Voter implements Comparable<Voter> {
      */
     @Override
     public boolean equals(Object o) {
-        // self check
         if (this == o)
             return true;
-        // Check not null
         if (o == null)
             return false;
-        // Check class type and cast o
         if (this.getClass() != o.getClass())
             return false;
         Voter voter = (Voter) o;
-        // check field
         return this.getId() == voter.getId();
     }
 

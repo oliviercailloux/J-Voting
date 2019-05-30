@@ -17,8 +17,18 @@ public class SWFCommander {
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(SWFCommander.class.getName());
 
-    public SWFCommander(SocialWelfareFunction s) {
-        swf = s;
+    /**
+     * Factory method for SWFCommander
+     * 
+     * @param s
+     * @return new SWFCommander
+     */
+    public static SWFCommander createSWFCommander(SocialWelfareFunction s) {
+        return new SWFCommander(s);
+    }
+
+    private SWFCommander(SocialWelfareFunction s) {
+        this.swf = s;
     }
 
     /**
@@ -27,7 +37,8 @@ public class SWFCommander {
      * @return the entered StrictPreference
      * @throws IOException when the entered preference is empty.
      */
-    public static StrictCompletePreferenceImpl askPreference() throws IOException {
+    public static StrictCompletePreferenceImpl askPreference()
+                    throws IOException {
         LOGGER.debug("askPreference");
         System.out.println("Enter a StrictPreference complete");
         try (Scanner scan = new Scanner(System.in)) {
@@ -50,12 +61,13 @@ public class SWFCommander {
      */
     public void createProfileIncrementally() throws IOException {
         LOGGER.debug("createProfileIncrementally:");
-        StrictProfileBuilder prof = new StrictProfileBuilder();
+        StrictProfileBuilder prof = StrictProfileBuilder
+                        .createStrictProfileBuilder();
         boolean keepGoing = true;
         int voterId = 1;
         while (keepGoing) {
             LOGGER.debug("new voter id  : {}", voterId);
-            Voter v = new Voter(voterId);
+            Voter v = Voter.createVoter(voterId);
             StrictCompletePreferenceImpl strictCompletePreferenceImpl = askPreference();
             LOGGER.debug("strictPreference :{}", strictCompletePreferenceImpl);
             prof.addVote(v, strictCompletePreferenceImpl);

@@ -29,7 +29,12 @@ public class ImmutableStrictProfile extends ImmutableStrictProfileI
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(ImmutableStrictProfile.class.getName());
 
-    public ImmutableStrictProfile(Map<Voter, ? extends CompletePreferenceImpl> map) {
+    public static ImmutableStrictProfile createImmutableStrictProfile(
+                    Map<Voter, ? extends CompletePreferenceImpl> map) {
+        return new ImmutableStrictProfile(map);
+    }
+
+    private ImmutableStrictProfile(Map<Voter, ? extends CompletePreferenceImpl> map) {
         super(checkCompleteMap(map));
     }
 

@@ -15,7 +15,7 @@ public class VoterTest {
      */
     @Test
     public void testGetId() {
-        Voter v = new Voter(4);
+        Voter v = Voter.createVoter(4);
         assertEquals(v.getId(), 4);
     }
 
@@ -25,15 +25,15 @@ public class VoterTest {
      */
     @Test
     public void testEquals() {
-        Voter v = new Voter(3);
-        Voter v2 = new Voter(3);
+        Voter v = Voter.createVoter(3);
+        Voter v2 = Voter.createVoter(3);
         assertEquals(v, v2);
     }
 
     @Test
     public void testCompareTo() {
-        Voter v1 = new Voter(1);
-        Voter v2 = new Voter(3);
+        Voter v1 = Voter.createVoter(1);
+        Voter v2 = Voter.createVoter(3);
         assertTrue(v1.compareTo(v2) < 0);
     }
 }

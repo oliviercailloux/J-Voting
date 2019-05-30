@@ -25,14 +25,30 @@ public class Borda implements SocialWelfareFunction {
                     .getLogger(Borda.class.getName());
     private Multiset<Alternative> scores;
 
-    public Borda(Multiset<Alternative> tempscores) {
-        LOGGER.debug("Borda");
-        scores = tempscores;
+    /**
+     * Factory method for Borda with parameter tempscores
+     * 
+     * @param tempscores : allow <code>null</code> values
+     * @return new Borda
+     */
+    public static Borda withScores(Multiset<Alternative> tempscores) {
+        if (Objects.equals(tempscores, null))
+            return withScores();
+        return new Borda(tempscores);
     }
 
-    public Borda() {
-        LOGGER.debug("emptyBorda");
-        scores = HashMultiset.create();
+    /**
+     * Factory method for Borda without parameter
+     * 
+     * @return new Borda
+     */
+    public static Borda withScores() {
+        return new Borda(HashMultiset.create());
+    }
+
+    private Borda(Multiset<Alternative> tempscores) {
+        LOGGER.debug("Borda constructor");
+        scores = tempscores;
     }
 
     /**
@@ -49,7 +65,8 @@ public class Borda implements SocialWelfareFunction {
      * @return a Preference with the alternatives sorted
      */
     @Override
-    public CompletePreferenceImpl getSocietyPreference(ImmutableProfileI profile) {
+    public CompletePreferenceImpl getSocietyPreference(
+                    ImmutableProfileI profile) {
         LOGGER.debug("getSocietyStrictPreference");
         Preconditions.checkNotNull(profile);
         LOGGER.debug("parameter SProfile : {}", profile);
@@ -65,7 +82,8 @@ public class Borda implements SocialWelfareFunction {
                 tempscores.remove(a, tempscores.count(a));
             }
         }
-        CompletePreferenceImpl pref = new CompletePreferenceImpl(al);
+        CompletePreferenceImpl pref = CompletePreferenceImpl
+                        .createCompletePreferenceImpl(al);
         LOGGER.debug("return AScores : {}", pref);
         return pref;
     }
@@ -115,7 +133,7 @@ public class Borda implements SocialWelfareFunction {
         Preconditions.checkNotNull(tempscores);
         Set<Alternative> set = new HashSet<>();
         Iterable<Alternative> alternativesList = tempscores.elementSet();
-        Alternative alternativeMax = new Alternative(0);
+        Alternative alternativeMax = Alternative.withId(0);
         boolean first = true;
         for (Alternative a : alternativesList) {
             if (first) {
@@ -144,17 +162,13 @@ public class Borda implements SocialWelfareFunction {
 
     @Override
     public boolean equals(Object o) {
-        // self check
         if (this == o)
             return true;
-        // Check not null
         if (o == null)
             return false;
-        // Check class type and cast o
         if (this.getClass() != o.getClass())
             return false;
         Borda borda = (Borda) o;
-        // check field
         return this.scores.equals(borda.scores);
     }
 }

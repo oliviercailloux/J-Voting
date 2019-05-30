@@ -32,16 +32,16 @@ public class ProfileBuilderTest {
     @Test
     public void testCreateProfileI() {
         // ---beginning of creation of a ProfileI with ProfileBuilder
-        ProfileBuilder profileBuilder = new ProfileBuilder();
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Voter v1 = new Voter(1);
-        Voter v2 = new Voter(2);
-        Voter v3 = new Voter(3);
-        Voter v4 = new Voter(4);
-        Voter v5 = new Voter(5);
-        Voter v6 = new Voter(6);
+        ProfileBuilder profileBuilder = ProfileBuilder.createProfileBuilder();
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
+        Voter v1 = Voter.createVoter(1);
+        Voter v2 = Voter.createVoter(2);
+        Voter v3 = Voter.createVoter(3);
+        Voter v4 = Voter.createVoter(4);
+        Voter v5 = Voter.createVoter(5);
+        Voter v6 = Voter.createVoter(6);
         List<Set<Alternative>> list1 = new ArrayList<>();
         List<Set<Alternative>> list2 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();
@@ -58,8 +58,8 @@ public class ProfileBuilderTest {
         list1.add(s2);
         list2.add(s3);
         list2.add(s4);
-        CompletePreferenceImpl pref1 = new CompletePreferenceImpl(list1);
-        CompletePreferenceImpl pref2 = new CompletePreferenceImpl(list2);
+        CompletePreferenceImpl pref1 = CompletePreferenceImpl.createCompletePreferenceImpl(list1);
+        CompletePreferenceImpl pref2 = CompletePreferenceImpl.createCompletePreferenceImpl(list2);
         profileBuilder.addVote(v1, pref1);
         profileBuilder.addVote(v2, pref1);
         profileBuilder.addVote(v3, pref1);
@@ -76,16 +76,16 @@ public class ProfileBuilderTest {
     @Test
     public void testCreateProfile() {
         // ---beginning of creation of a Profile with ProfileBuilder
-        ProfileBuilder profileBuilder = new ProfileBuilder();
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Voter v1 = new Voter(1);
-        Voter v2 = new Voter(2);
-        Voter v3 = new Voter(3);
-        Voter v4 = new Voter(4);
-        Voter v5 = new Voter(5);
-        Voter v6 = new Voter(6);
+        ProfileBuilder profileBuilder = ProfileBuilder.createProfileBuilder();
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
+        Voter v1 = Voter.createVoter(1);
+        Voter v2 = Voter.createVoter(2);
+        Voter v3 = Voter.createVoter(3);
+        Voter v4 = Voter.createVoter(4);
+        Voter v5 = Voter.createVoter(5);
+        Voter v6 = Voter.createVoter(6);
         List<Set<Alternative>> list1 = new ArrayList<>();
         List<Set<Alternative>> list2 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();
@@ -102,8 +102,8 @@ public class ProfileBuilderTest {
         list1.add(s2);
         list2.add(s3);
         list2.add(s4);
-        CompletePreferenceImpl pref1 = new CompletePreferenceImpl(list1);
-        CompletePreferenceImpl pref2 = new CompletePreferenceImpl(list2);
+        CompletePreferenceImpl pref1 = CompletePreferenceImpl.createCompletePreferenceImpl(list1);
+        CompletePreferenceImpl pref2 = CompletePreferenceImpl.createCompletePreferenceImpl(list2);
         profileBuilder.addVote(v1, pref1);
         profileBuilder.addVote(v2, pref1);
         profileBuilder.addVote(v3, pref1);
@@ -119,16 +119,16 @@ public class ProfileBuilderTest {
     @Test
     public void testCreateStrictProfileI() {
         // ---beginning of creation of a StrictProfileI with ProfileBuilder
-        ProfileBuilder profileBuilder = new ProfileBuilder();
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Voter v1 = new Voter(1);
-        Voter v2 = new Voter(2);
-        Voter v3 = new Voter(3);
-        Voter v4 = new Voter(4);
-        Voter v5 = new Voter(5);
-        Voter v6 = new Voter(6);
+        ProfileBuilder profileBuilder = ProfileBuilder.createProfileBuilder();
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
+        Voter v1 = Voter.createVoter(1);
+        Voter v2 = Voter.createVoter(2);
+        Voter v3 = Voter.createVoter(3);
+        Voter v4 = Voter.createVoter(4);
+        Voter v5 = Voter.createVoter(5);
+        Voter v6 = Voter.createVoter(6);
         ArrayList<Alternative> list1 = new ArrayList<>();
         ArrayList<Alternative> list2 = new ArrayList<>();
         list1.add(a1);
@@ -136,8 +136,8 @@ public class ProfileBuilderTest {
         list1.add(a3);
         list2.add(a3);
         list2.add(a2);
-        StrictCompletePreferenceImpl pref1 = new StrictCompletePreferenceImpl(list1);
-        StrictCompletePreferenceImpl pref2 = new StrictCompletePreferenceImpl(list2);
+        StrictCompletePreferenceImpl pref1 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list1);
+        StrictCompletePreferenceImpl pref2 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list2);
         profileBuilder.addVote(v1, pref1);
         profileBuilder.addVote(v2, pref1);
         profileBuilder.addVote(v3, pref1);
@@ -155,16 +155,16 @@ public class ProfileBuilderTest {
     @Test
     public void testCreateStrictProfile() {
         // ---beginning of creation of a StrictProfile with ProfileBuilder
-        ProfileBuilder profileBuilder = new ProfileBuilder();
-        Alternative a1 = new Alternative(1);
-        Alternative a2 = new Alternative(2);
-        Alternative a3 = new Alternative(3);
-        Voter v1 = new Voter(1);
-        Voter v2 = new Voter(2);
-        Voter v3 = new Voter(3);
-        Voter v4 = new Voter(4);
-        Voter v5 = new Voter(5);
-        Voter v6 = new Voter(6);
+        ProfileBuilder profileBuilder = ProfileBuilder.createProfileBuilder();
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
+        Voter v1 = Voter.createVoter(1);
+        Voter v2 = Voter.createVoter(2);
+        Voter v3 = Voter.createVoter(3);
+        Voter v4 = Voter.createVoter(4);
+        Voter v5 = Voter.createVoter(5);
+        Voter v6 = Voter.createVoter(6);
         ArrayList<Alternative> list1 = new ArrayList<>();
         ArrayList<Alternative> list2 = new ArrayList<>();
         list1.add(a1);
@@ -173,8 +173,8 @@ public class ProfileBuilderTest {
         list2.add(a3);
         list2.add(a2);
         list2.add(a1);
-        StrictCompletePreferenceImpl pref1 = new StrictCompletePreferenceImpl(list1);
-        StrictCompletePreferenceImpl pref2 = new StrictCompletePreferenceImpl(list2);
+        StrictCompletePreferenceImpl pref1 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list1);
+        StrictCompletePreferenceImpl pref2 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list2);
         profileBuilder.addVote(v1, pref1);
         profileBuilder.addVote(v2, pref1);
         profileBuilder.addVote(v3, pref1);
