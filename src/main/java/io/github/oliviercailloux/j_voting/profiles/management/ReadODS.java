@@ -65,7 +65,7 @@ public class ReadODS {
                         table.getCellByPosition(0, 0).getStringValue());
         List<Alternative> alternatives = new ArrayList<>(nbAlternatives);
         for (int i = 1; i <= nbAlternatives; i++)
-            alternatives.add(new Alternative(Integer.valueOf(
+            alternatives.add(Alternative.withId(Integer.valueOf(
                             table.getCellByPosition(0, i).getStringValue())));
         stringBuilder.append("There are " + nbAlternatives + " alternatives\n"
                         + "List of alternatives : " + alternatives + "\n");
@@ -131,7 +131,7 @@ public class ReadODS {
                         int number = Integer.parseInt(
                                         table.getCellByPosition(0, i + 1)
                                                         .getStringValue());
-                        set.add(new Alternative(number));
+                        set.add(Alternative.withId(number));
                     }
                 }
                 nbChoice++;
@@ -198,7 +198,7 @@ public class ReadODS {
         while (!table.getCellByPosition(0, alternatives.size() + 1)
                         .getStringValue().equals("")) {
             alternatives.add(
-                            new Alternative(Integer.valueOf(table
+                            Alternative.withId(Integer.valueOf(table
                                             .getCellByPosition(0,
                                                             alternatives.size()
                                                                             + 1)
