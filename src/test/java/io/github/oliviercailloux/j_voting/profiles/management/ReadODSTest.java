@@ -1,6 +1,6 @@
 package io.github.oliviercailloux.j_voting.profiles.management;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.InputStream;
 
@@ -8,8 +8,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.Table;
-
-import com.google.common.base.Objects;
 
 class ReadODSTest {
 
@@ -43,44 +41,45 @@ class ReadODSTest {
 
     @Test
     void testCheckFormatandPrint() throws Exception {
-        inputStream1 = ReadODS.class.getResourceAsStream("./testods.ods");
-        inputStream2 = ReadODS.class.getResourceAsStream("./facon1.ods");
-        inputStream3 = ReadODS.class.getResourceAsStream("./facon2.ods");
-        assertTrue(Objects.equal(stringCompare1,
-                        ReadODS.checkFormatandPrint(inputStream1)));
-        assertTrue(Objects.equal(stringCompare2,
-                        ReadODS.checkFormatandPrint(inputStream2)));
-        assertTrue(Objects.equal(stringCompare3,
-                        ReadODS.checkFormatandPrint(inputStream3)));
+        inputStream1 = ReadODS.class
+                        .getResourceAsStream("election_data_format.ods");
+        inputStream2 = ReadODS.class.getResourceAsStream("rank_format.ods");
+        inputStream3 = ReadODS.class
+                        .getResourceAsStream("profile_format_strict.ods");
+        assertEquals(stringCompare1, ReadODS.checkFormatandPrint(inputStream1));
+        assertEquals(stringCompare2, ReadODS.checkFormatandPrint(inputStream2));
+        assertEquals(stringCompare3, ReadODS.checkFormatandPrint(inputStream3));
     }
 
     @Test
     void testPrintFormatLikeSOC() throws Exception {
-        inputStream1 = ReadODS.class.getResourceAsStream("./testods.ods");
+        inputStream1 = ReadODS.class
+                        .getResourceAsStream("election_data_format.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream1);
         Table table = spreadsheetDoc.getSheetByIndex(0);
         String stringrReadODS = ReadODS.printFormatLikeSOC(table);
-        assertTrue(Objects.equal(stringCompare1, stringrReadODS));
+        assertEquals(stringCompare1, stringrReadODS);
     }
 
     @Test
     void testPrintFormatWithEqualsPref() throws Exception {
-        inputStream2 = ReadODS.class.getResourceAsStream("./facon1.ods");
+        inputStream2 = ReadODS.class.getResourceAsStream("rank_format.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream2);
         Table table = spreadsheetDoc.getSheetByIndex(0);
         String stringrReadODS = ReadODS.printFormatWithEqualsPref(table);
-        assertTrue(Objects.equal(stringCompare2, stringrReadODS));
+        assertEquals(stringCompare2, stringrReadODS);
     }
 
     @Test
     void testPrintFormatWithoutEqualsPref() throws Exception {
-        inputStream3 = ReadODS.class.getResourceAsStream("./facon2.ods");
+        inputStream3 = ReadODS.class
+                        .getResourceAsStream("profile_format_strict.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream3);
         Table table = spreadsheetDoc.getSheetByIndex(0);
         String stringrReadODS = ReadODS.printFormatWithoutEqualsPref(table);
-        assertTrue(Objects.equal(stringCompare3, stringrReadODS));
+        assertEquals(stringCompare3, stringrReadODS);
     }
 }
