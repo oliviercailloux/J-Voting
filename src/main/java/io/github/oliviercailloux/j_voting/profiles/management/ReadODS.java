@@ -4,9 +4,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
+import org.checkerframework.checker.nullness.qual.RequiresNonNull;
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.CellRange;
 import org.odftoolkit.simple.table.Table;
@@ -31,12 +31,10 @@ public class ReadODS {
      * @param inputStream : ods file
      * @return : A string to display the characteristics of the file send
      */
+    @RequiresNonNull("inputStream")
     public static String checkFormatandPrint(InputStream inputStream)
                     throws Exception {
-        if (Objects.equals(inputStream, null))
-            throw new IllegalArgumentException("InputStream can't be null");
         LOGGER.debug("Open Stream");
-        LOGGER.debug(inputStream.toString());
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
         LOGGER.debug("Open Spreadsheet");
@@ -57,9 +55,8 @@ public class ReadODS {
      * @param table : an ods table containing voting information
      * @return : A string to display the characteristics of the table send
      */
+    @RequiresNonNull("table")
     public static String printFormatLikeSOC(Table table) {
-        if (Objects.equals(table, null))
-            throw new IllegalArgumentException("table can't be null");
         StringBuilder stringBuilder = new StringBuilder();
         int nbAlternatives = Integer.parseInt(
                         table.getCellByPosition(0, 0).getStringValue());
@@ -98,9 +95,8 @@ public class ReadODS {
      * @param table : an ods table containing voting information
      * @return : A string to display the characteristics of the table send
      */
+    @RequiresNonNull("table")
     public static String printFormatWithEqualsPref(Table table) {
-        if (Objects.equals(table, null))
-            throw new IllegalArgumentException("table can't be null");
         StringBuilder stringBuilder = new StringBuilder();
         List<Alternative> alternatives = getAlternatives(table);
         stringBuilder.append("There are " + alternatives.size()
@@ -161,9 +157,8 @@ public class ReadODS {
      * @param table : an ods table containing voting information
      * @return : A string to display the characteristics of the table send
      */
+    @RequiresNonNull("table")
     public static String printFormatWithoutEqualsPref(Table table) {
-        if (Objects.equals(table, null))
-            throw new IllegalArgumentException("table can't be null");
         StringBuilder stringBuilder = new StringBuilder();
         List<Alternative> alternatives = getAlternatives(table);
         stringBuilder.append("There are " + alternatives.size()
@@ -197,12 +192,11 @@ public class ReadODS {
         List<Alternative> alternatives = new ArrayList<>();
         while (!table.getCellByPosition(0, alternatives.size() + 1)
                         .getStringValue().equals("")) {
-            alternatives.add(
-                            Alternative.withId(Integer.valueOf(table
-                                            .getCellByPosition(0,
-                                                            alternatives.size()
-                                                                            + 1)
-                                            .getStringValue())));
+            String valueOfCurrentCell = table
+                            .getCellByPosition(0, alternatives.size() + 1)
+                            .getStringValue();
+            alternatives.add(Alternative
+                            .withId(Integer.valueOf(valueOfCurrentCell)));
         }
         return alternatives;
     }
