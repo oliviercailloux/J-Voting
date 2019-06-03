@@ -14,21 +14,28 @@ public interface CompletePreference extends ImmutablePreference {
 
     /**
      *
-     * @param a is an alternative
-     * @return the rank of this alternative.
+     * @param a is an <code>Alternative</code>
+     * @return the rank of this alternative (a number between 1 and <i>n</i>
+     * where <i>n</i> is the total number of <code>Alternative</code><br><br>
+     * @throws IllegalArgumentException if a is not contained in this preference
      */
     public int getRank(Alternative a);
 
     /**
      *
-     * @param n is a rank
-     * @return the alternative at this rank
+     * @param n is a rank. Must be > 0.
+     * @return the <code>Aternative</code> set at this rank. Empty set id there
+     * is no alternative at this rank.
+     * @throws IllegalArgumentException if <code>n < 1</code>.
      */
-    public Alternative getAlternative(int n);
+    public ImmutableSet<Alternative> getAlternative(int n);
 
     /**
      *
-     * @return same data but in an Immutable list object
+     * @return Same data but in an Immutable list object<br>
+     * Order in the list matters : it means that a set of alternative is
+     * strictly prefered to next sets.<br>
+     * All the alternatives in a set are considered ex-aequo.
      */
     public ImmutableList<ImmutableSet<Alternative>> asEquivalenceClasses();
 

@@ -1,7 +1,10 @@
 package io.github.oliviercailloux.j_voting.preferences.interfaces;
 
+import com.google.common.graph.Graph;
+import io.github.oliviercailloux.j_voting.Alternative;
+
 /**
- * An anti-symmetric preference is a preference who can't contains equal
+ * An antisymmetric preference is a preference who can't contains equal
  * alternatives.
  */
 public interface AntiSymmetricPreference extends Preference {
@@ -9,4 +12,11 @@ public interface AntiSymmetricPreference extends Preference {
     /*
     * Add here more features if needed
     */
+    
+    /**
+     *
+     * @return the Graph corresponding to the Preference
+     * This graph is antisymmetric
+     */
+    @Override Graph<Alternative> asGraph();
 }

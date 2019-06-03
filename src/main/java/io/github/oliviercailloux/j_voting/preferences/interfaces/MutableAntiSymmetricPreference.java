@@ -3,8 +3,8 @@ package io.github.oliviercailloux.j_voting.preferences.interfaces;
 import io.github.oliviercailloux.j_voting.Alternative;
 
 /**
- * a mutable anti-symmetric preference is an anti-symmetric preference (without
- * equal alternatives) in which some alternatives can be added.
+ * a mutable antisymmetric preference is an antisymmetric preference (without
+ * alternatives considered ex-aequo) in which some alternatives can be added.
  */
 public interface MutableAntiSymmetricPreference
                 extends AntiSymmetricPreference {
@@ -17,7 +17,7 @@ public interface MutableAntiSymmetricPreference
     public void addAlternative(Alternative a);
 
     /**
-     * addStrictPreference adds to the preference "a1>a2";
+     * adds to the preference "a1>a2";
      * 
      * @param a1 must be not <code> null </code>
      * @param a2 must be not <code> null </code>
