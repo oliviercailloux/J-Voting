@@ -4,9 +4,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
-import org.checkerframework.checker.nullness.qual.RequiresNonNull;
 import org.odftoolkit.simple.SpreadsheetDocument;
 import org.odftoolkit.simple.table.CellRange;
 import org.odftoolkit.simple.table.Table;
@@ -31,9 +31,9 @@ public class ReadODS {
      * @param inputStream : ods file
      * @return : A string to display the characteristics of the file send
      */
-    @RequiresNonNull("inputStream")
     public static String checkFormatandPrint(InputStream inputStream)
                     throws Exception {
+        Objects.requireNonNull(inputStream);
         LOGGER.debug("Open Stream");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
@@ -55,8 +55,8 @@ public class ReadODS {
      * @param table : an ods table containing voting information
      * @return : A string to display the characteristics of the table send
      */
-    @RequiresNonNull("table")
     public static String printFormatLikeSOC(Table table) {
+        Objects.requireNonNull(table);
         StringBuilder stringBuilder = new StringBuilder();
         int nbAlternatives = Integer.parseInt(
                         table.getCellByPosition(0, 0).getStringValue());
@@ -95,8 +95,8 @@ public class ReadODS {
      * @param table : an ods table containing voting information
      * @return : A string to display the characteristics of the table send
      */
-    @RequiresNonNull("table")
     public static String printFormatWithEqualsPref(Table table) {
+        Objects.requireNonNull(table);
         StringBuilder stringBuilder = new StringBuilder();
         List<Alternative> alternatives = getAlternatives(table);
         stringBuilder.append("There are " + alternatives.size()
@@ -157,8 +157,8 @@ public class ReadODS {
      * @param table : an ods table containing voting information
      * @return : A string to display the characteristics of the table send
      */
-    @RequiresNonNull("table")
     public static String printFormatWithoutEqualsPref(Table table) {
+        Objects.requireNonNull(table);
         StringBuilder stringBuilder = new StringBuilder();
         List<Alternative> alternatives = getAlternatives(table);
         stringBuilder.append("There are " + alternatives.size()
@@ -185,10 +185,11 @@ public class ReadODS {
      * parameter
      * 
      * @param table : ods table containing voting informations (looklike SOC
-     *              format excluded)
+     *              format excluded) <code>not null</code>
      * @return : the list of alternatives
      */
     private static List<Alternative> getAlternatives(Table table) {
+        Objects.requireNonNull(table);
         List<Alternative> alternatives = new ArrayList<>();
         while (!table.getCellByPosition(0, alternatives.size() + 1)
                         .getStringValue().equals("")) {
@@ -205,10 +206,11 @@ public class ReadODS {
      * Function returning the number of Voters of a table passed in parameter
      * 
      * @param table : ods table containing voting informations (looklike SOC
-     *              format excluded)
+     *              format excluded) <code>not null</code>
      * @return : the number of Voters
      */
     private static int getnbTotVoters(Table table) {
+        Objects.requireNonNull(table);
         int nbTotVoters = 0;
         int start = (table.getCellByPosition(0, 0).getStringValue().equals(""))
                         ? 1
