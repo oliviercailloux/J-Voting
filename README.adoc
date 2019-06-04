@@ -1,4 +1,4 @@
-= J-Voting
+﻿= J-Voting
 :groupId: io.github.oliviercailloux
 :artifactId: j-voting
 :repository: J-Voting
@@ -55,7 +55,28 @@ Tasks are not totally ordered in the description because they are not really dep
 * Add Travis CI => *DONE*
 
 == Livraison 2
-Work on ODSProfile unit tests and implementation of Preferences interfaces.
+The main purpose of this iteration is to continue on the main improvements started in iteration 1 and appropriate the GUI code already written.
+We going to work on the two main improvements :
+
+* new preferences interfaces
+* import of profile and preferences files in ODS format respecting SOC and 2 more formats (see doc)
+
+
+=== Teams :
+* *SM/PO team* : Louis LEDOUX
+* *Team 1* : Anael DRAY / Mattéo LOUBET
+* *Team 2* : Théo CHENNEBAULT / Emilie CHHEAN
+
+=== Tasks
+* 1#  ODSProfile : clear code 
+* 2#  ODSProfile : add 2 new format types of .ODS
+* 3#  Interfaces : create new folder "preferences" to store futures interfaces
+* 4#  Interfaces : ameliorate diagram with your advices
+* 5#  Interfaces : implement new general interfaces for preferences
+* 6#  Replace constructors with static methods => *DONE*
+* 7#  ODSProfileTest : Junit tests for ODSProfile
+* 8#  Create doc for differents .ODS formats
+
 
 == Livraison 3
 ...
