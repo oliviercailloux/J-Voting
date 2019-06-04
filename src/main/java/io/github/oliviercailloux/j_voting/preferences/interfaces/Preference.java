@@ -22,27 +22,28 @@ import io.github.oliviercailloux.j_voting.Voter;
 public interface Preference {
     
     /**
-     * @return the Graph corresponding to the Preference<br><br>
      * The returned graph reads through this object: if this object is mutable,
      * any modification to this object modifies the returned graph,
-     * and conversely.<br><br>
+     * and conversely.
      *
-     * In the graph : a realtion from a to be means "a is at least as good as b"
+     * In the graph : a relation from a to be means "a is at least as good as b".
+     *
+     * @return the Graph corresponding to the Preference
      *
      */
     public Graph<Alternative> asGraph();
 
     /**
-     * @return alternatives's set<br><br>
      * The returned set reads through this object: if this object is mutable,
-     * any modification to this object modifies the returned graph,
+     * any modification to this object modifies the returned set,
      * and conversely.
+     * @return alternatives's set.
      */
     public Set<Alternative> getAlternatives();
 
     /**
      *
-     * @return <code>voter</code> of the preference
+     * @return <code>Voter</code> instance of the preference
      * Returns the voter 0 if no specific voter is associated to this preference
      */
     public Voter getVoter();

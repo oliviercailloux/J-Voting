@@ -4,7 +4,8 @@ import io.github.oliviercailloux.j_voting.Alternative;
 
 /**
  * a mutable antisymmetric preference is an antisymmetric preference (without
- * alternatives considered ex-aequo) in which some alternatives can be added.
+ * alternatives considered ex-aequo) in which some alternatives and edges can be
+ * added.
  */
 public interface MutableAntiSymmetricPreference
                 extends AntiSymmetricPreference {

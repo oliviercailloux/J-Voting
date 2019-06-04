@@ -14,9 +14,8 @@ public interface AntiSymmetricPreference extends Preference {
     */
     
     /**
-     *
-     * @return the Graph corresponding to the Preference
-     * This graph is antisymmetric
+     * {@inheritDoc}
+     * This graph is antisymmetric.
      */
     @Override Graph<Alternative> asGraph();
 }

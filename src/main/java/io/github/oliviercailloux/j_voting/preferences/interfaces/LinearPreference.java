@@ -15,7 +15,7 @@ public interface LinearPreference extends CompletePreference {
     /**
      * 
      * @return a sorted list of alternatives corresponding to the preference.
-     * <br>
+     *
      * Best alternatives coming first in the list.
      */
     public ImmutableList<Alternative> asList();
