@@ -11,9 +11,7 @@ import io.github.oliviercailloux.j_voting.Alternative;
 public interface ImmutablePreference extends Preference {
     
     /**
-     *
-     * In the graph : a relation from <i>a</i> to <i>b</i> means "a is at least
-     * as good as b".
+     * {@inheritDoc}
      *
      * This graph is immutable.
      *

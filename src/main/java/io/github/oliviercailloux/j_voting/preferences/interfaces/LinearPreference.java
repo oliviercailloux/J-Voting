@@ -13,10 +13,10 @@ import io.github.oliviercailloux.j_voting.Alternative;
 public interface LinearPreference extends CompletePreference {
 
     /**
-     * 
+     * Best alternatives coming first in the list.
+     *
      * @return a sorted list of alternatives corresponding to the preference.
      *
-     * Best alternatives coming first in the list.
      */
     public ImmutableList<Alternative> asList();
 }

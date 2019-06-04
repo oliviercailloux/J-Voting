@@ -8,10 +8,6 @@ import io.github.oliviercailloux.j_voting.Alternative;
  * alternatives.
  */
 public interface AntiSymmetricPreference extends Preference {
-
-    /*
-    * Add here more features if needed
-    */
     
     /**
      * {@inheritDoc}

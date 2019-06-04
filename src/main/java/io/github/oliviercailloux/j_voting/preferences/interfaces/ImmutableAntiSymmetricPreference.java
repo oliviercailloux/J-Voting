@@ -9,10 +9,7 @@ import io.github.oliviercailloux.j_voting.Alternative;
  */
 public interface ImmutableAntiSymmetricPreference
                 extends ImmutablePreference, AntiSymmetricPreference {
-/* This interface combines the ImutablePreference and AntiSymetricPreference
-*
-* Add here more features if needed
-*/
+
     /**
      * {@inheritDoc}
      * This graph is antisymmetric.
