@@ -1,7 +1,7 @@
 Differents formats for _voting data_
 -----------------------------------
 
-Rank format
+Ranks format
 ~~~~~~~~~~~
 This format allows non strict preference. The rank of each alternative in the preference is filled in for every voter.
 
@@ -20,14 +20,14 @@ This format allows non strict preference. The rank of each alternative in the pr
 [options="header"]
 |============================
 ||Voter 1|Voter 2|Voter 3|Voter 4|Voter 5|Voter 6
-|Alternative 1|Voter 1 chose alternative 1 in 1st rank|1|5|5|4|Voter 6 chose alternative 1 in 1st rank (ex-aequo with alternatives 2 & 3)
+|Alternative 1|Alternative 1 is the preferred alternative of Voter 1(1st rank)|1|5|5|4|Voter 6 chose alternative 1 in 1st rank (ex-aequo with alternatives 2 & 3)
 |Alternative 2|3|1|Voter 3 chose alternative 2 in 4th rank|4|4|1
 |Alternative 3|2|2|2|2|1|1
 |Alternative 4|3|4|3|3|3|2
 |Alternative 5|4|3|1|1|2|3
 |============================
 
-Profile format
+VotersToRankings
 ~~~~~~~~~~~~~~
 This format allows only strict preference. The preference for each voter is filled in.
 
@@ -53,9 +53,10 @@ This format allows only strict preference. The preference for each voter is fill
 |Alternative 5|3|1|Alternative 4|1|3
 |==============
 
-Election data format
+CountOfRankings
 ~~~~~~~~~~~~~~~~~~~~
 This format is very useful to represent a lot of data.
+This format can be improved by removing the 5 first lines.
 
 .Example of Election data format
 |=========
@@ -79,7 +80,7 @@ This format is very useful to represent a lot of data.
 |Alternative 2|||
 |Alternative 3|||
 |664 voters|664 voters voted|6 differents preferences|
-|263 Voters chose this preference :|2|1|3
+|263 Voters chose this preference :|Alternative 2 is the best|Alternative 1 is the second|Alternative 3 is the worse
 |249 Voters chose this preference :|1|2|3
 |78 Voters chose this preference :|1|3|2
 |46 Voters chose this preference :|2|3|1
