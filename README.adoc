@@ -88,7 +88,6 @@ We going to work on the two main improvements :
 * #23 CHENNEBAULT & CHHEAN
 * #24 LOUBET & DRAY
 
-
 == Livraison 3
 ...
 
