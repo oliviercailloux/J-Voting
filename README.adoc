@@ -77,6 +77,16 @@ We going to work on the two main improvements :
 * 7#  ODSProfileTest : Junit tests for ODSProfile
 * 8#  Create doc for differents .ODS formats
 
+=== Pull Requests
+* #16 LEDOUX
+* #17 LOUBET & DRAY
+* #18 LOUBET & DRAY
+* #19 CHENNEBAULT
+* #20 CHENNEBAULT
+* #21 LEDOUX
+* #22 CHENNEBAULT & CHHEAN
+* #23 CHENNEBAULT & CHHEAN
+* #24 LOUBET & DRAY
 
 == Livraison 3
 ...
