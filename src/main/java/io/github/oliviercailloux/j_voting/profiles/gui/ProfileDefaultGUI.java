@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
 
-import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.LinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ProfileI;
 import io.github.oliviercailloux.j_voting.profiles.StrictProfile;
@@ -55,7 +55,7 @@ public class ProfileDefaultGUI {
                     SWT.MULTI | SWT.BORDER);
     protected static Table table = tableViewer.getTable();
     protected static Integer voterToModify = null;
-    protected static StrictCompletePreferenceImpl newpref;
+    protected static LinearPreferenceImpl newpref;
     protected static ProfileBuilder profileBuilder;
 
     /**

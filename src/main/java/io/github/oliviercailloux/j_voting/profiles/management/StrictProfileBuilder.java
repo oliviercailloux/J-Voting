@@ -12,7 +12,7 @@ import com.google.common.base.Preconditions;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
-import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.LinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableStrictProfileI;
 import io.github.oliviercailloux.j_voting.profiles.StrictProfileI;
@@ -94,7 +94,7 @@ public class StrictProfileBuilder extends ProfileBuilder {
         for (Voter v : votes.keySet()) {
             List<Alternative> alters = new ArrayList<>();
             alters.add(votes.get(v).getAlternative(0));
-            StrictCompletePreferenceImpl prefOneAlter = StrictCompletePreferenceImpl
+            LinearPreferenceImpl prefOneAlter = LinearPreferenceImpl
                             .createStrictCompletePreferenceImpl(alters);
             addVote(v, prefOneAlter);
         }

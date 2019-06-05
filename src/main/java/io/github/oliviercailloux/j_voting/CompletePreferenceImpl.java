@@ -240,7 +240,7 @@ public class CompletePreferenceImpl {
      *         is strict. If the preference is not strict it throws an
      *         IllegalArgumentException.
      */
-    public StrictCompletePreferenceImpl toStrictPreference() {
+    public LinearPreferenceImpl toStrictPreference() {
         LOGGER.debug("toStrictPreference");
         if (!isStrict()) {
             throw new IllegalArgumentException("the preference is not strict.");
@@ -252,6 +252,6 @@ public class CompletePreferenceImpl {
             }
         }
         LOGGER.debug("list : {}", list);
-        return StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list);
+        return LinearPreferenceImpl.createStrictCompletePreferenceImpl(list);
     }
 }

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
-import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.LinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableStrictProfileI;
 import io.github.oliviercailloux.j_voting.profiles.analysis.FrenchElection;
@@ -49,9 +49,9 @@ public class FrenchElectionTest {
         list3.add(a3);
         list3.add(a2);
         list3.add(a4);
-        StrictCompletePreferenceImpl p1 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list1);
-        StrictCompletePreferenceImpl p2 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list2);
-        StrictCompletePreferenceImpl p3 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list3);
+        LinearPreferenceImpl p1 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list1);
+        LinearPreferenceImpl p2 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list2);
+        LinearPreferenceImpl p3 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);

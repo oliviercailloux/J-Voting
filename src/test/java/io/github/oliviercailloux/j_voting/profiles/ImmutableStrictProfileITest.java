@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
-import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.LinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableStrictProfileI;
 
@@ -24,7 +24,7 @@ public class ImmutableStrictProfileITest {
      * @return an ImmutableStrictProfileI to test
      */
     public static ImmutableStrictProfileI createISPIToTest() {
-        Map<Voter, StrictCompletePreferenceImpl> profile = new HashMap<>();
+        Map<Voter, LinearPreferenceImpl> profile = new HashMap<>();
         Alternative a1 = Alternative.withId(1);
         Alternative a2 = Alternative.withId(2);
         Alternative a3 = Alternative.withId(3);
@@ -41,8 +41,8 @@ public class ImmutableStrictProfileITest {
         list1.add(a3);
         list2.add(a3);
         list2.add(a2);
-        StrictCompletePreferenceImpl pref1 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list1);
-        StrictCompletePreferenceImpl pref2 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list2);
+        LinearPreferenceImpl pref1 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list1);
+        LinearPreferenceImpl pref2 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list2);
         profile.put(v1, pref1);
         profile.put(v2, pref1);
         profile.put(v3, pref1);
@@ -90,8 +90,8 @@ public class ImmutableStrictProfileITest {
      * 
      * @return a map of Voter and StrictPreference to test
      */
-    public static Map<Voter, StrictCompletePreferenceImpl> createStrictMap() {
-        Map<Voter, StrictCompletePreferenceImpl> map = new HashMap<>();
+    public static Map<Voter, LinearPreferenceImpl> createStrictMap() {
+        Map<Voter, LinearPreferenceImpl> map = new HashMap<>();
         Alternative a1 = Alternative.withId(1);
         Alternative a2 = Alternative.withId(2);
         Alternative a3 = Alternative.withId(3);
@@ -106,8 +106,8 @@ public class ImmutableStrictProfileITest {
         list2.add(a3);
         list2.add(a2);
         list2.add(a1);
-        StrictCompletePreferenceImpl p1 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list1);
-        StrictCompletePreferenceImpl p2 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list2);
+        LinearPreferenceImpl p1 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list1);
+        LinearPreferenceImpl p2 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list2);
         map.put(v1, p1);
         map.put(v2, p1);
         map.put(v3, p2);
@@ -124,7 +124,7 @@ public class ImmutableStrictProfileITest {
         list1.add(a1);
         list1.add(a2);
         list1.add(a3);
-        StrictCompletePreferenceImpl pref1 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list1);
+        LinearPreferenceImpl pref1 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list1);
         assertEquals(pref1, createISPIToTest().getPreference(v1));
     }
 }

@@ -17,7 +17,7 @@ import com.google.common.base.Preconditions;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
-import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.LinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 
 /**
@@ -49,7 +49,7 @@ public class ImmutableStrictProfileI extends ImmutableProfileI
     }
 
     @Override
-    public StrictCompletePreferenceImpl getPreference(Voter v) {
+    public LinearPreferenceImpl getPreference(Voter v) {
         LOGGER.debug("getPreference:");
         Preconditions.checkNotNull(v);
         if (!votes.containsKey(v)) {
@@ -68,7 +68,7 @@ public class ImmutableStrictProfileI extends ImmutableProfileI
         }
         List<String> list = new ArrayList<>();
         for (Voter v : getAllVoters()) {
-            StrictCompletePreferenceImpl p = getPreference(v);
+            LinearPreferenceImpl p = getPreference(v);
             LOGGER.debug("the voter {} votes for the preference {}", v, p);
             if (i >= p.size()) {
                 list.add("");
