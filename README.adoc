@@ -100,13 +100,12 @@ We will implement all classes correponding to the Preferences interfaces.
 * *Team 2* : Théo CHENNEBAULT / Louis LEDOUX
 
 === Tasks :
-* 1#  Preferences : Rename StrictCompletePreferenceImpl in LinearPreferenceImpl 
-* 2#  Preferences : Create documentation on the impact of changes with the new CompletePreferenceImpl and LinearPreferenceImpl classes
-* 3#  Preferences : Implement the first preferences class : MutablePreferenceImpl
-* 4#  Preferences : Implement ImmutablePreferenceImpl
-* 5#  Preferences : Implement AntiSymmetricPreferenceImpl, MutableAntiSymmetricPreferenceImpl and ImmutableAntiSymmetricPreferenceImpl
-* 6#  Preferences : Implement NewCompletePreferenceImpl and NewLinearPreferenceImpl
-
+* 1#  Preferences : Rename StrictCompletePreferenceImpl in LinearPreferenceImpl. 
+* 2#  Preferences : Create documentation on the impact of changes with the new CompletePreferenceImpl and LinearPreferenceImpl classes.
+* 3#  Preferences : Implement the first preferences class : MutablePreferenceImpl and reconsider other preferences classes' implementation.
+* 4#  Preferences : Implement ImmutablePreferenceImpl.
+* 5#  Preferences : Implement AntiSymmetricPreferenceImpl, MutableAntiSymmetricPreferenceImpl and ImmutableAntiSymmetricPreferenceImpl.
+* 6#  Preferences : Implement NewCompletePreferenceImpl and NewLinearPreferenceImpl.
 
 
 
