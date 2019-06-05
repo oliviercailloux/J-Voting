@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.TableItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.profiles.StrictProfileI;
 
 public class SOIWrappedColumnsGUI extends ColumnsDefaultGUI {
@@ -25,11 +25,11 @@ public class SOIWrappedColumnsGUI extends ColumnsDefaultGUI {
         LOGGER.debug("createColumns :");
         StrictProfileI strictProfile = profileBuilder.createStrictProfileI();
         // if profile get from file is SOC, create a StrictProfile from it
-        Set<CompletePreferenceImpl> uniquePreferences = strictProfile
+        Set<OldCompletePreferenceImpl> uniquePreferences = strictProfile
                         .getUniquePreferences();
         // COLUMNS
         List<String> titles = new ArrayList<>();
-        for (CompletePreferenceImpl p : uniquePreferences) {
+        for (OldCompletePreferenceImpl p : uniquePreferences) {
             int nbVoters = strictProfile.getNbVoterForPreference(p);
             String voterOrVoters = (nbVoters > 1) ? " voters" : " voter";
             titles.add(nbVoters + voterOrVoters);

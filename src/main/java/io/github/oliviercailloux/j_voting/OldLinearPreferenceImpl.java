@@ -16,15 +16,15 @@ import com.google.common.base.Preconditions;
  * several times in the list Every alternative is an integer and corresponds to
  * a voting choice
  */
-public class StrictCompletePreferenceImpl extends CompletePreferenceImpl {
+public class OldLinearPreferenceImpl extends OldCompletePreferenceImpl {
 
     private static final Logger LOGGER = LoggerFactory
-                    .getLogger(StrictCompletePreferenceImpl.class.getName());
+                    .getLogger(OldLinearPreferenceImpl.class.getName());
 
     /**
      * @param preferences a list of alternatives.
      */
-    private StrictCompletePreferenceImpl(List<Alternative> preference) {
+    private OldLinearPreferenceImpl(List<Alternative> preference) {
         super(listAlternativeToListSetAlternative(preference));
         LOGGER.debug("StrictPreference constructor");
     }
@@ -95,9 +95,9 @@ public class StrictCompletePreferenceImpl extends CompletePreferenceImpl {
      * @param preference <code> not null</code> and all different alternatives
      * @return a new StrictCompletePreferenceImpl
      */
-    public static StrictCompletePreferenceImpl createStrictCompletePreferenceImpl(
+    public static OldLinearPreferenceImpl createStrictCompletePreferenceImpl(
                     List<Alternative> preference) {
-        return new StrictCompletePreferenceImpl(preference);
+        return new OldLinearPreferenceImpl(preference);
     }
 
     /**

@@ -18,10 +18,10 @@ import com.google.common.base.Preconditions;
  * twice the same alternative.
  *
  */
-public class CompletePreferenceImpl {
+public class OldCompletePreferenceImpl {
 
     private static final Logger LOGGER = LoggerFactory
-                    .getLogger(CompletePreferenceImpl.class.getName());
+                    .getLogger(OldCompletePreferenceImpl.class.getName());
     protected List<Set<Alternative>> preference;
 
     /**
@@ -31,7 +31,7 @@ public class CompletePreferenceImpl {
      *                    alternative is present several times, an
      *                    IllegalArgumentException is thrown.
      */
-    protected CompletePreferenceImpl(List<Set<Alternative>> preference) {
+    protected OldCompletePreferenceImpl(List<Set<Alternative>> preference) {
         LOGGER.debug("Preference Factory");
         this.preference = preference;
     }
@@ -91,7 +91,7 @@ public class CompletePreferenceImpl {
             return false;
         if (this.getClass() != o.getClass())
             return false;
-        CompletePreferenceImpl pref = (CompletePreferenceImpl) o;
+        OldCompletePreferenceImpl pref = (OldCompletePreferenceImpl) o;
         return this.preference.equals(pref.preference);
     }
 
@@ -117,7 +117,7 @@ public class CompletePreferenceImpl {
      * @return whether the preferences are about the same alternatives exactly
      *         (not necessarily in the same order).
      */
-    public boolean hasSameAlternatives(CompletePreferenceImpl p) {
+    public boolean hasSameAlternatives(OldCompletePreferenceImpl p) {
         LOGGER.debug("hasSameAlternatives:");
         Preconditions.checkNotNull(p);
         LOGGER.debug("parameter preference : {}", p);
@@ -129,7 +129,7 @@ public class CompletePreferenceImpl {
      * @return whether the parameter preference contains all the alternatives in
      *         the calling preference
      */
-    public boolean isIncludedIn(CompletePreferenceImpl p) {
+    public boolean isIncludedIn(OldCompletePreferenceImpl p) {
         LOGGER.debug("isIncludedIn:");
         Preconditions.checkNotNull(p);
         LOGGER.debug("parameter preference : {}", p);
@@ -211,7 +211,7 @@ public class CompletePreferenceImpl {
      * @param preference <code>not null</code> and all alternatives differents
      * @return a new CompletePreferenceImpl
      */
-    public static CompletePreferenceImpl createCompletePreferenceImpl(
+    public static OldCompletePreferenceImpl createCompletePreferenceImpl(
                     List<Set<Alternative>> preference) {
         LOGGER.debug("Preference Factory");
         Preconditions.checkNotNull(preference);
@@ -221,7 +221,7 @@ public class CompletePreferenceImpl {
             throw new IllegalArgumentException(
                             "A preference cannot contain several times the same alternative.");
         }
-        return new CompletePreferenceImpl(preference);
+        return new OldCompletePreferenceImpl(preference);
     }
 
     /**
@@ -240,7 +240,7 @@ public class CompletePreferenceImpl {
      *         is strict. If the preference is not strict it throws an
      *         IllegalArgumentException.
      */
-    public StrictCompletePreferenceImpl toStrictPreference() {
+    public OldLinearPreferenceImpl toStrictPreference() {
         LOGGER.debug("toStrictPreference");
         if (!isStrict()) {
             throw new IllegalArgumentException("the preference is not strict.");
@@ -252,6 +252,6 @@ public class CompletePreferenceImpl {
             }
         }
         LOGGER.debug("list : {}", list);
-        return StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list);
+        return OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list);
     }
 }

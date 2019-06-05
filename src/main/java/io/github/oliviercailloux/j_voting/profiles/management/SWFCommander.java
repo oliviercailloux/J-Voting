@@ -6,7 +6,7 @@ import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfileI;
 import io.github.oliviercailloux.j_voting.profiles.analysis.SocialWelfareFunction;
@@ -37,7 +37,7 @@ public class SWFCommander {
      * @return the entered StrictPreference
      * @throws IOException when the entered preference is empty.
      */
-    public static StrictCompletePreferenceImpl askPreference()
+    public static OldLinearPreferenceImpl askPreference()
                     throws IOException {
         LOGGER.debug("askPreference");
         System.out.println("Enter a StrictPreference complete");
@@ -68,9 +68,9 @@ public class SWFCommander {
         while (keepGoing) {
             LOGGER.debug("new voter id  : {}", voterId);
             Voter v = Voter.createVoter(voterId);
-            StrictCompletePreferenceImpl strictCompletePreferenceImpl = askPreference();
-            LOGGER.debug("strictPreference :{}", strictCompletePreferenceImpl);
-            prof.addVote(v, strictCompletePreferenceImpl);
+            OldLinearPreferenceImpl oldLinearPreferenceImpl = askPreference();
+            LOGGER.debug("strictPreference :{}", oldLinearPreferenceImpl);
+            prof.addVote(v, oldLinearPreferenceImpl);
             LOGGER.info("Continue ? (yes/no)");
             try (Scanner scn = new Scanner(System.in)) {
                 String answer = scn.nextLine();

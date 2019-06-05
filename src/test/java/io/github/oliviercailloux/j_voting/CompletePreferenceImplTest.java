@@ -11,11 +11,11 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
 
 public class CompletePreferenceImplTest {
 
-    public static CompletePreferenceImpl createPreferenceToTest() {
+    public static OldCompletePreferenceImpl createPreferenceToTest() {
         Alternative a1 = Alternative.withId(1);
         Alternative a2 = Alternative.withId(2);
         Alternative a3 = Alternative.withId(3);
@@ -33,7 +33,7 @@ public class CompletePreferenceImplTest {
         list.add(set1);
         list.add(set2);
         list.add(set3);
-        return CompletePreferenceImpl.createCompletePreferenceImpl(list);
+        return OldCompletePreferenceImpl.createCompletePreferenceImpl(list);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class CompletePreferenceImplTest {
 
     @Test
     public void testEqualsPreference() {
-        CompletePreferenceImpl p1 = createPreferenceToTest();
+        OldCompletePreferenceImpl p1 = createPreferenceToTest();
         Alternative a1 = Alternative.withId(1);
         Alternative a2 = Alternative.withId(2);
         Alternative a3 = Alternative.withId(3);
@@ -94,7 +94,7 @@ public class CompletePreferenceImplTest {
         list.add(set1);
         list.add(set2);
         list.add(set3);
-        CompletePreferenceImpl p2 = CompletePreferenceImpl.createCompletePreferenceImpl(list);
+        OldCompletePreferenceImpl p2 = OldCompletePreferenceImpl.createCompletePreferenceImpl(list);
         assertTrue(p1.equals(p2));
     }
 
@@ -123,7 +123,7 @@ public class CompletePreferenceImplTest {
         list.add(set1);
         list.add(set2);
         list.add(set3);
-        CompletePreferenceImpl pref = CompletePreferenceImpl.createCompletePreferenceImpl(list);
+        OldCompletePreferenceImpl pref = OldCompletePreferenceImpl.createCompletePreferenceImpl(list);
         assertTrue(pref.hasSameAlternatives(createPreferenceToTest()));
     }
 
@@ -144,7 +144,7 @@ public class CompletePreferenceImplTest {
         list.add(set1);
         list.add(set2);
         list.add(set3);
-        CompletePreferenceImpl p = CompletePreferenceImpl.createCompletePreferenceImpl(list);
+        OldCompletePreferenceImpl p = OldCompletePreferenceImpl.createCompletePreferenceImpl(list);
         assertTrue(p.isIncludedIn(createPreferenceToTest()));
     }
 
@@ -161,7 +161,7 @@ public class CompletePreferenceImplTest {
         set.add(a3);
         set.add(a4);
         set.add(a5);
-        assertEquals(CompletePreferenceImpl.toAlternativeSet(
+        assertEquals(OldCompletePreferenceImpl.toAlternativeSet(
                         createPreferenceToTest().getPreferencesNonStrict()),
                         set);
     }
@@ -206,7 +206,7 @@ public class CompletePreferenceImplTest {
 
     @Test
     public void testSizeListSetAlternative() {
-        assertEquals(CompletePreferenceImpl.size(
+        assertEquals(OldCompletePreferenceImpl.size(
                         createPreferenceToTest().getPreferencesNonStrict()), 5);
     }
 
@@ -230,7 +230,7 @@ public class CompletePreferenceImplTest {
         list.add(s1);
         list.add(s2);
         list.add(s3);
-        CompletePreferenceImpl p = CompletePreferenceImpl.createCompletePreferenceImpl(list);
+        OldCompletePreferenceImpl p = OldCompletePreferenceImpl.createCompletePreferenceImpl(list);
         assertTrue(p.isStrict());
     }
 

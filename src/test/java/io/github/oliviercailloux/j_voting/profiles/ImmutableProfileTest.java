@@ -12,14 +12,14 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfile;
 
 public class ImmutableProfileTest {
 
     public static ImmutableProfile createIPToTest() {
-        Map<Voter, CompletePreferenceImpl> profile = new HashMap<>();
+        Map<Voter, OldCompletePreferenceImpl> profile = new HashMap<>();
         Alternative a1 = Alternative.withId(1);
         Alternative a2 = Alternative.withId(2);
         Alternative a3 = Alternative.withId(3);
@@ -45,8 +45,8 @@ public class ImmutableProfileTest {
         list1.add(s2);
         list2.add(s3);
         list2.add(s4);
-        CompletePreferenceImpl pref1 = CompletePreferenceImpl.createCompletePreferenceImpl(list1);
-        CompletePreferenceImpl pref2 = CompletePreferenceImpl.createCompletePreferenceImpl(list2);
+        OldCompletePreferenceImpl pref1 = OldCompletePreferenceImpl.createCompletePreferenceImpl(list1);
+        OldCompletePreferenceImpl pref2 = OldCompletePreferenceImpl.createCompletePreferenceImpl(list2);
         profile.put(v1, pref1);
         profile.put(v2, pref1);
         profile.put(v3, pref1);

@@ -10,8 +10,8 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
-import io.github.oliviercailloux.j_voting.StrictCompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfile;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfileI;
@@ -58,8 +58,8 @@ public class ProfileBuilderTest {
         list1.add(s2);
         list2.add(s3);
         list2.add(s4);
-        CompletePreferenceImpl pref1 = CompletePreferenceImpl.createCompletePreferenceImpl(list1);
-        CompletePreferenceImpl pref2 = CompletePreferenceImpl.createCompletePreferenceImpl(list2);
+        OldCompletePreferenceImpl pref1 = OldCompletePreferenceImpl.createCompletePreferenceImpl(list1);
+        OldCompletePreferenceImpl pref2 = OldCompletePreferenceImpl.createCompletePreferenceImpl(list2);
         profileBuilder.addVote(v1, pref1);
         profileBuilder.addVote(v2, pref1);
         profileBuilder.addVote(v3, pref1);
@@ -102,8 +102,8 @@ public class ProfileBuilderTest {
         list1.add(s2);
         list2.add(s3);
         list2.add(s4);
-        CompletePreferenceImpl pref1 = CompletePreferenceImpl.createCompletePreferenceImpl(list1);
-        CompletePreferenceImpl pref2 = CompletePreferenceImpl.createCompletePreferenceImpl(list2);
+        OldCompletePreferenceImpl pref1 = OldCompletePreferenceImpl.createCompletePreferenceImpl(list1);
+        OldCompletePreferenceImpl pref2 = OldCompletePreferenceImpl.createCompletePreferenceImpl(list2);
         profileBuilder.addVote(v1, pref1);
         profileBuilder.addVote(v2, pref1);
         profileBuilder.addVote(v3, pref1);
@@ -136,8 +136,8 @@ public class ProfileBuilderTest {
         list1.add(a3);
         list2.add(a3);
         list2.add(a2);
-        StrictCompletePreferenceImpl pref1 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list1);
-        StrictCompletePreferenceImpl pref2 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list2);
+        OldLinearPreferenceImpl pref1 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list1);
+        OldLinearPreferenceImpl pref2 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list2);
         profileBuilder.addVote(v1, pref1);
         profileBuilder.addVote(v2, pref1);
         profileBuilder.addVote(v3, pref1);
@@ -173,8 +173,8 @@ public class ProfileBuilderTest {
         list2.add(a3);
         list2.add(a2);
         list2.add(a1);
-        StrictCompletePreferenceImpl pref1 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list1);
-        StrictCompletePreferenceImpl pref2 = StrictCompletePreferenceImpl.createStrictCompletePreferenceImpl(list2);
+        OldLinearPreferenceImpl pref1 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list1);
+        OldLinearPreferenceImpl pref2 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list2);
         profileBuilder.addVote(v1, pref1);
         profileBuilder.addVote(v2, pref1);
         profileBuilder.addVote(v3, pref1);

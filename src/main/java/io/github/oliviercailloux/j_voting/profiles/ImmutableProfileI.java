@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Preconditions;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.management.ProfileBuilder;
 
@@ -27,16 +27,16 @@ public class ImmutableProfileI implements ProfileI {
 
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(ImmutableProfileI.class.getName());
-    protected Map<Voter, ? extends CompletePreferenceImpl> votes;
+    protected Map<Voter, ? extends OldCompletePreferenceImpl> votes;
 
     protected ImmutableProfileI(
-                    Map<Voter, ? extends CompletePreferenceImpl> votes) {
+                    Map<Voter, ? extends OldCompletePreferenceImpl> votes) {
         LOGGER.debug("ImmutableProfileI constructor");
         this.votes = votes;
     }
 
     @Override
-    public CompletePreferenceImpl getPreference(Voter v) {
+    public OldCompletePreferenceImpl getPreference(Voter v) {
         LOGGER.debug("getPreference:");
         Preconditions.checkNotNull(v);
         LOGGER.debug("parameter voter : {}", v);
@@ -50,8 +50,8 @@ public class ImmutableProfileI implements ProfileI {
     public int getMaxSizeOfPreference() {
         LOGGER.debug("getMaxSizeOfPreference");
         int maxSize = 0;
-        Collection<? extends CompletePreferenceImpl> pref = votes.values();
-        for (CompletePreferenceImpl p : pref) {
+        Collection<? extends OldCompletePreferenceImpl> pref = votes.values();
+        for (OldCompletePreferenceImpl p : pref) {
             if (maxSize < p.size()) {
                 maxSize = p.size();
             }
@@ -61,7 +61,7 @@ public class ImmutableProfileI implements ProfileI {
     }
 
     @Override
-    public Map<Voter, ? extends CompletePreferenceImpl> getProfile() {
+    public Map<Voter, ? extends OldCompletePreferenceImpl> getProfile() {
         LOGGER.debug("getProfile:");
         return votes;
     }
@@ -90,10 +90,10 @@ public class ImmutableProfileI implements ProfileI {
     }
 
     @Override
-    public Set<CompletePreferenceImpl> getUniquePreferences() {
+    public Set<OldCompletePreferenceImpl> getUniquePreferences() {
         LOGGER.debug("getUniquePreferences");
-        Set<CompletePreferenceImpl> unique = new LinkedHashSet<>();
-        for (CompletePreferenceImpl pref : votes.values()) {
+        Set<OldCompletePreferenceImpl> unique = new LinkedHashSet<>();
+        for (OldCompletePreferenceImpl pref : votes.values()) {
             LOGGER.debug("next preference : {}", pref);
             unique.add(pref);
         }
@@ -109,9 +109,9 @@ public class ImmutableProfileI implements ProfileI {
     @Override
     public boolean isComplete() {
         LOGGER.debug("isComplete");
-        CompletePreferenceImpl pref = votes.values().iterator().next();
+        OldCompletePreferenceImpl pref = votes.values().iterator().next();
         LOGGER.debug("first preferences :{}", pref);
-        for (CompletePreferenceImpl p : votes.values()) {
+        for (OldCompletePreferenceImpl p : votes.values()) {
             if (!p.hasSameAlternatives(pref)) {
                 LOGGER.debug("Profile incomplete.");
                 return false;
@@ -124,7 +124,7 @@ public class ImmutableProfileI implements ProfileI {
     @Override
     public boolean isStrict() {
         LOGGER.debug("isStrict:");
-        for (CompletePreferenceImpl p : votes.values()) {
+        for (OldCompletePreferenceImpl p : votes.values()) {
             if (!p.isStrict()) {
                 LOGGER.debug("non strict");
                 return false;
@@ -135,12 +135,12 @@ public class ImmutableProfileI implements ProfileI {
     }
 
     @Override
-    public int getNbVoterForPreference(CompletePreferenceImpl p) {
+    public int getNbVoterForPreference(OldCompletePreferenceImpl p) {
         LOGGER.debug("getnbVoterByPreference:");
         Preconditions.checkNotNull(p);
         LOGGER.debug("parameter preference: {}", p);
         int nb = 0;
-        for (CompletePreferenceImpl p1 : votes.values()) {
+        for (OldCompletePreferenceImpl p1 : votes.values()) {
             if (p.equals(p1)) {
                 nb++;
             }
@@ -192,8 +192,8 @@ public class ImmutableProfileI implements ProfileI {
      * @return the map if and only if it represents a complete profile. If it is
      *         incomplete, it throws an IllegalArgumentException.
      */
-    public static Map<Voter, ? extends CompletePreferenceImpl> checkCompleteMap(
-                    Map<Voter, ? extends CompletePreferenceImpl> map) {
+    public static Map<Voter, ? extends OldCompletePreferenceImpl> checkCompleteMap(
+                    Map<Voter, ? extends OldCompletePreferenceImpl> map) {
         LOGGER.debug("checkCompleteMap:");
         Preconditions.checkNotNull(map);
         if (!createImmutableProfileI(map).isComplete()) {
@@ -208,8 +208,8 @@ public class ImmutableProfileI implements ProfileI {
      * @return the map if and only if it represents a strict profile. If it is
      *         not strict, it throws an IllegalArgumentException.
      */
-    public static Map<Voter, ? extends CompletePreferenceImpl> checkStrictMap(
-                    Map<Voter, ? extends CompletePreferenceImpl> map) {
+    public static Map<Voter, ? extends OldCompletePreferenceImpl> checkStrictMap(
+                    Map<Voter, ? extends OldCompletePreferenceImpl> map) {
         LOGGER.debug("checkstrictMap:");
         Preconditions.checkNotNull(map);
         if (!createImmutableProfileI(map).isStrict()) {
@@ -225,7 +225,7 @@ public class ImmutableProfileI implements ProfileI {
      * @return new ImmutableProfileI
      */
     public static ImmutableProfileI createImmutableProfileI(
-                    Map<Voter, ? extends CompletePreferenceImpl> votes) {
+                    Map<Voter, ? extends OldCompletePreferenceImpl> votes) {
         LOGGER.debug("Factory ImmutableProfileI");
         Preconditions.checkNotNull(votes);
         return new ImmutableProfileI(votes);
@@ -241,8 +241,8 @@ public class ImmutableProfileI implements ProfileI {
     public Set<Alternative> getAlternatives() {
         LOGGER.debug("getAlternatives");
         Set<Alternative> set = new HashSet<>();
-        for (CompletePreferenceImpl pref : getUniquePreferences()) {
-            for (Alternative a : CompletePreferenceImpl
+        for (OldCompletePreferenceImpl pref : getUniquePreferences()) {
+            for (Alternative a : OldCompletePreferenceImpl
                             .toAlternativeSet(pref.getPreferencesNonStrict())) {
                 set.add(a);
             }
