@@ -1,0 +1,5 @@
+To edit Diagram :
+~~~~~~~~~~~~~~~~
+* Go to 
+https://www.draw.io/[^] website
+* Import _Preference-Interfaces.xml_
