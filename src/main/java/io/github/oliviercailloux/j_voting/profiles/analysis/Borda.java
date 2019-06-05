@@ -14,7 +14,7 @@ import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfileI;
 import io.github.oliviercailloux.j_voting.profiles.ProfileI;
@@ -65,7 +65,7 @@ public class Borda implements SocialWelfareFunction {
      * @return a Preference with the alternatives sorted
      */
     @Override
-    public CompletePreferenceImpl getSocietyPreference(
+    public OldCompletePreferenceImpl getSocietyPreference(
                     ImmutableProfileI profile) {
         LOGGER.debug("getSocietyStrictPreference");
         Preconditions.checkNotNull(profile);
@@ -82,7 +82,7 @@ public class Borda implements SocialWelfareFunction {
                 tempscores.remove(a, tempscores.count(a));
             }
         }
-        CompletePreferenceImpl pref = CompletePreferenceImpl
+        OldCompletePreferenceImpl pref = OldCompletePreferenceImpl
                         .createCompletePreferenceImpl(al);
         LOGGER.debug("return AScores : {}", pref);
         return pref;
@@ -95,12 +95,12 @@ public class Borda implements SocialWelfareFunction {
      *              the preference to the multiset for the alternatives in this
      *              StrictPreference
      */
-    public void setScores(CompletePreferenceImpl pref) {
+    public void setScores(OldCompletePreferenceImpl pref) {
         LOGGER.debug("getScorePref");
         Preconditions.checkNotNull(pref);
         LOGGER.debug("parameter SPref : {}", pref);
         int size = pref.getPreferencesNonStrict().size();
-        for (Alternative a : CompletePreferenceImpl
+        for (Alternative a : OldCompletePreferenceImpl
                         .toAlternativeSet(pref.getPreferencesNonStrict())) {
             scores.add(a, size - pref.getAlternativeRank(a) + 1);
         }

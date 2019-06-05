@@ -5,7 +5,7 @@ import java.util.NavigableSet;
 import java.util.Set;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 
 /**
@@ -20,7 +20,7 @@ public interface ProfileI {
      * @param v a voter not <code>null</code>
      * @return the preference of the voter v in the profile.
      */
-    public CompletePreferenceImpl getPreference(Voter v);
+    public OldCompletePreferenceImpl getPreference(Voter v);
 
     /**
      * @return the maximum size of a Preference in an incomplete Profile
@@ -31,7 +31,7 @@ public interface ProfileI {
      * 
      * @return the profile as a map mapping the voters to their preference.
      */
-    public Map<Voter, ? extends CompletePreferenceImpl> getProfile();
+    public Map<Voter, ? extends OldCompletePreferenceImpl> getProfile();
 
     /**
      * 
@@ -56,7 +56,7 @@ public interface ProfileI {
      * 
      * @return a set of all the different preferences in the profile.
      */
-    public Set<CompletePreferenceImpl> getUniquePreferences();
+    public Set<OldCompletePreferenceImpl> getUniquePreferences();
 
     /**
      * 
@@ -83,7 +83,7 @@ public interface ProfileI {
      * @param p a Preference not <code >null </code>
      * @return the number of voters that voted for p.
      */
-    public int getNbVoterForPreference(CompletePreferenceImpl p);
+    public int getNbVoterForPreference(OldCompletePreferenceImpl p);
 
     /**
      * 

@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Preconditions;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 
 /**
@@ -30,11 +30,11 @@ public class ImmutableStrictProfile extends ImmutableStrictProfileI
                     .getLogger(ImmutableStrictProfile.class.getName());
 
     public static ImmutableStrictProfile createImmutableStrictProfile(
-                    Map<Voter, ? extends CompletePreferenceImpl> map) {
+                    Map<Voter, ? extends OldCompletePreferenceImpl> map) {
         return new ImmutableStrictProfile(map);
     }
 
-    private ImmutableStrictProfile(Map<Voter, ? extends CompletePreferenceImpl> map) {
+    private ImmutableStrictProfile(Map<Voter, ? extends OldCompletePreferenceImpl> map) {
         super(checkCompleteMap(map));
     }
 
@@ -47,8 +47,8 @@ public class ImmutableStrictProfile extends ImmutableStrictProfileI
     @Override
     public Set<Alternative> getAlternatives() {
         LOGGER.debug("getAlternatives :");
-        CompletePreferenceImpl p = votes.values().iterator().next();
-        return CompletePreferenceImpl.toAlternativeSet(p.getPreferencesNonStrict());
+        OldCompletePreferenceImpl p = votes.values().iterator().next();
+        return OldCompletePreferenceImpl.toAlternativeSet(p.getPreferencesNonStrict());
     }
 
     /**
@@ -81,7 +81,7 @@ public class ImmutableStrictProfile extends ImmutableStrictProfileI
         LOGGER.debug("getIthAlternativesOfUniquePreferences :");
         Preconditions.checkNotNull(i);
         List<Alternative> listIthAlternatives = new ArrayList<>();
-        for (CompletePreferenceImpl p : getUniquePreferences()) {
+        for (OldCompletePreferenceImpl p : getUniquePreferences()) {
             listIthAlternatives.add(p.getAlternative(i));
         }
         return listIthAlternatives;
@@ -100,9 +100,9 @@ public class ImmutableStrictProfile extends ImmutableStrictProfileI
             }
             soc.append(getNbVoters() + "," + getSumVoteCount() + ","
                             + getNbUniquePreferences() + "\n");
-            for (CompletePreferenceImpl pref : this.getUniquePreferences()) {
+            for (OldCompletePreferenceImpl pref : this.getUniquePreferences()) {
                 soc.append(getNbVoterForPreference(pref));
-                for (Alternative a : CompletePreferenceImpl.toAlternativeSet(
+                for (Alternative a : OldCompletePreferenceImpl.toAlternativeSet(
                                 pref.getPreferencesNonStrict())) {
                     soc.append("," + a);
                 }

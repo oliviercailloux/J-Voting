@@ -11,7 +11,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableProfileI;
 import io.github.oliviercailloux.j_voting.profiles.ProfileI;
@@ -44,9 +44,9 @@ public class DictatorTest {
         list1.add(s2);
         list2.add(s2);
         list3.add(s3);
-        CompletePreferenceImpl pref1 = CompletePreferenceImpl.createCompletePreferenceImpl(list1);
-        CompletePreferenceImpl pref2 = CompletePreferenceImpl.createCompletePreferenceImpl(list2);
-        CompletePreferenceImpl pref3 = CompletePreferenceImpl.createCompletePreferenceImpl(list3);
+        OldCompletePreferenceImpl pref1 = OldCompletePreferenceImpl.createCompletePreferenceImpl(list1);
+        OldCompletePreferenceImpl pref2 = OldCompletePreferenceImpl.createCompletePreferenceImpl(list2);
+        OldCompletePreferenceImpl pref3 = OldCompletePreferenceImpl.createCompletePreferenceImpl(list3);
         ProfileBuilder prof = ProfileBuilder.createProfileBuilder();
         prof.addVote(v1, pref1);
         prof.addVote(v2, pref2);

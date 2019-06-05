@@ -16,8 +16,8 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Preconditions;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
-import io.github.oliviercailloux.j_voting.LinearPreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 
 /**
@@ -36,20 +36,20 @@ public class ImmutableStrictProfileI extends ImmutableProfileI
      * @return new ImmutableStrictProfileI
      */
     public static ImmutableStrictProfileI createImmutableStrictProfileI(
-                    Map<Voter, ? extends CompletePreferenceImpl> map) {
+                    Map<Voter, ? extends OldCompletePreferenceImpl> map) {
         LOGGER.debug("Factory ImmutableStrictProfileI");
         checkStrictMap(map);
         return new ImmutableStrictProfileI(map);
     }
 
     protected ImmutableStrictProfileI(
-                    Map<Voter, ? extends CompletePreferenceImpl> map) {
+                    Map<Voter, ? extends OldCompletePreferenceImpl> map) {
         super(map);
         LOGGER.debug("ImmutableStrictProfileI  constructor");
     }
 
     @Override
-    public LinearPreferenceImpl getPreference(Voter v) {
+    public OldLinearPreferenceImpl getPreference(Voter v) {
         LOGGER.debug("getPreference:");
         Preconditions.checkNotNull(v);
         if (!votes.containsKey(v)) {
@@ -68,7 +68,7 @@ public class ImmutableStrictProfileI extends ImmutableProfileI
         }
         List<String> list = new ArrayList<>();
         for (Voter v : getAllVoters()) {
-            LinearPreferenceImpl p = getPreference(v);
+            OldLinearPreferenceImpl p = getPreference(v);
             LOGGER.debug("the voter {} votes for the preference {}", v, p);
             if (i >= p.size()) {
                 list.add("");
@@ -86,7 +86,7 @@ public class ImmutableStrictProfileI extends ImmutableProfileI
         LOGGER.debug("getIthAlternativesOfUniquePrefAsString");
         Preconditions.checkNotNull(i);
         List<String> list = new ArrayList<>();
-        for (CompletePreferenceImpl p : getUniquePreferences()) {
+        for (OldCompletePreferenceImpl p : getUniquePreferences()) {
             String alter = "";
             if (i < p.size()) {
                 alter = p.getAlternative(i).toString();
@@ -110,9 +110,9 @@ public class ImmutableStrictProfileI extends ImmutableProfileI
             }
             soi.append(getNbVoters() + "," + getSumVoteCount() + ","
                             + getNbUniquePreferences() + "\n");
-            for (CompletePreferenceImpl pref : this.getUniquePreferences()) {
+            for (OldCompletePreferenceImpl pref : this.getUniquePreferences()) {
                 soi.append(getNbVoterForPreference(pref));
-                for (Alternative a : CompletePreferenceImpl.toAlternativeSet(
+                for (Alternative a : OldCompletePreferenceImpl.toAlternativeSet(
                                 pref.getPreferencesNonStrict())) {
                     soi.append("," + a);
                 }

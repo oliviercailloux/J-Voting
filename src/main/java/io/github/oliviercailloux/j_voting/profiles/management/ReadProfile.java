@@ -26,7 +26,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.io.CharStreams;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.LinearPreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ProfileI;
 
@@ -86,7 +86,7 @@ public class ReadProfile {
             }
             LOGGER.debug("lines with the number of votes for each StrictPreference : {}",
                             profiles);
-            LinearPreferenceImpl listeAlternatives = getAlternatives(alternatives);
+            OldLinearPreferenceImpl listeAlternatives = getAlternatives(alternatives);
             List<Integer> listInt = getStatsVoters(lineNbVoters);
             return buildProfile(profiles, listeAlternatives, listInt.get(0));
         }
@@ -114,7 +114,7 @@ public class ReadProfile {
                 }
             }
             Voter voter = Voter.createVoter(column + 1);
-            LinearPreferenceImpl newPref = new ReadProfile()
+            OldLinearPreferenceImpl newPref = new ReadProfile()
                             .createStrictPreferenceFrom(
                                             newPrefString.toString());
             profileBuilder.addVote(voter, newPref);
@@ -143,7 +143,7 @@ public class ReadProfile {
                 }
             }
             Voter voter = Voter.createVoter(item + 1);
-            LinearPreferenceImpl newPref = new ReadProfile()
+            OldLinearPreferenceImpl newPref = new ReadProfile()
                             .createStrictPreferenceFrom(
                                             newPrefString.toString());
             profileBuilder.addVote(voter, newPref);
@@ -201,7 +201,7 @@ public class ReadProfile {
      * @return the Alternatives, in the list of strings, given as a
      *         StrictPreference.
      */
-    private LinearPreferenceImpl getAlternatives(List<String> listOfStrings) {
+    private OldLinearPreferenceImpl getAlternatives(List<String> listOfStrings) {
         LOGGER.debug("GetAlternatives :");
         Preconditions.checkNotNull(listOfStrings);
         LOGGER.debug("parameter : file = {}", listOfStrings);
@@ -210,7 +210,7 @@ public class ReadProfile {
             LOGGER.debug("next Alternative : {}", alternative);
             alternatives.add(Alternative.withId(Integer.parseInt(alternative)));
         }
-        LinearPreferenceImpl listAlternatives = LinearPreferenceImpl.createStrictCompletePreferenceImpl(alternatives);
+        OldLinearPreferenceImpl listAlternatives = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(alternatives);
         LOGGER.debug("returns listAlternatives : {}", listAlternatives);
         return listAlternatives;
     }
@@ -242,7 +242,7 @@ public class ReadProfile {
      *                          alternatives)
      * @return the StrictPreference given in the line s1
      */
-    public LinearPreferenceImpl getPreferences(LinearPreferenceImpl listeAlternatives,
+    public OldLinearPreferenceImpl getPreferences(OldLinearPreferenceImpl listeAlternatives,
                     String s1) {
         LOGGER.debug("GetPreferences");
         Preconditions.checkNotNull(listeAlternatives);
@@ -264,7 +264,7 @@ public class ReadProfile {
                                 "The line s1 contains an alternative that is not in the profile's alternatives");
             }
         }
-        return LinearPreferenceImpl.createStrictCompletePreferenceImpl(pref);
+        return OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(pref);
     }
 
     /**
@@ -273,7 +273,7 @@ public class ReadProfile {
      * @return the strictPreference in the string. The string only contains the
      *         alternatives.
      */
-    public LinearPreferenceImpl createStrictPreferenceFrom(
+    public OldLinearPreferenceImpl createStrictPreferenceFrom(
                     String stringPreference) {
         LOGGER.debug("GetPreferences");
         Preconditions.checkNotNull(stringPreference);
@@ -287,7 +287,7 @@ public class ReadProfile {
         }
         if (pref.isEmpty())
             throw new IllegalArgumentException("The preference is empty.");
-        return LinearPreferenceImpl.createStrictCompletePreferenceImpl(pref);
+        return OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(pref);
     }
 
     /**
@@ -299,7 +299,7 @@ public class ReadProfile {
      * @return the created StrictProfile
      */
     public ProfileI buildProfile(List<String> file,
-                    LinearPreferenceImpl listAlternatives, int nbVoters) {
+                    OldLinearPreferenceImpl listAlternatives, int nbVoters) {
         LOGGER.debug("BuildProfiles :");
         Preconditions.checkNotNull(file);
         Preconditions.checkNotNull(listAlternatives);
@@ -313,7 +313,7 @@ public class ReadProfile {
                                 "the first string of file is an alternative line.");
             }
             String[] lineAsArray = line.split(",");
-            LinearPreferenceImpl pref = getPreferences(listAlternatives, line);
+            OldLinearPreferenceImpl pref = getPreferences(listAlternatives, line);
             LOGGER.debug("to add : {} votes for the StrictPreference {}",
                             lineAsArray[0].trim(), pref);
             profile.addVotes(pref, Integer.parseInt(lineAsArray[0].trim()));

@@ -10,7 +10,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.LinearPreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableStrictProfileI;
 import io.github.oliviercailloux.j_voting.profiles.management.StrictProfileBuilder;
@@ -36,9 +36,9 @@ public class StrictProfileBuilderTest {
         list3.add(a3);
         list3.add(a2);
         list3.add(a4);
-        LinearPreferenceImpl p1 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list1);
-        LinearPreferenceImpl p2 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list2);
-        LinearPreferenceImpl p3 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list3);
+        OldLinearPreferenceImpl p1 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list1);
+        OldLinearPreferenceImpl p2 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list2);
+        OldLinearPreferenceImpl p3 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);
@@ -54,16 +54,16 @@ public class StrictProfileBuilderTest {
         profBuild.addVote(v6, p3);
         ImmutableStrictProfileI resultProf = profBuild
                         .createOneAlternativeProfile();
-        Map<Voter, LinearPreferenceImpl> map = new HashMap<>();
+        Map<Voter, OldLinearPreferenceImpl> map = new HashMap<>();
         List<Alternative> l1 = new ArrayList<>();
         List<Alternative> l2 = new ArrayList<>();
         List<Alternative> l3 = new ArrayList<>();
         l1.add(a1);
         l2.add(a2);
         l3.add(a3);
-        LinearPreferenceImpl pref1 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(l1);
-        LinearPreferenceImpl pref2 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(l2);
-        LinearPreferenceImpl pref3 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(l3);
+        OldLinearPreferenceImpl pref1 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(l1);
+        OldLinearPreferenceImpl pref2 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(l2);
+        OldLinearPreferenceImpl pref3 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(l3);
         map.put(v1, pref1);
         map.put(v2, pref1);
         map.put(v3, pref1);

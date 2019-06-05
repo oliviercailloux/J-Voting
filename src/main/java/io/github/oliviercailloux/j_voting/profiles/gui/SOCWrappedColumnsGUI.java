@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.profiles.StrictProfile;
 
 public class SOCWrappedColumnsGUI extends ColumnsDefaultGUI {
@@ -25,11 +25,11 @@ public class SOCWrappedColumnsGUI extends ColumnsDefaultGUI {
         LOGGER.debug("createColumns :");
         StrictProfile strictProfile = profileBuilder.createStrictProfile();
         // if profile get from file is SOC, create a StrictProfile from it
-        Set<CompletePreferenceImpl> uniquePreferences = strictProfile
+        Set<OldCompletePreferenceImpl> uniquePreferences = strictProfile
                         .getUniquePreferences();
         // COLUMNS
         List<String> titles = new ArrayList<>();
-        for (CompletePreferenceImpl p : uniquePreferences) {
+        for (OldCompletePreferenceImpl p : uniquePreferences) {
             int nbVoters = strictProfile.getNbVoterForPreference(p);
             String voterOrVoters = (nbVoters > 1) ? " voters" : " voter";
             titles.add(nbVoters + voterOrVoters);

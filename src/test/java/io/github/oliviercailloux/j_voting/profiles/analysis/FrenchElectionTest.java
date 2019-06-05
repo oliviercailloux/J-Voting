@@ -10,8 +10,8 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.CompletePreferenceImpl;
-import io.github.oliviercailloux.j_voting.LinearPreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableStrictProfileI;
 import io.github.oliviercailloux.j_voting.profiles.analysis.FrenchElection;
@@ -35,7 +35,7 @@ public class FrenchElectionTest {
         l1.add(s1);
         l1.add(s2);
         l1.add(s3);
-        CompletePreferenceImpl pref1 = CompletePreferenceImpl.createCompletePreferenceImpl(l1);
+        OldCompletePreferenceImpl pref1 = OldCompletePreferenceImpl.createCompletePreferenceImpl(l1);
         List<Alternative> list1 = new ArrayList<>();
         List<Alternative> list2 = new ArrayList<>();
         List<Alternative> list3 = new ArrayList<>();
@@ -49,9 +49,9 @@ public class FrenchElectionTest {
         list3.add(a3);
         list3.add(a2);
         list3.add(a4);
-        LinearPreferenceImpl p1 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list1);
-        LinearPreferenceImpl p2 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list2);
-        LinearPreferenceImpl p3 = LinearPreferenceImpl.createStrictCompletePreferenceImpl(list3);
+        OldLinearPreferenceImpl p1 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list1);
+        OldLinearPreferenceImpl p2 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list2);
+        OldLinearPreferenceImpl p3 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list3);
         Voter v1 = Voter.createVoter(1);
         Voter v2 = Voter.createVoter(2);
         Voter v3 = Voter.createVoter(3);
