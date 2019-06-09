@@ -32,7 +32,7 @@ public class MutablePreferenceImpl implements MutablePreference {
         voter = V;
     }
     
-    public MutablePreferenceImpl(Set<List<Set<Alternative>>> pref, Voter V) {
+    private MutablePreferenceImpl(Set<List<Set<Alternative>>> pref, Voter V) {
         voter = V;
         graph = GraphBuilder.directed().allowsSelfLoops(true).build();
         for (List<Set<Alternative>> array : pref) {
@@ -57,8 +57,12 @@ public class MutablePreferenceImpl implements MutablePreference {
         }
     }
     
+    public static MutablePreferenceImpl of(Set<List<Set<Alternative>>> S, Voter V) {
+        return new MutablePreferenceImpl(S, V);
+    }
+    
     @Override public MutableGraph<Alternative> asGraph() {
-        return null;
+        return graph;
     }
     
     @Override public Set<Alternative> getAlternatives() {
@@ -69,7 +73,4 @@ public class MutablePreferenceImpl implements MutablePreference {
         return voter;
     }
     
-    public MutableGraph<Alternative> getGraph() {
-        return graph;
-    }
 }

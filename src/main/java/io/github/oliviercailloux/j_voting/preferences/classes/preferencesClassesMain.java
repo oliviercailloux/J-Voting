@@ -1,5 +1,6 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
+import com.google.common.graph.MutableGraph;
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 
@@ -30,8 +31,8 @@ public class preferencesClassesMain {
         Set<List<Set<Alternative>>> setTest = Set.of(listTest);
         
         
-        MutablePreferenceImpl pref = new MutablePreferenceImpl(setTest, Voter.createVoter(1));
-        System.out.println(pref.getGraph());
+        MutablePreferenceImpl pref = MutablePreferenceImpl.of(setTest, Voter.createVoter(1));
+        System.out.println(pref.asGraph());
         
     }
 }
