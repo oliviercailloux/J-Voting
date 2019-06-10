@@ -3,8 +3,6 @@ package io.github.oliviercailloux.j_voting.preferences.classes;
 import com.google.common.base.Preconditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-
 import com.google.common.graph.Graph;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
@@ -19,9 +17,9 @@ import java.util.Set;
 
 /**
  * Implements a Preference as a graph and associates it with a Voter.
- *
+ * <p>
  * To get an instance of this, see MutablePreference.
- *
+ * <p>
  * This class contains all the common methods of all different Preferences.
  *
  * @see Preference
@@ -29,31 +27,32 @@ import java.util.Set;
  */
 public abstract class PreferenceImpl implements Preference {
     
-    private static final Logger LOGGER = LoggerFactory.getLogger(PreferenceImpl.class.getName());
+    private static final Logger LOGGER = LoggerFactory
+                    .getLogger(PreferenceImpl.class.getName());
     protected MutableGraph<Alternative> graph;
     protected Voter voter;
     
     /**
      * Static factory method creating a graph of preference from a setAlternatives of data.
      *
-     *
      * @param pref is a setAlternatives of lists of sets of Alternative representing the preference.
-     *          In the first setAlternatives, every list is a linear comparison of sets of alternatives. (first in the least is preferred to next ones, etc.)
-     *          Those sets of alternatives contain ex-aequo alternatives.
+     *             In the first setAlternatives, every list is a linear comparison of sets of alternatives. (first in the least is preferred to next ones, etc.)
+     *             Those sets of alternatives contain ex-aequo alternatives.
      * @return the mutable preference, implemented with a graph.
      * @see Voter
      * @see Preference
      * @see MutablePreference
      * @see PreferenceImpl#asGraph()
      */
-    private static MutableGraph<Alternative> preferenceGraphMaker(Set<List<Set<Alternative>>> pref) {
+    private static MutableGraph<Alternative> preferenceGraphMaker(
+                    Set<List<Set<Alternative>>> pref) {
         LOGGER.debug("PreferenceImpl preferenceGraphMaker");
         Preconditions.checkNotNull(pref);
-        MutableGraph<Alternative> currentgraph = GraphBuilder.directed().allowsSelfLoops(true).build();
+        MutableGraph<Alternative> currentgraph = GraphBuilder.directed()
+                        .allowsSelfLoops(true).build();
         for (List<Set<Alternative>> array : pref) {
             ArrayList<Alternative> tmp = new ArrayList<>();
             for (Set<Alternative> set : array) {
-                
                 // in a set of equality, adding every node to the graph
                 // and in TMP list
                 for (Alternative alt : set) {
@@ -69,7 +68,9 @@ public abstract class PreferenceImpl implements Preference {
                 }
             }
         }
-        if (currentgraph.nodes().isEmpty()) throw new IllegalArgumentException("Must contain at least one alternative");
+        if (currentgraph.nodes().isEmpty())
+            throw new IllegalArgumentException(
+                            "Must contain at least one alternative");
         return currentgraph;
     }
     
