@@ -29,7 +29,7 @@ public abstract class PreferenceImpl implements Preference {
     
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(PreferenceImpl.class.getName());
-    protected MutableGraph<Alternative> graph;
+    protected Graph<Alternative> graph;
     protected Voter voter;
     
     /**
@@ -44,7 +44,7 @@ public abstract class PreferenceImpl implements Preference {
      * @see MutablePreference
      * @see PreferenceImpl#asGraph()
      */
-    private static MutableGraph<Alternative> preferenceGraphMaker(
+    protected static MutableGraph<Alternative> preferenceGraphMaker(
                     Set<List<Set<Alternative>>> pref) {
         LOGGER.debug("PreferenceImpl preferenceGraphMaker");
         Preconditions.checkNotNull(pref);
