@@ -82,4 +82,28 @@ public class MutablePreferenceImpl extends PreferenceImpl
     @Override public MutableGraph<Alternative> asGraph() {
         return graph;
     }
+    
+    /**
+     * Adds an alternative to the Preference.
+     * This alternative is not preferred to any other of the preference, it is being added isolated.
+     *
+     * @param alternative to add to the preference.
+     */
+    public void addAlternative(Alternative alternative) {
+        LOGGER.debug("MutablePreferenceImpl addAlternative");
+        Preconditions.checkNotNull(alternative);
+        if (graph.nodes().contains(alternative)) return;
+        
+        graph.addNode(alternative);
+        graph.putEdge(alternative, alternative);
+    }
+    
+    public void addExAequo(Alternative a1, Alternative a2) {
+        LOGGER.debug("MutablePreferenceImpl addExAequo");
+        Preconditions.checkNotNull(a1);
+        Preconditions.checkNotNull(a2);
+        
+        if (!graph.nodes().contains(a1)) addAlternative(a1);
+        if (!graph.nodes().contains(a2)) addAlternative(a2);
+    }
 }

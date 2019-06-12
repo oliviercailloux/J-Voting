@@ -1,9 +1,11 @@
 package io.github.oliviercailloux.j_voting.preferences;
 
+import com.google.common.collect.Lists;
 import com.google.common.graph.MutableGraph;
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutablePreferenceImpl;
+import org.eclipse.collections.impl.factory.Sets;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -19,25 +21,17 @@ class MutablePreferenceImplTest {
         Alternative a4 = Alternative.withId(4);
         Alternative a5 = Alternative.withId(5);
     
-        Set<Alternative> A = new HashSet<>();
-        A.add(a1);
-        A.add(a2);
-        Set<Alternative> B = new HashSet<>();
-        B.add(a3);
-        B.add(a4);
-        Set<Alternative> C = new HashSet<>();
-        C.add(a5);
-    
-        ArrayList<Set<Alternative>> listTest = new ArrayList();
-        listTest.add(A);
-        listTest.add(B);
-        listTest.add(C);
-        Set<List<Set<Alternative>>> setTest = Set.of(listTest);
+        Set<Alternative> A = Sets.mutable.of(a1, a2);
+        Set<Alternative> B = Sets.mutable.of(a3, a4);
+        Set<Alternative> C = Sets.mutable.of(a5);
+        
+        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B, C);
+        Set<List<Set<Alternative>>> setTest = Sets.mutable.of(listTest);
     
     
         MutablePreferenceImpl pref = MutablePreferenceImpl.of(setTest, Voter.createVoter(1));
         MutableGraph G = pref.asGraph();
-        assertEquals(G.nodes().containsAll(Set.of(a1, a2, a3, a4, a5)), true);
+        assertEquals(G.nodes().containsAll(Sets.mutable.of(a1, a2, a3, a4, a5)), true);
         assertEquals(G.hasEdgeConnecting(a1, a1) &&
                         G.hasEdgeConnecting(a1, a2) &&
                         G.hasEdgeConnecting(a1, a3) &&
