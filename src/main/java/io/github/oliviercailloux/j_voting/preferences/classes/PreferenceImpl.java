@@ -17,9 +17,9 @@ import java.util.Set;
 
 /**
  * Implements a Preference as a graph and associates it with a Voter.
- * <p>
+ * 
  * To get an instance of this, see MutablePreference.
- * <p>
+ *
  * This class contains all the common methods of all different Preferences.
  *
  * @see Preference
@@ -96,6 +96,6 @@ public abstract class PreferenceImpl implements Preference {
     }
     
     @Override public String toString() {
-        return graph.toString() + "\n" + voter.toString();
+        return asGraph().toString() + "\n" + voter.toString();
     }
 }

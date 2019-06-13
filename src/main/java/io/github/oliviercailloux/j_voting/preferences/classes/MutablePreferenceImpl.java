@@ -1,7 +1,7 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
 import com.google.common.base.Preconditions;
-import com.google.common.graph.Graph;
+import com.google.common.graph.Graphs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.common.graph.GraphBuilder;
@@ -11,14 +11,12 @@ import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutablePreference;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.Preference;
 
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.List;
 
 /**
  * Implements MutablePreference interface.
- * <p>
- * <p>
+ *
  * The structure of a MutablePreference is a MutableGraph in which an edge represent the relation "at least as good as".
  *
  * @see io.github.oliviercailloux.j_voting.preferences.interfaces.Preference
@@ -92,18 +90,52 @@ public class MutablePreferenceImpl extends PreferenceImpl
     public void addAlternative(Alternative alternative) {
         LOGGER.debug("MutablePreferenceImpl addAlternative");
         Preconditions.checkNotNull(alternative);
-        if (graph.nodes().contains(alternative)) return;
-        
+        if (graph.nodes().contains(alternative))
+            return;
         graph.addNode(alternative);
         graph.putEdge(alternative, alternative);
     }
     
+    /**
+     * Adds an edge from a1 to a2 and from a2 to a1. If one of them is not in the graph, they are added.
+     * a1 and a2 are ex-aequo.
+     *
+     * * Graph is rearranged : a transitive closure is applied to it/
+     *
+     * @param a1 first alternative
+     * @param a2 second alternative
+     */
     public void addExAequo(Alternative a1, Alternative a2) {
         LOGGER.debug("MutablePreferenceImpl addExAequo");
         Preconditions.checkNotNull(a1);
         Preconditions.checkNotNull(a2);
-        
-        if (!graph.nodes().contains(a1)) addAlternative(a1);
-        if (!graph.nodes().contains(a2)) addAlternative(a2);
+        if (!graph.nodes().contains(a1))
+            addAlternative(a1);
+        if (!graph.nodes().contains(a2))
+            addAlternative(a2);
+        graph.putEdge(a1, a2);
+        graph.putEdge(a2, a1);
+        graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
+    }
+    
+    /**
+     * Adds an edge from a1 to a2, so that a1 is preferred to a2 (a1 > a2).
+     * If one of them is not in the graph, they are added.
+     *
+     * Graph is rearranged : a transitive closure is applied to it/
+     *
+     * @param a1 preferred alternative to a2
+     * @param a2 "lower" alternative
+     */
+    public void addStrictPreference(Alternative a1, Alternative a2) {
+        LOGGER.debug("MutablePreferenceImpl addExAequo");
+        Preconditions.checkNotNull(a1);
+        Preconditions.checkNotNull(a2);
+        if (!graph.nodes().contains(a1))
+            addAlternative(a1);
+        if (!graph.nodes().contains(a2))
+            addAlternative(a2);
+        graph.putEdge(a1, a2);
+        graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
     }
 }
