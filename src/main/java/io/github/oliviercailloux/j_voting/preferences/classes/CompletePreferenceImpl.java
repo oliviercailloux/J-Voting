@@ -13,7 +13,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.graph.GraphBuilder;
-import com.google.common.graph.Graphs;
 import com.google.common.graph.ImmutableGraph;
 import com.google.common.graph.MutableGraph;
 
@@ -79,8 +78,6 @@ public class CompletePreferenceImpl implements CompletePreference {
             }
             lastSetLinker = rememberAlternative;
         }
-        ;
-        System.out.println(Graphs.transitiveClosure(newGraph).toString());
         return ImmutableGraph.copyOf(newGraph);
     }
 
