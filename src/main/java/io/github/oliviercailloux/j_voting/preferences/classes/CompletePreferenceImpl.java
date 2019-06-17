@@ -36,7 +36,7 @@ public class CompletePreferenceImpl implements CompletePreference {
      * @param voter              <code> not null </code>
      * @return new CompletePreference
      */
-    public static CompletePreferenceImpl asCompletePreference(Voter voter,
+    public static CompletePreference asCompletePreference(Voter voter,
                     List<? extends Set<Alternative>> equivalenceClasses) {
         LOGGER.debug("Factory CompletePreferenceImpl");
         Preconditions.checkNotNull(equivalenceClasses);

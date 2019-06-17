@@ -15,10 +15,11 @@ import com.google.common.collect.ImmutableSet;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
+import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePreference;
 
 class CompletePreferenceImplTest {
 
-    static CompletePreferenceImpl toTest;
+    static CompletePreference toTest;
 
     @BeforeAll
     static void setUpBeforeClass() throws Exception {
@@ -57,7 +58,8 @@ class CompletePreferenceImplTest {
     @Test
     public void asCompletePreferenceTestException() {
         try {
-            toTest.asCompletePreference(Voter.createVoter(1), null);
+            CompletePreferenceImpl.asCompletePreference(Voter.createVoter(1),
+                            null);
             fail("Should throw exception when giving empty list");
         } catch (Exception aExp) {
             assert (aExp) != null;
@@ -67,7 +69,7 @@ class CompletePreferenceImplTest {
     @Test
     public void asCompletePreferenceTestExceptionTow() {
         try {
-            toTest.asCompletePreference(null, null);
+            CompletePreferenceImpl.asCompletePreference(null, null);
             fail("Should throw exception when giving not found Alternative");
         } catch (Exception aExp) {
             assert (aExp) != null;
@@ -77,7 +79,7 @@ class CompletePreferenceImplTest {
     @Test
     public void asCompletePreferenceTestEmptyList() {
         List<ImmutableSet<Alternative>> empList = new ArrayList<>();
-        CompletePreferenceImpl testCompletePreferenceImpl = CompletePreferenceImpl
+        CompletePreference testCompletePreferenceImpl = CompletePreferenceImpl
                         .asCompletePreference(Voter.createVoter(3), empList);
         assertEquals(true,
                         testCompletePreferenceImpl.asGraph().edges().isEmpty());
