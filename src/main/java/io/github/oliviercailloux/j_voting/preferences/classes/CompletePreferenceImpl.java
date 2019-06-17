@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.ws.rs.NotFoundException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +60,11 @@ public class CompletePreferenceImpl implements CompletePreference {
         list.add(immutableSet2);
         ImmutableList<ImmutableSet<Alternative>> prefImmutableList = ImmutableList
                         .copyOf(list);
-        createCompletePreferenceImpl(prefImmutableList, Voter.createVoter(3));
+        CompletePreferenceImpl lililImpl = createCompletePreferenceImpl(
+                        prefImmutableList, Voter.createVoter(3));
+        System.out.println(lililImpl.getAlternatives(1));
+        System.out.println(lililImpl.getRank(Alternative.withId(3)));
+        System.out.println(lililImpl.asEquivalenceClasses());
     }
 
     /**
@@ -81,20 +87,20 @@ public class CompletePreferenceImpl implements CompletePreference {
                         .allowsSelfLoops(true).build();
         Alternative lastSetLinker = null;
         for (ImmutableSet<Alternative> set : preference) {
-            Alternative remeberAlternative = null;
+            Alternative rememberAlternative = null;
             for (Alternative alternative : set) {
                 if (!Objects.isNull(lastSetLinker)) {
                     newGraph.putEdge(lastSetLinker, alternative);
                     lastSetLinker = null;
                 }
                 newGraph.putEdge(alternative, alternative);
-                if (!Objects.isNull(remeberAlternative)) {
-                    newGraph.putEdge(remeberAlternative, alternative);
-                    newGraph.putEdge(alternative, remeberAlternative);
+                if (!Objects.isNull(rememberAlternative)) {
+                    newGraph.putEdge(rememberAlternative, alternative);
+                    newGraph.putEdge(alternative, rememberAlternative);
                 }
-                remeberAlternative = alternative;
+                rememberAlternative = alternative;
             }
-            lastSetLinker = remeberAlternative;
+            lastSetLinker = rememberAlternative;
         }
         ;
         System.out.println(Graphs.transitiveClosure(newGraph).toString());
@@ -119,23 +125,23 @@ public class CompletePreferenceImpl implements CompletePreference {
 
     @Override
     public int getRank(Alternative a) {
-        return preference.indexOf(a);
+        Preconditions.checkNotNull(a);
+        for (ImmutableSet<Alternative> set : preference) {
+            if (set.contains(a))
+                return preference.indexOf(set) + 1;
+        }
+        throw new NotFoundException("Alternative not found");
     }
 
     @Override
-    public ImmutableSet<Alternative> getAlternative(int n) {
-        return preference.get(n);
+    public ImmutableSet<Alternative> getAlternatives(int rank) {
+        Preconditions.checkArgument(rank > 0);
+        return preference.get(rank - 1);
     }
 
     @Override
     public ImmutableList<ImmutableSet<Alternative>> asEquivalenceClasses() {
         return preference;
-    }
-
-    @Override
-    public void addAlternative(Alternative a, int rank) {
-        preference.get(rank).add(a);
-        createGraph(preference);
     }
 
     @Override
