@@ -75,6 +75,15 @@ class CompletePreferenceImplTest {
     }
 
     @Test
+    public void asCompletePreferenceTestEmptyList() {
+        List<ImmutableSet<Alternative>> empList = new ArrayList<>();
+        CompletePreferenceImpl testCompletePreferenceImpl = CompletePreferenceImpl
+                        .asCompletePreference(Voter.createVoter(3), empList);
+        assertEquals(true,
+                        testCompletePreferenceImpl.asGraph().edges().isEmpty());
+    }
+
+    @Test
     public void getAlternativesTest() {
         assertEquals("[1, 2]", toTest.getAlternatives(1).toString());
         HashSet<Alternative> set = new HashSet<>();

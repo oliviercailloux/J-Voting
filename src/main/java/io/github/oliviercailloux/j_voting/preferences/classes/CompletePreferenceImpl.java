@@ -37,35 +37,38 @@ public class CompletePreferenceImpl implements CompletePreference {
      * @return new CompletePreference
      */
     public static CompletePreferenceImpl asCompletePreference(Voter voter,
-                    ImmutableList<ImmutableSet<Alternative>> equivalenceClasses) {
+                    List<? extends Set<Alternative>> equivalenceClasses) {
         LOGGER.debug("Factory CompletePreferenceImpl");
         Preconditions.checkNotNull(equivalenceClasses);
         Preconditions.checkNotNull(voter);
-        return new CompletePreferenceImpl(equivalenceClasses, voter);
+        ImmutableList.copyOf(equivalenceClasses);
+        return new CompletePreferenceImpl(voter,
+                        ImmutableList.copyOf(equivalenceClasses));
     }
 
     /**
      * 
-     * @param preference <code> not null </code>
-     * @param voter      <code> not null </code>
+     * @param equivalenceClasses <code> not null </code>
+     * @param voter              <code> not null </code>
      */
-    private CompletePreferenceImpl(
-                    ImmutableList<ImmutableSet<Alternative>> preference,
-                    Voter voter) {
+    private CompletePreferenceImpl(Voter voter,
+                    List<? extends Set<Alternative>> equivalenceClasses) {
         LOGGER.debug("Constructor CompletePreferenceImpl");
         this.voter = voter;
-        this.preference = preference;
-        this.graph = createGraph(preference);
+        ImmutableList.copyOf(equivalenceClasses);
+        this.preference = (ImmutableList<ImmutableSet<Alternative>>) ImmutableList
+                        .copyOf(equivalenceClasses);
+        this.graph = createGraph(equivalenceClasses);
     }
 
     private ImmutableGraph<Alternative> createGraph(
-                    List<? extends Set<Alternative>> preference) {
+                    List<? extends Set<Alternative>> equivalenceClasses) {
         MutableGraph<Alternative> newGraph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         Alternative lastSetLinker = null;
-        for (Set<Alternative> set : preference) {
+        for (Set<Alternative> equivalenceClasse : equivalenceClasses) {
             Alternative rememberAlternative = null;
-            for (Alternative alternative : set) {
+            for (Alternative alternative : equivalenceClasse) {
                 if (!Objects.isNull(lastSetLinker)) {
                     newGraph.putEdge(lastSetLinker, alternative);
                     lastSetLinker = null;
@@ -85,7 +88,7 @@ public class CompletePreferenceImpl implements CompletePreference {
     @Override
     public ImmutableSet<Alternative> getAlternatives() {
         Set<Alternative> returnedSet = new HashSet<>();
-        for (ImmutableSet<Alternative> set : preference) {
+        for (Set<Alternative> set : preference) {
             for (Alternative alternative : set) {
                 returnedSet.add(alternative);
             }
@@ -101,7 +104,7 @@ public class CompletePreferenceImpl implements CompletePreference {
     @Override
     public int getRank(Alternative a) {
         Preconditions.checkNotNull(a);
-        for (ImmutableSet<Alternative> set : preference) {
+        for (Set<Alternative> set : preference) {
             if (set.contains(a))
                 return preference.indexOf(set) + 1;
         }
