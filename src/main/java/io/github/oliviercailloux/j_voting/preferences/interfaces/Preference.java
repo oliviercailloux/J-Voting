@@ -41,8 +41,8 @@ public interface Preference {
 
     /**
      *
-     * @return <code>Voter</code> instance of the preference Returns the voter 0
-     *         if no specific voter is associated to this preference
+     * @return <code>Voter</code> instance of the preference, returns the voter
+     *         0 if no specific voter is associated to this preference
      */
     public Voter getVoter();
 }
