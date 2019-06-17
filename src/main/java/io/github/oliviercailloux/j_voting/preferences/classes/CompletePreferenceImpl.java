@@ -1,10 +1,10 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
 import java.util.HashSet;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Set;
-
-import javax.ws.rs.NotFoundException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,31 +23,31 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePrefere
 
 public class CompletePreferenceImpl implements CompletePreference {
 
-    ImmutableList<ImmutableSet<Alternative>> preference;
-    Voter voter;
-    ImmutableGraph<Alternative> graph;
+    private ImmutableList<ImmutableSet<Alternative>> preference;
+    private Voter voter;
+    private ImmutableGraph<Alternative> graph;
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(CompletePreferenceImpl.class.getName());
 
     /**
      * 
-     * @param preference : <code> not null </code>
-     * @param voter      : <code> not null </code>
-     * @return new CompletePreferenceImpl
+     * @param equivalenceClasses <code> not null </code> the best equivalence
+     *                           class must be in first position
+     * @param voter              <code> not null </code>
+     * @return new CompletePreference
      */
-    public static CompletePreferenceImpl createCompletePreferenceImpl(
-                    ImmutableList<ImmutableSet<Alternative>> preference,
-                    Voter voter) {
+    public static CompletePreferenceImpl asCompletePreference(Voter voter,
+                    ImmutableList<ImmutableSet<Alternative>> equivalenceClasses) {
         LOGGER.debug("Factory CompletePreferenceImpl");
-        Preconditions.checkNotNull(preference);
+        Preconditions.checkNotNull(equivalenceClasses);
         Preconditions.checkNotNull(voter);
-        return new CompletePreferenceImpl(preference, voter);
+        return new CompletePreferenceImpl(equivalenceClasses, voter);
     }
 
     /**
      * 
-     * @param preference : <code> not null </code>
-     * @param voter      : <code> not null </code>
+     * @param preference <code> not null </code>
+     * @param voter      <code> not null </code>
      */
     private CompletePreferenceImpl(
                     ImmutableList<ImmutableSet<Alternative>> preference,
@@ -59,11 +59,11 @@ public class CompletePreferenceImpl implements CompletePreference {
     }
 
     private ImmutableGraph<Alternative> createGraph(
-                    ImmutableList<ImmutableSet<Alternative>> preference) {
+                    List<? extends Set<Alternative>> preference) {
         MutableGraph<Alternative> newGraph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         Alternative lastSetLinker = null;
-        for (ImmutableSet<Alternative> set : preference) {
+        for (Set<Alternative> set : preference) {
             Alternative rememberAlternative = null;
             for (Alternative alternative : set) {
                 if (!Objects.isNull(lastSetLinker)) {
@@ -105,12 +105,11 @@ public class CompletePreferenceImpl implements CompletePreference {
             if (set.contains(a))
                 return preference.indexOf(set) + 1;
         }
-        throw new NotFoundException("Alternative not found");
+        throw new NoSuchElementException("Alternative not found");
     }
 
     @Override
     public ImmutableSet<Alternative> getAlternatives(int rank) {
-        Preconditions.checkArgument(rank > 0);
         return preference.get(rank - 1);
     }
 
