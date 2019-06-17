@@ -1,8 +1,6 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -44,27 +42,6 @@ public class CompletePreferenceImpl implements CompletePreference {
         Preconditions.checkNotNull(preference);
         Preconditions.checkNotNull(voter);
         return new CompletePreferenceImpl(preference, voter);
-    }
-
-    public static void main(String[] args) {
-        System.out.println("test");
-        HashSet<Alternative> set = new HashSet<>();
-        HashSet<Alternative> set2 = new HashSet<>();
-        set.add(Alternative.withId(1));
-        set.add(Alternative.withId(2));
-        set2.add(Alternative.withId(3));
-        ImmutableSet<Alternative> immutableSet = ImmutableSet.copyOf(set);
-        ImmutableSet<Alternative> immutableSet2 = ImmutableSet.copyOf(set2);
-        List<ImmutableSet<Alternative>> list = new ArrayList<ImmutableSet<Alternative>>();
-        list.add(immutableSet);
-        list.add(immutableSet2);
-        ImmutableList<ImmutableSet<Alternative>> prefImmutableList = ImmutableList
-                        .copyOf(list);
-        CompletePreferenceImpl lililImpl = createCompletePreferenceImpl(
-                        prefImmutableList, Voter.createVoter(3));
-        System.out.println(lililImpl.getAlternatives(1));
-        System.out.println(lililImpl.getRank(Alternative.withId(3)));
-        System.out.println(lililImpl.asEquivalenceClasses());
     }
 
     /**
