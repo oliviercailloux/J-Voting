@@ -23,7 +23,7 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePrefere
 
 public class CompletePreferenceImpl implements CompletePreference {
 
-    private ImmutableList<ImmutableSet<Alternative>> preference;
+    private ImmutableList<? extends Set<Alternative>> equivalenceClasses;
     private Voter voter;
     private ImmutableGraph<Alternative> graph;
     private static final Logger LOGGER = LoggerFactory
@@ -55,9 +55,7 @@ public class CompletePreferenceImpl implements CompletePreference {
                     List<? extends Set<Alternative>> equivalenceClasses) {
         LOGGER.debug("Constructor CompletePreferenceImpl");
         this.voter = voter;
-        ImmutableList.copyOf(equivalenceClasses);
-        this.preference = (ImmutableList<ImmutableSet<Alternative>>) ImmutableList
-                        .copyOf(equivalenceClasses);
+        this.equivalenceClasses = ImmutableList.copyOf(equivalenceClasses);
         this.graph = createGraph(equivalenceClasses);
     }
 
@@ -88,8 +86,8 @@ public class CompletePreferenceImpl implements CompletePreference {
     @Override
     public ImmutableSet<Alternative> getAlternatives() {
         Set<Alternative> returnedSet = new HashSet<>();
-        for (Set<Alternative> set : preference) {
-            for (Alternative alternative : set) {
+        for (Set<Alternative> equivalenceClasse : equivalenceClasses) {
+            for (Alternative alternative : equivalenceClasse) {
                 returnedSet.add(alternative);
             }
         }
@@ -104,21 +102,21 @@ public class CompletePreferenceImpl implements CompletePreference {
     @Override
     public int getRank(Alternative a) {
         Preconditions.checkNotNull(a);
-        for (Set<Alternative> set : preference) {
-            if (set.contains(a))
-                return preference.indexOf(set) + 1;
+        for (Set<Alternative> equivalenceClasse : equivalenceClasses) {
+            if (equivalenceClasse.contains(a))
+                return equivalenceClasses.indexOf(equivalenceClasse) + 1;
         }
         throw new NoSuchElementException("Alternative not found");
     }
 
     @Override
     public ImmutableSet<Alternative> getAlternatives(int rank) {
-        return preference.get(rank - 1);
+        return ImmutableSet.copyOf(equivalenceClasses.get(rank - 1));
     }
 
     @Override
     public ImmutableList<ImmutableSet<Alternative>> asEquivalenceClasses() {
-        return preference;
+        return (ImmutableList<ImmutableSet<Alternative>>) equivalenceClasses;
     }
 
     @Override
