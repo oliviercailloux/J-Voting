@@ -67,7 +67,7 @@ public class CompletePreferenceImpl implements CompletePreference {
         for (Set<Alternative> equivalenceClasse : equivalenceClasses) {
             Alternative rememberAlternative = null;
             for (Alternative alternative : equivalenceClasse) {
-                if (!Objects.isNull(lastSetLinker)) {
+                if (lastSetLinker != null) {
                     newGraph.putEdge(lastSetLinker, alternative);
                     lastSetLinker = null;
                 }
