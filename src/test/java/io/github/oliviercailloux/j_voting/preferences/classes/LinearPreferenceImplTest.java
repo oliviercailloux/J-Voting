@@ -13,11 +13,14 @@ import com.google.common.collect.ImmutableSet;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
+import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
+import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.LinearPreference;
 
 class LinearPreferenceImplTest {
 
-    private LinearPreference ifNeededByTest() {
+    private LinearPreference getThreeClassesPreference()
+                    throws DuplicateValueException {
         return LinearPreferenceImpl.asLinearPreference(Voter.createVoter(3),
                         ImmutableList.of(Alternative.withId(1),
                                         Alternative.withId(2),
@@ -25,16 +28,16 @@ class LinearPreferenceImplTest {
     }
 
     @Test
-    void getRankTest() {
-        LinearPreference toTest = ifNeededByTest();
+    void getRankTest() throws DuplicateValueException {
+        LinearPreference toTest = getThreeClassesPreference();
         assertEquals(1, toTest.getRank(Alternative.withId(1)));
         assertEquals(2, toTest.getRank(Alternative.withId(2)));
         assertEquals(3, toTest.getRank(Alternative.withId(3)));
     }
 
     @Test
-    public void getRankExceptionTest() {
-        LinearPreference toTest = ifNeededByTest();
+    public void getRankExceptionTest() throws DuplicateValueException {
+        LinearPreference toTest = getThreeClassesPreference();
         assertThrows(Exception.class,
                         () -> toTest.getRank(Alternative.withId(4)));
     }
@@ -52,7 +55,8 @@ class LinearPreferenceImplTest {
     }
 
     @Test
-    public void asLinearPreferenceTestEmptyList() {
+    public void asLinearPreferenceTestEmptyList()
+                    throws DuplicateValueException {
         List<Alternative> empList = new ArrayList<>();
         LinearPreference testCompletePreferenceImpl = LinearPreferenceImpl
                         .asLinearPreference(Voter.createVoter(3), empList);
@@ -61,8 +65,8 @@ class LinearPreferenceImplTest {
     }
 
     @Test
-    public void getAlternativesTest() {
-        LinearPreference toTest = ifNeededByTest();
+    public void getAlternativesTest() throws DuplicateValueException {
+        LinearPreference toTest = getThreeClassesPreference();
         assertEquals("[2]", toTest.getAlternatives(1).toString());
         ImmutableSet<Alternative> immutableSet = ImmutableSet
                         .of(Alternative.withId(2));
@@ -70,15 +74,15 @@ class LinearPreferenceImplTest {
     }
 
     @Test
-    public void getAlternativesExceptionTest() {
-        LinearPreference toTest = ifNeededByTest();
+    public void getAlternativesExceptionTest() throws DuplicateValueException {
+        LinearPreference toTest = getThreeClassesPreference();
         assertThrows(ArrayIndexOutOfBoundsException.class,
                         () -> toTest.getAlternatives(3));
     }
 
     @Test
-    public void asEquivalenceClassesTest() {
-        LinearPreference toTest = ifNeededByTest();
+    public void asEquivalenceClassesTest() throws DuplicateValueException {
+        LinearPreference toTest = getThreeClassesPreference();
         ImmutableSet<Alternative> immutableSet = ImmutableSet
                         .of(Alternative.withId(1));
         ImmutableSet<Alternative> immutableSet2 = ImmutableSet
@@ -93,15 +97,26 @@ class LinearPreferenceImplTest {
     }
 
     @Test
-    public void getVoterTest() {
-        LinearPreference toTest = ifNeededByTest();
+    public void getVoterTest() throws DuplicateValueException {
+        LinearPreference toTest = getThreeClassesPreference();
         assertEquals(Voter.createVoter(3), toTest.getVoter());
     }
 
     @Test
-    public void asListTest() {
-        LinearPreference toTest = ifNeededByTest();
+    public void asListTest() throws DuplicateValueException {
+        LinearPreference toTest = getThreeClassesPreference();
         assertEquals(ImmutableList.of(1, 2, 3).toString(),
                         toTest.asList().toString());
+    }
+
+    @Test
+    public void asLinearPreferenceDuplicateExceptionTest()
+                    throws DuplicateValueException, EmptySetException {
+        assertThrows(DuplicateValueException.class, () -> {
+            LinearPreferenceImpl.asLinearPreference(Voter.createVoter(3),
+                            ImmutableList.of(Alternative.withId(1),
+                                            Alternative.withId(2),
+                                            Alternative.withId(2)));
+        });
     }
 }
