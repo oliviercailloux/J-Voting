@@ -66,11 +66,8 @@ class CompletePreferenceImplTest {
     public void getAlternativesTest() {
         CompletePreference toTest = ifNeededByTest();
         assertEquals("[1, 2]", toTest.getAlternatives(1).toString());
-        HashSet<Alternative> set = new HashSet<>();
-        HashSet<Alternative> set2 = new HashSet<>();
-        set.add(Alternative.withId(1));
-        set.add(Alternative.withId(2));
-        ImmutableSet<Alternative> immutableSet = ImmutableSet.copyOf(set);
+        ImmutableSet<Alternative> immutableSet = ImmutableSet
+                        .of(Alternative.withId(1), Alternative.withId(2));
         assertEquals(immutableSet, toTest.getAlternatives(1));
     }
 
