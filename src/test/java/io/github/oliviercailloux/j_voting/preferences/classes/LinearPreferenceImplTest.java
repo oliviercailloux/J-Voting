@@ -3,13 +3,13 @@ package io.github.oliviercailloux.j_voting.preferences.classes;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
@@ -57,7 +57,7 @@ class LinearPreferenceImplTest {
     @Test
     public void asLinearPreferenceTestEmptyList()
                     throws DuplicateValueException {
-        List<Alternative> empList = new ArrayList<>();
+        List<Alternative> empList = Lists.newArrayList();
         LinearPreference testCompletePreferenceImpl = LinearPreferenceImpl
                         .asLinearPreference(Voter.createVoter(3), empList);
         assertEquals(true,
@@ -67,7 +67,6 @@ class LinearPreferenceImplTest {
     @Test
     public void getAlternativesTest() throws DuplicateValueException {
         LinearPreference toTest = getThreeClassesPreference();
-        assertEquals("[2]", toTest.getAlternatives(1).toString());
         ImmutableSet<Alternative> immutableSet = ImmutableSet
                         .of(Alternative.withId(2));
         assertEquals(immutableSet, toTest.getAlternatives(1));
@@ -83,17 +82,11 @@ class LinearPreferenceImplTest {
     @Test
     public void asEquivalenceClassesTest() throws DuplicateValueException {
         LinearPreference toTest = getThreeClassesPreference();
-        ImmutableSet<Alternative> immutableSet = ImmutableSet
-                        .of(Alternative.withId(1));
-        ImmutableSet<Alternative> immutableSet2 = ImmutableSet
-                        .of(Alternative.withId(2));
-        ImmutableSet<Alternative> immutableSet3 = ImmutableSet
-                        .of(Alternative.withId(3));
-        List<ImmutableSet<Alternative>> list = new ArrayList<ImmutableSet<Alternative>>();
-        list.add(immutableSet);
-        list.add(immutableSet2);
-        list.add(immutableSet3);
-        assertEquals(list, toTest.asEquivalenceClasses());
+        assertEquals(ImmutableList.copyOf(ImmutableSet.of(
+                        ImmutableSet.of(Alternative.withId(1)),
+                        ImmutableSet.of(Alternative.withId(2)),
+                        ImmutableSet.of(Alternative.withId(3)))),
+                        toTest.asEquivalenceClasses());
     }
 
     @Test
