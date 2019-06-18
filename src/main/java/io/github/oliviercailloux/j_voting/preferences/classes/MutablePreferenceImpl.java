@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * Implements MutablePreference interface.
- *
+ * <p>
  * The structure of a MutablePreference is a MutableGraph in which an edge represent the relation "at least as good as".
  *
  * @see io.github.oliviercailloux.j_voting.preferences.interfaces.Preference
@@ -134,13 +134,13 @@ public class MutablePreferenceImpl implements MutablePreference {
         LOGGER.debug("MutablePreferenceImpl addAlternative");
         Preconditions.checkNotNull(alternative);
         if (graph.nodes().contains(alternative))
-        graph.putEdge(alternative, alternative);
+            graph.putEdge(alternative, alternative);
     }
     
     /**
      * Adds an edge from a1 to a2 and from a2 to a1. If one of them is not in the graph, they are added.
      * a1 and a2 are ex-aequo.
-     *
+     * <p>
      * * Graph is rearranged : a transitive closure is applied to it/
      *
      * @param a1 first alternative
@@ -160,7 +160,7 @@ public class MutablePreferenceImpl implements MutablePreference {
     /**
      * Adds an edge from a1 to a2, so that a1 is preferred to a2 (a1 > a2).
      * If one of them is not in the graph, they are added.
-     *
+     * <p>
      * Graph is rearranged : a transitive closure is applied to it/
      *
      * @param a1 preferred alternative to a2
@@ -195,7 +195,6 @@ public class MutablePreferenceImpl implements MutablePreference {
     }
     
     /**
-     *
      * @return a set of lists of sets :
      * Sets containing alternatives describe ex-aequo alternatives
      * There are ordered by preference in a List.
