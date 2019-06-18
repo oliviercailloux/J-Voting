@@ -1,7 +1,5 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -14,6 +12,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
 import com.google.common.graph.ImmutableGraph;
@@ -21,7 +20,7 @@ import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
-import io.github.oliviercailloux.j_voting.exceptions.DuplicateException;
+import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePreference;
 
@@ -40,22 +39,22 @@ public class CompletePreferenceImpl implements CompletePreference {
      *                           must be unique
      * @param voter              <code> not null </code>
      * @return new CompletePreference
-     * @throws DuplicateException if an Alternative is duplicate
-     * @throws EmptySetException  if a Set is empty
+     * @throws DuplicateValueException if an Alternative is duplicate
+     * @throws EmptySetException       if a Set is empty
      */
     public static CompletePreference asCompletePreference(Voter voter,
                     List<? extends Set<Alternative>> equivalenceClasses)
-                    throws DuplicateException, EmptySetException {
+                    throws DuplicateValueException, EmptySetException {
         LOGGER.debug("Factory CompletePreferenceImpl");
         Preconditions.checkNotNull(equivalenceClasses);
         Preconditions.checkNotNull(voter);
-        List<Alternative> listAlternatives = new ArrayList<>();
+        List<Alternative> listAlternatives = Lists.newArrayList();
         for (Set<Alternative> equivalenceClass : equivalenceClasses) {
             if (equivalenceClass.isEmpty())
                 throw new EmptySetException("A Set can't be empty");
             for (Alternative alternative : equivalenceClass) {
                 if (listAlternatives.contains(alternative))
-                    throw new DuplicateException(
+                    throw new DuplicateValueException(
                                     "you can't duplicate Alternatives");
                 listAlternatives.add(alternative);
             }
@@ -108,7 +107,7 @@ public class CompletePreferenceImpl implements CompletePreference {
 
     @Override
     public ImmutableSet<Alternative> getAlternatives() {
-        Set<Alternative> returnedSet = new HashSet<>();
+        Set<Alternative> returnedSet = Sets.newHashSet();
         for (Set<Alternative> equivalenceClasse : equivalenceClasses) {
             for (Alternative alternative : equivalenceClasse) {
                 returnedSet.add(alternative);
