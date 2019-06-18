@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -81,13 +80,10 @@ class CompletePreferenceImplTest {
     @Test
     public void asEquivalenceClassesTest() {
         CompletePreference toTest = ifNeededByTest();
-        HashSet<Alternative> set = new HashSet<>();
-        HashSet<Alternative> set2 = new HashSet<>();
-        set.add(Alternative.withId(1));
-        set.add(Alternative.withId(2));
-        set2.add(Alternative.withId(3));
-        ImmutableSet<Alternative> immutableSet = ImmutableSet.copyOf(set);
-        ImmutableSet<Alternative> immutableSet2 = ImmutableSet.copyOf(set2);
+        ImmutableSet<Alternative> immutableSet = ImmutableSet
+                        .of(Alternative.withId(1), Alternative.withId(2));
+        ImmutableSet<Alternative> immutableSet2 = ImmutableSet
+                        .of(Alternative.withId(3));
         List<ImmutableSet<Alternative>> list = new ArrayList<ImmutableSet<Alternative>>();
         list.add(immutableSet);
         list.add(immutableSet2);
