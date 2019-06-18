@@ -1,5 +1,6 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -23,7 +24,7 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePrefere
 
 public class CompletePreferenceImpl implements CompletePreference {
 
-    private ImmutableList<? extends Set<Alternative>> equivalenceClasses;
+    private ImmutableList<ImmutableSet<Alternative>> equivalenceClasses;
     private Voter voter;
     private ImmutableGraph<Alternative> graph;
     private static final Logger LOGGER = LoggerFactory
@@ -55,7 +56,11 @@ public class CompletePreferenceImpl implements CompletePreference {
                     List<? extends Set<Alternative>> equivalenceClasses) {
         LOGGER.debug("Constructor CompletePreferenceImpl");
         this.voter = voter;
-        this.equivalenceClasses = ImmutableList.copyOf(equivalenceClasses);
+        List<ImmutableSet<Alternative>> listImmutableSets = new ArrayList<>();
+        for (Set<Alternative> set : equivalenceClasses) {
+            listImmutableSets.add(ImmutableSet.copyOf(set));
+        }
+        this.equivalenceClasses = ImmutableList.copyOf(listImmutableSets);
         this.graph = createGraph(equivalenceClasses);
     }
 
@@ -116,7 +121,7 @@ public class CompletePreferenceImpl implements CompletePreference {
 
     @Override
     public ImmutableList<ImmutableSet<Alternative>> asEquivalenceClasses() {
-        return (ImmutableList<ImmutableSet<Alternative>>) equivalenceClasses;
+        return equivalenceClasses;
     }
 
     @Override

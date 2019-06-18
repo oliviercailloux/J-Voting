@@ -30,7 +30,7 @@ public class LinearPreferenceImpl implements LinearPreference {
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(LinearPreferenceImpl.class.getName());
 
-    public static LinearPreferenceImpl asLinearPreference(Voter voter,
+    public static LinearPreference asLinearPreference(Voter voter,
                     List<Alternative> equivalenceClasses) {
         LOGGER.debug("Factory LinearPreferenceImpl");
         Preconditions.checkNotNull(voter);
@@ -77,18 +77,16 @@ public class LinearPreferenceImpl implements LinearPreference {
 
     @Override
     public ImmutableSet<Alternative> getAlternatives(int rank) {
-        Set<Alternative> returnedSet = new HashSet<Alternative>();
+        Set<Alternative> returnedSet = new HashSet<>();
         returnedSet.add(equivalenceClasses.get(rank));
         return ImmutableSet.copyOf(returnedSet);
     }
 
     @Override
     public ImmutableList<ImmutableSet<Alternative>> asEquivalenceClasses() {
-        List<ImmutableSet<Alternative>> returnedList = new ArrayList<ImmutableSet<Alternative>>();
+        List<ImmutableSet<Alternative>> returnedList = new ArrayList<>();
         for (Alternative alternative : equivalenceClasses) {
-            Set<Alternative> setAlternative = new HashSet<>();
-            setAlternative.add(alternative);
-            returnedList.add(ImmutableSet.copyOf(setAlternative));
+            returnedList.add(ImmutableSet.of(alternative));
         }
         return ImmutableList.copyOf(returnedList);
     }
@@ -110,6 +108,6 @@ public class LinearPreferenceImpl implements LinearPreference {
 
     @Override
     public ImmutableList<Alternative> asList() {
-        return equivalenceClasses;
+        return this.equivalenceClasses;
     }
 }
