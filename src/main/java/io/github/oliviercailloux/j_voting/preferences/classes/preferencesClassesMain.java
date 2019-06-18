@@ -13,6 +13,8 @@ public class preferencesClassesMain {
     
     // Main to test and debug, will be removed after development
     public static void main(String[] args) {
+        
+        
         Alternative a1 = Alternative.withId(1);
         Alternative a2 = Alternative.withId(2);
         Alternative a3 = Alternative.withId(3);
@@ -39,6 +41,13 @@ public class preferencesClassesMain {
         pref.addAlternative(a6);
         pref.addStrictPreference(a5, Alternative.withId(7));
         pref.addExAequo(a6, a5);
+    
+        pref.addAlternative(a6);
+        pref.addAlternative(a6);
+        pref.addAlternative(a6);
         System.out.println(pref);
+        
+        
+        
     }
 }

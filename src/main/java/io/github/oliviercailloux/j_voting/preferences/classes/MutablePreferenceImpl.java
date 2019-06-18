@@ -1,6 +1,7 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
 import com.google.common.base.Preconditions;
+import com.google.common.graph.Graph;
 import com.google.common.graph.Graphs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutablePreference;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.Preference;
 
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.List;
 
@@ -22,9 +24,9 @@ import java.util.List;
  * @see io.github.oliviercailloux.j_voting.preferences.interfaces.Preference
  * @see io.github.oliviercailloux.j_voting.preferences.interfaces.MutablePreference
  */
-public class MutablePreferenceImpl extends PreferenceImpl
-                implements MutablePreference {
+public class MutablePreferenceImpl implements MutablePreference {
     
+    protected Voter voter;
     protected MutableGraph<Alternative> graph;
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(MutablePreference.class.getName());
@@ -62,6 +64,48 @@ public class MutablePreferenceImpl extends PreferenceImpl
     }
     
     /**
+     * Static factory method creating a graph of preference from a setAlternatives of data.
+     *
+     * @param pref is a setAlternatives of lists of sets of Alternative representing the preference.
+     *             In the first setAlternatives, every list is a linear comparison of sets of alternatives. (first in the least is preferred to next ones, etc.)
+     *             Those sets of alternatives contain ex-aequo alternatives.
+     * @return the mutable preference, implemented with a graph.
+     * @see Voter
+     * @see Preference
+     * @see MutablePreference
+     * @see PreferenceImpl#asGraph()
+     */
+    public static MutableGraph<Alternative> preferenceGraphMaker(
+                    Set<List<Set<Alternative>>> pref) {
+        LOGGER.debug("PreferenceImpl preferenceGraphMaker");
+        Preconditions.checkNotNull(pref);
+        MutableGraph<Alternative> currentgraph = GraphBuilder.directed()
+                        .allowsSelfLoops(true).build();
+        for (List<Set<Alternative>> array : pref) {
+            ArrayList<Alternative> tmp = new ArrayList<>();
+            for (Set<Alternative> set : array) {
+                // in a set of equality, adding every node to the graph
+                // and in TMP list
+                for (Alternative alt : set) {
+                    if (!currentgraph.nodes().contains(alt))
+                        currentgraph.addNode(alt);
+                    tmp.add(alt);
+                }
+                // then create edges from every node in TMP to every node in current equality set
+                for (Alternative alt : tmp) {
+                    for (Alternative alt2 : set) {
+                        currentgraph.putEdge(alt, alt2);
+                    }
+                }
+            }
+        }
+        if (currentgraph.nodes().isEmpty())
+            throw new IllegalArgumentException(
+                            "Must contain at least one alternative");
+        return currentgraph;
+    }
+    
+    /**
      * Factory method making new MutablePreference from an other Preference.
      * It creates a new similar graph instance (mutable).
      * The voter instance of the created preference is the same as the copied preference.
@@ -91,8 +135,6 @@ public class MutablePreferenceImpl extends PreferenceImpl
         LOGGER.debug("MutablePreferenceImpl addAlternative");
         Preconditions.checkNotNull(alternative);
         if (graph.nodes().contains(alternative))
-            return;
-        graph.addNode(alternative);
         graph.putEdge(alternative, alternative);
     }
     
@@ -109,10 +151,8 @@ public class MutablePreferenceImpl extends PreferenceImpl
         LOGGER.debug("MutablePreferenceImpl addExAequo");
         Preconditions.checkNotNull(a1);
         Preconditions.checkNotNull(a2);
-        if (!graph.nodes().contains(a1))
-            addAlternative(a1);
-        if (!graph.nodes().contains(a2))
-            addAlternative(a2);
+        addAlternative(a1);
+        addAlternative(a1);
         graph.putEdge(a1, a2);
         graph.putEdge(a2, a1);
         graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
@@ -131,11 +171,27 @@ public class MutablePreferenceImpl extends PreferenceImpl
         LOGGER.debug("MutablePreferenceImpl addExAequo");
         Preconditions.checkNotNull(a1);
         Preconditions.checkNotNull(a2);
-        if (!graph.nodes().contains(a1))
-            addAlternative(a1);
-        if (!graph.nodes().contains(a2))
-            addAlternative(a2);
+        addAlternative(a1);
+        addAlternative(a2);
         graph.putEdge(a1, a2);
         graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override public Set<Alternative> getAlternatives() {
+        return graph.nodes();
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override public Voter getVoter() {
+        return voter;
+    }
+    
+    @Override public String toString() {
+        return asGraph().toString() + "\n" + voter.toString();
     }
 }
