@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Implements MutablePreference interface.
  * <p>
- * The structure of a MutablePreference is a MutableGraph in which an edge represent the relation "at least as good as".
+ * The structure of a MutablePreference is a MutableGraph in which an edge represents the relation "at least as good as".
  *
  * @see io.github.oliviercailloux.j_voting.preferences.interfaces.Preference
  * @see io.github.oliviercailloux.j_voting.preferences.interfaces.MutablePreference
@@ -42,33 +42,36 @@ public class MutablePreferenceImpl implements MutablePreference {
     }
     
     /**
-     * Static factory method creating a mutable preference from a setAlternatives of data. Those datas are implemented in a graph.
+     * Static factory method creating a mutable preference from a set of List of sets of Alternatives of data.
+     * Those datas are implemented in a graph.
      *
-     * @param setAlternatives is a setAlternatives of lists of sets of Alternative representing the preference.
-     *                        In the first setAlternatives, every list is a linear comparison of sets of alternatives. (first in the least is preferred to next ones, etc.)
+     * @param setAlternatives is a set of lists of sets of Alternatives representing the preference.
+     *                        In the first set, every list is a linear comparison of sets of alternatives.
+     *                        (first in the list is preferred to next ones, etc.)
      *                        Those sets of alternatives contain ex-aequo alternatives.
      * @param voter           is the Voter associated to the Preference.
-     * @return the mutable preference, implemented with a graph.
+     * @return the mutable preference, implemented with a transitively closed graph.
      * @see Voter
      * @see Preference
      * @see MutablePreference#asGraph()
      */
     public static MutablePreferenceImpl of(
-                    Set<List<Set<Alternative>>> setAlternatives, Voter voter) {
+                    Set<List<Set<Alternative>>> pref, Voter voter) {
         LOGGER.debug("MutablePreferenceImpl of Factory");
-        Preconditions.checkNotNull(setAlternatives);
+        Preconditions.checkNotNull(pref);
         Preconditions.checkNotNull(voter);
-        return new MutablePreferenceImpl(preferenceGraphMaker(setAlternatives),
+        return new MutablePreferenceImpl(preferenceGraphMaker(pref),
                         voter);
     }
     
     /**
-     * Static factory method creating a graph of preference from a setAlternatives of data.
+     * Static factory method creating a graph of preference from a set of lists of sets of Alternatives of data.
      *
-     * @param pref is a setAlternatives of lists of sets of Alternative representing the preference.
-     *             In the first setAlternatives, every list is a linear comparison of sets of alternatives. (first in the least is preferred to next ones, etc.)
+     * @param pref is a set of lists of sets of Alternatives representing the preference.
+     *             In the first set, every list is a linear comparison of sets of alternatives.
+     *             (first in the list is preferred to next ones, etc.)
      *             Those sets of alternatives contain ex-aequo alternatives.
-     * @return the mutable preference, implemented with a graph.
+     * @return the mutable preference, implemented with a transitively closed.
      * @see Voter
      * @see Preference
      * @see MutablePreference
@@ -133,8 +136,7 @@ public class MutablePreferenceImpl implements MutablePreference {
     public void addAlternative(Alternative alternative) {
         LOGGER.debug("MutablePreferenceImpl addAlternative");
         Preconditions.checkNotNull(alternative);
-        if (graph.nodes().contains(alternative))
-            graph.putEdge(alternative, alternative);
+        graph.putEdge(alternative, alternative);
     }
     
     /**
@@ -151,7 +153,7 @@ public class MutablePreferenceImpl implements MutablePreference {
         Preconditions.checkNotNull(a1);
         Preconditions.checkNotNull(a2);
         addAlternative(a1);
-        addAlternative(a1);
+        addAlternative(a2);
         graph.putEdge(a1, a2);
         graph.putEdge(a2, a1);
         graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
@@ -198,7 +200,7 @@ public class MutablePreferenceImpl implements MutablePreference {
      * @return a set of lists of sets :
      * Sets containing alternatives describe ex-aequo alternatives
      * There are ordered by preference in a List.
-     * Those lists are in a set if some alternatives are not preferred to ohter and are not in the same lists
+     * Those lists are in a set if some alternatives are not preferred to other and are not in the same lists
      */
     public Set<List<Set<Alternative>>> asSetlistSet() {
         return null; // TO-DO
