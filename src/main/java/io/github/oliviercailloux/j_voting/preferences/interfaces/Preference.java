@@ -20,10 +20,10 @@ import io.github.oliviercailloux.j_voting.Voter;
  *
  */
 public interface Preference {
-
+    
     /**
      * In the graph : a relation from <i>a</i> to <i>b</i> means "a is at least
-     * as good as b". The graph is transitively closed.
+     * as good as b".
      *
      * @return the Graph corresponding to the Preference
      *
@@ -32,8 +32,8 @@ public interface Preference {
 
     /**
      * The returned set reads through this object: if this object is mutable,
-     * any modification to this object modifies the returned set, and
-     * conversely.
+     * any modification to this object modifies the returned set,
+     * and conversely.
      *
      * @return alternatives's set.
      */
@@ -41,8 +41,8 @@ public interface Preference {
 
     /**
      *
-     * @return <code>Voter</code> instance of the preference, returns the voter
-     *         0 if no specific voter is associated to this preference
+     * @return <code>Voter</code> instance of the preference
+     * Returns the voter 0 if no specific voter is associated to this preference
      */
     public Voter getVoter();
 }
