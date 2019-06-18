@@ -18,9 +18,6 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePrefere
 
 class CompletePreferenceImplTest {
 
-    // static CompletePreference toTest;
-    static ImmutableList<ImmutableSet<Alternative>> prefImmutableList;
-
     private CompletePreference ifNeededByTest() {
         return CompletePreferenceImpl.asCompletePreference(Voter.createVoter(3),
                         ImmutableList.of(
