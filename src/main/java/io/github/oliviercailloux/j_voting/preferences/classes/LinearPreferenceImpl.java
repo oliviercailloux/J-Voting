@@ -60,7 +60,6 @@ public class LinearPreferenceImpl implements LinearPreference {
             newGraph.putEdge(alternative, alternative);
             if (!Objects.isNull(rememberAlternative)) {
                 newGraph.putEdge(rememberAlternative, alternative);
-                newGraph.putEdge(alternative, rememberAlternative);
             }
             rememberAlternative = alternative;
         }
