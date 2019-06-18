@@ -1,7 +1,6 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
 import com.google.common.base.Preconditions;
-import com.google.common.graph.Graph;
 import com.google.common.graph.Graphs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,7 +72,7 @@ public class MutablePreferenceImpl implements MutablePreference {
      * @see Voter
      * @see Preference
      * @see MutablePreference
-     * @see PreferenceImpl#asGraph()
+     * @see MutablePreferenceImpl#asGraph()
      */
     public static MutableGraph<Alternative> preferenceGraphMaker(
                     Set<List<Set<Alternative>>> pref) {
@@ -193,5 +192,16 @@ public class MutablePreferenceImpl implements MutablePreference {
     
     @Override public String toString() {
         return asGraph().toString() + "\n" + voter.toString();
+    }
+    
+    /**
+     *
+     * @return a set of lists of sets :
+     * Sets containing alternatives describe ex-aequo alternatives
+     * There are ordered by preference in a List.
+     * Those lists are in a set if some alternatives are not preferred to ohter and are not in the same lists
+     */
+    public Set<List<Set<Alternative>>> asSetlistSet() {
+        return null; // TO-DO
     }
 }
