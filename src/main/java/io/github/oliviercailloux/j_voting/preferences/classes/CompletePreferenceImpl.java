@@ -20,6 +20,8 @@ import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
+import io.github.oliviercailloux.j_voting.exceptions.DuplicateException;
+import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePreference;
 
 public class CompletePreferenceImpl implements CompletePreference {
@@ -33,15 +35,30 @@ public class CompletePreferenceImpl implements CompletePreference {
     /**
      * 
      * @param equivalenceClasses <code> not null </code> the best equivalence
-     *                           class must be in first position
+     *                           class must be in first position. An alternative
+     *                           must be unique
      * @param voter              <code> not null </code>
      * @return new CompletePreference
+     * @throws DuplicateException if an Alternative is duplicate
+     * @throws EmptySetException  if a Set is empty
      */
     public static CompletePreference asCompletePreference(Voter voter,
-                    List<? extends Set<Alternative>> equivalenceClasses) {
+                    List<? extends Set<Alternative>> equivalenceClasses)
+                    throws DuplicateException, EmptySetException {
         LOGGER.debug("Factory CompletePreferenceImpl");
         Preconditions.checkNotNull(equivalenceClasses);
         Preconditions.checkNotNull(voter);
+        List<Alternative> listAlternatives = new ArrayList<>();
+        for (Set<Alternative> equivalenceClass : equivalenceClasses) {
+            if (equivalenceClass.isEmpty())
+                throw new EmptySetException("A Set can't be empty");
+            for (Alternative alternative : equivalenceClass) {
+                if (listAlternatives.contains(alternative))
+                    throw new DuplicateException(
+                                    "you can't duplicate Alternatives");
+                listAlternatives.add(alternative);
+            }
+        }
         return new CompletePreferenceImpl(voter,
                         ImmutableList.copyOf(equivalenceClasses));
     }
