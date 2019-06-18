@@ -39,9 +39,6 @@ public class preferencesClassesMain {
         pref.addAlternative(a6);
         pref.addStrictPreference(a5, Alternative.withId(7));
         pref.addExAequo(a6, a5);
-        pref.addAlternative(a6);
-        pref.addAlternative(a6);
-        pref.addAlternative(a6);
         System.out.println(pref);
     }
 }

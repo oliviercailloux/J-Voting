@@ -88,17 +88,16 @@ public class MutablePreferenceImpl implements MutablePreference {
             for (Set<Alternative> set : array) {
                 // in a set of equality, adding every node to the graph
                 // and in TMP list
-                for (Alternative alt : set) {
-                    if (!currentgraph.nodes().contains(alt))
-                        currentgraph.addNode(alt);
-                    tmp.add(alt);
-                }
-                // then create edges from every node in TMP to every node in current equality set
-                for (Alternative alt : tmp) {
-                    for (Alternative alt2 : set) {
-                        currentgraph.putEdge(alt, alt2);
-                    }
-                }
+            	for (Alternative alt : set) {
+            		tmp.add(alt);
+            	}
+            	//create edges from every node in TMP to every node in current equality set
+            	//If one of them is not in the graph, they are added.
+            	for (Alternative alt : tmp) {
+            		 for (Alternative alt2 : set) {
+            			 currentgraph.putEdge(alt, alt2);
+            		 }
+            	}
             }
         }
         if (currentgraph.nodes().isEmpty())
