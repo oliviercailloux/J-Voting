@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
 import com.google.common.graph.ImmutableGraph;
@@ -72,7 +73,8 @@ public class CompletePreferenceImpl implements CompletePreference {
                     List<? extends Set<Alternative>> equivalenceClasses) {
         LOGGER.debug("Constructor CompletePreferenceImpl");
         this.voter = voter;
-        List<ImmutableSet<Alternative>> listImmutableSets = new ArrayList<>();
+        List<ImmutableSet<Alternative>> listImmutableSets = Lists
+                        .newArrayList();
         for (Set<Alternative> set : equivalenceClasses) {
             listImmutableSets.add(ImmutableSet.copyOf(set));
         }
