@@ -32,7 +32,7 @@ public interface CompletePreference extends ImmutablePreference {
      *         is no alternative at this rank.
      * @throws IllegalArgumentException if <code>n < 1</code>.
      */
-    public ImmutableSet<Alternative> getAlternative(int n);
+    public ImmutableSet<Alternative> getAlternatives(int rank);
 
     /**
      *
