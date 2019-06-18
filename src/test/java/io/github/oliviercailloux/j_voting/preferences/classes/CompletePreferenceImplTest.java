@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -13,11 +14,14 @@ import com.google.common.collect.ImmutableSet;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
+import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
+import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePreference;
 
 class CompletePreferenceImplTest {
 
-    private CompletePreference ifNeededByTest() {
+    private CompletePreference getTwoClassesPreference()
+                    throws DuplicateValueException, EmptySetException {
         return CompletePreferenceImpl.asCompletePreference(Voter.createVoter(3),
                         ImmutableList.of(
                                         ImmutableSet.of(Alternative.withId(1),
@@ -27,15 +31,16 @@ class CompletePreferenceImplTest {
     }
 
     @Test
-    void getRankTest() {
-        CompletePreference toTest = ifNeededByTest();
+    void getRankTest() throws DuplicateValueException, EmptySetException {
+        CompletePreference toTest = getTwoClassesPreference();
         assertEquals(1, toTest.getRank(Alternative.withId(1)));
         assertEquals(2, toTest.getRank(Alternative.withId(3)));
     }
 
     @Test
-    public void getRankExceptionTest() {
-        CompletePreference toTest = ifNeededByTest();
+    public void getRankExceptionTest()
+                    throws DuplicateValueException, EmptySetException {
+        CompletePreference toTest = getTwoClassesPreference();
         assertThrows(Exception.class,
                         () -> toTest.getRank(Alternative.withId(4)));
     }
@@ -53,7 +58,8 @@ class CompletePreferenceImplTest {
     }
 
     @Test
-    public void asCompletePreferenceTestEmptyList() {
+    public void asCompletePreferenceTestEmptyList()
+                    throws DuplicateValueException, EmptySetException {
         List<ImmutableSet<Alternative>> empList = new ArrayList<>();
         CompletePreference testCompletePreferenceImpl = CompletePreferenceImpl
                         .asCompletePreference(Voter.createVoter(3), empList);
@@ -62,37 +68,58 @@ class CompletePreferenceImplTest {
     }
 
     @Test
-    public void getAlternativesTest() {
-        CompletePreference toTest = ifNeededByTest();
-        assertEquals("[1, 2]", toTest.getAlternatives(1).toString());
+    public void getAlternativesTest()
+                    throws DuplicateValueException, EmptySetException {
+        CompletePreference toTest = getTwoClassesPreference();
         ImmutableSet<Alternative> immutableSet = ImmutableSet
                         .of(Alternative.withId(1), Alternative.withId(2));
         assertEquals(immutableSet, toTest.getAlternatives(1));
     }
 
     @Test
-    public void getAlternativesExceptionTest() {
-        CompletePreference toTest = ifNeededByTest();
+    public void getAlternativesExceptionTest()
+                    throws DuplicateValueException, EmptySetException {
+        CompletePreference toTest = getTwoClassesPreference();
         assertThrows(ArrayIndexOutOfBoundsException.class,
                         () -> toTest.getAlternatives(3));
     }
 
     @Test
-    public void asEquivalenceClassesTest() {
-        CompletePreference toTest = ifNeededByTest();
-        ImmutableSet<Alternative> immutableSet = ImmutableSet
-                        .of(Alternative.withId(1), Alternative.withId(2));
-        ImmutableSet<Alternative> immutableSet2 = ImmutableSet
-                        .of(Alternative.withId(3));
-        List<ImmutableSet<Alternative>> list = new ArrayList<ImmutableSet<Alternative>>();
-        list.add(immutableSet);
-        list.add(immutableSet2);
+    public void asEquivalenceClassesTest()
+                    throws DuplicateValueException, EmptySetException {
+        CompletePreference toTest = getTwoClassesPreference();
+        List<ImmutableSet<Alternative>> list = new ArrayList<ImmutableSet<Alternative>>(
+                        Arrays.asList(ImmutableSet.of(Alternative.withId(1),
+                                        Alternative.withId(2)),
+                                        ImmutableSet.of(Alternative
+                                                        .withId(3))));
         assertEquals(list, toTest.asEquivalenceClasses());
     }
 
     @Test
-    public void getVoterTest() {
-        CompletePreference toTest = ifNeededByTest();
+    public void getVoterTest() throws DuplicateValueException, EmptySetException {
+        CompletePreference toTest = getTwoClassesPreference();
         assertEquals(Voter.createVoter(3), toTest.getVoter());
+    }
+
+    @Test
+    public void createDuplicateException() throws DuplicateValueException {
+        assertThrows(DuplicateValueException.class, () -> {
+            CompletePreferenceImpl.asCompletePreference(Voter.createVoter(3),
+                            ImmutableList.of(ImmutableSet.of(
+                                            Alternative.withId(1),
+                                            Alternative.withId(2)),
+                                            ImmutableSet.of(Alternative
+                                                            .withId(2))));
+        });
+    }
+
+    @Test
+    public void createEmptySetException() throws DuplicateValueException {
+        assertThrows(EmptySetException.class, () -> {
+            CompletePreferenceImpl.asCompletePreference(Voter.createVoter(3),
+                            ImmutableList.of(ImmutableSet.of(), ImmutableSet
+                                            .of(Alternative.withId(2))));
+        });
     }
 }
