@@ -42,7 +42,6 @@ public class CompletePreferenceImpl implements CompletePreference {
         LOGGER.debug("Factory CompletePreferenceImpl");
         Preconditions.checkNotNull(equivalenceClasses);
         Preconditions.checkNotNull(voter);
-        ImmutableList.copyOf(equivalenceClasses);
         return new CompletePreferenceImpl(voter,
                         ImmutableList.copyOf(equivalenceClasses));
     }
