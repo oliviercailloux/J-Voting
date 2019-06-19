@@ -236,7 +236,7 @@ public class ReadODS {
      * Function defining which type of file formatting is used
      * 
      * @param inputStream ods file
-     * @return an ImmutableList of CompletePreference
+     * @return an ImmutableSet of CompletePreference
      */
     public static ImmutableSet<CompletePreference> checkFormatandReturnCompletePreference(
                     InputStream inputStream) throws Exception {
@@ -261,7 +261,7 @@ public class ReadODS {
      * accepting ties between alternatives
      * 
      * @param table an ods table containing voting information
-     * @return an ImmutableList of CompletePreference
+     * @return an ImmutableSet of CompletePreference
      * @throws EmptySetException
      * @throws DuplicateValueException
      */
@@ -306,7 +306,7 @@ public class ReadODS {
      * not accept ties between alternatives
      * 
      * @param table an ods table containing voting information
-     * @return an ImmutableList of CompletePreference
+     * @return an ImmutableSet of CompletePreference
      * @throws EmptySetException
      * @throws DuplicateValueException
      */
