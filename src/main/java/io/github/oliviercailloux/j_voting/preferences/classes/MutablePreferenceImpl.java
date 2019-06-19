@@ -122,24 +122,25 @@ public class MutablePreferenceImpl implements MutablePreference {
     /**
      * {@inheritDoc}
      */
-    @Override public MutableGraph<Alternative> asGraph() {
+    @Override 
+    public MutableGraph<Alternative> asGraph() {
         return graph;
     }
     
     /**
-     * Adds an alternative to the Preference.
+     * Adds a single alternative to the Preference.
      * This alternative is not preferred to any other of the preference, it is being added isolated.
      *
      * @param alternative to add to the preference.
      */
-    public void addAlternative(Alternative alternative) {
+    public void addSingleAlternative(Alternative alternative) {
         LOGGER.debug("MutablePreferenceImpl addAlternative");
         Preconditions.checkNotNull(alternative);
         graph.putEdge(alternative, alternative);
     }
     
     /**
-     * Adds an edge from a1 to a2 and from a2 to a1. If one of them is not in the graph, they are added.
+     * Adds an edge from an alternative a1 to an alternative a2 and from a2 to a1. If one of them is not in the graph, they are added.
      * a1 and a2 are ex-aequo.
      * <p>
      * * Graph is rearranged : a transitive closure is applied to it/
@@ -147,19 +148,19 @@ public class MutablePreferenceImpl implements MutablePreference {
      * @param a1 first alternative
      * @param a2 second alternative
      */
-    public void addExAequo(Alternative a1, Alternative a2) {
+    public void addExAequoAlternatives(Alternative a1, Alternative a2) {
         LOGGER.debug("MutablePreferenceImpl addExAequo");
         Preconditions.checkNotNull(a1);
         Preconditions.checkNotNull(a2);
-        addAlternative(a1);
-        addAlternative(a2);
+        addSingleAlternative(a1);
+        addSingleAlternative(a2);
         graph.putEdge(a1, a2);
         graph.putEdge(a2, a1);
         graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
     }
     
     /**
-     * Adds an edge from a1 to a2, so that a1 is preferred to a2 (a1 > a2).
+     * Adds an edge from an alternative a1 to an alternative a2, so that a1 is preferred to a2 (a1 > a2).
      * If one of them is not in the graph, they are added.
      * <p>
      * Graph is rearranged : a transitive closure is applied to it/
@@ -167,12 +168,12 @@ public class MutablePreferenceImpl implements MutablePreference {
      * @param a1 preferred alternative to a2
      * @param a2 "lower" alternative
      */
-    public void addStrictPreference(Alternative a1, Alternative a2) {
+    public void addStrictPairOfAlternatives(Alternative a1, Alternative a2) {
         LOGGER.debug("MutablePreferenceImpl addExAequo");
         Preconditions.checkNotNull(a1);
         Preconditions.checkNotNull(a2);
-        addAlternative(a1);
-        addAlternative(a2);
+        addSingleAlternative(a1);
+        addSingleAlternative(a2);
         graph.putEdge(a1, a2);
         graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
     }
@@ -180,18 +181,21 @@ public class MutablePreferenceImpl implements MutablePreference {
     /**
      * {@inheritDoc}
      */
-    @Override public Set<Alternative> getAlternatives() {
+    @Override 
+    public Set<Alternative> getAlternatives() {
         return graph.nodes();
     }
     
     /**
      * {@inheritDoc}
      */
-    @Override public Voter getVoter() {
+    @Override 
+    public Voter getVoter() {
         return voter;
     }
     
-    @Override public String toString() {
+    @Override 
+    public String toString() {
         return asGraph().toString() + "\n" + voter.toString();
     }
     
