@@ -145,4 +145,26 @@ public class CompletePreferenceImpl implements CompletePreference {
     public ImmutableGraph<Alternative> asGraph() {
         return graph;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(equivalenceClasses, graph, voter);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof CompletePreferenceImpl)) {
+            return false;
+        }
+        CompletePreferenceImpl other = (CompletePreferenceImpl) obj;
+        return Objects.equals(equivalenceClasses, other.equivalenceClasses)
+                        && Objects.equals(graph, other.graph)
+                        && Objects.equals(voter, other.voter);
+    }
 }

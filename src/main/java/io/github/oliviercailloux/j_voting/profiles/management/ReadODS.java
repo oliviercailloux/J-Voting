@@ -2,7 +2,6 @@ package io.github.oliviercailloux.j_voting.profiles.management;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -13,7 +12,18 @@ import org.odftoolkit.simple.table.Table;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+
 import io.github.oliviercailloux.j_voting.Alternative;
+import io.github.oliviercailloux.j_voting.Voter;
+import io.github.oliviercailloux.j_voting.exceptions.BadFormatODSException;
+import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
+import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
+import io.github.oliviercailloux.j_voting.preferences.classes.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePreference;
 
 /**
  * Read .ODS file & extract elections data. The .ODS file must be Election Data
@@ -26,10 +36,17 @@ public class ReadODS {
                     .getLogger(ReadODS.class.getName());
 
     /**
+     * Private constructor because of the static class
+     */
+    private ReadODS() {
+        throw new IllegalStateException("Utility Class");
+    }
+
+    /**
      * Function defining which type of file formatting is used
      * 
-     * @param inputStream : ods file
-     * @return : A string to display the characteristics of the file send
+     * @param inputStream ods file
+     * @return a string to display the characteristics of the file send
      */
     public static String checkFormatandPrint(InputStream inputStream)
                     throws Exception {
@@ -52,8 +69,8 @@ public class ReadODS {
      * Function returning a string containing a formatting of the voting data
      * contained in a table in a format similar to SOC
      * 
-     * @param table : an ods table containing voting information
-     * @return : A string to display the characteristics of the table send
+     * @param table an ods table containing voting information
+     * @return a string to display the characteristics of the table send
      */
     public static String printFormatLikeSOC(Table table) {
         Objects.requireNonNull(table);
@@ -92,8 +109,8 @@ public class ReadODS {
      * Function returning a string containing a formatting of the voting data
      * contained in a table in the format accepting ties between alternatives
      * 
-     * @param table : an ods table containing voting information
-     * @return : A string to display the characteristics of the table send
+     * @param table an ods table containing voting information
+     * @return a string to display the characteristics of the table send
      */
     public static String printFormatWithEqualsPref(Table table) {
         Objects.requireNonNull(table);
@@ -107,19 +124,12 @@ public class ReadODS {
         CellRange prefRange = table.getCellRangeByPosition(1, 1, nbTotVoters,
                         alternatives.size());
         for (int j = 0; j < prefRange.getColumnNumber(); j++) {
-            int max = Integer.parseInt(
-                            prefRange.getCellByPosition(j, 0).getStringValue());
-            for (int i = 0; i < prefRange.getRowNumber(); i++) {
-                if (max < Integer.parseInt(prefRange.getCellByPosition(j, i)
-                                .getStringValue()))
-                    max = Integer.parseInt(prefRange.getCellByPosition(j, i)
-                                    .getStringValue());
-            }
-            stringBuilder.append("Voter " + (j + 1) + " : ");
+            Voter voter = Voter.createVoter(Integer.parseInt(table
+                            .getCellByPosition(j + 1, 0).getStringValue()));
+            stringBuilder.append("Voter " + voter.getId() + " : ");
             int nbChoice = 1;
-            Set<Alternative> set;
-            while (nbChoice <= max) {
-                set = new LinkedHashSet<>();
+            while (nbChoice <= alternatives.size()) {
+                Set<Alternative> set = Sets.newLinkedHashSet();
                 for (int i = 0; i < prefRange.getRowNumber(); i++) {
                     if (nbChoice == Integer
                                     .parseInt(prefRange.getCellByPosition(j, i)
@@ -154,8 +164,8 @@ public class ReadODS {
      * contained in a table in a format that does not accept ties between
      * alternatives
      * 
-     * @param table : an ods table containing voting information
-     * @return : A string to display the characteristics of the table send
+     * @param table an ods table containing voting information
+     * @return A string to display the characteristics of the table send
      */
     public static String printFormatWithoutEqualsPref(Table table) {
         Objects.requireNonNull(table);
@@ -169,7 +179,9 @@ public class ReadODS {
         CellRange prefRange = table.getCellRangeByPosition(0, 1,
                         nbTotVoters - 1, alternatives.size());
         for (int j = 0; j < prefRange.getColumnNumber(); j++) {
-            stringBuilder.append("Voter " + (j + 1) + " : ");
+            Voter voter = Voter.createVoter(Integer.parseInt(
+                            table.getCellByPosition(j, 0).getStringValue()));
+            stringBuilder.append("Voter " + voter.getId() + " : ");
             for (int i = 0; i < prefRange.getRowNumber(); i++) {
                 stringBuilder.append(Integer.parseInt(prefRange
                                 .getCellByPosition(j, i).getStringValue())
@@ -184,9 +196,9 @@ public class ReadODS {
      * Function returning the different alternatives of a table passed in
      * parameter
      * 
-     * @param table : ods table containing voting informations (looklike SOC
+     * @param table ods table containing voting informations (looklike SOC
      *              format excluded) <code>not null</code>
-     * @return : the list of alternatives
+     * @return the list of alternatives
      */
     private static List<Alternative> getAlternatives(Table table) {
         Objects.requireNonNull(table);
@@ -205,9 +217,9 @@ public class ReadODS {
     /**
      * Function returning the number of Voters of a table passed in parameter
      * 
-     * @param table : ods table containing voting informations (looklike SOC
+     * @param table ods table containing voting informations (looklike SOC
      *              format excluded) <code>not null</code>
-     * @return : the number of Voters
+     * @return the number of Voters
      */
     private static int getnbTotVoters(Table table) {
         Objects.requireNonNull(table);
@@ -219,5 +231,107 @@ public class ReadODS {
                         .equals(""))
             nbTotVoters++;
         return nbTotVoters;
+    }
+
+    /**
+     * Function defining which type of file formatting is used
+     * 
+     * @param inputStream ods file
+     * @return an ImmutableList of CompletePreference
+     */
+    public static ImmutableList<CompletePreference> checkFormatandReturnCompletePreference(
+                    InputStream inputStream) throws Exception {
+        Objects.requireNonNull(inputStream);
+        LOGGER.debug("Open Stream");
+        SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
+                        .loadDocument(inputStream);
+        LOGGER.debug("Open Spreadsheet");
+        Table table = spreadsheetDoc.getSheetByIndex(0);
+        LOGGER.debug("Get sheet index 0 done");
+        LOGGER.debug("Checking format");
+        if (table.getCellByPosition(1, 0).getStringValue().equals(""))
+            throw new BadFormatODSException("This format is not allowed");
+        else if (table.getCellByPosition(0, 0).getStringValue().equals(""))
+            return completeFormatWithEqualsPref(table);
+        return completeFormatWithoutEqualsPref(table);
+    }
+
+    /**
+     * Function returning an ImmutableList of CompletePreference containing a
+     * formatting of the voting data contained in a table in the format
+     * accepting ties between alternatives
+     * 
+     * @param table an ods table containing voting information
+     * @return an ImmutableList of CompletePreference
+     * @throws EmptySetException
+     * @throws DuplicateValueException
+     */
+    public static ImmutableList<CompletePreference> completeFormatWithEqualsPref(
+                    Table table)
+                    throws DuplicateValueException, EmptySetException {
+        Objects.requireNonNull(table);
+        List<CompletePreference> completePreferences = Lists.newArrayList();
+        List<Alternative> alternatives = getAlternatives(table);
+        int nbTotVoters = getnbTotVoters(table);
+        CellRange prefRange = table.getCellRangeByPosition(1, 1, nbTotVoters,
+                        alternatives.size());
+        for (int j = 0; j < prefRange.getColumnNumber(); j++) {
+            Voter voter = Voter.createVoter(Integer.parseInt(table
+                            .getCellByPosition(j + 1, 0).getStringValue()));
+            int nbChoice = 1;
+            List<Set<Alternative>> equivalenceClasses = Lists.newArrayList();
+            while (nbChoice <= alternatives.size()) {
+                Set<Alternative> set = Sets.newLinkedHashSet();
+                for (int i = 0; i < prefRange.getRowNumber(); i++) {
+                    if (nbChoice == Integer
+                                    .parseInt(prefRange.getCellByPosition(j, i)
+                                                    .getStringValue())) {
+                        set.add(Alternative.withId(Integer.parseInt(
+                                        table.getCellByPosition(0, i + 1)
+                                                        .getStringValue())));
+                    }
+                }
+                if (!set.isEmpty())
+                    equivalenceClasses.add(set);
+                nbChoice++;
+            }
+            completePreferences.add(CompletePreferenceImpl
+                            .asCompletePreference(voter, equivalenceClasses));
+        }
+        return ImmutableList.copyOf(completePreferences);
+    }
+
+    /**
+     * Function returning an ImmutableList of CompletePreference containing a
+     * formatting of the voting data contained in a table in a format that does
+     * not accept ties between alternatives
+     * 
+     * @param table an ods table containing voting information
+     * @return an ImmutableList of CompletePreference
+     * @throws EmptySetException
+     * @throws DuplicateValueException
+     */
+    public static ImmutableList<CompletePreference> completeFormatWithoutEqualsPref(
+                    Table table)
+                    throws DuplicateValueException, EmptySetException {
+        Objects.requireNonNull(table);
+        List<CompletePreference> completePreferences = Lists.newArrayList();
+        List<Alternative> alternatives = getAlternatives(table);
+        int nbTotVoters = getnbTotVoters(table);
+        CellRange prefRange = table.getCellRangeByPosition(0, 1,
+                        nbTotVoters - 1, alternatives.size());
+        for (int j = 0; j < prefRange.getColumnNumber(); j++) {
+            List<Set<Alternative>> list = Lists.newArrayList();
+            Voter voter = Voter.createVoter(Integer.parseInt(
+                            table.getCellByPosition(j, 0).getStringValue()));
+            for (int i = 0; i < prefRange.getRowNumber(); i++) {
+                list.add(ImmutableSet.of(Alternative.withId(Integer
+                                .parseInt(prefRange.getCellByPosition(j, i)
+                                                .getStringValue()))));
+            }
+            completePreferences.add(CompletePreferenceImpl
+                            .asCompletePreference(voter, list));
+        }
+        return ImmutableList.copyOf(completePreferences);
     }
 }
