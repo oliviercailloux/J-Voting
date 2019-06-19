@@ -45,7 +45,7 @@ public class MutablePreferenceImpl implements MutablePreference {
 
 	/**
 	 * Static factory method creating a mutable preference from a set of List of
-	 * sets of Alternatives of data. Those datas are implemented in a graph.
+	 * sets of Alternatives of data.
 	 *
 	 * @param setAlternatives is a set of lists of sets of Alternatives representing
 	 *                        the preference. In the first set, every list is a
@@ -67,14 +67,14 @@ public class MutablePreferenceImpl implements MutablePreference {
 
 	/**
 	 * Static factory method creating a graph of preference from a set of lists of
-	 * sets of Alternatives of data.
+	 * sets of Alternatives of data. Those datas are implemented in a graph.
 	 *
 	 * @param pref is a set of lists of sets of Alternatives representing the
 	 *             preference. In the first set, every list is a linear comparison
 	 *             of sets of alternatives. (first in the list is preferred to next
 	 *             ones, etc.) Those sets of alternatives contain ex-aequo
 	 *             alternatives.
-	 * @return the mutable preference, implemented with a transitively closed.
+	 * @return the mutable preference, implemented with a transitively closed graph.
 	 * @see Voter
 	 * @see Preference
 	 * @see MutablePreference
@@ -121,7 +121,7 @@ public class MutablePreferenceImpl implements MutablePreference {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * @return a Mutable graph which represents a mutable preference
 	 */
 	@Override
 	public MutableGraph<Alternative> asGraph() {
@@ -129,8 +129,8 @@ public class MutablePreferenceImpl implements MutablePreference {
 	}
 
 	/**
-	 * Adds a single alternative to the Preference. This alternative is not
-	 * preferred to any other of the preference, it is being added isolated.
+	 * Adds an alternative to the Preference. This alternative is not preferred to
+	 * any other of the preference, it is being added isolated.
 	 *
 	 * @param alternative to add to the preference.
 	 */
@@ -161,8 +161,8 @@ public class MutablePreferenceImpl implements MutablePreference {
 	}
 
 	/**
-	 * Adds an edge from an alternative a1 to an alternative a2, so that a1 is
-	 * preferred to a2 (a1 >= a2). If one of them is not in the graph, they are
+	 * Adds an edge from an alternative a1 to an alternative a2, so that a1 is as
+	 * least as good as a2 (a1 >= a2). If one of them is not in the graph, they are
 	 * added.
 	 * <p>
 	 * Graph is rearranged : a transitive closure is applied to it/
@@ -181,7 +181,13 @@ public class MutablePreferenceImpl implements MutablePreference {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * This method returns each alternative in each node of the graph in a set of
+	 * alternatives and each node represents a set of alternatives which are
+	 * ex-aequo
+	 * 
+	 * TODO
+	 * 
+	 * @return alternatives's set.
 	 */
 	@Override
 	public Set<Alternative> getAlternatives() {
@@ -196,18 +202,4 @@ public class MutablePreferenceImpl implements MutablePreference {
 		return voter;
 	}
 
-	@Override
-	public String toString() {
-		return asGraph().toString() + "\n" + voter.toString();
-	}
-
-	/**
-	 * @return a set of lists of sets : Sets containing alternatives describe
-	 *         ex-aequo alternatives There are ordered by preference in a List.
-	 *         Those lists are in a set if some alternatives are not preferred to
-	 *         other and are not in the same lists
-	 */
-	public Set<List<Set<Alternative>>> asSetlistSet() {
-		return null; // TO-DO
-	}
 }
