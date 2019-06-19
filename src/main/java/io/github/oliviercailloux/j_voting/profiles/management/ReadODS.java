@@ -12,7 +12,6 @@ import org.odftoolkit.simple.table.Table;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -239,7 +238,7 @@ public class ReadODS {
      * @param inputStream ods file
      * @return an ImmutableList of CompletePreference
      */
-    public static ImmutableList<CompletePreference> checkFormatandReturnCompletePreference(
+    public static ImmutableSet<CompletePreference> checkFormatandReturnCompletePreference(
                     InputStream inputStream) throws Exception {
         Objects.requireNonNull(inputStream);
         LOGGER.debug("Open Stream");
@@ -266,7 +265,7 @@ public class ReadODS {
      * @throws EmptySetException
      * @throws DuplicateValueException
      */
-    public static ImmutableList<CompletePreference> completeFormatWithEqualsPref(
+    public static ImmutableSet<CompletePreference> completeFormatWithEqualsPref(
                     Table table)
                     throws DuplicateValueException, EmptySetException {
         Objects.requireNonNull(table);
@@ -298,7 +297,7 @@ public class ReadODS {
             completePreferences.add(CompletePreferenceImpl
                             .asCompletePreference(voter, equivalenceClasses));
         }
-        return ImmutableList.copyOf(completePreferences);
+        return ImmutableSet.copyOf(completePreferences);
     }
 
     /**
@@ -311,7 +310,7 @@ public class ReadODS {
      * @throws EmptySetException
      * @throws DuplicateValueException
      */
-    public static ImmutableList<CompletePreference> completeFormatWithoutEqualsPref(
+    public static ImmutableSet<CompletePreference> completeFormatWithoutEqualsPref(
                     Table table)
                     throws DuplicateValueException, EmptySetException {
         Objects.requireNonNull(table);
@@ -332,6 +331,6 @@ public class ReadODS {
             completePreferences.add(CompletePreferenceImpl
                             .asCompletePreference(voter, list));
         }
-        return ImmutableList.copyOf(completePreferences);
+        return ImmutableSet.copyOf(completePreferences);
     }
 }

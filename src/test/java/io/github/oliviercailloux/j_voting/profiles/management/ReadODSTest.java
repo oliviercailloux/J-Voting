@@ -106,9 +106,9 @@ class ReadODSTest {
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
         Table table = spreadsheetDoc.getSheetByIndex(0);
-        ImmutableList<CompletePreference> completePreferences = ReadODS
+        ImmutableSet<CompletePreference> completePreferences = ReadODS
                         .completeFormatWithEqualsPref(table);
-        ImmutableList<CompletePreference> completePreferencesTest = ImmutableList
+        ImmutableSet<CompletePreference> completePreferencesTest = ImmutableSet
                         .of(CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),
                                         ImmutableList.of(ImmutableSet.of(
@@ -161,9 +161,9 @@ class ReadODSTest {
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
         Table table = spreadsheetDoc.getSheetByIndex(0);
-        ImmutableList<CompletePreference> completePreferences = ReadODS
+        ImmutableSet<CompletePreference> completePreferences = ReadODS
                         .completeFormatWithoutEqualsPref(table);
-        ImmutableList<CompletePreference> completePreferencesTest = ImmutableList
+        ImmutableSet<CompletePreference> completePreferencesTest = ImmutableSet
                         .of(CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),
                                         ImmutableList.of(ImmutableSet.of(
@@ -221,9 +221,9 @@ class ReadODSTest {
     void checkFormatandReturnCompletePreference() throws Exception {
         InputStream inputStream = ReadODS.class.getResourceAsStream(
                         "complete_profile_format_strict.ods");
-        ImmutableList<CompletePreference> completePreferences = ReadODS
+        ImmutableSet<CompletePreference> completePreferences = ReadODS
                         .checkFormatandReturnCompletePreference(inputStream);
-        ImmutableList<CompletePreference> completePreferencesTest = ImmutableList
+        ImmutableSet<CompletePreference> completePreferencesTest = ImmutableSet
                         .of(CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),
                                         ImmutableList.of(ImmutableSet.of(
@@ -271,7 +271,7 @@ class ReadODSTest {
                         .getResourceAsStream("complete_rank_format.ods");
         completePreferences = ReadODS
                         .checkFormatandReturnCompletePreference(inputStream);
-        completePreferencesTest = ImmutableList.of(
+        completePreferencesTest = ImmutableSet.of(
                         CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),
                                         ImmutableList.of(ImmutableSet.of(
