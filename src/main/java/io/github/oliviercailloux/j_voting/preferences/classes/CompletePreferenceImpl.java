@@ -28,6 +28,7 @@ public class CompletePreferenceImpl implements CompletePreference {
     private ImmutableList<ImmutableSet<Alternative>> equivalenceClasses;
     private Voter voter;
     private ImmutableGraph<Alternative> graph;
+    ImmutableSet<Alternative> alternatives;
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(CompletePreferenceImpl.class.getName());
 
@@ -47,8 +48,7 @@ public class CompletePreferenceImpl implements CompletePreference {
         LOGGER.debug("Factory CompletePreferenceImpl");
         Preconditions.checkNotNull(equivalenceClasses);
         Preconditions.checkNotNull(voter);
-        return new CompletePreferenceImpl(voter,
-                        ImmutableList.copyOf(equivalenceClasses));
+        return new CompletePreferenceImpl(voter, equivalenceClasses);
     }
 
     /**
@@ -62,17 +62,6 @@ public class CompletePreferenceImpl implements CompletePreference {
                     List<? extends Set<Alternative>> equivalenceClasses)
                     throws EmptySetException, DuplicateValueException {
         LOGGER.debug("Constructor CompletePreferenceImpl");
-        List<Alternative> listAlternatives = Lists.newArrayList();
-        for (Set<Alternative> equivalenceClass : equivalenceClasses) {
-            if (equivalenceClass.isEmpty())
-                throw new EmptySetException("A Set can't be empty");
-            for (Alternative alternative : equivalenceClass) {
-                if (listAlternatives.contains(alternative))
-                    throw new DuplicateValueException(
-                                    "you can't duplicate Alternatives");
-                listAlternatives.add(alternative);
-            }
-        }
         this.voter = voter;
         List<ImmutableSet<Alternative>> listImmutableSets = Lists
                         .newArrayList();
@@ -81,16 +70,25 @@ public class CompletePreferenceImpl implements CompletePreference {
         }
         this.equivalenceClasses = ImmutableList.copyOf(listImmutableSets);
         this.graph = createGraph(equivalenceClasses);
+        this.alternatives = ImmutableSet.copyOf(this.graph.nodes());
     }
 
     private ImmutableGraph<Alternative> createGraph(
-                    List<? extends Set<Alternative>> equivalenceClasses) {
+                    List<? extends Set<Alternative>> equivalenceClasses)
+                    throws EmptySetException, DuplicateValueException {
+        List<Alternative> listAlternatives = Lists.newArrayList();
         MutableGraph<Alternative> newGraph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         Alternative lastSetLinker = null;
         for (Set<Alternative> equivalenceClasse : equivalenceClasses) {
+            if (equivalenceClasse.isEmpty())
+                throw new EmptySetException("A Set can't be empty");
             Alternative rememberAlternative = null;
             for (Alternative alternative : equivalenceClasse) {
+                if (listAlternatives.contains(alternative))
+                    throw new DuplicateValueException(
+                                    "you can't duplicate Alternatives");
+                listAlternatives.add(alternative);
                 if (lastSetLinker != null) {
                     newGraph.putEdge(lastSetLinker, alternative);
                     lastSetLinker = null;
@@ -109,7 +107,7 @@ public class CompletePreferenceImpl implements CompletePreference {
 
     @Override
     public ImmutableSet<Alternative> getAlternatives() {
-        return ImmutableSet.copyOf(graph.nodes());
+        return this.alternatives;
     }
 
     @Override
