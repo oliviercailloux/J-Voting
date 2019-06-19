@@ -180,23 +180,12 @@ public class MutablePreferenceImpl implements MutablePreference {
 		graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
 	}
 
-	/**
-	 * This method returns each alternative in each node of the graph in a set of
-	 * alternatives and each node represents a set of alternatives which are
-	 * ex-aequo
-	 * 
-	 * TODO
-	 * 
-	 * @return alternatives's set.
-	 */
 	@Override
 	public Set<Alternative> getAlternatives() {
+		// TODO
 		return graph.nodes();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public Voter getVoter() {
 		return voter;
