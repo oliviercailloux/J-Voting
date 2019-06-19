@@ -28,6 +28,7 @@ public class CompletePreferenceImpl implements CompletePreference {
     private ImmutableList<ImmutableSet<Alternative>> equivalenceClasses;
     private Voter voter;
     private ImmutableGraph<Alternative> graph;
+    ImmutableSet<Alternative> alternatives;
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(CompletePreferenceImpl.class.getName());
 
@@ -47,8 +48,7 @@ public class CompletePreferenceImpl implements CompletePreference {
         LOGGER.debug("Factory CompletePreferenceImpl");
         Preconditions.checkNotNull(equivalenceClasses);
         Preconditions.checkNotNull(voter);
-        return new CompletePreferenceImpl(voter,
-                        ImmutableList.copyOf(equivalenceClasses));
+        return new CompletePreferenceImpl(voter, equivalenceClasses);
     }
 
     /**
@@ -81,6 +81,7 @@ public class CompletePreferenceImpl implements CompletePreference {
         }
         this.equivalenceClasses = ImmutableList.copyOf(listImmutableSets);
         this.graph = createGraph(equivalenceClasses);
+        this.alternatives = ImmutableSet.copyOf(this.graph.nodes());
     }
 
     private ImmutableGraph<Alternative> createGraph(
@@ -109,7 +110,7 @@ public class CompletePreferenceImpl implements CompletePreference {
 
     @Override
     public ImmutableSet<Alternative> getAlternatives() {
-        return ImmutableSet.copyOf(graph.nodes());
+        return this.alternatives;
     }
 
     @Override
