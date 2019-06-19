@@ -134,7 +134,7 @@ public class MutablePreferenceImpl implements MutablePreference {
 	 *
 	 * @param alternative to add to the preference.
 	 */
-	public void addSingleAlternative(Alternative alternative) {
+	public void addAlternative(Alternative alternative) {
 		LOGGER.debug("MutablePreferenceImpl addAlternative");
 		Preconditions.checkNotNull(alternative);
 		graph.putEdge(alternative, alternative);
@@ -149,12 +149,12 @@ public class MutablePreferenceImpl implements MutablePreference {
 	 * @param a1 first alternative
 	 * @param a2 second alternative
 	 */
-	public void addExAequoAlternatives(Alternative a1, Alternative a2) {
+	public void addEquivalence(Alternative a1, Alternative a2) {
 		LOGGER.debug("MutablePreferenceImpl addExAequo");
 		Preconditions.checkNotNull(a1);
 		Preconditions.checkNotNull(a2);
-		addSingleAlternative(a1);
-		addSingleAlternative(a2);
+		addAlternative(a1);
+		addAlternative(a2);
 		graph.putEdge(a1, a2);
 		graph.putEdge(a2, a1);
 		graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
@@ -162,7 +162,7 @@ public class MutablePreferenceImpl implements MutablePreference {
 
 	/**
 	 * Adds an edge from an alternative a1 to an alternative a2, so that a1 is
-	 * preferred to a2 (a1 > a2). If one of them is not in the graph, they are
+	 * preferred to a2 (a1 >= a2). If one of them is not in the graph, they are
 	 * added.
 	 * <p>
 	 * Graph is rearranged : a transitive closure is applied to it/
@@ -170,12 +170,12 @@ public class MutablePreferenceImpl implements MutablePreference {
 	 * @param a1 preferred alternative to a2
 	 * @param a2 "lower" alternative
 	 */
-	public void addStrictPairOfAlternatives(Alternative a1, Alternative a2) {
+	public void putEdge(Alternative a1, Alternative a2) {
 		LOGGER.debug("MutablePreferenceImpl addExAequo");
 		Preconditions.checkNotNull(a1);
 		Preconditions.checkNotNull(a2);
-		addSingleAlternative(a1);
-		addSingleAlternative(a2);
+		addAlternative(a1);
+		addAlternative(a2);
 		graph.putEdge(a1, a2);
 		graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
 	}
