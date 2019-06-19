@@ -62,17 +62,6 @@ public class CompletePreferenceImpl implements CompletePreference {
                     List<? extends Set<Alternative>> equivalenceClasses)
                     throws EmptySetException, DuplicateValueException {
         LOGGER.debug("Constructor CompletePreferenceImpl");
-        List<Alternative> listAlternatives = Lists.newArrayList();
-        for (Set<Alternative> equivalenceClass : equivalenceClasses) {
-            if (equivalenceClass.isEmpty())
-                throw new EmptySetException("A Set can't be empty");
-            for (Alternative alternative : equivalenceClass) {
-                if (listAlternatives.contains(alternative))
-                    throw new DuplicateValueException(
-                                    "you can't duplicate Alternatives");
-                listAlternatives.add(alternative);
-            }
-        }
         this.voter = voter;
         List<ImmutableSet<Alternative>> listImmutableSets = Lists
                         .newArrayList();
@@ -85,13 +74,21 @@ public class CompletePreferenceImpl implements CompletePreference {
     }
 
     private ImmutableGraph<Alternative> createGraph(
-                    List<? extends Set<Alternative>> equivalenceClasses) {
+                    List<? extends Set<Alternative>> equivalenceClasses)
+                    throws EmptySetException, DuplicateValueException {
+        List<Alternative> listAlternatives = Lists.newArrayList();
         MutableGraph<Alternative> newGraph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         Alternative lastSetLinker = null;
         for (Set<Alternative> equivalenceClasse : equivalenceClasses) {
+            if (equivalenceClasse.isEmpty())
+                throw new EmptySetException("A Set can't be empty");
             Alternative rememberAlternative = null;
             for (Alternative alternative : equivalenceClasse) {
+                if (listAlternatives.contains(alternative))
+                    throw new DuplicateValueException(
+                                    "you can't duplicate Alternatives");
+                listAlternatives.add(alternative);
                 if (lastSetLinker != null) {
                     newGraph.putEdge(lastSetLinker, alternative);
                     lastSetLinker = null;
