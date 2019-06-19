@@ -12,7 +12,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
 import com.google.common.graph.ImmutableGraph;
@@ -48,6 +47,21 @@ public class CompletePreferenceImpl implements CompletePreference {
         LOGGER.debug("Factory CompletePreferenceImpl");
         Preconditions.checkNotNull(equivalenceClasses);
         Preconditions.checkNotNull(voter);
+        return new CompletePreferenceImpl(voter,
+                        ImmutableList.copyOf(equivalenceClasses));
+    }
+
+    /**
+     * 
+     * @param equivalenceClasses <code> not null </code>
+     * @param voter              <code> not null </code>
+     * @throws EmptySetException
+     * @throws DuplicateValueException
+     */
+    private CompletePreferenceImpl(Voter voter,
+                    List<? extends Set<Alternative>> equivalenceClasses)
+                    throws EmptySetException, DuplicateValueException {
+        LOGGER.debug("Constructor CompletePreferenceImpl");
         List<Alternative> listAlternatives = Lists.newArrayList();
         for (Set<Alternative> equivalenceClass : equivalenceClasses) {
             if (equivalenceClass.isEmpty())
@@ -59,18 +73,6 @@ public class CompletePreferenceImpl implements CompletePreference {
                 listAlternatives.add(alternative);
             }
         }
-        return new CompletePreferenceImpl(voter,
-                        ImmutableList.copyOf(equivalenceClasses));
-    }
-
-    /**
-     * 
-     * @param equivalenceClasses <code> not null </code>
-     * @param voter              <code> not null </code>
-     */
-    private CompletePreferenceImpl(Voter voter,
-                    List<? extends Set<Alternative>> equivalenceClasses) {
-        LOGGER.debug("Constructor CompletePreferenceImpl");
         this.voter = voter;
         List<ImmutableSet<Alternative>> listImmutableSets = Lists
                         .newArrayList();
@@ -107,13 +109,7 @@ public class CompletePreferenceImpl implements CompletePreference {
 
     @Override
     public ImmutableSet<Alternative> getAlternatives() {
-        Set<Alternative> returnedSet = Sets.newHashSet();
-        for (Set<Alternative> equivalenceClasse : equivalenceClasses) {
-            for (Alternative alternative : equivalenceClasse) {
-                returnedSet.add(alternative);
-            }
-        }
-        return ImmutableSet.copyOf(returnedSet);
+        return ImmutableSet.copyOf(graph.nodes());
     }
 
     @Override
@@ -144,5 +140,27 @@ public class CompletePreferenceImpl implements CompletePreference {
     @Override
     public ImmutableGraph<Alternative> asGraph() {
         return graph;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(equivalenceClasses, graph, voter);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof CompletePreferenceImpl)) {
+            return false;
+        }
+        CompletePreferenceImpl other = (CompletePreferenceImpl) obj;
+        return Objects.equals(equivalenceClasses, other.equivalenceClasses)
+                        && Objects.equals(graph, other.graph)
+                        && Objects.equals(voter, other.voter);
     }
 }
