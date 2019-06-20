@@ -7,6 +7,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
@@ -44,37 +45,16 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 		LOGGER.debug("MutableAntiSymmetricPreferenceImpl given");
 		Preconditions.checkNotNull(pref);
 		Preconditions.checkNotNull(voter);
-//		// Check for antisymmetric condition to be respected.
-//		//if (pref.nodes().size() != 1) {
-//			throw new IllegalArgumentException("Must not contain ex-eaquo Alternative");
-//		}
+		for (Alternative a1 : pref.nodes()) {
+			for (Alternative a2 : pref.successors(a1)) {
+				if (pref.hasEdgeConnecting(a2, a1) && !a2.equals(a1)) {
+					throw new IllegalArgumentException("Must not contain ex-eaquo Alternative");
+				}
+			}
+		}
 		return new MutableAntiSymmetricPreferenceImpl(pref, voter);
-	}
 
-//	/**
-//	 * @param pref  is a set of lists of sets of Alternatives representing the
-//	 *              preference. In the first set, every list is a linear comparison
-//	 *              of sets of alternatives. (first in the list is preferred to next
-//	 *              ones, etc.) Those sets cannot contain ex-aequo alternatives
-//	 *              (only one element)
-//	 * @param voter is the Voter associated to the Preference.
-//	 * @return the mutable anti-symmetric preference
-//	 * @see Voter
-//	 * @see Preference
-//	 * @see MutableAntiSymmetricPreference#asGraph()
-//	 */
-////	public static MutableAntiSymmetricPreferenceImpl given(Set<List<Set<Alternative>>> pref, Voter voter) {
-////	LOGGER.debug("MutableAntiSymmetricPreferenceImpl given");
-////	Preconditions.checkNotNull(pref);
-////	Preconditions.checkNotNull(voter); // Check for antisymmetric condition to be respected.
-////	for (List<Set<Alternative>> list : pref) {
-////		for (Set<Alternative> set : list) {
-////			if (set.size() != 1)
-////				throw new IllegalArgumentException("Must not contain ex-eaquo Alternative");
-////		}
-////	}
-////	return new MutableAntiSymmetricPreferenceImpl(preferenceGraphMaker(pref), voter);
-////}
+	}
 
 	/**
 	 * @param pref is a set of lists of sets of Alternatives representing the
@@ -141,6 +121,9 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 		LOGGER.debug("MutableAntiSymmetricPreferenceImpl putEdge");
 		Preconditions.checkNotNull(a1);
 		Preconditions.checkNotNull(a2);
+		if (graph.hasEdgeConnecting(a2, a1)) {
+			throw new IllegalArgumentException("Must not contain ex-eaquo Alternative");
+		}
 		graph.putEdge(a1, a2);
 		graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
 	}
@@ -167,5 +150,10 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 	@Override
 	public Voter getVoter() {
 		return voter;
+	}
+
+	@Override
+	public String toString() {
+		return MoreObjects.toStringHelper(this).add("graph", graph).add("voter", voter).toString();
 	}
 }
