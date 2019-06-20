@@ -71,13 +71,13 @@ public class MutableAntiSymmetricPreferenceImpl extends PreferenceImpl implement
 	 * Adds an edge from a1 to a2, so that a1 is preferred to a2 (a1 > a2). If one
 	 * of them is not in the graph, they are added.
 	 *
-	 * Graph is rearranged : a transitive closure is applied to it/
+	 * Graph is rearranged : a transitive closure is applied to it
 	 *
 	 * @param a1 preferred alternative to a2
 	 * @param a2 "lower" alternative
 	 */
-	public void addStrictPreference(Alternative a1, Alternative a2) {
-		LOGGER.debug("MutableAntiSymmetricPreferenceImpl addStrictPreference");
+	public void putEdge(Alternative a1, Alternative a2) {
+		LOGGER.debug("MutableAntiSymmetricPreferenceImpl putEdgePreference");
 		Preconditions.checkNotNull(a1);
 		Preconditions.checkNotNull(a2);
 		graph.putEdge(a1, a2);

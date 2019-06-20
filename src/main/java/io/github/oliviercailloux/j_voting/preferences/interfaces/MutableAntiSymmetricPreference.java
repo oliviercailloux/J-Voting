@@ -23,5 +23,5 @@ public interface MutableAntiSymmetricPreference
      * @param a1 must be not <code> null </code>
      * @param a2 must be not <code> null </code>
      */
-    public void addStrictPreference(Alternative a1, Alternative a2);
+    public void putEdge(Alternative a1, Alternative a2);
 }
