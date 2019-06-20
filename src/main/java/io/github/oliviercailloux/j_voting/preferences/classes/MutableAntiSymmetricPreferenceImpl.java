@@ -51,6 +51,18 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 		return new MutableAntiSymmetricPreferenceImpl(pref, voter);
 	}
 
+	/**
+	 * @param pref  is a set of lists of sets of Alternatives representing the
+	 *              preference. In the first set, every list is a linear comparison
+	 *              of sets of alternatives. (first in the list is preferred to next
+	 *              ones, etc.) Those sets cannot contain ex-aequo alternatives
+	 *              (only one element)
+	 * @param voter is the Voter associated to the Preference.
+	 * @return the mutable anti-symmetric preference
+	 * @see Voter
+	 * @see Preference
+	 * @see MutableAntiSymmetricPreference#asGraph()
+	 */
 //	public static MutableAntiSymmetricPreferenceImpl given(Set<List<Set<Alternative>>> pref, Voter voter) {
 //	LOGGER.debug("MutableAntiSymmetricPreferenceImpl given");
 //	Preconditions.checkNotNull(pref);
