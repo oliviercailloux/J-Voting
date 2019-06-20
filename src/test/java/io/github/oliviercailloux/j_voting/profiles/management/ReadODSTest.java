@@ -102,7 +102,7 @@ class ReadODSTest {
     @Test
     void completeFormatWithEqualsPrefTest() throws Exception {
         InputStream inputStream = ReadODS.class
-                        .getResourceAsStream("complete_rank_format.ods");
+                        .getResourceAsStream("rank_format_reduced.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
         Table table = spreadsheetDoc.getSheetByIndex(0);
@@ -157,7 +157,7 @@ class ReadODSTest {
     @Test
     void completeFormatWithoutEqualsPrefTest() throws Exception {
         InputStream inputStream = ReadODS.class.getResourceAsStream(
-                        "complete_profile_format_strict.ods");
+                        "profile_format_strict_reduced.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
         Table table = spreadsheetDoc.getSheetByIndex(0);
@@ -220,7 +220,7 @@ class ReadODSTest {
     @Test
     void checkFormatandReturnCompletePreference() throws Exception {
         InputStream inputStream = ReadODS.class.getResourceAsStream(
-                        "complete_profile_format_strict.ods");
+                        "profile_format_strict_reduced.ods");
         ImmutableSet<CompletePreference> completePreferences = ReadODS
                         .checkFormatandReturnCompletePreference(inputStream);
         ImmutableSet<CompletePreference> completePreferencesTest = ImmutableSet
@@ -268,7 +268,7 @@ class ReadODSTest {
                                                                                                         .withId(1)))));
         assertEquals(completePreferencesTest, completePreferences);
         inputStream = ReadODS.class
-                        .getResourceAsStream("complete_rank_format.ods");
+                        .getResourceAsStream("rank_format_reduced.ods");
         completePreferences = ReadODS
                         .checkFormatandReturnCompletePreference(inputStream);
         completePreferencesTest = ImmutableSet.of(
