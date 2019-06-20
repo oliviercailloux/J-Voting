@@ -40,15 +40,13 @@ public class MutablePreferenceImpl implements MutablePreference {
 	}
 
 	/**
-	 * @param pref  is a set of lists of sets of Alternatives representing the
-	 *              preference. In the first set, every list is a linear comparison
-	 *              of sets of alternatives. (first in the list is preferred to next
-	 *              ones, etc.) Those sets of alternatives contain ex-aequo
-	 *              alternatives.
+	 * @param pref  is a mutable graph of alternatives representing the preference.
+	 *              Each node of the graph contains a set, if this set contains
+	 *              several alternatives, it means that those alternatives are
+	 *              ex-aequo
 	 * @param voter is the Voter associated to the Preference.
-	 * @return the mutable preference, implemented with a transitively closed graph.
+	 * @return the mutable preference
 	 * @see Voter
-	 * @see Preference
 	 * @see MutablePreference#asGraph()
 	 */
 	public static MutablePreferenceImpl given(MutableGraph<Alternative> pref, Voter voter) {
