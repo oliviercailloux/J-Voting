@@ -112,7 +112,7 @@ public class MutablePreferenceImpl implements MutablePreference {
 
 	@Override
 	public ImmutableGraph<Alternative> asGraph() {
-		return ImmutableGraph.copyOf(   graph);
+		return ImmutableGraph.copyOf(graph);
 	}
 
 	@Override
@@ -120,27 +120,14 @@ public class MutablePreferenceImpl implements MutablePreference {
 		return graph;
 	}
 
-	/**
-	 * Adds an alternative to the Preference. This alternative is not preferred to
-	 * any other of the preference, it is being added isolated.
-	 *
-	 * @param alternative to add to the preference.
-	 */
+	@Override
 	public void addAlternative(Alternative alternative) {
 		LOGGER.debug("MutablePreferenceImpl addAlternative");
 		Preconditions.checkNotNull(alternative);
 		graph.putEdge(alternative, alternative);
 	}
 
-	/**
-	 * Adds an edge from an alternative a1 to an alternative a2 and from a2 to a1.
-	 * If one of them is not in the graph, they are added. a1 and a2 are ex-aequo.
-	 * <p>
-	 * * Graph is rearranged : a transitive closure is applied to it/
-	 *
-	 * @param a1 first alternative
-	 * @param a2 second alternative
-	 */
+	@Override
 	public void addEquivalence(Alternative a1, Alternative a2) {
 		LOGGER.debug("MutablePreferenceImpl addExAequo");
 		Preconditions.checkNotNull(a1);
@@ -152,16 +139,7 @@ public class MutablePreferenceImpl implements MutablePreference {
 		graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
 	}
 
-	/**
-	 * Adds an edge from an alternative a1 to an alternative a2, so that a1 is as
-	 * least as good as a2 (a1 >= a2). If one of them is not in the graph, they are
-	 * added.
-	 * <p>
-	 * Graph is rearranged : a transitive closure is applied to it/
-	 *
-	 * @param a1 preferred alternative to a2
-	 * @param a2 "lower" alternative
-	 */
+	@Override
 	public void putEdge(Alternative a1, Alternative a2) {
 		LOGGER.debug("MutablePreferenceImpl addExAequo");
 		Preconditions.checkNotNull(a1);
@@ -173,7 +151,7 @@ public class MutablePreferenceImpl implements MutablePreference {
 	}
 
 	/**
-	 *
+	 * 
 	 * TODO : For now, any modification will not affect the graph
 	 */
 	@Override
