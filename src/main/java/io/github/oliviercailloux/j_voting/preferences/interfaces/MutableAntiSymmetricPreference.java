@@ -1,5 +1,7 @@
 package io.github.oliviercailloux.j_voting.preferences.interfaces;
 
+import com.google.common.graph.MutableGraph;
+
 import io.github.oliviercailloux.j_voting.Alternative;
 
 /**
@@ -7,21 +9,26 @@ import io.github.oliviercailloux.j_voting.Alternative;
  * alternatives considered ex-aequo) in which some alternatives and edges can be
  * added.
  */
-public interface MutableAntiSymmetricPreference
-                extends AntiSymmetricPreference {
+public interface MutableAntiSymmetricPreference extends AntiSymmetricPreference {
 
-    /**
-     * adds a single alternative to the preference as a singleton.
-     * 
-     * @param a must be not <code> null </code>
-     */
-    public void addAlternative(Alternative a);
+	public MutableGraph<Alternative> asMutableGraph();
 
-    /**
-     * adds to the preference "a1>a2";
-     * 
-     * @param a1 must be not <code> null </code>
-     * @param a2 must be not <code> null </code>
-     */
-    public void putEdge(Alternative a1, Alternative a2);
+	/**
+	 * Adds an alternative to the Preference. This alternative is not preferred to
+	 * any other of the preference, it is being added isolated.
+	 *
+	 * @param alternative to add to the preference.
+	 */
+	public void addAlternative(Alternative a);
+
+	/**
+	 * Adds an edge from a1 to a2, so that a1 is preferred to a2 (a1 > a2). If one
+	 * of them is not in the graph, they are added.
+	 *
+	 * Graph is rearranged : a transitive closure is applied to it
+	 *
+	 * @param a1 preferred alternative to a2
+	 * @param a2 "lower" alternative
+	 */
+	public void putEdge(Alternative a1, Alternative a2);
 }
