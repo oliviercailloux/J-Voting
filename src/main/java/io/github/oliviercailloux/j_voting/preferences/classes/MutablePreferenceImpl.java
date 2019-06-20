@@ -21,7 +21,7 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.Preference;
 
 /**
  * Implements MutablePreference interface.
- * 
+ *
  * The structure of a MutablePreference is a MutableGraph in which an edge
  * represents the relation "at least as good as".
  *
@@ -112,12 +112,12 @@ public class MutablePreferenceImpl implements MutablePreference {
 
 	@Override
 	public ImmutableGraph<Alternative> asGraph() {
-		return ImmutableGraph.copyOf(graph);
+		return ImmutableGraph.copyOf(   graph);
 	}
 
 	@Override
 	public MutableGraph<Alternative> asMutableGraph() {
-		return Graphs.copyOf(graph);
+		return graph;
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class MutablePreferenceImpl implements MutablePreference {
 	}
 
 	/**
-	 * 
+	 *
 	 * TODO : For now, any modification will not affect the graph
 	 */
 	@Override
