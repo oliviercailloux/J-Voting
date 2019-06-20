@@ -44,10 +44,10 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 		LOGGER.debug("MutableAntiSymmetricPreferenceImpl given");
 		Preconditions.checkNotNull(pref);
 		Preconditions.checkNotNull(voter);
-		// Check for antisymmetric condition to be respected.
-		if (pref.nodes().size() != 1) {
-			throw new IllegalArgumentException("Must not contain ex-eaquo Alternative");
-		}
+//		// Check for antisymmetric condition to be respected.
+//		//if (pref.nodes().size() != 1) {
+//			throw new IllegalArgumentException("Must not contain ex-eaquo Alternative");
+//		}
 		return new MutableAntiSymmetricPreferenceImpl(pref, voter);
 	}
 
