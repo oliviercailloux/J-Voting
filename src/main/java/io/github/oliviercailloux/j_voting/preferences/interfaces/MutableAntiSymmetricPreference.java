@@ -5,12 +5,19 @@ import com.google.common.graph.MutableGraph;
 import io.github.oliviercailloux.j_voting.Alternative;
 
 /**
- * a mutable antisymmetric preference is an antisymmetric preference (without
- * alternatives considered ex-aequo) in which some alternatives and edges can be
- * added.
+ * A mutable antisymmetric preference is an antisymmetric preference (without
+ * ex-aquo alternatives) in which some alternatives and edges can be added.
  */
 public interface MutableAntiSymmetricPreference extends AntiSymmetricPreference {
 
+	/**
+	 * This graph is not necessarily transitively closed and not necessarily
+	 * reflexive
+	 *
+	 * @see MutableAntiSymmetricPreference#asGraph() TODO : should forbid removing
+	 *      alternative from the set of nodes (surprising results when a > b > c and
+	 *      removing b as it might disconnect the graph)
+	 */
 	public MutableGraph<Alternative> asMutableGraph();
 
 	/**
