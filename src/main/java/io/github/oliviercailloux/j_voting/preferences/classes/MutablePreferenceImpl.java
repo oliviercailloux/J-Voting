@@ -129,7 +129,7 @@ public class MutablePreferenceImpl implements MutablePreference {
 
 	@Override
 	public void addEquivalence(Alternative a1, Alternative a2) {
-		LOGGER.debug("MutablePreferenceImpl addExAequo");
+		LOGGER.debug("MutablePreferenceImpl addEquivalence");
 		Preconditions.checkNotNull(a1);
 		Preconditions.checkNotNull(a2);
 		addAlternative(a1);
@@ -141,7 +141,7 @@ public class MutablePreferenceImpl implements MutablePreference {
 
 	@Override
 	public void putEdge(Alternative a1, Alternative a2) {
-		LOGGER.debug("MutablePreferenceImpl addExAequo");
+		LOGGER.debug("MutablePreferenceImpl putEdge");
 		Preconditions.checkNotNull(a1);
 		Preconditions.checkNotNull(a2);
 		addAlternative(a1);
