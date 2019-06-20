@@ -31,31 +31,38 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 	}
 
 	/**
-	 * @param pref  is a set of lists of sets of Alternatives representing the
-	 *              preference. In the first set, every list is a linear comparison
-	 *              of sets of alternatives. (first in the list is preferred to next
-	 *              ones, etc.) Those sets of alternatives usually contain ex-aequo
-	 *              alternatives, but in this antisymmetric case, they must contain
-	 *              only one element.
+	 * @param pref  is a mutable graph of alternatives representing the preference.
+	 *              Each node of the graph contains a set, and this set must contain
+	 *              only one element, to respect the antisymmetric condition (there
+	 *              s no ex aequo alternatives)
 	 * @param voter is the Voter associated to the Preference.
-	 * @return the mutable preference, implemented with a graph.
+	 * @return the mutable antisymmetric preference
 	 * @see Voter
-	 * @see Preference
 	 * @see MutableAntiSymmetricPreference#asGraph()
 	 */
-	public static MutableAntiSymmetricPreferenceImpl given(Set<List<Set<Alternative>>> pref, Voter voter) {
-		LOGGER.debug("MutablePreferenceImpl given");
+	public static MutableAntiSymmetricPreferenceImpl given(MutableGraph<Alternative> pref, Voter voter) {
+		LOGGER.debug("MutableAntiSymmetricPreferenceImpl given");
 		Preconditions.checkNotNull(pref);
 		Preconditions.checkNotNull(voter);
 		// Check for antisymmetric condition to be respected.
-		for (List<Set<Alternative>> list : pref) {
-			for (Set<Alternative> set : list) {
-				if (set.size() != 1)
-					throw new IllegalArgumentException("Must not contain ex-eaquo Alternative");
-			}
+		if (pref.nodes().size() != 1) {
+			throw new IllegalArgumentException("Must not contain ex-eaquo Alternative");
 		}
-		return new MutableAntiSymmetricPreferenceImpl(preferenceGraphMaker(pref), voter);
+		return new MutableAntiSymmetricPreferenceImpl(pref, voter);
 	}
+
+//	public static MutableAntiSymmetricPreferenceImpl given(Set<List<Set<Alternative>>> pref, Voter voter) {
+//	LOGGER.debug("MutableAntiSymmetricPreferenceImpl given");
+//	Preconditions.checkNotNull(pref);
+//	Preconditions.checkNotNull(voter); // Check for antisymmetric condition to be respected.
+//	for (List<Set<Alternative>> list : pref) {
+//		for (Set<Alternative> set : list) {
+//			if (set.size() != 1)
+//				throw new IllegalArgumentException("Must not contain ex-eaquo Alternative");
+//		}
+//	}
+//	return new MutableAntiSymmetricPreferenceImpl(preferenceGraphMaker(pref), voter);
+//}
 
 	/**
 	 * @param pref is a set of lists of sets of Alternatives representing the
@@ -70,7 +77,7 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 	 * @see MutablePreferenceImpl#asGraph()
 	 */
 	public static MutableGraph<Alternative> preferenceGraphMaker(Set<List<Set<Alternative>>> pref) {
-		LOGGER.debug("PreferenceImpl preferenceGraphMaker");
+		LOGGER.debug("MutableAntiSymmetricPreferenceImpl preferenceGraphMaker");
 		Preconditions.checkNotNull(pref);
 		MutableGraph<Alternative> currentgraph = GraphBuilder.directed().allowsSelfLoops(true).build();
 		for (List<Set<Alternative>> array : pref) {
