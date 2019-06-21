@@ -249,7 +249,7 @@ public class ReadODS {
         LOGGER.debug("Get sheet index 0 done");
         LOGGER.debug("Checking format");
         if (table.getCellByPosition(1, 0).getStringValue().equals(""))
-            throw new BadFormatODSException("This format is not allowed");
+            throw new BadFormatODSException("Expected data at cell (1, 0)");
         else if (table.getCellByPosition(0, 0).getStringValue().equals(""))
             return completeFormatRanksFormat(table);
         return completeFormatVotersToRankings(table);
@@ -323,14 +323,23 @@ public class ReadODS {
             List<Set<Alternative>> list = Lists.newArrayList();
             Voter voter = Voter.createVoter(Integer.parseInt(
                             table.getCellByPosition(j, 0).getStringValue()));
+            for (CompletePreference completePreference : completePreferences)
+                if (completePreference.getVoter() == voter)
+                    throw new DuplicateValueException(
+                                    "Two voters can't have the same ID");
             for (int i = 0; i < prefRange.getRowNumber(); i++) {
-                list.add(ImmutableSet.of(Alternative.withId(Integer
-                                .parseInt(prefRange.getCellByPosition(j, i)
-                                                .getStringValue()))));
+                list.add(ImmutableSet.of(createAlternative(j, i, prefRange)));
             }
             completePreferences.add(CompletePreferenceImpl
                             .asCompletePreference(voter, list));
         }
         return ImmutableSet.copyOf(completePreferences);
+    }
+
+    private static Alternative createAlternative(int colomnIndex, int rowIndex,
+                    CellRange prefRange) {
+        return Alternative.withId(Integer.parseInt(
+                        prefRange.getCellByPosition(colomnIndex, rowIndex)
+                                        .getStringValue()));
     }
 }
