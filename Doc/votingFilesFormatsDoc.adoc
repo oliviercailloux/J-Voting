@@ -1,7 +1,7 @@
 = Differents formats for _voting data_
 -----------------------------------
 
-== Ranks format
+== RanksFormat
 
 This format allows non strict preference. The rank of each alternative in the preference is filled in for every voter.
 
