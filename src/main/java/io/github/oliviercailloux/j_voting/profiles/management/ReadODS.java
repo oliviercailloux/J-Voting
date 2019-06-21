@@ -328,7 +328,8 @@ public class ReadODS {
                     throw new DuplicateValueException(
                                     "Two voters can't have the same ID");
             for (int i = 0; i < prefRange.getRowNumber(); i++) {
-                list.add(ImmutableSet.of(createAlternative(j, i, prefRange)));
+                list.add(ImmutableSet.of(createAlternativeFromCellRange(j, i,
+                                prefRange)));
             }
             completePreferences.add(CompletePreferenceImpl
                             .asCompletePreference(voter, list));
@@ -336,8 +337,8 @@ public class ReadODS {
         return ImmutableSet.copyOf(completePreferences);
     }
 
-    private static Alternative createAlternative(int colomnIndex, int rowIndex,
-                    CellRange prefRange) {
+    private static Alternative createAlternativeFromCellRange(int colomnIndex,
+                    int rowIndex, CellRange prefRange) {
         return Alternative.withId(Integer.parseInt(
                         prefRange.getCellByPosition(colomnIndex, rowIndex)
                                         .getStringValue()));

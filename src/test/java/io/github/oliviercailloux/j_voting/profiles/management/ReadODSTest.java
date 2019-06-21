@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.InputStream;
+import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
@@ -111,46 +113,30 @@ class ReadODSTest {
         ImmutableSet<CompletePreference> completePreferencesTest = ImmutableSet
                         .of(CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),
-                                        ImmutableList.of(ImmutableSet.of(
-                                                        Alternative.withId(1)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(3)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(2),
-                                                                        Alternative.withId(
-                                                                                        4)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(5)))),
+                                        ImmutableList.of(getAlternatives(1),
+                                                        getAlternatives(3),
+                                                        getAlternatives(2, 4),
+                                                        getAlternatives(5))),
                                         CompletePreferenceImpl
                                                         .asCompletePreference(
                                                                         Voter.createVoter(
                                                                                         2),
                                                                         ImmutableList.of(
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(2),
-                                                                                                        Alternative.withId(
-                                                                                                                        1)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(3)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(5)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(4)))),
+                                                                                        getAlternatives(2,
+                                                                                                        1),
+                                                                                        getAlternatives(3),
+                                                                                        getAlternatives(5),
+                                                                                        getAlternatives(4))),
                                         CompletePreferenceImpl
                                                         .asCompletePreference(
                                                                         Voter.createVoter(
                                                                                         3),
                                                                         ImmutableList.of(
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(5)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(3)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(4)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(2)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(1)))));
+                                                                                        getAlternatives(5),
+                                                                                        getAlternatives(3),
+                                                                                        getAlternatives(4),
+                                                                                        getAlternatives(2),
+                                                                                        getAlternatives(1))));
         assertEquals(completePreferencesTest, completePreferences);
     }
 
@@ -166,46 +152,31 @@ class ReadODSTest {
         ImmutableSet<CompletePreference> completePreferencesTest = ImmutableSet
                         .of(CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),
-                                        ImmutableList.of(ImmutableSet.of(
-                                                        Alternative.withId(1)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(3)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(2)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(4)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(5)))),
+                                        ImmutableList.of(getAlternatives(1),
+                                                        getAlternatives(3),
+                                                        getAlternatives(2),
+                                                        getAlternatives(4),
+                                                        getAlternatives(5))),
                                         CompletePreferenceImpl
                                                         .asCompletePreference(
                                                                         Voter.createVoter(
                                                                                         2),
                                                                         ImmutableList.of(
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(2)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(5)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(1)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(4)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(3)))),
+                                                                                        getAlternatives(2),
+                                                                                        getAlternatives(5),
+                                                                                        getAlternatives(1),
+                                                                                        getAlternatives(4),
+                                                                                        getAlternatives(3))),
                                         CompletePreferenceImpl
                                                         .asCompletePreference(
                                                                         Voter.createVoter(
                                                                                         3),
                                                                         ImmutableList.of(
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(4)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(2)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(3)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(5)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(1)))));
+                                                                                        getAlternatives(4),
+                                                                                        getAlternatives(2),
+                                                                                        getAlternatives(3),
+                                                                                        getAlternatives(5),
+                                                                                        getAlternatives(1))));
         assertEquals(completePreferencesTest, completePreferences);
     }
 
@@ -226,46 +197,31 @@ class ReadODSTest {
         ImmutableSet<CompletePreference> completePreferencesTest = ImmutableSet
                         .of(CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),
-                                        ImmutableList.of(ImmutableSet.of(
-                                                        Alternative.withId(1)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(3)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(2)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(4)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(5)))),
+                                        ImmutableList.of(getAlternatives(1),
+                                                        getAlternatives(3),
+                                                        getAlternatives(2),
+                                                        getAlternatives(4),
+                                                        getAlternatives(5))),
                                         CompletePreferenceImpl
                                                         .asCompletePreference(
                                                                         Voter.createVoter(
                                                                                         2),
                                                                         ImmutableList.of(
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(2)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(5)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(1)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(4)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(3)))),
+                                                                                        getAlternatives(2),
+                                                                                        getAlternatives(5),
+                                                                                        getAlternatives(1),
+                                                                                        getAlternatives(4),
+                                                                                        getAlternatives(3))),
                                         CompletePreferenceImpl
                                                         .asCompletePreference(
                                                                         Voter.createVoter(
                                                                                         3),
                                                                         ImmutableList.of(
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(4)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(2)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(3)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(5)),
-                                                                                        ImmutableSet.of(Alternative
-                                                                                                        .withId(1)))));
+                                                                                        getAlternatives(4),
+                                                                                        getAlternatives(2),
+                                                                                        getAlternatives(3),
+                                                                                        getAlternatives(5),
+                                                                                        getAlternatives(1))));
         assertEquals(completePreferencesTest, completePreferences);
         inputStream = ReadODS.class
                         .getResourceAsStream("rank_format_reduced.ods");
@@ -274,39 +230,33 @@ class ReadODSTest {
         completePreferencesTest = ImmutableSet.of(
                         CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),
-                                        ImmutableList.of(ImmutableSet.of(
-                                                        Alternative.withId(1)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(3)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(2),
-                                                                        Alternative.withId(
-                                                                                        4)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(5)))),
+                                        ImmutableList.of(getAlternatives(1),
+                                                        getAlternatives(3),
+                                                        getAlternatives(2, 4),
+                                                        getAlternatives(5))),
                         CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(2),
                                         ImmutableList.of(ImmutableSet.of(
                                                         Alternative.withId(2),
                                                         Alternative.withId(1)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(3)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(5)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(4)))),
+                                                        getAlternatives(3),
+                                                        getAlternatives(5),
+                                                        getAlternatives(4))),
                         CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(3),
-                                        ImmutableList.of(ImmutableSet.of(
-                                                        Alternative.withId(5)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(3)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(4)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(2)),
-                                                        ImmutableSet.of(Alternative
-                                                                        .withId(1)))));
+                                        ImmutableList.of(getAlternatives(5),
+                                                        getAlternatives(3),
+                                                        getAlternatives(4),
+                                                        getAlternatives(2),
+                                                        getAlternatives(1))));
         assertEquals(completePreferencesTest, completePreferences);
+    }
+
+    private static ImmutableSet<Alternative> getAlternatives(int... ids) {
+        Set<Alternative> returnedSet = Sets.newHashSet();
+        for (int id : ids) {
+            returnedSet.add(Alternative.withId(id));
+        }
+        return ImmutableSet.copyOf(returnedSet);
     }
 }
