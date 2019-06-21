@@ -73,7 +73,7 @@ class ReadODSTest {
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream1);
         Table table = spreadsheetDoc.getSheetByIndex(0);
-        String stringrReadODS = ReadODS.printFormatLikeSOC(table);
+        String stringrReadODS = ReadODS.printFormatCountOfRankings(table);
         assertEquals(stringCompare1, stringrReadODS);
     }
 
@@ -84,18 +84,18 @@ class ReadODSTest {
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream2);
         Table table = spreadsheetDoc.getSheetByIndex(0);
-        String stringrReadODS = ReadODS.printFormatWithEqualsPref(table);
+        String stringrReadODS = ReadODS.printFormatRanksFormat(table);
         assertEquals(stringCompare2, stringrReadODS);
     }
 
     @Test
-    void testPrintFormatWithoutEqualsPref() throws Exception {
+    void printFormatVotersToRankingsTest() throws Exception {
         InputStream inputStream3 = ReadODS.class
                         .getResourceAsStream("profile_format_strict.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream3);
         Table table = spreadsheetDoc.getSheetByIndex(0);
-        String stringrReadODS = ReadODS.printFormatWithoutEqualsPref(table);
+        String stringrReadODS = ReadODS.printFormatVotersToRankings(table);
         assertEquals(stringCompare3, stringrReadODS);
     }
 
@@ -107,7 +107,7 @@ class ReadODSTest {
                         .loadDocument(inputStream);
         Table table = spreadsheetDoc.getSheetByIndex(0);
         ImmutableSet<CompletePreference> completePreferences = ReadODS
-                        .completeFormatWithEqualsPref(table);
+                        .completeFormatRanksFormat(table);
         ImmutableSet<CompletePreference> completePreferencesTest = ImmutableSet
                         .of(CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),
@@ -162,7 +162,7 @@ class ReadODSTest {
                         .loadDocument(inputStream);
         Table table = spreadsheetDoc.getSheetByIndex(0);
         ImmutableSet<CompletePreference> completePreferences = ReadODS
-                        .completeFormatWithoutEqualsPref(table);
+                        .completeFormatVotersToRankings(table);
         ImmutableSet<CompletePreference> completePreferencesTest = ImmutableSet
                         .of(CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),

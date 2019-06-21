@@ -1,11 +1,11 @@
-Differents formats for _voting data_
+= Differents formats for _voting data_
 -----------------------------------
 
-Ranks format
-~~~~~~~~~~~
+== Ranks format
+
 This format allows non strict preference. The rank of each alternative in the preference is filled in for every voter.
 
-Example Ranks format
+Example Ranks format :
 link:src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/rank_format.ods[src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/rank_format.ods]
 
 Example Rank format reduced : 
@@ -33,8 +33,8 @@ link:src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/r
 |Alternative 5|4|3|1|1|2|3
 |============================
 
-VotersToRankings
-~~~~~~~~~~~~~~
+== VotersToRankings
+
 This format allows only strict preference. The preference for each voter is filled in.
 
 Example VotersToRankings format : 
@@ -65,12 +65,12 @@ link:src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/p
 |Alternative 5|3|1|Alternative 4|1|3
 |==============
 
-CountOfRankings
-~~~~~~~~~~~~~~~~~~~~
+== CountOfRankings
+
 This format is very useful to represent a lot of data.
 This format can be improved by removing the 5 first lines.
 
-Example CountOfRankings format
+Example CountOfRankings format : 
 link:src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/election_data_format.ods[src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/election_data_format.ods]
 
 .Example of Election data format

@@ -58,10 +58,10 @@ public class ReadODS {
         LOGGER.debug("Get sheet index 0 done");
         LOGGER.debug("Checking format");
         if (table.getCellByPosition(1, 0).getStringValue().equals(""))
-            return printFormatLikeSOC(table);
+            return printFormatCountOfRankings(table);
         else if (table.getCellByPosition(0, 0).getStringValue().equals(""))
-            return printFormatWithEqualsPref(table);
-        return printFormatWithoutEqualsPref(table);
+            return printFormatRanksFormat(table);
+        return printFormatVotersToRankings(table);
     }
 
     /**
@@ -71,7 +71,7 @@ public class ReadODS {
      * @param table an ods table containing voting information
      * @return a string to display the characteristics of the table send
      */
-    public static String printFormatLikeSOC(Table table) {
+    public static String printFormatCountOfRankings(Table table) {
         Objects.requireNonNull(table);
         StringBuilder stringBuilder = new StringBuilder();
         int nbAlternatives = Integer.parseInt(
@@ -111,7 +111,7 @@ public class ReadODS {
      * @param table an ods table containing voting information
      * @return a string to display the characteristics of the table send
      */
-    public static String printFormatWithEqualsPref(Table table) {
+    public static String printFormatRanksFormat(Table table) {
         Objects.requireNonNull(table);
         StringBuilder stringBuilder = new StringBuilder();
         List<Alternative> alternatives = getAlternatives(table);
@@ -166,7 +166,7 @@ public class ReadODS {
      * @param table an ods table containing voting information
      * @return A string to display the characteristics of the table send
      */
-    public static String printFormatWithoutEqualsPref(Table table) {
+    public static String printFormatVotersToRankings(Table table) {
         Objects.requireNonNull(table);
         StringBuilder stringBuilder = new StringBuilder();
         List<Alternative> alternatives = getAlternatives(table);
@@ -251,8 +251,8 @@ public class ReadODS {
         if (table.getCellByPosition(1, 0).getStringValue().equals(""))
             throw new BadFormatODSException("This format is not allowed");
         else if (table.getCellByPosition(0, 0).getStringValue().equals(""))
-            return completeFormatWithEqualsPref(table);
-        return completeFormatWithoutEqualsPref(table);
+            return completeFormatRanksFormat(table);
+        return completeFormatVotersToRankings(table);
     }
 
     /**
@@ -265,7 +265,7 @@ public class ReadODS {
      * @throws EmptySetException
      * @throws DuplicateValueException
      */
-    public static ImmutableSet<CompletePreference> completeFormatWithEqualsPref(
+    public static ImmutableSet<CompletePreference> completeFormatRanksFormat(
                     Table table)
                     throws DuplicateValueException, EmptySetException {
         Objects.requireNonNull(table);
@@ -310,7 +310,7 @@ public class ReadODS {
      * @throws EmptySetException
      * @throws DuplicateValueException
      */
-    public static ImmutableSet<CompletePreference> completeFormatWithoutEqualsPref(
+    public static ImmutableSet<CompletePreference> completeFormatVotersToRankings(
                     Table table)
                     throws DuplicateValueException, EmptySetException {
         Objects.requireNonNull(table);
