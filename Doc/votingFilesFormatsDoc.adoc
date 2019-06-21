@@ -1,5 +1,4 @@
 = Differents formats for _voting data_
------------------------------------
 
 == RanksFormat
 
