@@ -67,7 +67,7 @@ class ReadODSTest {
     }
 
     @Test
-    void testPrintFormatLikeSOC() throws Exception {
+    void testPrintFormatCountOfRankings() throws Exception {
         InputStream inputStream1 = ReadODS.class
                         .getResourceAsStream("election_data_format.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
@@ -78,7 +78,7 @@ class ReadODSTest {
     }
 
     @Test
-    void testPrintFormatWithEqualsPref() throws Exception {
+    void testPrintFormatRanksFormat() throws Exception {
         InputStream inputStream2 = ReadODS.class
                         .getResourceAsStream("rank_format.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
@@ -100,7 +100,7 @@ class ReadODSTest {
     }
 
     @Test
-    void completeFormatWithEqualsPrefTest() throws Exception {
+    void completeFormatVotersToRankingsTest() throws Exception {
         InputStream inputStream = ReadODS.class
                         .getResourceAsStream("rank_format_reduced.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
@@ -155,7 +155,7 @@ class ReadODSTest {
     }
 
     @Test
-    void completeFormatWithoutEqualsPrefTest() throws Exception {
+    void completeFormatRanksFormat() throws Exception {
         InputStream inputStream = ReadODS.class.getResourceAsStream(
                         "profile_format_strict_reduced.ods");
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
