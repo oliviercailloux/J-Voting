@@ -120,8 +120,7 @@ The main purpose of this last iteration is to finish all the implementation.
 === Tasks :
 * 1#  Preferences : Implement MutablePreferenceImpl
 * 2#  Preferences : Implement ImmutablePreferenceImpl
-* 3#  Preferences : Implement AntiSymmetricPreferenceImpl
-* 4#  Preferences : Implement CompletePreferenceImpl
-* 5#  Preferences : Implement LinearPreferenceImpl
-* 7#  Preferences : Implement MutableAntiSymmetricPreferenceImpl
-* 8#  Preferences : Implement ImmutableAntiSymmetricPreferenceImpl
+* 3#  Preferences : Implement CompletePreferenceImpl
+* 4#  Preferences : Implement LinearPreferenceImpl
+* 5#  Preferences : Implement MutableAntiSymmetricPreferenceImpl
+* 6#  Preferences : Implement ImmutableAntiSymmetricPreferenceImpl
