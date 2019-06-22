@@ -124,3 +124,4 @@ The main purpose of this last iteration is to finish all the implementation.
 * 4#  Preferences : Implement LinearPreferenceImpl
 * 5#  Preferences : Implement MutableAntiSymmetricPreferenceImpl
 * 6#  Preferences : Implement ImmutableAntiSymmetricPreferenceImpl
+* 7# instanciate CompletePreference from ReadODS
