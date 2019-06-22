@@ -110,4 +110,18 @@ We will implement all classes correponding to the Preferences interfaces.
 
 
 == Livraison 4
-...
+The main purpose of this last iteration is to finish all the implementation.
+
+=== Teams :
+* *SM/PO team* : Louis LEDOUX
+* *Team 1* : Théo CHENNEBAULT / Mattéo LOUBET
+* *Team 2* : Emilie CHHEAN / Anael DRAY
+
+=== Tasks :
+* 1#  Preferences : Implement MutablePreferenceImpl
+* 2#  Preferences : Implement ImmutablePreferenceImpl
+* 3#  Preferences : Implement AntiSymmetricPreferenceImpl
+* 4#  Preferences : Implement CompletePreferenceImpl
+* 5#  Preferences : Implement LinearPreferenceImpl
+* 7#  Preferences : Implement MutableAntiSymmetricPreferenceImpl
+* 8#  Preferences : Implement ImmutableAntiSymmetricPreferenceImpl
