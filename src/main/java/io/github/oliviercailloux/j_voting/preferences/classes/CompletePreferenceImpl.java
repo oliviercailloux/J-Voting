@@ -58,7 +58,7 @@ public class CompletePreferenceImpl implements CompletePreference {
      * @throws EmptySetException
      * @throws DuplicateValueException
      */
-    private CompletePreferenceImpl(Voter voter,
+    protected CompletePreferenceImpl(Voter voter,
                     List<? extends Set<Alternative>> equivalenceClasses)
                     throws EmptySetException, DuplicateValueException {
         LOGGER.debug("Constructor CompletePreferenceImpl");
