@@ -25,7 +25,8 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
     /**
      * 
      * @param voter <code> not null </code>
-     * @param graph <code> not null </code> graph with Alternatives ordered
+     * @param graph <code> not null </code> directed graph with ordered
+     *              Alternatives
      * @return new ImmutablePreference
      */
     public static ImmutablePreference asImmutablePreference(Voter voter,
@@ -38,10 +39,12 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
     /**
      * 
      * @param voter <code> not null </code>
-     * @param graph <code> not null </code> graph with Alternatives ordered
+     * @param graph <code> not null </code> directed graph with ordered
+     *              Alternatives
      */
-    protected ImmutablePreferenceImpl(Voter voter, Graph<Alternative> graph) {
+    private ImmutablePreferenceImpl(Voter voter, Graph<Alternative> graph) {
         LOGGER.debug("ImmutablePreferenceImpl constructor from graph");
+        graph.isDirected();
         this.graphIntransitivelyClosed = ImmutableGraph.copyOf(graph);
         this.graph = ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
         this.alternatives = ImmutableSet.copyOf(graph.nodes());
