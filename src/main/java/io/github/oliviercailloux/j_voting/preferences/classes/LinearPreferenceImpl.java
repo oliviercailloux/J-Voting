@@ -90,6 +90,6 @@ public class LinearPreferenceImpl extends CompletePreferenceImpl
             return false;
         }
         Preference other = (LinearPreferenceImpl) o2;
-        return Objects.equals(this.asGraph(), other.asGraph());
+        return this.asGraph().equals(other.asGraph());
     }
 }
