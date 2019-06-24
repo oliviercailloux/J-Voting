@@ -33,7 +33,6 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
                     Graph<Alternative> graph) {
         Preconditions.checkNotNull(voter);
         Preconditions.checkNotNull(graph);
-        graph.isDirected();
         return new ImmutablePreferenceImpl(voter, graph);
     }
 
