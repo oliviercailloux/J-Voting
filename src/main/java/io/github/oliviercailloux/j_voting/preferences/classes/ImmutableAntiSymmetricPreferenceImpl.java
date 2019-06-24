@@ -15,21 +15,21 @@ public class ImmutableAntiSymmetricPreferenceImpl
     /**
      * 
      * @param voter <code> not null </code>
-     * @param graph <code> not null </code> must be directed
+     * @param graph <code> not null </code> directed graph with ordered
+     *              Alternatives
      * @return new ImmutableAntiSymmetricPreference
      */
     public static ImmutableAntiSymmetricPreferenceImpl asImmutableAntiSymmetricPreference(
                     Voter voter, Graph<Alternative> graph) {
         Preconditions.checkNotNull(voter);
         Preconditions.checkNotNull(graph);
-        if (graph.isDirected())
-            throw new IllegalArgumentException("The graph must be directed");
         return new ImmutableAntiSymmetricPreferenceImpl(voter, graph);
     }
 
     /**
      * @param voter <code> not null </code>
-     * @param graph <code> not null </code> must be directed
+     * @param graph <code> not null </code> directed graph with ordered
+     *              Alternatives
      */
     private ImmutableAntiSymmetricPreferenceImpl(Voter voter,
                     Graph<Alternative> graph) {
