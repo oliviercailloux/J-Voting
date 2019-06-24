@@ -4,14 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.List;
-import java.util.Set;
-
 import org.junit.jupiter.api.Test;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.graph.Graph;
+import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.ImmutableGraph;
+import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
@@ -19,20 +18,25 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.ImmutablePrefer
 
 class ImmutablePreferenceImplTest {
 
+    static Graph<Alternative> putEdgeGraph(Integer a1, Integer a2) {
+        return null;
+    }
+
     static ImmutablePreference getApreference() {
-        Set<List<Alternative>> preferencesLists = ImmutableSet.of(
-                        ImmutableList.of(Alternative.withId(1),
-                                        Alternative.withId(4)),
-                        ImmutableList.of(Alternative.withId(3),
-                                        Alternative.withId(2)),
-                        ImmutableList.of(Alternative.withId(4),
-                                        Alternative.withId(1)),
-                        ImmutableList.of(Alternative.withId(4),
-                                        Alternative.withId(3)),
-                        ImmutableList.of(Alternative.withId(5),
-                                        Alternative.withId(3)));
-        return ImmutablePreferenceImpl.asImmutablePreference(
-                        Voter.createVoter(2), preferencesLists);
+        MutableGraph<Alternative> graph = GraphBuilder.directed()
+                        .allowsSelfLoops(true).build();
+        graph.putEdge(Alternative.withId(1), Alternative.withId(1));
+        graph.putEdge(Alternative.withId(2), Alternative.withId(2));
+        graph.putEdge(Alternative.withId(3), Alternative.withId(3));
+        graph.putEdge(Alternative.withId(4), Alternative.withId(4));
+        graph.putEdge(Alternative.withId(5), Alternative.withId(5));
+        graph.putEdge(Alternative.withId(1), Alternative.withId(4));
+        graph.putEdge(Alternative.withId(3), Alternative.withId(2));
+        graph.putEdge(Alternative.withId(4), Alternative.withId(1));
+        graph.putEdge(Alternative.withId(4), Alternative.withId(3));
+        graph.putEdge(Alternative.withId(5), Alternative.withId(3));
+        return ImmutablePreferenceImpl
+                        .asImmutablePreference(Voter.createVoter(2), graph);
     }
 
     @Test
