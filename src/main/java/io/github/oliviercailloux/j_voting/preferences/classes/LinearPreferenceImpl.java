@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 import io.github.oliviercailloux.j_voting.Alternative;
@@ -60,12 +61,9 @@ public class LinearPreferenceImpl extends CompletePreferenceImpl
         super(voter, equivalenceClasses);
         List<Alternative> tmpList = Lists.newArrayList();
         for (Set<Alternative> equivalenceClass : equivalenceClasses) {
-            if (equivalenceClass.size() != 1)
-                throw new IllegalArgumentException(
-                                "Equals Alternatives are not allowed");
-            for (Alternative alternative : equivalenceClass) {
-                tmpList.add(alternative);
-            }
+            Alternative alternative = Iterables
+                            .getOnlyElement(equivalenceClass);
+            tmpList.add(alternative);
         }
         this.list = ImmutableList.copyOf(tmpList);
     }
