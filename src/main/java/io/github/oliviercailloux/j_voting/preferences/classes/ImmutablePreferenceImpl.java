@@ -44,6 +44,7 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
      */
     private ImmutablePreferenceImpl(Voter voter, Graph<Alternative> graph) {
         LOGGER.debug("ImmutablePreferenceImpl constructor from graph");
+        graph.isDirected();
         this.graphIntransitivelyClosed = ImmutableGraph.copyOf(graph);
         this.graph = ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
         this.alternatives = ImmutableSet.copyOf(graph.nodes());
