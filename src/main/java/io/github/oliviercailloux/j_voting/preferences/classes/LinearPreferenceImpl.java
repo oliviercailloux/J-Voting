@@ -17,6 +17,7 @@ import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.LinearPreference;
+import io.github.oliviercailloux.j_voting.preferences.interfaces.Preference;
 
 public class LinearPreferenceImpl extends CompletePreferenceImpl
                 implements LinearPreference {
@@ -27,37 +28,14 @@ public class LinearPreferenceImpl extends CompletePreferenceImpl
 
     /**
      * 
-     * @param voter              <code> not null </code>
-     * @param equivalenceClasses <code> not null </code>
-     * @return new LinearPreference
-     * @throws EmptySetException
-     * @throws DuplicateValueException
-     */
-    public static LinearPreference asLinearPreference(Voter voter,
-                    List<Set<Alternative>> equivalenceClasses)
-                    throws EmptySetException, DuplicateValueException {
-        LOGGER.debug("LinearPreferenceImpl Factory");
-        Preconditions.checkNotNull(voter);
-        Preconditions.checkNotNull(equivalenceClasses);
-        for (Set<Alternative> set : equivalenceClasses) {
-            if (set.size() > 1) {
-                throw new IllegalArgumentException(
-                                "Alternatives can't be equals");
-            }
-        }
-        return new LinearPreferenceImpl(voter, equivalenceClasses);
-    }
-
-    /**
-     * 
      * @param voter            <code> not null </code>
      * @param listAlternatives <code> not null </code>
      * @return new LinearPreference
      * @throws EmptySetException
      * @throws DuplicateValueException
      */
-    public static LinearPreference listAlternativesToLinearPreference(
-                    Voter voter, List<Alternative> listAlternatives)
+    public static LinearPreference asLinearPreference(Voter voter,
+                    List<Alternative> listAlternatives)
                     throws EmptySetException, DuplicateValueException {
         LOGGER.debug("LinearPreferenceImpl Factory with list of Alternatives");
         Preconditions.checkNotNull(voter);
@@ -81,8 +59,11 @@ public class LinearPreferenceImpl extends CompletePreferenceImpl
                     throws EmptySetException, DuplicateValueException {
         super(voter, equivalenceClasses);
         List<Alternative> tmpList = Lists.newArrayList();
-        for (Set<Alternative> set : equivalenceClasses) {
-            for (Alternative alternative : set) {
+        for (Set<Alternative> equivalenceClass : equivalenceClasses) {
+            if (equivalenceClass.size() != 1)
+                throw new IllegalArgumentException(
+                                "Equals Alternatives are not allowed");
+            for (Alternative alternative : equivalenceClass) {
                 tmpList.add(alternative);
             }
         }
@@ -96,24 +77,21 @@ public class LinearPreferenceImpl extends CompletePreferenceImpl
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + Objects.hash(list);
-        return result;
+        return Objects.hash(this.asGraph());
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(Object o2) {
+        if (this == o2) {
             return true;
         }
-        if (!super.equals(obj)) {
+        if (!super.equals(o2)) {
             return false;
         }
-        if (!(obj instanceof LinearPreferenceImpl)) {
+        if (!(o2 instanceof Preference)) {
             return false;
         }
-        LinearPreferenceImpl other = (LinearPreferenceImpl) obj;
-        return Objects.equals(list, other.list);
+        Preference other = (LinearPreferenceImpl) o2;
+        return Objects.equals(this.asGraph(), other.asGraph());
     }
 }
