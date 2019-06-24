@@ -42,7 +42,7 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
      * @param graph <code> not null </code> directed graph with ordered
      *              Alternatives
      */
-    private ImmutablePreferenceImpl(Voter voter, Graph<Alternative> graph) {
+    protected ImmutablePreferenceImpl(Voter voter, Graph<Alternative> graph) {
         LOGGER.debug("ImmutablePreferenceImpl constructor from graph");
         graph.isDirected();
         this.graphIntransitivelyClosed = ImmutableGraph.copyOf(graph);
