@@ -25,20 +25,24 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
     /**
      * 
      * @param voter <code> not null </code>
-     * @param graph <code> not null </code> graph with Alternatives ordered
+     * @param graph <code> not null </code> graph with Alternatives ordered and
+     *              must be directed
      * @return new ImmutablePreference
      */
     public static ImmutablePreference asImmutablePreference(Voter voter,
                     Graph<Alternative> graph) {
         Preconditions.checkNotNull(voter);
         Preconditions.checkNotNull(graph);
+        if (!graph.isDirected())
+            throw new IllegalArgumentException("The graph must be directed");
         return new ImmutablePreferenceImpl(voter, graph);
     }
 
     /**
      * 
      * @param voter <code> not null </code>
-     * @param graph <code> not null </code> graph with Alternatives ordered
+     * @param graph <code> not null </code> graph with Alternatives ordered and
+     *              must be directed
      */
     private ImmutablePreferenceImpl(Voter voter, Graph<Alternative> graph) {
         LOGGER.debug("ImmutablePreferenceImpl constructor from graph");
