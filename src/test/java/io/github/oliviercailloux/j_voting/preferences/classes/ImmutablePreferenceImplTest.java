@@ -52,9 +52,12 @@ class ImmutablePreferenceImplTest {
     }
 
     @Test
-    void asGraphTest() {
-        ImmutableGraph<Alternative> toTestImmutableGraph = getApreference()
-                        .asGraph();
+    void asIntransitiveGraph() {
+        // Cast will be changed ASAP, need to add a new function in Preference
+        // Interface
+        ImmutablePreferenceImpl toTest = (ImmutablePreferenceImpl) getApreference();
+        ImmutableGraph<Alternative> toTestImmutableGraph = toTest
+                        .asIntransitiveGraph();
         assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(1),
                         Alternative.withId(4)));
         assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(4),
@@ -80,12 +83,9 @@ class ImmutablePreferenceImplTest {
     }
 
     @Test
-    void asTranstiveGraphTest() {
-        // Cast will be changed ASAP, need to add a new function in Preference
-        // Interface
-        ImmutablePreferenceImpl toTest = (ImmutablePreferenceImpl) getApreference();
-        ImmutableGraph<Alternative> toTestImmutableGraph = toTest
-                        .asTransitiveGraph();
+    void asGraph() {
+        ImmutableGraph<Alternative> toTestImmutableGraph = getApreference()
+                        .asGraph();
         assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(1),
                         Alternative.withId(4)));
         assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(4),

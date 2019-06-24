@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
+import com.google.common.graph.Graph;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
 import com.google.common.graph.ImmutableGraph;
@@ -21,7 +22,7 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.ImmutablePrefer
 public class ImmutablePreferenceImpl implements ImmutablePreference {
 
     ImmutableGraph<Alternative> graph;
-    ImmutableGraph<Alternative> graphTransitivelyClosed;
+    ImmutableGraph<Alternative> graphIntransitivelyClosed;
     ImmutableSet<Alternative> alternatives;
     Voter voter;
     private static final Logger LOGGER = LoggerFactory
@@ -40,6 +41,19 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
         Preconditions.checkNotNull(voter);
         Preconditions.checkNotNull(preferencesLists);
         return new ImmutablePreferenceImpl(voter, preferencesLists);
+    }
+
+    /**
+     * 
+     * @param voter <code> not null </code>
+     * @param graph <code> not null </code> graph with Alternatives ordered
+     * @return new ImmutablePreference
+     */
+    public static ImmutablePreference graphToImmutablePreferenceImpl(
+                    Voter voter, Graph<Alternative> graph) {
+        Preconditions.checkNotNull(voter);
+        Preconditions.checkNotNull(graph);
+        return new ImmutablePreferenceImpl(voter, graph);
     }
 
     /**
@@ -67,9 +81,22 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
             tmpSet.add(a2);
         }
         this.alternatives = ImmutableSet.copyOf(tmpSet);
-        this.graph = ImmutableGraph.copyOf(tmpGraph);
-        this.graphTransitivelyClosed = ImmutableGraph
-                        .copyOf(Graphs.transitiveClosure(this.graph));
+        this.graphIntransitivelyClosed = ImmutableGraph.copyOf(tmpGraph);
+        this.graph = ImmutableGraph.copyOf(Graphs
+                        .transitiveClosure(this.graphIntransitivelyClosed));
+        this.voter = voter;
+    }
+
+    /**
+     * 
+     * @param voter <code> not null </code>
+     * @param graph <code> not null </code> graph with Alternatives ordered
+     */
+    private ImmutablePreferenceImpl(Voter voter, Graph<Alternative> graph) {
+        LOGGER.debug("ImmutablePreferenceImpl constructor from graph");
+        this.graph = ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
+        this.alternatives = ImmutableSet.copyOf(graph.nodes());
+        this.graphIntransitivelyClosed = ImmutableGraph.copyOf(graph);
         this.voter = voter;
     }
 
@@ -78,8 +105,8 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
         return this.graph;
     }
 
-    public ImmutableGraph<Alternative> asTransitiveGraph() {
-        return this.graphTransitivelyClosed;
+    public ImmutableGraph<Alternative> asIntransitiveGraph() {
+        return this.graphIntransitivelyClosed;
     }
 
     @Override
