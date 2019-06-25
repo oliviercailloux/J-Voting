@@ -22,9 +22,15 @@ import io.github.oliviercailloux.j_voting.preferences.classes.MutablePreferenceI
 
 class TestMutablePreferenceImpl {
 
+    /**
+     * Tests whether the given method with the voter only returns a preference
+     * with an empty graph
+     */
     @Test
-    void testGivenMutableGraphOfAlternativeVoter() {
-        fail("Not yet implemented");
+    void testGiven1() {
+        MutablePreferenceImpl pref = MutablePreferenceImpl
+                        .given(Voter.createVoter(1));
+        assertEquals(pref.asGraph().nodes().size(), 0);
     }
 
     /**
@@ -33,23 +39,20 @@ class TestMutablePreferenceImpl {
      */
     @Test
     void testPreferenceGraphMaker() {
-        // Alternative a1 = Alternative.withId(1);
-        // Alternative a2 = Alternative.withId(2);
-        // Alternative a3 = Alternative.withId(3);
-        // Alternative a4 = Alternative.withId(4);
-        // Alternative a5 = Alternative.withId(5);
-        // Set<Alternative> A = Sets.newHashSet(a1, a2);
-        // Set<Alternative> B = Sets.newHashSet(a3);
-        // Set<Alternative> C = Sets.newHashSet(a4);
-        // Set<Alternative> D = Sets.newHashSet(a5);
-        // ArrayList<Set<Alternative>> listTest1 = Lists.newArrayList(A, B);
-        // ArrayList<Set<Alternative>> listTest2 = Lists.newArrayList(C, D);
-        // Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
-        // setTest.add(listTest1);
-        // setTest.add(listTest2);
-        MutablePreferenceImpl pref = MutablePreferenceImpl.given(
-                        MutablePreferenceImpl.preferenceGraphMaker(),
-                        Voter.createVoter(1));
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
+        Alternative a4 = Alternative.withId(4);
+        Alternative a5 = Alternative.withId(5);
+        Set<Alternative> A = Sets.newHashSet(a1, a2);
+        Set<Alternative> B = Sets.newHashSet(a3);
+        Set<Alternative> C = Sets.newHashSet(a4);
+        Set<Alternative> D = Sets.newHashSet(a5);
+        ArrayList<Set<Alternative>> listTest1 = Lists.newArrayList(A, B);
+        ArrayList<Set<Alternative>> listTest2 = Lists.newArrayList(C, D);
+        Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
+        setTest.add(listTest1);
+        setTest.add(listTest2);
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         graph.putEdge(a1, a1);
@@ -62,7 +65,8 @@ class TestMutablePreferenceImpl {
         graph.putEdge(a1, a3);
         graph.putEdge(a2, a3);
         graph.putEdge(a4, a5);
-        assertEquals(graph, pref.preferenceGraphMaker());
+        assertEquals(graph,
+                        MutablePreferenceImpl.preferenceGraphMaker(setTest));
     }
 
     @Test
@@ -234,15 +238,5 @@ class TestMutablePreferenceImpl {
         returnedSet.add(a4);
         returnedSet.add(a5);
         assertEquals(returnedSet, pref.getAlternatives());
-    }
-
-    @Test
-    void testGetVoter() {
-        fail("Not yet implemented");
-    }
-
-    @Test
-    void testToString() {
-        fail("Not yet implemented");
     }
 }
