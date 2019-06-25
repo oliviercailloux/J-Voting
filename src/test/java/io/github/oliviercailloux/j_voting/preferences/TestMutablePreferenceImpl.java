@@ -1,7 +1,6 @@
 package io.github.oliviercailloux.j_voting.preferences;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -69,9 +68,31 @@ class TestMutablePreferenceImpl {
                         MutablePreferenceImpl.preferenceGraphMaker(setTest));
     }
 
+    /**
+     * Tests whether the preference is correctly copied
+     */
     @Test
     void testGivenPreference() {
-        fail("Not yet implemented");
+        Alternative a1 = Alternative.withId(1);
+        Alternative a2 = Alternative.withId(2);
+        Alternative a3 = Alternative.withId(3);
+        Alternative a4 = Alternative.withId(4);
+        Alternative a5 = Alternative.withId(5);
+        Set<Alternative> A = Sets.newHashSet(a1, a2);
+        Set<Alternative> B = Sets.newHashSet(a3);
+        Set<Alternative> C = Sets.newHashSet(a4);
+        Set<Alternative> D = Sets.newHashSet(a5);
+        ArrayList<Set<Alternative>> listTest1 = Lists.newArrayList(A, B);
+        ArrayList<Set<Alternative>> listTest2 = Lists.newArrayList(C, D);
+        Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
+        setTest.add(listTest1);
+        setTest.add(listTest2);
+        MutableGraph<Alternative> graph = GraphBuilder.directed()
+                        .allowsSelfLoops(true).build();
+        MutablePreferenceImpl pref = MutablePreferenceImpl.given(graph,
+                        Voter.createVoter(1));
+        MutablePreferenceImpl pref1 = MutablePreferenceImpl.given(pref);
+        assertEquals(pref.asGraph(), pref1.asGraph());
     }
 
     /**
