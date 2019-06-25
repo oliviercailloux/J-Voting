@@ -32,6 +32,8 @@ class ImmutableAntiSymmetricPreferenceImplTest {
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         graph.putEdge(Alternative.withId(1), Alternative.withId(4));
+        graph.putEdge(Alternative.withId(4), Alternative.withId(2));
+        graph.putEdge(Alternative.withId(2), Alternative.withId(1));
         assertThrows(IllegalArgumentException.class,
                         () -> ImmutableAntiSymmetricPreferenceImpl
                                         .asImmutableAntiSymmetricPreference(

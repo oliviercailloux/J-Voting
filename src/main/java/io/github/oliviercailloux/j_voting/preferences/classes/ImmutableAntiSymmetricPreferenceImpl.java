@@ -40,10 +40,9 @@ public class ImmutableAntiSymmetricPreferenceImpl
     private ImmutableAntiSymmetricPreferenceImpl(Voter voter,
                     Graph<Alternative> graph) {
         super(voter, graph);
-        LOGGER.debug(super.asGraph().edges().toString());
         for (EndpointPair<Alternative> edge : super.asGraph().edges()) {
-            LOGGER.debug(edge.toString());
-            if (super.asGraph().hasEdgeConnecting(edge.nodeV(), edge.nodeU()))
+            if (super.asGraph().hasEdgeConnecting(edge.nodeV(), edge.nodeU())
+                            && !edge.nodeV().equals(edge.nodeU()))
                 throw new IllegalArgumentException(
                                 "Two Alternatives can't be ranked ex- ex-æquo");
         }
