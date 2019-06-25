@@ -8,7 +8,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.graph.Graph;
 import com.google.common.graph.Graphs;
 import com.google.common.graph.ImmutableGraph;
-import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
@@ -43,26 +42,11 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
      */
     protected ImmutablePreferenceImpl(Voter voter, Graph<Alternative> graph) {
         LOGGER.debug("ImmutablePreferenceImpl constructor from graph");
-        this.graphIntransitivelyClosed = ImmutableGraph
-                        .copyOf(createGraph(graph));
+        this.graphIntransitivelyClosed = ImmutableGraph.copyOf(graph);
         this.graph = ImmutableGraph.copyOf(Graphs
                         .transitiveClosure(this.graphIntransitivelyClosed));
         this.alternatives = ImmutableSet.copyOf(graph.nodes());
         this.voter = voter;
-    }
-
-    /**
-     * Ensure the graph is directed and selfLooped
-     * 
-     * @param graph <code> not null </code> graph with ordered Alternatives
-     * @return Graph<Alternative> directed and selfLooped
-     */
-    private Graph<Alternative> createGraph(Graph<Alternative> graph) {
-        MutableGraph<Alternative> tmpGraph = Graphs.copyOf(graph);
-        tmpGraph.isDirected();
-        for (Alternative alternative : graph.nodes())
-            tmpGraph.putEdge(alternative, alternative);
-        return tmpGraph;
     }
 
     @Override
