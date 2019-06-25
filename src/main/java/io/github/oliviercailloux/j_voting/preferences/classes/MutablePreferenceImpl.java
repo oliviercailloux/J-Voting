@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
+import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
 import com.google.common.graph.ImmutableGraph;
 import com.google.common.graph.MutableGraph;
@@ -53,6 +54,18 @@ public class MutablePreferenceImpl implements MutablePreference {
         LOGGER.debug("MutablePreferenceImpl given");
         Preconditions.checkNotNull(pref);
         Preconditions.checkNotNull(voter);
+        return new MutablePreferenceImpl(pref, voter);
+    }
+
+    /**
+     * 
+     * @return an empty MutableGraph of alternatives
+     */
+    public static MutablePreferenceImpl given(Voter voter) {
+        LOGGER.debug("MutablePreferenceImpl given with voter");
+        Preconditions.checkNotNull(voter);
+        MutableGraph<Alternative> pref = GraphBuilder.directed()
+                        .allowsSelfLoops(true).build();
         return new MutablePreferenceImpl(pref, voter);
     }
     //
