@@ -16,10 +16,10 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.Preference;
 
 public class ImmutablePreferenceImpl implements ImmutablePreference {
 
-    ImmutableGraph<Alternative> graph;
-    ImmutableGraph<Alternative> graphIntransitivelyClosed;
-    ImmutableSet<Alternative> alternatives;
-    Voter voter;
+    private ImmutableGraph<Alternative> graph;
+    private ImmutableGraph<Alternative> graphIntransitivelyClosed;
+    private ImmutableSet<Alternative> alternatives;
+    private Voter voter;
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(ImmutablePreferenceImpl.class.getName());
 
