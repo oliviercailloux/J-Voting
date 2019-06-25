@@ -119,9 +119,9 @@ The main purpose of this last iteration is to finish all the implementation.
 
 === Tasks :
 * 1#  Preferences : Implement MutablePreferenceImpl
-* 2#  Preferences : Implement ImmutablePreferenceImpl
+* 2#  Preferences : Implement ImmutablePreferenceImpl => *DONE*
 * 3#  Preferences : Implement CompletePreferenceImpl => *DONE*
 * 4#  Preferences : Implement LinearPreferenceImpl => *DONE*
 * 5#  Preferences : Implement MutableAntiSymmetricPreferenceImpl
-* 6#  Preferences : Implement ImmutableAntiSymmetricPreferenceImpl
+* 6#  Preferences : Implement ImmutableAntiSymmetricPreferenceImpl => *DONE*
 * 7# instanciate CompletePreference from ReadODS => *DONE*
