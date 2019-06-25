@@ -92,7 +92,7 @@ class TestMutablePreferenceImpl {
         MutablePreferenceImpl pref = MutablePreferenceImpl.given(graph,
                         Voter.createVoter(1));
         MutablePreferenceImpl pref1 = MutablePreferenceImpl.given(pref);
-        assertEquals(pref.asGraph(), pref1.asGraph());
+        assertEquals(pref, pref1);
     }
 
     /**

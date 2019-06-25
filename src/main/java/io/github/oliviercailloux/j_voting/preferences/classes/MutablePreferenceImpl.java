@@ -185,7 +185,13 @@ public class MutablePreferenceImpl implements MutablePreference {
 
     @Override
     public boolean equals(Object obj) {
-        obj.getClass()
-        return()
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (this.getClass() != obj.getClass())
+            return false;
+        MutablePreferenceImpl pref = (MutablePreferenceImpl) obj;
+        return this.asGraph().equals(pref.asGraph());
     }
 }
