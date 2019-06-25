@@ -58,7 +58,7 @@ public class MutablePreferenceImpl implements MutablePreference {
 
 	/**
 	 * @param voter is the Voter associated to the Preference.
-	 * @return an empty MutablePreference with the same voter and an empty graph
+	 * @return a MutablePreference with the same voter and an empty graph
 	 */
 	public static MutablePreferenceImpl given(Voter voter) {
 		LOGGER.debug("MutablePreferenceImpl given with voter");
