@@ -44,7 +44,7 @@ public class ImmutableAntiSymmetricPreferenceImpl
             if (super.asGraph().hasEdgeConnecting(edge.nodeV(), edge.nodeU())
                             && !edge.nodeV().equals(edge.nodeU()))
                 throw new IllegalArgumentException(
-                                "Two Alternatives can't be ranked ex- ex-æquo");
+                                "Two Alternatives can't be ranked ex-æquo");
         }
     }
 }
