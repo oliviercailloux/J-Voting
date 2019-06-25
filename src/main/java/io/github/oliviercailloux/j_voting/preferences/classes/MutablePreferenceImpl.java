@@ -192,6 +192,7 @@ public class MutablePreferenceImpl implements MutablePreference {
         if (this.getClass() != obj.getClass())
             return false;
         MutablePreferenceImpl pref = (MutablePreferenceImpl) obj;
-        return this.asGraph().equals(pref.asGraph());
+        return (this.asGraph().equals(pref.asGraph())
+                        && this.getVoter().equals(pref.getVoter()));
     }
 }
