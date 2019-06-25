@@ -1,5 +1,8 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.base.Preconditions;
 import com.google.common.graph.EndpointPair;
 import com.google.common.graph.Graph;
@@ -11,6 +14,9 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.ImmutableAntiSy
 public class ImmutableAntiSymmetricPreferenceImpl
                 extends ImmutablePreferenceImpl
                 implements ImmutableAntiSymmetricPreference {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(
+                    ImmutableAntiSymmetricPreferenceImpl.class.getName());
 
     /**
      * 
@@ -34,10 +40,12 @@ public class ImmutableAntiSymmetricPreferenceImpl
     private ImmutableAntiSymmetricPreferenceImpl(Voter voter,
                     Graph<Alternative> graph) {
         super(voter, graph);
+        LOGGER.debug(super.asGraph().edges().toString());
         for (EndpointPair<Alternative> edge : super.asGraph().edges()) {
-            if (super.asGraph().hasEdgeConnecting(edge.nodeU(), edge.nodeV()))
+            LOGGER.debug(edge.toString());
+            if (super.asGraph().hasEdgeConnecting(edge.nodeV(), edge.nodeU()))
                 throw new IllegalArgumentException(
-                                "Two Alternatives can't be equals");
+                                "Two Alternatives can't be ranked ex- ex-æquo");
         }
     }
 }

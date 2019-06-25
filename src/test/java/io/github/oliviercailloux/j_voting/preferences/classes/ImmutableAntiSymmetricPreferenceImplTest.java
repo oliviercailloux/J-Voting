@@ -26,4 +26,16 @@ class ImmutableAntiSymmetricPreferenceImplTest {
                                                         Voter.createVoter(2),
                                                         graph));
     }
+
+    @Test
+    void asImmutableAntisymmetricPreferenceReflexiveException() {
+        MutableGraph<Alternative> graph = GraphBuilder.directed()
+                        .allowsSelfLoops(true).build();
+        graph.putEdge(Alternative.withId(1), Alternative.withId(4));
+        assertThrows(IllegalArgumentException.class,
+                        () -> ImmutableAntiSymmetricPreferenceImpl
+                                        .asImmutableAntiSymmetricPreference(
+                                                        Voter.createVoter(2),
+                                                        graph));
+    }
 }
