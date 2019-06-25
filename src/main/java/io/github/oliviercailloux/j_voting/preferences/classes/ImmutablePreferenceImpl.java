@@ -12,6 +12,7 @@ import com.google.common.graph.ImmutableGraph;
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.ImmutablePreference;
+import io.github.oliviercailloux.j_voting.preferences.interfaces.Preference;
 
 public class ImmutablePreferenceImpl implements ImmutablePreference {
 
@@ -33,6 +34,18 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
         Preconditions.checkNotNull(voter);
         Preconditions.checkNotNull(graph);
         return new ImmutablePreferenceImpl(voter, graph);
+    }
+
+    /**
+     * Transform Preference to ImmutablePreference
+     * 
+     * @param preference <code> not null </code>
+     * @return ImmutablePreference
+     */
+    public static ImmutablePreference fromPreference(Preference preference) {
+        Preconditions.checkNotNull(preference);
+        return new ImmutablePreferenceImpl(preference.getVoter(),
+                        preference.asGraph());
     }
 
     /**

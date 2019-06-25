@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import com.google.common.collect.ImmutableSet;
-import com.google.common.graph.Graph;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.ImmutableGraph;
 import com.google.common.graph.MutableGraph;
@@ -17,10 +16,6 @@ import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.ImmutablePreference;
 
 class ImmutablePreferenceImplTest {
-
-    static Graph<Alternative> putEdgeGraph(Integer a1, Integer a2) {
-        return null;
-    }
 
     static ImmutablePreference getApreference() {
         MutableGraph<Alternative> graph = GraphBuilder.directed()
