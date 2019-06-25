@@ -1,7 +1,5 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -9,7 +7,6 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
-import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
 import com.google.common.graph.ImmutableGraph;
 import com.google.common.graph.MutableGraph;
@@ -58,49 +55,49 @@ public class MutablePreferenceImpl implements MutablePreference {
         Preconditions.checkNotNull(voter);
         return new MutablePreferenceImpl(pref, voter);
     }
-
-    /**
-     * @param pref is a set of lists of sets of Alternatives representing the
-     *             preference. In the first set, every list is a linear
-     *             comparison of sets of alternatives. (first in the list is
-     *             preferred to next ones, etc.) Those sets of alternatives
-     *             contain ex-aequo alternatives.
-     * @return the mutable preference, implemented with a transitively closed
-     *         graph.
-     * @see Voter
-     * @see Preference
-     * @see MutablePreference
-     * @see MutablePreferenceImpl#asGraph()
-     */
-    public static MutableGraph<Alternative> preferenceGraphMaker(
-                    Set<List<Set<Alternative>>> pref) {
-        LOGGER.debug("MutablePreferenceImpl preferenceGraphMaker");
-        Preconditions.checkNotNull(pref);
-        MutableGraph<Alternative> currentgraph = GraphBuilder.directed()
-                        .allowsSelfLoops(true).build();
-        for (List<Set<Alternative>> array : pref) {
-            ArrayList<Alternative> tmp = new ArrayList<>();
-            for (Set<Alternative> set : array) {
-                // in a set of equality, adding every node to the graph
-                // and in TMP list
-                for (Alternative alt : set) {
-                    tmp.add(alt);
-                }
-                // create edges from every node in TMP to every node in current
-                // equality set
-                // If one of them is not in the graph, they are added.
-                for (Alternative alt : tmp) {
-                    for (Alternative alt2 : set) {
-                        currentgraph.putEdge(alt, alt2);
-                    }
-                }
-            }
-        }
-        if (currentgraph.nodes().isEmpty())
-            throw new IllegalArgumentException(
-                            "Must contain at least one alternative");
-        return currentgraph;
-    }
+    //
+    // /**
+    // * @param pref is a set of lists of sets of Alternatives representing the
+    // * preference. In the first set, every list is a linear
+    // * comparison of sets of alternatives. (first in the list is
+    // * preferred to next ones, etc.) Those sets of alternatives
+    // * contain ex-aequo alternatives.
+    // * @return the mutable preference, implemented with a transitively closed
+    // * graph.
+    // * @see Voter
+    // * @see Preference
+    // * @see MutablePreference
+    // * @see MutablePreferenceImpl#asGraph()
+    // */
+    // public static MutableGraph<Alternative> preferenceGraphMaker(
+    // Set<List<Set<Alternative>>> pref) {
+    // LOGGER.debug("MutablePreferenceImpl preferenceGraphMaker");
+    // Preconditions.checkNotNull(pref);
+    // MutableGraph<Alternative> currentgraph = GraphBuilder.directed()
+    // .allowsSelfLoops(true).build();
+    // for (List<Set<Alternative>> array : pref) {
+    // ArrayList<Alternative> tmp = new ArrayList<>();
+    // for (Set<Alternative> set : array) {
+    // // in a set of equality, adding every node to the graph
+    // // and in TMP list
+    // for (Alternative alt : set) {
+    // tmp.add(alt);
+    // }
+    // // create edges from every node in TMP to every node in current
+    // // equality set
+    // // If one of them is not in the graph, they are added.
+    // for (Alternative alt : tmp) {
+    // for (Alternative alt2 : set) {
+    // currentgraph.putEdge(alt, alt2);
+    // }
+    // }
+    // }
+    // }
+    // if (currentgraph.nodes().isEmpty())
+    // throw new IllegalArgumentException(
+    // "Must contain at least one alternative");
+    // return currentgraph;
+    // }
 
     /**
      * Factory method making new MutablePreference from an other Preference. It
