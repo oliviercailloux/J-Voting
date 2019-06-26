@@ -42,7 +42,7 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
      * @param preference <code> not null </code>
      * @return ImmutablePreference
      */
-    public static ImmutablePreference fromPreference(Preference preference) {
+    public static ImmutablePreference copyOf(Preference preference) {
         Preconditions.checkNotNull(preference);
         return new ImmutablePreferenceImpl(preference.getVoter(),
                         preference.asGraph());

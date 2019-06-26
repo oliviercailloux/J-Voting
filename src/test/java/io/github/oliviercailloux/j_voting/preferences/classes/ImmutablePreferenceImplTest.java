@@ -1,5 +1,10 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,16 +25,16 @@ class ImmutablePreferenceImplTest {
     static ImmutablePreference getApreference() {
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
-        graph.putEdge(Alternative.withId(1), Alternative.withId(1));
-        graph.putEdge(Alternative.withId(2), Alternative.withId(2));
-        graph.putEdge(Alternative.withId(3), Alternative.withId(3));
-        graph.putEdge(Alternative.withId(4), Alternative.withId(4));
-        graph.putEdge(Alternative.withId(5), Alternative.withId(5));
-        graph.putEdge(Alternative.withId(1), Alternative.withId(4));
-        graph.putEdge(Alternative.withId(3), Alternative.withId(2));
-        graph.putEdge(Alternative.withId(4), Alternative.withId(1));
-        graph.putEdge(Alternative.withId(4), Alternative.withId(3));
-        graph.putEdge(Alternative.withId(5), Alternative.withId(3));
+        graph.putEdge(a1, a1);
+        graph.putEdge(a2, a2);
+        graph.putEdge(a3, a3);
+        graph.putEdge(a4, a4);
+        graph.putEdge(a5, a5);
+        graph.putEdge(a1, a4);
+        graph.putEdge(a3, a2);
+        graph.putEdge(a4, a1);
+        graph.putEdge(a4, a3);
+        graph.putEdge(a5, a3);
         return ImmutablePreferenceImpl
                         .asImmutablePreference(Voter.createVoter(2), graph);
     }
@@ -37,9 +42,7 @@ class ImmutablePreferenceImplTest {
     @Test
     void getAlternativesImmutablePreferenceTest() {
         ImmutablePreference toTestImmutablePreference = getApreference();
-        assertEquals(ImmutableSet.of(Alternative.withId(1),
-                        Alternative.withId(2), Alternative.withId(3),
-                        Alternative.withId(4), Alternative.withId(5)),
+        assertEquals(ImmutableSet.of(a1, a2, a3, a4, a5),
                         toTestImmutablePreference.getAlternatives());
     }
 
@@ -57,55 +60,33 @@ class ImmutablePreferenceImplTest {
         ImmutablePreferenceImpl toTest = (ImmutablePreferenceImpl) getApreference();
         ImmutableGraph<Alternative> toTestImmutableGraph = toTest
                         .asIntransitiveGraph();
-        assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(1),
-                        Alternative.withId(4)));
-        assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(4),
-                        Alternative.withId(1)));
-        assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(4),
-                        Alternative.withId(3)));
-        assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(5),
-                        Alternative.withId(3)));
-        assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(3),
-                        Alternative.withId(2)));
-        assertFalse(toTestImmutableGraph.hasEdgeConnecting(
-                        Alternative.withId(1), Alternative.withId(5)));
-        assertTrue(toTestImmutableGraph.successors(Alternative.withId(2))
-                        .size() == 1);
-        assertTrue(toTestImmutableGraph.successors(Alternative.withId(1))
-                        .size() == 2);
-        assertTrue(toTestImmutableGraph.successors(Alternative.withId(4))
-                        .size() == 3);
-        assertTrue(toTestImmutableGraph.successors(Alternative.withId(5))
-                        .size() == 2);
-        assertTrue(toTestImmutableGraph.successors(Alternative.withId(3))
-                        .size() == 2);
+        assertTrue(toTestImmutableGraph.hasEdgeConnecting(a1, a4));
+        assertTrue(toTestImmutableGraph.hasEdgeConnecting(a4, a1));
+        assertTrue(toTestImmutableGraph.hasEdgeConnecting(a4, a3));
+        assertTrue(toTestImmutableGraph.hasEdgeConnecting(a5, a3));
+        assertTrue(toTestImmutableGraph.hasEdgeConnecting(a3, a2));
+        assertFalse(toTestImmutableGraph.hasEdgeConnecting(a1, a5));
+        assertTrue(toTestImmutableGraph.successors(a2).size() == 1);
+        assertTrue(toTestImmutableGraph.successors(a1).size() == 2);
+        assertTrue(toTestImmutableGraph.successors(a4).size() == 3);
+        assertTrue(toTestImmutableGraph.successors(a5).size() == 2);
+        assertTrue(toTestImmutableGraph.successors(a3).size() == 2);
     }
 
     @Test
     void asGraph() {
         ImmutableGraph<Alternative> toTestImmutableGraph = getApreference()
                         .asGraph();
-        assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(1),
-                        Alternative.withId(4)));
-        assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(4),
-                        Alternative.withId(1)));
-        assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(4),
-                        Alternative.withId(3)));
-        assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(5),
-                        Alternative.withId(3)));
-        assertTrue(toTestImmutableGraph.hasEdgeConnecting(Alternative.withId(3),
-                        Alternative.withId(2)));
-        assertFalse(toTestImmutableGraph.hasEdgeConnecting(
-                        Alternative.withId(1), Alternative.withId(5)));
-        assertTrue(toTestImmutableGraph.successors(Alternative.withId(2))
-                        .size() == 1);
-        assertTrue(toTestImmutableGraph.successors(Alternative.withId(1))
-                        .size() == 4);
-        assertTrue(toTestImmutableGraph.successors(Alternative.withId(4))
-                        .size() == 4);
-        assertTrue(toTestImmutableGraph.successors(Alternative.withId(5))
-                        .size() == 3);
-        assertTrue(toTestImmutableGraph.successors(Alternative.withId(3))
-                        .size() == 2);
+        assertTrue(toTestImmutableGraph.hasEdgeConnecting(a1, a4));
+        assertTrue(toTestImmutableGraph.hasEdgeConnecting(a4, a1));
+        assertTrue(toTestImmutableGraph.hasEdgeConnecting(a4, a3));
+        assertTrue(toTestImmutableGraph.hasEdgeConnecting(a5, a3));
+        assertTrue(toTestImmutableGraph.hasEdgeConnecting(a3, a2));
+        assertFalse(toTestImmutableGraph.hasEdgeConnecting(a1, a5));
+        assertTrue(toTestImmutableGraph.successors(a2).size() == 1);
+        assertTrue(toTestImmutableGraph.successors(a1).size() == 4);
+        assertTrue(toTestImmutableGraph.successors(a4).size() == 4);
+        assertTrue(toTestImmutableGraph.successors(a5).size() == 3);
+        assertTrue(toTestImmutableGraph.successors(a3).size() == 2);
     }
 }
