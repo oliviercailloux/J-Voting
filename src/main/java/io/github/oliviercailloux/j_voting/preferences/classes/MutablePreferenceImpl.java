@@ -51,7 +51,6 @@ public class MutablePreferenceImpl implements MutablePreference {
      * @param voter is the Voter associated to the Preference.
      * @return the mutable preference
      * @see Voter
-     * @see MutablePreference#asGraph()
      */
     public static MutablePreferenceImpl given(MutableGraph<Alternative> pref,
                     Voter voter) {
