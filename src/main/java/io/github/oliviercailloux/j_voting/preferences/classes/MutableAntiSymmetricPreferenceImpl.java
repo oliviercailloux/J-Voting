@@ -54,7 +54,6 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 			}
 		}
 		return new MutableAntiSymmetricPreferenceImpl(pref, voter);
-
 	}
 
 	/**
