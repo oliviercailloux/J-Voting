@@ -1,5 +1,8 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -13,18 +16,19 @@ import io.github.oliviercailloux.j_voting.Voter;
 
 class ImmutableAntiSymmetricPreferenceImplTest {
 
+    private static Voter v1 = Voter.createVoter(1);
+
     @Test
     void asImmutableAntisymmetricPreferenceException() {
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
-        graph.putEdge(Alternative.withId(1), Alternative.withId(1));
-        graph.putEdge(Alternative.withId(4), Alternative.withId(4));
-        graph.putEdge(Alternative.withId(1), Alternative.withId(4));
-        graph.putEdge(Alternative.withId(4), Alternative.withId(1));
+        graph.putEdge(a1, a1);
+        graph.putEdge(a4, a4);
+        graph.putEdge(a1, a4);
+        graph.putEdge(a4, a1);
         assertThrows(IllegalArgumentException.class,
                         () -> ImmutableAntiSymmetricPreferenceImpl
-                                        .asImmutableAntiSymmetricPreference(
-                                                        Voter.createVoter(2),
+                                        .asImmutableAntiSymmetricPreference(v1,
                                                         graph));
     }
 
@@ -32,13 +36,12 @@ class ImmutableAntiSymmetricPreferenceImplTest {
     void asImmutableAntisymmetricPreferenceReflexiveException() {
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
-        graph.putEdge(Alternative.withId(1), Alternative.withId(4));
-        graph.putEdge(Alternative.withId(4), Alternative.withId(2));
-        graph.putEdge(Alternative.withId(2), Alternative.withId(1));
+        graph.putEdge(a1, a4);
+        graph.putEdge(a4, a2);
+        graph.putEdge(a2, a1);
         assertThrows(IllegalArgumentException.class,
                         () -> ImmutableAntiSymmetricPreferenceImpl
-                                        .asImmutableAntiSymmetricPreference(
-                                                        Voter.createVoter(2),
+                                        .asImmutableAntiSymmetricPreference(v1,
                                                         graph));
     }
 
@@ -46,12 +49,11 @@ class ImmutableAntiSymmetricPreferenceImplTest {
     void asImmutableAntisymmetricPreferenceLoopTest() {
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
-        graph.putEdge(Alternative.withId(1), Alternative.withId(1));
+        graph.putEdge(a1, a1);
         assertDoesNotThrow(() -> ImmutableAntiSymmetricPreferenceImpl
-                        .asImmutableAntiSymmetricPreference(
-                                        Voter.createVoter(2), graph));
-        graph.putEdge(Alternative.withId(1), Alternative.withId(2));
-        graph.putEdge(Alternative.withId(2), Alternative.withId(1));
+                        .asImmutableAntiSymmetricPreference(v1, graph));
+        graph.putEdge(a1, a2);
+        graph.putEdge(a2, a1);
         assertThrows(IllegalArgumentException.class,
                         () -> ImmutableAntiSymmetricPreferenceImpl
                                         .asImmutableAntiSymmetricPreference(

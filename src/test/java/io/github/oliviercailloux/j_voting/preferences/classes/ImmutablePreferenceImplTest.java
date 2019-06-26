@@ -22,6 +22,8 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.ImmutablePrefer
 
 class ImmutablePreferenceImplTest {
 
+    private static Voter v1 = Voter.createVoter(1);
+
     static ImmutablePreference getApreference() {
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
@@ -35,8 +37,7 @@ class ImmutablePreferenceImplTest {
         graph.putEdge(a4, a1);
         graph.putEdge(a4, a3);
         graph.putEdge(a5, a3);
-        return ImmutablePreferenceImpl
-                        .asImmutablePreference(Voter.createVoter(2), graph);
+        return ImmutablePreferenceImpl.asImmutablePreference(v1, graph);
     }
 
     @Test
@@ -49,8 +50,7 @@ class ImmutablePreferenceImplTest {
     @Test
     void getVoterImmutablePreferenceTest() {
         ImmutablePreference toTestImmutablePreference = getApreference();
-        assertEquals(Voter.createVoter(2),
-                        toTestImmutablePreference.getVoter());
+        assertEquals(v1, toTestImmutablePreference.getVoter());
     }
 
     @Test
