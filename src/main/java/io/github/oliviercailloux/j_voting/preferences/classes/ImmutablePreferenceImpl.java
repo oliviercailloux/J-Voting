@@ -53,7 +53,7 @@ public class ImmutablePreferenceImpl implements ImmutablePreference {
      * @param voter <code> not null </code>
      * @param graph <code> not null </code> graph with ordered Alternatives
      */
-    private ImmutablePreferenceImpl(Voter voter, Graph<Alternative> graph) {
+    protected ImmutablePreferenceImpl(Voter voter, Graph<Alternative> graph) {
         LOGGER.debug("ImmutablePreferenceImpl constructor from graph");
         this.graphIntransitivelyClosed = ImmutableGraph.copyOf(graph);
         this.graph = ImmutableGraph.copyOf(Graphs
