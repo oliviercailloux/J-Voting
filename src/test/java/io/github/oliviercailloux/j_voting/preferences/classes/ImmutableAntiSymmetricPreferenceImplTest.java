@@ -1,5 +1,6 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,23 @@ class ImmutableAntiSymmetricPreferenceImplTest {
                         .allowsSelfLoops(true).build();
         graph.putEdge(Alternative.withId(1), Alternative.withId(4));
         graph.putEdge(Alternative.withId(4), Alternative.withId(2));
+        graph.putEdge(Alternative.withId(2), Alternative.withId(1));
+        assertThrows(IllegalArgumentException.class,
+                        () -> ImmutableAntiSymmetricPreferenceImpl
+                                        .asImmutableAntiSymmetricPreference(
+                                                        Voter.createVoter(2),
+                                                        graph));
+    }
+
+    @Test
+    void asImmutableAntisymmetricPreferenceLoopTest() {
+        MutableGraph<Alternative> graph = GraphBuilder.directed()
+                        .allowsSelfLoops(true).build();
+        graph.putEdge(Alternative.withId(1), Alternative.withId(1));
+        assertDoesNotThrow(() -> ImmutableAntiSymmetricPreferenceImpl
+                        .asImmutableAntiSymmetricPreference(
+                                        Voter.createVoter(2), graph));
+        graph.putEdge(Alternative.withId(1), Alternative.withId(2));
         graph.putEdge(Alternative.withId(2), Alternative.withId(1));
         assertThrows(IllegalArgumentException.class,
                         () -> ImmutableAntiSymmetricPreferenceImpl
