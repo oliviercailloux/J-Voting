@@ -24,11 +24,13 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 
 	protected Voter voter;
 	protected MutableGraph<Alternative> graph;
+	protected Set<Alternative> alternatives;
 	private static final Logger LOGGER = LoggerFactory.getLogger(MutableAntiSymmetricPreference.class.getName());
 
 	private MutableAntiSymmetricPreferenceImpl(MutableGraph<Alternative> prefGraph, Voter voter) {
 		this.voter = voter;
 		graph = prefGraph;
+		alternatives = graph.nodes();
 	}
 
 	/**
@@ -39,7 +41,6 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 	 * @param voter is the Voter associated to the Preference.
 	 * @return the mutable antisymmetric preference
 	 * @see Voter
-	 * @see MutableAntiSymmetricPreference#asGraph()
 	 */
 	public static MutableAntiSymmetricPreferenceImpl given(MutableGraph<Alternative> pref, Voter voter) {
 		LOGGER.debug("MutableAntiSymmetricPreferenceImpl given");
@@ -57,12 +58,25 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 	}
 
 	/**
+	 * @param voter is the Voter associated to the Preference.
+	 * @return a MutableAntiSymmetricPreference with the same voter and an empty
+	 *         graph
+	 */
+	public static MutableAntiSymmetricPreferenceImpl given(Voter voter) {
+		LOGGER.debug("MutableAntiSymmetricPreferenceImpl given with voter");
+		Preconditions.checkNotNull(voter);
+		MutableGraph<Alternative> pref = GraphBuilder.directed().allowsSelfLoops(true).build();
+		return new MutableAntiSymmetricPreferenceImpl(pref, voter);
+	}
+
+	/**
 	 * @param pref is a set of lists of sets of Alternatives representing the
 	 *             preference. In the first set, every list is a linear comparison
 	 *             of sets of alternatives. (first in the list is preferred to next
 	 *             ones, etc.) Those sets of alternatives contain ex-aequo
 	 *             alternatives.
-	 * @return the mutable preference, implemented with a transitively closed graph.
+	 * @return the mutable antisymmetric preference, implemented with a transitively
+	 *         closed graph.
 	 * @see Voter
 	 * @see Preference
 	 * @see MutablePreference
@@ -77,6 +91,8 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 			for (Set<Alternative> set : array) {
 				// in a set of equality, adding every node to the graph
 				// and in TMP list
+				if (set.size() != 1)
+					throw new IllegalArgumentException("Must not contain ex-eaquo Alternative");
 				for (Alternative alt : set) {
 					tmp.add(alt);
 				}
@@ -113,7 +129,7 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 	public void addAlternative(Alternative alternative) {
 		LOGGER.debug("MutableAntiSymmetricPreferenceImpl addAlternative");
 		Preconditions.checkNotNull(alternative);
-		graph.putEdge(alternative, alternative);
+		graph.addNode(alternative);
 	}
 
 	@Override
@@ -121,16 +137,15 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 		LOGGER.debug("MutableAntiSymmetricPreferenceImpl putEdge");
 		Preconditions.checkNotNull(a1);
 		Preconditions.checkNotNull(a2);
-		if (graph.hasEdgeConnecting(a2, a1)) {
+		if (graph.hasEdgeConnecting(a2, a1) || a1.equals(a2)) {
 			throw new IllegalArgumentException("Must not contain ex-eaquo Alternative");
 		}
 		graph.putEdge(a1, a2);
-		graph = Graphs.copyOf(Graphs.transitiveClosure(graph));
 	}
 
 	@Override
 	public ImmutableGraph<Alternative> asGraph() {
-		return ImmutableGraph.copyOf(graph);
+		return ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
 	}
 
 	@Override
@@ -139,12 +154,26 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 	}
 
 	/**
+	 * This method updates the alternatives corresponding graph
 	 * 
-	 * TODO : For now, any modification will not affect the graph
+	 * @return the set of all alternatives of the preference
+	 * 
 	 */
 	@Override
 	public Set<Alternative> getAlternatives() {
-		return graph.nodes();
+		LOGGER.debug("MutableAntiSymmetricPreferenceImpl getAlternatives");
+		if (alternatives.size() < graph.nodes().size())
+			throw new IllegalStateException("Must not remove an alternative from the set");
+		if (alternatives.size() > graph.nodes().size()) {
+			if (!alternatives.containsAll(graph.nodes()))
+				throw new IllegalStateException("Must not remove an alternative from the set");
+			for (Alternative a : alternatives) {
+				if (!graph.nodes().contains(a))
+					graph.addNode(a);
+			}
+		} else if (alternatives.equals(graph.nodes()) && (!alternatives.containsAll(graph.nodes())))
+			throw new IllegalStateException("Must not remove an alternative from the set");
+		return alternatives;
 	}
 
 	@Override
@@ -155,5 +184,18 @@ public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricP
 	@Override
 	public String toString() {
 		return MoreObjects.toStringHelper(this).add("graph", graph).add("voter", voter).toString();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (this.getClass() != obj.getClass())
+			return false;
+		MutableAntiSymmetricPreferenceImpl pref = (MutableAntiSymmetricPreferenceImpl) obj;
+		return (this.asGraph().equals(pref.asGraph()) && this.getVoter().equals(pref.getVoter())
+				&& this.alternatives.equals(pref.alternatives));
 	}
 }
