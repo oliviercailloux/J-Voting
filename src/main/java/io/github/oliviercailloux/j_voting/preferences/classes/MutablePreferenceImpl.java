@@ -32,7 +32,7 @@ public class MutablePreferenceImpl implements MutablePreference {
 
     protected Voter voter;
     protected MutableGraph<Alternative> graph;
-    protected Set<Alternative> alternatives = graph.nodes();
+    protected Set<Alternative> alternatives;
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(MutablePreference.class.getName());
 
@@ -40,6 +40,7 @@ public class MutablePreferenceImpl implements MutablePreference {
                     Voter voter) {
         this.voter = voter;
         graph = prefGraph;
+        alternatives = graph.nodes();
     }
 
     /**
@@ -172,6 +173,7 @@ public class MutablePreferenceImpl implements MutablePreference {
      */
     @Override
     public Set<Alternative> getAlternatives() {
+        LOGGER.debug("MutablePreferenceImpl getAlternatives");
         if (alternatives.size() < graph.nodes().size())
             throw new IllegalStateException();
         if (alternatives.size() > graph.nodes().size()) {
@@ -208,6 +210,7 @@ public class MutablePreferenceImpl implements MutablePreference {
             return false;
         MutablePreferenceImpl pref = (MutablePreferenceImpl) obj;
         return (this.asGraph().equals(pref.asGraph())
-                        && this.getVoter().equals(pref.getVoter()));
+                        && this.getVoter().equals(pref.getVoter())
+                        && this.alternatives.equals(pref.alternatives));
     }
 }
