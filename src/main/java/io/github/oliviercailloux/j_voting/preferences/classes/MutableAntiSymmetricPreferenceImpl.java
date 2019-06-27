@@ -188,7 +188,7 @@ public class MutableAntiSymmetricPreferenceImpl
                 if (!graph.nodes().contains(a))
                     graph.addNode(a);
             }
-        } else if (alternatives.equals(graph.nodes())
+        } else if (alternatives.size() == graph.nodes().size()
                         && (!alternatives.containsAll(graph.nodes())))
             throw new IllegalStateException(
                             "Must not remove an alternative from the set");
