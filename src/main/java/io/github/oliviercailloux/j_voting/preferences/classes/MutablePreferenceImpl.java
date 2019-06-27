@@ -174,17 +174,20 @@ public class MutablePreferenceImpl implements MutablePreference {
     public Set<Alternative> getAlternatives() {
         LOGGER.debug("MutablePreferenceImpl getAlternatives");
         if (alternatives.size() < graph.nodes().size())
-            throw new IllegalStateException();
+            throw new IllegalStateException(
+                            "must not remove an alternative from the set");
         if (alternatives.size() > graph.nodes().size()) {
             if (!alternatives.containsAll(graph.nodes()))
-                throw new IllegalStateException();
+                throw new IllegalStateException(
+                                "must not remove an alternative from the set");
             for (Alternative a : alternatives) {
                 if (!graph.nodes().contains(a))
                     graph.addNode(a);
             }
-        } else if (alternatives.equals(graph.nodes())
+        } else if (alternatives.size() == graph.nodes().size()
                         && (!alternatives.containsAll(graph.nodes())))
-            throw new IllegalStateException();
+            throw new IllegalStateException(
+                            "must not remove an amternative from the set");
         return alternatives;
     }
 
