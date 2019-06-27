@@ -151,9 +151,9 @@ public class MutableAntiSymmetricPreferenceImpl
 
     @Override
     public ImmutableGraph<Alternative> asGraph() {
-        // if (Graphs.hasCycle(graph))
-        // throw new IllegalStateException(
-        // "Must not contain ex-eaquo Alternative");
+        if (Graphs.hasCycle(graph))
+            throw new IllegalStateException(
+                            "Must not contain ex-eaquo Alternative");
         return ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
     }
 
