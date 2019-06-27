@@ -146,9 +146,6 @@ public class MutableAntiSymmetricPreferenceImpl
         if (Graphs.transitiveClosure(graph).hasEdgeConnecting(a2, a1))
             throw new IllegalArgumentException(
                             "Must not contain ex-eaquo Alternative");
-        if (a1.equals(a2))
-            throw new IllegalArgumentException(
-                            "Must not contain reflexive alternative");
         graph.putEdge(a1, a2);
     }
 
