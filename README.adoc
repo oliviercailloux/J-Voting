@@ -68,14 +68,14 @@ We going to work on the two main improvements :
 * *Team 2* : Théo CHENNEBAULT / Emilie CHHEAN
 
 === Tasks
-* 1#  ODSProfile : clear code 
-* 2#  ODSProfile : add 2 new format types of .ODS
-* 3#  Interfaces : create new folder "preferences" to store futures interfaces
-* 4#  Interfaces : ameliorate diagram with your advices
-* 5#  Interfaces : implement new general interfaces for preferences
+* 1#  ODSProfile : clear code => *DONE*
+* 2#  ODSProfile : add 2 new format types of .ODS => *DONE*
+* 3#  Interfaces : create new folder "preferences" to store futures interfaces => *DONE*
+* 4#  Interfaces : ameliorate diagram with your advices => *DONE*
+* 5#  Interfaces : implement new general interfaces for preferences => *DONE*
 * 6#  Replace constructors with static methods => *DONE*
-* 7#  ODSProfileTest : Junit tests for ODSProfile
-* 8#  Create doc for differents .ODS formats
+* 7#  ODSProfileTest : Junit tests for ODSProfile => *DONE*
+* 8#  Create doc for differents .ODS formats => *DONE*
 
 === Pull Requests
 * #16 LEDOUX
@@ -89,7 +89,25 @@ We going to work on the two main improvements :
 * #24 LOUBET & DRAY
 
 == Livraison 3
-...
+
+The main purpose of this iteration is to restructure Preferences classes in order to generalise the existing code. 
+We will implement all classes correponding to the Preferences interfaces.
+
+
+=== Teams :
+* *SM/PO team* : Anael DRAY
+* *Team 1* : Emilie CHHEAN / Mattéo LOUBET
+* *Team 2* : Théo CHENNEBAULT / Louis LEDOUX
+
+=== Tasks :
+* 1#  Preferences : Rename StrictCompletePreferenceImpl in OldLinearPreferenceImpl and CompletePreferenceImpl in OldCompletePreferenceImpl. 
+* 2#  Preferences : Create documentation on the impact of changes with the new CompletePreferenceImpl and LinearPreferenceImpl classes.
+* 3#  Preferences : Implement the first preferences class : MutablePreferenceImpl and reconsider other preferences classes' implementation.
+* 4#  Preferences : Implement ImmutablePreferenceImpl.
+* 5#  Preferences : Implement AntiSymmetricPreferenceImpl, MutableAntiSymmetricPreferenceImpl and ImmutableAntiSymmetricPreferenceImpl.
+* 6#  Preferences : Implement CompletePreferenceImpl and LinearPreferenceImpl.
+
+
 
 == Livraison 4
 ...
