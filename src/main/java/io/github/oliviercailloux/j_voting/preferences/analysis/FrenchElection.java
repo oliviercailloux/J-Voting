@@ -40,27 +40,28 @@ public class FrenchElection {
 
     private FrenchElection(Set<LinearPreference> linearPreferences) {
         LOGGER.debug("FrenchElection Constructor");
-        Map<Alternative, Integer> scoresMap = Maps.newHashMap();
+        Map<Alternative, Integer> tmpScores = Maps.newHashMap();
         Set<Voter> tmpVoters = Sets.newHashSet();
         for (LinearPreference linearPreference : linearPreferences) {
             if (!tmpVoters.add(linearPreference.getVoter()))
                 throw new IllegalArgumentException(
                                 "A voter can't vote two times in a same election");
             Alternative tmpAlternative = linearPreference.asList().get(0);
-            Integer votes = (scoresMap.get(tmpAlternative) != null)
-                            ? scoresMap.get(tmpAlternative)
+            Integer votes = (tmpScores.get(tmpAlternative) != null)
+                            ? tmpScores.get(tmpAlternative)
                             : 0;
-            scoresMap.put(tmpAlternative, votes + 1);
+            tmpScores.put(tmpAlternative, votes + 1);
         }
         Entry<Alternative, Integer> bestAlternative = Collections.max(
-                        scoresMap.entrySet(),
+                        tmpScores.entrySet(),
                         (Entry<Alternative, Integer> e1,
                                         Entry<Alternative, Integer> e2) -> e1
                                                         .getValue()
                                                         .compareTo(e2.getValue()));
-        this.setAlternatives = ImmutableSet.copyOf(scoresMap.keySet());
+        this.setAlternatives = ImmutableSet.copyOf(tmpScores.keySet());
         this.winner = bestAlternative.getKey();
-        this.scores = scoresMap;
+        this.scores = tmpScores;
+        this.setVoters = ImmutableSet.copyOf(tmpVoters);
     }
 
     public Alternative getWinner() {
