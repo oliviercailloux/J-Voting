@@ -143,11 +143,12 @@ public class MutableAntiSymmetricPreferenceImpl
         LOGGER.debug("MutableAntiSymmetricPreferenceImpl putEdge");
         Preconditions.checkNotNull(a1);
         Preconditions.checkNotNull(a2);
-        if (Graphs.transitiveClosure(graph).hasEdgeConnecting(a2, a1)
-                        || a1.equals(a2)) {
-            throw new IllegalStateException(
+        if (Graphs.transitiveClosure(graph).hasEdgeConnecting(a2, a1))
+            throw new IllegalArgumentException(
                             "Must not contain ex-eaquo Alternative");
-        }
+        if (a1.equals(a2))
+            throw new IllegalArgumentException(
+                            "Must not contain reflexive alternative");
         graph.putEdge(a1, a2);
     }
 
