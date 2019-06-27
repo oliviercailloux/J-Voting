@@ -38,6 +38,11 @@ public class FrenchElection {
         return new FrenchElection(linearPreferences);
     }
 
+    /**
+     * 
+     * @param linearPreferences <code> not null </code>
+     * @return new FrenchElection
+     */
     private FrenchElection(Set<LinearPreference> linearPreferences) {
         LOGGER.debug("FrenchElection Constructor");
         Map<Alternative, Integer> tmpScores = Maps.newHashMap();
@@ -74,5 +79,9 @@ public class FrenchElection {
 
     public Map<Alternative, Integer> getScores() {
         return scores;
+    }
+
+    public ImmutableSet<Voter> getVoters() {
+        return setVoters;
     }
 }
