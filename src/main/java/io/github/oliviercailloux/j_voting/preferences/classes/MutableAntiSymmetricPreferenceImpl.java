@@ -65,7 +65,7 @@ public class MutableAntiSymmetricPreferenceImpl
         LOGGER.debug("MutableAntiSymmetricPreferenceImpl given with voter");
         Preconditions.checkNotNull(voter);
         MutableGraph<Alternative> pref = GraphBuilder.directed()
-                        .allowsSelfLoops(true).build();
+                        .allowsSelfLoops(false).build();
         return new MutableAntiSymmetricPreferenceImpl(pref, voter);
     }
 
