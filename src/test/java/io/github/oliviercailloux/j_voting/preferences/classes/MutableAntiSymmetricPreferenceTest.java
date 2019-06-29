@@ -1,5 +1,10 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -22,10 +27,6 @@ class MutableAntiSymmetricPreferenceTest {
      */
     @Test
     void givenTest() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Alternative a4 = Alternative.withId(4);
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         graph.putEdge(a1, a2);
@@ -53,9 +54,6 @@ class MutableAntiSymmetricPreferenceTest {
      */
     @Test
     void testAddAlternative() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         graph.putEdge(a1, a2);
@@ -74,11 +72,6 @@ class MutableAntiSymmetricPreferenceTest {
      */
     @Test
     void testAddStrictPreference() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Alternative a4 = Alternative.withId(4);
-        Alternative a5 = Alternative.withId(5);
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         graph.putEdge(a1, a2);
@@ -100,11 +93,6 @@ class MutableAntiSymmetricPreferenceTest {
      */
     @Test
     void testAsGraph() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Alternative a4 = Alternative.withId(4);
-        Alternative a5 = Alternative.withId(5);
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         graph.putEdge(a1, a2);
@@ -123,11 +111,6 @@ class MutableAntiSymmetricPreferenceTest {
 
     @Test
     void testAsMutableGraph() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Alternative a4 = Alternative.withId(4);
-        Alternative a5 = Alternative.withId(5);
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         graph.putEdge(a1, a2);
@@ -144,11 +127,6 @@ class MutableAntiSymmetricPreferenceTest {
      */
     @Test
     void testGetAlternatives() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Alternative a4 = Alternative.withId(4);
-        Alternative a5 = Alternative.withId(5);
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         graph.putEdge(a1, a2);
