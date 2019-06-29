@@ -114,8 +114,9 @@ The main purpose of this last iteration is to finish all the implementation.
 
 === Teams :
 * *SM/PO team* : Louis LEDOUX
-* *Team 1* : Théo CHENNEBAULT / Mattéo LOUBET
+* *Team 1* : Théo CHENNEBAULT
 * *Team 2* : Emilie CHHEAN / Anael DRAY
+* *Team 3* : Mattéo LOUBET
 
 === Tasks :
 * 1#  Preferences : Implement MutablePreferenceImpl
