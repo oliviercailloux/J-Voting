@@ -3,11 +3,9 @@ package io.github.oliviercailloux.j_voting.preferences.classes;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.junit.jupiter.api.Test;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
 import com.google.common.graph.MutableGraph;
@@ -158,12 +156,8 @@ class MutableAntiSymmetricPreferenceTest {
         graph.putEdge(a4, a5);
         MutableAntiSymmetricPreference pref = MutableAntiSymmetricPreferenceImpl
                         .given(Voter.createVoter(1), Graphs.copyOf(graph));
-        Set<Alternative> returnedSet = new HashSet<>();
-        returnedSet.add(a1);
-        returnedSet.add(a2);
-        returnedSet.add(a3);
-        returnedSet.add(a4);
-        returnedSet.add(a5);
-        assertEquals(returnedSet, pref.getAlternatives());
+        ImmutableSet<Alternative> expected = ImmutableSet.of(a1, a2, a3, a4,
+                        a5);
+        assertEquals(expected, pref.getAlternatives());
     }
 }
