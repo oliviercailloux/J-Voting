@@ -3,12 +3,12 @@ package io.github.oliviercailloux.j_voting.preferences;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.common.graph.Graph;
@@ -298,12 +298,8 @@ class MutablePreferenceImplTest {
         MutablePreference pref = MutablePreferenceImpl.given(
                         Voter.createVoter(1),
                         MutablePreferenceImpl.preferenceGraphMaker(setTest));
-        Set<Alternative> returnedSet = new HashSet<>();
-        returnedSet.add(a1);
-        returnedSet.add(a2);
-        returnedSet.add(a3);
-        returnedSet.add(a4);
-        returnedSet.add(a5);
-        assertEquals(returnedSet, pref.getAlternatives());
+        ImmutableSet<Alternative> expected = ImmutableSet.of(a1, a2, a3, a4,
+                        a5);
+        assertEquals(expected, pref.getAlternatives());
     }
 }
