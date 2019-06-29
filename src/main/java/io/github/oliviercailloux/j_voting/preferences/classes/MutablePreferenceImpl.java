@@ -54,7 +54,7 @@ public class MutablePreferenceImpl implements MutablePreference {
      * @return the mutable preference
      * @see Voter
      */
-    public static MutablePreferenceImpl given(Voter voter,
+    public static MutablePreference given(Voter voter,
                     MutableGraph<Alternative> pref) {
         LOGGER.debug("MutablePreferenceImpl given");
         Preconditions.checkNotNull(voter);

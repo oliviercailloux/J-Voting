@@ -11,14 +11,15 @@ import org.junit.jupiter.api.Test;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import com.google.common.graph.Graph;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
-import com.google.common.graph.ImmutableGraph;
 import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutablePreferenceImpl;
+import io.github.oliviercailloux.j_voting.preferences.interfaces.MutablePreference;
 
 class MutablePreferenceImplTest {
 
@@ -35,10 +36,10 @@ class MutablePreferenceImplTest {
         ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B, C);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
-        MutablePreferenceImpl pref = MutablePreferenceImpl.given(
+        MutablePreference pref = MutablePreferenceImpl.given(
                         Voter.createVoter(1),
                         MutablePreferenceImpl.preferenceGraphMaker(setTest));
-        ImmutableGraph g = pref.asGraph();
+        Graph g = pref.asGraph();
         assertEquals(g.nodes().containsAll(Sets.newHashSet(a1, a2, a3, a4, a5)),
                         true);
         assertEquals(g.hasEdgeConnecting(a1, a1) && g.hasEdgeConnecting(a1, a2)
@@ -134,7 +135,7 @@ class MutablePreferenceImplTest {
         setTest.add(listTest2);
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
-        MutablePreferenceImpl pref = MutablePreferenceImpl
+        MutablePreference pref = MutablePreferenceImpl
                         .given(Voter.createVoter(1), graph);
         MutablePreferenceImpl pref1 = MutablePreferenceImpl.given(pref);
         assertEquals(pref, pref1);
@@ -153,7 +154,7 @@ class MutablePreferenceImplTest {
         ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
-        MutablePreferenceImpl pref = MutablePreferenceImpl.given(
+        MutablePreference pref = MutablePreferenceImpl.given(
                         Voter.createVoter(1),
                         MutablePreferenceImpl.preferenceGraphMaker(setTest));
         MutableGraph<Alternative> graph = GraphBuilder.directed()
@@ -178,7 +179,7 @@ class MutablePreferenceImplTest {
         ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
-        MutablePreferenceImpl pref = MutablePreferenceImpl.given(
+        MutablePreference pref = MutablePreferenceImpl.given(
                         Voter.createVoter(1),
                         MutablePreferenceImpl.preferenceGraphMaker(setTest));
         MutableGraph<Alternative> graph = GraphBuilder.directed()
@@ -208,7 +209,7 @@ class MutablePreferenceImplTest {
         ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
-        MutablePreferenceImpl pref = MutablePreferenceImpl.given(
+        MutablePreference pref = MutablePreferenceImpl.given(
                         Voter.createVoter(1),
                         MutablePreferenceImpl.preferenceGraphMaker(setTest));
         MutableGraph<Alternative> graph = Graphs.copyOf(pref.asGraph());
@@ -235,7 +236,7 @@ class MutablePreferenceImplTest {
         ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
-        MutablePreferenceImpl pref = MutablePreferenceImpl.given(
+        MutablePreference pref = MutablePreferenceImpl.given(
                         Voter.createVoter(1),
                         MutablePreferenceImpl.preferenceGraphMaker(setTest));
         MutableGraph<Alternative> graph = Graphs.copyOf(pref.asGraph());
@@ -265,7 +266,7 @@ class MutablePreferenceImplTest {
         ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
-        MutablePreferenceImpl pref = MutablePreferenceImpl.given(
+        MutablePreference pref = MutablePreferenceImpl.given(
                         Voter.createVoter(1),
                         MutablePreferenceImpl.preferenceGraphMaker(setTest));
         MutableGraph<Alternative> graph = Graphs.copyOf(pref.asGraph());
@@ -294,7 +295,7 @@ class MutablePreferenceImplTest {
         ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B, C);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
-        MutablePreferenceImpl pref = MutablePreferenceImpl.given(
+        MutablePreference pref = MutablePreferenceImpl.given(
                         Voter.createVoter(1),
                         MutablePreferenceImpl.preferenceGraphMaker(setTest));
         Set<Alternative> returnedSet = new HashSet<>();
