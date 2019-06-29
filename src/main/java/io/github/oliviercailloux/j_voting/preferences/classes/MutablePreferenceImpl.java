@@ -167,8 +167,6 @@ public class MutablePreferenceImpl implements MutablePreference {
     }
 
     /**
-     * This method updates the alternatives corresponding graph
-     * 
      * @return the set of all alternatives of the preference
      * 
      */
