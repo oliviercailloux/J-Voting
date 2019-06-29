@@ -89,6 +89,23 @@ class MutableAntiSymmetricPreferenceTest {
     }
 
     /**
+     * Tests whether an exception is thrown if we add an edge in order to have
+     * ex-aequo alternatives
+     */
+    @Test
+    void testAddStrictPreferenceException() {
+        MutableGraph<Alternative> graph = GraphBuilder.directed()
+                        .allowsSelfLoops(true).build();
+        graph.putEdge(a1, a2);
+        graph.putEdge(a3, a4);
+        graph.putEdge(a3, a5);
+        MutableAntiSymmetricPreference pref = MutableAntiSymmetricPreferenceImpl
+                        .given(Voter.createVoter(1), Graphs.copyOf(graph));
+        assertThrows(IllegalArgumentException.class,
+                        () -> pref.addStrictPreference(a5, a3));
+    }
+
+    /**
      * Tests whether the preference is correctly expressed as a graph
      */
     @Test

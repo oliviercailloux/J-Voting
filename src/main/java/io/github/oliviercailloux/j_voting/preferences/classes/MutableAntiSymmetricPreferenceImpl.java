@@ -31,6 +31,15 @@ public class MutableAntiSymmetricPreferenceImpl
     private MutableAntiSymmetricPreferenceImpl(Voter voter,
                     MutableGraph<Alternative> prefGraph) {
         this.voter = voter;
+        for (Alternative a1 : prefGraph.nodes()) {
+            for (Alternative a2 : prefGraph.successors(a1)) {
+                if (Graphs.transitiveClosure(prefGraph).hasEdgeConnecting(a2,
+                                a1) && !a2.equals(a1)) {
+                    throw new IllegalArgumentException(
+                                    "Must not contain ex-eaquo Alternative");
+                }
+            }
+        }
         graph = prefGraph;
         alternatives = graph.nodes();
     }
@@ -49,9 +58,6 @@ public class MutableAntiSymmetricPreferenceImpl
         LOGGER.debug("MutableAntiSymmetricPreferenceImpl given");
         Preconditions.checkNotNull(voter);
         Preconditions.checkNotNull(pref);
-        if (Graphs.hasCycle(pref))
-            throw new IllegalArgumentException(
-                            "Must not contain ex-eaquo Alternative");
         return new MutableAntiSymmetricPreferenceImpl(voter, pref);
     }
 
@@ -96,7 +102,8 @@ public class MutableAntiSymmetricPreferenceImpl
         LOGGER.debug("MutableAntiSymmetricPreferenceImpl addStrictPreference");
         Preconditions.checkNotNull(a1);
         Preconditions.checkNotNull(a2);
-        if (Graphs.transitiveClosure(graph).hasEdgeConnecting(a2, a1))
+        if (Graphs.transitiveClosure(graph).hasEdgeConnecting(a2, a1)
+                        && !a1.equals(a2))
             throw new IllegalArgumentException(
                             "Must not contain ex-eaquo Alternative");
         graph.putEdge(a1, a2);
