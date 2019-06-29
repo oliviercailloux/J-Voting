@@ -1,5 +1,13 @@
 package io.github.oliviercailloux.j_voting.preferences;
 
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a34;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a6;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -25,15 +33,8 @@ class MutablePreferenceImplTest {
 
     @Test
     void givenTest() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Alternative a4 = Alternative.withId(4);
-        Alternative a5 = Alternative.withId(5);
-        Set<Alternative> A = Sets.newHashSet(a1, a2);
-        Set<Alternative> B = Sets.newHashSet(a3, a4);
         Set<Alternative> C = Sets.newHashSet(a5);
-        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B, C);
+        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(a12, a34, C);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
         MutablePreference pref = MutablePreferenceImpl.given(
@@ -84,16 +85,10 @@ class MutablePreferenceImplTest {
      */
     @Test
     void testPreferenceGraphMaker() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Alternative a4 = Alternative.withId(4);
-        Alternative a5 = Alternative.withId(5);
-        Set<Alternative> A = Sets.newHashSet(a1, a2);
         Set<Alternative> B = Sets.newHashSet(a3);
         Set<Alternative> C = Sets.newHashSet(a4);
         Set<Alternative> D = Sets.newHashSet(a5);
-        ArrayList<Set<Alternative>> listTest1 = Lists.newArrayList(A, B);
+        ArrayList<Set<Alternative>> listTest1 = Lists.newArrayList(a12, B);
         ArrayList<Set<Alternative>> listTest2 = Lists.newArrayList(C, D);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest1);
@@ -119,16 +114,10 @@ class MutablePreferenceImplTest {
      */
     @Test
     void testGivenPreference() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Alternative a4 = Alternative.withId(4);
-        Alternative a5 = Alternative.withId(5);
-        Set<Alternative> A = Sets.newHashSet(a1, a2);
         Set<Alternative> B = Sets.newHashSet(a3);
         Set<Alternative> C = Sets.newHashSet(a4);
         Set<Alternative> D = Sets.newHashSet(a5);
-        ArrayList<Set<Alternative>> listTest1 = Lists.newArrayList(A, B);
+        ArrayList<Set<Alternative>> listTest1 = Lists.newArrayList(a12, B);
         ArrayList<Set<Alternative>> listTest2 = Lists.newArrayList(C, D);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest1);
@@ -146,12 +135,8 @@ class MutablePreferenceImplTest {
      */
     @Test
     void testAsGraph() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Set<Alternative> A = Sets.newHashSet(a1, a2);
         Set<Alternative> B = Sets.newHashSet(a3);
-        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B);
+        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(a12, B);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
         MutablePreference pref = MutablePreferenceImpl.given(
@@ -171,12 +156,8 @@ class MutablePreferenceImplTest {
 
     @Test
     void testAsMutableGraph() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Set<Alternative> A = Sets.newHashSet(a1, a2);
         Set<Alternative> B = Sets.newHashSet(a3);
-        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B);
+        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(a12, B);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
         MutablePreference pref = MutablePreferenceImpl.given(
@@ -199,14 +180,7 @@ class MutablePreferenceImplTest {
      */
     @Test
     void testAddAlternative() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Alternative a4 = Alternative.withId(4);
-        Alternative a5 = Alternative.withId(5);
-        Set<Alternative> A = Sets.newHashSet(a1, a2);
-        Set<Alternative> B = Sets.newHashSet(a3, a4);
-        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B);
+        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(a12, a34);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
         MutablePreference pref = MutablePreferenceImpl.given(
@@ -225,15 +199,7 @@ class MutablePreferenceImplTest {
      */
     @Test
     void testAddEquivalence() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Alternative a4 = Alternative.withId(4);
-        Alternative a5 = Alternative.withId(5);
-        Alternative a6 = Alternative.withId(6);
-        Set<Alternative> A = Sets.newHashSet(a1, a2);
-        Set<Alternative> B = Sets.newHashSet(a3, a4);
-        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B);
+        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(a12, a34);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
         MutablePreference pref = MutablePreferenceImpl.given(
@@ -255,15 +221,7 @@ class MutablePreferenceImplTest {
      */
     @Test
     void testPutEdge() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Alternative a4 = Alternative.withId(4);
-        Alternative a5 = Alternative.withId(5);
-        Alternative a6 = Alternative.withId(6);
-        Set<Alternative> A = Sets.newHashSet(a1, a2);
-        Set<Alternative> B = Sets.newHashSet(a3, a4);
-        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B);
+        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(a12, a34);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
         MutablePreference pref = MutablePreferenceImpl.given(
@@ -284,15 +242,8 @@ class MutablePreferenceImplTest {
      */
     @Test
     void testGetAlternatives() {
-        Alternative a1 = Alternative.withId(1);
-        Alternative a2 = Alternative.withId(2);
-        Alternative a3 = Alternative.withId(3);
-        Alternative a4 = Alternative.withId(4);
-        Alternative a5 = Alternative.withId(5);
-        Set<Alternative> A = Sets.newHashSet(a1, a2);
-        Set<Alternative> B = Sets.newHashSet(a3, a4);
         Set<Alternative> C = Sets.newHashSet(a5);
-        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(A, B, C);
+        ArrayList<Set<Alternative>> listTest = Lists.newArrayList(a12, a34, C);
         Set<List<Set<Alternative>>> setTest = Sets.newHashSet();
         setTest.add(listTest);
         MutablePreference pref = MutablePreferenceImpl.given(
