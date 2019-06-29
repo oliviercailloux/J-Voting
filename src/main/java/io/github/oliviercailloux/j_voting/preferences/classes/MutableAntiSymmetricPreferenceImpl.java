@@ -1,7 +1,5 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -10,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
 import com.google.common.graph.ImmutableGraph;
@@ -18,7 +17,6 @@ import com.google.common.graph.MutableGraph;
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableAntiSymmetricPreference;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutablePreference;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.Preference;
 
 public class MutableAntiSymmetricPreferenceImpl
@@ -46,7 +44,7 @@ public class MutableAntiSymmetricPreferenceImpl
      * @return the mutable antisymmetric preference
      * @see Voter
      */
-    public static MutableAntiSymmetricPreferenceImpl given(Voter voter,
+    public static MutableAntiSymmetricPreference given(Voter voter,
                     MutableGraph<Alternative> pref) {
         LOGGER.debug("MutableAntiSymmetricPreferenceImpl given");
         Preconditions.checkNotNull(voter);
@@ -68,52 +66,6 @@ public class MutableAntiSymmetricPreferenceImpl
         MutableGraph<Alternative> pref = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         return new MutableAntiSymmetricPreferenceImpl(voter, pref);
-    }
-
-    /**
-     * @param pref is a set of lists of sets of Alternatives representing the
-     *             preference. In the first set, every list is a linear
-     *             comparison of sets of alternatives. (first in the list is
-     *             preferred to next ones, etc.) Those sets of alternatives
-     *             contain ex-aequo alternatives.
-     * @return the mutable antisymmetric preference, implemented with a
-     *         transitively closed graph.
-     * @see Voter
-     * @see Preference
-     * @see MutablePreference
-     * @see MutablePreferenceImpl#asGraph()
-     */
-    public static MutableGraph<Alternative> preferenceGraphMaker(
-                    Set<List<Set<Alternative>>> pref) {
-        LOGGER.debug("MutableAntiSymmetricPreferenceImpl preferenceGraphMaker");
-        Preconditions.checkNotNull(pref);
-        MutableGraph<Alternative> currentgraph = GraphBuilder.directed()
-                        .allowsSelfLoops(true).build();
-        for (List<Set<Alternative>> array : pref) {
-            ArrayList<Alternative> tmp = new ArrayList<>();
-            for (Set<Alternative> set : array) {
-                // in a set of equality, adding every node to the graph
-                // and in TMP list
-                if (set.size() != 1)
-                    throw new IllegalArgumentException(
-                                    "Must not contain ex-eaquo Alternative");
-                for (Alternative alt : set) {
-                    tmp.add(alt);
-                }
-                // create edges from every node in TMP to every node in current
-                // equality set
-                // If one of them is not in the graph, they are added.
-                for (Alternative alt : tmp) {
-                    for (Alternative alt2 : set) {
-                        currentgraph.putEdge(alt, alt2);
-                    }
-                }
-            }
-        }
-        if (currentgraph.nodes().isEmpty())
-            throw new IllegalArgumentException(
-                            "Must contain at least one alternative");
-        return currentgraph;
     }
 
     /**
@@ -175,25 +127,7 @@ public class MutableAntiSymmetricPreferenceImpl
     @Override
     public Set<Alternative> getAlternatives() {
         LOGGER.debug("MutableAntiSymmetricPreferenceImpl getAlternatives");
-        if (Graphs.hasCycle(graph))
-            throw new IllegalStateException(
-                            "Must not contain ex-eaquo Alternative");
-        if (alternatives.size() < graph.nodes().size())
-            throw new IllegalStateException(
-                            "Must not remove an alternative from the set");
-        if (alternatives.size() > graph.nodes().size()) {
-            if (!alternatives.containsAll(graph.nodes()))
-                throw new IllegalStateException(
-                                "Must not remove an alternative from the set");
-            for (Alternative a : alternatives) {
-                if (!graph.nodes().contains(a))
-                    graph.addNode(a);
-            }
-        } else if (alternatives.size() == graph.nodes().size()
-                        && (!alternatives.containsAll(graph.nodes())))
-            throw new IllegalStateException(
-                            "Must not remove an alternative from the set");
-        return alternatives;
+        return ImmutableSet.copyOf(alternatives);
     }
 
     @Override
@@ -219,7 +153,7 @@ public class MutableAntiSymmetricPreferenceImpl
             return false;
         }
         MutableAntiSymmetricPreferenceImpl other = (MutableAntiSymmetricPreferenceImpl) obj;
-        return Objects.equals(graph, other.graph)
-                        && Objects.equals(voter, other.voter);
+        return Objects.equals(voter, other.voter)
+                        && Objects.equals(graph, other.graph);
     }
 }
