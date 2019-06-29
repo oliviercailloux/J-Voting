@@ -9,7 +9,6 @@ public class AlternativeHelper {
     public static Alternative a3 = Alternative.withId(3);
     public static Alternative a4 = Alternative.withId(4);
     public static Alternative a5 = Alternative.withId(5);
-    public static Alternative a6 = Alternative.withId(6);
     public static ImmutableSet<Alternative> a12 = ImmutableSet.of(a1, a2);
     public static ImmutableSet<Alternative> a34 = ImmutableSet.of(a3, a4);
 }
