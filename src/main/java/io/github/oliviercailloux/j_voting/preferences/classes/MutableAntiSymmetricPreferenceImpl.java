@@ -2,6 +2,7 @@ package io.github.oliviercailloux.j_voting.preferences.classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -29,8 +30,8 @@ public class MutableAntiSymmetricPreferenceImpl
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(MutableAntiSymmetricPreference.class.getName());
 
-    private MutableAntiSymmetricPreferenceImpl(
-                    MutableGraph<Alternative> prefGraph, Voter voter) {
+    private MutableAntiSymmetricPreferenceImpl(Voter voter,
+                    MutableGraph<Alternative> prefGraph) {
         this.voter = voter;
         graph = prefGraph;
         alternatives = graph.nodes();
@@ -45,15 +46,15 @@ public class MutableAntiSymmetricPreferenceImpl
      * @return the mutable antisymmetric preference
      * @see Voter
      */
-    public static MutableAntiSymmetricPreferenceImpl given(
-                    MutableGraph<Alternative> pref, Voter voter) {
+    public static MutableAntiSymmetricPreferenceImpl given(Voter voter,
+                    MutableGraph<Alternative> pref) {
         LOGGER.debug("MutableAntiSymmetricPreferenceImpl given");
-        Preconditions.checkNotNull(pref);
         Preconditions.checkNotNull(voter);
+        Preconditions.checkNotNull(pref);
         if (Graphs.hasCycle(pref))
             throw new IllegalArgumentException(
                             "Must not contain ex-eaquo Alternative");
-        return new MutableAntiSymmetricPreferenceImpl(pref, voter);
+        return new MutableAntiSymmetricPreferenceImpl(voter, pref);
     }
 
     /**
@@ -65,8 +66,8 @@ public class MutableAntiSymmetricPreferenceImpl
         LOGGER.debug("MutableAntiSymmetricPreferenceImpl given with voter");
         Preconditions.checkNotNull(voter);
         MutableGraph<Alternative> pref = GraphBuilder.directed()
-                        .allowsSelfLoops(false).build();
-        return new MutableAntiSymmetricPreferenceImpl(pref, voter);
+                        .allowsSelfLoops(true).build();
+        return new MutableAntiSymmetricPreferenceImpl(voter, pref);
     }
 
     /**
@@ -127,8 +128,8 @@ public class MutableAntiSymmetricPreferenceImpl
      */
     public static MutableAntiSymmetricPreferenceImpl given(Preference pref) {
         Preconditions.checkNotNull(pref);
-        return new MutableAntiSymmetricPreferenceImpl(
-                        Graphs.copyOf(pref.asGraph()), pref.getVoter());
+        return new MutableAntiSymmetricPreferenceImpl(pref.getVoter(),
+                        Graphs.copyOf(pref.asGraph()));
     }
 
     @Override
@@ -139,8 +140,8 @@ public class MutableAntiSymmetricPreferenceImpl
     }
 
     @Override
-    public void putEdge(Alternative a1, Alternative a2) {
-        LOGGER.debug("MutableAntiSymmetricPreferenceImpl putEdge");
+    public void addStrictPreference(Alternative a1, Alternative a2) {
+        LOGGER.debug("MutableAntiSymmetricPreferenceImpl addStrictPreference");
         Preconditions.checkNotNull(a1);
         Preconditions.checkNotNull(a2);
         if (Graphs.transitiveClosure(graph).hasEdgeConnecting(a2, a1))
@@ -202,21 +203,23 @@ public class MutableAntiSymmetricPreferenceImpl
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this).add("graph", graph)
-                        .add("voter", voter).toString();
+        return MoreObjects.toStringHelper(this).add("voter", voter)
+                        .add("graph", graph).toString();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (this.getClass() != obj.getClass())
+        }
+        if (!(obj instanceof MutableAntiSymmetricPreferenceImpl)) {
             return false;
-        MutableAntiSymmetricPreferenceImpl pref = (MutableAntiSymmetricPreferenceImpl) obj;
-        return (this.asGraph().equals(pref.asGraph())
-                        && this.getVoter().equals(pref.getVoter())
-                        && this.alternatives.equals(pref.alternatives));
+        }
+        MutableAntiSymmetricPreferenceImpl other = (MutableAntiSymmetricPreferenceImpl) obj;
+        return Objects.equals(graph, other.graph)
+                        && Objects.equals(voter, other.voter);
     }
 }

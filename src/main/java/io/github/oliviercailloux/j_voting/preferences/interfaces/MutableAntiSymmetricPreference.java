@@ -38,5 +38,5 @@ public interface MutableAntiSymmetricPreference
      * @param a1 preferred alternative to a2
      * @param a2 "lower" alternative
      */
-    public void putEdge(Alternative a1, Alternative a2);
+    public void addStrictPreference(Alternative a1, Alternative a2);
 }

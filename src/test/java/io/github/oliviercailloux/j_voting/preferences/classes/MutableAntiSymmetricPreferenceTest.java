@@ -38,8 +38,8 @@ class MutableAntiSymmetricPreferenceTest {
         graph.putEdge(a3, a4);
         graph.putEdge(a4, a1);
         assertThrows(IllegalArgumentException.class,
-                        () -> MutableAntiSymmetricPreferenceImpl.given(graph,
-                                        Voter.createVoter(1)));
+                        () -> MutableAntiSymmetricPreferenceImpl
+                                        .given(Voter.createVoter(1), graph));
     }
 
     /**
@@ -96,7 +96,7 @@ class MutableAntiSymmetricPreferenceTest {
                         .allowsSelfLoops(true).build();
         graph.putEdge(a1, a2);
         MutableAntiSymmetricPreferenceImpl pref = MutableAntiSymmetricPreferenceImpl
-                        .given(Graphs.copyOf(graph), Voter.createVoter(1));
+                        .given(Voter.createVoter(1), Graphs.copyOf(graph));
         graph.putEdge(a1, a1);
         graph.putEdge(a2, a2);
         graph.putEdge(a3, a3);
@@ -109,7 +109,7 @@ class MutableAntiSymmetricPreferenceTest {
      * preference's graph
      */
     @Test
-    void testPutEdge() {
+    void testAddStrictPreference() {
         Alternative a1 = Alternative.withId(1);
         Alternative a2 = Alternative.withId(2);
         Alternative a3 = Alternative.withId(3);
@@ -120,14 +120,14 @@ class MutableAntiSymmetricPreferenceTest {
         graph.putEdge(a1, a2);
         graph.putEdge(a3, a4);
         MutableAntiSymmetricPreferenceImpl pref = MutableAntiSymmetricPreferenceImpl
-                        .given(Graphs.copyOf(graph), Voter.createVoter(1));
+                        .given(Voter.createVoter(1), Graphs.copyOf(graph));
         graph.putEdge(a1, a1);
         graph.putEdge(a2, a2);
         graph.putEdge(a3, a3);
         graph.putEdge(a4, a4);
         graph.putEdge(a5, a5);
         graph.putEdge(a3, a5);
-        pref.putEdge(a3, a5);
+        pref.addStrictPreference(a3, a5);
         assertEquals(graph, pref.asGraph());
     }
 
@@ -147,7 +147,7 @@ class MutableAntiSymmetricPreferenceTest {
         graph.putEdge(a3, a4);
         graph.putEdge(a4, a5);
         MutableAntiSymmetricPreferenceImpl pref = MutableAntiSymmetricPreferenceImpl
-                        .given(Graphs.copyOf(graph), Voter.createVoter(1));
+                        .given(Voter.createVoter(1), Graphs.copyOf(graph));
         graph.putEdge(a1, a1);
         graph.putEdge(a2, a2);
         graph.putEdge(a3, a3);
@@ -170,7 +170,7 @@ class MutableAntiSymmetricPreferenceTest {
         graph.putEdge(a3, a4);
         graph.putEdge(a4, a5);
         MutableAntiSymmetricPreferenceImpl pref = MutableAntiSymmetricPreferenceImpl
-                        .given(Graphs.copyOf(graph), Voter.createVoter(1));
+                        .given(Voter.createVoter(1), Graphs.copyOf(graph));
         assertEquals(graph, pref.asMutableGraph());
     }
 
@@ -191,7 +191,7 @@ class MutableAntiSymmetricPreferenceTest {
         graph.putEdge(a3, a4);
         graph.putEdge(a4, a5);
         MutableAntiSymmetricPreferenceImpl pref = MutableAntiSymmetricPreferenceImpl
-                        .given(Graphs.copyOf(graph), Voter.createVoter(1));
+                        .given(Voter.createVoter(1), Graphs.copyOf(graph));
         Set<Alternative> returnedSet = new HashSet<>();
         returnedSet.add(a1);
         returnedSet.add(a2);
