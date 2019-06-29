@@ -56,8 +56,8 @@ public class MutablePreferenceImpl implements MutablePreference {
     public static MutablePreferenceImpl given(Voter voter,
                     MutableGraph<Alternative> pref) {
         LOGGER.debug("MutablePreferenceImpl given");
-        Preconditions.checkNotNull(pref);
         Preconditions.checkNotNull(voter);
+        Preconditions.checkNotNull(pref);
         return new MutablePreferenceImpl(voter, pref);
     }
 
