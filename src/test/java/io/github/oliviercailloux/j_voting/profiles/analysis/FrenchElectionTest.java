@@ -14,7 +14,7 @@ import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.profiles.ImmutableStrictProfileI;
-import io.github.oliviercailloux.j_voting.profiles.analysis.FrenchElection;
+import io.github.oliviercailloux.j_voting.profiles.analysis.OldFrenchElection;
 import io.github.oliviercailloux.j_voting.profiles.management.StrictProfileBuilder;
 
 public class FrenchElectionTest {
@@ -68,6 +68,6 @@ public class FrenchElectionTest {
         ImmutableStrictProfileI resultProf = (ImmutableStrictProfileI) profBuild
                         .createStrictProfileI();
         assertEquals(pref1,
-                        new FrenchElection().getSocietyPreference(resultProf));
+                        new OldFrenchElection().getSocietyPreference(resultProf));
     }
 }

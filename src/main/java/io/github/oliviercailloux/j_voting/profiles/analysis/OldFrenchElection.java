@@ -18,10 +18,10 @@ import io.github.oliviercailloux.j_voting.profiles.management.StrictProfileBuild
  * class can provide a result only for strict profiles.
  *
  */
-public class FrenchElection implements SocialWelfareFunction {
+public class OldFrenchElection implements SocialWelfareFunction {
 
     private static final Logger LOGGER = LoggerFactory
-                    .getLogger(FrenchElection.class.getName());
+                    .getLogger(OldFrenchElection.class.getName());
 
     @Override
     public OldCompletePreferenceImpl getSocietyPreference(ImmutableProfileI profile) {
