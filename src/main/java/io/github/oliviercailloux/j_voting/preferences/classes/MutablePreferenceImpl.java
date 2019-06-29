@@ -2,6 +2,7 @@ package io.github.oliviercailloux.j_voting.preferences.classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -36,8 +37,8 @@ public class MutablePreferenceImpl implements MutablePreference {
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(MutablePreference.class.getName());
 
-    private MutablePreferenceImpl(MutableGraph<Alternative> prefGraph,
-                    Voter voter) {
+    private MutablePreferenceImpl(Voter voter,
+                    MutableGraph<Alternative> prefGraph) {
         this.voter = voter;
         graph = prefGraph;
         alternatives = graph.nodes();
@@ -52,12 +53,12 @@ public class MutablePreferenceImpl implements MutablePreference {
      * @return the mutable preference
      * @see Voter
      */
-    public static MutablePreferenceImpl given(MutableGraph<Alternative> pref,
-                    Voter voter) {
+    public static MutablePreferenceImpl given(Voter voter,
+                    MutableGraph<Alternative> pref) {
         LOGGER.debug("MutablePreferenceImpl given");
         Preconditions.checkNotNull(pref);
         Preconditions.checkNotNull(voter);
-        return new MutablePreferenceImpl(pref, voter);
+        return new MutablePreferenceImpl(voter, pref);
     }
 
     /**
@@ -69,7 +70,7 @@ public class MutablePreferenceImpl implements MutablePreference {
         Preconditions.checkNotNull(voter);
         MutableGraph<Alternative> pref = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
-        return new MutablePreferenceImpl(pref, voter);
+        return new MutablePreferenceImpl(voter, pref);
     }
 
     /**
@@ -126,8 +127,8 @@ public class MutablePreferenceImpl implements MutablePreference {
      */
     public static MutablePreferenceImpl given(Preference pref) {
         Preconditions.checkNotNull(pref);
-        return new MutablePreferenceImpl(Graphs.copyOf(pref.asGraph()),
-                        pref.getVoter());
+        return new MutablePreferenceImpl(pref.getVoter(),
+                        Graphs.copyOf(pref.asGraph()));
     }
 
     @Override
@@ -198,21 +199,23 @@ public class MutablePreferenceImpl implements MutablePreference {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this).add("graph", graph)
-                        .add("voter", voter).toString();
+        return MoreObjects.toStringHelper(this).add("voter", voter)
+                        .add("graph", graph).toString();
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (this.getClass() != obj.getClass())
+        }
+        if (!(obj instanceof MutablePreferenceImpl)) {
             return false;
-        MutablePreferenceImpl pref = (MutablePreferenceImpl) obj;
-        return (this.asGraph().equals(pref.asGraph())
-                        && this.getVoter().equals(pref.getVoter())
-                        && this.alternatives.equals(pref.alternatives));
+        }
+        MutablePreferenceImpl other = (MutablePreferenceImpl) obj;
+        return Objects.equals(voter, other.voter)
+                        && Objects.equals(graph, other.graph);
     }
 }
