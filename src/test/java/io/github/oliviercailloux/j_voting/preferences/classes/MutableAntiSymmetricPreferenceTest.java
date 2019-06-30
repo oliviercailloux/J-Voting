@@ -1,6 +1,7 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12345;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
@@ -151,8 +152,7 @@ class MutableAntiSymmetricPreferenceTest {
         graph.putEdge(a4, a5);
         MutableAntiSymmetricPreference pref = MutableAntiSymmetricPreferenceImpl
                         .given(Voter.createVoter(1), Graphs.copyOf(graph));
-        ImmutableSet<Alternative> expected = ImmutableSet.of(a1, a2, a3, a4,
-                        a5);
+        ImmutableSet<Alternative> expected = a12345;
         assertEquals(expected, pref.getAlternatives());
     }
 }
