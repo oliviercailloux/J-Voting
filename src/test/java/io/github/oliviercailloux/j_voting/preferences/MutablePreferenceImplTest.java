@@ -1,6 +1,7 @@
 package io.github.oliviercailloux.j_voting.preferences;
 
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12345;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
@@ -36,7 +37,7 @@ class MutablePreferenceImplTest {
      * Tests whether the preference is correctly copied
      */
     @Test
-    void testGivenPreference() {
+    void testGivenEmptyPref() {
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         MutablePreference pref = MutablePreferenceImpl
@@ -126,7 +127,7 @@ class MutablePreferenceImplTest {
      * preference's graph
      */
     @Test
-    void testPutEdge() {
+    void testSetAsLeastAsGood() {
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         graph.putEdge(a1, a2);
@@ -137,7 +138,7 @@ class MutablePreferenceImplTest {
         graph.putEdge(a3, a3);
         graph.putEdge(a4, a4);
         graph.putEdge(a3, a4);
-        pref.putEdge(a3, a4);
+        pref.setAsLeastAsGood(a3, a4);
         assertEquals(graph, pref.asGraph());
     }
 
@@ -154,8 +155,7 @@ class MutablePreferenceImplTest {
         graph.putEdge(a5, a5);
         MutablePreference pref = MutablePreferenceImpl
                         .given(Voter.createVoter(1), Graphs.copyOf(graph));
-        ImmutableSet<Alternative> expected = ImmutableSet.of(a1, a2, a3, a4,
-                        a5);
+        ImmutableSet<Alternative> expected = a12345;
         assertEquals(expected, pref.getAlternatives());
     }
 }

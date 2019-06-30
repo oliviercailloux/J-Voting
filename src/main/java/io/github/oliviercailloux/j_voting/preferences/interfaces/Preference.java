@@ -21,27 +21,29 @@ import io.github.oliviercailloux.j_voting.Voter;
  */
 public interface Preference {
 
-	/**
-	 * In the graph : a relation from <i>a</i> to <i>b</i> means "a is at least as
-	 * good as b". This graph can't be modified, but is not necessarily immutable.
-	 *
-	 * @return the Graph corresponding to the Preference
-	 *
-	 */
-	public Graph<Alternative> asGraph();
+    /**
+     * In the graph : a relation from <i>a</i> to <i>b</i> means "a is at least
+     * as good as b". This graph can't be modified, but is not necessarily
+     * immutable.
+     *
+     * @return the Graph corresponding to the Preference
+     *
+     */
+    public Graph<Alternative> asGraph();
 
-	/**
-	 * The returned set reads through this object: if this object is mutable, any
-	 * modification to this object modifies the returned set, and conversely.
-	 *
-	 * @return alternatives's set
-	 */
-	public Set<Alternative> getAlternatives();
+    /**
+     * The returned set reads through this object: if this object is mutable,
+     * any modification to this object modifies the returned set, and
+     * conversely.
+     *
+     * @return alternatives's set
+     */
+    public Set<Alternative> getAlternatives();
 
-	/**
-	 *
-	 * @return <code>Voter</code> instance of the preference Returns the voter 0 if
-	 *         no specific voter is associated to this preference
-	 */
-	public Voter getVoter();
+    /**
+     *
+     * @return <code>Voter</code> instance of the preference, Returns the voter
+     *         0 if no specific voter is associated to this preference
+     */
+    public Voter getVoter();
 }

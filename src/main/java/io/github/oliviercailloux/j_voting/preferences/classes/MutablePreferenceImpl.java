@@ -114,7 +114,7 @@ public class MutablePreferenceImpl implements MutablePreference {
     }
 
     @Override
-    public void putEdge(Alternative a1, Alternative a2) {
+    public void setAsLeastAsGood(Alternative a1, Alternative a2) {
         LOGGER.debug("MutablePreferenceImpl putEdge");
         Preconditions.checkNotNull(a1);
         Preconditions.checkNotNull(a2);
