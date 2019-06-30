@@ -126,14 +126,19 @@ public class MutableAntiSymmetricPreferenceImpl
     }
 
     /**
-     * 
-     * @return the set of all alternatives of the preference
+     * @return an immutable set of all alternatives of the preference
      * 
      */
     @Override
     public Set<Alternative> getAlternatives() {
         LOGGER.debug("MutableAntiSymmetricPreferenceImpl getAlternatives");
-        return ImmutableSet.copyOf(alternatives);
+        if (alternatives.size() == graph.nodes().size()
+                        && alternatives.containsAll(graph.nodes())) {
+            return ImmutableSet.copyOf(alternatives);
+        } else {
+            throw new IllegalStateException(
+                            "Must not remove an alternative from the set");
+        }
     }
 
     @Override
