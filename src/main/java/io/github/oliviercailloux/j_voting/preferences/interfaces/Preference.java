@@ -23,7 +23,8 @@ public interface Preference {
 
     /**
      * In the graph : a relation from <i>a</i> to <i>b</i> means "a is at least
-     * as good as b". The graph is transitively closed.
+     * as good as b". This graph can't be modified, but is not necessarily
+     * immutable.
      *
      * @return the Graph corresponding to the Preference
      *
@@ -35,13 +36,13 @@ public interface Preference {
      * any modification to this object modifies the returned set, and
      * conversely.
      *
-     * @return alternatives's set.
+     * @return alternatives's set
      */
     public Set<Alternative> getAlternatives();
 
     /**
      *
-     * @return <code>Voter</code> instance of the preference, returns the voter
+     * @return <code>Voter</code> instance of the preference, Returns the voter
      *         0 if no specific voter is associated to this preference
      */
     public Voter getVoter();
