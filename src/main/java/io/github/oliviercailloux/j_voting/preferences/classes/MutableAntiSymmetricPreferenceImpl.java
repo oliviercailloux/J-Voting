@@ -35,8 +35,8 @@ public class MutableAntiSymmetricPreferenceImpl
             for (Alternative a2 : prefGraph.successors(a1)) {
                 if (Graphs.transitiveClosure(prefGraph).hasEdgeConnecting(a2,
                                 a1) && !a2.equals(a1)) {
-                    throw new IllegalArgumentException(a1 + "and" + a2
-                                    + "cannot be ex-eaquo alternatives");
+                    throw new IllegalArgumentException("The alternatives " + a1
+                                    + " and " + a2 + " cannot be ex-eaquo.");
                 }
             }
         }
