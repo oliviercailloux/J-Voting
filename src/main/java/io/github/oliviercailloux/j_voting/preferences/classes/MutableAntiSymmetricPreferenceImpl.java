@@ -35,8 +35,8 @@ public class MutableAntiSymmetricPreferenceImpl
             for (Alternative a2 : prefGraph.successors(a1)) {
                 if (Graphs.transitiveClosure(prefGraph).hasEdgeConnecting(a2,
                                 a1) && !a2.equals(a1)) {
-                    throw new IllegalArgumentException(
-                                    "Must not contain ex-eaquo Alternative");
+                    throw new IllegalArgumentException(a1 + "and" + a2
+                                    + "cannot be ex-eaquo alternatives");
                 }
             }
         }
@@ -125,10 +125,6 @@ public class MutableAntiSymmetricPreferenceImpl
         return graph;
     }
 
-    /**
-     * @return an immutable set of all alternatives of the preference
-     * 
-     */
     @Override
     public Set<Alternative> getAlternatives() {
         LOGGER.debug("MutableAntiSymmetricPreferenceImpl getAlternatives");
