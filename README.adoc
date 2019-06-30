@@ -110,4 +110,23 @@ We will implement all classes correponding to the Preferences interfaces.
 
 
 == Livraison 4
-...
+The main purpose of this last iteration is to finish all the implementation.
+
+=== Teams :
+* *SM/PO team* : Louis LEDOUX
+* *Team 1* : Théo CHENNEBAULT
+* *Team 2* : Emilie CHHEAN / Anael DRAY
+* *Team 3* : Mattéo LOUBET
+
+=== Tasks :
+* 1#  Preferences : Implement MutablePreferenceImpl
+* 2#  Preferences : Implement ImmutablePreferenceImpl => *DONE*
+* 3#  Preferences : Implement CompletePreferenceImpl => *DONE*
+* 4#  Preferences : Implement LinearPreferenceImpl => *DONE*
+* 5#  Preferences : Implement MutableAntiSymmetricPreferenceImpl
+* 6#  Preferences : Implement ImmutableAntiSymmetricPreferenceImpl => *DONE*
+* 7# instanciate CompletePreference from ReadODS => *DONE*
+
+=== Difficulties :
+* abstract and rather difficult subject without examples
+* Some members only provided work for half of the iterations, leaving the second member alone. Complicated for the second member to manage time and provide the work announced at the beginning of the iteration.
