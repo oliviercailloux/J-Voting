@@ -122,12 +122,19 @@ public class MutablePreferenceImpl implements MutablePreference {
     }
 
     /**
-     * @return the set of all alternatives of the preference
+     * @return an immutable set of all alternatives of the preference
      * 
      */
     @Override
     public Set<Alternative> getAlternatives() {
-        return ImmutableSet.copyOf(alternatives);
+        LOGGER.debug("MutablePreferenceImpl getAlternatives");
+        if (alternatives.size() == graph.nodes().size()
+                        && alternatives.containsAll(graph.nodes())) {
+            return ImmutableSet.copyOf(alternatives);
+        } else {
+            throw new IllegalStateException(
+                            "Must not remove an alternative from the set");
+        }
     }
 
     @Override
