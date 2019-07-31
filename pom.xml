@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>io.github.oliviercailloux</groupId>
 		<artifactId>pom</artifactId>
-		<version>0.0.2</version>
+		<version>0.0.3</version>
 	</parent>
 	<artifactId>j-voting</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
@@ -14,61 +14,11 @@
 	<description>General classes for dealing with social choice theory.</description>
 	<url>https://github.com/oliviercailloux/J-Voting</url>
 
-
-	<licenses>
-		<license>
-			<name>MIT License</name>
-			<url>https://opensource.org/licenses/MIT</url>
-		</license>
-	</licenses>
-
 	<scm>
 		<connection>scm:git:git://github.com/oliviercailloux/j-voting.git</connection>
 		<developerConnection>scm:git:ssh://github.com/oliviercailloux/j-voting.git</developerConnection>
 		<url>https://github.com/oliviercailloux/J-Voting</url>
 	</scm>
-
-	<developers>
-		<developer>
-			<name>Olivier Cailloux</name>
-			<email>olivier.cailloux@dauphine.fr</email>
-			<url>http://www.lamsade.dauphine.fr/~ocailloux/</url>
-			<organization>Paris-Dauphine</organization>
-			<organizationUrl>http://www.dauphine.fr</organizationUrl>
-		</developer>
-		<developer>
-			<name>Théo Chennebault</name>
-			<email>theo.chennebault@dauphine.eu</email>
-		</developer>
-		<developer>
-			<name>Emilie Chhean</name>
-			<email>emilie.chhean@dauphine.eu</email>
-		</developer>
-		<developer>
-			<name>Laetitia Courgey</name>
-		</developer>
-		<developer>
-			<name>Anael Dray</name>
-			<email>anael.dray@dauphine.eu</email>
-		</developer>
-		<developer>
-			<name>Louis Ledoux</name>
-			<email>louis.ledoux@dauphine.eu</email>
-		</developer>
-		<developer>
-			<name>Mattéo Loubet</name>
-			<email>matteo.loubet@dauphine.eu</email>
-		</developer>
-		<developer>
-			<name>Vincent Navales</name>
-		</developer>
-		<developer>
-			<name>Quentin Sauvage</name>
-		</developer>
-		<developer>
-			<name>Adèle Thorner</name>
-		</developer>
-	</developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -91,20 +41,6 @@
 
 	<profiles>
 		<profile>
-			<id>release</id>
-			<distributionManagement>
-				<snapshotRepository>
-					<id>ossrh</id>
-					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-				</snapshotRepository>
-				<repository>
-					<id>ossrh</id>
-					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-				</repository>
-			</distributionManagement>
-
-		</profile>
-		<profile>
 			<id>swt-unix</id>
 			<activation>
 				<os>
@@ -115,20 +51,6 @@
 				<swt.artifactId>org.eclipse.swt.gtk.linux.x86_64</swt.artifactId>
 				<env>linux</env>
 			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>org.eclipse.platform</groupId>
-					<artifactId>${swt.artifactId}</artifactId>
-					<version>3.106.3</version>
-					<optional>true</optional>
-					<exclusions>
-						<exclusion>
-							<groupId>org.eclipse.platform</groupId>
-							<artifactId>org.eclipse.swt</artifactId>
-						</exclusion>
-					</exclusions>
-				</dependency>
-			</dependencies>
 		</profile>
 		<profile>
 			<id>swt-mac</id>
@@ -141,20 +63,6 @@
 				<swt.artifactId>org.eclipse.swt.cocoa.macosx.x86_64</swt.artifactId>
 				<env>mac</env>
 			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>org.eclipse.platform</groupId>
-					<artifactId>${swt.artifactId}</artifactId>
-					<version>3.106.3</version>
-					<optional>true</optional>
-					<exclusions>
-						<exclusion>
-							<groupId>org.eclipse.platform</groupId>
-							<artifactId>org.eclipse.swt</artifactId>
-						</exclusion>
-					</exclusions>
-				</dependency>
-			</dependencies>
 		</profile>
 		<profile>
 			<id>swt-windows</id>
@@ -167,26 +75,22 @@
 				<swt.artifactId>org.eclipse.swt.win32.win32.x86_64</swt.artifactId>
 				<env>windows</env>
 			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>org.eclipse.platform</groupId>
-					<artifactId>${swt.artifactId}</artifactId>
-					<version>3.106.3</version>
-					<optional>true</optional>
-					<exclusions>
-						<exclusion>
-							<groupId>org.eclipse.platform</groupId>
-							<artifactId>org.eclipse.swt</artifactId>
-						</exclusion>
-					</exclusions>
-				</dependency>
-			</dependencies>
 		</profile>
-
 	</profiles>
 
-
 	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>${swt.artifactId}</artifactId>
+			<version>3.106.3</version>
+			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<groupId>org.eclipse.platform</groupId>
+					<artifactId>org.eclipse.swt</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>org.eclipse.platform</groupId>
 			<artifactId>org.eclipse.jface</artifactId>
@@ -224,19 +128,5 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- Junit version from parent pom is not the most recent -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.4.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.4.2</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
-
 </project>
