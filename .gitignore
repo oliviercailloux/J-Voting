@@ -3,5 +3,4 @@
 .settings/
 target/
 out.log
-.~*
-bin/
+
