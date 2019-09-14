@@ -36,4 +36,11 @@ public class VoterTest {
         Voter v2 = Voter.createVoter(3);
         assertTrue(v1.compareTo(v2) < 0);
     }
+    
+    @Test
+    public void testToString() {
+    	Voter v = Voter.createVoter(5);
+    	assertEquals("Voter{5}",v.toString());
+    }
+    
 }
