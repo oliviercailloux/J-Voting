@@ -11,3 +11,4 @@ A Java project developed during several sessions of the https://github.com/olivi
 The code is hereby published under the MIT License, with the permission of the contributors.
 
 Nous testons le repo github
+Test 2
