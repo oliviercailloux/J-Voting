@@ -14,8 +14,11 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_JPOiIGYeEeqaxoTYmdv-3w" type="_L8WFIGYdEeqaxoTYmdv-3w" direction="return"/>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_SnDCkGYdEeqaxoTYmdv-3w" name="AntiSymmetricPreference"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_SnDCkGYdEeqaxoTYmdv-3w" name="AntiSymmetricPreference">
+      <generalization xmi:type="uml:Generalization" xmi:id="_8vqQ0GYiEeqaxoTYmdv-3w" general="_REjVEGYdEeqaxoTYmdv-3w"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:Interface" xmi:id="_Vq5OEGYdEeqaxoTYmdv-3w" name="MutablePreference">
+      <generalization xmi:type="uml:Generalization" xmi:id="_7b1RcGYiEeqaxoTYmdv-3w" general="_REjVEGYdEeqaxoTYmdv-3w"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_rkfssGYfEeqaxoTYmdv-3w" name="asMutableGraph"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_r7l-EGYfEeqaxoTYmdv-3w" name="addAlternative">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_0IaOgGYfEeqaxoTYmdv-3w" name="a" type="_O0glEGYdEeqaxoTYmdv-3w"/>
@@ -24,13 +27,45 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_4u-xAGYfEeqaxoTYmdv-3w" name="a1" type="_O0glEGYdEeqaxoTYmdv-3w"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_76ZkIGYfEeqaxoTYmdv-3w" name="a2" type="_O0glEGYdEeqaxoTYmdv-3w"/>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_sfxpMGYfEeqaxoTYmdv-3w" name="Operation4"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_sfxpMGYfEeqaxoTYmdv-3w" name="addEquivalent">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_FCmpUGYhEeqaxoTYmdv-3w" name="a1" type="_O0glEGYdEeqaxoTYmdv-3w"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_Gz5n0GYhEeqaxoTYmdv-3w" name="a2" type="_O0glEGYdEeqaxoTYmdv-3w"/>
+      </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_YccIoGYdEeqaxoTYmdv-3w" name="MutableAntiSymmetricPreference"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_bWSDkGYdEeqaxoTYmdv-3w" name="ImmutableAntiSymmetricPreference"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_ejHzAGYdEeqaxoTYmdv-3w" name="ImmutablePreference"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_mynkAGYdEeqaxoTYmdv-3w" name="CompletePreference"/>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_qsuCEGYdEeqaxoTYmdv-3w" name="LinearPreference"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_YccIoGYdEeqaxoTYmdv-3w" name="MutableAntiSymmetricPreference">
+      <generalization xmi:type="uml:Generalization" xmi:id="__7moYGYiEeqaxoTYmdv-3w" general="_SnDCkGYdEeqaxoTYmdv-3w"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="__-xGkGYhEeqaxoTYmdv-3w" name="addAlternative">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_DrZwYGYiEeqaxoTYmdv-3w" name="a" type="_O0glEGYdEeqaxoTYmdv-3w"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_APAiAGYiEeqaxoTYmdv-3w" name="addStrictPreference">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_JiQPAGYiEeqaxoTYmdv-3w" name="a1" type="_O0glEGYdEeqaxoTYmdv-3w"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_LV26oGYiEeqaxoTYmdv-3w" name="a2" type="_O0glEGYdEeqaxoTYmdv-3w"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_bWSDkGYdEeqaxoTYmdv-3w" name="ImmutableAntiSymmetricPreference">
+      <generalization xmi:type="uml:Generalization" xmi:id="_AXqSQGYjEeqaxoTYmdv-3w" general="_SnDCkGYdEeqaxoTYmdv-3w"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_BvV24GYjEeqaxoTYmdv-3w" general="_ejHzAGYdEeqaxoTYmdv-3w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_ejHzAGYdEeqaxoTYmdv-3w" name="ImmutablePreference">
+      <generalization xmi:type="uml:Generalization" xmi:id="_9gCk4GYiEeqaxoTYmdv-3w" general="_REjVEGYdEeqaxoTYmdv-3w"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_nZzjAGYhEeqaxoTYmdv-3w" name="asGraph"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_nxQZsGYhEeqaxoTYmdv-3w" name="getAlternatives"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_mynkAGYdEeqaxoTYmdv-3w" name="CompletePreference">
+      <generalization xmi:type="uml:Generalization" xmi:id="_Cfx1UGYjEeqaxoTYmdv-3w" general="_ejHzAGYdEeqaxoTYmdv-3w"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_gWIPcGYiEeqaxoTYmdv-3w" name="getRank">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_lElioGYiEeqaxoTYmdv-3w" name="a" type="_O0glEGYdEeqaxoTYmdv-3w"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ugTPIGYiEeqaxoTYmdv-3w" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_gkKrcGYiEeqaxoTYmdv-3w" name="getAlternatives"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_hJpXEGYiEeqaxoTYmdv-3w" name="asEquivalenceClasses"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_qsuCEGYdEeqaxoTYmdv-3w" name="LinearPreference">
+      <generalization xmi:type="uml:Generalization" xmi:id="_DOG68GYjEeqaxoTYmdv-3w" general="_mynkAGYdEeqaxoTYmdv-3w"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_4IMWcGYiEeqaxoTYmdv-3w" name="asList"/>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_Hz0wkGYdEeqaxoTYmdv-3w" name="Profil_Interfaces"/>
 </uml:Model>
