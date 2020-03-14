@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_WBxScGYcEeqaxoTYmdv-3w" name="papyrus_model">
+  <packagedElement xmi:type="uml:Package" xmi:id="_-37MkGYcEeqaxoTYmdv-3w" name="Classes">
+    <packagedElement xmi:type="uml:Class" xmi:id="_L8WFIGYdEeqaxoTYmdv-3w" name="Voter"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_O0glEGYdEeqaxoTYmdv-3w" name="Alternative"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_DrMHQGYdEeqaxoTYmdv-3w" name="Preference_Interfaces">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_REjVEGYdEeqaxoTYmdv-3w" name="Preference">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_9JmNEGYdEeqaxoTYmdv-3w" name="asGraph"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_9ZwI8GYdEeqaxoTYmdv-3w" name="getAlternative">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_E8LYkGYeEeqaxoTYmdv-3w" type="_O0glEGYdEeqaxoTYmdv-3w" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_9p1zYGYdEeqaxoTYmdv-3w" name="getVoter">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_JPOiIGYeEeqaxoTYmdv-3w" type="_L8WFIGYdEeqaxoTYmdv-3w" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_SnDCkGYdEeqaxoTYmdv-3w" name="AntiSymmetricPreference"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Vq5OEGYdEeqaxoTYmdv-3w" name="MutablePreference">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rkfssGYfEeqaxoTYmdv-3w" name="asMutableGraph"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_r7l-EGYfEeqaxoTYmdv-3w" name="addAlternative">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_0IaOgGYfEeqaxoTYmdv-3w" name="a" type="_O0glEGYdEeqaxoTYmdv-3w"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_sMjLMGYfEeqaxoTYmdv-3w" name="setAsLeastAsGood">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_4u-xAGYfEeqaxoTYmdv-3w" name="a1" type="_O0glEGYdEeqaxoTYmdv-3w"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_76ZkIGYfEeqaxoTYmdv-3w" name="a2" type="_O0glEGYdEeqaxoTYmdv-3w"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_sfxpMGYfEeqaxoTYmdv-3w" name="Operation4"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_YccIoGYdEeqaxoTYmdv-3w" name="MutableAntiSymmetricPreference"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_bWSDkGYdEeqaxoTYmdv-3w" name="ImmutableAntiSymmetricPreference"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_ejHzAGYdEeqaxoTYmdv-3w" name="ImmutablePreference"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_mynkAGYdEeqaxoTYmdv-3w" name="CompletePreference"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_qsuCEGYdEeqaxoTYmdv-3w" name="LinearPreference"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_Hz0wkGYdEeqaxoTYmdv-3w" name="Profil_Interfaces"/>
+</uml:Model>
