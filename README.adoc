@@ -10,5 +10,17 @@ A Java project developed during several sessions of the https://github.com/olivi
 
 The code is hereby published under the MIT License, with the permission of the contributors.
 
-Nous testons le repo github
-Test 2
+
+= Java Iteration plan
+
+== Iteration 1 
+
+- Add asSctrictGraph() method in the Preference : 
+Returns an asymetric transitive graph which is an asGraph sub graph. (It contains the (a, b) pairs but not (b, a) pairs in order to have a > b) -> Jade & Thomas
+
+- Add equals method in ImmutablePreference -> Pierre & Julien 
+
+- Start the code improvement in order to match the provided UML diagram. -> Léo
+
+
+
