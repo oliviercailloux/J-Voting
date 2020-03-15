@@ -1,0 +1,47 @@
+= Profile Interfaces papyrus diagram documentation
+
+== Profile definition +
+A profile is a list of all the alternatives ranking made by each indivual in a society. In another words, it is a list matching a person with its preference. 
+
+== Notion of complete profile +
+A profile is consireded as complete if all the voters produced their preferences according to the same set of alternatives. 
+As a result, an Incomplete profile would mean that some of the voters didn't know about the existence of some alternative or that they included, in their choice, an external alternative not part of the main set. 
+
+== Notion of strict profile + 
+In each individual preferences, they can not be alternatives that are equally ranked. In other words, all the preferences linked to each voters are considered as Anti Symmetric.
+
+
+
+=== Profile interfaces characteristics 
+
+==== *ProfileI*
+
+- The most generale profile Interface. 
+- Considered in the project as representing an Incomplete Profil.
+- Can contains strict or non strict preferences. 
+
+
+==== *StrictProfileI*
+
+- Extends ProfileI. 
+- Represents an incomplete profile.
+- All the voters preferences are strict.
+
+
+==== *Profile*
+
+- Extends ProfileI. 
+- Represents a complete profile.
+- All the voters preferences can be either strict or non strict.
+
+
+==== *StrictProfile*
+
+- Extends both StrictProfileI and Profile. 
+- Represents a complete profile.
+- All the voters preferences are strict. 
+
+
+
+
+
