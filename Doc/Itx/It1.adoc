@@ -4,11 +4,11 @@
 
 === Pair 1 : Pierre Rochedy & Thomas Daille
 - Creation of interface diagrams on Papyrus (Profile and Prefences).
-
-- Elaboration of the README.adoc planning.
+- Research and application of the reverse engineering method on both Profile and Preferences diagrams.
 
 === Triplet 2 : Léo Geindre, Jade Nizard and Julien Chil Hagopian
 - Ascii doctor documentation creation according to each papyrus diagram.
 - Elaboration of the Iteration files.
+- Elaboration of the README.adoc planning.
 
 
