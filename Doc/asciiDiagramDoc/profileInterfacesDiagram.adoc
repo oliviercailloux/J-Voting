@@ -8,7 +8,7 @@ A profile is consireded as complete if all the voters produced their preferences
 As a result, an Incomplete profile would mean that some of the voters didn't know about the existence of some alternative or that they included, in their choice, an external alternative not part of the main set. 
 
 == Notion of strict profile + 
-In each individual preferences, they can not be Alternatives that are equally ranked. In other words, all the preferences linked to each voters are considered as Anti Symmetric.
+In each individual preferences, they can not be alternatives that are equally ranked. In other words, all the preferences linked to each voters are considered as Anti Symmetric.
 
 
 
@@ -40,9 +40,6 @@ In each individual preferences, they can not be Alternatives that are equally ra
 - Extends both StrictProfileI and Profile. 
 - Represents a complete profile.
 - All the voters preferences are strict. 
-
-
-== Simplified UML Diagram + 
 
 
 
