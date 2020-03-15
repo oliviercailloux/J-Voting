@@ -3,6 +3,10 @@
   <packagedElement xmi:type="uml:Package" xmi:id="_-37MkGYcEeqaxoTYmdv-3w" name="Classes">
     <packagedElement xmi:type="uml:Class" xmi:id="_L8WFIGYdEeqaxoTYmdv-3w" name="Voter"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_O0glEGYdEeqaxoTYmdv-3w" name="Alternative"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_uPK7gGYlEeqvrZE16st6sQ" name="OutputStream"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_q20DIGYmEeqvrZE16st6sQ" name="OldLinearPreferenceImpl"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_JNl-4GYoEeqvrZE16st6sQ" name="OldCompletePreferenceImpl"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_t_oG0GYpEeqvrZE16st6sQ" name="Object"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_DrMHQGYdEeqaxoTYmdv-3w" name="Preference_Interfaces">
     <packagedElement xmi:type="uml:Interface" xmi:id="_REjVEGYdEeqaxoTYmdv-3w" name="Preference">
@@ -67,5 +71,121 @@
       <ownedOperation xmi:type="uml:Operation" xmi:id="_4IMWcGYiEeqaxoTYmdv-3w" name="asList"/>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Package" xmi:id="_Hz0wkGYdEeqaxoTYmdv-3w" name="Profil_Interfaces"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_Hz0wkGYdEeqaxoTYmdv-3w" name="Profil_Interfaces">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_vhcRIGYkEeqvrZE16st6sQ" name="Profile">
+      <generalization xmi:type="uml:Generalization" xmi:id="_WxldcGYqEeqvrZE16st6sQ" general="_uZHPwGYnEeqvrZE16st6sQ"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_5hOUAGYkEeqvrZE16st6sQ" name="isComplete">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_96I1AGYkEeqvrZE16st6sQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_J8E84GYlEeqvrZE16st6sQ" name="StrictProfile">
+      <generalization xmi:type="uml:Generalization" xmi:id="_oM7aUGYnEeqvrZE16st6sQ" general="_vhcRIGYkEeqvrZE16st6sQ"/>
+      <generalization xmi:type="uml:Generalization" xmi:id="_rED_gGYnEeqvrZE16st6sQ" general="_PsUAsGYmEeqvrZE16st6sQ"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_MMaAwGYlEeqvrZE16st6sQ" name="getIthAlternatives">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_R9hq0GYlEeqvrZE16st6sQ" name="i1">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_VTqgMGYlEeqvrZE16st6sQ" name="getIthAlternativesOfUniquePreferences">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_bijEUGYlEeqvrZE16st6sQ" name="i2">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_i2H_oGYlEeqvrZE16st6sQ" name="writeToSOC">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_6ujNUGYlEeqvrZE16st6sQ" name="output" type="_uPK7gGYlEeqvrZE16st6sQ"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_PsUAsGYmEeqvrZE16st6sQ" name="StrictProfileI">
+      <generalization xmi:type="uml:Generalization" xmi:id="_avuG8GYqEeqvrZE16st6sQ" general="_uZHPwGYnEeqvrZE16st6sQ"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_TFkbgGYmEeqvrZE16st6sQ" name="getPreference" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZKS-EGYmEeqvrZE16st6sQ" name="v" type="_L8WFIGYdEeqaxoTYmdv-3w"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_vL2wwGYmEeqvrZE16st6sQ" type="_q20DIGYmEeqvrZE16st6sQ" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_w039AGYmEeqvrZE16st6sQ" name="isStrict">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_0sUIoGYmEeqvrZE16st6sQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_9tLsMGYmEeqvrZE16st6sQ" name="getIthAlternativesAsStrings">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_EBe70GYnEeqvrZE16st6sQ" name="i1">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_EpmEsGYnEeqvrZE16st6sQ" name="getIthAlternativesOfUniquePrefAsString">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_NZqMIGYnEeqvrZE16st6sQ" name="i2">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_N-k3EGYnEeqvrZE16st6sQ" name="writeToSOI">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_SBq5EGYnEeqvrZE16st6sQ" name="o" type="_uPK7gGYlEeqvrZE16st6sQ"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_uZHPwGYnEeqvrZE16st6sQ" name="ProfileI">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_BZX0oGYoEeqvrZE16st6sQ" name="getPreference">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_F85qMGYoEeqvrZE16st6sQ" name="v" type="_L8WFIGYdEeqaxoTYmdv-3w"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_RzT3gGYoEeqvrZE16st6sQ" type="_JNl-4GYoEeqvrZE16st6sQ" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Shi2gGYoEeqvrZE16st6sQ" name="getMaxSizeOfPreference">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZMoOcGYoEeqvrZE16st6sQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ZpM1sGYoEeqvrZE16st6sQ" name="getProfile"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_bJrJ8GYoEeqvrZE16st6sQ" name="getAllVoters"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_eJWnIGYoEeqvrZE16st6sQ" name="getNbVoters">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_hxwRMGYoEeqvrZE16st6sQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_kakGgGYoEeqvrZE16st6sQ" name="getSumVoteCount">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_qh54MGYoEeqvrZE16st6sQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_yVyrQGYoEeqvrZE16st6sQ" name="getUniquePreferences"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_4mtPsGYoEeqvrZE16st6sQ" name="getNbUniquePreferences">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_HD8VUGYpEeqvrZE16st6sQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_5gfXYGYoEeqvrZE16st6sQ" name="isComplete">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_PI0xwGYpEeqvrZE16st6sQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_QSRGEGYpEeqvrZE16st6sQ" name="isStrict" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZJkd8GYpEeqvrZE16st6sQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ZuJKoGYpEeqvrZE16st6sQ" name="getNbVoterForPreference">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ikUhIGYpEeqvrZE16st6sQ" name="o" type="_JNl-4GYoEeqvrZE16st6sQ"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_kHarkGYpEeqvrZE16st6sQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_nXBbIGYpEeqvrZE16st6sQ" name="equals">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_x9UEYGYpEeqvrZE16st6sQ" name="object" type="_t_oG0GYpEeqvrZE16st6sQ"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_1O80QGYpEeqvrZE16st6sQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_1sDnAGYpEeqvrZE16st6sQ" name="restrictProfile">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_9SGyYGYpEeqvrZE16st6sQ" type="_uZHPwGYnEeqvrZE16st6sQ" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_-hjBAGYpEeqvrZE16st6sQ" name="getNbAlternatives">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_C3P18GYqEeqvrZE16st6sQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_DeVrIGYqEeqvrZE16st6sQ" name="getAlternatives"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_G14OsGYqEeqvrZE16st6sQ" name="getFormat">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_NptS8GYqEeqvrZE16st6sQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+  </packagedElement>
 </uml:Model>
