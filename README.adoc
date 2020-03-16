@@ -25,4 +25,8 @@ Returns an asymetric transitive graph which is an asGraph sub graph. (It contain
 - Investigation phase on ImmutablePreference and CompletePreference Interfaces (Finding bugs or irrelevances and start correcting them).
 
 
+Overall goal of the iteration : +
+Initiate the Preferences code consolidation before making futur improvements on the Profiles part.
+
+
 
