@@ -18,15 +18,15 @@ The only possible relation is "Greater than".
 A Preference where can't add Alternatives and any relations.
 
 === MutableAntiSymmetricPreference
-An AntiSymmetricPreference where you can add Alternatives (only one by one).
+// AntiSymmetricPreference + MutablePreference
 
 === ImmutableAntySymmetricPreference
-An AntiSymmetricPreference where you can't add Alternatives and relations.
+// AntiSymmetricPreference + ImmutablePreference
 
 === CompletePreference
 An ImmutablePreference where all the Alternatives have a two-to-one relation. +
 A CompletePreference represents a complete preorder, also called a weak order.
 
 === LinearPreference
-A CompletePreference and an AntiSymmetricPreference.
+// CompletePreference + AntiSymmetricPreference
 
