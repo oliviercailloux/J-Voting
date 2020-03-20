@@ -6394,7 +6394,24 @@
         </packagedElement>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_heG7MGbSEeqrtc6dy-mPpg" name="ProfileInterfacesDiagram"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_heG7MGbSEeqrtc6dy-mPpg" name="ProfileInterfacesDiagram">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_ptH-MGq7EeqA3aEy4whLSQ">
+        <body>Incomplete Profile
+Preferences : strict or non strict</body>
+      </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_4VNFEGq_EeqA3aEy4whLSQ">
+        <body>Complete Profile
+Preferences : strict or non strict</body>
+      </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_ZhqC4GrAEeqA3aEy4whLSQ">
+        <body>Incomplete profile
+Preferences : strict</body>
+      </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_30z4UGrAEeqA3aEy4whLSQ">
+        <body>Complete Profile
+Preferences : strict</body>
+      </ownedComment>
+    </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_bSaYgGbTEeqrtc6dy-mPpg" name="PrefenceInterfacesDiagram"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_O7lbMGbSEeqrtc6dy-mPpg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_O7pFkGbSEeqrtc6dy-mPpg" source="http://www.eclipse.org/uml2/2.0.0/UML">
