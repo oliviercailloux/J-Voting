@@ -5495,6 +5495,14 @@ Preferences : strict</body>
             </ownedAttribute>
             <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_SfEJAGbSEeqrtc6dy-mPpg" name="ImmutableProfile implements Profile" client="_SfAeoGbSEeqrtc6dy-mPpg" supplier="_QsEhYmbSEeqrtc6dy-mPpg" contract="_QsEhYmbSEeqrtc6dy-mPpg"/>
             <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SfQ9UGbSEeqrtc6dy-mPpg" name="createImmutableProfile" specification="_SfN6AGbSEeqrtc6dy-mPpg">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SYSToG0JEeqxlu-Q2xgkvw" type="_SfAeoGbSEeqrtc6dy-mPpg" direction="return">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SYS6sG0JEeqxlu-Q2xgkvw" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SYThwG0JEeqxlu-Q2xgkvw" value="1"/>
+              </ownedParameter>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SYThwW0JEeqxlu-Q2xgkvw" name="votes" type="_POESUGbSEeqrtc6dy-mPpg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SYThwm0JEeqxlu-Q2xgkvw" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SYUI0G0JEeqxlu-Q2xgkvw" value="1"/>
+              </ownedParameter>
               <language>JAVA</language>
               <body>&#xD;
     LOGGER.debug(&quot;Factory ImmutableProfile&quot;);&#xD;
@@ -5503,12 +5511,20 @@ Preferences : strict</body>
 </body>
             </ownedBehavior>
             <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SfZgMGbSEeqrtc6dy-mPpg" name="ImmutableProfile" specification="_SfSygGbSEeqrtc6dy-mPpg">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SYUI0W0JEeqxlu-Q2xgkvw" name="votes" type="_POESUGbSEeqrtc6dy-mPpg">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SYUv4G0JEeqxlu-Q2xgkvw" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SYUv4W0JEeqxlu-Q2xgkvw" value="1"/>
+              </ownedParameter>
               <language>JAVA</language>
               <body>&#xD;
     super(checkCompleteMap(votes));&#xD;
 </body>
             </ownedBehavior>
             <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SfdKkGbSEeqrtc6dy-mPpg" name="getAlternatives" specification="_SfauUGbSEeqrtc6dy-mPpg">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SYVW8G0JEeqxlu-Q2xgkvw" type="_PERdIGbSEeqrtc6dy-mPpg" direction="return">
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SYVW8W0JEeqxlu-Q2xgkvw" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SYVW8m0JEeqxlu-Q2xgkvw" value="1"/>
+              </ownedParameter>
               <language>JAVA</language>
               <body>&#xD;
     LOGGER.debug(&quot;getAlternatives:&quot;);&#xD;
@@ -5525,6 +5541,13 @@ Preferences : strict</body>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_SfauUGbSEeqrtc6dy-mPpg" name="getAlternatives" visibility="public" method="_SfdKkGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sfb8cGbSEeqrtc6dy-mPpg" type="_PERdIGbSEeqrtc6dy-mPpg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_SYJJsG0JEeqxlu-Q2xgkvw" name="isComplete">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SYJwwG0JEeqxlu-Q2xgkvw" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SYJwwW0JEeqxlu-Q2xgkvw" value="1"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SYKX0G0JEeqxlu-Q2xgkvw" value="1"/>
+              </ownedParameter>
             </ownedOperation>
           </packagedElement>
         </packagedElement>
