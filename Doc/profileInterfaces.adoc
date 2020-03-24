@@ -1,5 +1,7 @@
 = Profile Interfaces papyrus diagram documentation
 
+====== Before jumping into the profiles we strongly advice you to read link:preferenceInterfaces.adoc[the preference section]
+
 == Profile definition +
 A profile is a list of all the alternatives ranking made by each indivual in a society. In another words, it is a list matching a person with its preference. 
 
@@ -12,34 +14,10 @@ In each individual preferences, they can not be alternatives that are equally ra
 
 
 
-=== Profile interfaces characteristics 
+=== Profile interfaces Diagram
 
-==== *ProfileI*
+image:./assets/profile-diagram.png[profile-diagram]
 
-- The most generale profile Interface. 
-- Considered in the project as representing an Incomplete Profil.
-- Can contains strict or non strict preferences. 
-
-
-==== *StrictProfileI*
-
-- Extends ProfileI. 
-- Represents an incomplete profile.
-- All the voters preferences are strict.
-
-
-==== *Profile*
-
-- Extends ProfileI. 
-- Represents a complete profile.
-- All the voters preferences can be either strict or non strict.
-
-
-==== *StrictProfile*
-
-- Extends both StrictProfileI and Profile. 
-- Represents a complete profile.
-- All the voters preferences are strict. 
 
 
 
