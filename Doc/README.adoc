@@ -1,5 +1,7 @@
-To edit Diagram :
-~~~~~~~~~~~~~~~~
-* Go to 
-https://www.draw.io/[^] website
-* Import _Preference-Interfaces.xml_
+= Welcome in the J-Voting Documentation 
+
+
+Click on the following links to learn more about those topic in J-Voting :
+
+- link:preferenceInterfaces.adoc[The notion of Preferences]
+- link:profileInterfaces.adoc[The notion of Profile]
