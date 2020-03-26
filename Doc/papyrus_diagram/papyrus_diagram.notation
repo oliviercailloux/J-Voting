@@ -211,12 +211,12 @@
     <children xmi:type="notation:Shape" xmi:id="_rkVXcGq7EeqA3aEy4whLSQ" type="Comment_Shape">
       <children xmi:type="notation:DecorationNode" xmi:id="_rka3AGq7EeqA3aEy4whLSQ" type="Comment_BodyLabel"/>
       <element xmi:type="uml:Comment" href="papyrus_diagram.uml#_ptH-MGq7EeqA3aEy4whLSQ"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rkVXcWq7EeqA3aEy4whLSQ" x="520" y="120" width="280" height="41"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rkVXcWq7EeqA3aEy4whLSQ" x="520" y="120" width="221" height="41"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_48DpsGq_EeqA3aEy4whLSQ" type="Comment_Shape">
       <children xmi:type="notation:DecorationNode" xmi:id="_48EQwGq_EeqA3aEy4whLSQ" type="Comment_BodyLabel"/>
       <element xmi:type="uml:Comment" href="papyrus_diagram.uml#_4VNFEGq_EeqA3aEy4whLSQ"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_48DpsWq_EeqA3aEy4whLSQ" x="-100" y="500" width="213" height="41"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_48DpsWq_EeqA3aEy4whLSQ" x="-80" y="500" width="197" height="41"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_aBSlMGrAEeqA3aEy4whLSQ" type="Comment_Shape">
       <children xmi:type="notation:DecorationNode" xmi:id="_aBTMQGrAEeqA3aEy4whLSQ" type="Comment_BodyLabel"/>

@@ -1,6 +1,6 @@
-= Profile Interfaces papyrus diagram documentation
+= Profile Interfaces documentation
 
-====== Before jumping into the profiles we strongly advice you to read link:preferenceInterfaces.adoc[the preference section]
+====== Before jumping into the profiles we strongly advice you to read link:preferenceInterfaces.adoc[the preference section].
 
 == Profile definition +
 A profile is a list of all the alternatives ranking made by each indivual in a society. In another words, *it is a list matching a person with its preference*. 
@@ -24,6 +24,38 @@ image:./assets/profile-diagram.png[profile-diagram]
 
 
 
+== Profile methods analysis +
+
+
+==== *StrictProfileI*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+|Pertinence
+
+|getPreference(Voter v)
+| Return the AntiSymmetric preference of a provided voter.
+|The current contract doesn't mention the fact that the returned preference is not solely AntiSymmetric but Complete as well.
+
+|isStrict()
+| Return that the profile is strict.
+|Ok. We are indeed in an AntiSymmetric preference context.
+
+|getIthAlternativesAsStrings(int i)
+| Return a list of all the alternatives (as string) at a certain position in all the voters preferences. (example : the third alternative of every voters preference). An empty string iin the list means that the voter doesn't have an alternative at this position in his preference.
+| Ok. 
+
+|getIthAlternativesOfUniquePrefAsString(int i)
+| Return a list of all the alternatives (as string) at a certain position in all the unique preferences. An empty string iin the list means that the voter doesn't have an alternative at this position in his unique preference.
+| WHAT IS UNIQUE BORDEL ? I Don't see how the preference is unique in the way its coded.
+
+
+|writeToSOI(OutputStream output)int i)
+|
+|
 
 
 
+|===
