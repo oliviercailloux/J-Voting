@@ -4,19 +4,19 @@
     <packagedElement xmi:type="uml:Package" xmi:id="_heG7MGbSEeqrtc6dy-mPpg" name="ProfileInterfacesDiagram">
       <ownedComment xmi:type="uml:Comment" xmi:id="_ptH-MGq7EeqA3aEy4whLSQ">
         <body>Incomplete Profile
-Voter's preferences : strict or non strict</body>
+Voter's preferences : AntiSymmetric or Non AntiSymmetric</body>
       </ownedComment>
       <ownedComment xmi:type="uml:Comment" xmi:id="_4VNFEGq_EeqA3aEy4whLSQ">
         <body>Complete Profile
-Voter's preferences : strict or non strict</body>
+Voter's preferences : AntiSymmetric or Non AntiSymmetric</body>
       </ownedComment>
       <ownedComment xmi:type="uml:Comment" xmi:id="_ZhqC4GrAEeqA3aEy4whLSQ">
         <body>Incomplete profile
-Voter's preferences : strict</body>
+Voter's preferences : AntiSymmetric</body>
       </ownedComment>
       <ownedComment xmi:type="uml:Comment" xmi:id="_30z4UGrAEeqA3aEy4whLSQ">
         <body>Complete Profile
-Voter's preferences : strict</body>
+Voter's preferences : AntiSymmetric</body>
       </ownedComment>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_bSaYgGbTEeqrtc6dy-mPpg" name="PrefenceInterfacesDiagram">
