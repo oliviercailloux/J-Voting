@@ -3,13 +3,17 @@
 ====== Before jumping into the profiles we strongly advice you to read link:preferenceInterfaces.adoc[the preference section]
 
 == Profile definition +
-A profile is a list of all the alternatives ranking made by each indivual in a society. In another words, it is a list matching a person with its preference. 
+A profile is a list of all the alternatives ranking made by each indivual in a society. In another words, *it is a list matching a person with its preference*. 
 
-== Notion of complete profile +
-A profile is consireded as complete if all the voters produced their preferences according to the same set of alternatives. 
-As a result, an Incomplete profile would mean that some of the voters didn't know about the existence of some alternative or that they included, in their choice, an external alternative not part of the main set. 
+== Complete profile +
+A profile is consireded as complete if all the voters produced their preferences according to *the same set of alternatives*. 
 
-== Notion of strict profile + 
+== Incomplete profile +
+An Incomplete profile would mean that *the alternatives included in each voter's preference can be different*. +
+For example, some of the voters didn't know about the existence of some alternative or they included, in their choice, an external alternative not part of the main set. 
+
+
+== Strict profile + 
 In each individual preferences, they can not be alternatives that are equally ranked. In other words, all the preferences linked to each voters are considered as Anti Symmetric.
 
 
