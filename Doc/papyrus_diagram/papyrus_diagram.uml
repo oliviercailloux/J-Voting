@@ -19,7 +19,11 @@ Voter's preferences : strict</body>
 Voter's preferences : strict</body>
       </ownedComment>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_bSaYgGbTEeqrtc6dy-mPpg" name="PrefenceInterfacesDiagram"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_bSaYgGbTEeqrtc6dy-mPpg" name="PrefenceInterfacesDiagram">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_VJnSIG-CEeqlG4dRMAe-Kg">
+        <body>CompletePreference + AntiSymmetricPreference</body>
+      </ownedComment>
+    </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_3EAygGz6Eeqxlu-Q2xgkvw" name="Resources">
       <packagedElement xmi:type="uml:Package" xmi:id="_PMoH4GbSEeqrtc6dy-mPpg" name="exceptions">
         <packagedElement xmi:type="uml:Class" xmi:id="_PMrLMGbSEeqrtc6dy-mPpg" name="BadFormatODSException" visibility="public">
