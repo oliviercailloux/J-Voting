@@ -27,7 +27,6 @@ image:./assets/profile-diagram.png[profile-diagram]
 == Profile methods analysis +
 
 ==== *ProfileI*
-A ProfileI represents an incomplete profile. The preferences can be strict ornot. The preferences are not necessarily about the same alternatives.
 
 [cols="1,1,2", options="header"] 
 |===
@@ -36,8 +35,10 @@ A ProfileI represents an incomplete profile. The preferences can be strict ornot
 |Relevance
 
 |getPreference(Voter v)
-| Return the OldCompletePreferenceImpl of a provided Voter. The Voter doesn't be null. Throw a new NoSuchElementException if the Voter isn't in the map.
+| Return the OldCompletePreferenceImpl of a provided Voter. The Voter doesn't be null. Throw a new NoSuchElementException if the Voter isn't in the map. 
 | Ok.
+
+(A voir) Pour moi cette methode son contrat dans ProfileI c'est : je lui donne un voteur et elle me renvoie sa préférence si elle existe.  Or non elle me renvoie pas la préférence du voter mais une OldCompletePreferenceImpl du voter.
 
 |getMaxSizeOfPreference()
 | Return the maximum size of a Preference in an incomplete Profile.
@@ -50,6 +51,8 @@ A ProfileI represents an incomplete profile. The preferences can be strict ornot
 |getAllVoters(int i)
 | Return a sorted set of all the voters in the profile. The voters are ordered by id.
 | The use of the TreeSet collection is not specified in the contract. It is however it which makes it possible to order the Voters.
+
+(A voir) Jsp si treeset doit etre mentionné dans le contrat. Par contre on peut critiquer l'utilisation de NavigableSet. Definition : "NavigableSet behaves like a SortedSet with the exception that we have navigation methods available in addition to the sorting mechanisms of the SortedSet. For example, NavigableSet interface can navigate the set in reverse order compared to the order defined in SortedSet." -> C'est bien beau mais c'est jamais utilisé dans la méthode
 
 |getNbVoters()
 | Return the number of voters in the profile. Call the getAllVoters method.
@@ -66,6 +69,8 @@ A ProfileI represents an incomplete profile. The preferences can be strict ornot
 |getNbUniquePreferences()
 | Return the number of different preferences in the profile. 
 | Ok. 
+
+Peut etre rajouter : if we assume that getUniquePreferences is OK. (jsp ça faut voir)
 
 |isComplete()
 | Return true if the profile is complete (all the preferences are about the same alternatives exactly).
@@ -86,7 +91,7 @@ A ProfileI represents an incomplete profile. The preferences can be strict ornot
 
 |restrictProfile()
 | Return the stricter profile possible.
-| For us the code doesn't match with the contract. This method should return a profile who as many preferences as possible are antysimetric. Currently in the code there is the notion of creating a profile that does not appear in the contract. 
+| For us the code doesn't match with the contract. This method should return a profile who has as many preferences as possible that are antysimetric. For us, a restriction (the name of the method) is modifing an existing thing to match with new constraints. We don't see the notion of modification in the code but only the notion of creation.
 
 |getNbAlternatives
 | Return the number of alternatives in the profile.
