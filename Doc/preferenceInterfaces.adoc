@@ -55,15 +55,59 @@ An Immutable Preference is a preference that cannot be modified
 |Relevance
 
 |asGraph()
-| Return the OldCompletePreferenceImpl of a provided Voter.
+| return the Graph corresponding to the Preference.
 |
 
 |getAlternatives()
-| Return the maximum size of a Preference in an incomplete Profile.
+| Returns an alternatives's set which is immutable.
 |
 
+|equals(Object o)
+| 
+|
 
 
 |===
 
 
+
+
+
+==== *CompletePreference*
+A Complete Preference is an immutable preference. It represents a complete pre-order, also called a weak order : for each couple of alternatives (a,b) we can find an order a>=b or b>=a.
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+|Pertinence
+
+|getRank(Alternative a)
+| Returns the rank of this alternative (a number between 1 and n) where n is the total number of Alternative instances.
+|
+
+|getAlternatives(int rank)
+| Returns the Aternative set at this rank. Empty set id there is no alternative at this rank.
+|
+
+|asEquivalenceClasses()
+|Returns the same data but in an Immutable list object. A set of alternative is strictly prefered to next sets. All the alternatives in a set are considered ex-aequo.
+|
+
+
+
+
+==== *CompletePreference*
+A linear preference is an antisymmetric complete preference. A linear preference represents a linear order, or equivalently an antisymmetric complete order, or equivalently, the reduction of a weak-order.
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+|Pertinence
+
+|asList()
+|Returns a sorted list of alternatives corresponding to the preference.
+|
+
+|===
