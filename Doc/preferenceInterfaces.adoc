@@ -1,6 +1,6 @@
 = Preferences Interfaces Documentation
 
-
+====== After reading the preferences documentation, you can read the profile documentation, which is the second part of the project link:profileInterfaces.adoc[the profil section].
 
 === Preference definition +
 A Preference is the ranking between Alternatives.
