@@ -98,7 +98,7 @@ A Complete Preference is an immutable preference. It represents a complete pre-o
 
 
 ==== *CompletePreference*
-A linear preference is an antisymmetric complete preference. A linear preference represents a linear order, or equivalently an antisymmetric complete order, or equivalently, the reduction of a weak-order.
+A linear preference is an antisymmetric complete preference. A linear preference represents a linear order, or equivalently an antisymmetric complete order, or also equivalently, the reduction of a weak-order.
 
 [cols="1,1,2", options="header"] 
 |===
