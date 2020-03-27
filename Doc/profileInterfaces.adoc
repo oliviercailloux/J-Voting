@@ -118,26 +118,35 @@ Peut etre rajouter : if we assume that getUniquePreferences is OK. (jsp ça faut
 |Contract
 |Relevance
 
-|getPreference(Voter v)
+|getPreference(Voter v) 
+
+[red]#c'est override de ProfileI jsp si faut le dire ou pas#
 | Return the AntiSymmetric preference of a provided voter.
 |The current contract doesn't mention the fact that the returned preference is not solely AntiSymmetric but Complete as well.
 
-|isStrict()
+|isStrict() 
+
+[red]#c'est override de ProfileI jsp si faut le dire ou pas#
 | Return that the profile is strict.
-|Ok. We are indeed in an AntiSymmetric preference context.
+|Ok. 
 
 |getIthAlternativesAsStrings(int i)
-| Return a list of all the alternatives (as string) at a certain position in all the voters preferences. (example : the third alternative of every voters preference). An empty string iin the list means that the voter doesn't have an alternative at this position in his preference.
+| Return a list of all the alternatives (as string) at a certain position in all the voters preferences. (example : the third alternative of every voters preference). +
+An empty string in the list means that the voter doesn't have an alternative at this position in his preference.
 | Ok. 
 
 |getIthAlternativesOfUniquePrefAsString(int i)
-| Return a list of all the alternatives (as string) at a certain position in all the unique preferences. An empty string iin the list means that the voter doesn't have an alternative at this position in his unique preference.
-| WHAT IS UNIQUE BORDEL ? I Don't see how the preference is unique in the way its coded.
+| Return a list of all the alternatives (as string) at a certain position in all the unique preferences. An empty string in the list means that the voter doesn't have an alternative at this position in his unique preference.
+| Ok. If we assume that the preferences used to process the list are really unique.
 
 
-|writeToSOI(OutputStream output)int i)
-|
-|
+|writeToSOI(OutputStream output)
+
+A continuer
+
+| Write the SOI document in the given output parameter. 
+Throws IOException if it fails to do so.
+| Ok. The name "destination" would better for the parameter.
 
 
 
