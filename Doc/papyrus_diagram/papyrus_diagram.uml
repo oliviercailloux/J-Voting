@@ -4,18 +4,22 @@
     <packagedElement xmi:type="uml:Package" xmi:id="_heG7MGbSEeqrtc6dy-mPpg" name="ProfileInterfacesDiagram">
       <ownedComment xmi:type="uml:Comment" xmi:id="_ptH-MGq7EeqA3aEy4whLSQ">
         <body>Incomplete Profile
+The profile can be strict or non strict.
 Voter's preferences : AntiSymmetric, Mutable or Immutable.</body>
       </ownedComment>
       <ownedComment xmi:type="uml:Comment" xmi:id="_4VNFEGq_EeqA3aEy4whLSQ">
         <body>Complete Profile
-Voter's preferences : AntiSymmetric, Mutable or Immutable</body>
+The profile can be strict or non strict.
+Voter's preferences : AntiSymmetric, Mutable or Immutable.</body>
       </ownedComment>
       <ownedComment xmi:type="uml:Comment" xmi:id="_ZhqC4GrAEeqA3aEy4whLSQ">
         <body>Incomplete profile
+The profile is strict.
 Voter's preferences : AntiSymmetric</body>
       </ownedComment>
       <ownedComment xmi:type="uml:Comment" xmi:id="_30z4UGrAEeqA3aEy4whLSQ">
         <body>Complete Profile
+The profile is strict.
 Voter's preferences : AntiSymmetric</body>
       </ownedComment>
     </packagedElement>
