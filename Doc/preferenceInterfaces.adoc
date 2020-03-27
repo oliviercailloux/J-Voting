@@ -1,32 +1,69 @@
-= Preferences Interface Diagram Documentation
+= Preferences Interfaces Documentation
 
-=== Preference
+
+
+=== Preference definition +
 A Preference is the ranking between Alternatives.
 
-=== MutablePreference
+
+
+=== MutablePreference +
 A Preference where you can add Alternatives (only one by one). +
 You can also add two relations between Alternatives : 
 
 * The first one is "At least as good".
 * The second one is "Equivalence".
 
-=== AntiSymmetricPreference
+=== AntiSymmetricPreference +
 A Preference where there is no "Equivalence" relation between Alternatives. +
 The only possible relation is "Greater than".
 
-=== ImmutablePreference
-A Preference where can't add Alternatives and any relations.
+=== ImmutablePreference +
+A Preference where we can't add Alternatives or any relations.
 
-=== MutableAntiSymmetricPreference
+=== MutableAntiSymmetricPreference +
 // AntiSymmetricPreference + MutablePreference
 
-=== ImmutableAntySymmetricPreference
+=== ImmutableAntySymmetricPreference +
 // AntiSymmetricPreference + ImmutablePreference
 
-=== CompletePreference
+=== CompletePreference +
 An ImmutablePreference where all the Alternatives have a two-to-one relation. +
 A CompletePreference represents a complete preorder, also called a weak order.
 
-=== LinearPreference
+=== LinearPreference +
 // CompletePreference + AntiSymmetricPreference
+
+
+
+=== Preferences Interfaces Diagram
+
+image:./assets/InterfacesPreferencesDiagram.png[InterfacesPreferencesDiagram]
+
+
+
+
+== Preferences methods analysis +
+
+==== *ImmutablePreference*
+An Immutable Preference is a preference that cannot be modified
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+|Relevance
+
+|asGraph()
+| Return the OldCompletePreferenceImpl of a provided Voter.
+|
+
+|getAlternatives()
+| Return the maximum size of a Preference in an incomplete Profile.
+|
+
+
+
+|===
+
 
