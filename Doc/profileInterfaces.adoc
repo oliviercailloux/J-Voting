@@ -36,36 +36,36 @@ A ProfileI represents an incomplete profile. The preferences can be strict ornot
 |Relevance
 
 |getPreference(Voter v)
-| Return the OldCompletePreferenceImpl of a provided Voter.
+| Return the OldCompletePreferenceImpl of a provided Voter. The Voter doesn't be null. Throw a new NoSuchElementException if the Voter isn't in the map.
 |
 
 |getMaxSizeOfPreference()
 | Return the maximum size of a Preference in an incomplete Profile.
-|
+| OK.
 
 |getProfile()
 | Return the profile as a map mapping the voters to their preference.
-| 
+| OK.
 
 |getAllVoters(int i)
-| Return a sorted set of all the voters in the profile. The voters areordered by id.
-| 
+| Return a sorted set of all the voters in the profile. The voters are ordered by id.
+| The use of the TreeSet collection is not specified in the contract. It is however it which makes it possible to order the Voters.
 
 |getNbVoters()
-| Return the number of voters in the profile.
-|
+| Return the number of voters in the profile. Call the getAllVoters method.
+| OK
 
 |getSumVoteCount()
-| Return the sum of the counted votes.
-|
+| Return the sum of the counted votes. 
+| This method counts the number of voters to determine the number of votes. The code is a copy of the getNbVoters method. Is this method really necessary?
 
 |getUniquePreferences()
 | Return a set of all the different preferences in the profile.
-|
+| OK. The notion of uniqueness doesn't appear.
 
 |getNbUniquePreferences()
-| Return the number of different preferences in the profile.
-|
+| Return the number of different preferences in the profile. 
+| Ok. Call the getUniquePreferences method.
 
 |isComplete()
 | Return true if the profile is complete (all the preferences are about the same alternatives exactly).
