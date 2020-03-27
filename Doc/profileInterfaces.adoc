@@ -26,6 +26,84 @@ image:./assets/profile-diagram.png[profile-diagram]
 
 == Profile methods analysis +
 
+==== *ProfileI*
+A ProfileI represents an incomplete profile. The preferences can be strict ornot. The preferences are not necessarily about the same alternatives.
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+|Relevance
+
+|getPreference(Voter v)
+| Return the OldCompletePreferenceImpl of a provided Voter. The Voter doesn't be null. Throw a new NoSuchElementException if the Voter isn't in the map.
+| Ok.
+
+|getMaxSizeOfPreference()
+| Return the maximum size of a Preference in an incomplete Profile.
+| OK.
+
+|getProfile()
+| Return the profile as a map mapping the voters to their preference.
+| OK.
+
+|getAllVoters(int i)
+| Return a sorted set of all the voters in the profile. The voters are ordered by id.
+| The use of the TreeSet collection is not specified in the contract. It is however it which makes it possible to order the Voters.
+
+|getNbVoters()
+| Return the number of voters in the profile. Call the getAllVoters method.
+| OK
+
+|getSumVoteCount()
+| Return the sum of the counted votes. 
+| This method counts the number of voters to determine the number of votes. The code is a copy of the getNbVoters method. Is this method really necessary?
+
+|getUniquePreferences()
+| Return a set of all the different preferences in the profile.
+| The notion of uniqueness doesn't appear. There is no test to verify that the preference is indeed unique. For us, the code rebuilds an already existing list.
+
+|getNbUniquePreferences()
+| Return the number of different preferences in the profile. 
+| Ok. 
+
+|isComplete()
+| Return true if the profile is complete (all the preferences are about the same alternatives exactly).
+| Ok.
+
+|getNbVoterForPreference(OldCompletePreferenceImpl p)
+| Return the number of voters that voted for a provided OldCompletePreferenceImpl not null.
+| Ok.
+
+|isStrict()
+| Return true if the profile is strict (the preferences don't have several alternatives that have the same rank).
+| Ok.
+
+
+|equals(Object o)
+| Return true if both objects implement ProfileI, contain all the same voters and each voter has the same preference in the callingprofile and in the profile given as parameter.
+| Ok.
+
+|restrictProfile()
+| Return the stricter profile possible.
+| For us the code doesn't match with the contract. This method should return a profile who as many preferences as possible are antysimetric. Currently in the code there is the notion of creating a profile that does not appear in the contract. 
+
+|getNbAlternatives
+| Return the number of alternatives in the profile.
+| Ok.
+
+|getAlternatives
+| Return a set of all the alternatives in the profile.
+| Ok.
+
+|getFormat
+| Return the format of the Profile when restricted.
+| Ok. It might be a good idea to modify the returns because "toi", "soi", "toc", "soc" are not very clear terms.
+
+
+
+|===
+
 
 ==== *StrictProfileI*
 
@@ -33,7 +111,7 @@ image:./assets/profile-diagram.png[profile-diagram]
 |===
 |Method name
 |Contract
-|Pertinence
+|Relevance
 
 |getPreference(Voter v)
 | Return the AntiSymmetric preference of a provided voter.
@@ -59,3 +137,5 @@ image:./assets/profile-diagram.png[profile-diagram]
 
 
 |===
+
+
