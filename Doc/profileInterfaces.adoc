@@ -37,7 +37,7 @@ A ProfileI represents an incomplete profile. The preferences can be strict ornot
 
 |getPreference(Voter v)
 | Return the OldCompletePreferenceImpl of a provided Voter. The Voter doesn't be null. Throw a new NoSuchElementException if the Voter isn't in the map.
-|
+| Ok.
 
 |getMaxSizeOfPreference()
 | Return the maximum size of a Preference in an incomplete Profile.
@@ -61,44 +61,44 @@ A ProfileI represents an incomplete profile. The preferences can be strict ornot
 
 |getUniquePreferences()
 | Return a set of all the different preferences in the profile.
-| OK. The notion of uniqueness doesn't appear.
+| The notion of uniqueness doesn't appear. There is no test to verify that the preference is indeed unique. For us, the code rebuilds an already existing list.
 
 |getNbUniquePreferences()
 | Return the number of different preferences in the profile. 
-| Ok. Call the getUniquePreferences method.
+| Ok. 
 
 |isComplete()
 | Return true if the profile is complete (all the preferences are about the same alternatives exactly).
-|
+| Ok.
 
 |getNbVoterForPreference(OldCompletePreferenceImpl p)
-| Return the number of voters that voted for a provided OldCompletePreferenceImpl.
-|
+| Return the number of voters that voted for a provided OldCompletePreferenceImpl not null.
+| Ok.
 
 |isStrict()
 | Return true if the profile is strict (the preferences don't have several alternatives that have the same rank).
-|
+| Ok.
 
 
 |equals(Object o)
-| Return true if both objects implement ProfileI, contain all the samevoters and each voter has the same preference in the callingprofile and in the profile given as parameter.
-|
+| Return true if both objects implement ProfileI, contain all the same voters and each voter has the same preference in the callingprofile and in the profile given as parameter.
+| Ok.
 
 |restrictProfile()
 | Return the stricter profile possible.
-|
+| For us the code doesn't match with the contract. This method should return a profile who as many preferences as possible are antysimetric. Currently in the code there is the notion of creating a profile that does not appear in the contract. 
 
 |getNbAlternatives
 | Return the number of alternatives in the profile.
-|
+| Ok.
 
 |getAlternatives
 | Return a set of all the alternatives in the profile.
-|
+| Ok.
 
 |getFormat
 | Return the format of the Profile when restricted.
-|
+| Ok. It might be a good idea to modify the returns because "toi", "soi", "toc", "soc" are not very clear terms.
 
 
 
@@ -111,7 +111,7 @@ A ProfileI represents an incomplete profile. The preferences can be strict ornot
 |===
 |Method name
 |Contract
-|Pertinence
+|Relevance
 
 |getPreference(Voter v)
 | Return the AntiSymmetric preference of a provided voter.
