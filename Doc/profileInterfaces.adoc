@@ -26,6 +26,84 @@ image:./assets/profile-diagram.png[profile-diagram]
 
 == Profile methods analysis +
 
+==== *ProfileI*
+A ProfileI represents an incomplete profile. The preferences can be strict ornot. The preferences are not necessarily about the same alternatives.
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+|Relevance
+
+|getPreference(Voter v)
+| Return the OldCompletePreferenceImpl of a provided Voter.
+|
+
+|getMaxSizeOfPreference()
+| Return the maximum size of a Preference in an incomplete Profile.
+|
+
+|getProfile()
+| Return the profile as a map mapping the voters to their preference.
+| 
+
+|getAllVoters(int i)
+| Return a sorted set of all the voters in the profile. The voters areordered by id.
+| 
+
+|getNbVoters()
+| Return the number of voters in the profile.
+|
+
+|getSumVoteCount()
+| Return the sum of the counted votes.
+|
+
+|getUniquePreferences()
+| Return a set of all the different preferences in the profile.
+|
+
+|getNbUniquePreferences()
+| Return the number of different preferences in the profile.
+|
+
+|isComplete()
+| Return true if the profile is complete (all the preferences are about the same alternatives exactly).
+|
+
+|getNbVoterForPreference(OldCompletePreferenceImpl p)
+| Return the number of voters that voted for a provided OldCompletePreferenceImpl.
+|
+
+|isStrict()
+| Return true if the profile is strict (the preferences don't have several alternatives that have the same rank).
+|
+
+
+|equals(Object o)
+| Return true if both objects implement ProfileI, contain all the samevoters and each voter has the same preference in the callingprofile and in the profile given as parameter.
+|
+
+|restrictProfile()
+| Return the stricter profile possible.
+|
+
+|getNbAlternatives
+| Return the number of alternatives in the profile.
+|
+
+|getAlternatives
+| Return a set of all the alternatives in the profile.
+|
+
+|getFormat
+| Return the format of the Profile when restricted.
+|
+
+
+
+|===
+
 
 ==== *StrictProfileI*
 
@@ -59,3 +137,5 @@ image:./assets/profile-diagram.png[profile-diagram]
 
 
 |===
+
+
