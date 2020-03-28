@@ -1919,14 +1919,14 @@ Voter's preferences : AntiSymmetric</body>
                 <body>LoggerFactory.getLogger(Borda.class.getName())</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SgOmoGbSEeqrtc6dy-mPpg" name="scores" visibility="private" type="_SgDAcGbSEeqrtc6dy-mPpg" isUnique="false"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SgOmoGbSEeqrtc6dy-mPpg" name="scores" visibility="private" isUnique="false"/>
             <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_Sf_WEWbSEeqrtc6dy-mPpg" name="Borda implements SocialWelfareFunction" client="_Sf_WEGbSEeqrtc6dy-mPpg" supplier="_SfltcGbSEeqrtc6dy-mPpg" contract="_SfltcGbSEeqrtc6dy-mPpg"/>
             <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SgcCAGbSEeqrtc6dy-mPpg" name="withScores" specification="_SgXJgGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_SqLM0GbSEeqrtc6dy-mPpg" type="_Sf_WEGbSEeqrtc6dy-mPpg" direction="return">
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SqLz4GbSEeqrtc6dy-mPpg" value="1"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SqMa8GbSEeqrtc6dy-mPpg" value="1"/>
               </ownedParameter>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SqNCAGbSEeqrtc6dy-mPpg" name="tempscores" type="_SgDAcGbSEeqrtc6dy-mPpg">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SqNCAGbSEeqrtc6dy-mPpg" name="tempscores">
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SqOQIGbSEeqrtc6dy-mPpg" value="1"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SqOQIWbSEeqrtc6dy-mPpg" value="1"/>
               </ownedParameter>
@@ -1948,7 +1948,7 @@ Voter's preferences : AntiSymmetric</body>
 </body>
             </ownedBehavior>
             <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_SgzOYGbSEeqrtc6dy-mPpg" name="Borda" specification="_SgiIoGbSEeqrtc6dy-mPpg">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SqRTcGbSEeqrtc6dy-mPpg" name="tempscores" type="_SgDAcGbSEeqrtc6dy-mPpg">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SqRTcGbSEeqrtc6dy-mPpg" name="tempscores">
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SqR6gGbSEeqrtc6dy-mPpg" value="1"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SqShkGbSEeqrtc6dy-mPpg" value="1"/>
               </ownedParameter>
@@ -1959,7 +1959,7 @@ Voter's preferences : AntiSymmetric</body>
 </body>
             </ownedBehavior>
             <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Sg4t8GbSEeqrtc6dy-mPpg" name="getMultiSet" specification="_Sg24wGbSEeqrtc6dy-mPpg">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SqTIoGbSEeqrtc6dy-mPpg" type="_SgDAcGbSEeqrtc6dy-mPpg" direction="return">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SqTIoGbSEeqrtc6dy-mPpg" direction="return">
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SqUWwGbSEeqrtc6dy-mPpg" value="1"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SqU90GbSEeqrtc6dy-mPpg" value="1"/>
               </ownedParameter>
@@ -2039,7 +2039,7 @@ Voter's preferences : AntiSymmetric</body>
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Sqeu0GbSEeqrtc6dy-mPpg" value="1"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SqfV4GbSEeqrtc6dy-mPpg" value="1"/>
               </ownedParameter>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sqf88GbSEeqrtc6dy-mPpg" name="tempscores" type="_SgDAcGbSEeqrtc6dy-mPpg">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sqf88GbSEeqrtc6dy-mPpg" name="tempscores">
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SqgkAGbSEeqrtc6dy-mPpg" value="1"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SqhLEGbSEeqrtc6dy-mPpg" value="1"/>
               </ownedParameter>
@@ -2106,16 +2106,16 @@ Voter's preferences : AntiSymmetric</body>
             </ownedBehavior>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_SgXJgGbSEeqrtc6dy-mPpg" name="withScores" visibility="public" isStatic="true" method="_SgcCAGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_SgZlwGbSEeqrtc6dy-mPpg" type="_Sf_WEGbSEeqrtc6dy-mPpg" direction="return"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sgba8GbSEeqrtc6dy-mPpg" name="tempscores" type="_SgDAcGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sgba8GbSEeqrtc6dy-mPpg" name="tempscores"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_SgeeQGbSEeqrtc6dy-mPpg" name="withScores" visibility="public" isStatic="true" method="_SggTcGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_SgfFUGbSEeqrtc6dy-mPpg" type="_Sf_WEGbSEeqrtc6dy-mPpg" direction="return"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_SgiIoGbSEeqrtc6dy-mPpg" name="Borda" visibility="private" method="_SgzOYGbSEeqrtc6dy-mPpg">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SgvkAGbSEeqrtc6dy-mPpg" name="tempscores" type="_SgDAcGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SgvkAGbSEeqrtc6dy-mPpg" name="tempscores"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_Sg24wGbSEeqrtc6dy-mPpg" name="getMultiSet" visibility="public" method="_Sg4t8GbSEeqrtc6dy-mPpg">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sg4G4GbSEeqrtc6dy-mPpg" type="_SgDAcGbSEeqrtc6dy-mPpg" direction="return"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sg4G4GbSEeqrtc6dy-mPpg" direction="return"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_ShIlkGbSEeqrtc6dy-mPpg" name="getSocietyPreference" visibility="public" method="_ShJMoWbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_ShIlkWbSEeqrtc6dy-mPpg" type="_O-JnAGbSEeqrtc6dy-mPpg" direction="return"/>
@@ -2129,7 +2129,7 @@ Voter's preferences : AntiSymmetric</body>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_ShiOMGbSEeqrtc6dy-mPpg" name="getMax" visibility="public" method="_Shl4kGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_ShjcUGbSEeqrtc6dy-mPpg" type="_PERdIGbSEeqrtc6dy-mPpg" direction="return"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_ShkqcGbSEeqrtc6dy-mPpg" name="tempscores" type="_SgDAcGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_ShkqcGbSEeqrtc6dy-mPpg" name="tempscores"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_ShnGsGbSEeqrtc6dy-mPpg" name="hashCode" visibility="public" method="_ShrYIGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_ShntwGbSEeqrtc6dy-mPpg" direction="return">
@@ -2329,43 +2329,43 @@ Voter's preferences : AntiSymmetric</body>
                 <body>LoggerFactory.getLogger(ProfileDefaultGUI.class.getName())</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwKgEGbSEeqrtc6dy-mPpg" name="display" visibility="protected" isLeaf="true" isStatic="true" type="_SuAj8GbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwKgEGbSEeqrtc6dy-mPpg" name="display" visibility="protected" isLeaf="true" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SwM8UGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>Display.getDefault()</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwOxgGbSEeqrtc6dy-mPpg" name="mainShell" visibility="protected" isLeaf="true" isStatic="true" type="_SuH4sGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwOxgGbSEeqrtc6dy-mPpg" name="mainShell" visibility="protected" isLeaf="true" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SwQmsGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Shell(display, SWT.CLOSE | SWT.RESIZE)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwSb4GbSEeqrtc6dy-mPpg" name="columnsButton" visibility="protected" isStatic="true" type="_SsEqQGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwSb4GbSEeqrtc6dy-mPpg" name="columnsButton" visibility="protected" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SwUREGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Button(mainShell, SWT.RADIO)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwWGQGbSEeqrtc6dy-mPpg" name="rowsButton" visibility="protected" isStatic="true" type="_SsEqQGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwWGQGbSEeqrtc6dy-mPpg" name="rowsButton" visibility="protected" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SwX7cGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Button(mainShell, SWT.RADIO)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwZwoGbSEeqrtc6dy-mPpg" name="wrapButton" visibility="protected" isStatic="true" type="_SsEqQGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwZwoGbSEeqrtc6dy-mPpg" name="wrapButton" visibility="protected" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_Swa-wGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Button(mainShell, SWT.RADIO)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwhscGbSEeqrtc6dy-mPpg" name="tableViewer" visibility="protected" isStatic="true" type="_Swcz8GbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwhscGbSEeqrtc6dy-mPpg" name="tableViewer" visibility="protected" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SwjhoGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new TableViewer(mainShell, SWT.MULTI | SWT.BORDER)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwpoQGbSEeqrtc6dy-mPpg" name="table" visibility="protected" isStatic="true" type="_SwlW0GbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SwpoQGbSEeqrtc6dy-mPpg" name="table" visibility="protected" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SwrdcGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>tableViewer.getTable()</body>
@@ -2762,13 +2762,13 @@ Voter's preferences : AntiSymmetric</body>
                 <body>0</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_StSyQGbSEeqrtc6dy-mPpg" name="cellBeingDragged" visibility="protected" type="_StN5wGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_StSyQGbSEeqrtc6dy-mPpg" name="cellBeingDragged" visibility="protected" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_StUncGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>tableViewer.getCell(new Point(0, 0))</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_StWcoGbSEeqrtc6dy-mPpg" name="saveButton" visibility="protected" isStatic="true" type="_SsEqQGbSEeqrtc6dy-mPpg" isUnique="false"/>
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_StWcoGbSEeqrtc6dy-mPpg" name="saveButton" visibility="protected" isStatic="true" isUnique="false"/>
             <ownedAttribute xmi:type="uml:Property" xmi:id="_StYR0GbSEeqrtc6dy-mPpg" name="destinationX" visibility="protected" isUnique="false">
               <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_StaHAGbSEeqrtc6dy-mPpg" name="defaultValue">
@@ -2945,19 +2945,19 @@ Voter's preferences : AntiSymmetric</body>
               </defaultValue>
             </ownedAttribute>
             <ownedAttribute xmi:type="uml:Property" xmi:id="_SrsPwGbSEeqrtc6dy-mPpg" name="alternativeToAdd" visibility="private" type="_PF7qAGbSEeqrtc6dy-mPpg" isUnique="false"/>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_Sr3O4GbSEeqrtc6dy-mPpg" name="label" visibility="private" isLeaf="true" type="_SrxvUGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_Sr3O4GbSEeqrtc6dy-mPpg" name="label" visibility="private" isLeaf="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_Sr5rIGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Label(mainShell, SWT.NULL)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SsA_4GbSEeqrtc6dy-mPpg" name="newAlternativeText" visibility="private" isLeaf="true" type="_Sr7gUGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SsA_4GbSEeqrtc6dy-mPpg" name="newAlternativeText" visibility="private" isLeaf="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SsC1EGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Text(mainShell, SWT.SINGLE | SWT.BORDER)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SsKw4GbSEeqrtc6dy-mPpg" name="addAlternativeButton" visibility="private" isLeaf="true" type="_SsEqQGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SsKw4GbSEeqrtc6dy-mPpg" name="addAlternativeButton" visibility="private" isLeaf="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SsMmEGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Button(mainShell, SWT.PUSH)</body>
@@ -3203,67 +3203,67 @@ Voter's preferences : AntiSymmetric</body>
                 <body>LoggerFactory.getLogger(MainGUI.class.getName())</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuE1YGbSEeqrtc6dy-mPpg" name="display" visibility="protected" isLeaf="true" isStatic="true" type="_SuAj8GbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuE1YGbSEeqrtc6dy-mPpg" name="display" visibility="protected" isLeaf="true" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SuGqkGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>Display.getDefault()</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuMKIGbSEeqrtc6dy-mPpg" name="mainShell" visibility="protected" isLeaf="true" isStatic="true" type="_SuH4sGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuMKIGbSEeqrtc6dy-mPpg" name="mainShell" visibility="protected" isLeaf="true" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SuOmYGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Shell(display, SWT.CLOSE | SWT.RESIZE)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuV7IGbSEeqrtc6dy-mPpg" name="gridData" visibility="protected" type="_SuRCoGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuV7IGbSEeqrtc6dy-mPpg" name="gridData" visibility="protected" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SuXwUGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new GridData(GridData.CENTER, GridData.CENTER, true, false)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuZlgGbSEeqrtc6dy-mPpg" name="label" visibility="protected" isLeaf="true" isStatic="true" type="_SrxvUGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuZlgGbSEeqrtc6dy-mPpg" name="label" visibility="protected" isLeaf="true" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SucBwGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Label(mainShell, SWT.CENTER)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_Sud28GbSEeqrtc6dy-mPpg" name="selectFileToReadButton" visibility="protected" isLeaf="true" isStatic="true" type="_SsEqQGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_Sud28GbSEeqrtc6dy-mPpg" name="selectFileToReadButton" visibility="protected" isLeaf="true" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SugTMGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Button(mainShell, SWT.PUSH)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuiIYGbSEeqrtc6dy-mPpg" name="socColumnsGUIButton" visibility="protected" isStatic="true" type="_SsEqQGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuiIYGbSEeqrtc6dy-mPpg" name="socColumnsGUIButton" visibility="protected" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_Suj9kGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Button(mainShell, SWT.PUSH)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SulywGbSEeqrtc6dy-mPpg" name="soicolumnsGUIButton" visibility="protected" isStatic="true" type="_SsEqQGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SulywGbSEeqrtc6dy-mPpg" name="soicolumnsGUIButton" visibility="protected" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_Sunn8GbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Button(mainShell, SWT.PUSH)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_Suo2EGbSEeqrtc6dy-mPpg" name="socRowsGUIButton" visibility="protected" isStatic="true" type="_SsEqQGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_Suo2EGbSEeqrtc6dy-mPpg" name="socRowsGUIButton" visibility="protected" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SuqEMGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Button(mainShell, SWT.PUSH)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuqrQGbSEeqrtc6dy-mPpg" name="soiRowsGUIButton" visibility="protected" isStatic="true" type="_SsEqQGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuqrQGbSEeqrtc6dy-mPpg" name="soiRowsGUIButton" visibility="protected" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SusgcGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Button(mainShell, SWT.PUSH)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuuVoGbSEeqrtc6dy-mPpg" name="socWrappedColumnsGUIButton" visibility="protected" isStatic="true" type="_SsEqQGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuuVoGbSEeqrtc6dy-mPpg" name="socWrappedColumnsGUIButton" visibility="protected" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_SuwK0GbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Button(mainShell, SWT.PUSH)</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuyAAGbSEeqrtc6dy-mPpg" name="soiWrappedColumnsGUIButton" visibility="protected" isStatic="true" type="_SsEqQGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_SuyAAGbSEeqrtc6dy-mPpg" name="soiWrappedColumnsGUIButton" visibility="protected" isStatic="true" isUnique="false">
               <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_Suz1MGbSEeqrtc6dy-mPpg" name="defaultValue">
                 <language>JAVA</language>
                 <body>new Button(mainShell, SWT.PUSH)</body>
@@ -4110,28 +4110,28 @@ Voter's preferences : AntiSymmetric</body>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_SyUcMGbSEeqrtc6dy-mPpg" name="printFormatCountOfRankings" visibility="public" isStatic="true" method="_SyYGkGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_SyVqUGbSEeqrtc6dy-mPpg" type="_PF7qAGbSEeqrtc6dy-mPpg" direction="return"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SyXfgGbSEeqrtc6dy-mPpg" name="table" type="_SyQKwGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SyXfgGbSEeqrtc6dy-mPpg" name="table"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_Syai0GbSEeqrtc6dy-mPpg" name="printFormatRanksFormat" visibility="public" isStatic="true" method="_SyeNMGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sybw8GbSEeqrtc6dy-mPpg" type="_PF7qAGbSEeqrtc6dy-mPpg" direction="return"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Syc_EGbSEeqrtc6dy-mPpg" name="table" type="_SyQKwGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Syc_EGbSEeqrtc6dy-mPpg" name="table"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_SygCYGbSEeqrtc6dy-mPpg" name="printFormatVotersToRankings" visibility="public" isStatic="true" method="_SyjFsGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_SygpcGbSEeqrtc6dy-mPpg" type="_PF7qAGbSEeqrtc6dy-mPpg" direction="return"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Syh3kGbSEeqrtc6dy-mPpg" name="table" type="_SyQKwGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Syh3kGbSEeqrtc6dy-mPpg" name="table"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_SykT0GbSEeqrtc6dy-mPpg" name="getAlternatives" visibility="private" isStatic="true" method="_SypMUGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sylh8GbSEeqrtc6dy-mPpg" type="_PFRisGbSEeqrtc6dy-mPpg" direction="return">
                 <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SymwEGbSEeqrtc6dy-mPpg"/>
                 <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SymwEWbSEeqrtc6dy-mPpg" value="*"/>
               </ownedParameter>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Syn-MGbSEeqrtc6dy-mPpg" name="table" type="_SyQKwGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Syn-MGbSEeqrtc6dy-mPpg" name="table"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_SyrBgGbSEeqrtc6dy-mPpg" name="getnbTotVoters" visibility="private" isStatic="true" method="_SyuE0GbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_SyrokGbSEeqrtc6dy-mPpg" direction="return">
                 <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
               </ownedParameter>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SytdwGbSEeqrtc6dy-mPpg" name="table" type="_SyQKwGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SytdwGbSEeqrtc6dy-mPpg" name="table"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_Syv6AGbSEeqrtc6dy-mPpg" name="checkFormatandReturnCompletePreference" visibility="public" isStatic="true" method="_Sy0ygGbSEeqrtc6dy-mPpg" raisedException="_PMryQGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_SyxvMGbSEeqrtc6dy-mPpg" type="_PMMDAGbSEeqrtc6dy-mPpg" direction="return"/>
@@ -4139,11 +4139,11 @@ Voter's preferences : AntiSymmetric</body>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_Sy2nsGbSEeqrtc6dy-mPpg" name="completeFormatRanksFormat" visibility="public" isStatic="true" method="_Sy8HQGbSEeqrtc6dy-mPpg" raisedException="_PNJsUGbSEeqrtc6dy-mPpg _PNg4sGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sy4c4GbSEeqrtc6dy-mPpg" type="_PMMDAGbSEeqrtc6dy-mPpg" direction="return"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sy6SEGbSEeqrtc6dy-mPpg" name="table" type="_SyQKwGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sy6SEGbSEeqrtc6dy-mPpg" name="table"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_Sy98cGbSEeqrtc6dy-mPpg" name="completeFormatVotersToRankings" visibility="public" isStatic="true" method="_SzC08GbSEeqrtc6dy-mPpg" raisedException="_PNJsUGbSEeqrtc6dy-mPpg _PNg4sGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sy_xoGbSEeqrtc6dy-mPpg" type="_PMMDAGbSEeqrtc6dy-mPpg" direction="return"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SzA_wGbSEeqrtc6dy-mPpg" name="table" type="_SyQKwGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SzA_wGbSEeqrtc6dy-mPpg" name="table"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_SzN0EGbSEeqrtc6dy-mPpg" name="createAlternativeFromCellRange" visibility="private" isStatic="true" method="_SzTToGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_SzPCMGbSEeqrtc6dy-mPpg" type="_PFRisGbSEeqrtc6dy-mPpg" direction="return"/>
@@ -4153,7 +4153,7 @@ Voter's preferences : AntiSymmetric</body>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_SzQ3YGbSEeqrtc6dy-mPpg" name="rowIndex">
                 <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
               </ownedParameter>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SzSFgGbSEeqrtc6dy-mPpg" name="prefRange" type="_SzHGYGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SzSFgGbSEeqrtc6dy-mPpg" name="prefRange"/>
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_SzeSwGbSEeqrtc6dy-mPpg" name="ReadProfile" visibility="public">
@@ -4397,15 +4397,15 @@ Voter's preferences : AntiSymmetric</body>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_Sz8M0GbSEeqrtc6dy-mPpg" name="createProfileFromColumnsTable" visibility="public" method="_S0EvsGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_Sz_3MGbSEeqrtc6dy-mPpg" type="_QrQpEGbSEeqrtc6dy-mPpg" direction="return"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_S0DhkGbSEeqrtc6dy-mPpg" name="table" type="_SwlW0GbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_S0DhkGbSEeqrtc6dy-mPpg" name="table"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_S0JBIGbSEeqrtc6dy-mPpg" name="createProfileFromRowsTable" visibility="public" method="_S0UAQGbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_S0MrgGbSEeqrtc6dy-mPpg" type="_QrQpEGbSEeqrtc6dy-mPpg" direction="return"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_S0SLEGbSEeqrtc6dy-mPpg" name="table" type="_SwlW0GbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_S0SLEGbSEeqrtc6dy-mPpg" name="table"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_S0at8GbSEeqrtc6dy-mPpg" name="createProfileFromURL" visibility="public" method="_S0eYUGbSEeqrtc6dy-mPpg" raisedException="_QsKA8WbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_S0bVAGbSEeqrtc6dy-mPpg" type="_QrQpEGbSEeqrtc6dy-mPpg" direction="return"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_S0dKMGbSEeqrtc6dy-mPpg" name="url" type="_S0WcgGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_S0dKMGbSEeqrtc6dy-mPpg" name="url"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_S0gNgGbSEeqrtc6dy-mPpg" name="displayProfileFromStream" visibility="public" method="_S0jQ0GbSEeqrtc6dy-mPpg" raisedException="_QsKA8WbSEeqrtc6dy-mPpg">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_S0hboGbSEeqrtc6dy-mPpg" name="is" type="_SyD9gGbSEeqrtc6dy-mPpg"/>
@@ -6433,18 +6433,11 @@ Voter's preferences : AntiSymmetric</body>
           <packagedElement xmi:type="uml:Package" xmi:id="_O-Q7wGbSEeqrtc6dy-mPpg" name="slf4j">
             <packagedElement xmi:type="uml:Class" xmi:id="_O-SJ4GbSEeqrtc6dy-mPpg" name="Logger"/>
           </packagedElement>
-          <packagedElement xmi:type="uml:Package" xmi:id="_SyOVkGbSEeqrtc6dy-mPpg" name="odftoolkit">
-            <packagedElement xmi:type="uml:Package" xmi:id="_SyPjsGbSEeqrtc6dy-mPpg" name="table">
-              <packagedElement xmi:type="uml:Class" xmi:id="_SyQKwGbSEeqrtc6dy-mPpg" name="Table"/>
-              <packagedElement xmi:type="uml:Class" xmi:id="_SzHGYGbSEeqrtc6dy-mPpg" name="CellRange"/>
-            </packagedElement>
-          </packagedElement>
         </packagedElement>
         <packagedElement xmi:type="uml:Package" xmi:id="_PMIYoGbSEeqrtc6dy-mPpg" name="com">
           <packagedElement xmi:type="uml:Package" xmi:id="_PMLb8GbSEeqrtc6dy-mPpg" name="collect">
             <packagedElement xmi:type="uml:Class" xmi:id="_PMMDAGbSEeqrtc6dy-mPpg" name="ImmutableSet"/>
             <packagedElement xmi:type="uml:Class" xmi:id="_PPLFkGbSEeqrtc6dy-mPpg" name="ImmutableList"/>
-            <packagedElement xmi:type="uml:Class" xmi:id="_SgDAcGbSEeqrtc6dy-mPpg" name="Multiset"/>
           </packagedElement>
           <packagedElement xmi:type="uml:Package" xmi:id="_PPYg8GbSEeqrtc6dy-mPpg" name="graph">
             <packagedElement xmi:type="uml:Class" xmi:id="_PPYg8WbSEeqrtc6dy-mPpg" name="ImmutableGraph"/>
@@ -6470,26 +6463,6 @@ Voter's preferences : AntiSymmetric</body>
           <packagedElement xmi:type="uml:Interface" xmi:id="_QsKA8WbSEeqrtc6dy-mPpg" name="IOException"/>
           <packagedElement xmi:type="uml:Class" xmi:id="_SyD9gGbSEeqrtc6dy-mPpg" name="InputStream"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:Package" xmi:id="_S0V1cGbSEeqrtc6dy-mPpg" name="net">
-          <packagedElement xmi:type="uml:Class" xmi:id="_S0WcgGbSEeqrtc6dy-mPpg" name="URL"/>
-        </packagedElement>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_SruE8GbSEeqrtc6dy-mPpg" name="swt">
-        <packagedElement xmi:type="uml:Package" xmi:id="_SrxIQGbSEeqrtc6dy-mPpg" name="widgets">
-          <packagedElement xmi:type="uml:Class" xmi:id="_SrxvUGbSEeqrtc6dy-mPpg" name="Label"/>
-          <packagedElement xmi:type="uml:Class" xmi:id="_Sr7gUGbSEeqrtc6dy-mPpg" name="Text"/>
-          <packagedElement xmi:type="uml:Class" xmi:id="_SsEqQGbSEeqrtc6dy-mPpg" name="Button"/>
-          <packagedElement xmi:type="uml:Class" xmi:id="_SuAj8GbSEeqrtc6dy-mPpg" name="Display"/>
-          <packagedElement xmi:type="uml:Class" xmi:id="_SuH4sGbSEeqrtc6dy-mPpg" name="Shell"/>
-          <packagedElement xmi:type="uml:Class" xmi:id="_SwlW0GbSEeqrtc6dy-mPpg" name="Table"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Package" xmi:id="_SuQbkGbSEeqrtc6dy-mPpg" name="layout">
-          <packagedElement xmi:type="uml:Class" xmi:id="_SuRCoGbSEeqrtc6dy-mPpg" name="GridData"/>
-        </packagedElement>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_StKPYGbSEeqrtc6dy-mPpg" name="jface">
-        <packagedElement xmi:type="uml:Class" xmi:id="_StN5wGbSEeqrtc6dy-mPpg" name="ViewerCell"/>
-        <packagedElement xmi:type="uml:Class" xmi:id="_Swcz8GbSEeqrtc6dy-mPpg" name="TableViewer"/>
       </packagedElement>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_O7lbMGbSEeqrtc6dy-mPpg">
@@ -6551,22 +6524,9 @@ Voter's preferences : AntiSymmetric</body>
   <standard:Create xmi:id="_QuuMwGbSEeqrtc6dy-mPpg" base_BehavioralFeature="_QurJcGbSEeqrtc6dy-mPpg"/>
   <standard:Create xmi:id="_SfVOwGbSEeqrtc6dy-mPpg" base_BehavioralFeature="_SfSygGbSEeqrtc6dy-mPpg"/>
   <standard:Create xmi:id="_Sf0W8GbSEeqrtc6dy-mPpg" base_BehavioralFeature="_Sfx6smbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_SgFcsGbSEeqrtc6dy-mPpg" name="com.google.common.collect.Multiset" base_Classifier="_SgDAcGbSEeqrtc6dy-mPpg"/>
   <standard:Create xmi:id="_Sgkk4GbSEeqrtc6dy-mPpg" base_BehavioralFeature="_SgiIoGbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_Sr0yoGbSEeqrtc6dy-mPpg" name="org.eclipse.swt.widgets.Label" base_Classifier="_SrxvUGbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_Sr_KsGbSEeqrtc6dy-mPpg" name="org.eclipse.swt.widgets.Text" base_Classifier="_Sr7gUGbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_SsIUoGbSEeqrtc6dy-mPpg" name="org.eclipse.swt.widgets.Button" base_Classifier="_SsEqQGbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_StQ9EGbSEeqrtc6dy-mPpg" name="org.eclipse.jface.viewers.ViewerCell" base_Classifier="_StN5wGbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_SuDAMGbSEeqrtc6dy-mPpg" name="org.eclipse.swt.widgets.Display" base_Classifier="_SuAj8GbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_SuKU8GbSEeqrtc6dy-mPpg" name="org.eclipse.swt.widgets.Shell" base_Classifier="_SuH4sGbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_SuUF8GbSEeqrtc6dy-mPpg" name="org.eclipse.swt.layout.GridData" base_Classifier="_SuRCoGbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_SwfQMGbSEeqrtc6dy-mPpg" name="org.eclipse.jface.viewers.TableViewer" base_Classifier="_Swcz8GbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_SwnMAGbSEeqrtc6dy-mPpg" name="org.eclipse.swt.widgets.Table" base_Classifier="_SwlW0GbSEeqrtc6dy-mPpg"/>
   <standard:Create xmi:id="_SyATIGbSEeqrtc6dy-mPpg" base_BehavioralFeature="_Sx-d8GbSEeqrtc6dy-mPpg"/>
   <PapyrusJava:External xmi:id="_SyHA0GbSEeqrtc6dy-mPpg" name="java.io.InputStream" base_Classifier="_SyD9gGbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_SySnAGbSEeqrtc6dy-mPpg" name="org.odftoolkit.simple.table.Table" base_Classifier="_SyQKwGbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_SzKwwGbSEeqrtc6dy-mPpg" name="org.odftoolkit.simple.table.CellRange" base_Classifier="_SzHGYGbSEeqrtc6dy-mPpg"/>
-  <PapyrusJava:External xmi:id="_S0Y4wGbSEeqrtc6dy-mPpg" name="java.net.URL" base_Classifier="_S0WcgGbSEeqrtc6dy-mPpg"/>
   <standard:Create xmi:id="_S1wxwGbSEeqrtc6dy-mPpg" base_BehavioralFeature="_S1uVgGbSEeqrtc6dy-mPpg"/>
   <standard:Create xmi:id="_S157sGbSEeqrtc6dy-mPpg" base_BehavioralFeature="_S12RUGbSEeqrtc6dy-mPpg"/>
   <standard:Create xmi:id="_S2a5EGbSEeqrtc6dy-mPpg" base_BehavioralFeature="_S2ZD4GbSEeqrtc6dy-mPpg"/>
