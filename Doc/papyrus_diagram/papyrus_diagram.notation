@@ -410,6 +410,10 @@
           <element xmi:type="uml:Operation" href="papyrus_diagram.uml#_QNZBV2bSEeqrtc6dy-mPpg"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_GeUpEWbUEeqrtc6dy-mPpg"/>
         </children>
+        <children xmi:type="notation:Shape" xmi:id="_Hen_UHEjEeqUv4VtPCytLw" type="Operation_InterfaceOperationLabel">
+          <element xmi:type="uml:Operation" href="papyrus_diagram.uml#_G0EmcHEjEeqUv4VtPCytLw"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Hen_UXEjEeqUv4VtPCytLw"/>
+        </children>
         <styles xmi:type="notation:TitleStyle" xmi:id="_-9i_SWbTEeqrtc6dy-mPpg"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_-9i_SmbTEeqrtc6dy-mPpg"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_-9i_S2bTEeqrtc6dy-mPpg"/>
