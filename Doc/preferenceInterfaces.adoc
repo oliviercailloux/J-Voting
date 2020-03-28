@@ -25,7 +25,7 @@ A Preference where there is no "Equivalence" relation between Alternatives. +
 The only possible relation is "Greater than".
 
 === ImmutablePreference +
-A Preference where we can't add Alternatives or any relations.
+An Immutable Preference is a preference that cannot be modified. We can't add Alternatives or any relations.
 
 // === MutableAntiSymmetricPreference +
 // AntiSymmetricPreference + MutablePreference
@@ -35,16 +35,15 @@ A Preference where we can't add Alternatives or any relations.
 
 === CompletePreference +
 An ImmutablePreference where all the Alternatives have a two-to-one relation. +
-A CompletePreference represents a complete preorder, also called a weak order.
-
-// === LinearPreference +
-// CompletePreference + AntiSymmetricPreference
-
+A CompletePreference represents a complete preorder, also called a weak order: for each couple of alternatives (a,b) we can find an order a>=b or b>=a.
+ 
+=== LinearPreference +
+A linear preference is an antisymmetric complete preference. A linear preference represents a linear order, or equivalently an antisymmetric complete order, or also equivalently, the reduction of a weak-order.
 
 
 == Preferences methods analysis +
 
-==== *Preference*
+=== *Preference*
 
 [cols="1,1,2", options="header"] 
 |===
@@ -70,7 +69,7 @@ A CompletePreference represents a complete preorder, also called a weak order.
 
 |===
 
-==== *MutablePreference*
+=== *MutablePreference*
 
 [cols="1,1,2", options="header"] 
 |===
@@ -96,8 +95,7 @@ A CompletePreference represents a complete preorder, also called a weak order.
 
 |===
 
-==== *ImmutablePreference*
-An Immutable Preference is a preference that cannot be modified
+=== *ImmutablePreference*
 
 [cols="1,1,2", options="header"] 
 |===
@@ -120,8 +118,7 @@ An Immutable Preference is a preference that cannot be modified
 
 
 
-==== *CompletePreference*
-A Complete Preference is an immutable preference. It represents a complete pre-order, also called a weak order : for each couple of alternatives (a,b) we can find an order a>=b or b>=a.
+=== *CompletePreference*
 
 [cols="1,1,2", options="header"] 
 |===
@@ -144,7 +141,7 @@ A Complete Preference is an immutable preference. It represents a complete pre-o
 |===
 
 
-==== *LinearPreference*
+=== *LinearPreference*
 A linear preference is an antisymmetric complete preference. A linear preference represents a linear order, or equivalently an antisymmetric complete order, or also equivalently, the reduction of a weak-order.
 
 [cols="1,1,2", options="header"] 
@@ -155,6 +152,6 @@ A linear preference is an antisymmetric complete preference. A linear preference
 
 |asList()
 |Returns a sorted list of alternatives corresponding to the preference.
-| OK.
+| OK.				                                                     
 
 |===
