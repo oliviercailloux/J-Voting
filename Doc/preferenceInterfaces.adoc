@@ -79,7 +79,7 @@ A CompletePreference represents a complete preorder, also called a weak order.
 |Relevance
 
 |asMutableGraph()
-| Return the Graph corresponding to the Preference. This graph is not necessarily transitive and not necessarily reflexive.
+| Returns the Graph corresponding to the Preference. This graph is not necessarily transitive and not necessarily reflexive.
 | OK.
 
 |addAlternative(Alternative a)
@@ -106,16 +106,12 @@ An Immutable Preference is a preference that cannot be modified
 |Relevance
 
 |asGraph()
-| return the Graph corresponding to the Preference.
-|
+| Returns the Graph corresponding to the Preference. This graph is immutable, reflexive and transitive.
+| OK.
 
 |getAlternatives()
 | Returns an alternatives's set which is immutable.
-|
-
-|equals(Object o)
-| 
-|
+| OK.
 
 
 |===
@@ -131,19 +127,19 @@ A Complete Preference is an immutable preference. It represents a complete pre-o
 |===
 |Method name
 |Contract
-|Pertinence
+|Relevance
 
 |getRank(Alternative a)
 | Returns the rank of this alternative (a number between 1 and n) where n is the total number of Alternative instances.
-|
+| OK.
 
 |getAlternatives(int rank)
 | Returns the Aternative set at this rank. Empty set id there is no alternative at this rank.
-|
+|OK. However, the method does not handle the case of a rank bigger than the number of sets contained in equivalenceClasses
 
 |asEquivalenceClasses()
 |Returns the same data but in an Immutable list object. A set of alternative is strictly prefered to next sets. All the alternatives in a set are considered ex-aequo.
-|
+| OK.
 
 |===
 
@@ -155,10 +151,10 @@ A linear preference is an antisymmetric complete preference. A linear preference
 |===
 |Method name
 |Contract
-|Pertinence
+|Relevance
 
 |asList()
 |Returns a sorted list of alternatives corresponding to the preference.
-|
+| OK.
 
 |===
