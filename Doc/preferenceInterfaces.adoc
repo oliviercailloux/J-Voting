@@ -64,8 +64,8 @@ A linear preference is an antisymmetric complete preference. A linear preference
 |
 
 |asStrictGraph()
-|
-|
+| This method is going to be implemented in the Java iteration, and so its contract.
+| /
 
 |===
 
@@ -111,6 +111,9 @@ A linear preference is an antisymmetric complete preference. A linear preference
 | Returns an alternatives's set which is immutable.
 | OK.
 
+|Equals(Object o)
+| This method is going to be implemented in the Java iteration, and so its contract.
+| /
 
 |===
 
