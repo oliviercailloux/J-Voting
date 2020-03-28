@@ -39,7 +39,7 @@ image:./assets/IncompleteProfileScheme.PNG[IncompleteProfileScheme]
 == Strict profile + 
 In each individual preferences, they can not be alternatives that are equally ranked. In other words, all the preferences linked to each voters are considered as Anti Symmetric.
 
-image:./assets/StrictProfileScheme.PNG[StrictProfileScheme]
+image:./assets/StrictProfileScheme.PNG[align="center"]
 
 == Profile methods analysis +
 
