@@ -33,32 +33,28 @@ In each individual preferences, they can not be alternatives that are equally ra
 |Relevance
 
 |getPreference(Voter v)
-| Return the OldCompletePreferenceImpl of a provided Voter. The Voter doesn't be null. Throw a new NoSuchElementException if the Voter isn't in the map. 
-| Ok.
-
-(A voir) Pour moi cette methode son contrat dans ProfileI c'est : je lui donne un voteur et elle me renvoie sa préférence si elle existe.  Or non elle me renvoie pas la préférence du voter mais une OldCompletePreferenceImpl du voter.
+| Return the preference of a provided Voter. The Voter doesn't be null. Throw a new NoSuchElementException if the Voter isn't in the map. 
+| The preference type returned is not specified in the contract.
 
 |getMaxSizeOfPreference()
 | Return the maximum size of a Preference in an incomplete Profile.
-| OK.
+| Ok.
 
 |getProfile()
 | Return the profile as a map mapping the voters to their preference.
-| OK.
+| Ok.
 
 |getAllVoters(int i)
 | Return a sorted set of all the voters in the profile. The voters are ordered by id.
-| The use of the TreeSet collection is not specified in the contract. It is however it which makes it possible to order the Voters.
-
-(A voir) Jsp si treeset doit etre mentionné dans le contrat. Par contre on peut critiquer l'utilisation de NavigableSet. Definition : "NavigableSet behaves like a SortedSet with the exception that we have navigation methods available in addition to the sorting mechanisms of the SortedSet. For example, NavigableSet interface can navigate the set in reverse order compared to the order defined in SortedSet." -> C'est bien beau mais c'est jamais utilisé dans la méthode
+| Ok.
 
 |getNbVoters()
 | Return the number of voters in the profile. Call the getAllVoters method.
-| OK
+| Ok.
 
 |getSumVoteCount()
 | Return the sum of the counted votes. 
-| This method counts the number of voters to determine the number of votes. The code is a copy of the getNbVoters method. Is this method really necessary?
+| This method counts the number of voters to determine the number of votes. The code is a copy of the getNbVoters method. Is this method really necessary ?
 
 |getUniquePreferences()
 | Return a set of all the different preferences in the profile.
@@ -67,8 +63,6 @@ In each individual preferences, they can not be alternatives that are equally ra
 |getNbUniquePreferences()
 | Return the number of different preferences in the profile. 
 | Ok. 
-
-Peut etre rajouter : if we assume that getUniquePreferences is OK. (jsp ça faut voir)
 
 |isComplete()
 | Return true if the profile is complete (all the preferences are about the same alternatives exactly).
@@ -135,7 +129,7 @@ An empty string in the list means that the voter doesn't have an alternative at 
 
 |getIthAlternativesOfUniquePrefAsString(int i)
 | Return a list of all the alternatives (as string) at a certain position in all the unique preferences. An empty string in the list means that the voter doesn't have an alternative at this position in his unique preference.
-| Ok. If we assume that the preferences used to process the list are really unique.
+| Ok. 
 
 
 |writeToSOI(OutputStream output)
