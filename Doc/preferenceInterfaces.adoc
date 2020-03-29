@@ -21,7 +21,6 @@ You can also add two relations between Alternatives :
 * The second one is "Equivalence".
 
 === AntiSymmetricPreference +
-A Preference where there is no "Equivalence" relation between Alternatives. +
 The only possible relation is "Greater than".
 
 image:./assets/AntisymmetricPreferenceScheme.PNG[AntisymmetricPreferenceScheme]
@@ -36,8 +35,8 @@ An Immutable Preference is a preference that cannot be modified. We can't add Al
 // AntiSymmetricPreference + ImmutablePreference
 
 === CompletePreference +
-An ImmutablePreference where all the Alternatives have a two-to-one relation. +
-A CompletePreference represents a complete preorder, also called a weak order: for each couple of alternatives (a,b) we can find an order a>=b or b>=a.
+An ImmutablePreference where all the Alternatives have a two-to-one relation for each couple. +
+A CompletePreference represents a complete preorder, also called a weak order.
  
 image:./assets/CompletePreferenceScheme.PNG[CompletePreferenceScheme]
 
