@@ -24,6 +24,8 @@ You can also add two relations between Alternatives :
 A Preference where there is no "Equivalence" relation between Alternatives. +
 The only possible relation is "Greater than".
 
+image:./assets/AntisymmetricPreferenceScheme.png[AntisymmetricPreferenceScheme]
+
 === ImmutablePreference +
 An Immutable Preference is a preference that cannot be modified. We can't add Alternatives or any relations.
 
