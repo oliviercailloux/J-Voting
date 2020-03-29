@@ -57,16 +57,19 @@ image:./assets/LinearPreferenceScheme.PNG[LinearPreferenceScheme]
 |Relevance
 
 |asGraph()
-|
-|
+|In the graph : a relation from <i>a</i> to <i>b</i> means "a is at least as good as b". This graph can't be modified, but is not necessarily immutable.
+Reflexive and transitive.
+@return the Graph corresponding to the Preference
+|To do
 
 |getAlternatives()
-|
-|
+|The returned set reads through this object: if this object is mutable, any modification to this object modifies the returned set, and conversely.
+@return alternatives's set
+|To do
 
 |getVoter()
-|
-|
+|@return <code>Voter</code> instance of the preference, Returns the voter 0 if no specific voter is associated to this preference
+|To do
 
 |asStrictGraph()
 | This method is going to be implemented in the Java iteration, and so its contract.
@@ -97,6 +100,31 @@ image:./assets/LinearPreferenceScheme.PNG[LinearPreferenceScheme]
 |setAsLeastAsGood(Alternative a1, Alternative a2)
 | Adds an edge from an alternative a1 to an alternative a2, so that a1 is asleast as good as a2 (a1 >= a2). 
 | Similarly, the method does not deal with the fact that when an alternative is not in the graph it must be added. 
+
+|===
+
+=== *MutableAntiSymmetricPreference*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+|Relevance
+
+|asMutableGraph()
+| This graph is not necessarily transitively closed and not necessarily reflexive. This method might refuse that an edge be added that would result in the transitive closure violating anti-symmetry, though it will not necessarily check (but it is guaranteed to check if asGraph() has been called previously). If such a situation happens, and is not detected (thus implying that asGraph() has never been called), an exception will be raised the first time asGraph() will be called, unless possibly the transitive closure no more violates anti-symmetry at that time (behavior is undefined in such a case).
+| Not Ok. The exception is not raised.
+
+|addAlternative(Alternative a)
+| Adds an alternative to the Preference. This alternative is not preferred to any other of the preference, it is being added isolated.
+| Ok.
+
+|addStrictPreference(Alternative a1, Alternative a2)
+| Adds an edge from a1 to a2, so that a1 is preferred to a2 (a1 > a2). If one of them is not in the graph, they are added.
+Graph is rearranged : a transitive closure is applied to it
+@param a1 preferred alternative to a2
+@param a2 "lower" alternative
+| Ok.
 
 |===
 
