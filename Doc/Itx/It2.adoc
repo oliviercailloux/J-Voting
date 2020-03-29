@@ -19,7 +19,7 @@
    ** Contracts list for each method from the different interfaces of the diagram
    ** Reflexion on the good implementation of the code : does it verifiy the announced contract? 
    ** Display of graphical examples to facilitate vocabulary manipulation
-   ** Display of a schematic scenario of J-Voting in the README.adoc to improve the reader's comprehension before beginning
+* Display of a schematic scenario of J-Voting in the README.adoc to improve the reader's comprehension before beginning
 
 
 
