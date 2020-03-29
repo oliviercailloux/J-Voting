@@ -11,9 +11,9 @@
 image:./assets/j-voting-example.png[InterfacesProfilesDiagram]
 
 
-==== Now there are many diffrent types of preferences or profiles in j-voting.
+==== Now there are many different types of preferences or profiles in J-Voting.
 
-=== *Click on the following links to learn more about those topics in J-Voting :*
+== *Click on the following links to learn more about those topics in J-Voting :*
 
 === link:preferenceInterfaces.adoc[The notion of Preferences]
 === link:profileInterfaces.adoc[The notion of Profile]
