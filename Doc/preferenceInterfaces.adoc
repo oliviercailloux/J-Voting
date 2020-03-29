@@ -39,9 +39,12 @@ An Immutable Preference is a preference that cannot be modified. We can't add Al
 An ImmutablePreference where all the Alternatives have a two-to-one relation. +
 A CompletePreference represents a complete preorder, also called a weak order: for each couple of alternatives (a,b) we can find an order a>=b or b>=a.
  
+image:./assets/CompletePreferenceScheme.PNG[CompletePreferenceScheme]
+
 === LinearPreference +
 A linear preference is an antisymmetric complete preference. A linear preference represents a linear order, or equivalently an antisymmetric complete order, or also equivalently, the reduction of a weak-order.
 
+image:./assets/LinearPreferenceScheme.PNG[LinearPreferenceScheme]
 
 == Preferences methods analysis +
 
