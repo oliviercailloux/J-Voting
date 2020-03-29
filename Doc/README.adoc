@@ -7,7 +7,7 @@
 - *A voter* is someone who emitted a preference. 
 - *A profile* gathers all the voters linked to their preference. 
 
-=== A simple J-Voting scenario 
+=== Example of a simple J-Voting scenario 
 image:./assets/j-voting-example.png[InterfacesProfilesDiagram]
 
 

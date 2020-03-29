@@ -28,7 +28,7 @@ Returns an asymetric transitive graph which is an asGraph sub graph. (It contain
 
 
 Overall goal of the iteration : +
-Initiate the Preferences code consolidation before making futur improvements on the Profiles part.
+Initiate the Preferences code consolidation (where we found inconsistencies in the relevance) before making futur improvements on the Profiles part.
 
 
 
