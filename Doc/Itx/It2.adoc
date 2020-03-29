@@ -1,16 +1,16 @@
-= [.underline]#Iteration 2#
+= Iteration 2
 
-== pass:[<u>First part of missions : correction of Iteration 1 following your feedback</u>]+
+== First part of missions : correction of Iteration 1 following your feedback +
 
 * Useless compartments masking, hierarchy of papyrus models improvement and removal of the 'private' label from some operations if no apparent reason : _Pierre and Thomas_
 
 * Check and removal of useless types : _Pierre and Jade_
 
-* Update of the README in Doc/., removal of It1.html : _Julien_
+* Update of the README in Doc/. and removal of It1.html : _Julien_
 
 
 
-== [.underline] #Second part of missions : additional information# +
+==  Second part of missions : additional information +
 
 === Pair 1 : _Julien Chil Hagopian & Thomas Daille_
 * Addition of brief comments on the Profile Papyrus diagram 
@@ -35,6 +35,6 @@
 
 * Elaboration of the Iteration files : _Jade_
 
-* Elaboration of the README.adoc planning.
+* Elaboration of the README.adoc planning : 
 
 
