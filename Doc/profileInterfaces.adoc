@@ -13,21 +13,6 @@ A profile is a list of all the alternatives ranking made by each indivual in a s
 == Complete profile +
 A profile is consireded as complete if all the voters produced their preferences according to *the same set of alternatives*. 
 
-.Complete profile
-====
-* Voter 1
-** Alternative 1  *>*  Alternative 2
-** Alternative 2  *>*  Alternative 3
-
-* VOter 2
-** Alternative 1  *<*  Alternative 2
-** Alternative 3  *=*  Alternative 2
-
-* Voter 3
-** Alternative 3  *<*  Alternative 1
-** Alternative 1  *>*  Alternative 2
-====
-
 image:./assets/CompleteProfileScheme.PNG[CompleteProfileScheme]
 
 == Incomplete profile +
