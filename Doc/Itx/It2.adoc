@@ -1,0 +1,40 @@
+= Iteration 2
+
+== First part of missions : correction of Iteration 1 following your feedback +
+
+* Useless compartments masking, hierarchy of papyrus models improvement and removal of the 'private' label from some operations if no apparent reason : _Pierre and Thomas_
+
+* Check and removal of useless types : _Pierre and Jade_
+
+* Update of the README in Doc/., removal of It1.html : _Julien_
+
+
+
+== Second part of missions : additional information +
+
+=== Pair 1 : _Julien Chil Hagopian & Thomas Daille_
+* Addition of brief comments on the Profile Papyrus diagram 
+* Improvement of the Ascii Doctor documentation about the Profile diagram :
+   ** Addition of a PNG image of the diagram
+   ** Contracts list for each method from the different interfaces of the diagram.
+   ** Reflexion on the good implementation of the code : does it verifiy the announced contract? 
+   ** Display of graphical examples to facilitate vocabulary manipulation
+
+
+
+=== Triplet 2 : _Léo Geindre, Jade Nizard and Pierre Rochedy_
+* Addition of brief comments on the Preferences Papyrus diagram 
+* Improvement of the Ascii Doctor documentation about the Preferences diagram :
+   ** Addition of a PNG image of the diagram
+   ** Contracts list for each method from the different interfaces of the diagram.
+   ** Reflexion on the good implementation of the code : does it verifiy the announced contract? 
+  ** Display of graphical examples to facilitate vocabulary manipulation
+
+  
+  
+
+* Elaboration of the Iteration files : _Jade_
+
+* Elaboration of the README.adoc planning.
+
+
