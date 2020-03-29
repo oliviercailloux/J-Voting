@@ -137,7 +137,7 @@ Graph is rearranged : a transitive closure is applied to it
 
 |asGraph()
 | Returns the Graph corresponding to the Preference. This graph is immutable, reflexive and transitive.
-| OK.
+| OK. However, the method doesn't check the transitivity and reflexivity.
 
 |getAlternatives()
 | Returns an alternatives's set which is immutable.
