@@ -28,7 +28,7 @@ image:./assets/StrictProfileScheme.PNG[align="center"]
 
 == Profile methods analysis +
 
-==== *ProfileI*
+=== *ProfileI*
 
 [cols="1,1,2", options="header"] 
 |===
@@ -102,7 +102,7 @@ image:./assets/StrictProfileScheme.PNG[align="center"]
 | It might be a good idea to modify the returns because "toi", "soi", "toc", "soc" are not very clear terms.
 |===
 
-==== *Profile*
+=== *Profile*
 
 [cols="1,1,2", options="header"] 
 |===
@@ -115,7 +115,7 @@ image:./assets/StrictProfileScheme.PNG[align="center"]
 | Ok.
 |===
 
-==== *StrictProfileI*
+=== *StrictProfileI*
 
 [cols="1,1,2", options="header"] 
 |===
@@ -152,7 +152,7 @@ Thus the name "destination" would be more approriate for the parameter.
 
 
 
-==== *StrictProfile*
+=== *StrictProfile*
 
 [cols="1,1,2", options="header"] 
 |===
