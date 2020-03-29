@@ -34,7 +34,7 @@ Voter's preferences : AntiSymmetric</body>
           <body>List of alternatives</body>
         </ownedComment>
         <ownedComment xmi:type="uml:Comment" xmi:id="_kAObwHEcEeqUv4VtPCytLw">
-          <body>We can add a alternative and relations between them</body>
+          <body>We can add an alternative and relations between them</body>
         </ownedComment>
         <ownedComment xmi:type="uml:Comment" xmi:id="_tc-qEHEcEeqUv4VtPCytLw">
           <body>No two alternatives are equally prefered</body>
