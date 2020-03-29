@@ -1,6 +1,6 @@
-= Iteration 2
+= [.underline]#Iteration 2#
 
-== First part of missions : correction of Iteration 1 following your feedback +
+== [.underline] #First part of missions : correction of Iteration 1 following your feedback# +
 
 * Useless compartments masking, hierarchy of papyrus models improvement and removal of the 'private' label from some operations if no apparent reason : _Pierre and Thomas_
 
@@ -10,7 +10,7 @@
 
 
 
-== Second part of missions : additional information +
+== [.underline] #Second part of missions : additional information# +
 
 === Pair 1 : _Julien Chil Hagopian & Thomas Daille_
 * Addition of brief comments on the Profile Papyrus diagram 
