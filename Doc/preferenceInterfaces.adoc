@@ -21,8 +21,9 @@ You can also add two relations between Alternatives :
 * The second one is "Equivalence".
 
 === AntiSymmetricPreference +
-A Preference where there is no "Equivalence" relation between Alternatives. +
 The only possible relation is "Greater than".
+
+image:./assets/AntisymmetricPreferenceScheme.PNG[AntisymmetricPreferenceScheme]
 
 === ImmutablePreference +
 An Immutable Preference is a preference that cannot be modified. We can't add Alternatives or any relations.
@@ -34,12 +35,15 @@ An Immutable Preference is a preference that cannot be modified. We can't add Al
 // AntiSymmetricPreference + ImmutablePreference
 
 === CompletePreference +
-An ImmutablePreference where all the Alternatives have a two-to-one relation. +
-A CompletePreference represents a complete preorder, also called a weak order: for each couple of alternatives (a,b) we can find an order a>=b or b>=a.
+An ImmutablePreference where all the Alternatives have a two-to-one relation for each couple. +
+A CompletePreference represents a complete preorder, also called a weak order.
  
+image:./assets/CompletePreferenceScheme.PNG[CompletePreferenceScheme]
+
 === LinearPreference +
 A linear preference is an antisymmetric complete preference. A linear preference represents a linear order, or equivalently an antisymmetric complete order, or also equivalently, the reduction of a weak-order.
 
+image:./assets/LinearPreferenceScheme.PNG[LinearPreferenceScheme]
 
 == Preferences methods analysis +
 
@@ -52,16 +56,19 @@ A linear preference is an antisymmetric complete preference. A linear preference
 |Relevance
 
 |asGraph()
-|
-|
+|In the graph : a relation from a to b means "a is at least as good as b". This graph can't be modified, but is not necessarily immutable.
+Reflexive and transitive.
+@return the Graph corresponding to the Preference
+|To do (check all overide of this methode)
 
 |getAlternatives()
-|
-|
+|The returned set reads through this object: if this object is mutable, any modification to this object modifies the returned set, and conversely.
+@return alternatives's set
+|To do (check all overide of this methode)
 
 |getVoter()
-|
-|
+|@return Voter instance of the preference, Returns the voter 0 if no specific voter is associated to this preference
+|To do (check all overide of this methode)
 
 |asStrictGraph()
 | This method is going to be implemented in the Java iteration, and so its contract.
@@ -95,6 +102,31 @@ A linear preference is an antisymmetric complete preference. A linear preference
 
 |===
 
+=== *MutableAntiSymmetricPreference*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+|Relevance
+
+|asMutableGraph()
+| This graph is not necessarily transitively closed and not necessarily reflexive. This method might refuse that an edge be added that would result in the transitive closure violating anti-symmetry, though it will not necessarily check (but it is guaranteed to check if asGraph() has been called previously). If such a situation happens, and is not detected (thus implying that asGraph() has never been called), an exception will be raised the first time asGraph() will be called, unless possibly the transitive closure no more violates anti-symmetry at that time (behavior is undefined in such a case).
+| Not Ok. The exception is not raised.
+
+|addAlternative(Alternative a)
+| Adds an alternative to the Preference. This alternative is not preferred to any other of the preference, it is being added isolated.
+| Ok.
+
+|addStrictPreference(Alternative a1, Alternative a2)
+| Adds an edge from a1 to a2, so that a1 is preferred to a2 (a1 > a2). If one of them is not in the graph, they are added.
+Graph is rearranged : a transitive closure is applied to it
+@param a1 preferred alternative to a2
+@param a2 "lower" alternative
+| Ok.
+
+|===
+
 === *ImmutablePreference*
 
 [cols="1,1,2", options="header"] 
@@ -105,7 +137,7 @@ A linear preference is an antisymmetric complete preference. A linear preference
 
 |asGraph()
 | Returns the Graph corresponding to the Preference. This graph is immutable, reflexive and transitive.
-| OK.
+| OK. However, the method doesn't check the transitivity and reflexivity.
 
 |getAlternatives()
 | Returns an alternatives's set which is immutable.
@@ -145,7 +177,6 @@ A linear preference is an antisymmetric complete preference. A linear preference
 
 
 === *LinearPreference*
-A linear preference is an antisymmetric complete preference. A linear preference represents a linear order, or equivalently an antisymmetric complete order, or also equivalently, the reduction of a weak-order.
 
 [cols="1,1,2", options="header"] 
 |===

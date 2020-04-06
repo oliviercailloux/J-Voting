@@ -28,7 +28,7 @@ image:./assets/StrictProfileScheme.PNG[align="center"]
 
 == Profile methods analysis +
 
-==== *ProfileI*
+=== *ProfileI*
 
 [cols="1,1,2", options="header"] 
 |===
@@ -89,20 +89,20 @@ image:./assets/StrictProfileScheme.PNG[align="center"]
 | Return the stricter profile possible.
 | For us the code doesn't match with the contract. This method should return a profile who has as many preferences as possible that are antysimetric. For us, a restriction (the name of the method) is modifing an existing thing to match with new constraints. We don't see the notion of modification in the code but only the notion of creation.
 
-|getNbAlternatives
+|getNbAlternatives()
 | Return the number of alternatives in the profile.
 | Ok.
 
-|getAlternatives
+|getAlternatives()
 | Return a set of all the alternatives in the profile.
 | Ok.
 
-|getFormat
+|getFormat()
 | Return the format of the Profile when restricted.
 | It might be a good idea to modify the returns because "toi", "soi", "toc", "soc" are not very clear terms.
 |===
 
-==== *Profile*
+=== *Profile*
 
 [cols="1,1,2", options="header"] 
 |===
@@ -115,7 +115,7 @@ image:./assets/StrictProfileScheme.PNG[align="center"]
 | Ok.
 |===
 
-==== *StrictProfileI*
+=== *StrictProfileI*
 
 [cols="1,1,2", options="header"] 
 |===
@@ -152,7 +152,7 @@ Thus the name "destination" would be more approriate for the parameter.
 
 
 
-==== *StrictProfile*
+=== *StrictProfile*
 
 [cols="1,1,2", options="header"] 
 |===
@@ -160,18 +160,18 @@ Thus the name "destination" would be more approriate for the parameter.
 |Contract
 |Relevance
 
-|getIthAlternatives(int i);
+|getIthAlternatives(int i)
 | Return a list of all the alternatives at a certain position in all the voters preferences. 
 | Why would StrictProfileI declare the same function having just the returned alternatives type changed as string. +
 Factorisation might be possible.
 
-|getIthAlternativesOfUniquePreferences(int i);
+|getIthAlternativesOfUniquePreferences(int i)
 | Return a list of all the alternatives at a certain position in all the voters unique preferences. 
 | Again StrictProfileI has a very similar method with only the return type changed. +
 Factorisation might be possible.
 
 
-| writeToSOC(OutputStream output);
+| writeToSOC(OutputStream output)
 | Writes the strict and complete profile into a new file with the SOC format.
 | SOC format needs to be defined in order to be sure that the computed report is indeed in this format. +
 Again, for us, the name "destination" would be more approriate for the parameter.
