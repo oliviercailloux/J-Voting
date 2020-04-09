@@ -5,7 +5,7 @@
 This format allows non strict preference. The rank of each alternative in the preference is filled in for every voter.
 
 Example Ranks format :
-link:src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/rank_format.ods[src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/rank_format.ods]
+link:../src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/rank_format.ods[rank_format.ods]
 
 Example Rank format reduced : 
 link:../src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/rank_format_reduced.ods[rank_format_reduced.ods]
@@ -37,10 +37,10 @@ link:../src/test/resources/io/github/oliviercailloux/j_voting/profiles/managemen
 This format allows only strict preference. The preference for each voter is filled in.
 
 Example VotersToRankings format : 
-link:src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/profile_format_strict.ods[link=src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/profile_format_strict.ods]
+link:../src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/profile_format_strict.ods[profile_format_strict.ods]
 
 Example VotersToRankings format reduced : 
-link:src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/profile_format_strict_reduced.ods[link=src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/profile_format_strict_reduced.ods]
+link:../src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/profile_format_strict_reduced.ods[profile_format_strict_reduced.ods]
 
 .Example of Profile format
 [options="header"]
@@ -70,7 +70,7 @@ This format is very useful to represent a lot of data.
 This format can be improved by removing the 5 first lines.
 
 Example CountOfRankings format : 
-link:src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/election_data_format.ods[src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/election_data_format.ods]
+link:../src/test/resources/io/github/oliviercailloux/j_voting/profiles/management/election_data_format.ods[election_data_format.ods]
 
 .Example of Election data format
 |=========
