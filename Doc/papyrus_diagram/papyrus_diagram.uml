@@ -54,7 +54,18 @@ Voter's preferences : AntiSymmetric</body>
           </ownedComment>
         </packagedElement>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_VLu44HgQEeqXB-JP2owAEA" name="GUIClassDiagram"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_VLu44HgQEeqXB-JP2owAEA" name="GUIClassDiagram">
+        <packagedElement xmi:type="uml:Package" xmi:id="_vd5ZkHqLEeqm79lOJbMtXA" name="Comments">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xqxg0HqLEeqm79lOJbMtXA">
+            <body>SOI = Strict Incomplete Profile&#xD;
+</body>
+          </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_8AFu0HqLEeqm79lOJbMtXA">
+            <body>SOC = Strict Complete Profile&#xD;
+</body>
+          </ownedComment>
+        </packagedElement>
+      </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_DFzwcGz7Eeqxlu-Q2xgkvw" name="AdditionalType">
         <packagedElement xmi:type="uml:Package" xmi:id="_O-N4cGbSEeqrtc6dy-mPpg" name="importedTypes">
           <packagedElement xmi:type="uml:Package" xmi:id="_O-PtoGbSEeqrtc6dy-mPpg" name="org">
@@ -6483,7 +6494,7 @@ Voter's preferences : AntiSymmetric</body>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_cIIGcHqFEeqm79lOJbMtXA" name="UseCaseDiagram">
       <packagedElement xmi:type="uml:Actor" xmi:id="_jftYAHqFEeqm79lOJbMtXA" name="User"/>
-      <packagedElement xmi:type="uml:Package" xmi:id="_wnPZgHqGEeqm79lOJbMtXA" name="GUI">
+      <packagedElement xmi:type="uml:Package" xmi:id="_wnPZgHqGEeqm79lOJbMtXA" name="GUI usage system">
         <packagedElement xmi:type="uml:UseCase" xmi:id="_2DMr4HqGEeqm79lOJbMtXA" name="View a SOC profile">
           <include xmi:type="uml:Include" xmi:id="_Nnif8HqHEeqm79lOJbMtXA" addition="_KTkNwHqHEeqm79lOJbMtXA"/>
         </packagedElement>
@@ -6491,20 +6502,22 @@ Voter's preferences : AntiSymmetric</body>
           <include xmi:type="uml:Include" xmi:id="_nlaXMHqHEeqm79lOJbMtXA" addition="_R70YkHqHEeqm79lOJbMtXA"/>
           <include xmi:type="uml:Include" xmi:id="_n_N-UHqHEeqm79lOJbMtXA" addition="_WP4OwHqHEeqm79lOJbMtXA"/>
           <include xmi:type="uml:Include" xmi:id="_oZ5IIHqHEeqm79lOJbMtXA" addition="_Y9uVEHqHEeqm79lOJbMtXA"/>
+          <include xmi:type="uml:Include" xmi:id="_4VGcEHqREeqm79lOJbMtXA" addition="_0ykJcHqREeqm79lOJbMtXA"/>
         </packagedElement>
         <packagedElement xmi:type="uml:UseCase" xmi:id="_KTkNwHqHEeqm79lOJbMtXA" name="Select a SOC file"/>
         <packagedElement xmi:type="uml:UseCase" xmi:id="_R70YkHqHEeqm79lOJbMtXA" name="Create a SOC file"/>
         <packagedElement xmi:type="uml:UseCase" xmi:id="_WP4OwHqHEeqm79lOJbMtXA" name="Create alternatives"/>
         <packagedElement xmi:type="uml:UseCase" xmi:id="_Y9uVEHqHEeqm79lOJbMtXA" name="Create complete preferences"/>
-        <packagedElement xmi:type="uml:UseCase" xmi:id="_FQ-oMHqIEeqm79lOJbMtXA" name="Row visualization">
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_FQ-oMHqIEeqm79lOJbMtXA" name="Rows visualization">
           <generalization xmi:type="uml:Generalization" xmi:id="_Uy6FAHqIEeqm79lOJbMtXA" general="_2DMr4HqGEeqm79lOJbMtXA"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:UseCase" xmi:id="_OnbaMHqIEeqm79lOJbMtXA" name="Column visualization">
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_OnbaMHqIEeqm79lOJbMtXA" name="Columns visualization">
           <generalization xmi:type="uml:Generalization" xmi:id="_VTr20HqIEeqm79lOJbMtXA" general="_2DMr4HqGEeqm79lOJbMtXA"/>
         </packagedElement>
         <packagedElement xmi:type="uml:UseCase" xmi:id="_RZkKoHqIEeqm79lOJbMtXA" name="Wrapped visualization">
           <generalization xmi:type="uml:Generalization" xmi:id="_V-8aUHqIEeqm79lOJbMtXA" general="_2DMr4HqGEeqm79lOJbMtXA"/>
         </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_0ykJcHqREeqm79lOJbMtXA" name="Create voters"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_8_SUQHqGEeqm79lOJbMtXA" memberEnd="_8_Ya4nqGEeqm79lOJbMtXA _8_Ya43qGEeqm79lOJbMtXA">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8_Ya4HqGEeqm79lOJbMtXA" source="org.eclipse.papyrus">
