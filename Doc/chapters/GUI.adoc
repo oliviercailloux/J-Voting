@@ -1,4 +1,4 @@
-= 2.1 GUI understanding ?
+= 2.1 GUI understanding 
 
 ====== Previous chapter link:./profileInterfaces.adoc[1.2 Profile Interfaces]
 ====== Next chapter link:./FilesFormats.adoc[2.2 FilesFormats]
