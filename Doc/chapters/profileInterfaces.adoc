@@ -1,7 +1,7 @@
 = 1.2 Profile Interfaces documentation
 
 ====== Previous chapter link:./preferenceInterfaces.adoc[1.1 Preference Interfaces]
-====== Next chapter link:./preferenceInterfaces.adoc[2.1 GUI]
+====== Next chapter link:./GUI.adoc[2.1 GUI]
 ====== link:../README.adoc[Summary]
 
 === Profile interfaces Diagram
