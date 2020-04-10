@@ -13,12 +13,12 @@ image:./assets/j-voting-example.png[InterfacesProfilesDiagram]
 
 ==== Now there are many different types of preferences or profiles in J-Voting.
 
-== *Summary of J-Voting documentation:*
+== *Table of Contents of J-Voting documentation:*
 
 === Titre 1
 ==== link:chapters/preferenceInterfaces.adoc[1.1 The notion of Preferences]
 ==== link:chapters/profileInterfaces.adoc[1.2 The notion of Profile]
 
 === Titre 2
-==== link:chapters/profileInterfaces.adoc[2.1 The notion of Profile]
-==== link:chapters/profileInterfaces.adoc[2.2 The notion of Profile]
+==== link:chapters/GUI.adoc[2.1 Graphical User Interface]
+==== link:chapters/GUIInputFiles.adoc[2.2 GUI Input Files]
