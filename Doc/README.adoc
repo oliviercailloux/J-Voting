@@ -15,10 +15,10 @@ image:./assets/j-voting-example.png[InterfacesProfilesDiagram]
 
 == *Table of Contents of J-Voting documentation:*
 
-=== Titre 1
+=== Basics
 ==== link:chapters/preferenceInterfaces.adoc[1.1 The notion of Preferences]
 ==== link:chapters/profileInterfaces.adoc[1.2 The notion of Profile]
 
-=== Titre 2
-==== link:chapters/GUI.adoc[2.1 Graphical User Interface]
+=== Graphical User Interface (GUI)
+==== link:chapters/GUI.adoc[2.1 GUI understanding ]
 ==== link:chapters/GUIInputFiles.adoc[2.2 GUI Input Files]
