@@ -14,4 +14,4 @@ Here is an example of a .soc file and its meaning.
 image:../assets/SOCFile.PNG[SOCFile]
 
 
-Some other formats exist but will deal with them later _(you can have a look to the link:./FilesFormats.adoc[files formats documentation]_
+Some other formats exist but will deal with them later _(you can have a look to the link:./FilesFormats.adoc[files formats documentation])_
