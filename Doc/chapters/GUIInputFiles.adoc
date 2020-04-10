@@ -3,6 +3,8 @@
 ====== Previous chapter link:./GUI.adoc[2.1 GUI understanding]
 ====== link:../README.adoc[Summary]
 
+=== SOC file
+
 Currently, the application only allows us to use .soc files as input.
 A .soc file represents a strict complete profile _(for more information see link:./ProfileInterface.adoc[2.1])_.
 
@@ -10,3 +12,6 @@ If you want to create your own one, you have to imagine a profile and to follow 
 Here is an example of a .soc file and its meaning.
 
 image:../assets/SOCFile.PNG[SOCFile]
+
+
+Some other formats exist but will deal with them later _(you can have a look to the link:./FilesFormats.adoc[files formats documentation]_
