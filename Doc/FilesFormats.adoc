@@ -1,4 +1,4 @@
-= Differents formats for _voting data_
+= Differents formats to create a .soc file (_voting data_)
 
 == RanksFormat (Columns visualization)
 
