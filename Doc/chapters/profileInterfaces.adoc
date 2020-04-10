@@ -1,6 +1,8 @@
-= Profile Interfaces documentation
+= 1.2 Profile Interfaces documentation
 
-====== Before jumping into the profiles we strongly advice you to read link:./preferenceInterfaces.adoc[the preference section].
+====== Previous chapter link:./preferenceInterfaces.adoc[1.1 Preference Interfaces].
+====== link:../README.adoc[Summary].
+====== Next chapter link:./preferenceInterfaces.adoc[2.1 GUI].
 
 === Profile interfaces Diagram
 

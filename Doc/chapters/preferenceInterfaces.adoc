@@ -1,8 +1,6 @@
-
-= Preferences Interfaces Documentation
+= 1.1 Preferences Interfaces Documentation
 
 ====== After reading the preferences documentation, we invite you to read link:./profileInterfaces.adoc[the profil section].
-
 
 === Preferences Interfaces Diagram
 

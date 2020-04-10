@@ -1,4 +1,4 @@
-= Differents formats for _voting data_
+= 2.2 Differents formats for _voting data_
 
 == RanksFormat (Columns visualization)
 

@@ -1,4 +1,4 @@
-= GUI Documentation
+= 2.1 GUI Documentation
 
 ====== Before reading this documentation, we invite you to read link:./profileInterfaces.adoc[the profil section] and link:preferenceInterfaces.adoc[./the preference section].
 
