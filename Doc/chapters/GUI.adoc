@@ -47,5 +47,5 @@ image:../assets/GUIUseCaseDiagram.png[GUIUseCaseDiagram]
 
 Currently, the GUI enables the user to view a SOC profile (either in rows, columns or wrapped visualization). For the moment the GUI only accepts .soc files already filled.
 
-We plan to permit the user to create a soc profile through the GUI. In other words, the user must create a link:./FilesFormats.adoc[.soc file], alternatives, voters and complete preferences.
+We plan to allow the user to create a share profile through the graphical user interface. In other words, the user should be able to create a .soc file, alternatives, voters and complete preferences. Therefore, we plan to implement additional methods in the GUI classes.
 
