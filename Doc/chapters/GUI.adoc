@@ -1,6 +1,8 @@
 = 2.1 GUI Documentation
 
-====== Before reading this documentation, we invite you to read link:./profileInterfaces.adoc[the profil section] and link:preferenceInterfaces.adoc[./the preference section].
+====== Previous chapter link:./profileInterfaces.adoc[1.2 Profile Interfaces]
+====== Next chapter link:./FilesFormats.adoc[2.2 FilesFormats]
+====== link:../README.adoc[Summary]
 
 === GUI Class Diagram
 

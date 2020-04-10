@@ -1,5 +1,8 @@
 = 2.2 Differents formats for _voting data_
 
+====== Previous chapter link:./GUI.adoc[2.1 GUI]
+====== link:../README.adoc[Summary]
+
 == RanksFormat (Columns visualization)
 
 This format allows non strict preference. The rank of each alternative in the preference is filled in for every voter.
