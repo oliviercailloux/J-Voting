@@ -5,8 +5,8 @@
 [cols="1,1,2", options="header"] 
 |===
 |Previous chapter link:./preferenceInterfaces.adoc[1.1 Preference Interfaces]
-|link:../README.adoc[Summary]
-|Next chapter link:./preferenceInterfaces.adoc[2.1 GUI]
+|                   link:../README.adoc[Summary]
+|        Next chapter link:./preferenceInterfaces.adoc[2.1 GUI]
 |===
 
 |===
