@@ -1,12 +1,12 @@
 
 = Preferences Interfaces Documentation
 
-====== After reading the preferences documentation, we invite you to read link:profileInterfaces.adoc[the profil section].
+====== After reading the preferences documentation, we invite you to read link:./profileInterfaces.adoc[the profil section].
 
 
 === Preferences Interfaces Diagram
 
-image:./assets/InterfacesPreferencesDiagram.png[InterfacesPreferencesDiagram]
+image:../assets/InterfacesPreferencesDiagram.png[InterfacesPreferencesDiagram]
 
 
 === Preference definition +
@@ -23,7 +23,7 @@ You can also add two relations between Alternatives :
 === AntiSymmetricPreference +
 The only possible relation is "Greater than".
 
-image:./assets/AntisymmetricPreferenceScheme.PNG[AntisymmetricPreferenceScheme]
+image:../assets/AntisymmetricPreferenceScheme.PNG[AntisymmetricPreferenceScheme]
 
 === ImmutablePreference +
 An Immutable Preference is a preference that cannot be modified. We can't add Alternatives or any relations.
@@ -38,12 +38,12 @@ An Immutable Preference is a preference that cannot be modified. We can't add Al
 An ImmutablePreference where all the Alternatives have a two-to-one relation for each couple. +
 A CompletePreference represents a complete preorder, also called a weak order.
  
-image:./assets/CompletePreferenceScheme.PNG[CompletePreferenceScheme]
+image:../assets/CompletePreferenceScheme.PNG[CompletePreferenceScheme]
 
 === LinearPreference +
 A linear preference is an antisymmetric complete preference. A linear preference represents a linear order, or equivalently an antisymmetric complete order, or also equivalently, the reduction of a weak-order.
 
-image:./assets/LinearPreferenceScheme.PNG[LinearPreferenceScheme]
+image:../assets/LinearPreferenceScheme.PNG[LinearPreferenceScheme]
 
 == Preferences methods analysis +
 
