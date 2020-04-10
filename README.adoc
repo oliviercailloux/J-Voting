@@ -17,18 +17,15 @@ The code is hereby published under the MIT License, with the permission of the c
 
 *Jade & Thomas* :
 
-- Add asSctrictGraph() method in the Preference : + 
-Returns an asymetric transitive graph which is an asGraph sub graph. (It contains the (a, b) pairs but not (b, a) pairs in order to have a > b).
+A faire
 
 
 *Pierre, Léo and Julien* : 
 
-- Add equals method in ImmutablePreference. +
-- Investigation phase on ImmutablePreference and CompletePreference Interfaces (Finding bugs or irrelevances and start correcting them).
+A faire
 
 
-Overall goal of the iteration : +
-Initiate the Preferences code consolidation (where we found inconsistencies in the relevance) before making futur improvements on the Profiles part.
+
 
 
 
