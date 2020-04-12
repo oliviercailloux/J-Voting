@@ -1592,7 +1592,7 @@
     <element xmi:type="uml:Interaction" href="papyrus_diagram.uml#_p2RqoHwIEeqAHPJ5yK7igg"/>
     <edges xmi:type="notation:Connector" xmi:id="_SHvjUHwJEeqAHPJ5yK7igg" type="Message_SynchEdge" source="_DJgpcXwJEeqAHPJ5yK7igg" target="_Ln7AMHwJEeqAHPJ5yK7igg">
       <children xmi:type="notation:DecorationNode" xmi:id="_SHvjU3wJEeqAHPJ5yK7igg" type="Message_SynchNameLabel">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_SHvjVHwJEeqAHPJ5yK7igg" x="1" y="-13"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_SHvjVHwJEeqAHPJ5yK7igg" x="3" y="-15"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_SHvjVXwJEeqAHPJ5yK7igg" type="Message_SynchStereotypeLabel">
         <layoutConstraint xmi:type="notation:Location" xmi:id="_SHvjVnwJEeqAHPJ5yK7igg" x="1" y="-33"/>
