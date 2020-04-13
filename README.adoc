@@ -17,7 +17,19 @@ The code is hereby published under the MIT License, with the permission of the c
 
 *Jade & Thomas* :
 
-A faire
+Our objective was to replace OldCompletePreferenceImpl used in the whole project by CompletePreferenceImpl. 
+
+To do so, we had to implement methods which were in OldCompletePreferenceImpl but not in CompletePreferenceImpl. In this iteration we have created several methods :
+
+* size() returns the size of the preference, i.e. the number of Sets in it.
+* alternativeNumber() returns the number of alternatives in the preference.
+* isStrict() says whether the preference is strict or not (no alternatives having the same rank).
+* toAlternativeSet() returns a set of alternatives containing all the alternatives of the preference (with no duplicates).
+* contains() says whether the preference contains the given alternative.
+
+We have also made tests in relations with them.
+
+During this task, we removed few warnings in CompletePreferenceTest and in OldCompletePreferenceImpl.
 
 
 *Pierre, Léo and Julien* : 
