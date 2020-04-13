@@ -26,6 +26,8 @@ To do so, we had to implement methods which were in OldCompletePreferenceImpl bu
 * isStrict() says whether the preference is strict or not (no alternatives having the same rank).
 * toAlternativeSet() returns a set of alternatives containing all the alternatives of the preference (with no duplicates).
 * contains() says whether the preference contains the given alternative.
+* isIncludedIn() says wether the preference given contains the current preference (all its alternatives).
+* hasSameAlternatives() says wether the two prefenrences have exactly the same alternatives (without considering the order).
 
 We have also made tests in relations with them.
 
