@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" theme="clean">
+  <widgets xsi:type="model:Window" id="1" x="96" y="80" width="489" text="J-voting client" measuredWidth="489" measuredHeight="300" verticalScrollbar="true"/>
+  <widgets xsi:type="model:List" id="2" x="106" y="109" text="[] rows&#xA;[] columns&#xA;[x] wrapped&#xA;" measuredWidth="76" measuredHeight="70" border="false" alpha="0">
+    <font/>
+    <items link="seeProfileRows.screen" x="0" y="2" width="76" height="22" text="[] rows"/>
+    <items link="seeProfileColumns.screen" x="0" y="24" width="76" height="22" text="[] columns"/>
+    <items x="0" y="46" width="76" height="22" text="[x] wrapped"/>
+  </widgets>
+  <widgets xsi:type="model:Table" id="3" x="112" y="184" width="441" text="2 voters, 1 voter,1 voter,1 voter,1 voter&#xA;2,1,4,1,3&#xA;4,2,5,2,2&#xA;3,3,1,4,1&#xA;1,4,2,5,5&#xA;6,5,3,6,4&#xA;5,6,6,3,6" measuredWidth="441" measuredHeight="151" alternative="#eee" header="false">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="4" x="515" y="109" text="Back" measuredWidth="45" measuredHeight="25" link="mainMenu.screen">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="5" x="112" y="345" text="Vote" measuredWidth="43" measuredHeight="25" link="vote.screen">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

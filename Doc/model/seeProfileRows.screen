@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" theme="clean">
+  <widgets xsi:type="model:Window" id="1" x="96" y="80" width="489" text="J-voting client" measuredWidth="489" measuredHeight="300" verticalScrollbar="true"/>
+  <widgets xsi:type="model:List" id="2" x="106" y="109" text="[x] rows&#xA;[] columns&#xA;[] wrapped&#xA;" measuredWidth="76" measuredHeight="70" border="false" alpha="0">
+    <font/>
+    <items x="0" y="2" width="76" height="22" text="[x] rows"/>
+    <items link="seeProfileColumns.screen" x="0" y="24" width="76" height="22" text="[] columns"/>
+    <items link="seeProfileWrapped.screen" x="0" y="46" width="76" height="22" text="[] wrapped"/>
+  </widgets>
+  <widgets xsi:type="model:Table" id="3" x="112" y="184" width="441" text="Voter 1, 1,2,3,4,5,6&#xA;Voter 2,2,4,3,1,6,5&#xA;Voter 3,4,5,1,2,3,6&#xA;Voter 4,2,4,3,1,6,5&#xA;Voter 5,1,2,4,5,6,3&#xA;Voter 6,3,2,1,5,4,6" measuredWidth="441" measuredHeight="130" selection="0" rowHeight="20" horizontalLines="true" alternative="#eee" verticalLines="false" header="false">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="4" x="515" y="109" text="Back" measuredWidth="45" measuredHeight="25" link="mainMenu.screen">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="5" x="112" y="345" text="Vote" measuredWidth="43" measuredHeight="25" link="vote.screen">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="6" x="181" y="187" measuredWidth="16" measuredHeight="16" icon="edit (small)" link="reorganizePreference.screen"/>
+  <widgets xsi:type="model:Icon" id="7" x="181" y="208" measuredWidth="16" measuredHeight="16" icon="edit (small)" link="reorganizePreference.screen"/>
+  <widgets xsi:type="model:Icon" id="8" x="181" y="232" measuredWidth="16" measuredHeight="16" icon="edit (small)" link="reorganizePreference.screen"/>
+  <widgets xsi:type="model:Icon" id="9" x="181" y="250" measuredWidth="16" measuredHeight="16" icon="edit (small)" link="reorganizePreference.screen"/>
+  <widgets xsi:type="model:Icon" id="10" x="181" y="272" measuredWidth="16" measuredHeight="16" icon="edit (small)" link="reorganizePreference.screen"/>
+  <widgets xsi:type="model:Icon" id="11" x="181" y="293" measuredWidth="16" measuredHeight="16" icon="edit (small)" link="reorganizePreference.screen"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>
