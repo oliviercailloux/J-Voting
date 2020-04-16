@@ -6502,22 +6502,22 @@ Voter's preferences : AntiSymmetric</body>
         </packagedElement>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_cIIGcHqFEeqm79lOJbMtXA" name="UseCaseDiagram">
+    <packagedElement xmi:type="uml:Package" xmi:id="_cIIGcHqFEeqm79lOJbMtXA" name="UseCaseDiagram" visibility="public">
       <packagedElement xmi:type="uml:Actor" xmi:id="_jftYAHqFEeqm79lOJbMtXA" name="User"/>
       <packagedElement xmi:type="uml:Package" xmi:id="_wnPZgHqGEeqm79lOJbMtXA" name="GUI usage system">
-        <packagedElement xmi:type="uml:UseCase" xmi:id="_2DMr4HqGEeqm79lOJbMtXA" name="View a SOC profile">
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_2DMr4HqGEeqm79lOJbMtXA" name="View a profile">
           <include xmi:type="uml:Include" xmi:id="_Nnif8HqHEeqm79lOJbMtXA" addition="_KTkNwHqHEeqm79lOJbMtXA"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:UseCase" xmi:id="_ExXwgHqHEeqm79lOJbMtXA" name="Create a SOC profile">
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_ExXwgHqHEeqm79lOJbMtXA" name="Create a profile">
           <include xmi:type="uml:Include" xmi:id="_nlaXMHqHEeqm79lOJbMtXA" addition="_R70YkHqHEeqm79lOJbMtXA"/>
           <include xmi:type="uml:Include" xmi:id="_n_N-UHqHEeqm79lOJbMtXA" addition="_WP4OwHqHEeqm79lOJbMtXA"/>
           <include xmi:type="uml:Include" xmi:id="_oZ5IIHqHEeqm79lOJbMtXA" addition="_Y9uVEHqHEeqm79lOJbMtXA"/>
           <include xmi:type="uml:Include" xmi:id="_4VGcEHqREeqm79lOJbMtXA" addition="_0ykJcHqREeqm79lOJbMtXA"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:UseCase" xmi:id="_KTkNwHqHEeqm79lOJbMtXA" name="Select a SOC file"/>
-        <packagedElement xmi:type="uml:UseCase" xmi:id="_R70YkHqHEeqm79lOJbMtXA" name="Create a SOC file"/>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_KTkNwHqHEeqm79lOJbMtXA" name="Select a file"/>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_R70YkHqHEeqm79lOJbMtXA" name="Create a profile file"/>
         <packagedElement xmi:type="uml:UseCase" xmi:id="_WP4OwHqHEeqm79lOJbMtXA" name="Create alternatives"/>
-        <packagedElement xmi:type="uml:UseCase" xmi:id="_Y9uVEHqHEeqm79lOJbMtXA" name="Create complete preferences"/>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_Y9uVEHqHEeqm79lOJbMtXA" name="Create preferences"/>
         <packagedElement xmi:type="uml:UseCase" xmi:id="_FQ-oMHqIEeqm79lOJbMtXA" name="Rows visualization">
           <generalization xmi:type="uml:Generalization" xmi:id="_Uy6FAHqIEeqm79lOJbMtXA" general="_2DMr4HqGEeqm79lOJbMtXA"/>
         </packagedElement>
@@ -6528,6 +6528,13 @@ Voter's preferences : AntiSymmetric</body>
           <generalization xmi:type="uml:Generalization" xmi:id="_V-8aUHqIEeqm79lOJbMtXA" general="_2DMr4HqGEeqm79lOJbMtXA"/>
         </packagedElement>
         <packagedElement xmi:type="uml:UseCase" xmi:id="_0ykJcHqREeqm79lOJbMtXA" name="Create voters"/>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_iKEPwH_gEeq2CdYuuttmvQ" name="Update a profile"/>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_uxV5UH_gEeq2CdYuuttmvQ" name="Add voters">
+          <generalization xmi:type="uml:Generalization" xmi:id="_2pI8AH_gEeq2CdYuuttmvQ" general="_iKEPwH_gEeq2CdYuuttmvQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_yBCvgH_gEeq2CdYuuttmvQ" name="Reorganize preferences">
+          <generalization xmi:type="uml:Generalization" xmi:id="_2G7m0H_gEeq2CdYuuttmvQ" general="_iKEPwH_gEeq2CdYuuttmvQ"/>
+        </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Association" xmi:id="_8_SUQHqGEeqm79lOJbMtXA" memberEnd="_8_Ya4nqGEeqm79lOJbMtXA _8_Ya43qGEeqm79lOJbMtXA">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8_Ya4HqGEeqm79lOJbMtXA" source="org.eclipse.papyrus">
@@ -6542,6 +6549,13 @@ Voter's preferences : AntiSymmetric</body>
         </eAnnotations>
         <ownedEnd xmi:type="uml:Property" xmi:id="_HsWT43qHEeqm79lOJbMtXA" name="create a soc profile" type="_ExXwgHqHEeqm79lOJbMtXA" association="_HsWT4HqHEeqm79lOJbMtXA"/>
         <ownedEnd xmi:type="uml:Property" xmi:id="_HsWT5HqHEeqm79lOJbMtXA" name="user" type="_jftYAHqFEeqm79lOJbMtXA" association="_HsWT4HqHEeqm79lOJbMtXA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_5Jq_EH_gEeq2CdYuuttmvQ" memberEnd="_5JupcH_gEeq2CdYuuttmvQ _5JvQgH_gEeq2CdYuuttmvQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_5JtbUH_gEeq2CdYuuttmvQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5JuCYH_gEeq2CdYuuttmvQ" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_5JupcH_gEeq2CdYuuttmvQ" name="user" type="_jftYAHqFEeqm79lOJbMtXA" association="_5Jq_EH_gEeq2CdYuuttmvQ"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_5JvQgH_gEeq2CdYuuttmvQ" name="update a profile" type="_iKEPwH_gEeq2CdYuuttmvQ" association="_5Jq_EH_gEeq2CdYuuttmvQ"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_ZgP3YHwIEeqAHPJ5yK7igg" name="SequenceDiagram">
