@@ -49,3 +49,9 @@ Currently, the GUI enables the user to view a SOC profile (either in rows, colum
 
 We plan to allow the user to create a share profile through the graphical user interface. In other words, the user should be able to create a .soc file, alternatives, voters and complete preferences. Therefore, we plan to implement additional methods in the GUI classes.
 
+=== GUI Modeling
+
+image:../assets/GUIMainMenu.png[GUIMainMenu]
+
+We used WireFrame Sketcher to design a modeling of our project. You can look at the interactive link:../model/storyBoard.pdf[PDF] to better understand our GUI.
+
