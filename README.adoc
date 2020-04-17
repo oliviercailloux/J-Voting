@@ -37,6 +37,7 @@ We also had to implement several methods in LinearPreferenceImpl because the pro
 * a three-arguments constructor and its factory method.
 
 During this task, we first implemented the following methods but later we realized that we could do better and easier by creating a new constructor. Therefore, those two are not used anymore.
+
 * listAlternativeToListSetAlternative() turns a List<Alternative> into a List<Set<Alternative>>.
 * createStrictCompletePreference() calls the two-arguments constructor.
 
