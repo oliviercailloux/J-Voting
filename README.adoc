@@ -26,13 +26,25 @@ To do so, we had to implement methods which were in OldCompletePreferenceImpl bu
 * isStrict() says whether the preference is strict or not (no alternatives having the same rank).
 * toAlternativeSet() returns a set of alternatives containing all the alternatives of the preference (with no duplicates).
 * contains() says whether the preference contains the given alternative.
-* isIncludedIn() says wether the preference given contains the current preference (all its alternatives).
-* hasSameAlternatives() says wether the two prefenrences have exactly the same alternatives (without considering the order).
+* isIncludedIn() says whether the preference given contains the current preference (all its alternatives).
+* hasSameAlternatives() says whether the two preferences have exactly the same alternatives (without considering the order).
+* toStricPreference() returns a LinearPreferenceImpl if the complete preference is strict.
 
-We have also made tests in relations with them.
+We also had to implement several methods in LinearPreferenceImpl because the project used an OldLinearPreference. So we managed to replace OldLinearPreference by LinearPreference by adding methods :
+
+* getAlternative() returns the alternative at the given rank.
+* sizeLinear() returns the size of the preference. In other words, the number of alternatives.
+* a three-arguments constructor and its factory method.
+
+During this task, we first implemented the following methods but later we realized that we could do better and easier by creating a new constructor. Therefore, those two are not used anymore.
+* listAlternativeToListSetAlternative() turns a List<Alternative> into a List<Set<Alternative>>.
+* createStrictCompletePreference() calls the two-arguments constructor.
+
+We have also made tests in relations with all of them.
 
 During this task, we removed few warnings in CompletePreferenceTest and in OldCompletePreferenceImpl.
 
+For the next iteration, we plan to work on replacing all the old methods by new ones in the whole project. 
 
 *Pierre, Léo and Julien* : 
 
