@@ -24,4 +24,10 @@ public interface MutableLinearPreference extends Preference{
 	 */
 	public void deleteAlternative(Alternative a);
 	
+	/**
+	 * Add an alternative from the preference
+	 * 
+	 */
+	
+	public void addAlternative(Alternative a);
 }

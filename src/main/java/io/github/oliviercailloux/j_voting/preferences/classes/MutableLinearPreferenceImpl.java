@@ -6,8 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.graph.Graph;
 import com.google.common.graph.Graphs;
+import com.google.common.graph.ImmutableGraph;
 import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
@@ -26,71 +28,65 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference{
     private static final Logger LOGGER = LoggerFactory
             .getLogger(MutableLinearPreferenceImpl.class.getName());
     
-    private MutableLinearPreferenceImpl(Voter voter, MutableGraph<Alternative> prefGraph) {
+    public MutableLinearPreferenceImpl(Voter voter, MutableGraph<Alternative> prefGraph) {
     	this.voter = voter;
     	graph = prefGraph; 
     	alternatives = graph.nodes();
     }
 
+    //faire des constructeurs given ?? comme dans MutablePreference 
+    //et mettre le constructeur au dessus en private
     
     @Override
-	public Set<Alternative> changeOrder(Set<Alternative> alternatives) {
+	public Set<Alternative> changeOrder(Set<Alternative> a) {
 		
 		return null;
 	}
 
 	@Override
 	public void deleteAlternative(Alternative a) {
-		LOGGER.debug("MutablePreferenceImpl addAlternative");
+		
+		LOGGER.debug("MutableLinearPreferenceImpl addAlternative");
         Preconditions.checkNotNull(a);
         graph.removeNode(a);
 		
 	}
 	
 	@Override
-	public MutableGraph<Alternative> asMutableGraph() {
-		return graph;
-	}
-
-	@Override
-	public void addAlternative(Alternative alternative) {
-		
+	public void addAlternative(Alternative a) {
+		LOGGER.debug("MutablePreferenceImpl addAlternative");
+        Preconditions.checkNotNull(a);
+        graph.addNode(a);
 		
 	}
 
-	@Override
-	public void addEquivalence(Alternative a1, Alternative a2) {
-		
-		
-	}
-
-	@Override
-	public void setAsLeastAsGood(Alternative a1, Alternative a2) {
-		
-		
-	}
-
-	@Override
-	public Graph<Alternative> asGraph() {
-		return graph;
-		
-		
-	}
 
 	@Override
 	public Set<Alternative> getAlternatives() {
-		return alternatives;
 		
+		LOGGER.debug("MutableLinearPreferenceImpl getAlternatives");
+		
+		if (alternatives.size() != graph.nodes().size() || !(alternatives.containsAll(graph.nodes()))) {
+        	
+			throw new IllegalStateException("An alternative must not be deleted from the set");
+        }
+		
+		return ImmutableSet.copyOf(alternatives);
+        
 	}
+
 
 	@Override
 	public Voter getVoter() {
+		return voter;
+	}
 	
-		return null;
+	@Override
+	public Graph<Alternative> asGraph() {
+		return ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
 	}
 
 	
-    
 	
    
 	
