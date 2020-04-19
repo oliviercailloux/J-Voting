@@ -1,6 +1,7 @@
 package io.github.oliviercailloux.j_voting.preferences.interfaces;
 
-import java.util.Set;
+import com.google.common.graph.MutableGraph;
+
 import io.github.oliviercailloux.j_voting.Alternative;
 
 /**
@@ -16,7 +17,7 @@ public interface MutableLinearPreference extends Preference{
 	 * Change the order of the alternatives
 	 * 
 	 */
-	public Set<Alternative> changeOrder(Set<Alternative> alternative);
+	public void changeOrder(MutableGraph<Alternative> newGraph);
 	
 	/**
 	 * Delete an alternative from the preference

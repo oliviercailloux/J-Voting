@@ -16,37 +16,62 @@ import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutablePreference;
-
-import java.util.Objects;
 
 public class MutableLinearPreferenceImpl implements MutableLinearPreference{
-
+	
 	protected Voter voter;
     protected MutableGraph<Alternative> graph;
     protected Set<Alternative> alternatives;
     private static final Logger LOGGER = LoggerFactory
             .getLogger(MutableLinearPreferenceImpl.class.getName());
     
-    public MutableLinearPreferenceImpl(Voter voter, MutableGraph<Alternative> prefGraph) {
+    private MutableLinearPreferenceImpl(Voter voter, MutableGraph<Alternative> prefGraph) {
     	this.voter = voter;
-    	graph = prefGraph; 
-    	alternatives = graph.nodes();
+    	this.graph = prefGraph; 
+    	this.alternatives = graph.nodes();
     }
-
-    //faire des constructeurs given ?? comme dans MutablePreference 
-    //et mettre le constructeur au dessus en private
+    
+    /**
+     * @param pref  is a mutable graph of alternatives representing the
+     *              preference. This graph has no cycle.
+     * @param voter is the Voter associated to the Preference.
+     * @return the mutable linear preference
+     */
+    public static MutableLinearPreference given(Voter voter, MutableGraph<Alternative> prefGraph) {
+    	LOGGER.debug("MutableLinearPreferenceImpl given");
+    	Preconditions.checkNotNull(voter);
+    	Preconditions.checkNotNull(prefGraph);
+    	boolean testComplete = true;
+    	for (Alternative a : prefGraph.nodes()) {
+    		if (testComplete == false)
+    			throw new IllegalArgumentException("The preference is not complete");
+    		if (prefGraph.successors(a) == null)
+    			testComplete = false;
+    	}
+    		
+    	for (Alternative a1 : prefGraph.nodes()) {
+            for (Alternative a2 : prefGraph.successors(a1)) {
+                if (Graphs.transitiveClosure(prefGraph).hasEdgeConnecting(a2,
+                                a1) && !a2.equals(a1)) {
+                    throw new IllegalArgumentException("The alternatives " + a1
+                                    + " and " + a2 + " cannot be ex-eaquo.");
+                }
+            }
+        }
+    	return new MutableLinearPreferenceImpl(voter, prefGraph);
+    }
     
     @Override
-	public Set<Alternative> changeOrder(Set<Alternative> a) {
-		
-		return null;
+	public void changeOrder(MutableGraph<Alternative> newGraph) {
+    	LOGGER.debug("MutableLinearPreferenceImpl changeOrder");
+    	Preconditions.checkNotNull(newGraph);
+    	graph = newGraph;
+    	alternatives = newGraph.nodes();
 	}
 
 	@Override
-	public void deleteAlternative(Alternative a) {
-		
-		LOGGER.debug("MutableLinearPreferenceImpl addAlternative");
+	public void deleteAlternative(Alternative a) {	
+		LOGGER.debug("MutableLinearPreferenceImpl deleteAlternative");
         Preconditions.checkNotNull(a);
         graph.removeNode(a);
 		
@@ -60,21 +85,14 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference{
 		
 	}
 
-
 	@Override
-	public Set<Alternative> getAlternatives() {
-		
-		LOGGER.debug("MutableLinearPreferenceImpl getAlternatives");
-		
-		if (alternatives.size() != graph.nodes().size() || !(alternatives.containsAll(graph.nodes()))) {
-        	
+	public Set<Alternative> getAlternatives() {	
+		LOGGER.debug("MutableLinearPreferenceImpl getAlternatives");	
+		if (alternatives.size() != graph.nodes().size() || !(alternatives.containsAll(graph.nodes()))) {        	
 			throw new IllegalStateException("An alternative must not be deleted from the set");
-        }
-		
-		return ImmutableSet.copyOf(alternatives);
-        
+        }		
+		return ImmutableSet.copyOf(alternatives);   
 	}
-
 
 	@Override
 	public Voter getVoter() {
