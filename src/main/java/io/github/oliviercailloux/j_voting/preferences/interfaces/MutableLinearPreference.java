@@ -1,18 +1,27 @@
 package io.github.oliviercailloux.j_voting.preferences.interfaces;
 
 import java.util.Set;
-
-
-
 import io.github.oliviercailloux.j_voting.Alternative;
 
-public interface MutableLinearPreference extends MutablePreference{
+/**
+ * A mutable linear preference is a mutable antisymmetric complete preference. A mutable linear
+ * preference represents a linear order, or equivalently an antisymmetric
+ * complete order, or equivalently, the reduction of a weak-order.
+ * 
+ */
+
+public interface MutableLinearPreference extends Preference{
 	
-	
-	//Méthode de changement de position des alternative
+	/**
+	 * Change the order of the alternatives
+	 * 
+	 */
 	public Set<Alternative> changeOrder(Set<Alternative> alternative);
 	
-	//Méthode pour supprimer des alternatives
+	/**
+	 * Delete an alternative from the preference
+	 * 
+	 */
 	public void deleteAlternative(Alternative a);
 	
 }
