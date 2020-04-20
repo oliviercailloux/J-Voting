@@ -18,9 +18,7 @@ import com.google.common.graph.MutableGraph;
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
-import io.github.oliviercailloux.j_voting.preferences.classes.MutablePreferenceImpl;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutablePreference;
 
 public class MutableLinearPreferenceImplTest {
 	
@@ -28,7 +26,7 @@ public class MutableLinearPreferenceImplTest {
 	
 	@Test
     void testGiven() {
-		//Test du given mais pas obligatoire je pense 
+		//Optional
 	}
 	/**
      * Tests whether the preference is correctly expressed as a graph
@@ -41,13 +39,9 @@ public class MutableLinearPreferenceImplTest {
         graph.putEdge(a2, a3);
         MutableLinearPreference pref = MutableLinearPreferenceImpl.given(Voter.createVoter(1), Graphs.copyOf(graph));
         
-        graph.putEdge(a1,a1);
-        graph.putEdge(a2,a2);
-        graph.putEdge(a3,a3);
-        
         graph.putEdge(a1,a3);
         
-        assertEquals(graph, pref.asGraph());
+        assertEquals(Graphs.transitiveClosure(graph), pref.asGraph());
     }
 	
 	/**
@@ -58,12 +52,11 @@ public class MutableLinearPreferenceImplTest {
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         graph.putEdge(a1, a2);
+        graph.putEdge(a2, a3);
         MutableLinearPreference pref = MutableLinearPreferenceImpl.given(Voter.createVoter(1), Graphs.copyOf(graph));
-        graph.putEdge(a1, a1);
-        graph.putEdge(a2, a2);
-        graph.putEdge(a3, a3);
-        pref.addAlternative(a3);
-        assertEquals(graph, pref.asGraph());
+        pref.addAlternative(a4);
+        graph.putEdge(a3, a4);
+        assertEquals(Graphs.transitiveClosure(graph), pref.asGraph());
     }
     
     /**
@@ -76,19 +69,28 @@ public class MutableLinearPreferenceImplTest {
         
         graph.putEdge(a1, a2);
         MutableLinearPreference pref = MutableLinearPreferenceImpl.given(Voter.createVoter(1), Graphs.copyOf(graph));
-        graph.putEdge(a1, a1);
-        graph.putEdge(a2, a2);
         pref.addAlternative(a3);
         pref.deleteAlternative(a3);
-        assertEquals(graph, pref.asGraph());
+        assertEquals(Graphs.transitiveClosure(graph), pref.asGraph());
     }
 	
 	@Test
     void testChangeOrder() {
 	
-		//a toi de jouer Léo
+		MutableGraph<Alternative> graph1 = GraphBuilder.directed()
+                .allowsSelfLoops(true).build();
+		MutableGraph<Alternative> graph2 = GraphBuilder.directed()
+                .allowsSelfLoops(true).build();
+
+		graph1.putEdge(a1, a2);
+		graph1.putEdge(a2, a3);
 		
+		graph2.putEdge(a3, a2);
+		graph2.putEdge(a2, a1);
 		
+		MutableLinearPreference pref = MutableLinearPreferenceImpl.given(Voter.createVoter(1), Graphs.copyOf(graph1));
+		pref.changeOrder(graph2);
+		assertEquals(Graphs.transitiveClosure(graph2), pref.asGraph());	
 	}
 	
 	 /**
@@ -100,8 +102,9 @@ public class MutableLinearPreferenceImplTest {
         MutableGraph<Alternative> graph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         graph.putEdge(a1, a2);
+        graph.putEdge(a2, a3);
         graph.putEdge(a3, a4);
-        graph.putEdge(a5, a5);
+        graph.putEdge(a4, a5);
         MutableLinearPreference pref = MutableLinearPreferenceImpl.given(Voter.createVoter(1), Graphs.copyOf(graph));
         ImmutableSet<Alternative> expected = a12345;
         assertEquals(expected, pref.getAlternatives());

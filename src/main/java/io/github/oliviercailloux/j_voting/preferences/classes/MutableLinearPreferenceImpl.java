@@ -44,10 +44,13 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference{
     	boolean testComplete = true;
     	for (Alternative a : prefGraph.nodes()) {
     		if (testComplete == false)
-    			throw new IllegalArgumentException("The preference is not complete");
-    		if (prefGraph.successors(a) == null)
+    			throw new IllegalArgumentException("There are no edges between all alternatives");
+    		if (prefGraph.successors(a).size() == 0)
     			testComplete = false;
     	}
+    	
+    	if (Graphs.hasCycle(prefGraph))
+			throw new IllegalArgumentException("The preference has a cycle");
     		
     	for (Alternative a1 : prefGraph.nodes()) {
             for (Alternative a2 : prefGraph.successors(a1)) {
@@ -82,6 +85,10 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference{
 		LOGGER.debug("MutablePreferenceImpl addAlternative");
         Preconditions.checkNotNull(a);
         graph.addNode(a);
+        for (Alternative ai : graph.nodes()) {
+        	if (graph.successors(a).size() == 0)
+    			graph.putEdge(ai, a);
+    	}
 		
 	}
 
