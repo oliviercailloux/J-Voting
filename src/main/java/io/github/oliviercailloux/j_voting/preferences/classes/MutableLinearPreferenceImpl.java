@@ -68,6 +68,26 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference{
 	public void changeOrder(MutableGraph<Alternative> newGraph) {
     	LOGGER.debug("MutableLinearPreferenceImpl changeOrder");
     	Preconditions.checkNotNull(newGraph);
+    	boolean testComplete = true;
+    	for (Alternative a : newGraph.nodes()) {
+    		if (testComplete == false)
+    			throw new IllegalArgumentException("There are no edges between all alternatives");
+    		if (newGraph.successors(a).size() == 0)
+    			testComplete = false;
+    	}
+    	
+    	if (Graphs.hasCycle(newGraph))
+			throw new IllegalArgumentException("The preference has a cycle");
+    		
+    	for (Alternative a1 : newGraph.nodes()) {
+            for (Alternative a2 : newGraph.successors(a1)) {
+                if (Graphs.transitiveClosure(newGraph).hasEdgeConnecting(a2,
+                                a1) && !a2.equals(a1)) {
+                    throw new IllegalArgumentException("The alternatives " + a1
+                                    + " and " + a2 + " cannot be ex-eaquo.");
+                }
+            }
+        }
     	graph = newGraph;
     	alternatives = newGraph.nodes();
 	}
