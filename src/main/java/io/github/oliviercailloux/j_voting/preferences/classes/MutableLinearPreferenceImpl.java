@@ -17,7 +17,7 @@ import io.github.oliviercailloux.j_voting.Voter;
 
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
-public class MutableLinearPreferenceImpl implements MutableLinearPreference{
+public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	
 	protected Voter voter;
     protected MutableGraph<Alternative> graph;
@@ -32,7 +32,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference{
     }
     
     /**
-     * @param pref  is a mutable graph of alternatives representing the
+     * @param prefGraph is a mutable graph of alternatives representing the
      *              preference. This graph has no cycle.
      * @param voter is the Voter associated to the Preference.
      * @return the mutable linear preference
@@ -43,7 +43,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference{
     	Preconditions.checkNotNull(prefGraph);
     	boolean testComplete = true;
     	for (Alternative a : prefGraph.nodes()) {
-    		if (testComplete == false)
+    		if (!testComplete)
     			throw new IllegalArgumentException("There are no edges between all alternatives");
     		if (prefGraph.successors(a).size() == 0)
     			testComplete = false;
@@ -76,8 +76,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference{
 	public void deleteAlternative(Alternative a) {	
 		LOGGER.debug("MutableLinearPreferenceImpl deleteAlternative");
         Preconditions.checkNotNull(a);
-        graph.removeNode(a);
-		
+        graph.removeNode(a);	
 	}
 	
 	@Override
@@ -89,7 +88,6 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference{
         	if (graph.successors(a).size() == 0)
     			graph.putEdge(ai, a);
     	}
-		
 	}
 	
 	/**
@@ -113,11 +111,5 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference{
 	@Override
 	public Graph<Alternative> asGraph() {
 		return ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
-	}
-
-	
-	
-   
-	
-	
+	}	
 }

@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.j_voting.preferences;
+package io.github.oliviercailloux.j_voting.preferences.classes;
 
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12345;

@@ -11,7 +11,7 @@ import io.github.oliviercailloux.j_voting.Alternative;
  * 
  */
 
-public interface MutableLinearPreference extends Preference{
+public interface MutableLinearPreference extends Preference {
 	
 	/**
 	 * Change the order of the alternatives. 
