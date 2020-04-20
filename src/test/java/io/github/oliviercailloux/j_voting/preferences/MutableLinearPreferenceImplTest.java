@@ -22,12 +22,6 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPr
 
 public class MutableLinearPreferenceImplTest {
 	
-	
-	
-	@Test
-    void testGiven() {
-		//Optional
-	}
 	/**
      * Tests whether the preference is correctly expressed as a graph
      */
@@ -74,6 +68,9 @@ public class MutableLinearPreferenceImplTest {
         assertEquals(Graphs.transitiveClosure(graph), pref.asGraph());
     }
 	
+	/**
+     * Tests of the changeOrder method which returns the new preference well
+     */
 	@Test
     void testChangeOrder() {
 	

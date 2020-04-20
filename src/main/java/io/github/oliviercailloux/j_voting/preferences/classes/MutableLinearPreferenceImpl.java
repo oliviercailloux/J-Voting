@@ -91,7 +91,11 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference{
     	}
 		
 	}
-
+	
+	/**
+     * @return an immutable set of all alternatives of the preference
+     * 
+     */
 	@Override
 	public Set<Alternative> getAlternatives() {	
 		LOGGER.debug("MutableLinearPreferenceImpl getAlternatives");	

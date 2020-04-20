@@ -14,21 +14,26 @@ import io.github.oliviercailloux.j_voting.Alternative;
 public interface MutableLinearPreference extends Preference{
 	
 	/**
-	 * Change the order of the alternatives
+	 * Change the order of the alternatives. 
 	 * 
+	 * @param newGraph to change the old preference to the new one with an alternative graph.
 	 */
 	public void changeOrder(MutableGraph<Alternative> newGraph);
 	
 	/**
-	 * Delete an alternative from the preference
-	 * 
+	 * Remove an alternative to the Preference. This alternative is deleted as well 
+	 * as the links between it and the other alternatives.
+	 *
+	 * @param alternative to remove to the preference.
 	 */
-	public void deleteAlternative(Alternative a);
+	public void deleteAlternative(Alternative alternative);
 	
 	/**
-	 * Add an alternative from the preference
-	 * 
+	 * Adds an alternative to the Preference. This alternative is not preferred to
+	 * any other of the preference, it is being added isolated.
+	 *
+	 * @param alternative to add to the preference.
 	 */
 	
-	public void addAlternative(Alternative a);
+	public void addAlternative(Alternative alternative);
 }
