@@ -70,7 +70,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
     	Preconditions.checkNotNull(newGraph);
     	boolean testComplete = true;
     	for (Alternative a : newGraph.nodes()) {
-    		if (testComplete == false)
+    		if (!testComplete)
     			throw new IllegalArgumentException("There are no edges between all alternatives");
     		if (newGraph.successors(a).size() == 0)
     			testComplete = false;
