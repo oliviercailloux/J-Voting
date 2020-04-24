@@ -13,15 +13,9 @@
   <widgets xsi:type="model:Button" id="4" x="515" y="109" text="Back" measuredWidth="45" measuredHeight="25" link="mainMenu.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Button" id="5" x="112" y="345" text="Vote" measuredWidth="43" measuredHeight="25" link="vote.screen">
+  <widgets xsi:type="model:Button" id="5" x="112" y="345" text="Modify" measuredWidth="58" measuredHeight="25" link="createProfile.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Icon" id="6" x="166" y="187" measuredWidth="16" measuredHeight="16" icon="edit (small)" link="reorganizePreference.screen"/>
-  <widgets xsi:type="model:Icon" id="7" x="240" y="187" measuredWidth="16" measuredHeight="16" icon="edit (small)" link="reorganizePreference.screen"/>
-  <widgets xsi:type="model:Icon" id="8" x="312" y="187" measuredWidth="16" measuredHeight="16" icon="edit (small)" link="reorganizePreference.screen"/>
-  <widgets xsi:type="model:Icon" id="9" x="384" y="187" measuredWidth="16" measuredHeight="16" icon="edit (small)" link="reorganizePreference.screen"/>
-  <widgets xsi:type="model:Icon" id="10" x="457" y="187" measuredWidth="16" measuredHeight="16" icon="edit (small)" link="reorganizePreference.screen"/>
-  <widgets xsi:type="model:Icon" id="11" x="532" y="187" measuredWidth="16" measuredHeight="16" icon="edit (small)" link="reorganizePreference.screen"/>
   <hRuler/>
   <vRuler/>
   <font size="12px"/>

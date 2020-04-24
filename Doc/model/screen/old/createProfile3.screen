@@ -4,7 +4,7 @@
   <widgets xsi:type="model:Label" id="2" x="256" y="152" measuredWidth="6" measuredHeight="67">
     <font size="43px"/>
   </widgets>
-  <widgets xsi:type="model:Button" id="5" x="508" y="345" text="Finish" measuredWidth="51" measuredHeight="25" link="seeProfileColumns.screen">
+  <widgets xsi:type="model:Button" id="5" x="508" y="345" text="Finish" measuredWidth="51" measuredHeight="25" link="../seeProfileColumns.screen">
     <font/>
   </widgets>
   <widgets xsi:type="model:Label" id="6" x="225" y="120" text="CREATE a new profile" measuredWidth="231" measuredHeight="40">

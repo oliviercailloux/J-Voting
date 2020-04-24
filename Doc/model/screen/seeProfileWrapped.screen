@@ -13,7 +13,7 @@
   <widgets xsi:type="model:Button" id="4" x="515" y="109" text="Back" measuredWidth="45" measuredHeight="25" link="mainMenu.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Button" id="5" x="112" y="345" text="Vote" measuredWidth="43" measuredHeight="25" link="vote.screen">
+  <widgets xsi:type="model:Button" id="5" x="112" y="345" text="Modify" measuredWidth="58" measuredHeight="25" link="createProfile.screen">
     <font/>
   </widgets>
   <hRuler/>
