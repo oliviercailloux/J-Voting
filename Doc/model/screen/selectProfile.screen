@@ -37,7 +37,7 @@
   <widgets xsi:type="model:Button" id="9" x="440" y="350" text="Open" measuredWidth="49" measuredHeight="25" link="seeProfileColumns.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Button" id="10" x="496" y="350" text="Cancel" measuredWidth="56" measuredHeight="25" link="mainMenu.screen">
+  <widgets xsi:type="model:Button" id="10" x="496" y="350" text="Cancel" measuredWidth="56" measuredHeight="25" link="createProfile.screen">
     <font/>
   </widgets>
   <widgets xsi:type="model:HLine" id="11" x="96" y="124" width="474" measuredWidth="474" measuredHeight="6"/>

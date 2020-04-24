@@ -31,9 +31,6 @@
   <widgets xsi:type="model:TextField" id="16" x="144" y="374" width="137" text="Alternative 3" measuredWidth="137" measuredHeight="23">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Button" id="17" x="478" y="414" width="81" text="Create" measuredWidth="81" measuredHeight="25">
-    <font/>
-  </widgets>
   <widgets xsi:type="model:Label" id="18" x="128" y="196" text="1." measuredWidth="15" measuredHeight="23">
     <font/>
   </widgets>
@@ -54,9 +51,6 @@
   </widgets>
   <widgets xsi:type="model:Icon" id="24" x="313" y="290" measuredWidth="16" measuredHeight="16" icon="minus (small)" link="createProfile.screen"/>
   <widgets xsi:type="model:Icon" id="25" x="313" y="167" measuredWidth="16" measuredHeight="16" icon="minus (small)"/>
-  <widgets xsi:type="model:Button" id="26" x="108" y="414" text="Cancel" measuredWidth="56" measuredHeight="25">
-    <font/>
-  </widgets>
   <widgets xsi:type="model:Panel" id="27" x="392" y="115" width="113" height="51" measuredWidth="113" measuredHeight="51"/>
   <widgets xsi:type="model:Icon" id="28" x="440" y="138" width="17" height="17" measuredWidth="17" measuredHeight="17" icon="add (large)"/>
   <widgets xsi:type="model:TextField" id="41" x="144" y="129" width="137" text="Alternative 3" measuredWidth="137" measuredHeight="23">

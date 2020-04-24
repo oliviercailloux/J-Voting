@@ -43,7 +43,7 @@
     <items x="0" y="44" width="166" height="21" text="Non strict complete"/>
     <items x="0" y="65" width="166" height="21" text="Non strict incomplete"/>
   </widgets>
-  <widgets xsi:type="model:Button" id="19" x="106" y="345" text="Cancel" measuredWidth="56" measuredHeight="25" link="../mainMenu.screen">
+  <widgets xsi:type="model:Button" id="19" x="106" y="345" text="Cancel" measuredWidth="56" measuredHeight="25" link="mainMenu.screen">
     <font/>
   </widgets>
   <hRuler/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" theme="clean">
-  <widgets xsi:type="model:Window" id="1" x="96" y="80" width="489" height="369" text="J-voting client" measuredWidth="489" measuredHeight="369" verticalScrollbar="true"/>
+  <widgets xsi:type="model:Window" id="1" x="96" y="64" width="489" height="385" text="J-voting client" measuredWidth="489" measuredHeight="385" verticalScrollbar="true"/>
   <widgets xsi:type="model:Panel" id="2" x="400" y="157" width="113" height="172" measuredWidth="113" measuredHeight="172"/>
   <widgets xsi:type="model:TextField" id="3" x="220" y="120" width="213" text="Profile name" measuredWidth="213" measuredHeight="23">
     <font italic="true"/>
@@ -29,9 +29,6 @@
     <font/>
   </widgets>
   <widgets xsi:type="model:TextField" id="13" x="144" y="245" width="137" text="Alternative 3" measuredWidth="137" measuredHeight="23">
-    <font/>
-  </widgets>
-  <widgets xsi:type="model:Button" id="14" x="478" y="414" width="81" text="Create" measuredWidth="81" measuredHeight="25">
     <font/>
   </widgets>
   <widgets xsi:type="model:Label" id="15" x="128" y="190" text="1." measuredWidth="15" measuredHeight="23">
@@ -80,7 +77,7 @@
     <font/>
   </widgets>
   <widgets xsi:type="model:Icon" id="33" x="313" y="312" measuredWidth="16" measuredHeight="16" icon="minus (small)"/>
-  <widgets xsi:type="model:WidgetGroup" id="35" x="143" y="424" measuredWidth="137" measuredHeight="23">
+  <widgets xsi:type="model:WidgetGroup" id="35" x="144" y="423" measuredWidth="137" measuredHeight="23">
     <widgets xsi:type="model:TextField" id="34" width="137" text="Alternative 4" measuredWidth="137" measuredHeight="23">
       <font/>
     </widgets>
@@ -88,7 +85,9 @@
   <widgets xsi:type="model:Label" id="36" x="128" y="424" text="4." measuredWidth="15" measuredHeight="23">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Button" id="19" x="108" y="414" text="Cancel" measuredWidth="56" measuredHeight="25">
+  <widgets xsi:type="model:Tabs" id="38" x="96" y="83" width="474" text="Edition,Visualization" measuredWidth="474" measuredHeight="27" selection="0">
+    <items x="1" y="0" width="58" height="27" text="Edition"/>
+    <items x="59" y="0" width="87" height="27" text="Visualization"/>
     <font/>
   </widgets>
   <hRuler/>

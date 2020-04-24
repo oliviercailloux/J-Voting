@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <story:Storyboard xmlns:story="http://wireframesketcher.com/1.0/model/story">
-  <panels id="izATw8_qWm6ln1WbVhUt1C6zISE=" x="75" y="75">
-    <screen href="screen/mainMenu.screen#/"/>
-  </panels>
   <panels id="ZJiCurDIJtrbeFGfQvVOnVNpwM4=" x="375" y="75">
     <screen href="screen/createProfile.screen#/"/>
   </panels>

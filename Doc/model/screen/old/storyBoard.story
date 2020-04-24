@@ -10,7 +10,7 @@
     <screen href="createProfile3.screen#/"/>
   </panels>
   <panels id="j7QBKAwuEXHK1ER2w0WglwlgChw=" x="975" y="75">
-    <screen href="../mainMenu.screen#/"/>
+    <screen href="mainMenu.screen#/"/>
   </panels>
   <panels id="INeHkJPeGi-k-FKbDozFudz4GkI=" x="75" y="375">
     <screen href="reorganizePreference.screen#/"/>
