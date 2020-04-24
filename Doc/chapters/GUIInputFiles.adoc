@@ -1,6 +1,5 @@
 = 2.2 GUI Input Files 
 
-====== Previous chapter link:./GUI.adoc[2.1 GUI understanding]
 ====== link:../README.adoc[Summary]
 
 === SOC file
