@@ -13,7 +13,7 @@ Here is an example of a .soc file and its meaning.
 image:../assets/SOCFile.PNG[SOCFile]
 
 
-Some other formats exist but will deal with them later *as below*
+Some other formats exist *as below*
 
 == Differents formats for _voting data_
 
