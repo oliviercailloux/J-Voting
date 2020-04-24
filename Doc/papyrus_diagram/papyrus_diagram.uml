@@ -52,6 +52,21 @@ Voter's preferences : AntiSymmetric</body>
           <ownedComment xmi:type="uml:Comment" xmi:id="_b8ZdUHEeEeqUv4VtPCytLw">
             <body>All the alternatives are comparable two by two</body>
           </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_TlIswIYtEeqCsLxU4w-iPA">
+            <body>Linear + Mutable</body>
+          </ownedComment>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_NQBPsIYrEeqCsLxU4w-iPA" name="MutableLinearPreference">
+          <generalization xmi:type="uml:Generalization" xmi:id="_JgQHcIYtEeqCsLxU4w-iPA" general="_QKjvwGbSEeqrtc6dy-mPpg"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_scaaQIYrEeqCsLxU4w-iPA" name="changeOrder" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_FVHZMIYsEeqCsLxU4w-iPA" name="newGraph" type="_PPpmsGbSEeqrtc6dy-mPpg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Mt4WgIYsEeqCsLxU4w-iPA" name="deleteAlternative">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_b4Yx0IYsEeqCsLxU4w-iPA" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Ooea8IYsEeqCsLxU4w-iPA" name="addAlternative">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_qQSrgIYsEeqCsLxU4w-iPA" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+          </ownedOperation>
         </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_VLu44HgQEeqXB-JP2owAEA" name="GUIClassDiagram">
