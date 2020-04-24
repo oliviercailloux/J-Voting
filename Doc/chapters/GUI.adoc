@@ -51,5 +51,5 @@ We plan to allow the user to create a profile through the graphical user interfa
 
 image:../assets/GUIMainMenu.png[GUIMainMenu]
 
-We used link:https://wireframesketcher.com/[WireFrame Sketcher]  to design a modeling of our project. You can look at the interactive link:../model/storyboard.pdf[PDF] (download to be able to benefit from the interactions) to better understand our GUI.
+We used link:https://wireframesketcher.com/[WireFrame Sketcher]  to design a modeling of our project. You can look at the interactive link:https://github.com/Julienchilhagopian/J-Voting/raw/master/Doc/model/storyboard.pdf[PDF] (download to be able to benefit from the interactions) to better understand our GUI.
 
