@@ -1,7 +1,5 @@
 = 2.1 GUI understanding 
 
-====== Previous chapter link:./profileInterfaces.adoc[1.2 Profile Interfaces]
-====== Next chapter link:./GUIInputFiles.adoc[2.2 GUI Input FIles]
 ====== link:../README.adoc[Summary]
 
 === GUI Class Diagram
@@ -53,5 +51,5 @@ We plan to allow the user to create a profile through the graphical user interfa
 
 image:../assets/GUIMainMenu.png[GUIMainMenu]
 
-We used link:https://wireframesketcher.com/[WireFrame Sketcher]  to design a modeling of our project. You can look at the interactive link:../model/storyBoard.pdf[PDF] (download to be able to benefit from the interactions) to better understand our GUI.
+We used link:https://wireframesketcher.com/[WireFrame Sketcher]  to design a modeling of our project. You can look at the interactive link:https://github.com/Julienchilhagopian/J-Voting/raw/master/Doc/model/storyboard.pdf[PDF] (download to be able to benefit from the interactions) to better understand our GUI.
 

@@ -52,6 +52,28 @@ Voter's preferences : AntiSymmetric</body>
           <ownedComment xmi:type="uml:Comment" xmi:id="_b8ZdUHEeEeqUv4VtPCytLw">
             <body>All the alternatives are comparable two by two</body>
           </ownedComment>
+          <ownedComment xmi:type="uml:Comment" xmi:id="_TlIswIYtEeqCsLxU4w-iPA">
+            <body>Linear + Mutable</body>
+          </ownedComment>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_NQBPsIYrEeqCsLxU4w-iPA" name="MutableLinearPreference">
+          <generalization xmi:type="uml:Generalization" xmi:id="_JgQHcIYtEeqCsLxU4w-iPA" general="_QKjvwGbSEeqrtc6dy-mPpg"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_scaaQIYrEeqCsLxU4w-iPA" name="changeOrder" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_FVHZMIYsEeqCsLxU4w-iPA" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_jh1RoIY7EeqCsLxU4w-iPA" name="position">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Mt4WgIYsEeqCsLxU4w-iPA" name="deleteAlternative">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_b4Yx0IYsEeqCsLxU4w-iPA" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Ooea8IYsEeqCsLxU4w-iPA" name="addAlternative">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_qQSrgIYsEeqCsLxU4w-iPA" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_m6oZcIY7EeqCsLxU4w-iPA" name="reverse">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ySis4IY7EeqCsLxU4w-iPA" name="a1" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_2MuDcIY7EeqCsLxU4w-iPA" name="a2" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+          </ownedOperation>
         </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_VLu44HgQEeqXB-JP2owAEA" name="GUIClassDiagram">
@@ -6501,6 +6523,7 @@ Voter's preferences : AntiSymmetric</body>
           </packagedElement>
         </packagedElement>
       </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_oMADEIYtEeq0ksZO2OwcmQ" name="OldToNewCompletePreferenceImpl"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_cIIGcHqFEeqm79lOJbMtXA" name="UseCaseDiagram" visibility="public">
       <packagedElement xmi:type="uml:Actor" xmi:id="_jftYAHqFEeqm79lOJbMtXA" name="User"/>
@@ -6582,29 +6605,30 @@ Voter's preferences : AntiSymmetric</body>
           <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_k_-isnwLEeqAHPJ5yK7igg" name="Message17ReceiveEvent" covered="_Lnx2QHwJEeqAHPJ5yK7igg" message="_k_-isHwLEeqAHPJ5yK7igg"/>
           <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_vbvMYXwKEeqAHPJ5yK7igg" name="ActionExecutionSpecification15Finish" covered="_Lnx2QHwJEeqAHPJ5yK7igg" execution="_vbvMYHwKEeqAHPJ5yK7igg"/>
           <fragment xmi:type="uml:CombinedFragment" xmi:id="_kXKkUHwNEeqAHPJ5yK7igg" name="CombinedFragment32" covered="_DJXfgHwJEeqAHPJ5yK7igg" interactionOperator="alt">
-            <operand xmi:type="uml:InteractionOperand" xmi:id="_kXUVUHwNEeqAHPJ5yK7igg" visibility="public" covered="_DJXfgHwJEeqAHPJ5yK7igg"/>
+            <operand xmi:type="uml:InteractionOperand" xmi:id="_kXUVUHwNEeqAHPJ5yK7igg" visibility="public" covered="_DJXfgHwJEeqAHPJ5yK7igg">
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_8azOYXwLEeqAHPJ5yK7igg" name="Message21SendEvent" covered="_DJXfgHwJEeqAHPJ5yK7igg" message="_8azOYHwLEeqAHPJ5yK7igg"/>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_8bTkuHwLEeqAHPJ5yK7igg" name="Message26ReceiveEvent" covered="_DJXfgHwJEeqAHPJ5yK7igg" message="_8bTktnwLEeqAHPJ5yK7igg"/>
+            </operand>
             <operand xmi:type="uml:InteractionOperand" xmi:id="_SGS_kHwOEeqAHPJ5yK7igg" name="InteractionOperand2" covered="_DJXfgHwJEeqAHPJ5yK7igg">
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Tww9UXwOEeqAHPJ5yK7igg" name="Message31SendEvent" covered="_DJXfgHwJEeqAHPJ5yK7igg" message="_Tww9UHwOEeqAHPJ5yK7igg"/>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Txk1p3wOEeqAHPJ5yK7igg" name="Message36ReceiveEvent" covered="_DJXfgHwJEeqAHPJ5yK7igg" message="_Txk1pXwOEeqAHPJ5yK7igg"/>
               <guard xmi:type="uml:InteractionConstraint" xmi:id="_SGS_kXwOEeqAHPJ5yK7igg" name="guard"/>
             </operand>
             <operand xmi:type="uml:InteractionOperand" xmi:id="_XGrJMHwOEeqAHPJ5yK7igg" name="InteractionOperand3" covered="_DJXfgHwJEeqAHPJ5yK7igg">
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_bHqSYXwOEeqAHPJ5yK7igg" name="Message36SendEvent" covered="_DJXfgHwJEeqAHPJ5yK7igg" message="_bHqSYHwOEeqAHPJ5yK7igg"/>
+              <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_bIUZvHwOEeqAHPJ5yK7igg" name="Message41ReceiveEvent" covered="_DJXfgHwJEeqAHPJ5yK7igg" message="_bIUZunwOEeqAHPJ5yK7igg"/>
               <guard xmi:type="uml:InteractionConstraint" xmi:id="_XGrJMXwOEeqAHPJ5yK7igg" name="guard"/>
             </operand>
           </fragment>
-          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_8azOYXwLEeqAHPJ5yK7igg" name="Message21SendEvent" covered="_DJXfgHwJEeqAHPJ5yK7igg" message="_8azOYHwLEeqAHPJ5yK7igg"/>
           <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_8azOYnwLEeqAHPJ5yK7igg" name="Message21ReceiveEvent" covered="_Lnx2QHwJEeqAHPJ5yK7igg" message="_8azOYHwLEeqAHPJ5yK7igg"/>
           <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_8bTksHwLEeqAHPJ5yK7igg" name="BehaviorExecutionSpecification24" covered="_Lnx2QHwJEeqAHPJ5yK7igg" finish="_8bTkt3wLEeqAHPJ5yK7igg" start="_8azOYnwLEeqAHPJ5yK7igg"/>
           <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_8bTkt3wLEeqAHPJ5yK7igg" name="Message26SendEvent" covered="_Lnx2QHwJEeqAHPJ5yK7igg" message="_8bTktnwLEeqAHPJ5yK7igg"/>
-          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_8bTkuHwLEeqAHPJ5yK7igg" name="Message26ReceiveEvent" covered="_DJXfgHwJEeqAHPJ5yK7igg" message="_8bTktnwLEeqAHPJ5yK7igg"/>
-          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Tww9UXwOEeqAHPJ5yK7igg" name="Message31SendEvent" covered="_DJXfgHwJEeqAHPJ5yK7igg" message="_Tww9UHwOEeqAHPJ5yK7igg"/>
           <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Tw1OwHwOEeqAHPJ5yK7igg" name="Message31ReceiveEvent" covered="_Lnx2QHwJEeqAHPJ5yK7igg" message="_Tww9UHwOEeqAHPJ5yK7igg"/>
           <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_TxbEpHwOEeqAHPJ5yK7igg" name="BehaviorExecutionSpecification34" covered="_Lnx2QHwJEeqAHPJ5yK7igg" finish="_Txk1pnwOEeqAHPJ5yK7igg" start="_Tw1OwHwOEeqAHPJ5yK7igg"/>
           <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Txk1pnwOEeqAHPJ5yK7igg" name="Message36SendEvent" covered="_Lnx2QHwJEeqAHPJ5yK7igg" message="_Txk1pXwOEeqAHPJ5yK7igg"/>
-          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Txk1p3wOEeqAHPJ5yK7igg" name="Message36ReceiveEvent" covered="_DJXfgHwJEeqAHPJ5yK7igg" message="_Txk1pXwOEeqAHPJ5yK7igg"/>
-          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_bHqSYXwOEeqAHPJ5yK7igg" name="Message36SendEvent" covered="_DJXfgHwJEeqAHPJ5yK7igg" message="_bHqSYHwOEeqAHPJ5yK7igg"/>
           <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_bHqSYnwOEeqAHPJ5yK7igg" name="Message36ReceiveEvent" covered="_Lnx2QHwJEeqAHPJ5yK7igg" message="_bHqSYHwOEeqAHPJ5yK7igg"/>
           <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_bIUZtHwOEeqAHPJ5yK7igg" name="BehaviorExecutionSpecification39" covered="_Lnx2QHwJEeqAHPJ5yK7igg" finish="_bIUZu3wOEeqAHPJ5yK7igg" start="_bHqSYnwOEeqAHPJ5yK7igg"/>
           <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_bIUZu3wOEeqAHPJ5yK7igg" name="Message41SendEvent" covered="_Lnx2QHwJEeqAHPJ5yK7igg" message="_bIUZunwOEeqAHPJ5yK7igg"/>
-          <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_bIUZvHwOEeqAHPJ5yK7igg" name="Message41ReceiveEvent" covered="_DJXfgHwJEeqAHPJ5yK7igg" message="_bIUZunwOEeqAHPJ5yK7igg"/>
           <message xmi:type="uml:Message" xmi:id="_SG8SEHwJEeqAHPJ5yK7igg" name="Launch SOC profile viewer" receiveEvent="_SHlyUXwJEeqAHPJ5yK7igg" sendEvent="_SHlyUHwJEeqAHPJ5yK7igg"/>
           <message xmi:type="uml:Message" xmi:id="_SJNi8HwJEeqAHPJ5yK7igg" name="Requests a SOC file" messageSort="reply" receiveEvent="_SJNi8nwJEeqAHPJ5yK7igg" sendEvent="_SJNi8XwJEeqAHPJ5yK7igg"/>
           <message xmi:type="uml:Message" xmi:id="_yrHu8HwJEeqAHPJ5yK7igg" name="Give a SOC File (Profil)" messageSort="asynchCall" receiveEvent="_yrHu8nwJEeqAHPJ5yK7igg" sendEvent="_yrHu8XwJEeqAHPJ5yK7igg"/>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" theme="clean">
+  <widgets xsi:type="model:Window" id="1" x="96" y="64" width="489" height="385" text="J-voting client" measuredWidth="489" measuredHeight="385" verticalScrollbar="true"/>
+  <widgets xsi:type="model:Panel" id="2" x="400" y="157" width="113" height="172" measuredWidth="113" measuredHeight="172"/>
+  <widgets xsi:type="model:TextField" id="3" x="220" y="120" width="213" text="Profile name" measuredWidth="213" measuredHeight="23">
+    <font italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="4" x="490" y="307" width="17" height="17" measuredWidth="17" measuredHeight="17" icon="add (large)"/>
+  <widgets xsi:type="model:Icon" id="5" x="405" y="308" measuredWidth="16" measuredHeight="16" icon="minus (small)" link="createProfile.screen"/>
+  <widgets xsi:type="model:TextField" id="6" x="112" y="157" width="193" text="Voter1 name" measuredWidth="193" measuredHeight="23">
+    <font italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="7" x="423" y="157" text="Alternatives" measuredWidth="68" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="8" x="418" y="190" text="Alternative 1" measuredWidth="77" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="9" x="418" y="218" text="Alternative 2" measuredWidth="77" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="10" x="418" y="245" text="Alternative 3" measuredWidth="77" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="11" x="144" y="190" width="137" text="Alternative 1" measuredWidth="137" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="12" x="144" y="218" width="137" text="Alternative 2" measuredWidth="137" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="13" x="144" y="245" width="137" text="Alternative 3" measuredWidth="137" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="15" x="128" y="190" text="1." measuredWidth="15" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="16" x="128" y="218" text="2." measuredWidth="15" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="17" x="128" y="245" text="3." measuredWidth="15" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="18" x="313" y="161" measuredWidth="16" measuredHeight="16" icon="minus (small)"/>
+  <widgets xsi:type="model:Panel" id="20" x="400" y="336" width="113" height="51" measuredWidth="113" measuredHeight="51"/>
+  <widgets xsi:type="model:Label" id="21" x="438" y="336" text="Voters" measuredWidth="38" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="22" x="448" y="359" width="17" height="17" measuredWidth="17" measuredHeight="17" icon="add (large)"/>
+  <widgets xsi:type="model:TextField" id="23" x="144" y="272" width="137" text="Alternative 4" measuredWidth="137" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="24" x="128" y="272" text="4." measuredWidth="15" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="25" x="418" y="272" text="Alternative 4" measuredWidth="77" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="26" x="112" y="308" width="193" text="Voter2 name" measuredWidth="193" measuredHeight="23">
+    <font italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="27" x="144" y="341" width="137" text="Alternative 2" measuredWidth="137" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="28" x="144" y="369" width="137" text="Alternative 1" measuredWidth="137" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="29" x="144" y="396" width="137" text="Alternative 3" measuredWidth="137" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="30" x="128" y="341" text="1." measuredWidth="15" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="31" x="128" y="369" text="2." measuredWidth="15" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="32" x="128" y="396" text="3." measuredWidth="15" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="33" x="313" y="312" measuredWidth="16" measuredHeight="16" icon="minus (small)"/>
+  <widgets xsi:type="model:WidgetGroup" id="35" x="144" y="423" measuredWidth="137" measuredHeight="23">
+    <widgets xsi:type="model:TextField" id="34" width="137" text="Alternative 4" measuredWidth="137" measuredHeight="23">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:Label" id="36" x="128" y="424" text="4." measuredWidth="15" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Tabs" id="38" x="96" y="83" width="474" text="Edition,Visualization" measuredWidth="474" measuredHeight="27" selection="0">
+    <items x="1" y="0" width="58" height="27" text="Edition"/>
+    <items x="59" y="0" width="87" height="27" text="Visualization"/>
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

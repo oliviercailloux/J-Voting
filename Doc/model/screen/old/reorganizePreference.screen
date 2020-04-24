@@ -4,10 +4,10 @@
   <widgets xsi:type="model:Label" id="2" x="218" y="120" text="Reorganize preference" measuredWidth="246" measuredHeight="40">
     <font size="24px"/>
   </widgets>
-  <widgets xsi:type="model:Button" id="3" x="502" y="345" text="Submit" measuredWidth="58" measuredHeight="25" link="seeProfileColumns.screen">
+  <widgets xsi:type="model:Button" id="3" x="502" y="345" text="Submit" measuredWidth="58" measuredHeight="25" link="../seeProfileColumns.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Button" id="4" x="106" y="345" text="Cancel" measuredWidth="56" measuredHeight="25" link="seeProfileColumns.screen">
+  <widgets xsi:type="model:Button" id="4" x="106" y="345" text="Cancel" measuredWidth="56" measuredHeight="25" link="../seeProfileColumns.screen">
     <font/>
   </widgets>
   <widgets xsi:type="model:Label" id="5" x="119" y="172" text="Voter 1" measuredWidth="42" measuredHeight="23">

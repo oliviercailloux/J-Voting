@@ -34,10 +34,10 @@
   <widgets xsi:type="model:Label" id="12" x="128" y="288" text="Add an other voter" measuredWidth="105" measuredHeight="23">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Button" id="13" x="502" y="345" text="Submit" measuredWidth="58" measuredHeight="25" link="seeProfileColumns.screen">
+  <widgets xsi:type="model:Button" id="13" x="502" y="345" text="Submit" measuredWidth="58" measuredHeight="25" link="../seeProfileColumns.screen">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Button" id="14" x="106" y="345" text="Cancel" measuredWidth="56" measuredHeight="25" link="seeProfileColumns.screen">
+  <widgets xsi:type="model:Button" id="14" x="106" y="345" text="Cancel" measuredWidth="56" measuredHeight="25" link="../seeProfileColumns.screen">
     <font/>
   </widgets>
   <hRuler/>
