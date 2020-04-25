@@ -65,7 +65,6 @@ To better see the difference between the two classes, please find below a compar
 |/
 |asGraph()
 |Returns the graph associated to the preference. 
-
 |===
 
 
