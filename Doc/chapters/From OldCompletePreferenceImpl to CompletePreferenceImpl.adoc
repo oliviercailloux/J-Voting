@@ -68,3 +68,15 @@ To better see the difference between the two classes, please find below a compar
 
 |===
 
+
+We can see that a replacement from the old class to the new class cannot be done at this stage at all.
+Indeed, it will be necessary to start by adapting the code of the new one to meet the needs currently provided in the old one. 
+
+Specifically, we need to create the missing methods such as :
+* size(List<Set<Alternative>> list) that we will rename atlernativeNumber
+* contains
+* hasSameAlternatives(OldCompletePreferenceImpl p)
+* isIncludedIn(OldCompletePreferenceImpl p)
+* isStrict()
+* toStrictPreference()
+
