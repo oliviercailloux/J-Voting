@@ -6579,6 +6579,12 @@ Voter's preferences : AntiSymmetric</body>
           <packagedElement xmi:type="uml:UseCase" xmi:id="_8iVykIcIEeqsBPuVq_CinQ" name="Add a voter">
             <generalization xmi:type="uml:Generalization" xmi:id="_BVyTcIcJEeqsBPuVq_CinQ" general="_-EeJIIcHEeqsBPuVq_CinQ"/>
           </packagedElement>
+          <packagedElement xmi:type="uml:UseCase" xmi:id="_ta3gUIcMEeqsBPuVq_CinQ" name="Rename a voter">
+            <generalization xmi:type="uml:Generalization" xmi:id="_E6M4kIcNEeqsBPuVq_CinQ" general="_-EeJIIcHEeqsBPuVq_CinQ"/>
+          </packagedElement>
+          <packagedElement xmi:type="uml:UseCase" xmi:id="_t-kqUIcMEeqsBPuVq_CinQ" name="Rename an alternative">
+            <generalization xmi:type="uml:Generalization" xmi:id="_EPMzwIcNEeqsBPuVq_CinQ" general="_-YRO4IcHEeqsBPuVq_CinQ"/>
+          </packagedElement>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_8_SUQHqGEeqm79lOJbMtXA" memberEnd="_8_Ya4nqGEeqm79lOJbMtXA _8_Ya43qGEeqm79lOJbMtXA">
           <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8_Ya4HqGEeqm79lOJbMtXA" source="org.eclipse.papyrus">
