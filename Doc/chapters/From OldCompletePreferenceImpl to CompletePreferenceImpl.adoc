@@ -1,4 +1,4 @@
-= 1.3 Transition from Old to new CompletePreferenceImpl class
+= 1.3 Transition from Old to new CompletePreferenceImpl Class
 
 ====== link:../README.adoc[Summary]
 
@@ -10,14 +10,17 @@ To better see the difference between the two classes, please find below a compar
 
 [cols="1,1,2", options="header"] 
 |===
-|equivalent method in OldCompletePreferenceImpl
-|equivalent method in CompletePreferenceImpl
+|Equivalent method in OldCompletePreferenceImpl
+|Equivalent method in CompletePreferenceImpl
 |Contract
+
+|getPreferencesNonStrict()
+|asEquivalenceClasses()
+|Returns the preference attribute of the class (a List<Set<Alternative>>).
 
 |getAlternative(Integer position)
 |getAlternatives(int rank)
-|Returns the alternative at ghe given rank.
-
+|Returns the alternative at the given rank.
 
 |size(List<Set<Alternative>> list)
 |/
@@ -51,16 +54,16 @@ To better see the difference between the two classes, please find below a compar
 |/
 |If the preference is strict, returns the LinearPreference created from the complete one.
 
-|getVoter()
 |/
+|getVoter()
 |Returns the voter associated to this preference.
 
-|createGraph(List<? extends Set<Alternative>> equivalenceClasses)
 |/
+|createGraph(List<? extends Set<Alternative>> equivalenceClasses)
 |Create the graph associated to the preference (each node is an alternative and an edge from node a to node b means a>=b).
 
-|asGraph()
 |/
+|asGraph()
 |Returns the graph associated to the preference. 
 
 |===
