@@ -6238,7 +6238,7 @@ Voter's preferences : AntiSymmetric</body>
                 <body>LoggerFactory.getLogger(OldCompletePreferenceImpl.class.getName())</body>
               </defaultValue>
             </ownedAttribute>
-            <ownedAttribute xmi:type="uml:Property" xmi:id="_PEdDUGbSEeqrtc6dy-mPpg" name="preference" visibility="protected" type="_PERdIGbSEeqrtc6dy-mPpg" isUnique="false">
+            <ownedAttribute xmi:type="uml:Property" xmi:id="_PEdDUGbSEeqrtc6dy-mPpg" name="preference" visibility="package" type="_PPpmsGbSEeqrtc6dy-mPpg" isUnique="false">
               <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_PEh70GbSEeqrtc6dy-mPpg"/>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PEjJ8GbSEeqrtc6dy-mPpg" value="*"/>
             </ownedAttribute>
