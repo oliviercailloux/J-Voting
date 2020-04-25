@@ -1,12 +1,16 @@
-= 1.3 Transition from Old to new CompletePreferenceImpl Class
+= Annex 1. Transition from Old to new CompletePreferenceImpl Class
 
 ====== link:../README.adoc[Summary]
 
-=== Both initial Class Diagrams
+=== Both current classes Diagram
 
 image:../assets/OldCPClassesDiagram.png[The old situation]
 
-To better see the difference between the two classes, please find below a comparative table of their respective methods.
+To better see the difference between the two classes, please see below what has changed in their attributes and then, have a look at the comparative table of their respective methods.
+
+When the first class only has one attribute representing the preference by a List<Set<Alternative>>, the other one has four attributes. Its preference is represented by a ImmutableList<ImmutableSet<Alernative>> and also has a graph, a voter and a set of alternatives.
+
+In terms of methods, here is the comparative table :
 
 [cols="1,1,2", options="header"] 
 |===
@@ -74,9 +78,10 @@ Indeed, it will be necessary to start by adapting the code of the new one to mee
 Specifically, we need to create the missing methods such as :
 
 * size(List<Set<Alternative>> list) that we will rename atlernativeNumber.
-* contains.
+* contains(Alternative alter). This method uses the toAlternativeSet method but be careful, in the OldCP the method accepts a List<Set<Alernative>> and in the new one only a ImmutableList<ImmutableSet<Alernative>>.
 * hasSameAlternatives(OldCompletePreferenceImpl p).
 * isIncludedIn(OldCompletePreferenceImpl p).
 * isStrict().
 * toStrictPreference().
 
+Once these changes made, we can replace OldCompletePreference by CompletePreferencein in the Profile Interfaces and classes. 
