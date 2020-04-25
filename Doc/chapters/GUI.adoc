@@ -53,3 +53,10 @@ image:../assets/GUIMainMenu.png[GUIMainMenu]
 
 We used link:https://wireframesketcher.com/[WireFrame Sketcher]  to design a modeling of our project. You can look at the interactive link:https://github.com/Julienchilhagopian/J-Voting/raw/master/Doc/model/storyboard.pdf[PDF] (download to be able to benefit from the interactions) to better understand our GUI.
 
+The GUI works with a tab system, it is possible to switch from editing to viewing and vice versa for the same file. When you open the application, you will be taken to the profile edition tab. When you click to name the profile, a soc file is created with the current information. It is then possible to modify them by changing the order of the alternatives, adding or deleting alternatives and voters. It is also possible to rename them. 
+
+We can also open an existing file and make the same changes. Each modification is saved in real time on the file. The file is then automatically saved in a defined folder. It is possible to open the view tab to be able to consult a profile.
+
+NB: At startup, the input boxes are grayed out to indicate that no file is created. If you just want to open an existing file without creating a new one, do not touch the input boxes.
+
+
