@@ -12,10 +12,11 @@ To better see the difference between the two classes, please find below a compar
 |===
 |equivalent method in OldCompletePreferenceImpl
 |equivalent method in CompletePreferenceImpl
+|Contract
 
 |getAlternative(Integer position)
 |getAlternatives(int rank)
-|Contract
+|Returns the alternative at ghe given rank.
 
 
 |size()
