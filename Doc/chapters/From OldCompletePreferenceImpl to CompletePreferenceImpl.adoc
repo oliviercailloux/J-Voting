@@ -19,9 +19,9 @@ To better see the difference between the two classes, please find below a compar
 |Returns the alternative at ghe given rank.
 
 
-|size()
+|size(List<Set<Alternative>> list)
 |/
-|Returns the number of alternative of the preference.
+|Returns the number of alternatives in the preference.
 
 |contains(Alternative alter)
 |/
@@ -43,10 +43,6 @@ To better see the difference between the two classes, please find below a compar
 |toALternativeSet(ImmuatbleList<ImmutableSet<Alternative>> preference)
 |Returns a alternatives Set with all the alternatives in the List of Sets.
 
-|size(List<Set<Alternative>> list)
-|/
-|Returns the number of Sets in this List ( it means the number of alternative in the preference without exæquo).
-
 |isStrict()
 |/
 |Says whether the preference is strict (no exæquo).
@@ -55,17 +51,17 @@ To better see the difference between the two classes, please find below a compar
 |/
 |If the preference is strict, returns the LinearPreference created from the complete one.
 
-|/
 |getVoter()
-|
-
 |/
+|Returns the voter associated to this preference.
+
 |createGraph(List<? extends Set<Alternative>> equivalenceClasses)
-|
-
 |/
+|Create the graph associated to the preference (each node is an alternative and an edge from node a to node b means a>=b).
+
 |asGraph()
-|
+|/
+|Returns the graph associated to the preference. 
 
 |===
 
