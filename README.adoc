@@ -38,9 +38,9 @@ SM/PO
 *Jade & Julien* :
 
 The main goal is still to move towards removing the OldCompletePreferenceImpl class. This time the objective is to upgrade CompletePreferenceImpl without impacting the CompletePreference Interface and respecting the comments of the link:https://github.com/Julienchilhagopian/J-Voting/pull/2[PR#2]. 
-Once that the upgraded version of CompletePreferenceImpl is done, the class will be able to replace OldCompletePreferenceImpl used in the whole project.
+Once that the upgraded version of CompletePreferenceImpl is done, this class will be able to replace the OldCompletePreferenceImpl class used in the whole project.
 
-A detailed report of the CompletePreferenceImpl futur evolutions can be found link:Doc/chapters/FromOldCompletePreferenceImplToCompletePreferenceImpl.adoc[here]
+A detailed report of the CompletePreferenceImpl futur evolutions can be found link:Doc/chapters/FromOldCompletePreferenceImplToCompletePreferenceImpl.adoc[here].
 
 *Léo & Thomas* :
 
