@@ -25,4 +25,5 @@ image:./assets/j-voting-example.png[InterfacesProfilesDiagram]
 
 === Annex
 ==== link:chapters/FromOldCompletePreferenceImplToCompletePreferenceImpl.adoc[OldCompletePreferenceImpl to CompletePreferenceImpl]
+==== link:chapters/MutableLinearPreferenceImplChanges.adoc[Change of direction in MutableLinearPreferenceImpl]
 
