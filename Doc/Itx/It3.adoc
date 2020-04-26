@@ -6,11 +6,10 @@
 
 * Briefly summarize the Javadoc of certain methods (when not obvious and important) : _Leo_
 
-* Add that LinearPreference extends ASPreference and change primitive Boolean type by a boolean one on Preference Interface Papyrus Diagram. 
+* Add that LinearPreference extends ASPreference and change primitive Boolean type by a boolean one on Preference Interface Papyrus Diagram : _Pierre_
 
 * Change of the example illustrating the case of a complete preference (strict or equivalent but not >=) : _Jade_
 
-* Update of the README in Doc/. : _Julien_
 
 ==  Second part of missions : additional information +
 
@@ -24,7 +23,9 @@
 
 * Creation of a Sequence Papyrus Diagram for the 'GUI understanding' adoc file : _Julien Chil Hagopian and Pierre Rochedy_
 
-* Creation of a adoc in annex explaining the process of moving from OldCompletePreferenceImpl to CompletePreferenceImpl _Jade_
+* Creation of a adoc in annex explaining the process of moving from a graph to a list representaion for MutableLinearPreference : _Leo_
+
+* Creation of a adoc in annex explaining the process of moving from OldCompletePreferenceImpl to CompletePreferenceImpl : _Jade_
 
 * Creation of a GUI model through an interactive PDF using the WireframeSketcher tool : _Thomas_
 
@@ -34,4 +35,4 @@
 
 * Elaboration of the Iteration file : _Jade_
 
-
+* Update of the README in Doc/. : _Julien_
