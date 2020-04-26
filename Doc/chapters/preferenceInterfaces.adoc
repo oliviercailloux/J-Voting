@@ -109,7 +109,7 @@ Reflexive and transitive.
 |Relevance
 
 |asMutableGraph()
-| This graph is not necessarily transitively closed and not necessarily reflexive. This method might refuse that an edge be added that would result in the transitive closure violating anti-symmetry, though it will not necessarily check. If such a situation happens, and is not detected, an exception will be raised the first time asGraph() will be called, unless possibly the transitive closure no more violates anti-symmetry at that time.
+| This graph is not necessarily transitively closed and not necessarily reflexive. This method might refuse that an edge be added that would result in the transitive closure violating anti-symmetry, though it will not necessarily check.
 | Not Ok. The exception is not raised.
 
 |addAlternative(Alternative a)
