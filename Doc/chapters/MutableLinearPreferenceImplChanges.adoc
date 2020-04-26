@@ -2,34 +2,34 @@
 
 ====== link:../README.adoc[Summary]
 
-=== Both current classes Diagram
-
-image:../assets/OldCPClassesDiagram.png[The old situation]
-
 In the last java iteration, we have focused our work on the attribute MutableGraph. Now, we understood that it would be easier for the user to have as a parameter the List<Alternative>.
 
 The goal is to modify the MutableLinearPreference class with methods that take list<Alternative> rather than MutableGraph as parameters and update the Set<Alternative>  with the different possible functionalities. The methods will also update the corresponding Mutablegraph.
 
 Specifically, we need to modify the following methods :
 
-* public static MutableLinearPreference given(Voter voter, MutableGraph<Alternative> prefGraph)
+* public static MutableLinearPreference given(Voter voter, MutableGraph<Alternative> prefGraph) +
 Keep the part on graph and add the modification on the Set<Alternatives>
 
-* public void changeOrder(MutableGraph<Alternative> newGraph)
-Change the signature --> public void changeOrder(List<Alternative> newGraph)
+* public void changeOrder(MutableGraph<Alternative> newGraph) +
+Change the signature --> public void changeOrder(List<Alternative> alternatives) +
 We're going to completely change this method.
 
-* public void deleteAlternative(Alternative a)
+* public void deleteAlternative(Alternative a) +
 Keep the part on graph and add the modification on the Set<Alternatives>
 
-* public void addAlternative(Alternative a)
+* public void addAlternative(Alternative a) +
 Keep the part on graph and add the modification on the Set<Alternatives>
 
-* public Graph<Alternative> asGraph()
+* public Graph<Alternative> asGraph() +
 We're going to change the way it works by following the leads you gave us.
 
 
 We also need to create the following method :
 
-* public static MutableLinearPreference given(Voter voter, List<Alternative> alternatives)
+* public static MutableLinearPreference given(Voter voter, List<Alternative> alternatives) +
 New constructor with the List<Alternative> as parameter.
+
+* public void reverse(MutableGraph<Alternative> newGraph) +
+Change the signature --> public void changeOrder(List<Alternative> alternatives) +
+We're going to completely change this method.

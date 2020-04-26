@@ -187,3 +187,21 @@ Graph is rearranged : a transitive closure is applied to it
 | OK.				                                                     
 
 |===
+
+=== *MutableLinearPreference*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+
+|public void changeOrder(List<Alternative> alternatives)
+|Contract
+
+|public void deleteAlternative(Alternative a)
+|Delete an alternative from the preference. Update the Set<Alternative> and the MutableGraph<Alternative>.
+
+|public void addAlternative(Alternative a)
+|Add an alternative at the end of the preference. Update the Set<Alternative> and the MutableGraph<Alternative>.
+
+|===
