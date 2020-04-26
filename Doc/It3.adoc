@@ -1,0 +1,35 @@
+= Iteration 3
+
+== First part of missions : correction of Iteration 2 following your feedback +
+
+* Update of the explanatory graph in the README section of the Doc (modification of sentences in order to be closer to the notions manipulated in the project) : _Julien_
+
+* Briefly summarize the Javadoc of certain methods (when not obvious and important) : _Leo_
+
+* Change of the example illustrating the case of a complete preference (strict or equivalent but not >=) : _Jade_
+
+* Update of the README in Doc/. and removal of It1.html : _Julien_
+
+==  Second part of missions : additional information +
+
+* Sort of the old doc (keep only the profile formats) : _Thomas Daille & Jade Nizard_
+
+*  Creation of a GUI Class Papyrus Diagram for the 'GUI understanding' adoc file : _Thomas_
+
+* Creation of a GUI Use Case Papyrus Diagram for the 'GUI understanding' adoc file : _Thomas Daille & Pierre Rochedy_
+
+* Creation of an adoc file explaining what files are currently accepted by the GUI ('GUI Input Files') : _Thomas Daille & Jade Nizard_
+
+* Creation of a Sequence Papyrus Diagram for the 'GUI understanding' adoc file : _Julien Chil Hagopian and Pierre Rochedy_
+
+* Creation of a adoc in annex explaining the process of moving from OldCompletePreferenceImpl to CompletePreferenceImpl _Jade_
+
+* Creation of a GUI model through an interactive PDF using the WireframeSketcher tool : _Thomas_
+
+* Global cleaning and corretions of the doc : _Julien Chil Hagopian and Pierre Rochedy_
+
+* Add the table MutableLinearPreference in the doc : _Leo_
+
+* Elaboration of the Iteration file : _Jade_
+
+
