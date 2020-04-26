@@ -12,8 +12,8 @@ Specifically, we need to modify the following methods :
 Keep the part on graph and add the modification on the Set<Alternatives>
 
 * public void changeOrder(MutableGraph<Alternative> newGraph) +
-Change the signature --> public void changeOrder(List<Alternative> alternatives) +
-We're going to completely change this method.
+Change the signature --> public void changeOrder(Alternative a, Int position)  +
+We're going to completely change this method. 
 
 * public void deleteAlternative(Alternative a) +
 Keep the part on graph and add the modification on the Set<Alternatives>
@@ -30,6 +30,5 @@ We also need to create the following method :
 * public static MutableLinearPreference given(Voter voter, List<Alternative> alternatives) +
 New constructor with the List<Alternative> as parameter.
 
-* public void reverse(MutableGraph<Alternative> newGraph) +
-Change the signature --> public void changeOrder(List<Alternative> alternatives) +
-We're going to completely change this method.
+* public void reverse(Alternative a1, Alternative a2) +
+This method will switch place between 2 alternatives in the Set<Alternative> and the MutableGraph<Alternative>.
