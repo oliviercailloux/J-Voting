@@ -32,7 +32,7 @@ Voter's preferences : AntiSymmetric</body>
             <body>CompletePreference + AntiSymmetricPreference</body>
           </ownedComment>
           <ownedComment xmi:type="uml:Comment" xmi:id="_UmQBEHEcEeqUv4VtPCytLw">
-            <body>List of alternatives</body>
+            <body>Set of alternatives</body>
           </ownedComment>
           <ownedComment xmi:type="uml:Comment" xmi:id="_kAObwHEcEeqUv4VtPCytLw">
             <body>We can add an alternative and relations between them</body>
