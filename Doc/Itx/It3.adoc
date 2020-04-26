@@ -6,9 +6,11 @@
 
 * Briefly summarize the Javadoc of certain methods (when not obvious and important) : _Leo_
 
+* Add that LinearPreference extends ASPreference and change primitive Boolean type by a boolean one on Preference Interface Papyrus Diagram. 
+
 * Change of the example illustrating the case of a complete preference (strict or equivalent but not >=) : _Jade_
 
-* Update of the README in Doc/. and removal of It1.html : _Julien_
+* Update of the README in Doc/. : _Julien_
 
 ==  Second part of missions : additional information +
 
