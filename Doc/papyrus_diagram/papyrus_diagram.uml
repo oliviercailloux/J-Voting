@@ -6526,86 +6526,80 @@ Voter's preferences : AntiSymmetric</body>
       <packagedElement xmi:type="uml:Package" xmi:id="_oMADEIYtEeq0ksZO2OwcmQ" name="OldToNewCompletePreferenceImpl"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_cIIGcHqFEeqm79lOJbMtXA" name="UseCaseDiagram" visibility="public">
-      <packagedElement xmi:type="uml:Package" xmi:id="_iZgzEIcJEeqsBPuVq_CinQ" name="Objects">
-        <packagedElement xmi:type="uml:Actor" xmi:id="_jftYAHqFEeqm79lOJbMtXA" name="User"/>
-        <packagedElement xmi:type="uml:Package" xmi:id="_wnPZgHqGEeqm79lOJbMtXA" name="GUI usage system">
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_2DMr4HqGEeqm79lOJbMtXA" name="View a profile">
-            <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_1i_a0IcIEeqsBPuVq_CinQ" name="ExtensionPoint2"/>
-            <include xmi:type="uml:Include" xmi:id="_Nnif8HqHEeqm79lOJbMtXA" addition="_KTkNwHqHEeqm79lOJbMtXA"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_ExXwgHqHEeqm79lOJbMtXA" name="Create a profile">
-            <include xmi:type="uml:Include" xmi:id="_n_N-UHqHEeqm79lOJbMtXA" addition="_WP4OwHqHEeqm79lOJbMtXA"/>
-            <include xmi:type="uml:Include" xmi:id="_oZ5IIHqHEeqm79lOJbMtXA" addition="_Y9uVEHqHEeqm79lOJbMtXA"/>
-            <include xmi:type="uml:Include" xmi:id="_4VGcEHqREeqm79lOJbMtXA" addition="_0ykJcHqREeqm79lOJbMtXA"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_KTkNwHqHEeqm79lOJbMtXA" name="Select a file"/>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_WP4OwHqHEeqm79lOJbMtXA" name="Create alternatives"/>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_Y9uVEHqHEeqm79lOJbMtXA" name="Create preferences"/>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_FQ-oMHqIEeqm79lOJbMtXA" name="Rows visualization">
-            <generalization xmi:type="uml:Generalization" xmi:id="_Uy6FAHqIEeqm79lOJbMtXA" general="_2DMr4HqGEeqm79lOJbMtXA"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_OnbaMHqIEeqm79lOJbMtXA" name="Columns visualization">
-            <generalization xmi:type="uml:Generalization" xmi:id="_VTr20HqIEeqm79lOJbMtXA" general="_2DMr4HqGEeqm79lOJbMtXA"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_RZkKoHqIEeqm79lOJbMtXA" name="Wrapped visualization">
-            <generalization xmi:type="uml:Generalization" xmi:id="_V-8aUHqIEeqm79lOJbMtXA" general="_2DMr4HqGEeqm79lOJbMtXA"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_0ykJcHqREeqm79lOJbMtXA" name="Create voters"/>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_iKEPwH_gEeq2CdYuuttmvQ" name="Update a profile">
-            <extend xmi:type="uml:Extend" xmi:id="_1i-MsIcIEeqsBPuVq_CinQ" extendedCase="_2DMr4HqGEeqm79lOJbMtXA" extensionLocation="_1i_a0IcIEeqsBPuVq_CinQ"/>
-            <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_RNH1AIcIEeqsBPuVq_CinQ" name="ExtensionPoint1"/>
-            <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_RugDwIcIEeqsBPuVq_CinQ" name="ExtensionPoint2"/>
-            <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_TvqqQIcIEeqsBPuVq_CinQ" name="ExtensionPoint3"/>
-            <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_XklGUIcIEeqsBPuVq_CinQ" name="ExtensionPoint4"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_-EeJIIcHEeqsBPuVq_CinQ" name="Modify the voters">
-            <extend xmi:type="uml:Extend" xmi:id="_XkkfQIcIEeqsBPuVq_CinQ" extendedCase="_iKEPwH_gEeq2CdYuuttmvQ" extensionLocation="_XklGUIcIEeqsBPuVq_CinQ"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_-YRO4IcHEeqsBPuVq_CinQ" name="Modify the alternatives">
-            <extend xmi:type="uml:Extend" xmi:id="_Rue1oIcIEeqsBPuVq_CinQ" extendedCase="_iKEPwH_gEeq2CdYuuttmvQ" extensionLocation="_RugDwIcIEeqsBPuVq_CinQ"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_--dsMIcHEeqsBPuVq_CinQ" name="Modify preferences">
-            <extend xmi:type="uml:Extend" xmi:id="_RNHN8IcIEeqsBPuVq_CinQ" extendedCase="_iKEPwH_gEeq2CdYuuttmvQ" extensionLocation="_RNH1AIcIEeqsBPuVq_CinQ"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_cGJ0EIcIEeqsBPuVq_CinQ" name="Remove an alternative">
-            <generalization xmi:type="uml:Generalization" xmi:id="_CsckYIcJEeqsBPuVq_CinQ" general="_-YRO4IcHEeqsBPuVq_CinQ"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_e_5oYIcIEeqsBPuVq_CinQ" name="Add an alternative ">
-            <generalization xmi:type="uml:Generalization" xmi:id="_CT-aAIcJEeqsBPuVq_CinQ" general="_-YRO4IcHEeqsBPuVq_CinQ"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_8Th6gIcIEeqsBPuVq_CinQ" name="Remove a voter">
-            <generalization xmi:type="uml:Generalization" xmi:id="_Bz6Z4IcJEeqsBPuVq_CinQ" general="_-EeJIIcHEeqsBPuVq_CinQ"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_8iVykIcIEeqsBPuVq_CinQ" name="Add a voter">
-            <generalization xmi:type="uml:Generalization" xmi:id="_BVyTcIcJEeqsBPuVq_CinQ" general="_-EeJIIcHEeqsBPuVq_CinQ"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_ta3gUIcMEeqsBPuVq_CinQ" name="Rename a voter">
-            <generalization xmi:type="uml:Generalization" xmi:id="_E6M4kIcNEeqsBPuVq_CinQ" general="_-EeJIIcHEeqsBPuVq_CinQ"/>
-          </packagedElement>
-          <packagedElement xmi:type="uml:UseCase" xmi:id="_t-kqUIcMEeqsBPuVq_CinQ" name="Rename an alternative">
-            <generalization xmi:type="uml:Generalization" xmi:id="_EPMzwIcNEeqsBPuVq_CinQ" general="_-YRO4IcHEeqsBPuVq_CinQ"/>
-          </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_iZgzEIcJEeqsBPuVq_CinQ" name="Objects"/>
+      <packagedElement xmi:type="uml:Actor" xmi:id="_jftYAHqFEeqm79lOJbMtXA" name="User"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_eDnocIfbEeqzH6e2zKs5nA" memberEnd="_eDrS0IfbEeqzH6e2zKs5nA _eDr54IfbEeqzH6e2zKs5nA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_eDo2kIfbEeqzH6e2zKs5nA" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eDo2kYfbEeqzH6e2zKs5nA" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_eDrS0IfbEeqzH6e2zKs5nA" name="create a profile" type="_ExXwgHqHEeqm79lOJbMtXA" association="_eDnocIfbEeqzH6e2zKs5nA"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_eDr54IfbEeqzH6e2zKs5nA" name="user" type="_jftYAHqFEeqm79lOJbMtXA" association="_eDnocIfbEeqzH6e2zKs5nA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_f-h18IfbEeqzH6e2zKs5nA" memberEnd="_f-idAYfbEeqzH6e2zKs5nA _f-idAofbEeqzH6e2zKs5nA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_f-h18YfbEeqzH6e2zKs5nA" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_f-idAIfbEeqzH6e2zKs5nA" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_f-idAYfbEeqzH6e2zKs5nA" type="_jftYAHqFEeqm79lOJbMtXA" association="_f-h18IfbEeqzH6e2zKs5nA"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_f-idAofbEeqzH6e2zKs5nA" name="select a profile" type="_3IZJ8IfaEeqzH6e2zKs5nA" association="_f-h18IfbEeqzH6e2zKs5nA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_wnPZgHqGEeqm79lOJbMtXA" name="GUI usage system">
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_ExXwgHqHEeqm79lOJbMtXA" name="Create a profile">
+          <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_YY-Z0IfbEeqzH6e2zKs5nA" name="ExtensionPoint1"/>
+          <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_Z8zkEIfbEeqzH6e2zKs5nA" name="ExtensionPoint2"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_8_SUQHqGEeqm79lOJbMtXA" memberEnd="_8_Ya4nqGEeqm79lOJbMtXA _8_Ya43qGEeqm79lOJbMtXA">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8_Ya4HqGEeqm79lOJbMtXA" source="org.eclipse.papyrus">
-            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_8_Ya4XqGEeqm79lOJbMtXA" key="nature" value="UML_Nature"/>
-          </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_8_Ya4nqGEeqm79lOJbMtXA" name="view a soc profile" type="_2DMr4HqGEeqm79lOJbMtXA" association="_8_SUQHqGEeqm79lOJbMtXA"/>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_8_Ya43qGEeqm79lOJbMtXA" name="user" type="_jftYAHqFEeqm79lOJbMtXA" association="_8_SUQHqGEeqm79lOJbMtXA"/>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_FQ-oMHqIEeqm79lOJbMtXA" name="Rows">
+          <generalization xmi:type="uml:Generalization" xmi:id="_SpPP0IfbEeqzH6e2zKs5nA" general="_FajA8IfbEeqzH6e2zKs5nA"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_HsWT4HqHEeqm79lOJbMtXA" memberEnd="_HsWT43qHEeqm79lOJbMtXA _HsWT5HqHEeqm79lOJbMtXA">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_HsWT4XqHEeqm79lOJbMtXA" source="org.eclipse.papyrus">
-            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_HsWT4nqHEeqm79lOJbMtXA" key="nature" value="UML_Nature"/>
-          </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_HsWT43qHEeqm79lOJbMtXA" name="create a soc profile" type="_ExXwgHqHEeqm79lOJbMtXA" association="_HsWT4HqHEeqm79lOJbMtXA"/>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_HsWT5HqHEeqm79lOJbMtXA" name="user" type="_jftYAHqFEeqm79lOJbMtXA" association="_HsWT4HqHEeqm79lOJbMtXA"/>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_OnbaMHqIEeqm79lOJbMtXA" name="Columns">
+          <generalization xmi:type="uml:Generalization" xmi:id="_SQ2lAIfbEeqzH6e2zKs5nA" general="_FajA8IfbEeqzH6e2zKs5nA"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_5Jq_EH_gEeq2CdYuuttmvQ" memberEnd="_5JupcH_gEeq2CdYuuttmvQ _5JvQgH_gEeq2CdYuuttmvQ">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_5JtbUH_gEeq2CdYuuttmvQ" source="org.eclipse.papyrus">
-            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_5JuCYH_gEeq2CdYuuttmvQ" key="nature" value="UML_Nature"/>
-          </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_5JupcH_gEeq2CdYuuttmvQ" name="user" type="_jftYAHqFEeqm79lOJbMtXA" association="_5Jq_EH_gEeq2CdYuuttmvQ"/>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_5JvQgH_gEeq2CdYuuttmvQ" name="update a profile" type="_iKEPwH_gEeq2CdYuuttmvQ" association="_5Jq_EH_gEeq2CdYuuttmvQ"/>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_RZkKoHqIEeqm79lOJbMtXA" name="Wrapped">
+          <generalization xmi:type="uml:Generalization" xmi:id="_RxzRgIfbEeqzH6e2zKs5nA" general="_FajA8IfbEeqzH6e2zKs5nA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_iKEPwH_gEeq2CdYuuttmvQ" name="Update a profile">
+          <extend xmi:type="uml:Extend" xmi:id="_Z8y9AIfbEeqzH6e2zKs5nA" extendedCase="_ExXwgHqHEeqm79lOJbMtXA" extensionLocation="_Z8zkEIfbEeqzH6e2zKs5nA"/>
+          <extend xmi:type="uml:Extend" xmi:id="_bFCXcIfbEeqzH6e2zKs5nA" extendedCase="_3IZJ8IfaEeqzH6e2zKs5nA" extensionLocation="_bFC-gIfbEeqzH6e2zKs5nA"/>
+          <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_RNH1AIcIEeqsBPuVq_CinQ" name="ExtensionPoint1"/>
+          <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_RugDwIcIEeqsBPuVq_CinQ" name="ExtensionPoint2"/>
+          <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_TvqqQIcIEeqsBPuVq_CinQ" name="ExtensionPoint3"/>
+          <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_XklGUIcIEeqsBPuVq_CinQ" name="ExtensionPoint4"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_-EeJIIcHEeqsBPuVq_CinQ" name="Modify the voters">
+          <extend xmi:type="uml:Extend" xmi:id="_XkkfQIcIEeqsBPuVq_CinQ" extendedCase="_iKEPwH_gEeq2CdYuuttmvQ" extensionLocation="_XklGUIcIEeqsBPuVq_CinQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_-YRO4IcHEeqsBPuVq_CinQ" name="Modify the alternatives">
+          <extend xmi:type="uml:Extend" xmi:id="_Rue1oIcIEeqsBPuVq_CinQ" extendedCase="_iKEPwH_gEeq2CdYuuttmvQ" extensionLocation="_RugDwIcIEeqsBPuVq_CinQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_--dsMIcHEeqsBPuVq_CinQ" name="Modify preferences">
+          <extend xmi:type="uml:Extend" xmi:id="_RNHN8IcIEeqsBPuVq_CinQ" extendedCase="_iKEPwH_gEeq2CdYuuttmvQ" extensionLocation="_RNH1AIcIEeqsBPuVq_CinQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_cGJ0EIcIEeqsBPuVq_CinQ" name="Remove an alternative">
+          <generalization xmi:type="uml:Generalization" xmi:id="_CsckYIcJEeqsBPuVq_CinQ" general="_-YRO4IcHEeqsBPuVq_CinQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_e_5oYIcIEeqsBPuVq_CinQ" name="Add an alternative ">
+          <generalization xmi:type="uml:Generalization" xmi:id="_CT-aAIcJEeqsBPuVq_CinQ" general="_-YRO4IcHEeqsBPuVq_CinQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_8Th6gIcIEeqsBPuVq_CinQ" name="Remove a voter">
+          <generalization xmi:type="uml:Generalization" xmi:id="_Bz6Z4IcJEeqsBPuVq_CinQ" general="_-EeJIIcHEeqsBPuVq_CinQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_8iVykIcIEeqsBPuVq_CinQ" name="Add a voter">
+          <generalization xmi:type="uml:Generalization" xmi:id="_BVyTcIcJEeqsBPuVq_CinQ" general="_-EeJIIcHEeqsBPuVq_CinQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_ta3gUIcMEeqsBPuVq_CinQ" name="Rename a voter">
+          <generalization xmi:type="uml:Generalization" xmi:id="_E6M4kIcNEeqsBPuVq_CinQ" general="_-EeJIIcHEeqsBPuVq_CinQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_t-kqUIcMEeqsBPuVq_CinQ" name="Rename an alternative">
+          <generalization xmi:type="uml:Generalization" xmi:id="_EPMzwIcNEeqsBPuVq_CinQ" general="_-YRO4IcHEeqsBPuVq_CinQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_3IZJ8IfaEeqzH6e2zKs5nA" name="Select a profile">
+          <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_bFC-gIfbEeqzH6e2zKs5nA" name="ExtensionPoint1"/>
+          <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_bxZuMIfbEeqzH6e2zKs5nA" name="ExtensionPoint2"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:UseCase" xmi:id="_FajA8IfbEeqzH6e2zKs5nA" name="See a profile">
+          <extend xmi:type="uml:Extend" xmi:id="_YY9ywIfbEeqzH6e2zKs5nA" extendedCase="_ExXwgHqHEeqm79lOJbMtXA" extensionLocation="_YY-Z0IfbEeqzH6e2zKs5nA"/>
+          <extend xmi:type="uml:Extend" xmi:id="_bxZHIIfbEeqzH6e2zKs5nA" extendedCase="_3IZJ8IfaEeqzH6e2zKs5nA" extensionLocation="_bxZuMIfbEeqzH6e2zKs5nA"/>
+          <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_V5Q2IIfbEeqzH6e2zKs5nA" name="ExtensionPoint1"/>
+          <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_ih4jgIfbEeqzH6e2zKs5nA" name="ExtensionPoint4"/>
         </packagedElement>
       </packagedElement>
     </packagedElement>
