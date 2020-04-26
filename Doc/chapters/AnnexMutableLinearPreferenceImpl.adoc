@@ -1,0 +1,20 @@
+= Annex 2. Change of direction in MutableLinearPreference
+
+====== link:../README.adoc[Summary]
+
+=== Both current classes Diagram
+
+image:../assets/OldCPClassesDiagram.png[The old situation]
+
+In the last java iteration, we have focused our work on the attribute MutableGraph. Now, we understood that it would be easier for the user to have as a parameter the List<Alternative>.
+
+The goal is to modify the MutableLinearPreference class with methods that take list<Alternative> rather than MutableGraph as parameters and update these lists with the different possible functionalities. The methods will also update the corresponding Mutablegraph.
+
+Specifically, we need to modify the following methods :
+
+* size(List<Set<Alternative>> list) that we will rename atlernativeNumber.
+* contains(Alternative alter). This method uses the toAlternativeSet method but be careful, in the OldCP the method accepts a List<Set<Alernative>> and in the new one only a ImmutableList<ImmutableSet<Alernative>>.
+* hasSameAlternatives(OldCompletePreferenceImpl p).
+* isIncludedIn(OldCompletePreferenceImpl p).
+* isStrict().
+* toStrictPreference().
