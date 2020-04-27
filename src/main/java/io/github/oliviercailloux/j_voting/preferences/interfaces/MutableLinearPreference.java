@@ -34,6 +34,13 @@ public interface MutableLinearPreference extends Preference {
 	 *
 	 * @param alternative to add to the preference.
 	 */
-	
 	public void addAlternative(Alternative alternative);
+	
+	/**
+	 * This method enables to switch 2 alternatives in the Set<Alternative> and the MutableGraph<Alternative>
+	 * 
+	 * @param alternative1 that will change places with alternative2
+	 * @param alternative2 that will change places with alternative1
+	 */
+	public void reverse(Alternative alternative1, Alternative alternative2);
 }

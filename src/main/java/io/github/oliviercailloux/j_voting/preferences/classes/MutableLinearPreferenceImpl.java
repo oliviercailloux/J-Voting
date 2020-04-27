@@ -1,5 +1,7 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -22,6 +24,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	protected Voter voter;
     protected MutableGraph<Alternative> graph;
     protected Set<Alternative> alternatives;
+    
     private static final Logger LOGGER = LoggerFactory
             .getLogger(MutableLinearPreferenceImpl.class.getName());
     
@@ -131,5 +134,35 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	@Override
 	public Graph<Alternative> asGraph() {
 		return ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
+	}
+
+	@Override
+	public void reverse(Alternative alternative1, Alternative alternative2) {
+		LOGGER.debug("MutablePreferenceImpl reverse");
+		Preconditions.checkNotNull(alternative1);
+		Preconditions.checkNotNull(alternative2);
+		
+		Set<Alternative> set = new HashSet<>();
+		set.add(alternative1);
+		set.add(alternative2);
+		
+		for(Alternative a : set) {
+			Set<Alternative> predecessor = graph.predecessors(a);
+			Set<Alternative> successor = graph.successors(a);
+			
+			graph.removeNode(a);
+			
+			for(Alternative p : predecessor) {
+				graph.putEdge(p, a);
+			}
+			
+			for(Alternative s : successor) {
+				graph.putEdge(a, s);
+			}
+			
+		}
+			
+		alternatives = graph.nodes();
+
 	}	
 }
