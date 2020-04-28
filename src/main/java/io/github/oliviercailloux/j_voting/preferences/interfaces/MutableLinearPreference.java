@@ -17,9 +17,10 @@ public interface MutableLinearPreference extends Preference {
 	 * Change the order of the alternatives. Check if there is a cycle, if all the alternatives are comparable two-by-two
 	 * and if all alternatives are not equals.
 	 * 
-	 * @param newGraph to change the old preference to the new one with an alternative graph.
+	 * @param alternative that we're going to move in the preference
+	 * @param rank of the alternative
 	 */
-	public void changeOrder(MutableGraph<Alternative> newGraph);
+	public void changeOrder(Alternative alternative, int rank);
 	
 	/**
 	 * Remove an alternative to the Preference. This alternative is deleted as well 
@@ -37,10 +38,10 @@ public interface MutableLinearPreference extends Preference {
 	public void addAlternative(Alternative alternative);
 	
 	/**
-	 * This method enables to switch 2 alternatives in the Set<Alternative> and the MutableGraph<Alternative>
+	 * This method enables to swap 2 alternatives in the LinkedList<Alternative> and the MutableGraph<Alternative>
 	 * 
 	 * @param alternative1 that will change places with alternative2
 	 * @param alternative2 that will change places with alternative1
 	 */
-	public void reverse(Alternative alternative1, Alternative alternative2);
+	public void swap(Alternative alternative1, Alternative alternative2);
 }

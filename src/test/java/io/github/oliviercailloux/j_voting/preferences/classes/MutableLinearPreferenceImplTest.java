@@ -68,27 +68,27 @@ public class MutableLinearPreferenceImplTest {
         assertEquals(Graphs.transitiveClosure(graph), pref.asGraph());
     }
 	
-	/**
-     * Tests of the changeOrder method which returns the new preference well
-     */
-	@Test
-    void testChangeOrder() {
-	
-		MutableGraph<Alternative> graph1 = GraphBuilder.directed()
-                .allowsSelfLoops(true).build();
-		MutableGraph<Alternative> graph2 = GraphBuilder.directed()
-                .allowsSelfLoops(true).build();
-
-		graph1.putEdge(a1, a2);
-		graph1.putEdge(a2, a3);
-		
-		graph2.putEdge(a3, a2);
-		graph2.putEdge(a2, a1);
-		
-		MutableLinearPreference pref = MutableLinearPreferenceImpl.given(Voter.createVoter(1), Graphs.copyOf(graph1));
-		pref.changeOrder(graph2);
-		assertEquals(Graphs.transitiveClosure(graph2), pref.asGraph());	
-	}
+//	/**
+//     * Tests of the changeOrder method which returns the new preference well
+//     */
+//	@Test
+//    void testChangeOrder() {
+//	
+//		MutableGraph<Alternative> graph1 = GraphBuilder.directed()
+//                .allowsSelfLoops(true).build();
+//		MutableGraph<Alternative> graph2 = GraphBuilder.directed()
+//                .allowsSelfLoops(true).build();
+//
+//		graph1.putEdge(a1, a2);
+//		graph1.putEdge(a2, a3);
+//		
+//		graph2.putEdge(a3, a2);
+//		graph2.putEdge(a2, a1);
+//		
+//		MutableLinearPreference pref = MutableLinearPreferenceImpl.given(Voter.createVoter(1), Graphs.copyOf(graph1));
+//		pref.changeOrder(graph2);
+//		assertEquals(Graphs.transitiveClosure(graph2), pref.asGraph());	
+//	}
 	
 	 /**
      * Tests whether method getAlternatives returns a set with all the
