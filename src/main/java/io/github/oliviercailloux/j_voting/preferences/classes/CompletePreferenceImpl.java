@@ -29,6 +29,7 @@ public class CompletePreferenceImpl implements CompletePreference {
     private ImmutableList<ImmutableSet<Alternative>> equivalenceClasses;
     private Voter voter;
     private ImmutableGraph<Alternative> graph;
+    // Je suis pour passer ca en private on a un getter dessus
     ImmutableSet<Alternative> alternatives;
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(CompletePreferenceImpl.class.getName());
@@ -119,6 +120,7 @@ public class CompletePreferenceImpl implements CompletePreference {
     @Override
     public int getRank(Alternative a) {
         Preconditions.checkNotNull(a);
+        // Pour le coup je mettrais plutot ImmutableSet à la place de Set ici
         for (Set<Alternative> equivalenceClasse : equivalenceClasses) {
             if (equivalenceClasse.contains(a))
                 return equivalenceClasses.indexOf(equivalenceClasse) + 1;
@@ -163,6 +165,39 @@ public class CompletePreferenceImpl implements CompletePreference {
         return (this.isIncludedIn(otherInstance) && otherInstance.isIncludedIn(this));
     } //necessite isIncludedIn pour tourner
     */
+
+    /**
+     * @param p <code>not null</code>
+     * @return whether all the alternatives of the calling preference are included in the given preference.
+     */
+    public boolean isIncludedIn(CompletePreferenceImpl p) {
+        Preconditions.checkNotNull(p);
+        Set inputPrefAlternatives = p.getAlternatives();
+        for (Alternative alter : this.alternatives) {
+            if (!inputPrefAlternatives.contains(alter)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     *
+     * @return the preference number of alternatives
+     */
+    // Alors ca me parait un peu facile lol
+    public int alternativeNumber() {
+        return this.alternatives.size();
+    }
+
+    /**
+     *
+     * @return true if the Preference is Strict (without several alternatives
+     *         having the same rank)
+     */
+    public boolean isStrict() {
+        return (this.equivalenceClasses.size() == this.alternativeNumber());
+    }
     
     
     @Override

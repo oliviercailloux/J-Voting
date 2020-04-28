@@ -1,13 +1,7 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,10 +22,15 @@ class CompletePreferenceImplTest {
 
     private static Voter v1 = Voter.createVoter(1);
 
+    // Je pige pas pourquoi ca se nomme getTwoClassesPreference ce truc
     private CompletePreferenceImpl getTwoClassesPreference()
                     throws DuplicateValueException, EmptySetException {
         return (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,
                         ImmutableList.of(a12, ImmutableSet.of(a3)));
+    }
+
+    private CompletePreferenceImpl getTwoStrictPreference() throws DuplicateValueException, EmptySetException {
+        return (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,ImmutableList.of(ImmutableSet.of(a1), ImmutableSet.of(a3)));
     }
 
     @Test
@@ -124,5 +123,27 @@ class CompletePreferenceImplTest {
             CompletePreferenceImpl.asCompletePreference(v1, ImmutableList
                             .of(ImmutableSet.of(), ImmutableSet.of(a2)));
         });
+    }
+
+    @Test
+    void isIncludedInTest() throws DuplicateValueException, EmptySetException {
+        CompletePreferenceImpl toTestIsContained = (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,ImmutableList.of(a12, ImmutableSet.of(a3)));
+        CompletePreferenceImpl toTestContains = (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,ImmutableList.of(a31, ImmutableSet.of(a2), ImmutableSet.of(a4)));
+        assertTrue(toTestIsContained.isIncludedIn(toTestContains));
+        assertFalse(toTestContains.isIncludedIn(toTestIsContained));
+    }
+
+    @Test
+    public void alternativeNumberTest() throws DuplicateValueException, EmptySetException {
+        CompletePreferenceImpl toTest = getTwoClassesPreference();
+        assertEquals(3, toTest.alternativeNumber());
+    }
+
+    @Test
+    public void isStrictTest() throws DuplicateValueException, EmptySetException {
+        CompletePreferenceImpl toTestNonStrict = getTwoClassesPreference();
+        CompletePreferenceImpl toTestStrict = getTwoStrictPreference();
+        assertFalse(toTestNonStrict.isStrict());
+        assertTrue(toTestStrict.isStrict());
     }
 }
