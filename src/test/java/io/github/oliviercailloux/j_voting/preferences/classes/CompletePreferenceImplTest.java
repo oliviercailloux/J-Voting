@@ -28,9 +28,9 @@ class CompletePreferenceImplTest {
 
     private static Voter v1 = Voter.createVoter(1);
 
-    private CompletePreference getTwoClassesPreference()
+    private CompletePreferenceImpl getTwoClassesPreference()
                     throws DuplicateValueException, EmptySetException {
-        return CompletePreferenceImpl.asCompletePreference(v1,
+        return (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,
                         ImmutableList.of(a12, ImmutableSet.of(a3)));
     }
 
@@ -101,6 +101,14 @@ class CompletePreferenceImplTest {
         CompletePreference toTest = getTwoClassesPreference();
         assertEquals(v1, toTest.getVoter());
     }
+    
+    @Test
+    public void containsTest() throws DuplicateValueException, EmptySetException {
+    	CompletePreferenceImpl toTest = getTwoClassesPreference();
+    	assertEquals(true, toTest.contains(a2));
+    }
+    
+    
 
     @Test
     public void createDuplicateException() throws DuplicateValueException {

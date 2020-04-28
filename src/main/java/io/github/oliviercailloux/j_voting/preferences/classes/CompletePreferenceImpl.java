@@ -18,6 +18,7 @@ import com.google.common.graph.ImmutableGraph;
 import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
+import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
@@ -139,7 +140,31 @@ public class CompletePreferenceImpl implements CompletePreference {
     public ImmutableGraph<Alternative> asGraph() {
         return graph;
     }
-
+    
+    
+    /**
+     * @param alternative <code>not null</code>
+     * @return whether the preference contains the alternative given as
+     *         parameter
+     */
+    public boolean contains(Alternative alternative) {
+        Preconditions.checkNotNull(alternative);
+        return (this.alternatives.contains(alternative));
+    }
+    
+    /**
+     * @param otherInstance <code>not null</code>
+     * @return whether the preferences are about the same alternatives exactly
+     *         (not necessarily in the same order).
+     */
+    /*
+    public boolean hasSameAlternatives(CompletePreferenceImpl otherInstance) {
+        Preconditions.checkNotNull(otherInstance);
+        return (this.isIncludedIn(otherInstance) && otherInstance.isIncludedIn(this));
+    } //necessite isIncludedIn pour tourner
+    */
+    
+    
     @Override
     public int hashCode() {
         return Objects.hash(equivalenceClasses, graph, voter);
