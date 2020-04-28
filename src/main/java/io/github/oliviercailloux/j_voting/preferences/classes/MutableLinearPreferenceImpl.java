@@ -2,6 +2,7 @@ package io.github.oliviercailloux.j_voting.preferences.classes;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -35,6 +36,16 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
     	this.voter = voter;
     	this.graph = prefGraph; 
     	this.alternatives = graph.nodes();
+    	this.list = new LinkedList<>();
+    	
+    	Set<Alternative> set = prefGraph.nodes();
+    	Iterator<Alternative> itSet = set.iterator();
+		while (itSet.hasNext() == true) {
+			list.add(itSet.next());
+		}
+    	
+    	
+    	
     }
     
     /**
@@ -131,16 +142,40 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		
 		if(alternative1.equals(alternative2)) 
 			throw new IllegalArgumentException("The alternatives " + alternative1  + " and " + alternative2 + " must be differents.");
+		
+		Alternative pred1 = null;
+		Alternative pred2 = null;
+		Alternative succ1 = null;
+		Alternative succ2 = null;
+		
+		Set<Alternative> setSucc1 = graph.successors(alternative1);
+		Iterator<Alternative> itSucc1 = setSucc1.iterator();
+		if (itSucc1.hasNext() == true) {
+			succ1 = itSucc1.next();
+		}
 
-		Alternative pred1 = (Alternative)graph.predecessors(alternative1);
-		Alternative pred2 = (Alternative)graph.predecessors(alternative2);
-		Alternative succ1 = (Alternative)graph.successors(alternative1);
-		Alternative succ2 = (Alternative)graph.successors(alternative2);
+		Set<Alternative> setSucc2 = graph.successors(alternative2);
+		Iterator<Alternative> itSucc2 = setSucc2.iterator();
+		if (itSucc2.hasNext() == true) {
+			succ2 = itSucc2.next();
+		}
+		
+		Set<Alternative> setPred1 = graph.predecessors(alternative1);
+		Iterator<Alternative> itPred1 = setPred1.iterator();
+		if (itPred1.hasNext() == true) {
+			pred1 = itPred1.next();
+		}
+		
+		Set<Alternative> setPred2 = graph.predecessors(alternative2);
+		Iterator<Alternative> itPred2 = setPred2.iterator();
+		if (itPred2.hasNext() == true) {
+			pred2 = itPred2.next();
+		}
 		
 		graph.removeNode(alternative1);
 		graph.removeNode(alternative2);
 		
-		if (alternative1.equals(list.getFirst())) {						
+		if (alternative1.equals(list.getFirst())) {		
 			if(alternative2.equals(list.getLast())) {				
 				graph.putEdge(alternative2, succ1);
 				graph.putEdge(pred2, alternative1);			
@@ -174,6 +209,13 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 				graph.putEdge(alternative1,succ2);	
 			} 
 			else {
+				System.out.println(list.getFirst());
+				System.out.println(list.getLast());
+				System.out.println(graph.nodes());
+				System.out.println("pred2 ="+pred2);
+				System.out.println("pred1 ="+pred1);
+				System.out.println("succ2 ="+succ2);
+				System.out.println("succ1 ="+succ1);
 				graph.putEdge(pred2,alternative1);
 				graph.putEdge(alternative1,succ2);
 				graph.putEdge(pred1,alternative2);
@@ -182,5 +224,49 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		}
 		
 	    Collections.swap(list,list.indexOf(alternative1),list.indexOf(alternative2));
-	}	
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((alternatives == null) ? 0 : alternatives.hashCode());
+		result = prime * result + ((graph == null) ? 0 : graph.hashCode());
+		result = prime * result + ((list == null) ? 0 : list.hashCode());
+		result = prime * result + ((voter == null) ? 0 : voter.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MutableLinearPreferenceImpl other = (MutableLinearPreferenceImpl) obj;
+		if (alternatives == null) {
+			if (other.alternatives != null)
+				return false;
+		} else if (!alternatives.equals(other.alternatives))
+			return false;
+		if (graph == null) {
+			if (other.graph != null)
+				return false;
+		} else if (!graph.equals(other.graph))
+			return false;
+		if (list == null) {
+			if (other.list != null)
+				return false;
+		} else if (!list.equals(other.list))
+			return false;
+		if (voter == null) {
+			if (other.voter != null)
+				return false;
+		} else if (!voter.equals(other.voter))
+			return false;
+		return true;
+	}
+	
 }

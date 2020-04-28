@@ -106,4 +106,27 @@ public class MutableLinearPreferenceImplTest {
         ImmutableSet<Alternative> expected = a12345;
         assertEquals(expected, pref.getAlternatives());
     }
+    
+    @Test
+    void testSwap() {
+    	Voter v = Voter.createVoter(1);
+    	MutableGraph<Alternative> toTestGraph = GraphBuilder.directed().allowsSelfLoops(true).build();
+    	toTestGraph.putEdge(a1, a2);
+    	toTestGraph.putEdge(a2, a3);
+    	toTestGraph.putEdge(a3, a4);
+    	toTestGraph.putEdge(a4, a5);
+        
+		MutableGraph<Alternative> graph = GraphBuilder.directed().allowsSelfLoops(true).build();
+		graph.putEdge(a1, a4);
+		graph.putEdge(a4, a3);
+		graph.putEdge(a3, a2);
+		graph.putEdge(a2, a5);
+		
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, Graphs.copyOf(toTestGraph));
+		MutableLinearPreference pref = MutableLinearPreferenceImpl.given(v, Graphs.copyOf(graph));
+		
+		toTestPref.swap(a2,a4);
+		
+		assertEquals(pref, toTestPref);	
+    }
 }
