@@ -59,10 +59,6 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
     		if ((prefGraph.successors(a).size() == 0) && (prefGraph.predecessors(a).size() == 0)) 
     			throw new IllegalArgumentException("There are no edges between all alternatives");
     	}
-    	/*
-    	if (Graphs.hasCycle(prefGraph))
-			throw new IllegalArgumentException("The preference has a cycle");
-    	*/
     	for (Alternative a1 : prefGraph.nodes()) {
             for (Alternative a2 : prefGraph.successors(a1)) {
                 if (Graphs.transitiveClosure(prefGraph).hasEdgeConnecting(a2,a1) && !a2.equals(a1)) {
@@ -84,20 +80,33 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	public void deleteAlternative(Alternative a) {	
 		LOGGER.debug("MutableLinearPreferenceImpl deleteAlternative");
         Preconditions.checkNotNull(a);
-        graph.removeNode(a);	       
-        alternatives = graph.nodes();
+
+        if ((graph.successors(a).size() != 0) && (graph.predecessors(a).size() != 0)) {	
+        	Set<Alternative> setPred = graph.predecessors(a);
+    		Iterator<Alternative> itPred = setPred.iterator();
+    		Alternative pred = itPred.next();
+    				
+    		Set<Alternative> setSucc = graph.successors(a);
+    		Iterator<Alternative> itSucc = setSucc.iterator();
+    		if (itSucc.hasNext() == true) 
+    			graph.putEdge(pred,  itSucc.next());
+		}
+            
+        graph.removeNode(a);
+        list.remove(a);
 	}
 	
 	@Override
 	public void addAlternative(Alternative a) {
 		LOGGER.debug("MutablePreferenceImpl addAlternative");
         Preconditions.checkNotNull(a);
-        graph.addNode(a);
+        
         for (Alternative ai : graph.nodes()) {
-        	if (graph.successors(a).size() == 0)
-    			graph.putEdge(ai, a);
-    	}        
-        alternatives = graph.nodes();
+        	if (graph.successors(ai).size() == 0) {
+    			graph.putEdge(ai, a);        		
+        	}
+    	}
+        list.add(a);
 	}
 	
 	/**
