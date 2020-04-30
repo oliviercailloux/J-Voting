@@ -14,11 +14,10 @@ import io.github.oliviercailloux.j_voting.Alternative;
 public interface MutableLinearPreference extends Preference {
 	
 	/**
-	 * Change the order of the alternatives. Check if there is a cycle, if all the alternatives are comparable two-by-two
-	 * and if all alternatives are not equals.
+	 * Moves the alternative to the desired rank.
 	 * 
 	 * @param alternative that we're going to move in the preference
-	 * @param rank of the alternative
+	 * @param rank desired
 	 */
 	public void changeOrder(Alternative alternative, int rank);
 	
@@ -26,7 +25,7 @@ public interface MutableLinearPreference extends Preference {
 	 * Remove an alternative to the Preference. This alternative is deleted as well 
 	 * as the links between it and the other alternatives.
 	 *
-	 * @param alternative to remove to the preference.
+	 * @param alternative who belongs to the preference
 	 */
 	public void deleteAlternative(Alternative alternative);
 	
@@ -38,7 +37,7 @@ public interface MutableLinearPreference extends Preference {
 	public void addAlternative(Alternative alternative);
 	
 	/**
-	 * This method enables to swap 2 alternatives in the LinkedList<Alternative> and the MutableGraph<Alternative>
+	 * This method enables to swap 2 different alternatives of the preference.
 	 * 
 	 * @param alternative1 that will change places with alternative2
 	 * @param alternative2 that will change places with alternative1

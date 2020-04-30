@@ -74,6 +74,25 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
     	LOGGER.debug("MutableLinearPreferenceImpl changeOrder");
     	Preconditions.checkNotNull(alternative);
     	Preconditions.checkNotNull(rank);	
+    	    	
+    	Alternative temp;
+    	Iterator<Alternative> itTemp;
+
+    	int initRank = list.indexOf(alternative);   	
+    	if (initRank - rank > 0) { //swap à gauche
+    		for(int i = initRank; i > rank; i-- ) {
+    			itTemp = graph.predecessors(alternative).iterator();
+        		temp = itTemp.next();
+        		swap(temp,alternative);
+    		}
+		} 
+    	else if (initRank - rank < 0) { //swap à droite
+    		for(int i = initRank; i < rank; i++ ) {
+    			itTemp = graph.successors(alternative).iterator();
+        		temp = itTemp.next();
+        		swap(alternative,temp);
+    		}
+    	}
 	}
 
 	@Override
@@ -141,74 +160,83 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		if(alternative1.equals(alternative2)) 
 			throw new IllegalArgumentException("The alternatives must be differents.");
 		
+		boolean neighbour = false;
+		Alternative a1 = alternative1;
+		Alternative a2 = alternative2; 
+				
+		if(list.indexOf(alternative1) > list.indexOf(alternative2)) {
+			a1 = alternative2;
+			a2 = alternative1;
+		} 
+		
+		if(list.indexOf(alternative2) - list.indexOf(alternative1) == 1) 
+			neighbour = true;
+		
 		Alternative pred1 = null;
 		Alternative pred2 = null;
 		Alternative succ1 = null;
 		Alternative succ2 = null;
 		
-		Set<Alternative> setSucc1 = graph.successors(alternative1);
+		Set<Alternative> setSucc1 = graph.successors(a1);
 		Iterator<Alternative> itSucc1 = setSucc1.iterator();
 		if (itSucc1.hasNext() == true) 
 			succ1 = itSucc1.next();
 		
-		Set<Alternative> setSucc2 = graph.successors(alternative2);
+		Set<Alternative> setSucc2 = graph.successors(a2);
 		Iterator<Alternative> itSucc2 = setSucc2.iterator();
 		if (itSucc2.hasNext() == true) 
 			succ2 = itSucc2.next();
 		
-		Set<Alternative> setPred1 = graph.predecessors(alternative1);
+		Set<Alternative> setPred1 = graph.predecessors(a1);
 		Iterator<Alternative> itPred1 = setPred1.iterator();
 		if (itPred1.hasNext() == true) 
 			pred1 = itPred1.next();
 				
-		Set<Alternative> setPred2 = graph.predecessors(alternative2);
+		Set<Alternative> setPred2 = graph.predecessors(a2);
 		Iterator<Alternative> itPred2 = setPred2.iterator();
 		if (itPred2.hasNext() == true) 
 			pred2 = itPred2.next();		
 		
-		graph.removeNode(alternative1);
-		graph.removeNode(alternative2);
+		graph.removeNode(a1);
+		graph.removeNode(a2);
 		
-		if (alternative1.equals(list.getFirst())) {		
-			if(alternative2.equals(list.getLast())) {				
-				graph.putEdge(alternative2, succ1);
-				graph.putEdge(pred2, alternative1);			
-			} 
-			else {
-				graph.putEdge(alternative2, succ1);
-				graph.putEdge(pred2, alternative1);
-				graph.putEdge(alternative1,succ2);				
+		if(neighbour) {
+			if (a1.equals(list.getFirst())) {    
+				if (a2.equals(list.getLast())) {              //swap(head, end)	 dans le cas ou il y a seulement 2 alternatives                                 
+					graph.putEdge(a2, a1);
+				} else {                                      //swap(head, middle)
+					graph.putEdge(a2, a1);
+					graph.putEdge(a1, succ2);
+				}
+			} else if (a2.equals(list.getLast())) {           //swap(middle,end)
+				graph.putEdge(pred1, a2);
+				graph.putEdge(a2, a1);
+			} else {                                          //swap(middle,middle)
+				graph.putEdge(pred1, a2);
+				graph.putEdge(a2, a1);
+				graph.putEdge(a1, succ2);
 			}
-		} 
-		else if (alternative1.equals(list.getLast())) {	
-			if(alternative2 == list.getFirst()) {				
-				graph.putEdge(pred1,alternative2);
-				graph.putEdge(alternative1,succ2);			
-			} 
-			else {					
-				graph.putEdge(pred2,alternative1);
-				graph.putEdge(alternative1,succ2);
-				graph.putEdge(pred1,alternative2);
+		} else {
+			if (a1.equals(list.getFirst())) {    
+				if (a2.equals(list.getLast())) {              //swap(head, end)                                 
+					graph.putEdge(a2, succ1);
+					graph.putEdge(pred2, a1);
+				} else {                                      //swap(head, middle)
+					graph.putEdge(a2, succ1);
+					graph.putEdge(pred2, a1);
+					graph.putEdge(a1, succ2);
+				}
+			} else if (a2.equals(list.getLast())) {           //swap(middle,end)
+				graph.putEdge(pred1, a2);
+				graph.putEdge(a2,succ1);
+				graph.putEdge(pred2,a1);
+			} else {                                          //swap(middle,middle)
+				graph.putEdge(pred1, a2);
+				graph.putEdge(a2,succ1);
+				graph.putEdge(pred2,a1);
+				graph.putEdge(a1,succ2);
 			}
-		} 
-		else {		
-			if(alternative2 == list.getLast()) {			
-				graph.putEdge(pred1,alternative2);
-				graph.putEdge(alternative2,succ1);
-				graph.putEdge(pred2,alternative1);	
-			} 
-			else if (alternative2 == list.getFirst()) {
-				graph.putEdge(pred1,alternative2);
-				graph.putEdge(alternative2,succ1);
-				graph.putEdge(alternative1,succ2);	
-			} 
-			else {
-				graph.putEdge(pred2,alternative1);
-				graph.putEdge(alternative1,succ2);
-				graph.putEdge(pred1,alternative2);
-				graph.putEdge(alternative2,succ1);
-			}		
-		}
+		}		
 	    Collections.swap(list,list.indexOf(alternative1),list.indexOf(alternative2));
 	}
 
