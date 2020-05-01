@@ -9,6 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+
+import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
+import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
+import io.github.oliviercailloux.j_voting.preferences.classes.LinearPreferenceImpl;
+import io.github.oliviercailloux.j_voting.preferences.interfaces.LinearPreference;
 
 /**
  * This class is immutable Contains a list of Alternatives sorted by preferences
@@ -21,6 +28,17 @@ public class OldLinearPreferenceImpl extends OldCompletePreferenceImpl {
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(OldLinearPreferenceImpl.class.getName());
 
+    
+    
+    
+   //factory method 
+    public static OldLinearPreferenceImpl asOldLinearPreference(List<Alternative> listAlternatives) {
+    	Preconditions.checkNotNull(listAlternatives);
+    	return new OldLinearPreferenceImpl(listAlternatives);
+    }
+
+    
+   
     /**
      * @param preferences a list of alternatives.
      */

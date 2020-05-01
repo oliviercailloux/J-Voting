@@ -13,6 +13,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 
 import io.github.oliviercailloux.j_voting.Alternative;
+import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
@@ -132,6 +133,14 @@ class CompletePreferenceImplTest {
     	CompletePreferenceImpl toTest2 = (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,ImmutableList.of(ImmutableSet.of(a1),ImmutableSet.of(a2), ImmutableSet.of(a3)));
     	assertTrue(toTest.hasSameAlternatives(toTest2));
     }
+    
+    @Test
+    public void toStrictPreferenceTest() throws DuplicateValueException, EmptySetException {
+    	CompletePreferenceImpl toTestComplete = (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,ImmutableList.of(ImmutableSet.of(a1),ImmutableSet.of(a3), ImmutableSet.of(a2)));
+    	OldLinearPreferenceImpl toTestLinear = OldLinearPreferenceImpl.asOldLinearPreference(ImmutableList.of(a1, a3, a2));
+    	assertEquals(toTestLinear,toTestComplete.toStrictPreference());
+    }
+    
 
     @Test
     void isIncludedInTest() throws DuplicateValueException, EmptySetException {

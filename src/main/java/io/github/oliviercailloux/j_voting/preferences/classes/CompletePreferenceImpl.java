@@ -1,5 +1,6 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -19,6 +20,7 @@ import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.OldCompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
@@ -148,7 +150,7 @@ public class CompletePreferenceImpl implements CompletePreference {
     
     /**
      * @param alternative <code>not null</code>
-     * @return whether the preference contains the alternative given as
+     * @return whether the preference contains the sative given as
      *         parameter
      */
     // En fait elle peut etre pas utile cette méthode
@@ -193,6 +195,25 @@ public class CompletePreferenceImpl implements CompletePreference {
         return (this.equivalenceClasses.size() == this.alternatives.size());
     }
     
+    /**
+     * 
+     * @return the StrictPreference built from the preference if the preference
+     *         is strict. If the preference is not strict it throws an
+     *         IllegalArgumentException.
+     */
+    public OldLinearPreferenceImpl toStrictPreference() {
+        if (!isStrict()) {
+            throw new IllegalArgumentException("The preference is not strict.");
+        }
+        List<Alternative> list = new ArrayList<>();
+        for (Set<Alternative> set : equivalenceClasses) {
+            for (Alternative a : set) {
+                list.add(a);
+            }
+        }
+        return OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list);
+    }
+
     
     @Override
     public int hashCode() {
