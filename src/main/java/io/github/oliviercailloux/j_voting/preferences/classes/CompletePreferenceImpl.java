@@ -146,25 +146,12 @@ public class CompletePreferenceImpl implements CompletePreference {
     public ImmutableGraph<Alternative> asGraph() {
         return graph;
     }
-    
-    
-    /**
-     * @param alternative <code>not null</code>
-     * @return whether the preference contains the sative given as
-     *         parameter
-     */
-    // En fait elle peut etre pas utile cette méthode
-   /* public boolean contains(Alternative alternative) {
-        Preconditions.checkNotNull(alternative);
-        return (this.alternatives.contains(alternative));
-    } */
-    
+
     /**
      * @param otherInstance <code>not null</code>
      * @return whether the preferences are about the same alternatives exactly
      *         (not necessarily in the same order).
      */
-    
     public boolean hasSameAlternatives(CompletePreferenceImpl otherInstance) {
         Preconditions.checkNotNull(otherInstance);
         return (this.isIncludedIn(otherInstance) && otherInstance.isIncludedIn(this));
@@ -205,13 +192,7 @@ public class CompletePreferenceImpl implements CompletePreference {
         if (!isStrict()) {
             throw new IllegalArgumentException("The preference is not strict.");
         }
-        List<Alternative> list = new ArrayList<>();
-        for (Set<Alternative> set : equivalenceClasses) {
-            for (Alternative a : set) {
-                list.add(a);
-            }
-        }
-        return OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list);
+        return OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(this.alternatives.asList());
     }
 
     
