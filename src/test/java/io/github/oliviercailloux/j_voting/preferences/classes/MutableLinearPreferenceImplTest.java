@@ -105,22 +105,49 @@ public class MutableLinearPreferenceImplTest {
     	toTestGraph.putEdge(a4, a5);
     	MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestGraph);
     	
-    	MutableGraph<Alternative> graph = GraphBuilder.directed().allowsSelfLoops(true).build();
-		graph.putEdge(a1, a4);
-		graph.putEdge(a4, a2);
-		graph.putEdge(a2, a3);
-		graph.putEdge(a3, a5);		
-		MutableLinearPreference pref = MutableLinearPreferenceImpl.given(v, graph);
-		
+    	MutableGraph<Alternative> graph1 = GraphBuilder.directed().allowsSelfLoops(true).build();
+    	graph1.putEdge(a1, a4);
+    	graph1.putEdge(a4, a2);
+    	graph1.putEdge(a2, a3);
+    	graph1.putEdge(a3, a5);		
+		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, graph1);	
 		toTestPref.changeOrder(a4,1);
-		assertEquals(pref, toTestPref);
+		assertEquals(pref1, toTestPref);
+		
+    	MutableGraph<Alternative> graph2 = GraphBuilder.directed().allowsSelfLoops(true).build();
+		graph2.putEdge(a5, a1);
+		graph2.putEdge(a1, a4);
+		graph2.putEdge(a4, a2);
+		graph2.putEdge(a2, a3);		
+		MutableLinearPreference pref2 = MutableLinearPreferenceImpl.given(v, graph2);
+		toTestPref.changeOrder(a5,0);
+		assertEquals(pref2, toTestPref);
+		
+    	MutableGraph<Alternative> graph3 = GraphBuilder.directed().allowsSelfLoops(true).build();
+		graph3.putEdge(a5, a4);
+		graph3.putEdge(a4, a2);
+		graph3.putEdge(a2, a1);
+		graph3.putEdge(a1, a3);		
+		MutableLinearPreference pref3 = MutableLinearPreferenceImpl.given(v, graph3);
+		toTestPref.changeOrder(a1,3);
+		assertEquals(pref3, toTestPref);
+		
+    	MutableGraph<Alternative> graph4 = GraphBuilder.directed().allowsSelfLoops(true).build();
+		graph4.putEdge(a4, a2);
+		graph4.putEdge(a2, a1);
+		graph4.putEdge(a1, a3);
+		graph4.putEdge(a3, a5);		
+		MutableLinearPreference pref4 = MutableLinearPreferenceImpl.given(v, graph4);
+		toTestPref.changeOrder(a5,4);
+		assertEquals(pref4, toTestPref);
     }
     
     /**
  	* Test the 7 cases of the swap method <br/>
  	* a1 -> a2 -> a3 -> a4 -> a5 <br/>
  	* head -> middle -> middle -> middle -> end <br/>
- 	* swap(head,end), swap(head,middle), swap(middle,middle), swap(middle,head), swap(middle,end), swap(end,head), swap(end,middle)
+ 	* swap(head,end), swap(head,middle), swap(middle,middle), swap(middle,head), swap(middle,end), swap(end,head), swap(end,middle) <br/>
+ 	* We have to test 3 additional cases about the neighbours alternatives
  	*/
     @Test
     void testSwap() {
