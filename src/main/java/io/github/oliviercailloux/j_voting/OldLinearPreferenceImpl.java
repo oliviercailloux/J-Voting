@@ -27,10 +27,7 @@ public class OldLinearPreferenceImpl extends OldCompletePreferenceImpl {
 
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(OldLinearPreferenceImpl.class.getName());
-
     
-      
-   
     /**
      * @param preferences a list of alternatives.
      */
