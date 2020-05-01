@@ -104,7 +104,7 @@ class CompletePreferenceImplTest {
     @Test
     public void containsTest() throws DuplicateValueException, EmptySetException {
     	CompletePreferenceImpl toTest = getTwoClassesPreference();
-    	assertEquals(true, toTest.contains(a2));
+    	assertEquals(true, toTest.getAlternatives().contains(a2));
     }
     
     
@@ -136,7 +136,7 @@ class CompletePreferenceImplTest {
     @Test
     public void alternativeNumberTest() throws DuplicateValueException, EmptySetException {
         CompletePreferenceImpl toTest = getTwoClassesPreference();
-        assertEquals(3, toTest.alternativeNumber());
+        assertEquals(3, toTest.getAlternatives().size());
     }
 
     @Test

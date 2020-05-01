@@ -120,10 +120,9 @@ public class CompletePreferenceImpl implements CompletePreference {
     @Override
     public int getRank(Alternative a) {
         Preconditions.checkNotNull(a);
-        // Pour le coup je mettrais plutot ImmutableSet à la place de Set ici
-        for (Set<Alternative> equivalenceClasse : equivalenceClasses) {
-            if (equivalenceClasse.contains(a))
-                return equivalenceClasses.indexOf(equivalenceClasse) + 1;
+        for (ImmutableSet<Alternative> equivalenceClass : equivalenceClasses) {
+            if (equivalenceClass.contains(a))
+                return equivalenceClasses.indexOf(equivalenceClass) + 1;
         }
         throw new NoSuchElementException("Alternative not found");
     }
@@ -149,10 +148,11 @@ public class CompletePreferenceImpl implements CompletePreference {
      * @return whether the preference contains the alternative given as
      *         parameter
      */
-    public boolean contains(Alternative alternative) {
+    // En fait elle peut etre pas utile cette méthode
+   /* public boolean contains(Alternative alternative) {
         Preconditions.checkNotNull(alternative);
         return (this.alternatives.contains(alternative));
-    }
+    } */
     
     /**
      * @param otherInstance <code>not null</code>
@@ -183,20 +183,11 @@ public class CompletePreferenceImpl implements CompletePreference {
 
     /**
      *
-     * @return the preference number of alternatives
-     */
-    // Alors ca me parait un peu facile lol
-    public int alternativeNumber() {
-        return this.alternatives.size();
-    }
-
-    /**
-     *
      * @return true if the Preference is Strict (without several alternatives
      *         having the same rank)
      */
     public boolean isStrict() {
-        return (this.equivalenceClasses.size() == this.alternativeNumber());
+        return (this.equivalenceClasses.size() == this.alternatives.size());
     }
     
     
