@@ -89,6 +89,9 @@ public class CompletePreferenceImpl implements CompletePreference {
             for (Alternative alternative : equivalenceClasse) {
                 if (listAlternatives.contains(alternative))
                     throw new DuplicateValueException(
+                    		
+                    		
+                    		
                                     "you can't duplicate Alternatives");
                 listAlternatives.add(alternative);
                 if (lastSetLinker != null) {
@@ -159,12 +162,12 @@ public class CompletePreferenceImpl implements CompletePreference {
      * @return whether the preferences are about the same alternatives exactly
      *         (not necessarily in the same order).
      */
-    /*
+    
     public boolean hasSameAlternatives(CompletePreferenceImpl otherInstance) {
         Preconditions.checkNotNull(otherInstance);
         return (this.isIncludedIn(otherInstance) && otherInstance.isIncludedIn(this));
-    } //necessite isIncludedIn pour tourner
-    */
+    } 
+    
 
     /**
      * @param p <code>not null</code>

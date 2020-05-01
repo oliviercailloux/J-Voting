@@ -17,12 +17,13 @@ import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePreference;
-
 class CompletePreferenceImplTest {
 
     private static Voter v1 = Voter.createVoter(1);
 
     // Je pige pas pourquoi ca se nomme getTwoClassesPreference ce truc
+    //Moi non plus, c'est pas du tout logique, a chaque fois j'oublie ce que ca crée car nom pas intuitif
+ 
     private CompletePreferenceImpl getTwoClassesPreference()
                     throws DuplicateValueException, EmptySetException {
         return (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,
@@ -88,7 +89,7 @@ class CompletePreferenceImplTest {
     public void asEquivalenceClassesTest()
                     throws DuplicateValueException, EmptySetException {
         CompletePreference toTest = getTwoClassesPreference();
-        List<ImmutableSet<Alternative>> list = new ArrayList<ImmutableSet<Alternative>>(
+        List<ImmutableSet<Alternative>> list = new ArrayList<>(
                         Arrays.asList(ImmutableSet.of(a1, a2),
                                         ImmutableSet.of(a3)));
         assertEquals(list, toTest.asEquivalenceClasses());
@@ -101,16 +102,9 @@ class CompletePreferenceImplTest {
         assertEquals(v1, toTest.getVoter());
     }
     
-    @Test
-    public void containsTest() throws DuplicateValueException, EmptySetException {
-    	CompletePreferenceImpl toTest = getTwoClassesPreference();
-    	assertEquals(true, toTest.getAlternatives().contains(a2));
-    }
-    
-    
 
     @Test
-    public void createDuplicateException() throws DuplicateValueException {
+    public void createDuplicateException() {
         assertThrows(DuplicateValueException.class, () -> {
             CompletePreferenceImpl.asCompletePreference(v1,
                             ImmutableList.of(a12, ImmutableSet.of(a2)));
@@ -118,11 +112,25 @@ class CompletePreferenceImplTest {
     }
 
     @Test
-    public void createEmptySetException() throws DuplicateValueException {
+    public void createEmptySetException() {
         assertThrows(EmptySetException.class, () -> {
             CompletePreferenceImpl.asCompletePreference(v1, ImmutableList
                             .of(ImmutableSet.of(), ImmutableSet.of(a2)));
         });
+    }
+    
+    
+    @Test
+    public void containsTest() throws DuplicateValueException, EmptySetException {
+    	CompletePreferenceImpl toTest = getTwoClassesPreference();
+    	assertEquals(true, toTest.getAlternatives().contains(a2));
+    }
+    
+    @Test
+    public void hasSameAlternativesTest() throws DuplicateValueException, EmptySetException {
+    	CompletePreferenceImpl toTest = getTwoClassesPreference();
+    	CompletePreferenceImpl toTest2 = (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,ImmutableList.of(ImmutableSet.of(a1),ImmutableSet.of(a2), ImmutableSet.of(a3)));
+    	assertTrue(toTest.hasSameAlternatives(toTest2));
     }
 
     @Test
