@@ -29,15 +29,7 @@ public class OldLinearPreferenceImpl extends OldCompletePreferenceImpl {
                     .getLogger(OldLinearPreferenceImpl.class.getName());
 
     
-    
-    
-   //factory method 
-    public static OldLinearPreferenceImpl asOldLinearPreference(List<Alternative> listAlternatives) {
-    	Preconditions.checkNotNull(listAlternatives);
-    	return new OldLinearPreferenceImpl(listAlternatives);
-    }
-
-    
+      
    
     /**
      * @param preferences a list of alternatives.
@@ -113,8 +105,8 @@ public class OldLinearPreferenceImpl extends OldCompletePreferenceImpl {
      * @param preference <code> not null</code> and all different alternatives
      * @return a new StrictCompletePreferenceImpl
      */
-    public static OldLinearPreferenceImpl createStrictCompletePreferenceImpl(
-                    List<Alternative> preference) {
+    public static OldLinearPreferenceImpl createStrictCompletePreferenceImpl(List<Alternative> preference) {
+    	Preconditions.checkNotNull(preference);
         return new OldLinearPreferenceImpl(preference);
     }
 

@@ -137,7 +137,7 @@ class CompletePreferenceImplTest {
     @Test
     public void toStrictPreferenceTest() throws DuplicateValueException, EmptySetException {
     	CompletePreferenceImpl toTestComplete = (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,ImmutableList.of(ImmutableSet.of(a1),ImmutableSet.of(a3), ImmutableSet.of(a2)));
-    	OldLinearPreferenceImpl toTestLinear = OldLinearPreferenceImpl.asOldLinearPreference(ImmutableList.of(a1, a3, a2));
+    	OldLinearPreferenceImpl toTestLinear = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(ImmutableList.of(a1, a3, a2));
     	assertEquals(toTestLinear,toTestComplete.toStrictPreference());
     }
     
