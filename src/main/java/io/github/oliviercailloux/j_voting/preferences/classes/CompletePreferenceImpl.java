@@ -148,31 +148,6 @@ public class CompletePreferenceImpl implements CompletePreference {
     }
 
     /**
-     * @param otherInstance <code>not null</code>
-     * @return whether the preferences are about the same alternatives exactly
-     *         (not necessarily in the same order).
-     */
-    public boolean hasSameAlternatives(CompletePreferenceImpl otherInstance) {
-        Preconditions.checkNotNull(otherInstance);
-        return (this.isIncludedIn(otherInstance) && otherInstance.isIncludedIn(this));
-    }
-
-    /**
-     * @param p <code>not null</code>
-     * @return whether all the alternatives of the calling preference are included in the given preference.
-     */
-    public boolean isIncludedIn(CompletePreferenceImpl p) {
-        Preconditions.checkNotNull(p);
-        Set inputPrefAlternatives = p.getAlternatives();
-        for (Alternative alter : this.alternatives) {
-            if (!inputPrefAlternatives.contains(alter)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
      *
      * @return true if the Preference is Strict (without several alternatives
      *         having the same rank)

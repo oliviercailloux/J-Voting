@@ -127,7 +127,7 @@ class CompletePreferenceImplTest {
     public void hasSameAlternativesTest() throws Exception {
     	CompletePreferenceImpl toTest = generateCompletePrefImpl();
     	CompletePreferenceImpl toTest2 = (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,ImmutableList.of(ImmutableSet.of(a1),ImmutableSet.of(a2), ImmutableSet.of(a3)));
-    	assertTrue(toTest.hasSameAlternatives(toTest2));
+    	assertEquals(toTest.getAlternatives(), toTest2.getAlternatives());
     }
     
     @Test
@@ -141,8 +141,8 @@ class CompletePreferenceImplTest {
     public void isIncludedInTest() throws Exception {
         CompletePreferenceImpl toTestIsContained = (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,ImmutableList.of(a12, ImmutableSet.of(a3)));
         CompletePreferenceImpl toTestContains = (CompletePreferenceImpl) CompletePreferenceImpl.asCompletePreference(v1,ImmutableList.of(a31, ImmutableSet.of(a2), ImmutableSet.of(a4)));
-        assertTrue(toTestIsContained.isIncludedIn(toTestContains));
-        assertFalse(toTestContains.isIncludedIn(toTestIsContained));
+        assertTrue(toTestContains.getAlternatives().containsAll(toTestIsContained.getAlternatives()));
+        assertFalse(toTestIsContained.getAlternatives().containsAll(toTestContains.getAlternatives()));
     }
 
     @Test
