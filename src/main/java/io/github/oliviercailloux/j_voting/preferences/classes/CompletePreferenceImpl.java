@@ -8,7 +8,9 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Preconditions;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
@@ -47,8 +49,8 @@ public class CompletePreferenceImpl implements CompletePreference {
                     List<? extends Set<Alternative>> equivalenceClasses)
                     throws DuplicateValueException, EmptySetException {
         LOGGER.debug("Factory CompletePreferenceImpl");
-        Preconditions.checkNotNull(equivalenceClasses);
-        Preconditions.checkNotNull(voter);
+        checkNotNull(equivalenceClasses);
+        checkNotNull(voter);
         return new CompletePreferenceImpl(voter, equivalenceClasses);
     }
 
@@ -124,7 +126,7 @@ public class CompletePreferenceImpl implements CompletePreference {
 
     @Override
     public int getRank(Alternative a) {
-        Preconditions.checkNotNull(a);
+        checkNotNull(a);
         for (ImmutableSet<Alternative> equivalenceClass : equivalenceClasses) {
             if (equivalenceClass.contains(a))
                 return equivalenceClasses.indexOf(equivalenceClass) + 1;
