@@ -8,7 +8,9 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Preconditions;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
@@ -18,6 +20,7 @@ import com.google.common.graph.ImmutableGraph;
 import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
+import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
@@ -28,7 +31,7 @@ public class CompletePreferenceImpl implements CompletePreference {
     private ImmutableList<ImmutableSet<Alternative>> equivalenceClasses;
     private Voter voter;
     private ImmutableGraph<Alternative> graph;
-    ImmutableSet<Alternative> alternatives;
+    private ImmutableSet<Alternative> alternatives;
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(CompletePreferenceImpl.class.getName());
 
@@ -46,8 +49,8 @@ public class CompletePreferenceImpl implements CompletePreference {
                     List<? extends Set<Alternative>> equivalenceClasses)
                     throws DuplicateValueException, EmptySetException {
         LOGGER.debug("Factory CompletePreferenceImpl");
-        Preconditions.checkNotNull(equivalenceClasses);
-        Preconditions.checkNotNull(voter);
+        checkNotNull(equivalenceClasses);
+        checkNotNull(voter);
         return new CompletePreferenceImpl(voter, equivalenceClasses);
     }
 
@@ -55,8 +58,8 @@ public class CompletePreferenceImpl implements CompletePreference {
      * 
      * @param equivalenceClasses <code> not null </code>
      * @param voter              <code> not null </code>
-     * @throws EmptySetException
-     * @throws DuplicateValueException
+     * @throws EmptySetException if a Set is empty
+     * @throws DuplicateValueException if an Alternative is duplicate
      */
     protected CompletePreferenceImpl(Voter voter,
                     List<? extends Set<Alternative>> equivalenceClasses)
@@ -73,6 +76,13 @@ public class CompletePreferenceImpl implements CompletePreference {
         this.alternatives = ImmutableSet.copyOf(this.graph.nodes());
     }
 
+    /**
+     * Return the graph associated to the preference.
+     *
+     * @param  equivalenceClasses a list of set of alternative
+     * @throws EmptySetException if a Set is empty
+     * @throws DuplicateValueException if an Alternative is duplicate
+     */
     private ImmutableGraph<Alternative> createGraph(
                     List<? extends Set<Alternative>> equivalenceClasses)
                     throws EmptySetException, DuplicateValueException {
@@ -80,14 +90,13 @@ public class CompletePreferenceImpl implements CompletePreference {
         MutableGraph<Alternative> newGraph = GraphBuilder.directed()
                         .allowsSelfLoops(true).build();
         Alternative lastSetLinker = null;
-        for (Set<Alternative> equivalenceClasse : equivalenceClasses) {
-            if (equivalenceClasse.isEmpty())
+        for (Set<Alternative> equivalenceClass : equivalenceClasses) {
+            if (equivalenceClass.isEmpty())
                 throw new EmptySetException("A Set can't be empty");
             Alternative rememberAlternative = null;
-            for (Alternative alternative : equivalenceClasse) {
+            for (Alternative alternative : equivalenceClass) {
                 if (listAlternatives.contains(alternative))
-                    throw new DuplicateValueException(
-                                    "you can't duplicate Alternatives");
+                    throw new DuplicateValueException("you can't duplicate Alternatives");
                 listAlternatives.add(alternative);
                 if (lastSetLinker != null) {
                     newGraph.putEdge(lastSetLinker, alternative);
@@ -117,10 +126,10 @@ public class CompletePreferenceImpl implements CompletePreference {
 
     @Override
     public int getRank(Alternative a) {
-        Preconditions.checkNotNull(a);
-        for (Set<Alternative> equivalenceClasse : equivalenceClasses) {
-            if (equivalenceClasse.contains(a))
-                return equivalenceClasses.indexOf(equivalenceClasse) + 1;
+        checkNotNull(a);
+        for (ImmutableSet<Alternative> equivalenceClass : equivalenceClasses) {
+            if (equivalenceClass.contains(a))
+                return equivalenceClasses.indexOf(equivalenceClass) + 1;
         }
         throw new NoSuchElementException("Alternative not found");
     }
@@ -138,6 +147,28 @@ public class CompletePreferenceImpl implements CompletePreference {
     @Override
     public ImmutableGraph<Alternative> asGraph() {
         return graph;
+    }
+
+    /**
+     *
+     * @return true if the Preference is Strict (without several alternatives
+     *         having the same rank)
+     */
+    public boolean isStrict() {
+        return (this.equivalenceClasses.size() == this.alternatives.size());
+    }
+    
+    /**
+     * 
+     * @return the StrictPreference built from the preference if the preference
+     *         is strict. If the preference is not strict it throws an
+     *         IllegalArgumentException.
+     */
+    public OldLinearPreferenceImpl toStrictPreference() {
+        if (!isStrict()) {
+            throw new IllegalArgumentException("The preference is not strict.");
+        }
+        return OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(this.alternatives.asList());
     }
 
     @Override

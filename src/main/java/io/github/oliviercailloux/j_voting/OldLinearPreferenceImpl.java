@@ -8,7 +8,8 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Preconditions;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 
 /**
  * This class is immutable Contains a list of Alternatives sorted by preferences
@@ -20,7 +21,7 @@ public class OldLinearPreferenceImpl extends OldCompletePreferenceImpl {
 
     private static final Logger LOGGER = LoggerFactory
                     .getLogger(OldLinearPreferenceImpl.class.getName());
-
+    
     /**
      * @param preferences a list of alternatives.
      */
@@ -58,7 +59,7 @@ public class OldLinearPreferenceImpl extends OldCompletePreferenceImpl {
     public static List<Set<Alternative>> listAlternativeToListSetAlternative(
                     List<Alternative> list) {
         LOGGER.debug("listAlternativeToListSetAlternative :");
-        Preconditions.checkNotNull(list);
+        checkNotNull(list);
         LOGGER.debug("parameter list : {}", list);
         List<Set<Alternative>> set = new ArrayList<>();
         for (Alternative a : list) {
@@ -77,7 +78,7 @@ public class OldLinearPreferenceImpl extends OldCompletePreferenceImpl {
     public static List<Alternative> listSetAlternativeToList(
                     List<Set<Alternative>> sets) {
         LOGGER.debug("listSetAlternativeToList :");
-        Preconditions.checkNotNull(sets);
+        checkNotNull(sets);
         LOGGER.debug("parameter sets :{}", sets);
         List<Alternative> alts = new ArrayList<>();
         for (Set<Alternative> s : sets) {
@@ -96,7 +97,8 @@ public class OldLinearPreferenceImpl extends OldCompletePreferenceImpl {
      * @return a new StrictCompletePreferenceImpl
      */
     public static OldLinearPreferenceImpl createStrictCompletePreferenceImpl(
-                    List<Alternative> preference) {
+    		List<Alternative> preference) {
+    	checkNotNull(preference);
         return new OldLinearPreferenceImpl(preference);
     }
 
@@ -108,7 +110,7 @@ public class OldLinearPreferenceImpl extends OldCompletePreferenceImpl {
     @Override
     public Alternative getAlternative(Integer position) {
         LOGGER.debug("getAlternative");
-        Preconditions.checkNotNull(position);
+        checkNotNull(position);
         LOGGER.debug("position : {}", position);
         if (position >= preference.size()) {
             throw new IndexOutOfBoundsException(
