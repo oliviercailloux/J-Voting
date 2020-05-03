@@ -1,14 +1,12 @@
 package io.github.oliviercailloux.j_voting.preferences.interfaces;
 
-import com.google.common.graph.MutableGraph;
-
 import io.github.oliviercailloux.j_voting.Alternative;
 
 /**
  * A mutable linear preference is a mutable antisymmetric complete preference. A mutable linear
  * preference represents a linear order, or equivalently an antisymmetric
  * complete order, or equivalently, the reduction of a weak-order.
- * 
+ * In this preference, it is possible to add alternatives and reorder them
  */
 
 public interface MutableLinearPreference extends Preference {

@@ -1,10 +1,8 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -13,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.graph.Graph;
+import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
 import com.google.common.graph.ImmutableGraph;
 import com.google.common.graph.MutableGraph;
@@ -24,6 +23,12 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPr
 
 public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	
+	@Override
+	public String toString() {
+		return "MutableLinearPreferenceImpl [voter=" + voter + ", graph=" + graph + ", alternatives=" + alternatives
+				+ ", list=" + list + "]";
+	}
+
 	protected Voter voter;
     protected MutableGraph<Alternative> graph;
     protected Set<Alternative> alternatives;
@@ -67,6 +72,36 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
             }
         }
     	return new MutableLinearPreferenceImpl(voter, prefGraph);
+    }
+    
+    private MutableLinearPreferenceImpl(Voter voter, LinkedList<Alternative> list) {
+    	this.voter = voter;
+    	this.list = list;
+    	this.graph = GraphBuilder.directed().allowsSelfLoops(true).build();
+
+    	Iterator<Alternative> itList = list.iterator();
+    	Alternative a = itList.next();
+    	Alternative a2;
+		while (itList.hasNext() == true) {
+			a2 = itList.next();
+			graph.putEdge(a, a2);
+			a = a2;
+		}
+		this.alternatives = graph.nodes();
+    }
+    
+    /**
+     * @param list is a LinkedList of alternatives representing the
+     *              preference.
+     * @param voter is the Voter associated to the Preference.
+     * @return the mutable linear preference
+     */
+    public static MutableLinearPreference given(Voter voter, LinkedList<Alternative> list) {
+    	LOGGER.debug("MutableLinearPreferenceImpl given");
+    	Preconditions.checkNotNull(voter);
+    	Preconditions.checkNotNull(list);
+
+    	return new MutableLinearPreferenceImpl(voter, list);
     }
     
     @Override
@@ -135,9 +170,8 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	@Override
 	public Set<Alternative> getAlternatives() {	
 		LOGGER.debug("MutableLinearPreferenceImpl getAlternatives");	
-		if (alternatives.size() != graph.nodes().size() || !(alternatives.containsAll(graph.nodes()))) {        	
-			throw new IllegalStateException("An alternative must not be deleted from the set");
-        }		
+		Preconditions.checkState(!(alternatives.size() != graph.nodes().size() || !(alternatives.containsAll(graph.nodes()))), "An alternative must not be deleted from the set");
+		
 		return ImmutableSet.copyOf(alternatives);   
 	}
 
@@ -148,7 +182,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	
 	@Override
 	public Graph<Alternative> asGraph() {
-		return ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
+		return graph;
 	}
 
 	@Override
@@ -156,9 +190,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		LOGGER.debug("MutablePreferenceImpl Swap");
 		Preconditions.checkNotNull(alternative1);
 		Preconditions.checkNotNull(alternative2);
-		
-		if(alternative1.equals(alternative2)) 
-			throw new IllegalArgumentException("The alternatives must be differents.");
+		Preconditions.checkArgument(!alternative1.equals(alternative2), "The alternatives must be differents.");
 		
 		boolean neighbour = false;
 		Alternative a1 = alternative1;
