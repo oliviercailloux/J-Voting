@@ -22,17 +22,12 @@ import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 public class MutableLinearPreferenceImpl implements MutableLinearPreference {
-	
-	@Override
-	public String toString() {
-		return "MutableLinearPreferenceImpl [voter=" + voter + ", graph=" + graph + ", alternatives=" + alternatives
-				+ ", list=" + list + "]";
-	}
 
 	protected Voter voter;
     protected MutableGraph<Alternative> graph;
     protected Set<Alternative> alternatives;
     protected LinkedList<Alternative> list;
+    protected ImmutableGraph<Alternative> delegate;
     
     private static final Logger LOGGER = LoggerFactory
             .getLogger(MutableLinearPreferenceImpl.class.getName());
@@ -170,9 +165,9 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	@Override
 	public Set<Alternative> getAlternatives() {	
 		LOGGER.debug("MutableLinearPreferenceImpl getAlternatives");	
-		Preconditions.checkState(!(alternatives.size() != graph.nodes().size() || !(alternatives.containsAll(graph.nodes()))), "An alternative must not be deleted from the set");
-		
-		return ImmutableSet.copyOf(alternatives);   
+		Preconditions.checkState(!(alternatives.size() != graph.nodes().size() || !(alternatives.containsAll(graph.nodes()))),
+				"An alternative must not be deleted from the set");
+		return ImmutableSet.copyOf(alternatives);  
 	}
 
 	@Override
@@ -183,6 +178,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	@Override
 	public Graph<Alternative> asGraph() {
 		return graph;
+		//return ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
 	}
 
 	@Override
