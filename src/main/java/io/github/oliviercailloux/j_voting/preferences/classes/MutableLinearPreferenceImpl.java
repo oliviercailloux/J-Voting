@@ -176,8 +176,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	
 	@Override
 	public Graph<Alternative> asGraph() {
-		return Graphs.transitiveClosure(graph);
-		//return ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
+		return ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
 	}
 
 	@Override
