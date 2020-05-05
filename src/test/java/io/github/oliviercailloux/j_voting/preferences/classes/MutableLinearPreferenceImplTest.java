@@ -50,9 +50,13 @@ public class MutableLinearPreferenceImplTest {
         MutableGraph<Alternative> graph = GraphBuilder.directed().allowsSelfLoops(true).build();
         graph.putEdge(a1, a2);
         graph.putEdge(a2, a3);
+        
         MutableLinearPreference pref = MutableLinearPreferenceImpl.given(Voter.createVoter(1), graph);
         
-        graph.putEdge(a3,a4);
+        graph.putEdge(a1, a3);
+        graph.putEdge(a1, a1);
+        graph.putEdge(a2, a2);
+        graph.putEdge(a3, a3);
         
         assertEquals(graph, pref.asGraph());
     }
