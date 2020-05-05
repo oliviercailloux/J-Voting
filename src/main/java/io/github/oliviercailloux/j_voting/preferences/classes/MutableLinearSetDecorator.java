@@ -14,37 +14,34 @@ import io.github.oliviercailloux.j_voting.Alternative;
 public class MutableLinearSetDecorator extends ForwardingSet<Alternative> {
 
 	protected Set<Alternative> delegate;
-	
-	private static final Logger LOGGER = LoggerFactory
-            .getLogger(MutableLinearPreferenceImpl.class.getName());
-	
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(MutableLinearPreferenceImpl.class.getName());
+
 	private MutableLinearSetDecorator(Set<Alternative> delegate) {
-    	this.delegate = delegate;
-    }
-	
+		this.delegate = delegate;
+	}
+
 	public static MutableLinearSetDecorator given(Set<Alternative> delegate) {
-    	LOGGER.debug("MutableLinearSetDecorator given");
-    	Preconditions.checkNotNull(delegate);
-    	return new MutableLinearSetDecorator(delegate);
-    }
+		LOGGER.debug("MutableLinearSetDecorator given");
+		Preconditions.checkNotNull(delegate);
+		return new MutableLinearSetDecorator(delegate);
+	}
 
 	@Override
 	protected Set<Alternative> delegate() {
 		return delegate;
 	}
-	
+
 	@Override
 	public boolean add(Alternative a) {
 		LOGGER.debug("You are trying to modify a Set<Alternative> from MutableLinearPreference");
 		return false;
 	}
-	
+
 	@Override
 	public boolean addAll(Collection<? extends Alternative> c) {
 		LOGGER.debug("You are trying to modify a Set<Alternative> from MutableLinearPreference");
 		return false;
 	}
-	
-	
 
 }
