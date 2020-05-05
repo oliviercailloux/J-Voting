@@ -6,13 +6,15 @@ import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a6;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.LinkedList;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import com.google.common.collect.ImmutableSet;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
 
@@ -107,8 +109,11 @@ public class MutableLinearPreferenceImplTest {
         graph.putEdge(a3, a4);
         graph.putEdge(a4, a5);
         MutableLinearPreference pref = MutableLinearPreferenceImpl.given(Voter.createVoter(1), graph);
-        ImmutableSet<Alternative> expected = a12345;
+        Set<Alternative> expected = a12345;
         assertEquals(expected, pref.getAlternatives());
+        assertFalse(pref.getAlternatives().add(a6));
+        
+        
     }
     
     @Test

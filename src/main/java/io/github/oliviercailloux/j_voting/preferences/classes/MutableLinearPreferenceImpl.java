@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.graph.Graph;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
@@ -167,7 +166,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		LOGGER.debug("MutableLinearPreferenceImpl getAlternatives");	
 		Preconditions.checkState(!(alternatives.size() != graph.nodes().size() || !(alternatives.containsAll(graph.nodes()))),
 				"An alternative must not be deleted from the set");
-		return ImmutableSet.copyOf(alternatives);  
+		return MutableLinearSetDecorator.given(alternatives);
 	}
 
 	@Override
