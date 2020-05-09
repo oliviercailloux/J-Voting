@@ -2,33 +2,77 @@
 
 ====== link:../README.adoc[Summary]
 
-In the last java iteration, we have focused our work on the attribute MutableGraph. Now, we understood that it would be easier for the user to have as a parameter the List<Alternative>.
+This iteration aims to finalize the Mutable Linear Preference class.
 
-The goal is to modify the MutableLinearPreference class with methods that take list<Alternative> rather than MutableGraph as parameters and update the Set<Alternative>  with the different possible functionalities. The methods will also update the corresponding Mutablegraph.
+Specifically, we have to modify several files :
 
-Specifically, we need to modify the following methods :
+== MutableLinearPreferenceImpl.java
 
-* public static MutableLinearPreference given(Voter voter, MutableGraph<Alternative> prefGraph) +
-Keep the part on graph and add the modification on the Set<Alternatives>
+* LinkedList<Alternative> list become List<Alternative> list
 
-* public void changeOrder(MutableGraph<Alternative> newGraph) +
-Change the signature --> public void changeOrder(Alternative a, Int position)  +
-We're going to completely change this method. 
+* Delete the constructor and the factory method which take a Graph in parameter
 
-* public void deleteAlternative(Alternative a) +
-Keep the part on graph and add the modification on the Set<Alternatives>
+* Modify equals() and hashcode() to respect the BP Local design
 
-* public void addAlternative(Alternative a) +
-Keep the part on graph and add the modification on the Set<Alternatives>
+* Rename deleteAlternative(Alternative a) to removeAlternative(Alternative a)
 
-* public Graph<Alternative> asGraph() +
-We're going to change the way it works by following the leads you gave us.
+* Transitively close the graph in the whole class (constructors + methods), and recalculate the closure after each modification
 
+== MutableLinearPreferenceImplTest.java
 
-We also need to create the following method :
+* Add a test that verifies that the graph returned by asGraph is transitively closed and a test that affects g = pref.asGraph() then modifies pref then verifies that g has changed as it should
 
-* public static MutableLinearPreference given(Voter voter, List<Alternative> alternatives) +
-New constructor with the List<Alternative> as parameter.
+* Modify all existing tests using the constructor that takes a list as a parameter
 
-* public void reverse(Alternative a1, Alternative a2) +
-This method will switch place between 2 alternatives in the Set<Alternative> and the MutableGraph<Alternative>.
+* Test the decorators
+
+== MutableLinearSetDecorator.java
+
+In this class, we have to override methods likely to break the linearity of preference by the set.
+
+@Override
+	public boolean add(Alternative a) {
+		
+	}
+@Override
+	public boolean addAll(Collection<? extends Alternative> c) {
+		
+	}
+@Override
+	public boolean remove(Alternative a) {
+		
+	}
+@Override
+	public boolean removeAll(Collection<? extends Alternative> c) {
+		
+	}
+@Override
+	public boolean clear() {
+		
+	}
+@Override
+	public boolean retainAll(Collection<? extends Alternative> c) {
+		
+	}
+
+== MutableLinearGraphDecorator.java
+
+In this class, we have to override methods likely to break the linearity of preference by the graph.
+
+@Override
+	public boolean addNode(N node) {
+		
+	}
+@Override
+	public boolean putEdge(N nodeU, N nodeV) {
+		
+	}
+@Override
+	public boolean removeEdge(N nodeU, N nodeV) {
+		
+	}
+@Override
+	public boolean removeNode(N node) {
+		
+	}
+

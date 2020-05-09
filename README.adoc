@@ -52,6 +52,22 @@ You can check methods evolution link:Doc/chapters/MutableLinearPreferenceImplCha
 
 SM/PO
 
+== Iteration 3
+
+*Jade & Thomas* :
+
+In this iteration, we will focus on the removal of the constructor that took a graph as a parameter and on the transitive closure of the graph in the whole class (constructor + methods). We will also work on two decorator classes (one for the set and one for the graph).
+
+You can check the details link:Doc/chapters/MutableLinearPreferenceImplChanges.adoc[here].
+
+*Julien & Pierre* :
+
+[...}
+
+*Léo* :
+
+SM/PO
+
 
 
 
