@@ -46,8 +46,6 @@ A detailed report of the CompletePreferenceImpl futur evolutions can be found li
 
 In the last java iteration, we have focused our work on the attribute MutableGraph. Now, we understood that it would be easier for the user to have as a parameter the List<Alternative>. The goal is to modify the MutableLinearPreference class with methods that take list<Alternative> rather than MutableGraph as parameters and update the Set<Alternative>  with the different possible functionalities. The methods will also update the corresponding Mutablegraph. 
 
-You can check methods evolution link:Doc/chapters/MutableLinearPreferenceImplChanges.adoc[here].
-
 *Pierre* :
 
 SM/PO
