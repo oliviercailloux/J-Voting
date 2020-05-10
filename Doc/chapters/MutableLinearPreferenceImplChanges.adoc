@@ -76,3 +76,21 @@ In this class, we have to override methods likely to break the linearity of pref
 		
 	}
 
+== MutableStrictProfile.java
+
+Actually, all of the profile are Immutable. With this new class, we need a profile Mutable. The preferences are Strict and complete so it will implement StrictProfile interface. It will be mutable and going to use mutable linear preferences.
+
+Actually, we have 4 profile classes in J-voting :
+
+image:../assets/profileClassDiagram.png[profileClassDiagram]
+
+If we keep the same scheme for the Mutable profiles, then we will need to create tree classes as below :
+
+image:../assets/profileClassDiagram.png[profileClassDiagram]
+
+Or do we only create the MutableStrictProfile without the two above ?
+
+But isn't it too much for a single iteration? Wouldn't it be better to save this task for a complete iteration ? Also, do we really need a profile class to build our GUI ?
+
+
+ 

@@ -26,6 +26,7 @@ Voter's preferences : AntiSymmetric</body>
           </ownedComment>
         </packagedElement>
       </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_dTDVMJKyEeqLiZVmroIQBg" name="ProfileClassDiagram"/>
       <packagedElement xmi:type="uml:Package" xmi:id="_bSaYgGbTEeqrtc6dy-mPpg" name="PrefenceInterfacesDiagram">
         <packagedElement xmi:type="uml:Package" xmi:id="_0LoBcHEeEeqUv4VtPCytLw" name="Comments">
           <ownedComment xmi:type="uml:Comment" xmi:id="_VJnSIG-CEeqlG4dRMAe-Kg">
