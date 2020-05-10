@@ -39,6 +39,9 @@ _Example based on the current GUI_
 
 In the case above, 263 Voters have chosen the same preference. They put the 2nd alternative at the first rank, then the 1st and the 3rd one to finish.
 
+=== Sequence diagram of the current way to visualize a profile (the user provides a correct SOC file)
+
+image:../assets/SequenceDiagramViewProfile.png[SequenceDiagramViewProfile]
 
 
 
