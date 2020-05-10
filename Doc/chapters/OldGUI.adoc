@@ -1,0 +1,44 @@
+= 2.1 Old GUI understanding 
+
+====== link:../README.adoc[Summary]
+
+=== GUI Class Diagram
+
+image:../assets/GUIClassDiagram.png[GUIClassDiagram]
+
+=== Rows definition +
+This visualization displays the list of the voters on the first column and for each of them, their associated preference on the same row.
+
+Example :
+
+image:../assets/rowsVisualization.png[rowsVisualization]
+
+_Example based on the current GUI_
+
+In the case above, Voter 2 chose to put the 10th alternative at the first rank, the 1st at the second rank and the 3rd at the last rank. 
+
+=== Columns definition +
+This visualization displays the list of the voters on the first row and for each of them, their associated preference on the same column.
+
+Example :
+
+image:../assets/columnsVisualization.png[columnsVisualization]
+
+_Example based on the current GUI_
+
+In the case above, Voter 6 chose to put the 2nd alternative at the first rank, the 5th at the second rank and the 7th at the last rank. 
+
+=== Wrapped definition +
+This visualization enables to see how many voters have the same preference ( in other words the same order of alternatives). This number is displayed on the row at the top of the table and below the order we are talking about.
+
+Example :
+
+image:../assets/wrappedVisualization.png[wrappedVisualization]
+
+_Example based on the current GUI_
+
+In the case above, 263 Voters have chosen the same preference. They put the 2nd alternative at the first rank, then the 1st and the 3rd one to finish.
+
+
+
+

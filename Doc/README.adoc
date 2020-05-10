@@ -20,8 +20,9 @@ image:./assets/j-voting-example.png[InterfacesProfilesDiagram]
 ==== link:chapters/profileInterfaces.adoc[1.2 The notion of Profile]
 
 === Graphical User Interface (GUI)
-==== link:chapters/GUI.adoc[2.1 GUI understanding ]
+==== link:chapters/OldGUI.adoc[2.1 GUI understanding ]
 ==== link:chapters/GUIInputFiles.adoc[2.2 GUI Input Files]
+==== link:chapters/NewGUI.adoc[2.3 New GUI implementation]
 
 === Annex
 ==== link:chapters/FromOldCompletePreferenceImplToCompletePreferenceImpl.adoc[OldCompletePreferenceImpl to CompletePreferenceImpl]

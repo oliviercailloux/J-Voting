@@ -1,43 +1,6 @@
-= 2.1 GUI understanding 
+= 2.3 New GUI implementation 
 
 ====== link:../README.adoc[Summary]
-
-=== GUI Class Diagram
-
-image:../assets/GUIClassDiagram.png[GUIClassDiagram]
-
-=== Rows definition +
-This visualization displays the list of the voters on the first column and for each of them, their associated preference on the same row.
-
-Example :
-
-image:../assets/rowsVisualization.png[rowsVisualization]
-
-_Example based on the current GUI_
-
-In the case above, Voter 2 chose to put the 10th alternative at the first rank, the 1st at the second rank and the 3rd at the last rank. 
-
-=== Columns definition +
-This visualization displays the list of the voters on the first row and for each of them, their associated preference on the same column.
-
-Example :
-
-image:../assets/columnsVisualization.png[columnsVisualization]
-
-_Example based on the current GUI_
-
-In the case above, Voter 6 chose to put the 2nd alternative at the first rank, the 5th at the second rank and the 7th at the last rank. 
-
-=== Wrapped definition +
-This visualization enables to see how many voters have the same preference ( in other words the same order of alternatives). This number is displayed on the row at the top of the table and below the order we are talking about.
-
-Example :
-
-image:../assets/wrappedVisualization.png[wrappedVisualization]
-
-_Example based on the current GUI_
-
-In the case above, 263 Voters have chosen the same preference. They put the 2nd alternative at the first rank, then the 1st and the 3rd one to finish.
 
 === GUI Usage System
 
@@ -62,7 +25,4 @@ The GUI works with a tab system, it is possible to switch from editing to viewin
 We can also open an existing file and make the same changes. Each modification is saved in real time on the file. The file is then automatically saved in a defined folder. It is possible to open the view tab to be able to consult a profile.
 
 link:https://en.wikipedia.org/wiki/Nota_bene[NB]: At startup, the input boxes are grayed out to indicate that no file is created. If you just want to open an existing file without creating a new one, do not touch the input boxes.
-
-
-
 
