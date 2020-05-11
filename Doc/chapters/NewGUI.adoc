@@ -20,5 +20,5 @@ The GUI works with a tab system, it is possible to switch from editing to viewin
 
 We can also open an existing file and make the same changes. Each modification is saved in real time on the file. The file is then automatically saved in a defined folder. It is possible to open the view tab to be able to consult a profile.
 
-link:https://en.wikipedia.org/wiki/Nota_bene[NB]: At startup, the input boxes are grayed out to indicate that no file is created. If you just want to open an existing file without creating a new one, do not touch the input boxes.
+link:https://en.wikipedia.org/wiki/Nota_bene[NB]: At startup, and as long as the profile name is not filled in, the input boxes are red to indicate that no file is created. When the file name is entered, the file is created and the red disappears from the input boxes.
 
