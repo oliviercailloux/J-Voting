@@ -1,4 +1,4 @@
-= Annex 2. Change of direction in MutableLinearPreference
+= Annex 2. MutableLinearPreference
 
 ====== link:../README.adoc[Summary]
 
@@ -80,13 +80,13 @@ In this class, we have to override methods likely to break the linearity of pref
 
 Actually, all of the profile are Immutable. With this new class, we need a profile Mutable. The preferences are Strict and complete so it will implement StrictProfile interface. It will be mutable and going to use mutable linear preferences.
 
-Actually, we have 4 profile classes in J-voting :
+Actually, we have 4 Immutable profiles in J-voting :
 
 image:../assets/profileClassDiagram.png[profileClassDiagram]
 
-If we keep the same scheme for the Mutable profiles, then we will need to create tree classes as below :
+If we keep the same scheme for the Mutable profiles, then we will need to create three classes as below :
 
-image:../assets/profileClassDiagram.png[profileClassDiagram]
+image:../assets/mutableProfileClassDiagram.png[mutableProfileClassDiagram]
 
 Or do we only create the MutableStrictProfile without the two above ?
 
