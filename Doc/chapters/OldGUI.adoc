@@ -104,16 +104,24 @@ Generalization of profile displaying GUIs.
 |Contract
 |Comment
 
-|
-|
+|displayProfileWindow(String[] args)
+|Displays the window : the table containing the profile as well as the buttons
+|This method receives a path file and tries to create a profile from it. It creates the 'save' button and calls save() and tableDisplay() methods.
+
+|tableDisplay()
+|Displays the table containing the profile
+|Creates an empty array and calls the handleDragAndDrop(), createColumns(), populateRows and checkRadioButton() methods to fill it.
+
+|handleDragAndDrop()
+|Implements dragging and dropping a cell at a time within the same column. When moving it up, the cell it is dropped on and those below will go down one cell. When moving it down, the cell it is dropped on and those above will go up one cell.
+|Uses the addListener() method to be notified when the 'MouseDown' event occurs.
+
+|handleEvent(Event event)
+|Sent when an event that the receiver has registered for occurs.
 |
 
-|
-|
-|
-
-|
-|
+|save(String outputFile)
+|Saves the changes to the file containing the profile.
 |
 |===
 
