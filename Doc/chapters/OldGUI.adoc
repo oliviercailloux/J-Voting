@@ -8,153 +8,189 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 === *MainGUI*
 
-[cols="2", options="header"] 
+[cols="1,1,2", options="header"] 
 |===
 |Method name
 |Contract
+|Interpretation
 
 |
 |
+|
 
 |
 |
+|
 
+|
 |
 |
 |===
 
 === *ProfileDefaultGUI*
 
-[cols="2", options="header"] 
+[cols="1,1,2", options="header"] 
 |===
 |Method name
 |Contract
+|Interpretation
 
 |
 |
+|
 
 |
 |
+|
 
+|
 |
 |
 |===
 
 === *ColumnsDefaultGUI*
 
-[cols="2", options="header"] 
+[cols="1,1,2", options="header"] 
 |===
 |Method name
 |Contract
+|Interpretation
 
 |
 |
+|
 
 |
 |
+|
 
+|
 |
 |
 |===
 
 === *SOIRowsGUI*
 
-[cols="2", options="header"] 
+[cols="1,1,2", options="header"] 
 |===
 |Method name
 |Contract
+|Interpretation
 
 |
 |
+|
 
 |
 |
+|
 
+|
 |
 |
 |===
 
 === *SOCRowsGUI*
 
-[cols="2", options="header"] 
+[cols="1,1,2", options="header"] 
 |===
 |Method name
 |Contract
+|Interpretation
 
 |
 |
+|
 
 |
 |
+|
 
+|
 |
 |
 |===
 
 === *SOIColumnsGUI*
 
-[cols="2", options="header"] 
+[cols="1,1,2", options="header"] 
 |===
 |Method name
 |Contract
+|Interpretation
 
 |
 |
+|
 
 |
 |
+|
 
+|
 |
 |
 |===
 
 === *SOIWrappedColumnsGUI*
 
-[cols="2", options="header"] 
+[cols="1,1,2", options="header"] 
 |===
 |Method name
 |Contract
+|Interpretation
 
 |
 |
+|
 
 |
 |
+|
 
+|
 |
 |
 |===
 
 === *SOCWrappedColumnsGUI*
 
-[cols="2", options="header"] 
+[cols="1,1,2", options="header"] 
 |===
 |Method name
 |Contract
+|Interpretation
 
 |
 |
+|
 
 |
 |
+|
 
+|
 |
 |
 |===
 
 === *SOCColumnsGUI*
 
-[cols="2", options="header"] 
+[cols="1,1,2", options="header"] 
 |===
 |Method name
 |Contract
+|Interpretation
 
 |
 |
+|
 
 |
 |
+|
 
+|
 |
 |
 |===
