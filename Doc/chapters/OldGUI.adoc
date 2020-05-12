@@ -6,6 +6,159 @@
 
 image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
+=== *MainGUI*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+
+|
+|
+
+|
+|
+
+|
+|
+|===
+
+=== *ProfileDefaultGUI*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+
+|
+|
+
+|
+|
+
+|
+|
+|===
+
+=== *ColumnsDefaultGUI*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+
+|
+|
+
+|
+|
+
+|
+|
+|===
+
+=== *SOIRowsGUI*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+
+|
+|
+
+|
+|
+
+|
+|
+|===
+
+=== *SOCRowsGUI*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+
+|
+|
+
+|
+|
+
+|
+|
+|===
+
+=== *SOIColumnsGUI*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+
+|
+|
+
+|
+|
+
+|
+|
+|===
+
+=== *SOIWrappedColumnsGUI*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+
+|
+|
+
+|
+|
+
+|
+|
+|===
+
+=== *SOCWrappedColumnsGUI*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+
+|
+|
+
+|
+|
+
+|
+|
+|===
+
+=== *SOCColumnsGUI*
+
+[cols="1,1,2", options="header"] 
+|===
+|Method name
+|Contract
+
+|
+|
+
+|
+|
+
+|
+|
+|===
+
 === Rows definition +
 This visualization displays the list of the voters on the first column and for each of them, their associated preference on the same row.
 
@@ -42,6 +195,3 @@ In the case above, 263 Voters have chosen the same preference. They put the 2nd 
 === Sequence diagram of the current way to visualize a profile (the user provides a correct SOC file)
 
 image:../assets/SequenceDiagramViewProfile.png[SequenceDiagramViewProfile]
-
-
-
