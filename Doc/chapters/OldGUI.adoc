@@ -8,6 +8,8 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 === *MainGUI*
 
+Home GUI allowing to load a profile and then select how to display it.
+
 [cols="1,1,2", options="header"] 
 |===
 |Method name
@@ -20,19 +22,19 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 |createSOCButtons()
 |Instantiates and set characteristics of SOC buttons with their specific behaviors.
-|Creates 3 buttons (Rows, Columns, Wrapped). It contains the associated listeners. It tests if the file selected in displayGUI() exists and launches the SOCColumnsGUI, SOCRowsGUI or SOCWrappedColumnsGUI methods according to the button pressed. If the file is null or empty, call displayMessageNoFileLoaded() method.
+|Creates 3 buttons (Rows, Columns, Wrapped). It contains the associated listeners. It tests if the file selected in displayGUI() exists and calls the displayProfileWindow() method of the corresponding classes (SOCColumnsGUI, SOCRowsGUI or SOCWrappedColumnsGUI) depending on the button pressed. If the file is null or empty, call displayMessageNoFileLoaded() method.
 
 |createSOIButtons()
 |Instantiates and set characteristics of SOI buttons with their specific behaviors.
 |Same as createSOCButtons() but for SOI file and SOI methods.
 
 |displaySOCButtons()
-|Displays SOC buttons and hides SOI ones
+|Displays SOC buttons and hides SOI ones.
 |Explicit contract
 
 |displaySOIButtons()
 |Displays SOI buttons and hides SOC ones
-|Explicit contract
+|Explicit contract.
 
 |displayMessageNoFileLoaded()
 |_Not specified_
@@ -45,23 +47,53 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 === *ProfileDefaultGUI*
 
+Generalization of profile displaying GUIs.
+
 [cols="1,1,2", options="header"] 
 |===
 |Method name
 |Contract
 |Comment
 
-|
-|
+|displayProfileWindow(String[] args)
+|Displays the window : the table containing the profile as well as the buttons.
+|This method displays a window, receives a file and tries to create a profile from it. It calls displayRadioButtons() and tableDisplay() methods. 
+
+|tableDisplay()
+|Displays the table containing the profile.
+|Create an empty array and call the createColumns(), populateRows and checkRadioButton() methods to fill it.
+
+|displayRadioButtons()
+|Displays the radio buttons to choose the layout of the profile. This method works for both SOC and SOI.
+|Receives a file and recovers its extension . Depending on the extension (SOC or SOI) and the selected button (columns, rows or wrapped), calls the tableDisplay() method of the concerned class (SOIRowsGUI, SOCRowsGUI, SOIColumnsGUI, SOCColumnsGUI, SOIWrappedColumnsGUI or SOCWrappedColumnsGUI).
+
+|checkRadioButton()
+|Checks the right radio button.
 |
 
-|
-|
+|createColumns()
+|_Not specified_
 |
 
+|populateRows()
+|Fills the table of the profile with the alternatives : by default, each column contains the preference of a voter.
 |
+
+|editStrictPreference(String arg)
+|Displays the editButton window, where you can choose to modify/add a StrictPreference of a voter.
 |
+
+|modif()
+|Edits the profile with the given information.
 |
+
+|save(String outputFile)
+|Saves the changes to the file containing the profile.
+|
+
+|emptyTable()
+|Empties the table : removes all data and columns. Removes the saveButton button if it isn't disposed yet.
+|Explicit contract.
 |===
 
 === *ColumnsDefaultGUI*
