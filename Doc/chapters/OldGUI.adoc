@@ -118,11 +118,11 @@ Generalization of profile displaying GUIs.
 
 |handleEvent(Event event)
 |Sent when an event that the receiver has registered for occurs.
-|
+|Handles different movements (if moving from one voter to another, if moving cell within the same column, if source is over destination in the table, if source is underneath destination in the table) and creates messages if needed.
 
 |save(String outputFile)
 |Saves the changes to the file containing the profile.
-|
+|Checks whether the file extension is SIO or SOC, otherwise sends an error message.
 |===
 
 === *SOIRowsGUI*
