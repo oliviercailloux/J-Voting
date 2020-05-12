@@ -8,7 +8,7 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 === *MainGUI*
 
-[cols="1,1,2", options="header"] 
+[cols="2", options="header"] 
 |===
 |Method name
 |Contract
@@ -25,7 +25,7 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 === *ProfileDefaultGUI*
 
-[cols="1,1,2", options="header"] 
+[cols="2", options="header"] 
 |===
 |Method name
 |Contract
@@ -42,7 +42,7 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 === *ColumnsDefaultGUI*
 
-[cols="1,1,2", options="header"] 
+[cols="2", options="header"] 
 |===
 |Method name
 |Contract
@@ -59,7 +59,7 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 === *SOIRowsGUI*
 
-[cols="1,1,2", options="header"] 
+[cols="2", options="header"] 
 |===
 |Method name
 |Contract
@@ -76,7 +76,7 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 === *SOCRowsGUI*
 
-[cols="1,1,2", options="header"] 
+[cols="2", options="header"] 
 |===
 |Method name
 |Contract
@@ -93,7 +93,7 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 === *SOIColumnsGUI*
 
-[cols="1,1,2", options="header"] 
+[cols="2", options="header"] 
 |===
 |Method name
 |Contract
@@ -110,7 +110,7 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 === *SOIWrappedColumnsGUI*
 
-[cols="1,1,2", options="header"] 
+[cols="2", options="header"] 
 |===
 |Method name
 |Contract
@@ -127,7 +127,7 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 === *SOCWrappedColumnsGUI*
 
-[cols="1,1,2", options="header"] 
+[cols="2", options="header"] 
 |===
 |Method name
 |Contract
@@ -144,7 +144,7 @@ image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
 === *SOCColumnsGUI*
 
-[cols="1,1,2", options="header"] 
+[cols="2", options="header"] 
 |===
 |Method name
 |Contract
