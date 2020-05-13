@@ -22,3 +22,7 @@ We can also open an existing file and make the same changes. Each modification i
 
 link:https://en.wikipedia.org/wiki/Nota_bene[NB]: At startup, and as long as the profile name is not filled in, the input boxes are red to indicate that no file is created. When the file name is entered, the file is created and the red disappears from the input boxes.
 
+
+=== MVC pattern applied to J-Voting GUI
+
+Work in progress
