@@ -69,27 +69,27 @@ Generalization of profile displaying GUIs.
 
 |checkRadioButton()
 |Checks the right radio button.
-|
+|Check the radio button "column" and uncheck "row" and "wrapped".  It may be necessary to add to the contract that the display "column" is checked by default.
 
 |createColumns()
 |_Not specified_
-|
+|Create a StrictProfileI with the voters. For each voters in the profile, the method creates a column in a table.
 
 |populateRows()
 |Fills the table of the profile with the alternatives : by default, each column contains the preference of a voter.
-|
+|Create a StrictProfileI with the alternatives. It creates a number of table rows equal to the number of alternatives.
 
 |editStrictPreference(String arg)
 |Displays the editButton window, where you can choose to modify/add a StrictPreference of a voter.
-|
+|Explicit contract + Takes the id of the vote to be changed and its new preference.
 
 |modif()
 |Edits the profile with the given information.
-|
+|Creates a voter from the id of the voter you wish to modify in editStrictPreference(String arg). It then assigns to the voter the new preference defined in editStrictPreference(String arg)
 
 |save(String outputFile)
 |Saves the changes to the file containing the profile.
-|
+|Create a file and write to it by calling the writeToSOC(OutputStream) or writeToSOI(OutputStream) methods depending on the file extension.
 
 |emptyTable()
 |Empties the table : removes all data and columns. Removes the saveButton button if it isn't disposed yet.
