@@ -133,17 +133,17 @@ Generalization of profile displaying GUIs.
 |Contract
 |Comment
 
-|
-|
-|
+|createColumns()
+|Creates the titled columns of the displayed screen when the row visualisation is chosen
+|Creates an ArrayList<String> representing the title of the column. The first one is 'Voters' ans then 'Alternative 1', 'Alternative 2' etc
 
-|
-|
-|
+|checkRadioButton()
+|Checks the right radio button.
+|The button clicked is the row one
 
-|
-|
-|
+|populateRows()
+|Fills the table of the profile with the alternatives : by default, each column contains the preference of a voter
+|Trough an ArrayList<String>, creates a row with the different voters ID and their classified alternatives
 |===
 
 === *SOCRowsGUI*
@@ -154,17 +154,17 @@ Generalization of profile displaying GUIs.
 |Contract
 |Comment
 
-|
-|
-|
+|createColumns()
+|Creates the titled columns of the displayed screen when the row visualisation is chosen
+|Creates an ArrayList representing the title of the column. The first one is 'Voters' ans then 'Alternative 1', 'Alternative 2' etc
 
-|
-|
-|
+|checkRadioButton()
+|Checks the right radio button.
+|The button clicked is the row one
 
-|
-|
-|
+|populateRows()
+|Fills the table of the profile with the alternatives : by default, each column contains the preference of a voter
+|Trough an ArrayList<String>, creates a row with the different voters ID and their classified alternatives
 |===
 
 === *SOIColumnsGUI*
