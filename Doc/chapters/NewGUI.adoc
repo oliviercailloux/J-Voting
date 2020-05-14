@@ -23,6 +23,18 @@ We can also open an existing file and make the same changes. Each modification i
 link:https://en.wikipedia.org/wiki/Nota_bene[NB]: At startup, and as long as the profile name is not filled in, the input boxes are red to indicate that no file is created. When the file name is entered, the file is created and the red disappears from the input boxes.
 
 
-=== MVC pattern applied to J-Voting GUI
-
+== MVC pattern applied to J-Voting GUI
 Work in progress
+
+image:../assets/j-voting-mvc.png[MVC]
+
+=== Mes questions pour vous/Cailloux
+
+1) Serait-il mieux de créer une superclass Controller avec le model commun et deux enfants Controllers : un pour la Visualisation et l'autre l'édition ? 
+
+2) Il me semble plus pertinent de ne pas gérer les callback des events qui ne propagent pas de données dans le controller (exemple : les bouttons collapsable, les btn column row et wrapped dans la visualisation). Veuillez m'indiquer si jamais je me trompe.
+
+3) Quelle est la meilleur solution pour tenir à jour la page visualisation selon les modifications dans l'onglet d'édition ? (Je propose de supprimer toute la donnée du tableau et de la recréer à partir du profile du model à chaque entrée dans la page. Il y aurait donc un clean du tableau au debut de UpdateVisualisationPage).
+
+4) Plus grande question : comment maintenir coté UI sur la page d'édition cette list de voterBlock (La case voterName + Les préferences). Faut il maintenir une list de composite UI voterBlock dans la view pour aller les chercher quand on doit ajouter une case alternative ou en supprimer une ? 
+
