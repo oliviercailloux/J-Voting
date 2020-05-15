@@ -38,3 +38,4 @@ image:../assets/j-voting-mvc.png[MVC]
 
 4) Plus grande question : comment maintenir coté UI sur la page d'édition cette list de voterBlock (La case voterName + Les cases d'alternatives). Faut il maintenir une list de composite UI voterBlock dans la view pour aller les chercher quand on doit ajouter une case alternative ou en supprimer une ? 
 
+5) je sais pas encore ou caser le main shell et le composant principale des deux onglets (celui ou on ajoute chaque tabItem)
