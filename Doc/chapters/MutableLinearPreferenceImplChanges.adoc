@@ -12,6 +12,8 @@ Specifically, we have to modify several files :
 
 * Delete the constructor and the factory method which take a Graph in parameter
 
+* Modify swap(Alternative alternative1, Alternative alternative2)
+
 * Modify equals() and hashcode() to respect the BP Local design
 
 * Rename deleteAlternative(Alternative a) to removeAlternative(Alternative a)
