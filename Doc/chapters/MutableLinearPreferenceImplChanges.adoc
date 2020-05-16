@@ -8,11 +8,17 @@ Specifically, we have to modify several files :
 
 == MutableLinearPreferenceImpl.java
 
+The big change is to work from now on with a transitively closed graph.
+
 * LinkedList<Alternative> list become List<Alternative> list
 
 * Delete the constructor and the factory method which take a Graph in parameter
 
 * Modify swap(Alternative alternative1, Alternative alternative2)
+
+* Modify changeOrder(Alternative alternative1, int rank)
+
+* Modify deleteAlternative(Alternative a) and addAlternative(Alternative a)
 
 * Modify equals() and hashcode() to respect the BP Local design
 
