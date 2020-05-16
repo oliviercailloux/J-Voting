@@ -155,8 +155,8 @@ Generalization of profile displaying GUIs.
 |Comment
 
 |createColumns()
-|Creates the titled columns of the displayed screen when the row visualisation is chosen
-|Creates an ArrayList representing the title of the column. The first one is 'Voters' ans then 'Alternative 1', 'Alternative 2' etc
+|Creates the titled columns of the displayed screen when the row visualization is chosen
+|Creates an ArrayList representing the title of the column. The first one is 'Voters' and then 'Alternative 1', 'Alternative 2' etc
 
 |checkRadioButton()
 |Checks the right radio button.
@@ -175,17 +175,14 @@ Generalization of profile displaying GUIs.
 |Contract
 |Comment
 
-|
-|
-|
 
-|
-|
-|
+|createColumns()
+|Not specified. Logically, creates the titled columns of the displayed screen when the column visualization is chosen
+|Creates an ArrayList representing the title of the column. The first one is 'Voter 1' and then 'Voter 2' etc
 
-|
-|
-|
+|populateRows()
+|Fills the table of the profile with the alternatives : by default, each column contains the preference of a voter
+|Trough an ArrayList<String>, creates a row with the classified alternatives of each voter in the good order
 |===
 
 === *SOIWrappedColumnsGUI*
