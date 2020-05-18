@@ -193,15 +193,15 @@ Generalization of profile displaying GUIs.
 |Contract
 |Comment
 
+|createColumns()
+|Not specified
 |
+
+|checkRadioButton()
 |
 |
 
-|
-|
-|
-
-|
+|populateRows()
 |
 |
 |===
@@ -214,15 +214,15 @@ Generalization of profile displaying GUIs.
 |Contract
 |Comment
 
-|
-|
-|
-
-|
+|createColumns()
 |
 |
 
+|checkRadioButton()
 |
+|
+
+|populateRows()
 |
 |
 |===
@@ -235,15 +235,19 @@ Generalization of profile displaying GUIs.
 |Contract
 |Comment
 
-|
-|
-|
-
-|
+|addAlternative(String[] alternative)
 |
 |
 
+|createColumns()
 |
+|
+
+|populateRows()
+|
+|
+
+|tableDisplay()
 |
 |
 |===
