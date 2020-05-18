@@ -194,16 +194,16 @@ Generalization of profile displaying GUIs.
 |Comment
 
 |createColumns()
-|Not specified
-|
+|_Not specified_
+|Creates an ArrayList representing the title of the column. The first one is 'Voter 1' and then 'Voter 2' etc
 
 |checkRadioButton()
-|
-|
+|Checks the right radio button.
+|The button clicked is the column one
 
 |populateRows()
-|
-|
+|Fills the table of the profile with the alternatives : by default, each column contains the preference of a voter
+|Trough an ArrayList<String>, creates a row with the classified alternatives of each voter in the good order
 |===
 
 === *SOCWrappedColumnsGUI*
@@ -215,16 +215,16 @@ Generalization of profile displaying GUIs.
 |Comment
 
 |createColumns()
-|
-|
+|_Not specified_
+|Creates an ArrayList representing the title of the column. The first one is 'Voter 1' and then 'Voter 2' etc
 
 |checkRadioButton()
-|
-|
+|Checks the right radio button.
+|The button clicked is the column one
 
 |populateRows()
-|
-|
+|Fills the table of the profile with the alternatives : by default, each column contains the preference of a voter
+|Trough an ArrayList<String>, creates a row with the classified alternatives of each voter in the good order
 |===
 
 === *SOCColumnsGUI*
@@ -236,20 +236,20 @@ Generalization of profile displaying GUIs.
 |Comment
 
 |addAlternative(String[] alternative)
-|
-|
+|_Not specified_
+|Add an alternative to the selected profile
 
 |createColumns()
-|
-|
+|_Not specified_
+|Creates an ArrayList representing the title of the column. The first one is 'Voter 1' and then 'Voter 2' etc
 
 |populateRows()
-|
-|
+|Fills the table of the profile with the alternatives : by default, each column contains the preference of a voter
+|Trough an ArrayList<String>, creates a row with the classified alternatives of each voter in the good order
 
 |tableDisplay()
-|
-|
+|Displays the table containing the profile
+|Creates an empty array and calls the handleDragAndDrop(), createColumns(), populateRows and checkRadioButton() methods to fill it.
 |===
 
 === Rows definition +
