@@ -6,6 +6,10 @@
 
 image:../assets/GUIClassDiagram.png[GUIClassDiagram]
 
+Following our study, we notice that the architecture of the old GUI is based on the format type (SOI, SOC) but also on the visualization type (Columns, Row or Wrapped).
+
+Its classes are more precisely detailed in the tables below.
+
 === *MainGUI*
 
 Home GUI allowing to load a profile and then select how to display it.
