@@ -3001,6 +3001,9 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_S_NchZp2Eeqy6sHmH3R0hw" y="15"/>
       </children>
       <children xmi:type="notation:BasicCompartment" xmi:id="_S_Nchpp2Eeqy6sHmH3R0hw" type="Class_AttributeCompartment">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_oyhwIJp8EeqQoOmi0eM9lw" source="PapyrusCSSForceValue">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_oyiXMJp8EeqQoOmi0eM9lw" key="collapsed" value="true"/>
+        </eAnnotations>
         <styles xmi:type="notation:TitleStyle" xmi:id="_S_Nch5p2Eeqy6sHmH3R0hw"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_S_NciJp2Eeqy6sHmH3R0hw"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_S_NciZp2Eeqy6sHmH3R0hw"/>
