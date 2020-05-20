@@ -84,4 +84,6 @@ We chose to implement the following methods according to our GUI project :
 
 image:../assets/MutableStrictProfile.png[MutableStrictProfile]
 
+ == Alternative.java
  
+ * Modify toString() according to BP Local Design
