@@ -68,9 +68,9 @@ We will override the following methods :
 
 == MutableStrictProfile.java
 
-Actually, all of the profile are Immutable. With this new class, we need a profile Mutable. The preferences are Strict and complete so it will implement StrictProfile interface. It will be mutable and going to use mutable linear preferences.
+Currently, all of the profile are Immutable. With this new class, we need a profile Mutable. The preferences are Strict and complete so it will implement StrictProfile interface. It will be mutable and going to use mutable linear preferences.
 
-Actually, we have 4 Immutable profiles in J-voting :
+Currently, we have 4 Immutable profiles in J-voting :
 
 image:../assets/profileClassDiagram.png[profileClassDiagram]
 
