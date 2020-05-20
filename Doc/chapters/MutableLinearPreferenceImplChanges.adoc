@@ -54,7 +54,7 @@ We will override the following methods :
 
 == MutableLinearGraphDecorator.java
 
-In this class, we have to override methods likely to break the linearity of preference by the graph.This class extends ForwardingGraph<Alternative> and takes a MutableLinearPreference in parameter.
+In this class, we have to override methods likely to break the linearity of preference by the graph.This class takes a MutableLinearPreference in parameter. Initially, the class should implement https://github.com/google/guava/blob/master/guava/src/com/google/common/graph/ForwardingGraph.java[ForwardingGraph]. But since we implement a MutableGraph, it could be better that the decorator class implement https://github.com/google/guava/blob/master/guava/src/com/google/common/graph/StandardMutableGraph.java[StandardMutableGraph]. Indeed, we need to override methods of MutableGraph and not AbstractGraph<N>. Could you validate it ? 
 
 We will override the following methods : 
 
