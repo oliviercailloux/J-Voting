@@ -78,9 +78,10 @@ If we keep the same scheme for the Mutable profiles, then we will need to create
 
 image:../assets/mutableProfileClassDiagram.png[mutableProfileClassDiagram]
 
-Or do we only create the MutableStrictProfile without the two above ?
+After a talk with you, we decided to create the MutableStrictProfile class regardless of the existing hierarchy.
 
-But isn't it too much for a single iteration? Wouldn't it be better to save this task for a complete iteration ? Also, do we really need a profile class to build our GUI ?
+We chose to implement the following methods according to our GUI project :
 
+image:../assets/MutableStrictProfile.png[MutableStrictProfile]
 
  
