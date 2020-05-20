@@ -12,7 +12,7 @@ The big change is to work from now on with a transitively closed graph.
 
 * LinkedList<Alternative> list become List<Alternative> list
 
-* Delete the constructor and the factory method which take a Graph in parameter
+* Delete the constructor and the factory method which takes a Graph in parameter
 
 * Modify swap(Alternative alternative1, Alternative alternative2)
 
@@ -36,53 +36,35 @@ The big change is to work from now on with a transitively closed graph.
 
 == MutableLinearSetDecorator.java
 
-In this class, we have to override methods likely to break the linearity of preference by the set.
+In this class, we have to override methods likely to break the linearity of preference by the set. This class extends ForwardingSet<Alternative> and takes a MutableLinearPreference in parameter.
 
-@Override
-	public boolean add(Alternative a) {
+We will override the following methods :
+
+* public boolean add(Alternative a) 
 		
-	}
-@Override
-	public boolean addAll(Collection<? extends Alternative> c) {
+* public boolean addAll(Collection<? extends Alternative> c) 
 		
-	}
-@Override
-	public boolean remove(Alternative a) {
+* public boolean remove(Alternative a) 
+
+* public boolean removeAll(Collection<? extends Alternative> c) 
 		
-	}
-@Override
-	public boolean removeAll(Collection<? extends Alternative> c) {
+* public boolean clear() 
 		
-	}
-@Override
-	public boolean clear() {
-		
-	}
-@Override
-	public boolean retainAll(Collection<? extends Alternative> c) {
-		
-	}
+* public boolean retainAll(Collection<? extends Alternative> c) 
 
 == MutableLinearGraphDecorator.java
 
-In this class, we have to override methods likely to break the linearity of preference by the graph.
+In this class, we have to override methods likely to break the linearity of preference by the graph.This class extends ForwardingGraph<Alternative> and takes a MutableLinearPreference in parameter.
 
-@Override
-	public boolean addNode(N node) {
+We will override the following methods : 
+
+* public boolean addNode(N node) 
 		
-	}
-@Override
-	public boolean putEdge(N nodeU, N nodeV) {
+* public boolean putEdge(N nodeU, N nodeV) 
 		
-	}
-@Override
-	public boolean removeEdge(N nodeU, N nodeV) {
+* public boolean removeEdge(N nodeU, N nodeV) 
 		
-	}
-@Override
-	public boolean removeNode(N node) {
-		
-	}
+* public boolean removeNode(N node) 
 
 == MutableStrictProfile.java
 
