@@ -29,8 +29,50 @@ We assume that we start with an instance of MutableLinearPreference as a model.
 
 image:../assets/[MVC]
 
+=== *MainGUI*
+[cols="1,1", options="header"] 
+|===
+|Method name
+|Explanation 
+
+|Main(String[] args)
+| Calls the displayGUI() Method
+
+|displayGUI()
+| Instanciates the main shell mechanism. 
+*Assemble all the differentes MVC pieces* :
+
+- Create MutableLinear Preference Instance 
+
+- Create View instance
+
+- Create Controller and pass it the View & Preference.
+
+- Create Edition & Visualisation child views.
+
+- Create Edition & Visualisation child controllers and pass them the associated child views. 
 
 
+- Finally calls : 
+initEditionView()
+initVisualisationView()
+initEditionControler()
+initVisualisationController()
+
+
+|===
+
+=== *Controller*
+[cols="1,1", options="header"] 
+|===
+|Method name
+|Explanation 
+
+|controller(View v, MutableLinearPreference model)
+| Set the parent view and the common model shared by all child controllers
+
+
+|===
 
 
 === *EditionController*
@@ -38,6 +80,9 @@ image:../assets/[MVC]
 |===
 |Method name
 |Explanation 
+
+|initEditionView()
+| Pass the default preference model to the view for rendering. 
 
 |initEditionControler()
 | We add listeners on all the controls present in the default view when we enter the app. 
@@ -71,6 +116,9 @@ Then we delete the alternative from the preference model.
 |Method name
 |Explanation 
 
+|initVisualisationView()
+| Pass the default preference model to the view for rendering. 
+
 |initVisualisationController()
 | We add listeners on all the controls present in the default view when we enter the app. 
 We link them to each corresponding callbacks. 
@@ -92,8 +140,7 @@ We pass to the view the preference model
 
 |===
 
-== Not linked to MVC be need to be implemented
-
+== Improvements needed linked to MVC implementation
 
 - Currently the Alternative class has no name but solely an ID. 
-We we need to store a name inside an alternative and getter& setters on it. 
+We need to store a string name inside it with and getter&setters on the attribute. 
