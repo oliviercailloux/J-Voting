@@ -40,7 +40,7 @@ image:../assets/[MVC]
 
 |displayGUI()
 | Instanciates the main shell mechanism. 
-*Assemble all the differentes MVC pieces* :
+*Gathers all the differents MVC pieces* :
 
 - Create MutableLinear Preference Instance 
 
