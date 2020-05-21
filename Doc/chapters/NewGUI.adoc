@@ -23,19 +23,44 @@ We can also open an existing file and make the same changes. Each modification i
 link:https://en.wikipedia.org/wiki/Nota_bene[NB]: At startup, and as long as the profile name is not filled in, the input boxes are red to indicate that no file is created. When the file name is entered, the file is created and the red disappears from the input boxes.
 
 
-== MVC pattern applied to J-Voting GUI
-Work in progress
+= MVC pattern applied to J-Voting GUI
 
-image:../assets/j-voting-mvc.png[MVC]
+We assume that we start with an instance of MutableLinearPreference as a model. 
 
-=== *Contoller*
-[cols="1,1,2", options="header"] 
+image:../assets/[MVC]
+
+
+
+
+
+=== *EditionController*
+[cols="1,1", options="header"] 
 |===
 |Method name
 |Explanation 
 
 |initEditionControler()
-|
+| We had listeners on all the controls present in the default view when we enter the app. 
+We link them to each corresponding callbacks. 
+
+|onModifyAlternativeName(Event e)
+| We need to find a way to retrieve the name or id of the alternative in modification. 
+Then each time that the user type a letter the name of the alternative is changed in the model (A voir)
+
+|onModifyVoterName(Event e)
+|Each time that the user type a letter the name of the voter is updated in the model (A voir)
+
+
+|onDeleteAlternativeBtnClick(SelectionEvent event)
+| We retrieve the name or the id of the alternative to be deleted. 
+Then we delete the alternative from the preference model. 
+
+
+|onAddAlternativeBtnClick(SelectionEvent event)
+| We add a new alternative to the preference model with as name : the text present in the text field (getter on that text field). Then : 
+- We call a method from the view that add a Alternative case. 
+- Or we send the whole new model to the view and she takes care of rendering all element. 
+
 |===
 
 
