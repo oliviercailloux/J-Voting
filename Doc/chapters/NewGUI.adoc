@@ -44,7 +44,7 @@ image:../assets/[MVC]
 
 - Create MutableLinear Preference Instance 
 
-- Create View instance
+- Create View instance // and pass it probably the mainshell
 
 - Create Controller and pass it the View & Preference.
 
