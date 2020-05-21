@@ -40,7 +40,7 @@ image:../assets/[MVC]
 |Explanation 
 
 |initEditionControler()
-| We had listeners on all the controls present in the default view when we enter the app. 
+| We add listeners on all the controls present in the default view when we enter the app. 
 We link them to each corresponding callbacks. 
 
 |onModifyAlternativeName(Event e)
@@ -54,13 +54,46 @@ Then each time that the user type a letter the name of the alternative is change
 |onDeleteAlternativeBtnClick(SelectionEvent event)
 | We retrieve the name or the id of the alternative to be deleted. 
 Then we delete the alternative from the preference model. 
+- We call a method from the view that delete an Alternative case. 
+- Or we send the whole new model to the view and she takes care of rendering all element based on the model. 
 
 
 |onAddAlternativeBtnClick(SelectionEvent event)
 | We add a new alternative to the preference model with as name : the text present in the text field (getter on that text field). Then : 
 - We call a method from the view that add a Alternative case. 
-- Or we send the whole new model to the view and she takes care of rendering all element. 
+- Or we send the whole new model to the view and she takes care of rendering all element based on the model. 
 
 |===
 
+=== *VisualisationController*
+[cols="1,1", options="header"] 
+|===
+|Method name
+|Explanation 
 
+|initVisualisationController()
+| We add listeners on all the controls present in the default view when we enter the app. 
+We link them to each corresponding callbacks. 
+
+|OnVisualisationTabClick(SelectionEvent event)
+| When we enter the visualisation tab we send to the view the current up to date preference model. 
+
+|onColumnBtnClick(SelectionEvent event)
+|We call the view function that handle column tab rendering. 
+We pass to the view the preference model
+
+|onRowBtnClick(SelectionEvent event)
+|We call the view function that handle row tab rendering. 
+We pass to the view the preference model
+
+|onWrappedBtnClick(SelectionEvent event)
+|We call the view function that handle wrapped tab rendering. 
+We pass to the view the preference model
+
+|===
+
+== Not linked to MVC be need to be implemented
+
+
+- Currently the Alternative class has no name but solely an ID. 
+We we need to store a name inside an alternative and getter& setters on it. 
