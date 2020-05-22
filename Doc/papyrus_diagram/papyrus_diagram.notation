@@ -634,11 +634,6 @@
       <element xmi:type="uml:Class" href="papyrus_diagram.uml#_NQBPsIYrEeqCsLxU4w-iPA"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NQZDIYYrEeqCsLxU4w-iPA" x="-40" y="420" width="301" height="101"/>
     </children>
-    <children xmi:type="notation:Shape" xmi:id="_TlJT0IYtEeqCsLxU4w-iPA" type="Comment_Shape">
-      <children xmi:type="notation:DecorationNode" xmi:id="_TlJ64IYtEeqCsLxU4w-iPA" type="Comment_BodyLabel"/>
-      <element xmi:type="uml:Comment" href="papyrus_diagram.uml#_TlIswIYtEeqCsLxU4w-iPA"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TlJT0YYtEeqCsLxU4w-iPA" x="-40" y="380" height="40"/>
-    </children>
     <styles xmi:type="notation:StringValueStyle" xmi:id="_mohVIWbTEeqrtc6dy-mPpg" name="diagram_compatibility_version" stringValue="1.4.0"/>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_mohVImbTEeqrtc6dy-mPpg"/>
     <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_mohVI2bTEeqrtc6dy-mPpg" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
