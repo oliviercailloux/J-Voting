@@ -6527,7 +6527,6 @@ Voter's preferences : AntiSymmetric</body>
       <packagedElement xmi:type="uml:Package" xmi:id="_oMADEIYtEeq0ksZO2OwcmQ" name="OldToNewCompletePreferenceImpl"/>
       <packagedElement xmi:type="uml:Package" xmi:id="_3zuNgJpzEeqy6sHmH3R0hw" name="NewGUIClassDiagram">
         <packagedElement xmi:type="uml:Class" xmi:id="_mCc5YJp1Eeqy6sHmH3R0hw" name="View" visibility="public">
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_d0b1UJwFEeq8ir2MIFEotA" name="displayMainGUI"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_eC2EwJwFEeq8ir2MIFEotA" name="displayTabFolder"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_SVi0cJp2Eeqy6sHmH3R0hw" name="VisualizationView">
@@ -6632,6 +6631,7 @@ Voter's preferences : AntiSymmetric</body>
               <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gHWdsJwGEeq8ir2MIFEotA" value="*"/>
             </ownedParameter>
           </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_1nTbUJwKEeq8ir2MIFEotA" name="displayGUI"/>
         </packagedElement>
       </packagedElement>
     </packagedElement>

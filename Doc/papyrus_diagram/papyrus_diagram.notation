@@ -2929,10 +2929,6 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mCmDVJp1Eeqy6sHmH3R0hw"/>
       </children>
       <children xmi:type="notation:BasicCompartment" xmi:id="_mCmDVZp1Eeqy6sHmH3R0hw" type="Class_OperationCompartment">
-        <children xmi:type="notation:Shape" xmi:id="_d1MqUJwFEeq8ir2MIFEotA" type="Operation_ClassOperationLabel">
-          <element xmi:type="uml:Operation" href="papyrus_diagram.uml#_d0b1UJwFEeq8ir2MIFEotA"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_d1MqUZwFEeq8ir2MIFEotA"/>
-        </children>
         <children xmi:type="notation:Shape" xmi:id="_eDb6oJwFEeq8ir2MIFEotA" type="Operation_ClassOperationLabel">
           <element xmi:type="uml:Operation" href="papyrus_diagram.uml#_eC2EwJwFEeq8ir2MIFEotA"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_eDchsJwFEeq8ir2MIFEotA"/>
@@ -3242,6 +3238,10 @@
         <children xmi:type="notation:Shape" xmi:id="_lyr8MJt_EeqQoOmi0eM9lw" type="Operation_ClassOperationLabel">
           <element xmi:type="uml:Operation" href="papyrus_diagram.uml#_kBpcYJt_EeqQoOmi0eM9lw"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_lyr8MZt_EeqQoOmi0eM9lw"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_1n7GYJwKEeq8ir2MIFEotA" type="Operation_ClassOperationLabel">
+          <element xmi:type="uml:Operation" href="papyrus_diagram.uml#_1nTbUJwKEeq8ir2MIFEotA"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_1n7GYZwKEeq8ir2MIFEotA"/>
         </children>
         <styles xmi:type="notation:TitleStyle" xmi:id="_XESUK5p5Eeqy6sHmH3R0hw"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_XESULJp5Eeqy6sHmH3R0hw"/>

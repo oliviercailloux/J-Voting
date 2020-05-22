@@ -146,11 +146,8 @@ We pass to the view the preference model
 |Method name
 |Explanation 
 
-|displayMainGUI()
-|Displays the main interface of the software 
-
 |displayTabFolder()
-|Creates and displays editing and viewing tabs in the main window
+|Creates and displays editing and viewing tabs in the main window. The two tabs correspond to a different view 
 
 
 |===
