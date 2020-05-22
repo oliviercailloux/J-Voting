@@ -27,7 +27,7 @@ link:https://en.wikipedia.org/wiki/Nota_bene[NB]: At startup, and as long as the
 
 We assume that we start with an instance of MutableLinearPreference as a model. 
 
-image:../assets/[MVC]
+image:../assets/NewGUIClassDiagram.png[NewGUIClassDiagram]
 
 === *MainGUI*
 [cols="1,1", options="header"] 
@@ -139,6 +139,65 @@ We pass to the view the preference model
 We pass to the view the preference model
 
 |===
+
+=== *View*
+[cols="1,1", options="header"] 
+|===
+|Method name
+|Explanation 
+
+|displayTabFolder()
+|Creates and displays editing and viewing tabs in the main window. The two tabs correspond to a different view 
+
+
+|===
+
+=== *VisualizationView*
+[cols="1,1", options="header"] 
+|===
+|Method name
+|Explanation 
+
+|createVisualizationButtons()
+|Creation and display buttons for displays in rows, columns and wrapped.
+
+|createTable
+|Creates an empty table and fill in it with preferences.
+
+|displayRows
+|Rows displaying preference
+
+|displayColumns
+|Columns displaying preference
+
+|displayWrapped
+|Wrapped displaying preference
+
+
+
+|===
+
+=== *EditionView*
+[cols="1,1", options="header"] 
+|===
+|Method name
+|Explanation 
+
+|createEditionButtons()
+|Creates and displays the different edit buttons. A button to select a profile, buttons to add or remove an alternative and buttons to add or remove a voter.
+
+|displayProfil()
+|Creates an editable "profile name" text field 
+
+|displayVoters()
+|Creates and displays the different text fields corresponding to the voters. The name can be changed.
+
+|displayAlternatives()
+|Creates and displays the different text fields corresponding to the voter's alternatives in order of preference. If an alternative is modified then this alternative is modified for each voter.
+
+
+|===
+
 
 == Improvements needed linked to MVC implementation
 
