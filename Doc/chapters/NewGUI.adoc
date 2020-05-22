@@ -140,6 +140,68 @@ We pass to the view the preference model
 
 |===
 
+=== *View*
+[cols="1,1", options="header"] 
+|===
+|Method name
+|Explanation 
+
+|displayMainGUI()
+|Displays the main interface of the software 
+
+|displayTabFolder()
+|Creates and displays editing and viewing tabs in the main window
+
+
+|===
+
+=== *VisualizationView*
+[cols="1,1", options="header"] 
+|===
+|Method name
+|Explanation 
+
+|createVisualizationButtons()
+|Creation and display buttons for displays in rows, columns and wrapped.
+
+|createTable
+|Creates an empty table and fill in it with preferences.
+
+|displayRows
+|Rows displaying preference
+
+|displayColumns
+|Columns displaying preference
+
+|displayWrapped
+|Wrapped displaying preference
+
+
+
+|===
+
+=== *EditionView*
+[cols="1,1", options="header"] 
+|===
+|Method name
+|Explanation 
+
+|createEditionButtons()
+|Creates and displays the different edit buttons. A button to select a profile, buttons to add or remove an alternative and buttons to add or remove a voter.
+
+|displayProfil()
+|Creates an editable "profile name" text field 
+
+|displayVoters()
+|Creates and displays the different text fields corresponding to the voters. The name can be changed.
+
+|displayAlternatives()
+|Creates and displays the different text fields corresponding to the voter's alternatives in order of preference. If an alternative is modified then this alternative is modified for each voter.
+
+
+|===
+
+
 == Improvements needed linked to MVC implementation
 
 - Currently the Alternative class has no name but solely an ID. 
