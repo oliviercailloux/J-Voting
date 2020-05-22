@@ -25,7 +25,7 @@ link:https://en.wikipedia.org/wiki/Nota_bene[NB]: At startup, and as long as the
 
 = MVC pattern applied to J-Voting GUI
 
-We assume that we start with an instance of MutableLinearPreference as a model. 
+We start with an instance of MutableLinearPreference as a model. 
 
 image:../assets/NewGUIClassDiagram.png[NewGUIClassDiagram]
 
@@ -48,9 +48,9 @@ image:../assets/NewGUIClassDiagram.png[NewGUIClassDiagram]
 
 - Create Controller and pass it the View & Preference.
 
-- Create Edition & Visualisation child views.
+- The view builds an Edition & Visualisation views and pass them its tabFolder.
 
-- Create Edition & Visualisation child controllers and pass them the associated child views. 
+- Create Edition & Visualisation child controllers and pass them the associated child views *and the common controller* (I dont see otherwise how those two controllers will be able to use the getModel() method declared in controller). 
 
 
 - Finally calls : 
@@ -89,24 +89,21 @@ initVisualisationController()
 We link them to each corresponding callbacks. 
 
 |onModifyAlternativeName(Event e)
-| We need to find a way to retrieve the name or id of the alternative in modification. 
-Then each time that the user type a letter the name of the alternative is changed in the model (A voir)
+| We retrieve the id of the Alternative that is being modified. 
+Then each time that the user type a letter the name of the alternative is changed in the model (this a proposition, we could say otherwise that we update the model only when user finish typing).
 
 |onModifyVoterName(Event e)
-|Each time that the user type a letter the name of the voter is updated in the model (A voir)
+|Each time that the user type a letter the name of the voter is updated in the model (this a proposition, we could say otherwise that we update the model only when user finish typing)
 
 
 |onDeleteAlternativeBtnClick(SelectionEvent event)
-| We retrieve the name or the id of the alternative to be deleted. 
+| We retrieve the id of the alternative to be deleted. 
 Then we delete the alternative from the preference model. 
-- We call a method from the view that delete an Alternative case. 
-- Or we send the whole new model to the view and she takes care of rendering all element based on the model. 
+And we call a method from the view that delete an Alternative case.  
 
 
 |onAddAlternativeBtnClick(SelectionEvent event)
-| We add a new alternative to the preference model with as name : the text present in the text field (getter on that text field). Then : 
-- We call a method from the view that add a Alternative case. 
-- Or we send the whole new model to the view and she takes care of rendering all element based on the model. 
+| We add a new alternative to the preference model with as name : the text present in the text field (getter on that text field). Then we call a method from the view that add a Alternative case.  
 
 |===
 
@@ -199,7 +196,3 @@ We pass to the view the preference model
 |===
 
 
-== Improvements needed linked to MVC implementation
-
-- Currently the Alternative class has no name but solely an ID. 
-We need to store a string name inside it with and getter&setters on the attribute. 
