@@ -27,7 +27,7 @@ link:https://en.wikipedia.org/wiki/Nota_bene[NB]: At startup, and as long as the
 
 We assume that we start with an instance of MutableLinearPreference as a model. 
 
-image:../assets/[MVC]
+image:../assets/NewGUIClassDiagram.png[NewGUIClassDiagram]
 
 === *MainGUI*
 [cols="1,1", options="header"] 
