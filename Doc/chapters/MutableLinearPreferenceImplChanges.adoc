@@ -54,17 +54,9 @@ We will override the following methods :
 
 == MutableLinearGraphDecorator.java
 
-In this class, we have to override methods likely to break the linearity of preference by the graph.This class takes a MutableLinearPreference in parameter. Initially, the class should implement https://github.com/google/guava/blob/master/guava/src/com/google/common/graph/ForwardingGraph.java[ForwardingGraph]. But since we implement a MutableGraph, it could be better that the decorator class implement https://github.com/google/guava/blob/master/guava/src/com/google/common/graph/StandardMutableGraph.java[StandardMutableGraph]. Indeed, we need to override methods of MutableGraph and not AbstractGraph<N>. Could you validate it ? 
+We need a decorator because the asGraph() method must return an unmodifiable Graph. By definition, a Graph is modifiable. However, it can be casted as MutableGraph which can be modifiable. So we have to protect our graph from casting.
 
-We will override the following methods : 
-
-* public boolean addNode(N node) 
-		
-* public boolean putEdge(N nodeU, N nodeV) 
-		
-* public boolean removeEdge(N nodeU, N nodeV) 
-		
-* public boolean removeNode(N node) 
+This class takes a MutableLinearPreference in parameter and should implement https://github.com/google/guava/blob/master/guava/src/com/google/common/graph/ForwardingGraph.java[ForwardingGraph]. 
 
 == MutableStrictProfile.java
 
@@ -78,11 +70,25 @@ If we keep the same scheme for the Mutable profiles, then we will need to create
 
 image:../assets/mutableProfileClassDiagram.png[mutableProfileClassDiagram]
 
-After a talk with you, we decided to create the MutableStrictProfile class regardless of the existing hierarchy.
+After a talk with you, we decided to create the MutableStrictProfile class regardless of the existing hierarchy. This method has a  Map<Voter, MutableLinearPreference> and a BiMap<Alternative, String> attributes.
 
 We chose to implement the following methods according to our GUI project :
 
-image:../assets/MutableStrictProfile.png[MutableStrictProfile]
+* createMutableStrictProfile(Map map)
+
+* public MutableStrictProfile addVoter(Voter v)
+
+* public void removeVoter(Voter v)
+
+* public void renameVoter(Voter v, String newName)
+
+* public void renameAlternative(Alternative alternative, String newName)
+
+* public Set<Voter> getVoters()
+
+* public Set<Alternative> getAlternatives()
+
+* public MutableLinearPreference getPreference(Voter v)
 
 == Alternative.java
  
