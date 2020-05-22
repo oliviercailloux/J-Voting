@@ -6761,7 +6761,7 @@ Voter's preferences : AntiSymmetric</body>
             <message xmi:type="uml:Message" xmi:id="_7xrJRHzgEeq0BdJaLpBd6w" name="Give wrapped visualization " messageSort="reply" receiveEvent="_7xrJMHzgEeq0BdJaLpBd6w" sendEvent="_7xrJOnzgEeq0BdJaLpBd6w"/>
           </packagedElement>
           <packagedElement xmi:type="uml:Actor" xmi:id="_7xrJRXzgEeq0BdJaLpBd6w" name="User"/>
-          <packagedElement xmi:type="uml:Actor" xmi:id="_7xrJRnzgEeq0BdJaLpBd6w" name="System"/>
+          <packagedElement xmi:type="uml:Actor" xmi:id="_7xrJRnzgEeq0BdJaLpBd6w" name="Controller"/>
           <packagedElement xmi:type="uml:Actor" xmi:id="_7xrJR3zgEeq0BdJaLpBd6w" name="Interface : Main GUI"/>
           <packagedElement xmi:type="uml:Interaction" xmi:id="_MXXI8HzhEeq0BdJaLpBd6w" name="Current profile visualisation (the user provides a valid soc file)">
             <ownedAttribute xmi:type="uml:Property" xmi:id="_uQtpAHzhEeq0BdJaLpBd6w" name="" type="_7xrJRXzgEeq0BdJaLpBd6w"/>
@@ -6844,25 +6844,25 @@ Voter's preferences : AntiSymmetric</body>
             </fragment>
             <message xmi:type="uml:Message" xmi:id="_nTpTwHziEeq0BdJaLpBd6w"/>
             <message xmi:type="uml:Message" xmi:id="__ut7gHziEeq0BdJaLpBd6w" name="Launch SOC Profile Viewer" receiveEvent="__uy0AHziEeq0BdJaLpBd6w" sendEvent="__uyM8HziEeq0BdJaLpBd6w"/>
-            <message xmi:type="uml:Message" xmi:id="__vYC0HziEeq0BdJaLpBd6w" name="Display main GUI" messageSort="reply" receiveEvent="__vYp4XziEeq0BdJaLpBd6w" sendEvent="__vYp4HziEeq0BdJaLpBd6w"/>
-            <message xmi:type="uml:Message" xmi:id="_TaAaYHzjEeq0BdJaLpBd6w" name="Button select Profile Click" messageSort="asynchCall" receiveEvent="_TaCPkHzjEeq0BdJaLpBd6w" sendEvent="_TaBogHzjEeq0BdJaLpBd6w"/>
-            <message xmi:type="uml:Message" xmi:id="_anpFwHzjEeq0BdJaLpBd6w" name="Raise SelectFileToReadButton Event" receiveEvent="_anqT4HzjEeq0BdJaLpBd6w" sendEvent="_anps0HzjEeq0BdJaLpBd6w"/>
-            <message xmi:type="uml:Message" xmi:id="_aoOUkHzjEeq0BdJaLpBd6w" name="Open the FileDialog" messageSort="reply" receiveEvent="_aoPisXzjEeq0BdJaLpBd6w" sendEvent="_aoPisHzjEeq0BdJaLpBd6w"/>
-            <message xmi:type="uml:Message" xmi:id="_Hy2iUHzpEeq0BdJaLpBd6w" name="Choose SOC Profile File" messageSort="asynchCall" receiveEvent="_Hy5loHzpEeq0BdJaLpBd6w" sendEvent="_Hy4-kHzpEeq0BdJaLpBd6w"/>
-            <message xmi:type="uml:Message" xmi:id="_jgUu8HzpEeq0BdJaLpBd6w" name="Set the given profile" receiveEvent="_jgV9EHzpEeq0BdJaLpBd6w" sendEvent="_jgVWAHzpEeq0BdJaLpBd6w"/>
-            <message xmi:type="uml:Message" xmi:id="_jhKccHzpEeq0BdJaLpBd6w" name="Display the SOCButtons" messageSort="reply" receiveEvent="_jhLqkHzpEeq0BdJaLpBd6w" sendEvent="_jhLDgHzpEeq0BdJaLpBd6w"/>
-            <message xmi:type="uml:Message" xmi:id="_ZYvWwHzwEeq0BdJaLpBd6w" name="Column visualization button click" messageSort="asynchCall" receiveEvent="_ZY8yIHzwEeq0BdJaLpBd6w" sendEvent="_ZY8LEHzwEeq0BdJaLpBd6w"/>
-            <message xmi:type="uml:Message" xmi:id="_woO8MHzwEeq0BdJaLpBd6w" name="Raise socColumnsGUIButton Event" messageSort="asynchCall" receiveEvent="_woQxYHzwEeq0BdJaLpBd6w" sendEvent="_woQKUHzwEeq0BdJaLpBd6w"/>
-            <message xmi:type="uml:Message" xmi:id="_2IFaoHzxEeq0BdJaLpBd6w" name="Create SOCColumnGUI" receiveEvent="_2IGowHzxEeq0BdJaLpBd6w" sendEvent="_2IGBsHzxEeq0BdJaLpBd6w"/>
-            <message xmi:type="uml:Message" xmi:id="_2JgW8HzxEeq0BdJaLpBd6w" name="Display given profile (tables as columns)" messageSort="reply" receiveEvent="_2JiMIHzxEeq0BdJaLpBd6w" sendEvent="_2Jg-AHzxEeq0BdJaLpBd6w"/>
-            <message xmi:type="uml:Message" xmi:id="_lRDDIIZUEeq-c_dq4O5YkQ" name="Wrapped visualization button click" messageSort="asynchCall" receiveEvent="_lROCQIZUEeq-c_dq4O5YkQ" sendEvent="_lRM0IIZUEeq-c_dq4O5YkQ"/>
-            <message xmi:type="uml:Message" xmi:id="_2d3UcIZUEeq-c_dq4O5YkQ" name="Raise socWrappedColumnsGUIButton Event" messageSort="asynchCall" receiveEvent="_2d6-0IZUEeq-c_dq4O5YkQ" sendEvent="_2d5wsIZUEeq-c_dq4O5YkQ"/>
-            <message xmi:type="uml:Message" xmi:id="_bAFewIZWEeq-c_dq4O5YkQ" name="Create SOCWrappedColumnsGUI" receiveEvent="_bAH7AIZWEeq-c_dq4O5YkQ" sendEvent="_bAHT8IZWEeq-c_dq4O5YkQ"/>
-            <message xmi:type="uml:Message" xmi:id="_bBsBQIZWEeq-c_dq4O5YkQ" name="Display given profile (wrapped tables)" messageSort="reply" receiveEvent="_bBt2cIZWEeq-c_dq4O5YkQ" sendEvent="_bBtPYIZWEeq-c_dq4O5YkQ"/>
-            <message xmi:type="uml:Message" xmi:id="_JVPYMIZXEeq-c_dq4O5YkQ" name="Row visualization button click" messageSort="asynchCall" receiveEvent="_JVRNYIZXEeq-c_dq4O5YkQ" sendEvent="_JVQmUIZXEeq-c_dq4O5YkQ"/>
-            <message xmi:type="uml:Message" xmi:id="_KCjKIIZXEeq-c_dq4O5YkQ" name="Raise socRowsGUIButton Event" messageSort="asynchCall" receiveEvent="_KCk_UIZXEeq-c_dq4O5YkQ" sendEvent="_KCjxMIZXEeq-c_dq4O5YkQ"/>
-            <message xmi:type="uml:Message" xmi:id="_VHhTcIZXEeq-c_dq4O5YkQ" name="Create SOCRowsGUI" receiveEvent="_VHkWwIZXEeq-c_dq4O5YkQ" sendEvent="_VHjvsIZXEeq-c_dq4O5YkQ"/>
-            <message xmi:type="uml:Message" xmi:id="_VJBIQIZXEeq-c_dq4O5YkQ" name="Display given profile (tables as rows)" messageSort="reply" receiveEvent="_VJC9cIZXEeq-c_dq4O5YkQ" sendEvent="_VJCWYIZXEeq-c_dq4O5YkQ"/>
+            <message xmi:type="uml:Message" xmi:id="__vYC0HziEeq0BdJaLpBd6w" name="displayMainGUI()" messageSort="reply" receiveEvent="__vYp4XziEeq0BdJaLpBd6w" sendEvent="__vYp4HziEeq0BdJaLpBd6w"/>
+            <message xmi:type="uml:Message" xmi:id="_TaAaYHzjEeq0BdJaLpBd6w" name="onSelectProfileButtonClick()" messageSort="asynchCall" receiveEvent="_TaCPkHzjEeq0BdJaLpBd6w" sendEvent="_TaBogHzjEeq0BdJaLpBd6w"/>
+            <message xmi:type="uml:Message" xmi:id="_anpFwHzjEeq0BdJaLpBd6w" name="fileToReadButtonClicked()" receiveEvent="_anqT4HzjEeq0BdJaLpBd6w" sendEvent="_anps0HzjEeq0BdJaLpBd6w"/>
+            <message xmi:type="uml:Message" xmi:id="_aoOUkHzjEeq0BdJaLpBd6w" name="fileDialog.open()" messageSort="reply" receiveEvent="_aoPisXzjEeq0BdJaLpBd6w" sendEvent="_aoPisHzjEeq0BdJaLpBd6w"/>
+            <message xmi:type="uml:Message" xmi:id="_Hy2iUHzpEeq0BdJaLpBd6w" name="selectSOCProfileFile()" messageSort="asynchCall" receiveEvent="_Hy5loHzpEeq0BdJaLpBd6w" sendEvent="_Hy4-kHzpEeq0BdJaLpBd6w"/>
+            <message xmi:type="uml:Message" xmi:id="_jgUu8HzpEeq0BdJaLpBd6w" name="set(profile)" receiveEvent="_jgV9EHzpEeq0BdJaLpBd6w" sendEvent="_jgVWAHzpEeq0BdJaLpBd6w"/>
+            <message xmi:type="uml:Message" xmi:id="_jhKccHzpEeq0BdJaLpBd6w" name="displaySOCButtons()" messageSort="reply" receiveEvent="_jhLqkHzpEeq0BdJaLpBd6w" sendEvent="_jhLDgHzpEeq0BdJaLpBd6w"/>
+            <message xmi:type="uml:Message" xmi:id="_ZYvWwHzwEeq0BdJaLpBd6w" name="onColumVisualizationButtonClick()" messageSort="asynchCall" receiveEvent="_ZY8yIHzwEeq0BdJaLpBd6w" sendEvent="_ZY8LEHzwEeq0BdJaLpBd6w"/>
+            <message xmi:type="uml:Message" xmi:id="_woO8MHzwEeq0BdJaLpBd6w" name="socColumnsGUIButtonClicked()" messageSort="asynchCall" receiveEvent="_woQxYHzwEeq0BdJaLpBd6w" sendEvent="_woQKUHzwEeq0BdJaLpBd6w"/>
+            <message xmi:type="uml:Message" xmi:id="_2IFaoHzxEeq0BdJaLpBd6w" name="displaySOCColumnGUI()" receiveEvent="_2IGowHzxEeq0BdJaLpBd6w" sendEvent="_2IGBsHzxEeq0BdJaLpBd6w"/>
+            <message xmi:type="uml:Message" xmi:id="_2JgW8HzxEeq0BdJaLpBd6w" name="displayProfileWindow (profileToRead)" messageSort="reply" receiveEvent="_2JiMIHzxEeq0BdJaLpBd6w" sendEvent="_2Jg-AHzxEeq0BdJaLpBd6w"/>
+            <message xmi:type="uml:Message" xmi:id="_lRDDIIZUEeq-c_dq4O5YkQ" name="onWrappedVisualizationButtonClick()" messageSort="asynchCall" receiveEvent="_lROCQIZUEeq-c_dq4O5YkQ" sendEvent="_lRM0IIZUEeq-c_dq4O5YkQ"/>
+            <message xmi:type="uml:Message" xmi:id="_2d3UcIZUEeq-c_dq4O5YkQ" name="socWrappedColumnsGUIButtonClicked()" messageSort="asynchCall" receiveEvent="_2d6-0IZUEeq-c_dq4O5YkQ" sendEvent="_2d5wsIZUEeq-c_dq4O5YkQ"/>
+            <message xmi:type="uml:Message" xmi:id="_bAFewIZWEeq-c_dq4O5YkQ" name="displaySOCWrappedColumnsGUI()" receiveEvent="_bAH7AIZWEeq-c_dq4O5YkQ" sendEvent="_bAHT8IZWEeq-c_dq4O5YkQ"/>
+            <message xmi:type="uml:Message" xmi:id="_bBsBQIZWEeq-c_dq4O5YkQ" name="displayProfileWindow (profileToRead)" messageSort="reply" receiveEvent="_bBt2cIZWEeq-c_dq4O5YkQ" sendEvent="_bBtPYIZWEeq-c_dq4O5YkQ"/>
+            <message xmi:type="uml:Message" xmi:id="_JVPYMIZXEeq-c_dq4O5YkQ" name="onRowVisualizationButtonClick()" messageSort="asynchCall" receiveEvent="_JVRNYIZXEeq-c_dq4O5YkQ" sendEvent="_JVQmUIZXEeq-c_dq4O5YkQ"/>
+            <message xmi:type="uml:Message" xmi:id="_KCjKIIZXEeq-c_dq4O5YkQ" name="socRowsGUIButtonClicked()" messageSort="asynchCall" receiveEvent="_KCk_UIZXEeq-c_dq4O5YkQ" sendEvent="_KCjxMIZXEeq-c_dq4O5YkQ"/>
+            <message xmi:type="uml:Message" xmi:id="_VHhTcIZXEeq-c_dq4O5YkQ" name="displaySOCRowsGUI()" receiveEvent="_VHkWwIZXEeq-c_dq4O5YkQ" sendEvent="_VHjvsIZXEeq-c_dq4O5YkQ"/>
+            <message xmi:type="uml:Message" xmi:id="_VJBIQIZXEeq-c_dq4O5YkQ" name="displayProfileWindow (profileToRead)" messageSort="reply" receiveEvent="_VJC9cIZXEeq-c_dq4O5YkQ" sendEvent="_VJCWYIZXEeq-c_dq4O5YkQ"/>
           </packagedElement>
           <packagedElement xmi:type="uml:Actor" xmi:id="_F6q84HziEeq0BdJaLpBd6w" name="Interface : SOCColumnsGUI"/>
           <packagedElement xmi:type="uml:Actor" xmi:id="_HgN-YHziEeq0BdJaLpBd6w" name="Interface : SOCRowsGUI"/>
