@@ -2,7 +2,7 @@
 
 ====== link:../README.adoc[Summary]
 
-=== GUI Usage System
+=== GUI Usecase
 
 image:../assets/GUIUseCaseDiagram.png[GUIUseCaseDiagram]
 

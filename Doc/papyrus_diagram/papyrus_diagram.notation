@@ -1617,17 +1617,6 @@
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_E8CEkIcNEeqsBPuVq_CinQ" id="(0.6451612903225806,0.925)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_E8CEkYcNEeqsBPuVq_CinQ" id="(0.14285714285714285,0.06666666666666667)"/>
     </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_RyKd4IfbEeqzH6e2zKs5nA" type="Generalization_Edge" source="_RZ13cHqIEeqm79lOJbMtXA" target="_Fa6NUIfbEeqzH6e2zKs5nA">
-      <children xmi:type="notation:DecorationNode" xmi:id="_RyKd44fbEeqzH6e2zKs5nA" type="Generalization_StereotypeLabel">
-        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_3D85YIfbEeqzH6e2zKs5nA" name="IS_UPDATED_POSITION" booleanValue="true"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_RyKd5IfbEeqzH6e2zKs5nA" y="-20"/>
-      </children>
-      <styles xmi:type="notation:FontStyle" xmi:id="_RyKd4YfbEeqzH6e2zKs5nA"/>
-      <element xmi:type="uml:Generalization" href="papyrus_diagram.uml#_RxzRgIfbEeqzH6e2zKs5nA"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RyKd4ofbEeqzH6e2zKs5nA" points="[565, 301, -643984, -643984]$[677, 245, -643984, -643984]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RzAycIfbEeqzH6e2zKs5nA" id="(0.0,0.3333333333333333)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RzAycYfbEeqzH6e2zKs5nA" id="(0.7142857142857143,0.95)"/>
-    </edges>
     <edges xmi:type="notation:Connector" xmi:id="_SRO_gIfbEeqzH6e2zKs5nA" type="Generalization_Edge" source="_Ono1kHqIEeqm79lOJbMtXA" target="_Fa6NUIfbEeqzH6e2zKs5nA">
       <children xmi:type="notation:DecorationNode" xmi:id="_SRO_g4fbEeqzH6e2zKs5nA" type="Generalization_StereotypeLabel">
         <styles xmi:type="notation:BooleanValueStyle" xmi:id="_2oMKcIfbEeqzH6e2zKs5nA" name="IS_UPDATED_POSITION" booleanValue="true"/>
@@ -1739,6 +1728,17 @@
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_f-jrIofbEeqzH6e2zKs5nA" points="[165, 95, -643984, -643984]$[125, 290, -643984, -643984]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_f_bN0IfbEeqzH6e2zKs5nA" id="(0.0,0.6666666666666666)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_f_bN0YfbEeqzH6e2zKs5nA" id="(1.0,0.4)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_NNSPUJwlEeq8ir2MIFEotA" type="Generalization_Edge" source="_RZ13cHqIEeqm79lOJbMtXA" target="_Fa6NUIfbEeqzH6e2zKs5nA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_NNS2YJwlEeq8ir2MIFEotA" type="Generalization_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_Nr76MJwlEeq8ir2MIFEotA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_NNS2YZwlEeq8ir2MIFEotA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_NNSPUZwlEeq8ir2MIFEotA"/>
+      <element xmi:type="uml:Generalization" href="papyrus_diagram.uml#_NMx5AJwlEeq8ir2MIFEotA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_NNSPUpwlEeq8ir2MIFEotA" points="[700, 350, -643984, -643984]$[680, 320, -643984, -643984]$[680, 310, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NOkowJwlEeq8ir2MIFEotA" id="(0.0,0.5)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NOlP0JwlEeq8ir2MIFEotA" id="(0.8571428571428571,0.8333333333333334)"/>
     </edges>
   </notation:Diagram>
   <notation:Diagram xmi:id="_bY7gIHzgEeq0BdJaLpBd6w" type="PapyrusUMLSequenceDiagram" name="ViewProfile" measurementUnit="Pixel">
