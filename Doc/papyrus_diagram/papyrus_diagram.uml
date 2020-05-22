@@ -29,9 +29,6 @@ Voter's preferences : AntiSymmetric</body>
       <packagedElement xmi:type="uml:Package" xmi:id="_dTDVMJKyEeqLiZVmroIQBg" name="ProfileClassDiagram"/>
       <packagedElement xmi:type="uml:Package" xmi:id="_bSaYgGbTEeqrtc6dy-mPpg" name="PrefenceInterfacesDiagram">
         <packagedElement xmi:type="uml:Package" xmi:id="_0LoBcHEeEeqUv4VtPCytLw" name="Comments">
-          <ownedComment xmi:type="uml:Comment" xmi:id="_VJnSIG-CEeqlG4dRMAe-Kg">
-            <body>CompletePreference + AntiSymmetricPreference</body>
-          </ownedComment>
           <ownedComment xmi:type="uml:Comment" xmi:id="_UmQBEHEcEeqUv4VtPCytLw">
             <body>Set of alternatives</body>
           </ownedComment>
@@ -43,12 +40,6 @@ Voter's preferences : AntiSymmetric</body>
           </ownedComment>
           <ownedComment xmi:type="uml:Comment" xmi:id="_7BRVgHEcEeqUv4VtPCytLw">
             <body>We can't add an alternative or a new relation</body>
-          </ownedComment>
-          <ownedComment xmi:type="uml:Comment" xmi:id="__sGQcHEdEeqUv4VtPCytLw">
-            <body>Immutable + Antisymmetric</body>
-          </ownedComment>
-          <ownedComment xmi:type="uml:Comment" xmi:id="_StXh8HEeEeqUv4VtPCytLw">
-            <body>Mutable + Antisymmetric</body>
           </ownedComment>
           <ownedComment xmi:type="uml:Comment" xmi:id="_b8ZdUHEeEeqUv4VtPCytLw">
             <body>All the alternatives are comparable two by two</body>
@@ -6527,7 +6518,6 @@ Voter's preferences : AntiSymmetric</body>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_eC2EwJwFEeq8ir2MIFEotA" name="displayTabFolder"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_SVi0cJp2Eeqy6sHmH3R0hw" name="VisualizationView">
-          <generalization xmi:type="uml:Generalization" xmi:id="_UllH8Jp3Eeqy6sHmH3R0hw" general="_mCc5YJp1Eeqy6sHmH3R0hw"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_DW94AJwFEeq8ir2MIFEotA" name="createVisualizationButtons"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_HvMcgJwFEeq8ir2MIFEotA" name="createTable"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_IWS4wJwFEeq8ir2MIFEotA" name="displayRows"/>
@@ -6535,8 +6525,6 @@ Voter's preferences : AntiSymmetric</body>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_I1v04JwFEeq8ir2MIFEotA" name="displayWrapped"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_SjFhMJp2Eeqy6sHmH3R0hw" name="EditionController " visibility="public">
-          <generalization xmi:type="uml:Generalization" xmi:id="_T-47YJp3Eeqy6sHmH3R0hw" general="_S_NcgJp2Eeqy6sHmH3R0hw"/>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_MPQ6YJuBEeqQoOmi0eM9lw" name="editionView" visibility="private" type="_mCc5YJp1Eeqy6sHmH3R0hw"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_u6MoYJuBEeqQoOmi0eM9lw" name="EditionController">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_u6MoYZuBEeqQoOmi0eM9lw" name="editionView" type="_TOHbMJp2Eeqy6sHmH3R0hw"/>
           </ownedOperation>
@@ -6555,23 +6543,18 @@ Voter's preferences : AntiSymmetric</body>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_S_NcgJp2Eeqy6sHmH3R0hw" name="Controller " visibility="public">
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_9_sxIJp_EeqQoOmi0eM9lw" name="model" visibility="private" type="_NQBPsIYrEeqCsLxU4w-iPA"/>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_7Wv6kJt_EeqQoOmi0eM9lw" name="view" visibility="private" type="_mCc5YJp1Eeqy6sHmH3R0hw"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_OfoP8JuAEeqQoOmi0eM9lw" name="Controller">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_OfoP8ZuAEeqQoOmi0eM9lw" name="view" type="_mCc5YJp1Eeqy6sHmH3R0hw"/>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_OfoP8puAEeqQoOmi0eM9lw" name="model" type="_NQBPsIYrEeqCsLxU4w-iPA"/>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_TOHbMJp2Eeqy6sHmH3R0hw" name="EditionView">
-          <generalization xmi:type="uml:Generalization" xmi:id="_VH4jwJp3Eeqy6sHmH3R0hw" general="_mCc5YJp1Eeqy6sHmH3R0hw"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_UxsCcJwFEeq8ir2MIFEotA" name="createEditionButtons"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_WHEhAJwFEeq8ir2MIFEotA" name="displayVoters"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_WZnCgJwFEeq8ir2MIFEotA" name="displayPreference"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_WyNIsJwFEeq8ir2MIFEotA" name="displayProfil"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_TbvngJp2Eeqy6sHmH3R0hw" name="VisualizationController">
-          <generalization xmi:type="uml:Generalization" xmi:id="_TMueoJp3Eeqy6sHmH3R0hw" general="_S_NcgJp2Eeqy6sHmH3R0hw"/>
-          <ownedAttribute xmi:type="uml:Property" xmi:id="_mvL5UJuCEeqQoOmi0eM9lw" name="visuView " visibility="private" type="_mCc5YJp1Eeqy6sHmH3R0hw"/>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_1iYn4JuCEeqQoOmi0eM9lw" name="VisualizationController">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1iYn4ZuCEeqQoOmi0eM9lw" name="visuView" type="_mCc5YJp1Eeqy6sHmH3R0hw"/>
           </ownedOperation>
@@ -6629,6 +6612,34 @@ Voter's preferences : AntiSymmetric</body>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_1nTbUJwKEeq8ir2MIFEotA" name="displayGUI"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_YdNx0JwtEeq8ir2MIFEotA" memberEnd="_YdWUsJwtEeq8ir2MIFEotA _YdYw8JwtEeq8ir2MIFEotA">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YdTRYJwtEeq8ir2MIFEotA" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YdTRYZwtEeq8ir2MIFEotA" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_YdYw8JwtEeq8ir2MIFEotA" name="controller " type="_S_NcgJp2Eeqy6sHmH3R0hw" association="_YdNx0JwtEeq8ir2MIFEotA"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_YdWUsJwtEeq8ir2MIFEotA" name="visualizationcontroller" type="_TbvngJp2Eeqy6sHmH3R0hw" association="_YdNx0JwtEeq8ir2MIFEotA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_ZHKtwJwtEeq8ir2MIFEotA" memberEnd="_ZHNKAJwtEeq8ir2MIFEotA _ZHNxEpwtEeq8ir2MIFEotA">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZHMi8JwtEeq8ir2MIFEotA" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ZHMi8ZwtEeq8ir2MIFEotA" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_ZHNxEpwtEeq8ir2MIFEotA" name="controller " type="_S_NcgJp2Eeqy6sHmH3R0hw" association="_ZHKtwJwtEeq8ir2MIFEotA"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_ZHNKAJwtEeq8ir2MIFEotA" name="editioncontroller " type="_SjFhMJp2Eeqy6sHmH3R0hw" association="_ZHKtwJwtEeq8ir2MIFEotA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_Z2huIJwtEeq8ir2MIFEotA" memberEnd="_Z2jjUJwtEeq8ir2MIFEotA _Z2kxcZwtEeq8ir2MIFEotA">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Z2i8QJwtEeq8ir2MIFEotA" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Z2i8QZwtEeq8ir2MIFEotA" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_Z2kxcZwtEeq8ir2MIFEotA" name="view" type="_mCc5YJp1Eeqy6sHmH3R0hw" association="_Z2huIJwtEeq8ir2MIFEotA"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_Z2jjUJwtEeq8ir2MIFEotA" name="visualizationview" type="_SVi0cJp2Eeqy6sHmH3R0hw" association="_Z2huIJwtEeq8ir2MIFEotA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_adGl8JwtEeq8ir2MIFEotA" memberEnd="_adH0EZwtEeq8ir2MIFEotA _adJpQJwtEeq8ir2MIFEotA">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_adHNAJwtEeq8ir2MIFEotA" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_adH0EJwtEeq8ir2MIFEotA" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_adJpQJwtEeq8ir2MIFEotA" name="view" type="_mCc5YJp1Eeqy6sHmH3R0hw" association="_adGl8JwtEeq8ir2MIFEotA"/>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_adH0EZwtEeq8ir2MIFEotA" name="editionview" type="_TOHbMJp2Eeqy6sHmH3R0hw" association="_adGl8JwtEeq8ir2MIFEotA"/>
         </packagedElement>
       </packagedElement>
     </packagedElement>
