@@ -6547,6 +6547,7 @@ Voter's preferences : AntiSymmetric</body>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_OfoP8ZuAEeqQoOmi0eM9lw" name="view" type="_mCc5YJp1Eeqy6sHmH3R0hw"/>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_OfoP8puAEeqQoOmi0eM9lw" name="model" type="_NQBPsIYrEeqCsLxU4w-iPA"/>
           </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_5AL6gJw9EeqmcI8XI9UxnQ" name="getModel"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_TOHbMJp2Eeqy6sHmH3R0hw" name="EditionView">
           <ownedOperation xmi:type="uml:Operation" xmi:id="_UxsCcJwFEeq8ir2MIFEotA" name="createEditionButtons"/>

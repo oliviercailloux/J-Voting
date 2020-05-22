@@ -2900,6 +2900,10 @@
           <element xmi:type="uml:Operation" href="papyrus_diagram.uml#_OfoP8JuAEeqQoOmi0eM9lw"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_PS3qwZuAEeqQoOmi0eM9lw"/>
         </children>
+        <children xmi:type="notation:Shape" xmi:id="_JXAX8Jw-EeqmcI8XI9UxnQ" type="Operation_ClassOperationLabel">
+          <element xmi:type="uml:Operation" href="papyrus_diagram.uml#_5AL6gJw9EeqmcI8XI9UxnQ"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_JXAX8Zw-EeqmcI8XI9UxnQ"/>
+        </children>
         <styles xmi:type="notation:TitleStyle" xmi:id="_S_NcjJp2Eeqy6sHmH3R0hw"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_S_NcjZp2Eeqy6sHmH3R0hw"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_S_Ncjpp2Eeqy6sHmH3R0hw"/>
