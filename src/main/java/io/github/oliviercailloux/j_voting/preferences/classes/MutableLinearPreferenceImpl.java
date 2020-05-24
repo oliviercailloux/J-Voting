@@ -28,7 +28,6 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	protected MutableGraph<Alternative> graph;
 	protected Set<Alternative> alternatives;
 	protected List<Alternative> list;
-	protected ImmutableGraph<Alternative> delegate;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MutableLinearPreferenceImpl.class.getName());
 
@@ -82,16 +81,18 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	}
 
 	@Override
-	public void removeAlternative(Alternative a) {
+	public boolean removeAlternative(Alternative a) {
 		LOGGER.debug("MutableLinearPreferenceImpl deleteAlternative");
 		Preconditions.checkNotNull(a);
 
 		graph.removeNode(a);
 		list.remove(a);
+		
+		return true;
 	}
 
 	@Override
-	public void addAlternative(Alternative a) {
+	public boolean addAlternative(Alternative a) {
 		LOGGER.debug("MutablePreferenceImpl addAlternative");
 		Preconditions.checkNotNull(a);
 		
@@ -101,6 +102,8 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		for(int i = 0; i < list.size(); i++) {
 			graph.putEdge(list.get(i), list.get(list.size() - 1));
 		}
+		
+		return true;
 	}
 
 	/**
@@ -113,7 +116,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		Preconditions.checkState(
 				!(alternatives.size() != graph.nodes().size() || !(alternatives.containsAll(graph.nodes()))),
 				"An alternative must not be deleted from the set");
-		return MutableLinearSetDecorator.given(alternatives);
+		return MutableLinearSetDecorator.given(this);
 	}
 
 	@Override
@@ -175,7 +178,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	@Override
 	public String toString() {
 		return "MutableLinearPreferenceImpl [voter=" + voter + ", graph=" + graph + ", alternatives=" + alternatives
-				+ ", list=" + list + ", delegate=" + delegate + "]";
+				+ ", list=" + list + "]";
 	}
 
 }

@@ -36,6 +36,8 @@ public class AlternativeHelper {
     public static ImmutableSet<Alternative> a52 = ImmutableSet.of(a5, a2);
     public static ImmutableSet<Alternative> a53 = ImmutableSet.of(a5, a3);
     public static ImmutableSet<Alternative> a54 = ImmutableSet.of(a5, a4);
+    public static ImmutableSet<Alternative> a1234 = ImmutableSet.of(a1, a2, a3,
+            a4);
     public static ImmutableSet<Alternative> a12345 = ImmutableSet.of(a1, a2, a3,
                     a4, a5);
 }
