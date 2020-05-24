@@ -10,7 +10,7 @@ Specifically, we have to modify several files :
 
 The big change is to work from now on with a transitively closed graph.
 
-* LinkedList<Alternative> list become List<Alternative> list
+* LinkedList<Alternative> list has become List<Alternative> list
 
 * Delete the constructor and the factory method which takes a Graph in parameter
 
@@ -56,11 +56,11 @@ We will override the following methods :
 
 We need a decorator because the asGraph() method must return an unmodifiable Graph. By definition, a Graph is modifiable. However, it can be casted as MutableGraph which can be modifiable. So we have to protect our graph from casting.
 
-This class takes a MutableLinearPreference in parameter and should implement https://github.com/google/guava/blob/master/guava/src/com/google/common/graph/ForwardingGraph.java[ForwardingGraph]. 
+This class takes a MutableLinearPreference in parameter and should implement https://github.com/google/guava/blob/master/guava/src/com/google/common/graph/ForwardingGraph.java[ForwardingGraph]. Yet, this interface is not currently planned to be released as a general-purpose forwarding class. Thus, we created a copy of this in the project and created a decorator which implements it.
 
 == MutableStrictProfile.java
 
-Currently, all of the profile are Immutable. With this new class, we need a profile Mutable. The preferences are Strict and complete so it will implement StrictProfile interface. It will be mutable and going to use mutable linear preferences.
+Currently, all of the profiles are Immutable. With this new class, we need a profile Mutable. The preferences are Strict and complete so it will implement StrictProfile interface. It will be mutable and going to use mutable linear preferences.
 
 Currently, we have 4 Immutable profiles in J-voting :
 
