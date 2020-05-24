@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -35,19 +36,14 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		this.voter = voter;
 		this.list = list;
 		this.graph = GraphBuilder.directed().allowsSelfLoops(true).build();
-
-		Iterator<Alternative> itList = list.iterator();
-		Alternative a = itList.next();
-		Alternative a2;
 		
-		while (itList.hasNext() == true) {
-			a2 = itList.next();
-			graph.putEdge(a, a2);
-			a = a2;
+		for(int i = 0; i < list.size(); i++) {
+			for(int j = i; j < list.size(); j++) {
+				graph.putEdge(list.get(i), list.get(j));
+			}
 		}
 		
 		this.alternatives = graph.nodes();
-		this.graph = (MutableGraph<Alternative>) Graphs.transitiveClosure(graph);
 	}
 
 	/**
@@ -68,21 +64,18 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		LOGGER.debug("MutableLinearPreferenceImpl changeOrder");
 		Preconditions.checkNotNull(alternative);
 		Preconditions.checkNotNull(rank);
-
-		Alternative temp;
-		Iterator<Alternative> itTemp;
-
+		
 		int initRank = list.indexOf(alternative);
-		if (initRank - rank > 0) { // swap à gauche
-			for (int i = initRank; i > rank; i--) {
-				itTemp = graph.predecessors(alternative).iterator();
-				temp = itTemp.next();
+		Alternative temp;
+		
+		if (initRank > rank) { // swap à gauche
+			for (int i = initRank; i >= rank; i--) {
+				temp = list.get(i-1);
 				swap(temp, alternative);
 			}
-		} else if (initRank - rank < 0) { // swap à droite
-			for (int i = initRank; i < rank; i++) {
-				itTemp = graph.successors(alternative).iterator();
-				temp = itTemp.next();
+		} else if (initRank < rank) { // swap à droite
+			for (int i = initRank; i <= rank; i++) {
+				temp = list.get(i-1);
 				swap(alternative, temp);
 			}
 		}
@@ -93,35 +86,21 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		LOGGER.debug("MutableLinearPreferenceImpl deleteAlternative");
 		Preconditions.checkNotNull(a);
 
-		if ((graph.successors(a).size() != 0) && (graph.predecessors(a).size() != 0)) {
-			Set<Alternative> setPred = graph.predecessors(a);
-			Iterator<Alternative> itPred = setPred.iterator();
-			Alternative pred = itPred.next();
-
-			Set<Alternative> setSucc = graph.successors(a);
-			Iterator<Alternative> itSucc = setSucc.iterator();
-			if (itSucc.hasNext() == true)
-				graph.putEdge(pred, itSucc.next());
-		}
-
 		graph.removeNode(a);
 		list.remove(a);
-		alternatives.remove(a);
 	}
 
 	@Override
 	public void addAlternative(Alternative a) {
 		LOGGER.debug("MutablePreferenceImpl addAlternative");
 		Preconditions.checkNotNull(a);
-
-		for (Alternative ai : graph.nodes()) {
-			if (graph.successors(ai).size() == 0) {
-				graph.putEdge(ai, a);
-			}
-		}
 		
 		list.add(a);
-		alternatives.add(a);
+		graph.addNode(a);
+		
+		for(int i = 0; i < list.size(); i++) {
+			graph.putEdge(list.get(i), list.get(list.size() - 1));
+		}
 	}
 
 	/**
@@ -178,45 +157,19 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((alternatives == null) ? 0 : alternatives.hashCode());
-		result = prime * result + ((graph == null) ? 0 : graph.hashCode());
-		result = prime * result + ((list == null) ? 0 : list.hashCode());
-		result = prime * result + ((voter == null) ? 0 : voter.hashCode());
-		return result;
+		return Objects.hash(voter, graph, alternatives, list);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(Object o2) {
+		if (!(o2 instanceof MutableLinearPreferenceImpl)) {
+			return false;
+		}
+		if (this == o2) {
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MutableLinearPreferenceImpl other = (MutableLinearPreferenceImpl) obj;
-		if (alternatives == null) {
-			if (other.alternatives != null)
-				return false;
-		} else if (!alternatives.equals(other.alternatives))
-			return false;
-		if (graph == null) {
-			if (other.graph != null)
-				return false;
-		} else if (!graph.equals(other.graph))
-			return false;
-		if (list == null) {
-			if (other.list != null)
-				return false;
-		} else if (!list.equals(other.list))
-			return false;
-		if (voter == null) {
-			if (other.voter != null)
-				return false;
-		} else if (!voter.equals(other.voter))
-			return false;
-		return true;
+		}
+		MutableLinearPreferenceImpl mlp2 = (MutableLinearPreferenceImpl) o2;
+		return voter.equals(mlp2.voter) && graph.equals(mlp2.graph) && alternatives.equals(mlp2.alternatives) && list.equals(mlp2.list);			
 	}
 
 	@Override

@@ -67,43 +67,28 @@ public class MutableLinearPreferenceImplTest {
 	void testAddAlternative() {
 		Voter v = Voter.createVoter(1);
 		List<Alternative> toTestList = new ArrayList<>();		
+		toTestList.add(a1);
 		toTestList.add(a2);
+		toTestList.add(a3);
 		toTestList.add(a4);
 		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
 		
-		List<Alternative> list1 = new ArrayList<>();		
+		List<Alternative> list1 = new ArrayList<>();	
+		list1.add(a1);
 		list1.add(a2);
 		list1.add(a3);
 		list1.add(a4);
+		list1.add(a5);
 		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
-		toTestPref.addAlternative(a3);
-		assertEquals(toTestPref, pref1);
-		
-		List<Alternative> list2 = new ArrayList<>();	
-		list2.add(a1);
-		list2.add(a2);
-		list2.add(a3);
-		list2.add(a4);
-		MutableLinearPreference pref2 = MutableLinearPreferenceImpl.given(v, list2);
-		toTestPref.addAlternative(a1);
-		assertEquals(toTestPref, pref2);
-		
-		List<Alternative> list3 = new ArrayList<>();	
-		list3.add(a1);
-		list3.add(a2);
-		list3.add(a3);
-		list3.add(a4);
-		list3.add(a5);
-		MutableLinearPreference pref3 = MutableLinearPreferenceImpl.given(v, list3);
 		toTestPref.addAlternative(a5);
-		assertEquals(toTestPref, pref3);
+		assertEquals(toTestPref, pref1);
 	}
 
 	/**
 	 * Tests whether the single alternative is removed to the preferences
 	 */
 	@Test
-	void testDeleteAlternative() {
+	void testRemoveAlternative() {
 		Voter v = Voter.createVoter(1);
 		List<Alternative> toTestList = new ArrayList<>();		
 		toTestList.add(a1);
@@ -177,6 +162,26 @@ public class MutableLinearPreferenceImplTest {
 		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
 		toTestPref.changeOrder(a4, 1);
 		assertEquals(pref1, toTestPref);
+		
+		List<Alternative> list2 = new ArrayList<>();		
+		list2.add(a4);
+		list2.add(a1);
+		list2.add(a3);
+		list2.add(a2);
+		list2.add(a5);
+		MutableLinearPreference pref2 = MutableLinearPreferenceImpl.given(v, list2);
+		toTestPref.changeOrder(a2, 4);
+		assertEquals(pref2, toTestPref);
+		
+		List<Alternative> list3 = new ArrayList<>();		
+		list3.add(a4);
+		list3.add(a3);
+		list3.add(a2);
+		list3.add(a5);
+		list3.add(a1);
+		MutableLinearPreference pref3 = MutableLinearPreferenceImpl.given(v, list3);
+		toTestPref.changeOrder(a1, 5);
+		assertEquals(pref3, toTestPref);
 	}
 
 	/**
@@ -206,9 +211,6 @@ public class MutableLinearPreferenceImplTest {
 		list1.add(a1);
 		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
 
-		System.out.println("pref1 = "+pref1);
-		System.out.println("preftotest = "+toTestPref);
-		
 		toTestPref.swap(a1, a5); // swap(head,end)	
 		assertEquals(pref1, toTestPref);
 		
