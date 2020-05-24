@@ -10,6 +10,8 @@ import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a6;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -27,6 +29,22 @@ import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPrefe
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 public class MutableLinearPreferenceImplTest {
+	
+	@Test
+	void testGraphDecorator() {
+		Voter v = Voter.createVoter(1);
+		List<Alternative> toTestList = new ArrayList<>();		
+		toTestList.add(a1);
+		toTestList.add(a2);
+		toTestList.add(a3);
+		toTestList.add(a4);
+		toTestList.add(a5);
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
+		
+		MutableGraph<Alternative> graph1 = GraphBuilder.directed().allowsSelfLoops(true).build();
+		graph1 = (MutableGraph<Alternative>)toTestPref.asGraph();
+		//The cast can't be done thanks to the graph decorator. It throws a ClassCastException.
+	}
 
 	/**
 	 * Tests whether the preference is correctly expressed as a graph

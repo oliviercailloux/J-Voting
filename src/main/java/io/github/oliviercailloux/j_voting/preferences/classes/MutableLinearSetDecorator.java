@@ -15,7 +15,6 @@ import io.github.oliviercailloux.j_voting.Alternative;
 public class MutableLinearSetDecorator extends ForwardingSet<Alternative> {
 
 	protected MutableLinearPreferenceImpl delegate;
-
 	private static final Logger LOGGER = LoggerFactory.getLogger(MutableLinearPreferenceImpl.class.getName());
 
 	private MutableLinearSetDecorator(MutableLinearPreferenceImpl delegate) {
