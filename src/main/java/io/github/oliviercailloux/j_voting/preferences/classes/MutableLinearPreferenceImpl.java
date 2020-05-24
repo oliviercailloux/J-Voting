@@ -3,6 +3,7 @@ package io.github.oliviercailloux.j_voting.preferences.classes;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -25,50 +26,12 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	protected Voter voter;
 	protected MutableGraph<Alternative> graph;
 	protected Set<Alternative> alternatives;
-	protected LinkedList<Alternative> list;
+	protected List<Alternative> list;
 	protected ImmutableGraph<Alternative> delegate;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MutableLinearPreferenceImpl.class.getName());
 
-	private MutableLinearPreferenceImpl(Voter voter, MutableGraph<Alternative> prefGraph) {
-		this.voter = voter;
-		this.graph = prefGraph;
-		this.alternatives = graph.nodes();
-		this.list = new LinkedList<>();
-
-		Iterator<Alternative> itSet = alternatives.iterator();
-		while (itSet.hasNext() == true) {
-			list.add(itSet.next());
-		}
-	}
-
-	/**
-	 * @param prefGraph is a mutable graph of alternatives representing the
-	 *                  preference. This graph has no cycle.
-	 * @param voter     is the Voter associated to the Preference.
-	 * @return the mutable linear preference
-	 */
-	public static MutableLinearPreference given(Voter voter, MutableGraph<Alternative> prefGraph) {
-		LOGGER.debug("MutableLinearPreferenceImpl given");
-		Preconditions.checkNotNull(voter);
-		Preconditions.checkNotNull(prefGraph);
-
-		for (Alternative a : prefGraph.nodes()) {
-			if ((prefGraph.successors(a).size() == 0) && (prefGraph.predecessors(a).size() == 0))
-				throw new IllegalArgumentException("There are no edges between all alternatives");
-		}
-		for (Alternative a1 : prefGraph.nodes()) {
-			for (Alternative a2 : prefGraph.successors(a1)) {
-				if (Graphs.transitiveClosure(prefGraph).hasEdgeConnecting(a2, a1) && !a2.equals(a1)) {
-					throw new IllegalArgumentException(
-							"The alternatives " + a1 + " and " + a2 + " cannot be ex-eaquo.");
-				}
-			}
-		}
-		return new MutableLinearPreferenceImpl(voter, prefGraph);
-	}
-
-	private MutableLinearPreferenceImpl(Voter voter, LinkedList<Alternative> list) {
+	private MutableLinearPreferenceImpl(Voter voter, List<Alternative> list) {
 		this.voter = voter;
 		this.list = list;
 		this.graph = GraphBuilder.directed().allowsSelfLoops(true).build();
@@ -76,12 +39,15 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		Iterator<Alternative> itList = list.iterator();
 		Alternative a = itList.next();
 		Alternative a2;
+		
 		while (itList.hasNext() == true) {
 			a2 = itList.next();
 			graph.putEdge(a, a2);
 			a = a2;
 		}
+		
 		this.alternatives = graph.nodes();
+		this.graph = (MutableGraph<Alternative>) Graphs.transitiveClosure(graph);
 	}
 
 	/**
@@ -89,7 +55,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	 * @param voter is the Voter associated to the Preference.
 	 * @return the mutable linear preference
 	 */
-	public static MutableLinearPreference given(Voter voter, LinkedList<Alternative> list) {
+	public static MutableLinearPreference given(Voter voter, List<Alternative> list) {
 		LOGGER.debug("MutableLinearPreferenceImpl given");
 		Preconditions.checkNotNull(voter);
 		Preconditions.checkNotNull(list);
@@ -123,7 +89,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	}
 
 	@Override
-	public void deleteAlternative(Alternative a) {
+	public void removeAlternative(Alternative a) {
 		LOGGER.debug("MutableLinearPreferenceImpl deleteAlternative");
 		Preconditions.checkNotNull(a);
 
@@ -140,6 +106,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 
 		graph.removeNode(a);
 		list.remove(a);
+		alternatives.remove(a);
 	}
 
 	@Override
@@ -152,7 +119,9 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 				graph.putEdge(ai, a);
 			}
 		}
+		
 		list.add(a);
+		alternatives.add(a);
 	}
 
 	/**
@@ -177,15 +146,13 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	public Graph<Alternative> asGraph() {
 		return ImmutableGraph.copyOf(Graphs.transitiveClosure(graph));
 	}
-
+	
 	@Override
 	public void swap(Alternative alternative1, Alternative alternative2) {
 		LOGGER.debug("MutablePreferenceImpl Swap");
 		Preconditions.checkNotNull(alternative1);
 		Preconditions.checkNotNull(alternative2);
-		Preconditions.checkArgument(!alternative1.equals(alternative2), "The alternatives must be differents.");
-
-		boolean neighbour = false;
+		
 		Alternative a1 = alternative1;
 		Alternative a2 = alternative2;
 
@@ -193,75 +160,19 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 			a1 = alternative2;
 			a2 = alternative1;
 		}
-
-		if (list.indexOf(alternative2) - list.indexOf(alternative1) == 1)
-			neighbour = true;
-
-		Alternative pred1 = null;
-		Alternative pred2 = null;
-		Alternative succ1 = null;
-		Alternative succ2 = null;
-
-		Set<Alternative> setSucc1 = graph.successors(a1);
-		Iterator<Alternative> itSucc1 = setSucc1.iterator();
-		if (itSucc1.hasNext() == true)
-			succ1 = itSucc1.next();
-
-		Set<Alternative> setSucc2 = graph.successors(a2);
-		Iterator<Alternative> itSucc2 = setSucc2.iterator();
-		if (itSucc2.hasNext() == true)
-			succ2 = itSucc2.next();
-
-		Set<Alternative> setPred1 = graph.predecessors(a1);
-		Iterator<Alternative> itPred1 = setPred1.iterator();
-		if (itPred1.hasNext() == true)
-			pred1 = itPred1.next();
-
-		Set<Alternative> setPred2 = graph.predecessors(a2);
-		Iterator<Alternative> itPred2 = setPred2.iterator();
-		if (itPred2.hasNext() == true)
-			pred2 = itPred2.next();
-
-		graph.removeNode(a1);
-		graph.removeNode(a2);
-
-		if (neighbour) {
-			if (a1.equals(list.getFirst())) {
-				if (a2.equals(list.getLast())) { // swap(head, end) dans le cas ou il y a seulement 2 alternatives
-					graph.putEdge(a2, a1);
-				} else { // swap(head, middle)
-					graph.putEdge(a2, a1);
-					graph.putEdge(a1, succ2);
-				}
-			} else if (a2.equals(list.getLast())) { // swap(middle,end)
-				graph.putEdge(pred1, a2);
-				graph.putEdge(a2, a1);
-			} else { // swap(middle,middle)
-				graph.putEdge(pred1, a2);
-				graph.putEdge(a2, a1);
-				graph.putEdge(a1, succ2);
-			}
-		} else {
-			if (a1.equals(list.getFirst())) {
-				if (a2.equals(list.getLast())) { // swap(head, end)
-					graph.putEdge(a2, succ1);
-					graph.putEdge(pred2, a1);
-				} else { // swap(head, middle)
-					graph.putEdge(a2, succ1);
-					graph.putEdge(pred2, a1);
-					graph.putEdge(a1, succ2);
-				}
-			} else if (a2.equals(list.getLast())) { // swap(middle,end)
-				graph.putEdge(pred1, a2);
-				graph.putEdge(a2, succ1);
-				graph.putEdge(pred2, a1);
-			} else { // swap(middle,middle)
-				graph.putEdge(pred1, a2);
-				graph.putEdge(a2, succ1);
-				graph.putEdge(pred2, a1);
-				graph.putEdge(a1, succ2);
-			}
+		
+		List<Alternative> subList = list.subList(list.indexOf(a1)+1, list.indexOf(a2));
+		
+		for(Alternative a : subList) {
+			graph.removeEdge(a1,a);
+			graph.putEdge(a,a1);
+			graph.removeEdge(a,a2);
+			graph.putEdge(a2,a);
 		}
+		
+		graph.removeEdge(a1,a2);
+		graph.putEdge(a2,a1);
+		
 		Collections.swap(list, list.indexOf(alternative1), list.indexOf(alternative2));
 	}
 
@@ -306,6 +217,12 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		} else if (!voter.equals(other.voter))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "MutableLinearPreferenceImpl [voter=" + voter + ", graph=" + graph + ", alternatives=" + alternatives
+				+ ", list=" + list + ", delegate=" + delegate + "]";
 	}
 
 }

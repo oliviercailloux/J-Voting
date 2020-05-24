@@ -25,7 +25,7 @@ public interface MutableLinearPreference extends Preference {
 	 *
 	 * @param alternative who belongs to the preference
 	 */
-	public void deleteAlternative(Alternative alternative);
+	public void removeAlternative(Alternative alternative);
 	
 	/**
 	 * Adds an alternative to the Preference. Add a link between the "weakest" alternatives and the new
@@ -35,7 +35,7 @@ public interface MutableLinearPreference extends Preference {
 	public void addAlternative(Alternative alternative);
 	
 	/**
-	 * This method enables to swap 2 different alternatives of the preference.
+	 * This method enables to swap 2 alternatives of the preference.
 	 * 
 	 * @param alternative1 that will change places with alternative2
 	 * @param alternative2 that will change places with alternative1
