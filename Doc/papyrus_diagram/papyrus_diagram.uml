@@ -112,18 +112,10 @@ Voter's preferences : AntiSymmetric</body>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_1iYn4ZuCEeqQoOmi0eM9lw" name="visuView" type="_mCc5YJp1Eeqy6sHmH3R0hw"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_3-vVkJuCEeqQoOmi0eM9lw" name="initVisualizationController"/>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_-HFM0JuCEeqQoOmi0eM9lw" name="onVisualizationTabClick">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_-HFM0ZuCEeqQoOmi0eM9lw" name="selectionEvent"/>
-            </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_B0fSsJuDEeqQoOmi0eM9lw" name="onColumnBtnClick">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_B0fSsZuDEeqQoOmi0eM9lw" name="selectionEvent"/>
-            </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_IAaCYJuDEeqQoOmi0eM9lw" name="onRowBtnClick">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_IAaCYZuDEeqQoOmi0eM9lw" name="selectionEvent"/>
-            </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_NDuyUJuDEeqQoOmi0eM9lw" name="onWrappedBtnClick">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_NDuyUZuDEeqQoOmi0eM9lw" name="selectionEvent"/>
-            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_-HFM0JuCEeqQoOmi0eM9lw" name="onVisualizationTabClick"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_B0fSsJuDEeqQoOmi0eM9lw" name="onColumnBtnClick"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_IAaCYJuDEeqQoOmi0eM9lw" name="onRowBtnClick"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_NDuyUJuDEeqQoOmi0eM9lw" name="onWrappedBtnClick"/>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_Cuu1wJ3mEeql8Nh_8AGPlA" name="initVisualizationView"/>
             <nestedClassifier xmi:type="uml:Association" xmi:id="_Z2huIJwtEeq8ir2MIFEotA" memberEnd="_Z2jjUJwtEeq8ir2MIFEotA _Z2kxcZwtEeq8ir2MIFEotA">
               <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Z2i8QJwtEeq8ir2MIFEotA" source="org.eclipse.papyrus">
@@ -151,18 +143,10 @@ Voter's preferences : AntiSymmetric</body>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_u6MoYZuBEeqQoOmi0eM9lw" name="editionView" type="_TOHbMJp2Eeqy6sHmH3R0hw"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_x1vzgJuBEeqQoOmi0eM9lw" name="initEditionController"/>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_DjF_AJuCEeqQoOmi0eM9lw" name="onModifyAlternativeName">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_DjF_AZuCEeqQoOmi0eM9lw" name="event"/>
-            </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_G6MdsJuCEeqQoOmi0eM9lw" name="onModifyVoterName">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_G6MdsZuCEeqQoOmi0eM9lw" name="event"/>
-            </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_Peoj8JuCEeqQoOmi0eM9lw" name="onDeleteAlternativeBtnClick">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Peoj8ZuCEeqQoOmi0eM9lw" name="selectionEvent"/>
-            </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_Utl8IJuCEeqQoOmi0eM9lw" name="onAddAlternativeBtnClick">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Utl8IZuCEeqQoOmi0eM9lw" name="selectionEvent"/>
-            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_DjF_AJuCEeqQoOmi0eM9lw" name="onModifyAlternativeName"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_G6MdsJuCEeqQoOmi0eM9lw" name="onModifyVoterName"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_Peoj8JuCEeqQoOmi0eM9lw" name="onDeleteAlternativeBtnClick"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_Utl8IJuCEeqQoOmi0eM9lw" name="onAddAlternativeBtnClick"/>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_MEiukJ3mEeql8Nh_8AGPlA" name="initEditionView"/>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_SVi0cJp2Eeqy6sHmH3R0hw" name="VisualizationView">

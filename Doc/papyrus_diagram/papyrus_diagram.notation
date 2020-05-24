@@ -2741,7 +2741,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mCmDXpp1Eeqy6sHmH3R0hw"/>
       </children>
       <element xmi:type="uml:Class" href="papyrus_diagram.uml#_mCc5YJp1Eeqy6sHmH3R0hw"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mChx4Zp1Eeqy6sHmH3R0hw" x="740" y="-20" width="161" height="101"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mChx4Zp1Eeqy6sHmH3R0hw" x="740" y="-20" width="181" height="101"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_SVoUAJp2Eeqy6sHmH3R0hw" type="Class_Shape">
       <children xmi:type="notation:DecorationNode" xmi:id="_SVoUApp2Eeqy6sHmH3R0hw" type="Class_NameLabel"/>
@@ -3176,7 +3176,7 @@
       <styles xmi:type="notation:FontStyle" xmi:id="_Z3YCsZwtEeq8ir2MIFEotA"/>
       <element xmi:type="uml:Association" href="papyrus_diagram.uml#_Z2huIJwtEeq8ir2MIFEotA"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Z3YCspwtEeq8ir2MIFEotA" points="[780, 81, -643984, -643984]$[780, 120, -643984, -643984]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Z4uGgJwtEeq8ir2MIFEotA" id="(0.2484472049689441,1.0)"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Z4uGgJwtEeq8ir2MIFEotA" id="(0.22099447513812154,1.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Z4uGgZwtEeq8ir2MIFEotA" id="(0.5970149253731343,0.0)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_aeRqoJwtEeq8ir2MIFEotA" type="Association_Edge" source="_mChx4Jp1Eeqy6sHmH3R0hw" target="_TONh0Jp2Eeqy6sHmH3R0hw">
@@ -3207,7 +3207,7 @@
       <styles xmi:type="notation:FontStyle" xmi:id="_aeRqoZwtEeq8ir2MIFEotA"/>
       <element xmi:type="uml:Association" href="papyrus_diagram.uml#_adGl8JwtEeq8ir2MIFEotA"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_aeRqopwtEeq8ir2MIFEotA" points="[880, 81, -643984, -643984]$[880, 120, -643984, -643984]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_afjdAJwtEeq8ir2MIFEotA" id="(0.8695652173913043,1.0)"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_afjdAJwtEeq8ir2MIFEotA" id="(0.7734806629834254,1.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_afkEEJwtEeq8ir2MIFEotA" id="(0.0,0.0)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_UKHWEJ27EeqyF8i-7JEYZQ" type="Association_Edge" source="_0WyuYJ26EeqyF8i-7JEYZQ" target="_S_NcgZp2Eeqy6sHmH3R0hw">
