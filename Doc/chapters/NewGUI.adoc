@@ -44,13 +44,13 @@ image:../assets/NewGUIClassDiagram.png[NewGUIClassDiagram]
 
 - Create MutableLinear Preference Instance 
 
-- Create View instance // and pass it probably the mainshell
+- Create View instance and pass it probably the mainshell.
 
 - Create Controller and pass it the View & Preference.
 
-- The view builds an Edition & Visualisation views and pass them its tabFolder.
+- The view builds an Edition & Visualisation views and pass them its unique tabFolder.
 
-- Create Edition & Visualisation child controllers and pass them the associated child views *and the common controller* (I dont see otherwise how those two controllers will be able to use the getModel() method declared in controller). 
+- Create Edition & Visualisation child controllers and pass them the associated child views *and the common controller* (I don't see otherwise how those two controllers will be able to use the getModel() method declared in controller). 
 
 
 - Finally calls : 
@@ -82,7 +82,7 @@ initVisualisationController()
 |Explanation 
 
 |initEditionView()
-| Pass the default preference model to the view for rendering. 
+| Pass the default model to the view for rendering. This will be necessary in the future to display a default profile when user open the app.
 
 |initEditionControler()
 | We add listeners on all the controls present in the default view when we enter the app. 
@@ -103,7 +103,7 @@ And we call a method from the view that delete an Alternative case.
 
 
 |onAddAlternativeBtnClick(SelectionEvent event)
-| We add a new alternative to the preference model with as name : the text present in the text field (getter on that text field). Then we call a method from the view that add a Alternative case.  
+| We add a new alternative to the preference model with as name : the text present in the text field (getter on that text field). Then we call a method from the view that add an Alternative case (This might change depending on the SWT usage).  
 
 |===
 
@@ -114,7 +114,7 @@ And we call a method from the view that delete an Alternative case.
 |Explanation 
 
 |initVisualisationView()
-| Pass the default preference model to the view for rendering. 
+| Pass the default model to the view for rendering. 
 
 |initVisualisationController()
 | We add listeners on all the controls present in the default view when we enter the app. 
@@ -125,15 +125,15 @@ We link them to each corresponding callbacks.
 
 |onColumnBtnClick(SelectionEvent event)
 |We call the view function that handle column tab rendering. 
-We pass to the view the preference model
+We pass to the view the preference model.
 
 |onRowBtnClick(SelectionEvent event)
 |We call the view function that handle row tab rendering. 
-We pass to the view the preference model
+We pass to the view the preference model.
 
 |onWrappedBtnClick(SelectionEvent event)
 |We call the view function that handle wrapped tab rendering. 
-We pass to the view the preference model
+We pass to the view the preference model.
 
 |===
 
@@ -144,7 +144,13 @@ We pass to the view the preference model
 |Explanation 
 
 |displayTabFolder()
-|Creates and displays editing and viewing tabs in the main window. The two tabs correspond to a different view 
+|This will plug an instance of tabFolder to the mainshell and store it locally. The view decides then to whom the tabfolder is given. 
+
+|buildEditionView()
+|This methods returns an instance of EditionView. It builds an EditionView and pass it the tabfolder so that the view can plug itself on it. (This methods has a lot of chances to be called in displayGui() in the main GUI class).
+
+|builVisualizationView()
+|This methods returns an instance of Visualization. It builds an Visualization and pass it the tabfolder so that the view can plug itself on it. (This methods has a lot of chances to be called in displayGui() in the main GUI class).
 
 
 |===
