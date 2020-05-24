@@ -12,8 +12,8 @@ A Preference is the ranking between Alternatives.
 
 
 === MutablePreference +
-A Preference where you can add Alternatives (only one by one). +
-You can also add two relations between Alternatives : 
+A Preference where you can add Alternatives. +
+You can also relate two alternatives in two ways : 
 
 * The first one is "At least as good".
 * The second one is "Equivalence".
@@ -164,7 +164,7 @@ Graph is rearranged : a transitive closure is applied to it
 | OK.
 
 |getAlternatives(int rank)
-| Returns the Aternative set at this rank. Empty set id there is no alternative at this rank.
+| Returns the Alternative set at this rank. Empty set id there is no alternative at this rank.
 |OK. However, the method does not handle the case of a rank bigger than the number of sets contained in equivalenceClasses
 
 |asEquivalenceClasses()
