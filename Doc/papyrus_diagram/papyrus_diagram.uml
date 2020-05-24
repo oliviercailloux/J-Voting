@@ -107,7 +107,7 @@ Voter's preferences : AntiSymmetric</body>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_1nTbUJwKEeq8ir2MIFEotA" name="displayGUI"/>
           </packagedElement>
-          <packagedElement xmi:type="uml:Class" xmi:id="_TbvngJp2Eeqy6sHmH3R0hw" name="VisualizationController">
+          <packagedElement xmi:type="uml:Class" xmi:id="_TbvngJp2Eeqy6sHmH3R0hw" name="VisualizationController" visibility="public">
             <ownedOperation xmi:type="uml:Operation" xmi:id="_1iYn4JuCEeqQoOmi0eM9lw" name="VisualizationController">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_1iYn4ZuCEeqQoOmi0eM9lw" name="visuView" type="_mCc5YJp1Eeqy6sHmH3R0hw"/>
             </ownedOperation>
@@ -124,6 +124,7 @@ Voter's preferences : AntiSymmetric</body>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_NDuyUJuDEeqQoOmi0eM9lw" name="onWrappedBtnClick">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_NDuyUZuDEeqQoOmi0eM9lw" name="selectionEvent"/>
             </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_Cuu1wJ3mEeql8Nh_8AGPlA" name="initVisualizationView"/>
             <nestedClassifier xmi:type="uml:Association" xmi:id="_Z2huIJwtEeq8ir2MIFEotA" memberEnd="_Z2jjUJwtEeq8ir2MIFEotA _Z2kxcZwtEeq8ir2MIFEotA">
               <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Z2i8QJwtEeq8ir2MIFEotA" source="org.eclipse.papyrus">
                 <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Z2i8QZwtEeq8ir2MIFEotA" key="nature" value="UML_Nature"/>
@@ -141,7 +142,7 @@ Voter's preferences : AntiSymmetric</body>
           <packagedElement xmi:type="uml:Class" xmi:id="_S_NcgJp2Eeqy6sHmH3R0hw" name="Controller " visibility="public">
             <ownedOperation xmi:type="uml:Operation" xmi:id="_OfoP8JuAEeqQoOmi0eM9lw" name="Controller">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_OfoP8ZuAEeqQoOmi0eM9lw" name="view" type="_mCc5YJp1Eeqy6sHmH3R0hw"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_OfoP8puAEeqQoOmi0eM9lw" name="model"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_OfoP8puAEeqQoOmi0eM9lw" name="model" type="_QApbwJ26EeqyF8i-7JEYZQ"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_5AL6gJw9EeqmcI8XI9UxnQ" name="getModel"/>
           </packagedElement>
@@ -162,6 +163,7 @@ Voter's preferences : AntiSymmetric</body>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_Utl8IJuCEeqQoOmi0eM9lw" name="onAddAlternativeBtnClick">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_Utl8IZuCEeqQoOmi0eM9lw" name="selectionEvent"/>
             </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_MEiukJ3mEeql8Nh_8AGPlA" name="initEditionView"/>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_SVi0cJp2Eeqy6sHmH3R0hw" name="VisualizationView">
             <ownedOperation xmi:type="uml:Operation" xmi:id="_DW94AJwFEeq8ir2MIFEotA" name="createVisualizationButtons"/>
@@ -172,6 +174,8 @@ Voter's preferences : AntiSymmetric</body>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_mCc5YJp1Eeqy6sHmH3R0hw" name="View" visibility="public">
             <ownedOperation xmi:type="uml:Operation" xmi:id="_eC2EwJwFEeq8ir2MIFEotA" name="displayTabFolder"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_TjPxQJ3lEeql8Nh_8AGPlA" name="buildEditionView"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_aK_hUJ3lEeql8Nh_8AGPlA" name="buildVisualizationView"/>
           </packagedElement>
         </packagedElement>
         <packagedElement xmi:type="uml:Package" xmi:id="_PMoH4GbSEeqrtc6dy-mPpg" name="exceptions">
