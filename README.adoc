@@ -60,7 +60,27 @@ You can check the details link:Doc/chapters/MutableLinearPreferenceImplChanges.a
 
 *Julien & Pierre* :
 
-[...}
+Iteration goal : 
+Start the MVC architecture for the GUI implementation. 
+
+The first target is to have a window with two navigable tabs so that each group will be able to work on separate tabs in a near futur. All that respecting the MVC rules.
+
+Second target (if the first one is reached) consists in being able to see a voter's name on the edition tab with his preference rendered as a list of boxes containing alternatives. This implies communication with the model from a controller to retrieve the needed informations. 
+
+In the MVC link:Doc/chapters/NewGUI.adoc[chapter] you can find informations about how we see the MVC pattern applied to our GUI. 
+
+As a result, the goal is to reach those target while respecting this diagram. Nevertheless, not all the methods in the diagram will be addressed in this first GUI iteration. 
+
+Methods needed for first target (besides factories/constructors): 
+
+- displayTabFolder();
+- buildEditionView();
+- buildVisualizationView();
+- initVisualizationView()
+- buildEditionView();
+- initEditionView();
+- displayGUI();
+
 
 *Léo* :
 
