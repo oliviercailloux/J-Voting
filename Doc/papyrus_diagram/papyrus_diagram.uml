@@ -26,7 +26,37 @@ Voter's preferences : AntiSymmetric</body>
           </ownedComment>
         </packagedElement>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_dTDVMJKyEeqLiZVmroIQBg" name="ProfileClassDiagram"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_dTDVMJKyEeqLiZVmroIQBg" name="ProfileClassDiagram">
+        <packagedElement xmi:type="uml:Class" xmi:id="_DParIJ2dEeqyF8i-7JEYZQ" name="MutableStrictProfile">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_IFPxoJ2dEeqyF8i-7JEYZQ" name="createMutableStrictProfile">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_w2CDkJ2dEeqyF8i-7JEYZQ" name="map" type="_POESUGbSEeqrtc6dy-mPpg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_MjDZsJ2dEeqyF8i-7JEYZQ" name="addVoter" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4fUJIJ2dEeqyF8i-7JEYZQ" name="v" type="_PIhD8GbSEeqrtc6dy-mPpg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_OblooJ2dEeqyF8i-7JEYZQ" name="removeVoter">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_E88ugJ2eEeqyF8i-7JEYZQ" name="v" type="_PIhD8GbSEeqrtc6dy-mPpg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Pkg_kJ2dEeqyF8i-7JEYZQ" name="renameVoter">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_HCh68J2eEeqyF8i-7JEYZQ" name="v" type="_PIhD8GbSEeqrtc6dy-mPpg"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_J67EYJ2eEeqyF8i-7JEYZQ" name="newName" type="_PF7qAGbSEeqrtc6dy-mPpg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_QX6ycJ2dEeqyF8i-7JEYZQ" name="renameAlternative">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_RSvmgJ2eEeqyF8i-7JEYZQ" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Wo7oEJ2eEeqyF8i-7JEYZQ" name="newName" type="_PF7qAGbSEeqrtc6dy-mPpg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_R0znMJ2dEeqyF8i-7JEYZQ" name="getVoters">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_acnVEJ2eEeqyF8i-7JEYZQ" type="_PERdIGbSEeqrtc6dy-mPpg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_TX0SEJ2dEeqyF8i-7JEYZQ" name="getAlternatives">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_cu_nYJ2eEeqyF8i-7JEYZQ" type="_PERdIGbSEeqrtc6dy-mPpg" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UoOKAJ2dEeqyF8i-7JEYZQ" name="getPreference">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_eak_cJ2eEeqyF8i-7JEYZQ" name="v" type="_PIhD8GbSEeqrtc6dy-mPpg"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_hfb3kJ2eEeqyF8i-7JEYZQ" type="_NQBPsIYrEeqCsLxU4w-iPA" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_bSaYgGbTEeqrtc6dy-mPpg" name="PrefenceInterfacesDiagram">
         <packagedElement xmi:type="uml:Package" xmi:id="_0LoBcHEeEeqUv4VtPCytLw" name="Comments">
           <ownedComment xmi:type="uml:Comment" xmi:id="_UmQBEHEcEeqUv4VtPCytLw">

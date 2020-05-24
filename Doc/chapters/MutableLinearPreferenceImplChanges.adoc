@@ -74,21 +74,7 @@ After a talk with you, we decided to create the MutableStrictProfile class regar
 
 We chose to implement the following methods according to our GUI project :
 
-* createMutableStrictProfile(Map map)
-
-* public MutableStrictProfile addVoter(Voter v)
-
-* public void removeVoter(Voter v)
-
-* public void renameVoter(Voter v, String newName)
-
-* public void renameAlternative(Alternative alternative, String newName)
-
-* public Set<Voter> getVoters()
-
-* public Set<Alternative> getAlternatives()
-
-* public MutableLinearPreference getPreference(Voter v)
+image:../assets/MutableStrictProfile.png[MutableStrictProfile]
 
 == Alternative.java
  
