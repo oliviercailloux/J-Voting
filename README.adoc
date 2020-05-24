@@ -82,6 +82,8 @@ Methods needed for first target (besides factories/constructors):
 - displayGUI();
 
 
+The method need for second target might evolve a lot while coding (depending on how we build the voter composite to render)
+
 *Léo* :
 
 SM/PO
