@@ -71,16 +71,16 @@ In the MVC link:Doc/chapters/NewGUI.adoc[chapter] you can find informations abou
 
 As a result, the goal is to reach those target while respecting this diagram. Nevertheless, not all the methods in the diagram will be addressed in this first GUI iteration. 
 
-Methods needed for first target (besides factories/constructors): 
+Methods at least needed for first target (besides factories/constructors): 
 
 - displayTabFolder();
 - buildEditionView();
 - buildVisualizationView();
-- initVisualizationView()
 - buildEditionView();
-- initEditionView();
 - displayGUI();
 
+
+The method need for second target might evolve a lot while coding (depending on how we build the voter composite to render)
 
 *Léo* :
 
