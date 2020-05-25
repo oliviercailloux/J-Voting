@@ -1,7 +1,6 @@
 package io.github.oliviercailloux.j_voting.mvc.gui;
 
 import org.eclipse.swt.widgets.*;
-import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.*;
 
 public class MainGUI {
@@ -16,14 +15,15 @@ public class MainGUI {
 		shell.setText("J-Voting");
 		shell.setSize(400, 100);
 
-		// Todo - centrer le shell et avoir une plus grande taille par défautl j'ai pas trouvé comment faire.
+		// Todo - centrer le shell et avoir une plus grande taille par défault
+		//  j'ai pas trouvé comment faire.
 
 		// Toutes les instances vont ici
 
-
-
-
-
+		View view = View.create(shell);
+		EditionView editionView = view.buildEditionView();
+		VisualizationView visualizationView = view.buildVisualizationView();
+		
 
 		shell.pack();
 		shell.open();
