@@ -17,7 +17,7 @@ public class View {
 
     private void initTabFolder() {
         this.tabfolder = new TabFolder(this.mainShell, SWT.NONE);
-        tabfolder.setSize(200,200);
+        tabfolder.setSize(600,400);
     }
 
     public EditionView buildEditionView() {
