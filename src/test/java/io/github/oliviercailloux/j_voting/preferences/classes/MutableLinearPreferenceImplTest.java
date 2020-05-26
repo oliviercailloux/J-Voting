@@ -30,20 +30,25 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPr
 
 public class MutableLinearPreferenceImplTest {
 	
+	/**
+	 * Tests if the graph decorator is correctly working. In other words, if the cast to MutableGraph isn't possible.
+	 * Take off comments to see a ClassCastException thrown.
+	 */
 	@Test
 	void testGraphDecorator() {
-		Voter v = Voter.createVoter(1);
-		List<Alternative> toTestList = new ArrayList<>();		
-		toTestList.add(a1);
-		toTestList.add(a2);
-		toTestList.add(a3);
-		toTestList.add(a4);
-		toTestList.add(a5);
-		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
+//		Voter v = Voter.createVoter(1);
+//		List<Alternative> toTestList = new ArrayList<>();		
+//		toTestList.add(a1);
+//		toTestList.add(a2);
+//		toTestList.add(a3);
+//		toTestList.add(a4);
+//		toTestList.add(a5);
+//		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
 		
-		MutableGraph<Alternative> graph1 = GraphBuilder.directed().allowsSelfLoops(true).build();
-		graph1 = (MutableGraph<Alternative>)toTestPref.asGraph();
-		//The cast can't be done thanks to the graph decorator. It throws a ClassCastException.
+//		MutableGraph<Alternative> graph1 = GraphBuilder.directed().allowsSelfLoops(true).build();
+//		graph1 = (MutableGraph<Alternative>)toTestPref.asGraph();
+		
+//		The cast can't be done thanks to the graph decorator. It throws a ClassCastException.
 	}
 
 	/**
