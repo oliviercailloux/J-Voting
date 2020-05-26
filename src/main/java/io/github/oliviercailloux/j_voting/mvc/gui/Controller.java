@@ -3,10 +3,9 @@ package io.github.oliviercailloux.j_voting.mvc.gui;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 public class Controller {
-
 	private MutableLinearPreference mlp;
 	
-	public MutableLinearPreference getMlp() {
+	public MutableLinearPreference getModel() {
 		return mlp;
 	}
 

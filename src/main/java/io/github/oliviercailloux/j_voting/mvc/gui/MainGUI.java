@@ -8,7 +8,6 @@ import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPrefe
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.swt.*;
@@ -25,18 +24,14 @@ public class MainGUI {
 		Shell shell = new Shell(display, SWT.CLOSE | SWT.RESIZE);
 		shell.setText("J-Voting");
 		shell.setSize(600, 400);
+		centerOnScreen(display, shell);
 
-		Rectangle screenSize = display.getPrimaryMonitor().getBounds();
-		shell.setLocation((screenSize.width - shell.getBounds().width) / 2, 
-				(screenSize.height - shell.getBounds().height) / 2);
-
-		// Toutes les instances vont ici
+		// Views
 		View view = View.create(shell);
 		EditionView editionView = view.buildEditionView();
 		VisualizationView visualizationView = view.buildVisualizationView();
 
-		// Pierre tu peux instancier ici les 3 classes de controllers avec des factories + une mutable pref nommée model
-		//Instancie une MLP
+		// Model
 		Voter v1 = Voter.createVoter(1);
 		Alternative a = Alternative.withId(2);
 		Alternative a2 = Alternative.withId(3);
@@ -44,15 +39,17 @@ public class MainGUI {
 		alt.add(a);
 		alt.add(a2);
 		MutableLinearPreference model = MutableLinearPreferenceImpl.given(v1,alt);
-		
-		// Tu passes le model au big boss controller + tu fais un getter dessus
-		// j'ai du mettre controller en static :/
-		Controller c = Controller.inst(model);
-		
-		// tu passes chaque view dans son controller respectif +
-		// tu passes le big boss controller dans les enfants controllers (on fait comme ca pour l'instant mais ca va peut etre changer selon les com de cailloux).
-		// Si t'es chaud tu peux essayer d'afficher une case avec le nom du voter du model dans l'onglet edition
-		
+
+
+		// Controllers
+		// j'ai du mettre controller en static :/ Ecoute je vois pas de pb !
+		Controller controller = Controller.inst(model);
+		EditionController editionController = EditionController.create(editionView, controller);
+
+
+
+
+
 		shell.open();
 
 		while (!shell.isDisposed()) {
@@ -61,6 +58,12 @@ public class MainGUI {
 		}
 		display.dispose();
 
+	}
+
+	private void centerOnScreen(Display display, Shell shell) {
+		Rectangle screenSize = display.getPrimaryMonitor().getBounds();
+		shell.setLocation((screenSize.width - shell.getBounds().width) / 2,
+				(screenSize.height - shell.getBounds().height) / 2);
 	}
 
 

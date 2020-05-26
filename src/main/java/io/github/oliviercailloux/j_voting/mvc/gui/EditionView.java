@@ -2,10 +2,8 @@ package io.github.oliviercailloux.j_voting.mvc.gui;
 
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.*;
-import org.eclipse.swt.layout.RowData;
 
 public class EditionView {
-	
     private TabFolder tabfolder;
     private TabItem editionTab;
    
@@ -16,8 +14,6 @@ public class EditionView {
     private EditionView(TabFolder mainTabFolder) {
         this.tabfolder = mainTabFolder;
         initEditionTab();
-        displayVoters();
-        displayAlternatives();
     }
 
     // ca va évoluer ça (peut etre passer dans le controller)
@@ -26,10 +22,10 @@ public class EditionView {
         editionTab.setText("Edition");
     }
     
-    public void displayVoters() {
+    public void displayVoters(String voterName) {
     	Composite voters = new Composite(this.tabfolder,SWT.NONE);
     	Text voter = new Text(voters, SWT.BORDER);
-    	voter.setText("Voter name");
+    	voter.setText(voterName);
     	voter.setBounds(10,10,100,25);
     	editionTab.setControl(voters);
     }
