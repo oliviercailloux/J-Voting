@@ -23,7 +23,13 @@ public class MainGUI {
 		View view = View.create(shell);
 		EditionView editionView = view.buildEditionView();
 		VisualizationView visualizationView = view.buildVisualizationView();
-		
+
+		// Pierre tu peux instancier ici les 3 classes de controllers avec des factories + une mutable pref nommée model
+		// Tu passes le model au big boss controller + tu fais un getter dessus
+		// tu passes chaque view dans son controller respectif +
+		// tu passes le big boss controller dans les enfants controllers (on fait comme ca pour l'instant mais ca va peut etre changer selon les com de cailloux).
+		// Si t'es chaud tu peux essayer d'afficher une case avec le nom du voter du model dans l'onglet edition
+
 
 		shell.pack();
 		shell.open();
