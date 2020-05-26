@@ -22,7 +22,7 @@ public class EditionController {
         String voterName = this.controller.getModel().getVoter().toString();
         editionView.displayVoters(voterName);
         // Work in progress on donnera la list d'alternative du model
-        editionView.displayAlternatives(new ArrayList<>());
+        // editionView.displayAlternatives(new ArrayList<>());
     }
 
 
