@@ -40,9 +40,7 @@ public class MainGUI {
 		alt.add(a2);
 		MutableLinearPreference model = MutableLinearPreferenceImpl.given(v1,alt);
 
-
 		// Controllers
-		// j'ai du mettre controller en static :/ Ecoute je vois pas de pb !
 		Controller controller = Controller.inst(model);
 		EditionController editionController = EditionController.create(editionView, controller);
 
@@ -53,7 +51,6 @@ public class MainGUI {
 				display.sleep();
 		}
 		display.dispose();
-
 	}
 
 	private void centerOnScreen(Display display, Shell shell) {

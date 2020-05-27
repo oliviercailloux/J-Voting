@@ -32,31 +32,25 @@ public class EditionView {
     }
     
     public void displayVoters(String voterName) {
-    	
     	Text voter = new Text(group, SWT.BORDER);
     	voter.setText(voterName);
     	voter.setBounds(10,10,200,25);
     	editionTab.setControl(group);
     }
     
-    public void displayAlternatives(Set<Alternative> a) {
+    public void displayAlternatives(Set<Alternative> altSet) {
     
     	// J'ai du créer un group en attribut plutôt qu'un composite et 
     	// dans le constructeur je lui donne le tabfolder
-    	for(Iterator<Alternative> i = a.iterator(); i.hasNext();) {
-    	
-	        Text alt1 = new Text(group, SWT.BORDER);
-	        alt1.setText(i.next().toString());
-	        alt1.setBounds(10,80,100,25);
-	
-	        Text alt2 = new Text(group, SWT.BORDER);
-	        alt2.setText(i.next().toString());
-	        alt2.setBounds(10,120,100,25);
-	        
-	        editionTab.setControl(group);
-        
-    	}
-     
+    	int counterY = 50;
+    	for(Alternative a : altSet) {
+            Text alt = new Text(group, SWT.BORDER);
+            alt.setText(a.toString());
+            alt.setBounds(10,counterY,100,25);
+            editionTab.setControl(group);
+            counterY += 30;
+        }
+
 
     }
 
