@@ -35,18 +35,23 @@ public class MutableLinearSetDecorator extends ForwardingSet<Alternative> {
 	@Override
 	public boolean add(Alternative a) {
 		LOGGER.debug("MutableLinearSetDecorator add");
+		if (delegate.getAlternatives().contains(a)){
+			return false;
+		}
 		return delegate.addAlternative(a);
 	}
 
 	@Override
 	public boolean addAll(Collection<? extends Alternative> c) {
 		LOGGER.debug("MutableLinearSetDecorator addAll");
-				
+		boolean hasChanged = false;		
 		for (Iterator<? extends Alternative> iterator = c.iterator(); iterator.hasNext();) {
 			Alternative alternative = iterator.next();
-			delegate.addAlternative(alternative);		
+			if (!  delegate.getAlternatives().contains(alternative)) {
+				hasChanged = delegate.addAlternative(alternative);
+			}		
 		}
-		return true;
+		return hasChanged;
 	}
 	
 	@Override
@@ -55,7 +60,9 @@ public class MutableLinearSetDecorator extends ForwardingSet<Alternative> {
 		
 		if (o instanceof Alternative) {
 			Alternative a = (Alternative) o;
-			return delegate.removeAlternative(a);
+			if ( delegate.getAlternatives().contains(a)) {
+				return delegate.removeAlternative(a);
+			}
 		}
 		return false;		
 	}
@@ -63,23 +70,20 @@ public class MutableLinearSetDecorator extends ForwardingSet<Alternative> {
 	@Override
 	public boolean removeAll(Collection<?> c) {
 		LOGGER.debug("MutableLinearSetDecorator removeAll");
-		
+		boolean hasChanged = false;
 		for (Iterator<?> iterator = c.iterator(); iterator.hasNext();) {
 			Alternative alternative = (Alternative) iterator.next();
-			delegate.removeAlternative(alternative);	
+			if (delegate.getAlternatives().contains(alternative)) {
+				hasChanged = delegate.removeAlternative(alternative);
+			}
 		}		
-		return true;		
+		return hasChanged;		
 	}
 	
 	@Override
 	public void clear() {
 		LOGGER.debug("MutableLinearSetDecorator clear");
-		
-		int size = delegate.list.size();
-		
-		for( int i = 0; i < size; i++) {
-			delegate.removeAlternative(delegate.list.get(0));
-		}	
+		delegate.clear();
 	}
 
 }

@@ -41,4 +41,5 @@ public interface MutableLinearPreference extends Preference {
 	 * @param alternative2 that will change places with alternative1
 	 */
 	public void swap(Alternative alternative1, Alternative alternative2);
+	
 }

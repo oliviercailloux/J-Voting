@@ -105,6 +105,18 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		
 		return true;
 	}
+	
+	/**
+	 * Clears the MutableLinearPreference (list + set + graph)
+	 */
+	void clear() {	
+		for(int i = 0; i < list.size() ; i++) {
+			graph.removeNode(list.get(i));
+		}
+		
+		list.clear();
+	}
+
 
 	/**
 	 * @return an immutable set of all alternatives of the preference

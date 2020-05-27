@@ -212,7 +212,7 @@ public class MutableLinearPreferenceImplTest {
 		MutableLinearPreference pref5 = MutableLinearPreferenceImpl.given(v, list5);
 		toTestPref.getAlternatives().clear();
 		assertEquals(pref5,toTestPref);
-		
+
 	}
 
 	@Test
