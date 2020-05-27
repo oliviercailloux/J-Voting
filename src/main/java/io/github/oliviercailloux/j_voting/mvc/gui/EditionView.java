@@ -5,11 +5,15 @@ import io.github.oliviercailloux.j_voting.Alternative;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.*;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class EditionView {
     private TabFolder tabfolder;
     private TabItem editionTab;
+    private Group group;
+    
    
     public static EditionView create(TabFolder mainTabFolder) {
         return new EditionView(mainTabFolder);
@@ -17,6 +21,7 @@ public class EditionView {
 
     private EditionView(TabFolder mainTabFolder) {
         this.tabfolder = mainTabFolder;
+        this.group = new Group(tabfolder, SWT.NONE);
         initEditionTab();
     }
 
@@ -27,29 +32,34 @@ public class EditionView {
     }
     
     public void displayVoters(String voterName) {
-    	Composite voters = new Composite(this.tabfolder,SWT.NONE);
-    	Text voter = new Text(voters, SWT.BORDER);
+    	
+    	Text voter = new Text(group, SWT.BORDER);
     	voter.setText(voterName);
     	voter.setBounds(10,10,200,25);
-    	editionTab.setControl(voters);
+    	editionTab.setControl(group);
     }
     
-    public void displayAlternatives(List<Alternative> alternativeList) {
-        //Preconditions.checkNotNull(alternativeList);
-    	//for(Alternative alt : alternativeList) {
-        // Work in progress
-        //  !! J'ai l'impression que l'on peut pas brancher plusieurs composite sur le tabfolder :/
-            Composite altContainer = new Composite(this.tabfolder, SWT.NONE);
-            Text alt1 = new Text(altContainer, SWT.BORDER);
-            alt1.setText("Alt 1");
-            alt1.setBounds(10,80,100,25);
-
-            Text alt2 = new Text(altContainer, SWT.BORDER);
-            alt2.setText("Alt 2");
-            alt2.setBounds(10,120,100,25);
-            editionTab.setControl(altContainer);
-       // }
+    public void displayAlternatives(Set<Alternative> a) {
+    
+    	// J'ai du créer un group en attribut plutôt qu'un composite et 
+    	// dans le constructeur je lui donne le tabfolder
+    	for(Iterator<Alternative> i = a.iterator(); i.hasNext();) {
+    	
+	        Text alt1 = new Text(group, SWT.BORDER);
+	        alt1.setText(i.next().toString());
+	        alt1.setBounds(10,80,100,25);
+	
+	        Text alt2 = new Text(group, SWT.BORDER);
+	        alt2.setText(i.next().toString());
+	        alt2.setBounds(10,120,100,25);
+	        
+	        editionTab.setControl(group);
+        
+    	}
+     
 
     }
+
+	
 
 }

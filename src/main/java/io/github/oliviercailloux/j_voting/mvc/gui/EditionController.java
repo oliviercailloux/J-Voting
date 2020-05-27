@@ -2,6 +2,9 @@ package io.github.oliviercailloux.j_voting.mvc.gui;
 
 
 import java.util.ArrayList;
+import java.util.Set;
+
+import io.github.oliviercailloux.j_voting.Alternative;
 
 public class EditionController {
     private EditionView editionView;
@@ -21,8 +24,9 @@ public class EditionController {
     private void initEditionView() {
         String voterName = this.controller.getModel().getVoter().toString();
         editionView.displayVoters(voterName);
-        // Work in progress on donnera la list d'alternative du model
-        // editionView.displayAlternatives(new ArrayList<>());
+
+        Set<Alternative> a = this.controller.getModel().getAlternatives();
+        editionView.displayAlternatives(a);
     }
 
 

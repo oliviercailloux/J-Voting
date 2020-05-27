@@ -46,10 +46,6 @@ public class MainGUI {
 		Controller controller = Controller.inst(model);
 		EditionController editionController = EditionController.create(editionView, controller);
 
-
-
-
-
 		shell.open();
 
 		while (!shell.isDisposed()) {
