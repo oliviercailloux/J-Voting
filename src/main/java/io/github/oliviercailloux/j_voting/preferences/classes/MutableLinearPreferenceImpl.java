@@ -1,5 +1,6 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -11,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
+import com.google.common.collect.ForwardingSet;
 import com.google.common.graph.Graph;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.Graphs;
@@ -35,13 +37,12 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		this.voter = voter;
 		this.list = list;
 		this.graph = GraphBuilder.directed().allowsSelfLoops(true).build();
-		
-		for(int i = 0; i < list.size(); i++) {
-			for(int j = i; j < list.size(); j++) {
+
+		for (int i = 0; i < list.size(); i++) {
+			for (int j = i; j < list.size(); j++) {
 				graph.putEdge(list.get(i), list.get(j));
 			}
 		}
-		
 		this.alternatives = graph.nodes();
 	}
 
@@ -63,18 +64,18 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		LOGGER.debug("MutableLinearPreferenceImpl changeOrder");
 		Preconditions.checkNotNull(alternative);
 		Preconditions.checkNotNull(rank);
-		
+
 		int initRank = list.indexOf(alternative);
 		Alternative temp;
-		
+
 		if (initRank > rank) { // swap à gauche
 			for (int i = initRank; i >= rank; i--) {
-				temp = list.get(i-1);
+				temp = list.get(i - 1);
 				swap(temp, alternative);
 			}
 		} else if (initRank < rank) { // swap à droite
 			for (int i = initRank; i <= rank; i++) {
-				temp = list.get(i-1);
+				temp = list.get(i - 1);
 				swap(alternative, temp);
 			}
 		}
@@ -87,7 +88,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 
 		graph.removeNode(a);
 		list.remove(a);
-		
+
 		return true;
 	}
 
@@ -95,28 +96,25 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	public boolean addAlternative(Alternative a) {
 		LOGGER.debug("MutablePreferenceImpl addAlternative");
 		Preconditions.checkNotNull(a);
-		
+
 		list.add(a);
 		graph.addNode(a);
-		
-		for(int i = 0; i < list.size(); i++) {
+
+		for (int i = 0; i < list.size(); i++) {
 			graph.putEdge(list.get(i), list.get(list.size() - 1));
 		}
-		
 		return true;
 	}
-	
+
 	/**
 	 * Clears the MutableLinearPreference (list + set + graph)
 	 */
-	void clear() {	
-		for(int i = 0; i < list.size() ; i++) {
+	private void clear() {
+		for (int i = 0; i < list.size(); i++) {
 			graph.removeNode(list.get(i));
 		}
-		
 		list.clear();
 	}
-
 
 	/**
 	 * @return an immutable set of all alternatives of the preference
@@ -128,7 +126,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		Preconditions.checkState(
 				!(alternatives.size() != graph.nodes().size() || !(alternatives.containsAll(graph.nodes()))),
 				"An alternative must not be deleted from the set");
-		return MutableLinearSetDecorator.given(this);
+		return new MutableLinearSetDecorator(this);
 	}
 
 	@Override
@@ -138,15 +136,15 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 
 	@Override
 	public Graph<Alternative> asGraph() {
-		return MutableLinearGraphDecorator.given(this);
+		return new MutableLinearGraphDecorator(this);
 	}
-	
+
 	@Override
 	public void swap(Alternative alternative1, Alternative alternative2) {
 		LOGGER.debug("MutablePreferenceImpl Swap");
 		Preconditions.checkNotNull(alternative1);
 		Preconditions.checkNotNull(alternative2);
-		
+
 		Alternative a1 = alternative1;
 		Alternative a2 = alternative2;
 
@@ -154,19 +152,19 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 			a1 = alternative2;
 			a2 = alternative1;
 		}
-		
-		List<Alternative> subList = list.subList(list.indexOf(a1)+1, list.indexOf(a2));
-		
-		for(Alternative a : subList) {
-			graph.removeEdge(a1,a);
-			graph.putEdge(a,a1);
-			graph.removeEdge(a,a2);
-			graph.putEdge(a2,a);
+
+		List<Alternative> subList = list.subList(list.indexOf(a1) + 1, list.indexOf(a2));
+
+		for (Alternative a : subList) {
+			graph.removeEdge(a1, a);
+			graph.putEdge(a, a1);
+			graph.removeEdge(a, a2);
+			graph.putEdge(a2, a);
 		}
-		
-		graph.removeEdge(a1,a2);
-		graph.putEdge(a2,a1);
-		
+
+		graph.removeEdge(a1, a2);
+		graph.putEdge(a2, a1);
+
 		Collections.swap(list, list.indexOf(alternative1), list.indexOf(alternative2));
 	}
 
@@ -184,7 +182,8 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 			return true;
 		}
 		MutableLinearPreferenceImpl mlp2 = (MutableLinearPreferenceImpl) o2;
-		return voter.equals(mlp2.voter) && graph.equals(mlp2.graph) && alternatives.equals(mlp2.alternatives) && list.equals(mlp2.list);			
+		return voter.equals(mlp2.voter) && graph.equals(mlp2.graph) && alternatives.equals(mlp2.alternatives)
+				&& list.equals(mlp2.list);
 	}
 
 	@Override
@@ -193,4 +192,84 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 				+ ", list=" + list + "]";
 	}
 
+	public class MutableLinearSetDecorator extends ForwardingSet<Alternative> {
+		private MutableLinearPreferenceImpl delegate;
+
+		private MutableLinearSetDecorator(MutableLinearPreferenceImpl delegate) {
+			this.delegate = delegate;
+		}
+
+		@Override
+		protected Set<Alternative> delegate() {
+			return delegate.alternatives;
+		}
+
+		@Override
+		public boolean add(Alternative a) {
+			LOGGER.debug("MutableLinearSetDecorator add");
+			if (delegate.getAlternatives().contains(a)) {
+				return false;
+			}
+			return delegate.addAlternative(a);
+		}
+
+		@Override
+		public boolean addAll(Collection<? extends Alternative> c) {
+			LOGGER.debug("MutableLinearSetDecorator addAll");
+			boolean hasChanged = false;
+			for (Iterator<? extends Alternative> iterator = c.iterator(); iterator.hasNext();) {
+				Alternative alternative = iterator.next();
+				if (!delegate.getAlternatives().contains(alternative)) {
+					hasChanged = delegate.addAlternative(alternative);
+				}
+			}
+			return hasChanged;
+		}
+
+		@Override
+		public boolean remove(Object o) {
+			LOGGER.debug("MutableLinearSetDecorator remove");
+
+			if (o instanceof Alternative) {
+				Alternative a = (Alternative) o;
+				if (delegate.getAlternatives().contains(a)) {
+					return delegate.removeAlternative(a);
+				}
+			}
+			return false;
+		}
+
+		@Override
+		public boolean removeAll(Collection<?> c) {
+			LOGGER.debug("MutableLinearSetDecorator removeAll");
+			boolean hasChanged = false;
+			for (Iterator<?> iterator = c.iterator(); iterator.hasNext();) {
+				Alternative alternative = (Alternative) iterator.next();
+				if (delegate.getAlternatives().contains(alternative)) {
+					hasChanged = delegate.removeAlternative(alternative);
+				}
+			}
+			return hasChanged;
+		}
+
+		@Override
+		public void clear() {
+			LOGGER.debug("MutableLinearSetDecorator clear");
+			delegate.clear();
+		}
+	}
+
+	public class MutableLinearGraphDecorator extends ForwardingGraph<Alternative> {
+
+		private MutableLinearPreferenceImpl delegate;
+
+		@Override
+		protected Graph<Alternative> delegate() {
+			return delegate.graph;
+		}
+
+		private MutableLinearGraphDecorator(MutableLinearPreferenceImpl delegate) {
+			this.delegate = delegate;
+		}
+	}
 }
