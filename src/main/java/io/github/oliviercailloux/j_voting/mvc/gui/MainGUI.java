@@ -35,9 +35,11 @@ public class MainGUI {
 		Voter v1 = Voter.createVoter(1);
 		Alternative a = Alternative.withId(2);
 		Alternative a2 = Alternative.withId(3);
+		Alternative a3 = Alternative.withId(4);
 		List<Alternative> alt = new ArrayList<>();
 		alt.add(a);
 		alt.add(a2);
+		alt.add(a3);
 		MutableLinearPreference model = MutableLinearPreferenceImpl.given(v1,alt);
 
 		// Controllers
