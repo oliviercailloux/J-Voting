@@ -11,8 +11,7 @@ public class EditionView {
     private TabItem editionTab;
     private Composite mainComposite;
 
-    // Pierre je suis repassé à un composite principal mais ca revient au même que group
-    // .
+
     public static EditionView create(TabFolder mainTabFolder) {
         return new EditionView(mainTabFolder);
     }
@@ -28,23 +27,42 @@ public class EditionView {
         this.editionTab = new TabItem(this.tabfolder, SWT.NONE);
         editionTab.setText("Edition");
     }
-    
+
     public void displayVoters(String voterName) {
     	Text voter = new Text(mainComposite, SWT.BORDER);
+        voter.setData("event", "voterBox");
     	voter.setText(voterName);
     	voter.setBounds(10,10,200,25);
-    	editionTab.setControl(mainComposite);
+        editionTab.setControl(mainComposite);
     }
-    
+
+    // todo : revoir le layout avec les class layout de SWT c'est mieux que des set bounds avec X, Y je pense
     public void displayAlternatives(Set<Alternative> altSet) {
     	int counterY = 50;
+    	int id = 0;
+    	// j'ai trouvé que l'ID comme solution pour l'instant pour lier un btn avec son text field
+        // on peut faire un group avec Voter + ses alternatives et on le branche sur le le mainComposite.
+        // je vais continuer ca
     	for(Alternative a : altSet) {
             Text alt = new Text(mainComposite, SWT.BORDER);
+            alt.setData("event", "alternativeBox");
+            alt.setData("id", id);
             alt.setText(a.toString());
             alt.setBounds(10,counterY,100,25);
-            editionTab.setControl(mainComposite);
+
+            Button btn = new Button(mainComposite, SWT.NONE);
+            btn.setBounds(120, counterY,100,25);
+            btn.setText("Delete");
+            btn.setData("event", "deleteAlternativeBtn");
+            btn.setData("id", id);
+            id++;
             counterY += 30;
         }
+        editionTab.setControl(mainComposite);
+    }
+
+    // work in progress
+    public void getTextFieldById(Group gr, String id) {
 
     }
 
