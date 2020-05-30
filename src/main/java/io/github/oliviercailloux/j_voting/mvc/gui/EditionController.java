@@ -7,17 +7,27 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.*;
+import org.eclipse.swt.widgets.Composite;
 
 import io.github.oliviercailloux.j_voting.Alternative;
+import io.github.oliviercailloux.j_voting.Voter;
+import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
+import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 public class EditionController {
     private EditionView editionView;
     private Controller controller;
+    
+    private List<Alternative> listalt = new ArrayList<>();
+    private Voter v;
 
-    public static EditionController create(EditionView editionView, Controller mainController) {
+	public static EditionController create(EditionView editionView, Controller mainController) {
         return new EditionController(editionView, mainController);
     }
 
@@ -74,34 +84,68 @@ public class EditionController {
         // on recup l'id de l'alterentave du text field -> on la cherche dans MLP
         // On la delete de mlp
         // on delete le text field (call une method de la vue avec text field en param).
+    	
+    	
+    	
     }
 
-
-
     private void handleVoterEvent(Control ctr) {
-        Text voter = (Text) ctr;
-        voter.addModifyListener(new ModifyListener() {
+
+    	//Evenenemnts focus in et focus out plus approprié
+    	Text voter = (Text) ctr;
+    	voter.addFocusListener(new FocusListener() {
             @Override
-            public void modifyText(ModifyEvent e) {
-                Text textInput = (Text) e.getSource();
-                System.out.println(textInput.getText());
-                // todo
+			public void focusGained(FocusEvent e) {
+            	
+            	//Vérification que la saisie soit que des nombres et soit pas vide
             }
-        });
+            @Override
+			public void focusLost(FocusEvent e) {
+            	Text textInput = (Text) e.getSource();
+              
+                //je crée le voteur avec la saisie de l'utilisateur
+                v = Voter.createVoter((Integer.parseInt(textInput.getText())));
+                
+                MutableLinearPreference m = MutableLinearPreferenceImpl.given(v,listalt);
+                
+                System.out.println(m);
+            }
+          });
     }
 
     private void handleAlternativeEvent(Control ctr) {
+    	
         Text alt = (Text) ctr;
-        alt.addModifyListener(new ModifyListener() {
+    	alt.addFocusListener(new FocusListener() {
             @Override
-            public void modifyText(ModifyEvent e) {
-                Text textInput = (Text) e.getSource();
-                System.out.println(textInput.getText());
-                // todo
+			public void focusGained(FocusEvent e) {
+            	
+            	//Vérification que la saisie soit que des nombres et sois pas vide
             }
-        });
+            @Override
+			public void focusLost(FocusEvent e) {
+            	Text textInput = (Text) e.getSource();
+              
+            	Alternative a = Alternative.withId(Integer.parseInt(textInput.getText()));
+                
+            	if(!(listalt.contains(a))) {
+            		listalt.add(a);
+            	}
+               
+                MutableLinearPreference m = MutableLinearPreferenceImpl.given(v,listalt);
+                
+                System.out.println(m);
+            }
+          });
     }
+    
+    
+    
+    
+    
+ 
 
+    
 
 
 }
