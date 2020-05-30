@@ -1,24 +1,19 @@
 package io.github.oliviercailloux.j_voting.mvc.gui;
 
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
-import java.util.Set;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.FocusListener;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
+
+import org.eclipse.swt.events.*;
 import org.eclipse.swt.widgets.*;
-import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Button;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
+
 
 public class EditionController {
     private EditionView editionView;
@@ -66,10 +61,10 @@ public class EditionController {
     private void dispatchEvents(Control ctr) {
         switch (ctr.getData("event").toString()) {
             case "alternativeBox":
-                this.handleAlternativeEvent(ctr);
+                //this.handleAlternativeEvent(ctr);
                 break;
             case "voterBox":
-                this.handleVoterEvent(ctr);
+                //this.handleVoterEvent(ctr);
                 break;
             case "deleteAlternativeBtn":
                 this.handleDeleteEvent(ctr);
@@ -79,14 +74,36 @@ public class EditionController {
     }
 
     private void handleDeleteEvent(Control ctr) {
-        // on fait un getparent du btn pour récup son group parent
-        // ON fait un getTextFieldById avec ce group + id
-        // on recup l'id de l'alterentave du text field -> on la cherche dans MLP
-        // On la delete de mlp
-        // on delete le text field (call une method de la vue avec text field en param).
+    	Button deleteBtn = (Button) ctr;
+        deleteBtn.addSelectionListener(new SelectionAdapter() {
+            public void widgetSelected(SelectionEvent e) {
+                Button btnData = (Button) e.getSource();
+                Alternative alt = (Alternative) btnData.getData("alt");
+                controller.getModel().removeAlternative(alt);
+                List<Control> controlsToDelete = getControlsById(alt.getId());
+
+                for(Control ctr : controlsToDelete) {
+                    editionView.removeControl(ctr);
+                }
+            }
+        });
     	
-    	
-    	
+    }
+
+
+    private List<Control> getControlsById(Integer id) {
+        List<Control> compositeChilds = new ArrayList<>(Arrays.asList(this.editionView.getComposite().getChildren()));
+        List <Control> ctr = new ArrayList<>();
+
+        for(Control control : compositeChilds) {
+            Optional<Object> ctrData = Optional.ofNullable(control.getData("alt"));
+            if(ctrData.isPresent()) {
+                if(ctrData.get().toString().equals(id.toString())) {
+                    ctr.add(control);
+                }
+            }
+        }
+        return ctr;
     }
 
     private void handleVoterEvent(Control ctr) {

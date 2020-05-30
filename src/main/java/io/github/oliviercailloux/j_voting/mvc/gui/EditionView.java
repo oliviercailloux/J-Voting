@@ -4,6 +4,9 @@ import io.github.oliviercailloux.j_voting.Alternative;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 public class EditionView {
@@ -39,14 +42,13 @@ public class EditionView {
     // todo : revoir le layout avec les class layout de SWT c'est mieux que des set bounds avec X, Y je pense
     public void displayAlternatives(Set<Alternative> altSet) {
     	int counterY = 50;
-    	int id = 0;
     	// j'ai trouvé que l'ID comme solution pour l'instant pour lier un btn avec son text field
         // on peut faire un group avec Voter + ses alternatives et on le branche sur le le mainComposite.
         // je vais continuer ca
     	for(Alternative a : altSet) {
             Text alt = new Text(mainComposite, SWT.BORDER);
             alt.setData("event", "alternativeBox");
-            alt.setData("id", id);
+            alt.setData("alt", a);
             alt.setText(a.toString());
             alt.setBounds(10,counterY,100,25);
 
@@ -54,20 +56,19 @@ public class EditionView {
             btn.setBounds(120, counterY,100,25);
             btn.setText("Delete");
             btn.setData("event", "deleteAlternativeBtn");
-            btn.setData("id", id);
-            id++;
+            btn.setData("alt", a);
             counterY += 30;
         }
         editionTab.setControl(mainComposite);
     }
 
-    // work in progress
-    public void getTextFieldById(Group gr, String id) {
-
-    }
 
     public Composite getComposite() {
         return this.mainComposite;
+    }
+
+    public void removeControl(Control ctr) {
+        ctr.dispose();
     }
 
 	
