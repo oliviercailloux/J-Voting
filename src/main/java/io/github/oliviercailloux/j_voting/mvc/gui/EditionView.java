@@ -3,6 +3,7 @@ package io.github.oliviercailloux.j_voting.mvc.gui;
 import io.github.oliviercailloux.j_voting.Alternative;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.*;
+import org.eclipse.swt.graphics.Rectangle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +14,6 @@ public class EditionView {
     private TabFolder tabfolder;
     private TabItem editionTab;
     private Composite mainComposite;
-
 
     public static EditionView create(TabFolder mainTabFolder) {
         return new EditionView(mainTabFolder);
@@ -42,11 +42,11 @@ public class EditionView {
     // todo : revoir le layout avec les class layout de SWT c'est mieux que des set bounds avec X, Y je pense
     public void displayAlternatives(Set<Alternative> altSet) {
     	int counterY = 50;
-    	// j'ai trouvé que l'ID comme solution pour l'instant pour lier un btn avec son text field
-        // on peut faire un group avec Voter + ses alternatives et on le branche sur le le mainComposite.
-        // je vais continuer ca
+    	int lasty = 0;
+    	
     	for(Alternative a : altSet) {
-            Text alt = new Text(mainComposite, SWT.BORDER);
+    		
+    		Text alt = new Text(mainComposite, SWT.BORDER);
             alt.setData("event", "alternativeBox");
             alt.setData("alt", a);
             alt.setText(a.toString());
@@ -58,8 +58,24 @@ public class EditionView {
             btn.setData("event", "deleteAlternativeBtn");
             btn.setData("alt", a);
             counterY += 30;
+            
+            lasty = btn.getBounds().y;
+             
         }
         editionTab.setControl(mainComposite);
+        
+        displayAddAlternatives(lasty);
+
+    }
+    
+    public void displayAddAlternatives(int positionY) {
+    	    	
+    	 Button btn = new Button(mainComposite, SWT.NONE);
+         btn.setBounds(120, positionY+30,100,25);
+         btn.setText("Add Alternative");
+         btn.setData("event", "addAlternativeBtn");
+         editionTab.setControl(mainComposite);
+   
     }
 
 

@@ -36,12 +36,13 @@ public class MainGUI {
 		Alternative a = Alternative.withId(2);
 		Alternative a2 = Alternative.withId(3);
 		Alternative a3 = Alternative.withId(4);
+		Alternative a4 = Alternative.withId(5);
 		List<Alternative> alt = new ArrayList<>();
 		alt.add(a);
 		alt.add(a2);
 		alt.add(a3);
+		alt.add(a4);
 		MutableLinearPreference model = MutableLinearPreferenceImpl.given(v1,alt);
-
 		// Controllers
 		Controller controller = Controller.inst(model);
 		EditionController editionController = EditionController.create(editionView, controller);

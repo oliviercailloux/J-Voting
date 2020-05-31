@@ -39,6 +39,9 @@ public class EditionController {
 
         Set<Alternative> a = this.controller.getModel().getAlternatives();
         editionView.displayAlternatives(a);
+        
+   
+
     }
 
 
@@ -68,6 +71,9 @@ public class EditionController {
                 break;
             case "deleteAlternativeBtn":
                 this.handleDeleteEvent(ctr);
+            case "addAlternativeBtn":
+            	this.addAlternative(ctr);
+            
         }
 
         // this is gonna grow
@@ -105,6 +111,10 @@ public class EditionController {
         }
         return ctr;
     }
+    
+    private void addAlternative(Control ctr) {
+    	//Code bouton ajouter
+    }
 
     private void handleVoterEvent(Control ctr) {
 
@@ -121,10 +131,8 @@ public class EditionController {
             	Text textInput = (Text) e.getSource();
               
                 //je crée le voteur avec la saisie de l'utilisateur
-                v = Voter.createVoter((Integer.parseInt(textInput.getText())));
-                
-                MutableLinearPreference m = MutableLinearPreferenceImpl.given(v,listalt);
-                
+                v = Voter.createVoter((Integer.parseInt(textInput.getText())));   
+                MutableLinearPreference m = MutableLinearPreferenceImpl.given(v,listalt);    
                 System.out.println(m);
             }
           });
@@ -142,15 +150,11 @@ public class EditionController {
             @Override
 			public void focusLost(FocusEvent e) {
             	Text textInput = (Text) e.getSource();
-              
             	Alternative a = Alternative.withId(Integer.parseInt(textInput.getText()));
-                
             	if(!(listalt.contains(a))) {
             		listalt.add(a);
             	}
-               
                 MutableLinearPreference m = MutableLinearPreferenceImpl.given(v,listalt);
-                
                 System.out.println(m);
             }
           });
