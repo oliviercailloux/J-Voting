@@ -39,14 +39,10 @@ public class EditionController {
 
         Set<Alternative> a = this.controller.getModel().getAlternatives();
         editionView.displayAlternatives(a);
-        
-   
-
     }
 
 
     private void initViewEvents() {
-    	
     	List<Alternative> alt = new ArrayList<>();
         List<Control> compositeChilds= new ArrayList<>(Arrays.asList(this.editionView.getComposite().getChildren()));
 
@@ -57,11 +53,6 @@ public class EditionController {
             }
 
         }
-
-        // Je pense qu'on peut pas se charger pour l'instant des logiques de rename de voter / alternative
-        // On a aucun moyen de modifier le voter ou l'alternative de la MLP
-        // --> Mais on peut se focus sur add et delete alternative
-
     }
 
     // todo rajouter une Enums pour les noms d'event des "case :"
@@ -101,7 +92,7 @@ public class EditionController {
     	
     }
 
-
+    // Je dois revoir ca
     private List<Control> getControlsById(Integer id) {
         List<Control> compositeChilds = new ArrayList<>(Arrays.asList(this.editionView.getComposite().getChildren()));
         List <Control> ctr = new ArrayList<>();
@@ -116,9 +107,41 @@ public class EditionController {
         }
         return ctr;
     }
-    
+
+    private List<Control> getControlsByKey(String key) {
+        List<Control> compositeChilds = new ArrayList<>(Arrays.asList(this.editionView.getComposite().getChildren()));
+        List <Control> ctr = new ArrayList<>();
+
+        for(Control control : compositeChilds) {
+            Optional<Object> ctrData = Optional.ofNullable(control.getData());
+            if (ctrData.isPresent() && ctrData.get().equals(key)) {
+                ctr.add(control);
+            }
+        }
+        return ctr;
+    }
+
+    private void cleanAltContent(Set<Alternative> altList) {
+        for (Alternative alt : altList) {
+            List<Control> controlsToClean = getControlsById(alt.getId());
+            for(Control ctr : controlsToClean) {
+                this.editionView.removeControl(ctr);
+            }
+        }
+        List<Control> addAltControlsToClean = getControlsByKey("addAlt");
+        for(Control ctr : addAltControlsToClean) {
+            this.editionView.removeControl(ctr);
+        }
+    }
+
     private void addAlternative(Control ctr) {
-    	//Code bouton ajouter
+    	// Process
+        // Recup le champs du textfield associé au ctr
+        // INstancier une alternative avec ce champs transformé en Int
+        // Call cleanAltContent sur getModel.getALternatives
+        // call getModel().addAlternative avec l'instance
+        // call displayAlternatives sur le nouveau getModel.getALternatives.
+        // DONE
     }
 
     private void handleVoterEvent(Control ctr) {
