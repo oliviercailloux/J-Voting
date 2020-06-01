@@ -12,30 +12,31 @@ import io.github.oliviercailloux.j_voting.Alternative;
 public interface MutableLinearPreference extends Preference {
 	
 	/**
-	 * Moves the alternative to the desired rank.
+	 * Moves an existing alternative to the desired rank in the preference.
 	 * 
 	 * @param alternative that we're going to move in the preference
-	 * @param rank desired
+	 * @param rank desired. The first alternative is at the rank 1. 
 	 */
 	public void changeOrder(Alternative alternative, int rank);
 	
 	/**
-	 * Remove an alternative to the Preference. This alternative is deleted as well 
-	 * as the links between it and the other alternatives.
+	 * Removes an existing alternative to the Preference.
 	 *
-	 * @param alternative who belongs to the preference
+	 * @param alternative which belongs to the preference
+	 * @return true 
 	 */
 	public boolean removeAlternative(Alternative alternative);
 	
 	/**
-	 * Adds an alternative to the Preference. Add a link between the "weakest" alternatives and the new
+	 * Adds an non-existing alternative to the Preference at the last rank. 
 	 *
 	 * @param alternative to add to the preference.
+	 * @return true
 	 */
 	public boolean addAlternative(Alternative alternative);
 	
 	/**
-	 * This method enables to swap 2 alternatives of the preference.
+	 * This method enables to swap 2 existing alternatives of the preference.
 	 * 
 	 * @param alternative1 that will change places with alternative2
 	 * @param alternative2 that will change places with alternative1
