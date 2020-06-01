@@ -71,9 +71,10 @@ public class EditionController {
                 break;
             case "deleteAlternativeBtn":
                 this.handleDeleteEvent(ctr);
+                break;
             case "addAlternativeBtn":
             	this.addAlternative(ctr);
-            
+            	break;
         }
 
         // this is gonna grow

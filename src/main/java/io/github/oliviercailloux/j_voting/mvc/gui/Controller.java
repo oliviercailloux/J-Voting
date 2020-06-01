@@ -9,11 +9,18 @@ public class Controller {
 		return mlp;
 	}
 
-	public static Controller inst(MutableLinearPreference m) {
-		return new Controller(m);
+	public static Controller inst(MutableLinearPreference startModel) {
+		return new Controller(startModel);
 	}
 	
-	private Controller(MutableLinearPreference m) {
-		this.mlp = m;
+	private Controller(MutableLinearPreference startModel) {
+		this.mlp = startModel;
 	}
+
+	public EditionController buildEditionController(EditionView view) {
+		return EditionController.create(view, this);
+	}
+
+
+
 }

@@ -43,9 +43,10 @@ public class MainGUI {
 		alt.add(a3);
 		alt.add(a4);
 		MutableLinearPreference model = MutableLinearPreferenceImpl.given(v1,alt);
+
 		// Controllers
 		Controller controller = Controller.inst(model);
-		EditionController editionController = EditionController.create(editionView, controller);
+		EditionController editionController = controller.buildEditionController(editionView);
 
 		shell.open();
 
