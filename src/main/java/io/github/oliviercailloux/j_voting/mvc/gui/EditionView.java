@@ -69,13 +69,14 @@ public class EditionView {
     }
     
     public void displayAddAlternatives(int positionY) {
-    	    	
     	 Button btn = new Button(mainComposite, SWT.NONE);
          btn.setBounds(120, positionY+30,100,25);
          btn.setText("Add Alternative");
          btn.setData("event", "addAlternativeBtn");
-         editionTab.setControl(mainComposite);
-   
+
+        Text newAlt = new Text(mainComposite, SWT.BORDER);
+        newAlt.setBounds(10, positionY + 30,100,25);
+        editionTab.setControl(mainComposite);
     }
 
 

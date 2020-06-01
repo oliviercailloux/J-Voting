@@ -51,7 +51,11 @@ public class EditionController {
         List<Control> compositeChilds= new ArrayList<>(Arrays.asList(this.editionView.getComposite().getChildren()));
 
         for (Control ctr : compositeChilds) {
-            this.dispatchEvents(ctr);
+            Optional<Object> eventName = Optional.ofNullable(ctr.getData("event"));
+            if(eventName.isPresent()) {
+                this.dispatchEvents(ctr);
+            }
+
         }
 
         // Je pense qu'on peut pas se charger pour l'instant des logiques de rename de voter / alternative
