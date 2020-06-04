@@ -85,11 +85,13 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	public boolean removeAlternative(Alternative a) {
 		LOGGER.debug("MutableLinearPreferenceImpl deleteAlternative");
 		Preconditions.checkNotNull(a);
-
-		graph.removeNode(a);
-		list.remove(a);
-
-		return true;
+		
+		if(alternatives.contains(a)) {
+			graph.removeNode(a);
+			list.remove(a);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -97,13 +99,16 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		LOGGER.debug("MutablePreferenceImpl addAlternative");
 		Preconditions.checkNotNull(a);
 
-		list.add(a);
-		graph.addNode(a);
+		if(!(alternatives.contains(a))) {
+			list.add(a);
+			graph.addNode(a);
 
-		for (int i = 0; i < list.size(); i++) {
-			graph.putEdge(list.get(i), list.get(list.size() - 1));
+			for (int i = 0; i < list.size(); i++) {
+				graph.putEdge(list.get(i), list.get(list.size() - 1));
+			}
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	/**
@@ -140,10 +145,14 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	}
 
 	@Override
-	public void swap(Alternative alternative1, Alternative alternative2) {
+	public boolean swap(Alternative alternative1, Alternative alternative2) {
 		LOGGER.debug("MutablePreferenceImpl Swap");
 		Preconditions.checkNotNull(alternative1);
 		Preconditions.checkNotNull(alternative2);
+		
+		if(alternative1.equals(alternative2) || !(alternatives.contains(alternative1)) || !(alternatives.contains(alternative2))) {
+			return false;
+		}
 
 		Alternative a1 = alternative1;
 		Alternative a2 = alternative2;
@@ -166,6 +175,8 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		graph.putEdge(a2, a1);
 
 		Collections.swap(list, list.indexOf(alternative1), list.indexOf(alternative2));
+		
+		return true;
 	}
 
 	@Override
