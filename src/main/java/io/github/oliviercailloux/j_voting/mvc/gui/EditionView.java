@@ -14,7 +14,9 @@ public class EditionView {
     private TabFolder tabfolder;
     private TabItem editionTab;
     private Composite mainComposite;
-
+    private List<Text> listText;
+    private List<Button> listButton;
+    
     public static EditionView create(TabFolder mainTabFolder) {
         return new EditionView(mainTabFolder);
     }
@@ -22,6 +24,8 @@ public class EditionView {
     private EditionView(TabFolder mainTabFolder) {
         this.tabfolder = mainTabFolder;
         this.mainComposite = new Composite(tabfolder, SWT.NONE);
+        this.listText = new ArrayList<>();
+        this.listButton = new ArrayList<>();
         initEditionTab();
     }
 
@@ -44,6 +48,7 @@ public class EditionView {
     	int counterY = 50;
     	int lasty = 0;
     	
+    	
     	for(Alternative a : altSet) {
     		
     		Text alt = new Text(mainComposite, SWT.BORDER);
@@ -51,37 +56,53 @@ public class EditionView {
             alt.setData("alt", a);
             alt.setText(a.toString());
             alt.setBounds(10,counterY,100,25);
-
+            listText.add(alt);
+  
             Button btn = new Button(mainComposite, SWT.NONE);
             btn.setBounds(120, counterY,100,25);
             btn.setText("Delete");
             btn.setData("event", "deleteAlternativeBtn");
             btn.setData("alt", a);
             counterY += 30;
+            listButton.add(btn);
             
-            lasty = btn.getBounds().y;
-             
+            lasty = btn.getBounds().y;      
         }
+    
         editionTab.setControl(mainComposite);
-        
         displayAddAlternatives(lasty, altSet.size()+1);
     }
     
     public void displayAddAlternatives(int positionY, int controlId) {
-    	 Button btn = new Button(mainComposite, SWT.NONE);
-         btn.setBounds(120, positionY+30,100,25);
-         btn.setText("Add Alternative");
-         btn.setData("event", "addAlternativeBtn");
-         btn.setData("id", controlId);
-         btn.setData("addAlt");
+    	Button btn = new Button(mainComposite, SWT.NONE);
+        btn.setBounds(120, positionY+30,100,25);
+        btn.setText("Add Alternative");
+        btn.setData("event", "addAlternativeBtn");
+        btn.setData("id", controlId);
+        btn.setData("addAlt");
 
         Text newAlt = new Text(mainComposite, SWT.BORDER);
         newAlt.setBounds(10, positionY + 30,100,25);
         editionTab.setControl(mainComposite);
-        newAlt.setData("addAlt");
         newAlt.setData("id", controlId);
+        newAlt.setData("addAlt");
+        
     }
-
+    
+    public void positionDeleting(int y) {
+    	
+    	int count = 0;
+    	for(int i=0 ; i<listText.size(); i++) {
+    		
+    		if(listText.get(i).getBounds().y > y) {
+    		
+    			listText.get(i).setLocation(10, y - 1 + count);
+    			listButton.get(i).setLocation(120, y - 1 + count);
+    			count = count + 30;	
+    		}
+    	}
+    	
+    }
 
     public Composite getComposite() {
         return this.mainComposite;

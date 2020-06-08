@@ -4,10 +4,9 @@ package io.github.oliviercailloux.j_voting.mvc.gui;
 import java.util.*;
 import java.util.List;
 
-
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.widgets.*;
-import org.eclipse.swt.widgets.Button;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
@@ -39,6 +38,7 @@ public class EditionController {
 
         Set<Alternative> a = this.controller.getModel().getAlternatives();
         editionView.displayAlternatives(a);
+        
     }
 
 
@@ -83,9 +83,12 @@ public class EditionController {
                 Alternative alt = (Alternative) btnData.getData("alt");
                 controller.getModel().removeAlternative(alt);
                 List<Control> controlsToDelete = getControlsById(alt.getId());
-
+                
+                editionView.positionDeleting(ctr.getBounds().y);
+                
                 for(Control ctr : controlsToDelete) {
                     editionView.removeControl(ctr);
+                    
                 }
             }
         });
@@ -135,6 +138,18 @@ public class EditionController {
     }
 
     private void addAlternative(Control ctr) {
+    	Button addBtn = (Button) ctr;
+    
+    	addBtn.addSelectionListener(new SelectionAdapter() {
+            @Override
+			public void widgetSelected(SelectionEvent e) {
+                
+            	//code du ajouter
+            	
+            	
+            }
+        });
+    	
     	// Process
         // Recup le champs du textfield associé au ctr
         // INstancier une alternative avec ce champs transformé en Int
