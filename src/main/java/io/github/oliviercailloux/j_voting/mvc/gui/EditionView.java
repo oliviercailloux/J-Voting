@@ -1,10 +1,16 @@
 package io.github.oliviercailloux.j_voting.mvc.gui;
 
 import io.github.oliviercailloux.j_voting.Alternative;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.*;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.widgets.Layout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +20,7 @@ public class EditionView {
     private TabFolder tabfolder;
     private TabItem editionTab;
     private Composite mainComposite;
+    private GridLayout gridLayout;
     private List<Text> listText;
     private List<Button> listButton;
     
@@ -26,6 +33,9 @@ public class EditionView {
         this.mainComposite = new Composite(tabfolder, SWT.NONE);
         this.listText = new ArrayList<>();
         this.listButton = new ArrayList<>();
+        this.gridLayout = new GridLayout();
+        this.gridLayout.numColumns = 2;
+        this.mainComposite.setLayout(gridLayout);
         initEditionTab();
     }
 
@@ -39,8 +49,9 @@ public class EditionView {
     	Text voter = new Text(mainComposite, SWT.BORDER);
         voter.setData("event", "voterBox");
     	voter.setText(voterName);
-    	voter.setBounds(10,10,200,25);
-        editionTab.setControl(mainComposite);
+
+    	//voter.setBounds(10,10,200,25);
+       // editionTab.setControl(mainComposite);
     }
 
     // todo : revoir le layout avec les class layout de SWT c'est mieux que des set bounds avec X, Y je pense
@@ -55,11 +66,17 @@ public class EditionView {
             alt.setData("event", "alternativeBox");
             alt.setData("alt", a);
             alt.setText(a.toString());
-            alt.setBounds(10,counterY,100,25);
+            //alt.setBounds(10,counterY,100,25);
+            GridData data = new GridData();
+            data.widthHint = 120;
+            data.horizontalAlignment = GridData.FILL;
+            data.exclude = false;
+            alt.setLayoutData(data);
+
             listText.add(alt);
   
             Button btn = new Button(mainComposite, SWT.NONE);
-            btn.setBounds(120, counterY,100,25);
+            //btn.setBounds(120, counterY,100,25);
             btn.setText("Delete");
             btn.setData("event", "deleteAlternativeBtn");
             btn.setData("alt", a);
@@ -75,13 +92,13 @@ public class EditionView {
     
     public void displayAddAlternatives(int positionY, int controlId) {
     	Button btn = new Button(mainComposite, SWT.NONE);
-        btn.setBounds(120, positionY+30,100,25);
+        //btn.setBounds(120, positionY+30,100,25);
         btn.setText("Add Alternative");
         btn.setData("event", "addAlternativeBtn");
         btn.setData("addAltID", controlId);
 
         Text newAlt = new Text(mainComposite, SWT.BORDER);
-        newAlt.setBounds(10, positionY + 30,100,25);
+        //newAlt.setBounds(10, positionY + 30,100,25);
         editionTab.setControl(mainComposite);
         newAlt.setData("addAltID", controlId);
     }
@@ -106,6 +123,9 @@ public class EditionView {
     }
 
     public void removeControl(Control ctr) {
+        GridData ctrData = (GridData) ctr.getLayoutData();
+        //ctrData.exclude = true;
+        mainComposite.pack();
         ctr.dispose();
     }
 
