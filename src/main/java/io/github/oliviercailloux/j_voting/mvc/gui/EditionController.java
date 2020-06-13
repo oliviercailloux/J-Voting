@@ -85,7 +85,7 @@ public class EditionController {
                 controller.getModel().removeAlternative(alt);
                 List<Control> controlsToDelete = getControlsById("alt", alt.getId());
 
-                //editionView.positionDeleting(ctr.getBounds().y);
+                editionView.positionDeleting(ctr.getBounds().y);
                 
                for(Control ctr : controlsToDelete) {
                    editionView.removeControl(ctr);
@@ -112,8 +112,6 @@ public class EditionController {
                     initViewEvents();
                 }
                 catch (NumberFormatException err) {
-                    // Pierre t'en penses quoi de ca ?
-                    // cailloux deteste les catch qui throw rien mais bon on est sur du gui
                     textField.setText("Not a number");
                 }
             }
@@ -200,14 +198,6 @@ public class EditionController {
             }
           });
     }
-    
-    
-    
-    
-    
- 
-
-    
 
 
 }
