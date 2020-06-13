@@ -66,24 +66,24 @@ public class EditionController {
                 //this.handleVoterEvent(ctr);
                 break;
             case "deleteAlternativeBtn":
-                this.handleDeleteEvent(ctr);
+                this.handleDeleteAlternative(ctr);
                 break;
             case "addAlternativeBtn":
-            	this.addAlternative(ctr);
+            	this.handleAddAlternative(ctr);
             	break;
         }
 
         // this is gonna grow
     }
 
-    private void handleDeleteEvent(Control ctr) {
+    private void handleDeleteAlternative(Control ctr) {
     	Button deleteBtn = (Button) ctr;
         deleteBtn.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
                 Button btnData = (Button) e.getSource();
                 Alternative alt = (Alternative) btnData.getData("alt");
                 controller.getModel().removeAlternative(alt);
-                List<Control> controlsToDelete = getAltControlsById(alt.getId());
+                List<Control> controlsToDelete = getControlsById("alt", alt.getId());
 
                 //editionView.positionDeleting(ctr.getBounds().y);
                 
@@ -95,12 +95,37 @@ public class EditionController {
     	
     }
 
-    private List<Control> getAltControlsById(Integer id) {
-        List <Control> altControls = new ArrayList<>(this.getControlsByKey("alt"));
+    private void handleAddAlternative(Control ctr) {
+        Button addBtn = (Button) ctr;
+
+        addBtn.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                Integer ctrId = Integer.parseInt(ctr.getData("addAltID").toString());
+                Text textField = (Text) getControlsById("addAltID", ctrId).get(1);
+                try {
+                    Integer textFieldId = Integer.parseInt(textField.getText());
+                    Alternative newAlt = Alternative.withId(textFieldId);
+                    cleanAltContent(controller.getModel().getAlternatives());
+                    controller.getModel().addAlternative(newAlt);
+                    editionView.displayAlternatives(controller.getModel().getAlternatives());
+                    initViewEvents();
+                }
+                catch (NumberFormatException err) {
+                    // Pierre t'en penses quoi de ca ?
+                    // cailloux deteste les catch qui throw rien mais bon on est sur du gui
+                    textField.setText("Not a number");
+                }
+            }
+        });
+    }
+
+    private List<Control> getControlsById(String ctrName, Integer id) {
+        List <Control> altControls = new ArrayList<>(this.getControlsByKey(ctrName));
         List <Control> filteredCtr;
 
         filteredCtr = altControls.stream()
-                .filter(ctr -> ctr.getData("alt").toString().equals(id.toString()))
+                .filter(ctr -> ctr.getData(ctrName).toString().equals(id.toString()))
                 .collect(Collectors.toList());
 
         return filteredCtr;
@@ -121,37 +146,15 @@ public class EditionController {
 
     private void cleanAltContent(Set<Alternative> altList) {
         for (Alternative alt : altList) {
-            List<Control> controlsToClean = getAltControlsById(alt.getId());
+            List<Control> controlsToClean = getControlsById("alt", alt.getId());
             for(Control ctr : controlsToClean) {
                 this.editionView.removeControl(ctr);
             }
         }
-        List<Control> addAltControlsToClean = getControlsByKey("addAlt");
+        List<Control> addAltControlsToClean = getControlsByKey("addAltID");
         for(Control ctr : addAltControlsToClean) {
             this.editionView.removeControl(ctr);
         }
-    }
-
-    private void addAlternative(Control ctr) {
-    	Button addBtn = (Button) ctr;
-    
-    	addBtn.addSelectionListener(new SelectionAdapter() {
-            @Override
-			public void widgetSelected(SelectionEvent e) {
-                
-            	//code du ajouter
-            	
-            	
-            }
-        });
-    	
-    	// Process
-        // Recup le champs du textfield associé au ctr
-        // INstancier une alternative avec ce champs transformé en Int
-        // Call cleanAltContent sur getModel.getALternatives
-        // call getModel().addAlternative avec l'instance
-        // call displayAlternatives sur le nouveau getModel.getALternatives.
-        // DONE
     }
 
     private void handleVoterEvent(Control ctr) {

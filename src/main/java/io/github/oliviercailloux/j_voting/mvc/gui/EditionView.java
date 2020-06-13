@@ -78,15 +78,12 @@ public class EditionView {
         btn.setBounds(120, positionY+30,100,25);
         btn.setText("Add Alternative");
         btn.setData("event", "addAlternativeBtn");
-        btn.setData("id", controlId);
-        btn.setData("addAltCtr", true);
+        btn.setData("addAltID", controlId);
 
         Text newAlt = new Text(mainComposite, SWT.BORDER);
         newAlt.setBounds(10, positionY + 30,100,25);
         editionTab.setControl(mainComposite);
-        newAlt.setData("id", controlId);
-        newAlt.setData("addAltCtr", true);
-        
+        newAlt.setData("addAltID", controlId);
     }
     
     public void positionDeleting(int y) {
