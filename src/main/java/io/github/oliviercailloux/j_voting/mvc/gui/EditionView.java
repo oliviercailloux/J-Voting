@@ -5,15 +5,10 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.*;
-import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 import java.util.Set;
 
 public class EditionView {
@@ -52,52 +47,45 @@ public class EditionView {
         gridData.horizontalSpan = 2;
         gridData.horizontalAlignment = GridData.FILL;
         voter.setLayoutData(gridData);
-    	//voter.setBounds(10,10,200,25);
-       // editionTab.setControl(mainComposite);
     }
 
     // todo : revoir le layout avec les class layout de SWT c'est mieux que des set bounds avec X, Y je pense
     public void displayAlternatives(Set<Alternative> altSet) {
-    	int counterY = 50;
-    	int lasty = 0;
 
-    	
     	for(Alternative a : altSet) {
     		Text alt = new Text(mainComposite, SWT.BORDER);
             alt.setData("event", "alternativeBox");
             alt.setData("alt", a);
             alt.setText(a.toString());
-            //alt.setBounds(10,counterY,100,25);
             GridData data = new GridData();
             data.widthHint = 120;
+            data.horizontalAlignment = GridData.BEGINNING;
             alt.setLayoutData(data);
-
   
             Button btn = new Button(mainComposite, SWT.NONE);
-            //btn.setBounds(120, counterY,100,25);
             btn.setText("Delete");
             btn.setData("event", "deleteAlternativeBtn");
             btn.setData("alt", a);
-            counterY += 30;
-            
-            lasty = btn.getBounds().y;      
+
         }
-    
-        //editionTab.setControl(mainComposite);
-        displayAddAlternatives(lasty, altSet.size()+1);
+
+        displayAddAlternatives( altSet.size()+1);
+        mainComposite.layout(true);
     }
     
-    public void displayAddAlternatives(int positionY, int controlId) {
-    	Button btn = new Button(mainComposite, SWT.NONE);
-        //btn.setBounds(120, positionY+30,100,25);
+    public void displayAddAlternatives(int controlId) {
+        Text newAlt = new Text(mainComposite, SWT.BORDER);
+        editionTab.setControl(mainComposite);
+        newAlt.setData("addAltID", controlId);
+
+        GridData data = new GridData();
+        data.widthHint = 120;
+        newAlt.setLayoutData(data);
+
+        Button btn = new Button(mainComposite, SWT.NONE);
         btn.setText("Add Alternative");
         btn.setData("event", "addAlternativeBtn");
         btn.setData("addAltID", controlId);
-
-        Text newAlt = new Text(mainComposite, SWT.BORDER);
-        //newAlt.setBounds(10, positionY + 30,100,25);
-        editionTab.setControl(mainComposite);
-        newAlt.setData("addAltID", controlId);
     }
 
 
@@ -106,7 +94,7 @@ public class EditionView {
     }
 
     public void removeControl(Control ctr) {
-        //mainComposite.pack();
+        ctr.getParent().layout();
         ctr.dispose();
     }
 
