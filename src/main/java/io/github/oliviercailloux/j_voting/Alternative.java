@@ -3,6 +3,7 @@ package io.github.oliviercailloux.j_voting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 
 /**
@@ -54,7 +55,9 @@ public class Alternative {
 
     @Override
     public String toString() {
-        return Integer.toString(id);
+    	 return MoreObjects.toStringHelper(this)
+         .add("id", id)
+         .toString();
     }
 
     @Override
