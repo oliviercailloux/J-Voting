@@ -16,8 +16,9 @@ public interface MutableLinearPreference extends Preference {
 	 * 
 	 * @param alternative that we're going to move in the preference
 	 * @param rank is the new rank where the alternative will be. The first alternative is at the rank 1. 
+	 * @return true if the preference has changed after this call. In other words, if the alternative was not already at this rank.
 	 */
-	public void changeOrder(Alternative alternative, int rank);
+	public boolean changeOrder(Alternative alternative, int rank);
 	
 	/**
 	 * Removes the specified alternative from this preference if it is present.
@@ -36,11 +37,11 @@ public interface MutableLinearPreference extends Preference {
 	public boolean addAlternative(Alternative alternative);
 	
 	/**
-	 * This method enables to swap 2 existing alternatives of the preference. (If the specified alternatives are equal, invoking this method leaves the preference unchanged.)
+	 * This method enables to swap 2 alternatives of the preference. (If the specified alternatives are equal, invoking this method leaves the preference unchanged.)
 	 * 
 	 * @param alternative1 that will change places with alternative2
 	 * @param alternative2 that will change places with alternative1
-	 * @return true if the alternatives are contained in the preference and if the preference has changed after this call.
+	 * @return true if the alternatives are contained in the preference and if the preference has changed after this call. Or equivalently, false if the specified alternatives are equal and contained in this preference.
 	 */
 	public boolean swap(Alternative alternative1, Alternative alternative2);
 	
