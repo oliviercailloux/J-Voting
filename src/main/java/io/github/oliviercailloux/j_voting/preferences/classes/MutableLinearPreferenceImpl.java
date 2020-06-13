@@ -1,5 +1,6 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -37,8 +38,9 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MutableLinearPreferenceImpl.class.getName());
 
 	private MutableLinearPreferenceImpl(Voter voter, List<Alternative> list) {
+		
 		this.voter = voter;
-		this.list = list;
+		this.list = new ArrayList<>(list);
 		this.graph = GraphBuilder.directed().allowsSelfLoops(true).build();
 
 		for (int i = 0; i < list.size(); i++) {
@@ -96,7 +98,6 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 				swap(alternative, temp);
 			}
 		}
-		
 		return true;
 	}
 
@@ -260,33 +261,33 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 			delegate.clear();
 		}
 		
-		@Override
-		public Iterator<Alternative> iterator() {
-			LOGGER.debug("MutableLinearSetDecorator delegate iterator");
-			return new MutableLinearIteratorDecorator(this.iterator());
-		}
-		
-		@Override
-		public boolean retainAll(Collection<?> c) {
-			LOGGER.debug("MutableLinearSetDecorator delegate retainAll");
-			return standardRetainAll(c);
-		}
+//		@Override
+//		public Iterator<Alternative> iterator() {
+//			LOGGER.debug("MutableLinearSetDecorator delegate iterator");
+//			return new MutableLinearIteratorDecorator(this.iterator());
+//		}
+//		
+//		@Override
+//		public boolean retainAll(Collection<?> c) {
+//			LOGGER.debug("MutableLinearSetDecorator delegate retainAll");
+//			return standardRetainAll(c);
+//		}
 		
 	}
 	
-	public class MutableLinearIteratorDecorator extends ForwardingIterator<Alternative> {
-		
-		private Iterator<Alternative> iteratorDelegate;
-
-		@Override
-		protected Iterator<Alternative> delegate() {
-			return iteratorDelegate;
-		}
-		
-		private MutableLinearIteratorDecorator(Iterator<Alternative> iteratorDelegate) {
-			this.iteratorDelegate = iteratorDelegate;
-		}
-	}
+//	public class MutableLinearIteratorDecorator extends ForwardingIterator<Alternative> {
+//		
+//		private Iterator<Alternative> iteratorDelegate;
+//
+//		@Override
+//		protected Iterator<Alternative> delegate() {
+//			return iteratorDelegate;
+//		}
+//		
+//		private MutableLinearIteratorDecorator(Iterator<Alternative> iteratorDelegate) {
+//			this.iteratorDelegate = iteratorDelegate;
+//		}
+//	}
 
 	public class MutableLinearGraphDecorator extends ForwardingGraph<Alternative> {
 
@@ -300,17 +301,6 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		private MutableLinearGraphDecorator(MutableLinearPreferenceImpl delegate) {
 			this.delegate = delegate;
 		}
-	}
-	
-	public class MutableLinearListDecorator extends ForwardingList<Alternative> {
-		
-		private MutableLinearPreferenceImpl delegate;
-
-		@Override
-		protected List<Alternative> delegate() {
-			return delegate.list;
-		}
-	}
-	
+	}	
 	
 }
