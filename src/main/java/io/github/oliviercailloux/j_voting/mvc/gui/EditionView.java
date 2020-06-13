@@ -79,13 +79,13 @@ public class EditionView {
         btn.setText("Add Alternative");
         btn.setData("event", "addAlternativeBtn");
         btn.setData("id", controlId);
-        btn.setData("addAlt");
+        btn.setData("addAltCtr", true);
 
         Text newAlt = new Text(mainComposite, SWT.BORDER);
         newAlt.setBounds(10, positionY + 30,100,25);
         editionTab.setControl(mainComposite);
         newAlt.setData("id", controlId);
-        newAlt.setData("addAlt");
+        newAlt.setData("addAltCtr", true);
         
     }
     

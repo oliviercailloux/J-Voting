@@ -3,6 +3,7 @@ package io.github.oliviercailloux.j_voting.mvc.gui;
 
 import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
@@ -82,33 +83,27 @@ public class EditionController {
                 Button btnData = (Button) e.getSource();
                 Alternative alt = (Alternative) btnData.getData("alt");
                 controller.getModel().removeAlternative(alt);
-                List<Control> controlsToDelete = getControlsById(alt.getId());
+                List<Control> controlsToDelete = getAltControlsById(alt.getId());
+
+                //editionView.positionDeleting(ctr.getBounds().y);
                 
-                editionView.positionDeleting(ctr.getBounds().y);
-                
-                for(Control ctr : controlsToDelete) {
-                    editionView.removeControl(ctr);
-                    
-                }
+               for(Control ctr : controlsToDelete) {
+                   editionView.removeControl(ctr);
+               }
             }
         });
     	
     }
 
-    // Je dois revoir ca
-    private List<Control> getControlsById(Integer id) {
-        List<Control> compositeChilds = new ArrayList<>(Arrays.asList(this.editionView.getComposite().getChildren()));
-        List <Control> ctr = new ArrayList<>();
+    private List<Control> getAltControlsById(Integer id) {
+        List <Control> altControls = new ArrayList<>(this.getControlsByKey("alt"));
+        List <Control> filteredCtr;
 
-        for(Control control : compositeChilds) {
-            Optional<Object> ctrData = Optional.ofNullable(control.getData("alt"));
-            if(ctrData.isPresent()) {
-                if(ctrData.get().toString().equals(id.toString())) {
-                    ctr.add(control);
-                }
-            }
-        }
-        return ctr;
+        filteredCtr = altControls.stream()
+                .filter(ctr -> ctr.getData("alt").toString().equals(id.toString()))
+                .collect(Collectors.toList());
+
+        return filteredCtr;
     }
 
     private List<Control> getControlsByKey(String key) {
@@ -116,8 +111,8 @@ public class EditionController {
         List <Control> ctr = new ArrayList<>();
 
         for(Control control : compositeChilds) {
-            Optional<Object> ctrData = Optional.ofNullable(control.getData());
-            if (ctrData.isPresent() && ctrData.get().equals(key)) {
+            Optional<Object> ctrData = Optional.ofNullable(control.getData(key));
+            if (ctrData.isPresent()) {
                 ctr.add(control);
             }
         }
@@ -126,7 +121,7 @@ public class EditionController {
 
     private void cleanAltContent(Set<Alternative> altList) {
         for (Alternative alt : altList) {
-            List<Control> controlsToClean = getControlsById(alt.getId());
+            List<Control> controlsToClean = getAltControlsById(alt.getId());
             for(Control ctr : controlsToClean) {
                 this.editionView.removeControl(ctr);
             }
