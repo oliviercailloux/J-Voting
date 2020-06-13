@@ -21,8 +21,6 @@ public class EditionView {
     private TabItem editionTab;
     private Composite mainComposite;
     private GridLayout gridLayout;
-    private List<Text> listText;
-    private List<Button> listButton;
     
     public static EditionView create(TabFolder mainTabFolder) {
         return new EditionView(mainTabFolder);
@@ -31,11 +29,11 @@ public class EditionView {
     private EditionView(TabFolder mainTabFolder) {
         this.tabfolder = mainTabFolder;
         this.mainComposite = new Composite(tabfolder, SWT.NONE);
-        this.listText = new ArrayList<>();
-        this.listButton = new ArrayList<>();
+
         this.gridLayout = new GridLayout();
         this.gridLayout.numColumns = 2;
         this.mainComposite.setLayout(gridLayout);
+
         initEditionTab();
     }
 
@@ -50,6 +48,10 @@ public class EditionView {
         voter.setData("event", "voterBox");
     	voter.setText(voterName);
 
+        GridData gridData = new GridData();
+        gridData.horizontalSpan = 2;
+        gridData.horizontalAlignment = GridData.FILL;
+        voter.setLayoutData(gridData);
     	//voter.setBounds(10,10,200,25);
        // editionTab.setControl(mainComposite);
     }
@@ -58,10 +60,9 @@ public class EditionView {
     public void displayAlternatives(Set<Alternative> altSet) {
     	int counterY = 50;
     	int lasty = 0;
-    	
+
     	
     	for(Alternative a : altSet) {
-    		
     		Text alt = new Text(mainComposite, SWT.BORDER);
             alt.setData("event", "alternativeBox");
             alt.setData("alt", a);
@@ -69,11 +70,8 @@ public class EditionView {
             //alt.setBounds(10,counterY,100,25);
             GridData data = new GridData();
             data.widthHint = 120;
-            data.horizontalAlignment = GridData.FILL;
-            data.exclude = false;
             alt.setLayoutData(data);
 
-            listText.add(alt);
   
             Button btn = new Button(mainComposite, SWT.NONE);
             //btn.setBounds(120, counterY,100,25);
@@ -81,12 +79,11 @@ public class EditionView {
             btn.setData("event", "deleteAlternativeBtn");
             btn.setData("alt", a);
             counterY += 30;
-            listButton.add(btn);
             
             lasty = btn.getBounds().y;      
         }
     
-        editionTab.setControl(mainComposite);
+        //editionTab.setControl(mainComposite);
         displayAddAlternatives(lasty, altSet.size()+1);
     }
     
@@ -102,30 +99,14 @@ public class EditionView {
         editionTab.setControl(mainComposite);
         newAlt.setData("addAltID", controlId);
     }
-    
-    public void positionDeleting(int y) {
-    	
-    	int count = 0;
-    	for(int i=0 ; i<listText.size(); i++) {
-    		
-    		if(listText.get(i).getBounds().y > y) {
-    		
-    			listText.get(i).setLocation(10, y - 1 + count);
-    			listButton.get(i).setLocation(120, y - 1 + count);
-    			count = count + 30;	
-    		}
-    	}
-    	
-    }
+
 
     public Composite getComposite() {
         return this.mainComposite;
     }
 
     public void removeControl(Control ctr) {
-        GridData ctrData = (GridData) ctr.getLayoutData();
-        //ctrData.exclude = true;
-        mainComposite.pack();
+        //mainComposite.pack();
         ctr.dispose();
     }
 
