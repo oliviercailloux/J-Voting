@@ -29,7 +29,6 @@ public class EditionView {
         initEditionTab();
     }
 
-    // Demander si ca passe dans le controller
     private void initEditionTab() {
         this.editionTab = new TabItem(this.tabfolder, SWT.NONE);
         editionTab.setText("Edition");
@@ -43,12 +42,10 @@ public class EditionView {
         editionTab.setControl(mainComposite);
     }
 
-    // todo : revoir le layout avec les class layout de SWT c'est mieux que des set bounds avec X, Y je pense
     public void displayAlternatives(Set<Alternative> altSet) {
     	int counterY = 50;
     	int lasty = 0;
-    	
-    	
+
     	for(Alternative a : altSet) {
     		
     		Text alt = new Text(mainComposite, SWT.BORDER);
