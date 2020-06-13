@@ -59,7 +59,7 @@ public class StrictCompletePreferenceImplTest {
         prefs.add(a2);
         prefs.add(a3);
         OldLinearPreferenceImpl strict = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(prefs);
-        assertEquals(strict.toString(), "1,2,3");
+        assertEquals(strict.toString(), "Alternative{id=1},Alternative{id=2},Alternative{id=3}");
     }
 
     @Test
