@@ -3,11 +3,6 @@ package io.github.oliviercailloux.j_voting.mvc.gui;
 import io.github.oliviercailloux.j_voting.Alternative;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.*;
-import org.eclipse.swt.graphics.Rectangle;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 
 public class EditionView {
@@ -17,7 +12,7 @@ public class EditionView {
     
     /**
      * Factory method to create the edition window 
-     * @param mainTabFolder 
+     * @param mainTabFolder the tab folder that holds the view
      * @return a new window
      */
     public static EditionView create(TabFolder mainTabFolder) {
@@ -118,7 +113,5 @@ public class EditionView {
     public void removeControl(Control ctr) {
         ctr.dispose();
     }
-
-	
 
 }

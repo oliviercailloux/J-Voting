@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.widgets.*;
 
-
 import io.github.oliviercailloux.j_voting.Alternative;
 
 
@@ -29,6 +28,9 @@ public class EditionController {
         initViewEvents();
     }
 
+    /**
+     * Display the default edition view when user enters the gui
+     */
     private void initEditionView() {
         String voterName = this.controller.getModel().getVoter().toString();
         editionView.displayVoters(voterName);
@@ -37,6 +39,9 @@ public class EditionController {
         editionView.displayAlternatives(a);
     }
 
+    /**
+     * Attach all the controls in the view to its corresponding event callback
+     */
     private void initViewEvents() {
         List<Control> compositeChilds= new ArrayList<>(Arrays.asList(this.editionView.getComposite().getChildren()));
 
@@ -45,7 +50,6 @@ public class EditionController {
             if(eventName.isPresent()) {
                 this.dispatchEvents(ctr);
             }
-
         }
     }
 
@@ -60,9 +64,12 @@ public class EditionController {
 		default:
 			break;
         }
-
     }
 
+    /**
+     * Callback for deleting the delete btn + its associated text field in the edition view
+     * @param ctr the controlled clicked by the user
+     */
     private void handleDeleteAlternative(Control ctr) {
     	Button deleteBtn = (Button) ctr;
         deleteBtn.addSelectionListener(new SelectionAdapter() {
@@ -81,6 +88,10 @@ public class EditionController {
     	
     }
 
+    /**
+     * Callback for adding an alternative btn + its associated text field
+     * @param ctr the add alternative btn clicked by the user
+     */
     private void handleAddAlternative(Control ctr) {
         Button addBtn = (Button) ctr;
 
@@ -91,6 +102,8 @@ public class EditionController {
                 Text textField = (Text) getControlsById("addAltID", ctrId).get(1);
 
                 String string = textField.getText();
+
+                // Method found on stackoverflow to check whether the provided string is a number
                 Matcher matcher = Pattern.compile("[0-9]*+$").matcher(string);
                 if (!matcher.matches()) {
                 	textField.setText("Not a number");
@@ -113,6 +126,12 @@ public class EditionController {
         });
     }
 
+    /**
+     * Getter on the edition view in order to find a particular control by its ID
+     * @param ctrName name given in the data object of the control to find
+     * @param id id of the desired control
+     * @return a list of controls matching with the given parameters
+     */
     private List<Control> getControlsById(String ctrName, Integer id) {
         List <Control> altControls = new ArrayList<>(this.getControlsByKey(ctrName));
         List <Control> filteredCtr;
@@ -124,6 +143,11 @@ public class EditionController {
         return filteredCtr;
     }
 
+    /**
+     * Getter on the edition view in order to find a particular control by its key (set in the data object of the control)
+     * @param key corresponding to the control to find
+     * @return a list of controls matching with the given parameter
+     */
     private List<Control> getControlsByKey(String key) {
         List<Control> compositeChilds = new ArrayList<>(Arrays.asList(this.editionView.getComposite().getChildren()));
         List <Control> ctr = new ArrayList<>();
@@ -137,6 +161,10 @@ public class EditionController {
         return ctr;
     }
 
+    /**
+     * remove of the alternative related control in the view
+     * @param altList set of alternatives corresponding to the alternative related controls to delete in the view
+     */
     private void cleanAltContent(Set<Alternative> altList) {
         for (Alternative alt : altList) {
             List<Control> controlsToClean = getControlsById("alt", alt.getId());

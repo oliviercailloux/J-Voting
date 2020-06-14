@@ -20,7 +20,4 @@ public class Controller {
 	public EditionController buildEditionController(EditionView view) {
 		return EditionController.create(view, this);
 	}
-
-
-
 }
