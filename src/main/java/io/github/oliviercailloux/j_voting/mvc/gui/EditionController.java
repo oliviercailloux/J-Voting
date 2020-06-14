@@ -99,6 +99,8 @@ public class EditionController {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 Integer ctrId = Integer.parseInt(ctr.getData("addAltID").toString());
+
+                // Magic number here but we know that this control will come first from the view
                 Text textField = (Text) getControlsById("addAltID", ctrId).get(0);
 
                 String string = textField.getText();
