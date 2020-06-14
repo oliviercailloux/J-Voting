@@ -16,7 +16,6 @@ public class VisualizationView {
         initVisualizationTab();
     }
 
-    // ca va évoluer ça (peut etre passer dans le controller)
     private void initVisualizationTab() {
         this.visualizationTab = new TabItem(this.tabfolder, SWT.NONE);
         visualizationTab.setText("Visualization");

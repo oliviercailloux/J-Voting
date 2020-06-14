@@ -3,24 +3,19 @@ package io.github.oliviercailloux.j_voting.mvc.gui;
 
 import java.util.*;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.widgets.*;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.Voter;
-import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 
 public class EditionController {
     private EditionView editionView;
     private Controller controller;
-    
-    private List<Alternative> listalt = new ArrayList<>();
-    private Voter v;
 
 	public static EditionController create(EditionView editionView, Controller mainController) {
         return new EditionController(editionView, mainController);
@@ -33,18 +28,21 @@ public class EditionController {
         initViewEvents();
     }
 
+    /**
+     * Display the default edition view when user enters the gui
+     */
     private void initEditionView() {
         String voterName = this.controller.getModel().getVoter().toString();
         editionView.displayVoters(voterName);
 
         Set<Alternative> a = this.controller.getModel().getAlternatives();
         editionView.displayAlternatives(a);
-        
     }
 
-
+    /**
+     * Attach all the controls in the view to its corresponding event callback
+     */
     private void initViewEvents() {
-    	List<Alternative> alt = new ArrayList<>();
         List<Control> compositeChilds= new ArrayList<>(Arrays.asList(this.editionView.getComposite().getChildren()));
 
         for (Control ctr : compositeChilds) {
@@ -52,49 +50,48 @@ public class EditionController {
             if(eventName.isPresent()) {
                 this.dispatchEvents(ctr);
             }
-
         }
     }
 
-    // todo rajouter une Enums pour les noms d'event des "case :"
     private void dispatchEvents(Control ctr) {
         switch (ctr.getData("event").toString()) {
-            case "alternativeBox":
-                //this.handleAlternativeEvent(ctr);
-                break;
-            case "voterBox":
-                //this.handleVoterEvent(ctr);
-                break;
             case "deleteAlternativeBtn":
                 this.handleDeleteAlternative(ctr);
                 break;
             case "addAlternativeBtn":
             	this.handleAddAlternative(ctr);
             	break;
+		default:
+			break;
         }
-
-        // this is gonna grow
     }
 
+    /**
+     * Callback for deleting the delete btn + its associated text field in the edition view
+     * @param ctr the controlled clicked by the user
+     */
     private void handleDeleteAlternative(Control ctr) {
     	Button deleteBtn = (Button) ctr;
         deleteBtn.addSelectionListener(new SelectionAdapter() {
-            public void widgetSelected(SelectionEvent e) {
-                Button btnData = (Button) e.getSource();
+            @Override
+			public void widgetSelected(SelectionEvent e) {
+            	Button btnData = (Button) e.getSource();
                 Alternative alt = (Alternative) btnData.getData("alt");
                 controller.getModel().removeAlternative(alt);
                 List<Control> controlsToDelete = getControlsById("alt", alt.getId());
 
-                //editionView.positionDeleting(ctr.getBounds().y);
-                
-               for(Control ctr : controlsToDelete) {
-                   editionView.removeControl(ctr);
-               }
+                for(Control c : controlsToDelete) {
+                	editionView.removeControl(c);
+                }
             }
         });
     	
     }
 
+    /**
+     * Callback for adding an alternative btn + its associated text field
+     * @param ctr the add alternative btn clicked by the user
+     */
     private void handleAddAlternative(Control ctr) {
         Button addBtn = (Button) ctr;
 
@@ -102,24 +99,39 @@ public class EditionController {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 Integer ctrId = Integer.parseInt(ctr.getData("addAltID").toString());
-                Text textField = (Text) getControlsById("addAltID", ctrId).get(0);
-                try {
-                    Integer textFieldId = Integer.parseInt(textField.getText());
-                    Alternative newAlt = Alternative.withId(textFieldId);
-                    cleanAltContent(controller.getModel().getAlternatives());
-                    controller.getModel().addAlternative(newAlt);
-                    editionView.displayAlternatives(controller.getModel().getAlternatives());
-                    initViewEvents();
+                Text textField = (Text) getControlsById("addAltID", ctrId).get(1);
+
+                String string = textField.getText();
+
+                // Method found on stackoverflow to check whether the provided string is a number
+                Matcher matcher = Pattern.compile("[0-9]*+$").matcher(string);
+                if (!matcher.matches()) {
+                	textField.setText("Not a number");
+                    return;
                 }
-                catch (NumberFormatException err) {
-                    // Pierre t'en penses quoi de ca ?
-                    // cailloux deteste les catch qui throw rien mais bon on est sur du gui
-                    textField.setText("Not a number");
-                }
+                 
+                Integer textFieldId = Integer.parseInt(textField.getText());
+          	  	Alternative newAlt = Alternative.withId(textFieldId);
+          	  	
+          	  	if(controller.getModel().getAlternatives().contains(newAlt)){
+          	  		textField.setText("Alternative already exists");
+          	  		return;
+          	  	}	
+          	  	
+          	  	cleanAltContent(controller.getModel().getAlternatives());
+          	  	controller.getModel().addAlternative(newAlt);
+          	  	editionView.displayAlternatives(controller.getModel().getAlternatives());
+          	  	initViewEvents();
             }
         });
     }
 
+    /**
+     * Getter on the edition view in order to find a particular control by its ID
+     * @param ctrName name given in the data object of the control to find
+     * @param id id of the desired control
+     * @return a list of controls matching with the given parameters
+     */
     private List<Control> getControlsById(String ctrName, Integer id) {
         List <Control> altControls = new ArrayList<>(this.getControlsByKey(ctrName));
         List <Control> filteredCtr;
@@ -131,6 +143,11 @@ public class EditionController {
         return filteredCtr;
     }
 
+    /**
+     * Getter on the edition view in order to find a particular control by its key (set in the data object of the control)
+     * @param key corresponding to the control to find
+     * @return a list of controls matching with the given parameter
+     */
     private List<Control> getControlsByKey(String key) {
         List<Control> compositeChilds = new ArrayList<>(Arrays.asList(this.editionView.getComposite().getChildren()));
         List <Control> ctr = new ArrayList<>();
@@ -144,6 +161,10 @@ public class EditionController {
         return ctr;
     }
 
+    /**
+     * remove of the alternative related control in the view
+     * @param altList set of alternatives corresponding to the alternative related controls to delete in the view
+     */
     private void cleanAltContent(Set<Alternative> altList) {
         for (Alternative alt : altList) {
             List<Control> controlsToClean = getControlsById("alt", alt.getId());
@@ -156,58 +177,5 @@ public class EditionController {
             this.editionView.removeControl(ctr);
         }
     }
-
-    private void handleVoterEvent(Control ctr) {
-
-    	//Evenenemnts focus in et focus out plus approprié
-    	Text voter = (Text) ctr;
-    	voter.addFocusListener(new FocusListener() {
-            @Override
-			public void focusGained(FocusEvent e) {
-            	
-            	//Vérification que la saisie soit que des nombres et soit pas vide
-            }
-            @Override
-			public void focusLost(FocusEvent e) {
-            	Text textInput = (Text) e.getSource();
-              
-                //je crée le voteur avec la saisie de l'utilisateur
-                v = Voter.createVoter((Integer.parseInt(textInput.getText())));   
-                MutableLinearPreference m = MutableLinearPreferenceImpl.given(v,listalt);    
-                System.out.println(m);
-            }
-          });
-    }
-
-    private void handleAlternativeEvent(Control ctr) {
-    	
-        Text alt = (Text) ctr;
-    	alt.addFocusListener(new FocusListener() {
-            @Override
-			public void focusGained(FocusEvent e) {
-            	
-            	//Vérification que la saisie soit que des nombres et sois pas vide
-            }
-            @Override
-			public void focusLost(FocusEvent e) {
-            	Text textInput = (Text) e.getSource();
-            	Alternative a = Alternative.withId(Integer.parseInt(textInput.getText()));
-            	if(!(listalt.contains(a))) {
-            		listalt.add(a);
-            	}
-                MutableLinearPreference m = MutableLinearPreferenceImpl.given(v,listalt);
-                System.out.println(m);
-            }
-          });
-    }
-    
-    
-    
-    
-    
- 
-
-    
-
 
 }
