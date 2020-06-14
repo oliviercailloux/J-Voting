@@ -14,9 +14,12 @@ public class EditionView {
     private TabFolder tabfolder;
     private TabItem editionTab;
     private Composite mainComposite;
-    private List<Text> listText;
-    private List<Button> listButton;
     
+    /**
+     * Factory method to create the edition window 
+     * @param mainTabFolder 
+     * @return a new window
+     */
     public static EditionView create(TabFolder mainTabFolder) {
         return new EditionView(mainTabFolder);
     }
@@ -24,16 +27,22 @@ public class EditionView {
     private EditionView(TabFolder mainTabFolder) {
         this.tabfolder = mainTabFolder;
         this.mainComposite = new Composite(tabfolder, SWT.NONE);
-        this.listText = new ArrayList<>();
-        this.listButton = new ArrayList<>();
         initEditionTab();
     }
 
+    /**
+     * Initialization of the editing tab window
+     */
     private void initEditionTab() {
         this.editionTab = new TabItem(this.tabfolder, SWT.NONE);
         editionTab.setText("Edition");
     }
 
+    /**
+     * Creation and display the text field with the voter
+     * 
+     * @param voterName for the voter's name in the Mutable Linear Preference.
+     */
     public void displayVoters(String voterName) {
     	Text voter = new Text(mainComposite, SWT.BORDER);
         voter.setData("event", "voterBox");
@@ -42,6 +51,12 @@ public class EditionView {
         editionTab.setControl(mainComposite);
     }
 
+    /**
+     * Creation and display of text fields with alternatives. 
+     * Creating and displaying buttons for deleting an alternative.
+     * 
+     * @param altSet for the list of alternatives to display in the Mutable Linear Preference..
+     */
     public void displayAlternatives(Set<Alternative> altSet) {
     	int counterY = 50;
     	int lasty = 0;
@@ -52,16 +67,14 @@ public class EditionView {
             alt.setData("event", "alternativeBox");
             alt.setData("alt", a);
             alt.setText(a.toString());
-            alt.setBounds(10,counterY,100,25);
-            listText.add(alt);
+            alt.setBounds(10,counterY,150,25);
   
             Button btn = new Button(mainComposite, SWT.NONE);
-            btn.setBounds(120, counterY,100,25);
+            btn.setBounds(170, counterY,100,25);
             btn.setText("Delete");
             btn.setData("event", "deleteAlternativeBtn");
             btn.setData("alt", a);
             counterY += 30;
-            listButton.add(btn);
             
             lasty = btn.getBounds().y;      
         }
@@ -70,38 +83,38 @@ public class EditionView {
         displayAddAlternatives(lasty, altSet.size()+1);
     }
     
+    /**
+     * Creation and display of the text field of the alternative to be added. 
+     * Creation and display of the add button.
+     * 
+     * @param positionY for the position of the last alternative of the MutableLinearPreference
+     * @param controlId for the alternative id.
+     */
     public void displayAddAlternatives(int positionY, int controlId) {
     	Button btn = new Button(mainComposite, SWT.NONE);
-        btn.setBounds(120, positionY+30,100,25);
+        btn.setBounds(170, positionY+30,100,25);
         btn.setText("Add Alternative");
         btn.setData("event", "addAlternativeBtn");
         btn.setData("addAltID", controlId);
 
         Text newAlt = new Text(mainComposite, SWT.BORDER);
-        newAlt.setBounds(10, positionY + 30,100,25);
+        newAlt.setBounds(10, positionY + 30,150,25);
         editionTab.setControl(mainComposite);
         newAlt.setData("addAltID", controlId);
     }
     
-    public void positionDeleting(int y) {
-    	
-    	int count = 0;
-    	for(int i=0 ; i<listText.size(); i++) {
-    		
-    		if(listText.get(i).getBounds().y > y) {
-    		
-    			listText.get(i).setLocation(10, y - 1 + count);
-    			listButton.get(i).setLocation(120, y - 1 + count);
-    			count = count + 30;	
-    		}
-    	}
-    	
-    }
-
+    /**
+     * Return the composite of the tab.
+     * @return mainComposite
+     */
     public Composite getComposite() {
         return this.mainComposite;
     }
-
+    
+    /**
+     * Delete window control
+     * @param ctr the control to be removed
+     */
     public void removeControl(Control ctr) {
         ctr.dispose();
     }

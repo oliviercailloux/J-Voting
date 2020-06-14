@@ -3,10 +3,13 @@ package io.github.oliviercailloux.j_voting.mvc.gui;
 
 import java.util.*;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.widgets.*;
+
 
 import io.github.oliviercailloux.j_voting.Alternative;
 
@@ -54,6 +57,8 @@ public class EditionController {
             case "addAlternativeBtn":
             	this.handleAddAlternative(ctr);
             	break;
+		default:
+			break;
         }
 
     }
@@ -61,17 +66,16 @@ public class EditionController {
     private void handleDeleteAlternative(Control ctr) {
     	Button deleteBtn = (Button) ctr;
         deleteBtn.addSelectionListener(new SelectionAdapter() {
-            public void widgetSelected(SelectionEvent e) {
-                Button btnData = (Button) e.getSource();
+            @Override
+			public void widgetSelected(SelectionEvent e) {
+            	Button btnData = (Button) e.getSource();
                 Alternative alt = (Alternative) btnData.getData("alt");
                 controller.getModel().removeAlternative(alt);
                 List<Control> controlsToDelete = getControlsById("alt", alt.getId());
 
-                editionView.positionDeleting(ctr.getBounds().y);
-                
-               for(Control ctr : controlsToDelete) {
-                   editionView.removeControl(ctr);
-               }
+                for(Control c : controlsToDelete) {
+                	editionView.removeControl(c);
+                }
             }
         });
     	
@@ -85,17 +89,26 @@ public class EditionController {
             public void widgetSelected(SelectionEvent e) {
                 Integer ctrId = Integer.parseInt(ctr.getData("addAltID").toString());
                 Text textField = (Text) getControlsById("addAltID", ctrId).get(1);
-                try {
-                    Integer textFieldId = Integer.parseInt(textField.getText());
-                    Alternative newAlt = Alternative.withId(textFieldId);
-                    cleanAltContent(controller.getModel().getAlternatives());
-                    controller.getModel().addAlternative(newAlt);
-                    editionView.displayAlternatives(controller.getModel().getAlternatives());
-                    initViewEvents();
+
+                String string = textField.getText();
+                Matcher matcher = Pattern.compile("[0-9]*+$").matcher(string);
+                if (!matcher.matches()) {
+                	textField.setText("Not a number");
+                    return;
                 }
-                catch (NumberFormatException err) {
-                    textField.setText("Not a number");
-                }
+                 
+                Integer textFieldId = Integer.parseInt(textField.getText());
+          	  	Alternative newAlt = Alternative.withId(textFieldId);
+          	  	
+          	  	if(controller.getModel().getAlternatives().contains(newAlt)){
+          	  		textField.setText("Alternative already exists");
+          	  		return;
+          	  	}	
+          	  	
+          	  	cleanAltContent(controller.getModel().getAlternatives());
+          	  	controller.getModel().addAlternative(newAlt);
+          	  	editionView.displayAlternatives(controller.getModel().getAlternatives());
+          	  	initViewEvents();
             }
         });
     }
