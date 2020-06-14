@@ -18,7 +18,10 @@ public class Controller {
 	public static Controller inst(MutableLinearPreference startModel) {
 		return new Controller(startModel);
 	}
-
+	
+	/**
+     * Creation of the LinearMutablePreference by default when launching the application
+     */
 	public static Controller withDefaultModel() {
 		Voter v1 = Voter.createVoter(1);
 		Alternative a = Alternative.withId(2);

@@ -11,6 +11,9 @@ public class MainGUI {
 		new MainGUI().displayGUI();
 	}
 
+	/**
+     * Creating the main window and calling controllers and views
+     */
 	public void displayGUI() {
 		Display display = new Display();
 		Shell shell = new Shell(display, SWT.CLOSE | SWT.RESIZE);
@@ -18,14 +21,12 @@ public class MainGUI {
 		shell.setSize(600, 400);
 		centerOnScreen(display, shell);
 
-		// Views
 		View view = View.create(shell);
 		EditionView editionView = view.buildEditionView();
-		VisualizationView visualizationView = view.buildVisualizationView();
+		view.buildVisualizationView();
 
-		// Controllers
 		Controller controller = Controller.withDefaultModel();
-		EditionController editionController = controller.buildEditionController(editionView);
+		controller.buildEditionController(editionView);
 
 		shell.open();
 
@@ -36,6 +37,9 @@ public class MainGUI {
 		display.dispose();
 	}
 
+	/**
+     * Center the window in the middle of the screen
+     */
 	private void centerOnScreen(Display display, Shell shell) {
 		Rectangle screenSize = display.getPrimaryMonitor().getBounds();
 		shell.setLocation((screenSize.width - shell.getBounds().width) / 2,
