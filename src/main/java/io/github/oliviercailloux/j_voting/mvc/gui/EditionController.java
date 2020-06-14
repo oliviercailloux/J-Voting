@@ -99,7 +99,7 @@ public class EditionController {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 Integer ctrId = Integer.parseInt(ctr.getData("addAltID").toString());
-                Text textField = (Text) getControlsById("addAltID", ctrId).get(1);
+                Text textField = (Text) getControlsById("addAltID", ctrId).get(0);
 
                 String string = textField.getText();
 
