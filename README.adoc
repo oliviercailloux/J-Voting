@@ -82,9 +82,14 @@ Methods at least needed for first target (besides factories/constructors):
 
 The method need for second target might evolve a lot while coding (depending on how we build the voter composite to render)
 
-*Léo* :
+*Léo* : SM/PO
 
-SM/PO
+Help in the implementation of decorators in MutableLinearPreference.
+Proposal of new methods to optimize the code.
+Help in testing and debug.
+Management of branches and pull requests
+
+
 
 
 
