@@ -84,9 +84,9 @@ The method need for second target might evolve a lot while coding (depending on 
 
 *Léo* : SM/PO
 
-Help in the implementation of decorators in MutableLinearPreference.
-Proposal of new methods to optimize the code.
-Help in testing and debug.
+Help in the implementation of decorators in MutableLinearPreference. +
+Proposal of new methods to optimize the code. +
+Help in testing and debug. +
 Management of branches and pull requests
 
 
