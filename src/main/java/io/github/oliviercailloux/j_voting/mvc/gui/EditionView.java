@@ -26,8 +26,7 @@ public class EditionView {
         this.tabfolder = mainTabFolder;
         this.mainComposite = new Composite(tabfolder, SWT.NONE);
 
-        this.gridLayout = new GridLayout();
-        this.gridLayout.numColumns = 2;
+        this.gridLayout = new GridLayout(2, false);
         this.mainComposite.setLayout(gridLayout);
 
         initEditionTab();
@@ -40,6 +39,8 @@ public class EditionView {
         this.editionTab = new TabItem(this.tabfolder, SWT.NONE);
         editionTab.setText("Edition");
     }
+
+    // Changer constructeur de gridData
 
     /**
      * Creation and display the text field with the voter
