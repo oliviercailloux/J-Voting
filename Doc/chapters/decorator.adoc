@@ -14,10 +14,12 @@ The decorator has only one attribute called delegate that represents the decorat
 === Decorators in J-voting
 
 In our project, linearity issues forced us to resort to use decorators. Indeed, we manipulate mutable preferences. In MutableLinearPreferenceImpl, there are 4 attributes that can be modified : 
+
 * a list
 * a set 
 * a graph
 * a voter
+
 This class contains getter methods (for the set and the graph) which is problematic because the user could reach and modify one of these two attributes. Yet, the four attributes always have to be in accordance with each other. Thus, if the set or the graph is modified, so must the other attributes.
 Thus, we implemented a decorator for the set extending  link:https://guava.dev/releases/19.0/api/docs/com/google/common/collect/ForwardingSet.html[ForwardingSet] and one for the graph extending link:https://github.com/google/guava/blob/master/guava/src/com/google/common/graph/ForwardingGraph.java[ForwardingGraph] of Guava. It is important to know that ForwardingGraph is not ready to be used for general purposes so we created our own ForwardingGraph copying it. 
 
