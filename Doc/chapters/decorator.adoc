@@ -16,8 +16,11 @@ The decorator has only one attribute called delegate that represents the decorat
 In our project, linearity issues forced us to resort to use decorators. Indeed, we manipulate mutable preferences. In MutableLinearPreferenceImpl, there are 4 attributes that can be modified : 
 
 * a list
+
 * a set 
+
 * a graph
+
 * a voter
 
 This class contains getter methods (for the set and the graph) which is problematic because the user could reach and modify one of these two attributes. Yet, the four attributes always have to be in accordance with each other. Thus, if the set or the graph is modified, so must the other attributes.
