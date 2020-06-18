@@ -1808,6 +1808,42 @@ Voter's preferences : AntiSymmetric</body>
                 <ownedParameter xmi:type="uml:Parameter" xmi:id="_QApby526EeqyF8i-7JEYZQ" name="a2" type="_PFRisGbSEeqrtc6dy-mPpg"/>
               </ownedOperation>
             </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_rh-ecLFxEeqggtRcyxTifg" name="MutableLinearPreferenceImpl">
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_x9-4kLFxEeqggtRcyxTifg" name="changeOrder">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_5PAPILFxEeqggtRcyxTifg" name="alternative" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_FKoToLFyEeqggtRcyxTifg" name="rank">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_JHApoLFyEeqggtRcyxTifg" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_KOYhYLFyEeqggtRcyxTifg" name="removeAlternative">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_NM6IALFyEeqggtRcyxTifg" name="alternative" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_QAGBULFyEeqggtRcyxTifg" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_REjvALFyEeqggtRcyxTifg" name="addAlternative">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_XhCDMLFyEeqggtRcyxTifg" name="alternative" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_Y7ZIYLFyEeqggtRcyxTifg" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_aPP88LFyEeqggtRcyxTifg" name="clear"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_yyozMLFyEeqggtRcyxTifg" name="getAlternatives">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_XYcScLFzEeqggtRcyxTifg" type="_LBLa0LFzEeqggtRcyxTifg" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_1wj84LFyEeqggtRcyxTifg" name="getVoter"/>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_3qbokLFyEeqggtRcyxTifg" name="asGraph">
+                <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q0KtILFzEeqggtRcyxTifg" type="_FZFJ4LFzEeqggtRcyxTifg" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_9Abc4LFyEeqggtRcyxTifg" name="swap"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_FZFJ4LFzEeqggtRcyxTifg" name="MutableLinearGraphDecorator"/>
+            <packagedElement xmi:type="uml:Class" xmi:id="_LBLa0LFzEeqggtRcyxTifg" name="MutableLinearSetDecorator">
+              <ownedOperation xmi:type="uml:Operation" xmi:id="_jjtVcLFzEeqggtRcyxTifg" name="add"/>
+            </packagedElement>
           </packagedElement>
           <packagedElement xmi:type="uml:Package" xmi:id="_PPICQGbSEeqrtc6dy-mPpg" name="interfaces">
             <packagedElement xmi:type="uml:Interface" xmi:id="_PPIpUGbSEeqrtc6dy-mPpg" name="CompletePreference" visibility="public">
@@ -6884,6 +6920,54 @@ Voter's preferences : AntiSymmetric</body>
           <packagedElement xmi:type="uml:Actor" xmi:id="_F6q84HziEeq0BdJaLpBd6w" name="Interface : SOCColumnsGUI"/>
           <packagedElement xmi:type="uml:Actor" xmi:id="_HgN-YHziEeq0BdJaLpBd6w" name="Interface : SOCRowsGUI"/>
           <packagedElement xmi:type="uml:Actor" xmi:id="_I_TykHziEeq0BdJaLpBd6w" name="Interface : SOCWrappedColumnsGUI"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_UHnyALFfEeqggtRcyxTifg" name="DecoratorSequenceDiagram">
+        <packagedElement xmi:type="uml:Package" xmi:id="_k8JfILFfEeqggtRcyxTifg" name="Objects" visibility="public">
+          <packagedElement xmi:type="uml:Interaction" xmi:id="_eJ-AsLFfEeqggtRcyxTifg" name="Decorator interaction">
+            <lifeline xmi:type="uml:Lifeline" xmi:id="_Z8VtMLFgEeqggtRcyxTifg" name=": User" coveredBy="_6YhUkbF0EeqggtRcyxTifg _6ZBq6LF0EeqggtRcyxTifg _79NvkLF2Eeq7VbBGPK2XXg _7-YNMLF2Eeq7VbBGPK2XXg _PklXwLF3Eeq7VbBGPK2XXg _PlWz0LF3Eeq7VbBGPK2XXg _uUNGwLF3Eeq7VbBGPK2XXg _uVEpcLF3Eeq7VbBGPK2XXg"/>
+            <lifeline xmi:type="uml:Lifeline" xmi:id="_eQeb4LFgEeqggtRcyxTifg" name=": MutableLinearSetDecorator" coveredBy="_LNCIsbF3Eeq7VbBGPK2XXg _PklXwbF3Eeq7VbBGPK2XXg _PlWMwLF3Eeq7VbBGPK2XXg _PlQtMLF3Eeq7VbBGPK2XXg"/>
+            <lifeline xmi:type="uml:Lifeline" xmi:id="_hPhm8LFgEeqggtRcyxTifg" name=": MutableLinearPreference" coveredBy="_6YhUkrF0EeqggtRcyxTifg _e_bnELF1Eeq7VbBGPK2XXg _6ZBq57F0EeqggtRcyxTifg _79OWoLF2Eeq7VbBGPK2XXg _LNCIsLF3Eeq7VbBGPK2XXg _7-XmILF2Eeq7VbBGPK2XXg _uUNt0LF3Eeq7VbBGPK2XXg _zTj8sLF3Eeq7VbBGPK2XXg _uVECYLF3Eeq7VbBGPK2XXg _6ZBq4LF0EeqggtRcyxTifg _7-MnALF2Eeq7VbBGPK2XXg _uU_w8LF3Eeq7VbBGPK2XXg"/>
+            <lifeline xmi:type="uml:Lifeline" xmi:id="_0EqtsLFwEeqggtRcyxTifg" name=": MutableLinearGraphDecorator 1" coveredBy="_e_cOILF1Eeq7VbBGPK2XXg"/>
+            <lifeline xmi:type="uml:Lifeline" xmi:id="_mO_TILF3Eeq7VbBGPK2XXg" name=": MutableLinearGraphDecorator 2" coveredBy="_zTkjwLF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6YhUkbF0EeqggtRcyxTifg" name="Message7SendEvent" covered="_Z8VtMLFgEeqggtRcyxTifg" message="_6YhUkLF0EeqggtRcyxTifg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6YhUkrF0EeqggtRcyxTifg" name="Message7ReceiveEvent" covered="_hPhm8LFgEeqggtRcyxTifg" message="_6YhUkLF0EeqggtRcyxTifg"/>
+            <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_6ZBq4LF0EeqggtRcyxTifg" name="BehaviorExecutionSpecification10" covered="_hPhm8LFgEeqggtRcyxTifg" finish="_6ZBq57F0EeqggtRcyxTifg" start="_6YhUkrF0EeqggtRcyxTifg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_e_bnELF1Eeq7VbBGPK2XXg" name="Message12SendEvent" covered="_hPhm8LFgEeqggtRcyxTifg" message="_e_TrQLF1Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_e_cOILF1Eeq7VbBGPK2XXg" name="Message12ReceiveEvent" covered="_0EqtsLFwEeqggtRcyxTifg" message="_e_TrQLF1Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6ZBq57F0EeqggtRcyxTifg" name="Message12SendEvent" covered="_hPhm8LFgEeqggtRcyxTifg" message="_6ZBq5rF0EeqggtRcyxTifg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6ZBq6LF0EeqggtRcyxTifg" name="Message12ReceiveEvent" covered="_Z8VtMLFgEeqggtRcyxTifg" message="_6ZBq5rF0EeqggtRcyxTifg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_79NvkLF2Eeq7VbBGPK2XXg" name="Message15SendEvent" covered="_Z8VtMLFgEeqggtRcyxTifg" message="_79MhcLF2Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_79OWoLF2Eeq7VbBGPK2XXg" name="Message15ReceiveEvent" covered="_hPhm8LFgEeqggtRcyxTifg" message="_79MhcLF2Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_7-MnALF2Eeq7VbBGPK2XXg" name="BehaviorExecutionSpecification18" covered="_hPhm8LFgEeqggtRcyxTifg" finish="_7-XmILF2Eeq7VbBGPK2XXg" start="_79OWoLF2Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_LNCIsLF3Eeq7VbBGPK2XXg" name="Message22SendEvent" covered="_hPhm8LFgEeqggtRcyxTifg" message="_LNA6kLF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_LNCIsbF3Eeq7VbBGPK2XXg" name="Message22ReceiveEvent" covered="_eQeb4LFgEeqggtRcyxTifg" message="_LNA6kLF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_7-XmILF2Eeq7VbBGPK2XXg" name="Message20SendEvent" covered="_hPhm8LFgEeqggtRcyxTifg" message="_7-W_ELF2Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_7-YNMLF2Eeq7VbBGPK2XXg" name="Message20ReceiveEvent" covered="_Z8VtMLFgEeqggtRcyxTifg" message="_7-W_ELF2Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_PklXwLF3Eeq7VbBGPK2XXg" name="Message25SendEvent" covered="_Z8VtMLFgEeqggtRcyxTifg" message="_PkkJoLF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_PklXwbF3Eeq7VbBGPK2XXg" name="Message25ReceiveEvent" covered="_eQeb4LFgEeqggtRcyxTifg" message="_PkkJoLF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_PlQtMLF3Eeq7VbBGPK2XXg" name="BehaviorExecutionSpecification28" covered="_eQeb4LFgEeqggtRcyxTifg" finish="_PlWMwLF3Eeq7VbBGPK2XXg" start="_PklXwbF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_PlWMwLF3Eeq7VbBGPK2XXg" name="Message30SendEvent" covered="_eQeb4LFgEeqggtRcyxTifg" message="_PlVlsLF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_PlWz0LF3Eeq7VbBGPK2XXg" name="Message30ReceiveEvent" covered="_Z8VtMLFgEeqggtRcyxTifg" message="_PlVlsLF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_uUNGwLF3Eeq7VbBGPK2XXg" name="Message33SendEvent" covered="_Z8VtMLFgEeqggtRcyxTifg" message="_uUMfsLF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_uUNt0LF3Eeq7VbBGPK2XXg" name="Message33ReceiveEvent" covered="_hPhm8LFgEeqggtRcyxTifg" message="_uUMfsLF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_uU_w8LF3Eeq7VbBGPK2XXg" name="BehaviorExecutionSpecification36" covered="_hPhm8LFgEeqggtRcyxTifg" finish="_uVECYLF3Eeq7VbBGPK2XXg" start="_uUNt0LF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_zTj8sLF3Eeq7VbBGPK2XXg" name="Message40SendEvent" covered="_hPhm8LFgEeqggtRcyxTifg" message="_zTjVoLF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_zTkjwLF3Eeq7VbBGPK2XXg" name="Message40ReceiveEvent" covered="_mO_TILF3Eeq7VbBGPK2XXg" message="_zTjVoLF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_uVECYLF3Eeq7VbBGPK2XXg" name="Message38SendEvent" covered="_hPhm8LFgEeqggtRcyxTifg" message="_uVDbULF3Eeq7VbBGPK2XXg"/>
+            <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_uVEpcLF3Eeq7VbBGPK2XXg" name="Message38ReceiveEvent" covered="_Z8VtMLFgEeqggtRcyxTifg" message="_uVDbULF3Eeq7VbBGPK2XXg"/>
+            <message xmi:type="uml:Message" xmi:id="_6YhUkLF0EeqggtRcyxTifg" name="asGraph()" receiveEvent="_6YhUkrF0EeqggtRcyxTifg" sendEvent="_6YhUkbF0EeqggtRcyxTifg"/>
+            <message xmi:type="uml:Message" xmi:id="_6ZBq5rF0EeqggtRcyxTifg" name="new MutableLinearGraphDecorator()" messageSort="asynchCall" receiveEvent="_6ZBq6LF0EeqggtRcyxTifg" sendEvent="_6ZBq57F0EeqggtRcyxTifg"/>
+            <message xmi:type="uml:Message" xmi:id="_e_TrQLF1Eeq7VbBGPK2XXg" name="&lt;&lt;create>>" messageSort="createMessage" receiveEvent="_e_cOILF1Eeq7VbBGPK2XXg" sendEvent="_e_bnELF1Eeq7VbBGPK2XXg"/>
+            <message xmi:type="uml:Message" xmi:id="_79MhcLF2Eeq7VbBGPK2XXg" name="getAlternatives()" receiveEvent="_79OWoLF2Eeq7VbBGPK2XXg" sendEvent="_79NvkLF2Eeq7VbBGPK2XXg"/>
+            <message xmi:type="uml:Message" xmi:id="_7-W_ELF2Eeq7VbBGPK2XXg" name="new MutableLinearSetDecorator()" messageSort="reply" receiveEvent="_7-YNMLF2Eeq7VbBGPK2XXg" sendEvent="_7-XmILF2Eeq7VbBGPK2XXg"/>
+            <message xmi:type="uml:Message" xmi:id="_LNA6kLF3Eeq7VbBGPK2XXg" name="&lt;&lt;create>>" messageSort="createMessage" receiveEvent="_LNCIsbF3Eeq7VbBGPK2XXg" sendEvent="_LNCIsLF3Eeq7VbBGPK2XXg"/>
+            <message xmi:type="uml:Message" xmi:id="_PkkJoLF3Eeq7VbBGPK2XXg" name="add(a4)" receiveEvent="_PklXwbF3Eeq7VbBGPK2XXg" sendEvent="_PklXwLF3Eeq7VbBGPK2XXg"/>
+            <message xmi:type="uml:Message" xmi:id="_PlVlsLF3Eeq7VbBGPK2XXg" name="addAlternative(a4)" messageSort="reply" receiveEvent="_PlWz0LF3Eeq7VbBGPK2XXg" sendEvent="_PlWMwLF3Eeq7VbBGPK2XXg"/>
+            <message xmi:type="uml:Message" xmi:id="_uUMfsLF3Eeq7VbBGPK2XXg" name="asGraph()" receiveEvent="_uUNt0LF3Eeq7VbBGPK2XXg" sendEvent="_uUNGwLF3Eeq7VbBGPK2XXg"/>
+            <message xmi:type="uml:Message" xmi:id="_uVDbULF3Eeq7VbBGPK2XXg" name="new MutableLinearGraphDecorator()" messageSort="reply" receiveEvent="_uVEpcLF3Eeq7VbBGPK2XXg" sendEvent="_uVECYLF3Eeq7VbBGPK2XXg"/>
+            <message xmi:type="uml:Message" xmi:id="_zTjVoLF3Eeq7VbBGPK2XXg" name="&lt;&lt;create>>" messageSort="createMessage" receiveEvent="_zTkjwLF3Eeq7VbBGPK2XXg" sendEvent="_zTj8sLF3Eeq7VbBGPK2XXg"/>
+          </packagedElement>
         </packagedElement>
       </packagedElement>
     </packagedElement>
