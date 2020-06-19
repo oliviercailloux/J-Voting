@@ -39,27 +39,10 @@ image:../assets/NewGUIClassDiagram.png[NewGUIClassDiagram]
 | Calls the displayGUI() Method
 
 |displayGUI()
-| Instanciates the main shell mechanism. 
-*Gathers all the differents MVC pieces* :
+| Creating the main window and calling controllers and views
 
-- Create MutableLinear Preference Instance 
-
-- Create View instance and pass it probably the mainshell.
-
-- Create Controller and pass it the View & Preference.
-
-- The view builds an Edition & Visualisation views and pass them its unique tabFolder.
-
-- Create Edition & Visualisation child controllers and pass them the associated child views *and the common controller* (I don't see otherwise how those two controllers will be able to use the getModel() method declared in controller). 
-
-
-- Finally calls : 
-initEditionView()
-initVisualisationView()
-initEditionControler()
-initVisualisationController()
-
-
+|centerOnScreen(Display display, Shell shell)
+| Center the window in the middle of the screen
 |===
 
 === *Controller*
@@ -68,10 +51,11 @@ initVisualisationController()
 |Method name
 |Explanation 
 
-|controller(View v, MutableLinearPreference model)
+|controller(MutableLinearPreference startModel)
 | Set the parent view and the common model shared by all child controllers
 
-
+|withDefaultModel()
+| Creation of the LinearMutablePreference by default when launching the application
 |===
 
 
@@ -82,31 +66,30 @@ initVisualisationController()
 |Explanation 
 
 |initEditionView()
-| Pass the default model to the view for rendering. This will be necessary in the future to display a default profile when user open the app.
+| Display the default edition view when user enters the gui
 
-|initEditionControler()
-| We add listeners on all the controls present in the default view when we enter the app. 
-We link them to each corresponding callbacks. 
+|initViewEvents()
+| Attach all the controls in the view to its corresponding event callback
 
-|onModifyAlternativeName(Event e)
-| We retrieve the id of the Alternative that is being modified. 
-Then each time that the user type a letter the name of the alternative is changed in the model (this a proposition, we could say otherwise that we update the model only when user finish typing).
+|dispatchEvents()
+| Allocate controls between different actions 
 
-|onModifyVoterName(Event e)
-|Each time that the user type a letter the name of the voter is updated in the model (this a proposition, we could say otherwise that we update the model only when user finish typing)
+|onDeleteAlternative(Event e)
+| Callback for deleting the delete btn + its associated text field in the edition view
 
+|onAddAlternative(Event e)
+| Callback for adding an alternative btn + its associated text field
 
-|onDeleteAlternativeBtnClick(SelectionEvent event)
-| We retrieve the id of the alternative to be deleted. 
-Then we delete the alternative from the preference model. 
-And we call a method from the view that delete an Alternative case.  
+|getControlsById(String ctrName, Integer id)
+| Getter on the edition view in order to find a particular control by its ID
 
+|getControlsByKey(String key)
+| Getter on the edition view in order to find a particular control by its key (set in the data object of the control)
 
-|onAddAlternativeBtnClick(SelectionEvent event)
-| We add a new alternative to the preference model with as name : the text present in the text field (getter on that text field). Then we call a method from the view that add an Alternative case (This might change depending on the SWT usage).  
+|cleanAltContent(Set<Alternative> altList)
+| remove of the alternative related control in the view
 
 |===
-
 === *VisualisationController*
 [cols="1,1", options="header"] 
 |===
@@ -186,18 +169,24 @@ We pass to the view the preference model.
 |Method name
 |Explanation 
 
-|createEditionButtons()
-|Creates and displays the different edit buttons. A button to select a profile, buttons to add or remove an alternative and buttons to add or remove a voter.
-
-|displayProfil()
-|Creates an editable "profile name" text field 
+|initEditionTab()
+| Initialization of the editing tab window
 
 |displayVoters()
-|Creates and displays the different text fields corresponding to the voters. The name can be changed.
+| Creation and display the text field with the voter
 
 |displayAlternatives()
 |Creates and displays the different text fields corresponding to the voter's alternatives in order of preference. If an alternative is modified then this alternative is modified for each voter.
 
+|displayAddAlternatives(int positionY, int controlId)
+| Creation and display of the text field of the alternative to be added. 
+Creation and display of the add button.
+
+|getComposite()
+|Return the composite of the tab.
+
+|removeControl(Event e)
+|Delete window control
 
 |===
 
