@@ -3,6 +3,7 @@
 
 == Class diagram
 
+image:../assets/ProfilArchitectureClassDiagram.png[ProfilArchitectureClassDiagram]
 
 
 == Notion of mutability 
@@ -27,6 +28,7 @@ Indeed, a MutableLinearPreferences is not a more precise version of a MutablePre
 Here is the reason why, when a preference is mutable it can be openly modified. Whereas if the preference is mutable and linear, each modification must maintain the linearity. 
 
 
+
 == We can wonder, why don't we have the same issue regarding the Immutable Profiles ?
 
 An Immutable Linear profile can extend an Immutable Complete profile without breaking its contracts because the Linear Preferences manipulated are  actually a more precise version of Complete Preferences. Indeed, because those two types of preferences are Immutable then we can deduce the Complete preference out of a Linear one. 
@@ -35,8 +37,5 @@ An Immutable Linear profile can extend an Immutable Complete profile without bre
 == Precision on the Profile Set of Alternatives
 
 Inside a profile the set of alternatives is common to all the voters. It is actually the union of all the alternatives present in every preferences.
-
-
-
 
 
