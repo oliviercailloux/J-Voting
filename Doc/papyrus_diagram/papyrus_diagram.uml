@@ -106,6 +106,7 @@ Voter's preferences : AntiSymmetric</body>
               </ownedParameter>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_1nTbUJwKEeq8ir2MIFEotA" name="displayGUI"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_wxlJELIwEeqh-pEC48cDzA" name="centerOnScreen"/>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_TbvngJp2Eeqy6sHmH3R0hw" name="VisualizationController" visibility="public">
             <ownedOperation xmi:type="uml:Operation" xmi:id="_1iYn4JuCEeqQoOmi0eM9lw" name="VisualizationController">
@@ -126,28 +127,56 @@ Voter's preferences : AntiSymmetric</body>
             </nestedClassifier>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_TOHbMJp2Eeqy6sHmH3R0hw" name="EditionView">
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_UxsCcJwFEeq8ir2MIFEotA" name="createEditionButtons"/>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_WHEhAJwFEeq8ir2MIFEotA" name="displayVoters"/>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_WZnCgJwFEeq8ir2MIFEotA" name="displayPreference"/>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_WyNIsJwFEeq8ir2MIFEotA" name="displayProfil"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_UxsCcJwFEeq8ir2MIFEotA" name="initEditionTab"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_WHEhAJwFEeq8ir2MIFEotA" name="displayVoters">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_9EYM4LIvEeqh-pEC48cDzA" name="voterName" type="_PF7qAGbSEeqrtc6dy-mPpg"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_WZnCgJwFEeq8ir2MIFEotA" name="displayAlternatives">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_NwioMLIwEeqh-pEC48cDzA" name="altSet" type="_PERdIGbSEeqrtc6dy-mPpg"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_WyNIsJwFEeq8ir2MIFEotA" name="displayAddAlternatives">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_cnSaALIwEeqh-pEC48cDzA" name="positionY">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_hM3eALIwEeqh-pEC48cDzA" name="controlId">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_lmM1wLIwEeqh-pEC48cDzA" name="getComposite"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_ngHkwLIwEeqh-pEC48cDzA" name="removeControl"/>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_S_NcgJp2Eeqy6sHmH3R0hw" name="Controller " visibility="public">
             <ownedOperation xmi:type="uml:Operation" xmi:id="_OfoP8JuAEeqQoOmi0eM9lw" name="Controller">
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_OfoP8ZuAEeqQoOmi0eM9lw" name="view" type="_mCc5YJp1Eeqy6sHmH3R0hw"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_OfoP8puAEeqQoOmi0eM9lw" name="model" type="_QApbwJ26EeqyF8i-7JEYZQ"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_OfoP8puAEeqQoOmi0eM9lw" name="startModel" type="_QApbwJ26EeqyF8i-7JEYZQ"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_5AL6gJw9EeqmcI8XI9UxnQ" name="getModel"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_0uNeELItEeqh-pEC48cDzA" name="withDefaultModel"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_9MvJkLItEeqh-pEC48cDzA" name="buildEditionController" visibility="public">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_F8BN4LIuEeqh-pEC48cDzA" name="view" type="_TOHbMJp2Eeqy6sHmH3R0hw"/>
+            </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_SjFhMJp2Eeqy6sHmH3R0hw" name="EditionController " visibility="public">
             <ownedOperation xmi:type="uml:Operation" xmi:id="_u6MoYJuBEeqQoOmi0eM9lw" name="EditionController">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_u6MoYZuBEeqQoOmi0eM9lw" name="editionView" type="_TOHbMJp2Eeqy6sHmH3R0hw"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_eOJVALIuEeqh-pEC48cDzA" name="mainController" type="_S_NcgJp2Eeqy6sHmH3R0hw"/>
             </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_x1vzgJuBEeqQoOmi0eM9lw" name="initEditionController"/>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_DjF_AJuCEeqQoOmi0eM9lw" name="onModifyAlternativeName"/>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_G6MdsJuCEeqQoOmi0eM9lw" name="onModifyVoterName"/>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_Peoj8JuCEeqQoOmi0eM9lw" name="onDeleteAlternativeBtnClick"/>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_Utl8IJuCEeqQoOmi0eM9lw" name="onAddAlternativeBtnClick"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_x1vzgJuBEeqQoOmi0eM9lw" name="initViewEvents"/>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_MEiukJ3mEeql8Nh_8AGPlA" name="initEditionView"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_unp6ELIuEeqh-pEC48cDzA" name="dispatchEvents"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_KACngLIvEeqh-pEC48cDzA" name="onAddAlternative"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_LaCgULIvEeqh-pEC48cDzA" name="onDeleteAlternative"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_NvpFwLIvEeqh-pEC48cDzA" name="getControlsById">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Z4aOYLIvEeqh-pEC48cDzA" name="ctrName" type="_PF7qAGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_fQTgILIvEeqh-pEC48cDzA" name="id">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_ILxaUPaLEeW5KOK8aDMdgA"/>
+              </ownedParameter>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_SVz_oLIvEeqh-pEC48cDzA" name="getControlsByKey">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_kTIg0LIvEeqh-pEC48cDzA" name="key" type="_PF7qAGbSEeqrtc6dy-mPpg"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_lymvgLIvEeqh-pEC48cDzA" name="cleanAltContent" visibility="public">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_rgNLgLIvEeqh-pEC48cDzA" name="altList" type="_PERdIGbSEeqrtc6dy-mPpg"/>
+            </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_SVi0cJp2Eeqy6sHmH3R0hw" name="VisualizationView">
             <ownedOperation xmi:type="uml:Operation" xmi:id="_DW94AJwFEeq8ir2MIFEotA" name="createVisualizationButtons"/>
