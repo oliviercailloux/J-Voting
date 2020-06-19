@@ -29,3 +29,7 @@ image:./assets/j-voting-example.png[InterfacesProfilesDiagram]
 ==== link:chapters/MutableLinearPreferenceImplChanges.adoc[Change of direction in MutableLinearPreferenceImpl]
 ==== link:chapters/decorator.adoc[Decorator documentation]
 
+= Suggestions for the next groups 
+
+Partie de léo
++ Nouveau diagramme de classe des profils
