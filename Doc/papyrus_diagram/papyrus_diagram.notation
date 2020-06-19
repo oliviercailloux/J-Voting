@@ -4413,7 +4413,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oCTnsbI3Eeqp-7fUAdwzTg"/>
       </children>
       <element xmi:type="uml:Class" href="papyrus_diagram.uml#_oCQkULI3Eeqp-7fUAdwzTg"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oCTAkbI3Eeqp-7fUAdwzTg" x="360" y="240" height="121"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oCTAkbI3Eeqp-7fUAdwzTg" x="380" y="240" height="121"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_VHaOcLI4Eeqp-7fUAdwzTg" type="Class_Shape">
       <children xmi:type="notation:DecorationNode" xmi:id="_VHa1gLI4Eeqp-7fUAdwzTg" type="Class_NameLabel"/>
@@ -4567,6 +4567,88 @@
       <element xmi:type="uml:Class" href="papyrus_diagram.uml#_UQJZ0LI5Eeqp-7fUAdwzTg"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UQL2EbI5Eeqp-7fUAdwzTg" x="800" y="500" width="301" height="61"/>
     </children>
+    <children xmi:type="notation:Shape" xmi:id="_x8CSkLJHEeql8Nh_8AGPlA" type="Note" fontName=".AppleSystemUIFont" description="A GeneralProfile can be Complete or Incomplete" transparency="0" lineColor="6737151" lineWidth="1">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_x8DgsLJHEeql8Nh_8AGPlA" source="PapyrusCSSForceValue">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_x8DgsbJHEeql8Nh_8AGPlA" key="lineColor" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_x8EHwLJHEeql8Nh_8AGPlA" key="fontHeight" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_x8EHwbJHEeql8Nh_8AGPlA" key="bold" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_x8EHwrJHEeql8Nh_8AGPlA" key="italic" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_x8EHw7JHEeql8Nh_8AGPlA" key="fontColor" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_x8EHxLJHEeql8Nh_8AGPlA" key="fillColor" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0sj5cLJHEeql8Nh_8AGPlA" key="description" value="true"/>
+      </eAnnotations>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_x8Eu0LJHEeql8Nh_8AGPlA" type="DiagramName">
+        <element xsi:nil="true"/>
+      </children>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_x8Eu0bJHEeql8Nh_8AGPlA" type="Description">
+        <element xsi:nil="true"/>
+      </children>
+      <styles xmi:type="notation:TextStyle" xmi:id="_x8CSkbJHEeql8Nh_8AGPlA"/>
+      <styles xmi:type="notation:LineTypeStyle" xmi:id="_x8CSkrJHEeql8Nh_8AGPlA"/>
+      <element xsi:nil="true"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x8CSk7JHEeql8Nh_8AGPlA" x="680" y="20" height="41"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_7z2sQLJHEeql8Nh_8AGPlA" type="Note" fontName=".AppleSystemUIFont" description="A MutableLinearProfile is Complete" transparency="0" lineColor="6737151" lineWidth="1">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7z3TULJHEeql8Nh_8AGPlA" source="PapyrusCSSForceValue">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7z3TUbJHEeql8Nh_8AGPlA" key="lineColor" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7z3TUrJHEeql8Nh_8AGPlA" key="fontHeight" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7z3TU7JHEeql8Nh_8AGPlA" key="bold" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7z3TVLJHEeql8Nh_8AGPlA" key="italic" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7z3TVbJHEeql8Nh_8AGPlA" key="fontColor" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7z3TVrJHEeql8Nh_8AGPlA" key="fillColor" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9xGcELJHEeql8Nh_8AGPlA" key="description" value="true"/>
+      </eAnnotations>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_7z36YLJHEeql8Nh_8AGPlA" type="DiagramName">
+        <element xsi:nil="true"/>
+      </children>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_7z36YbJHEeql8Nh_8AGPlA" type="Description">
+        <element xsi:nil="true"/>
+      </children>
+      <styles xmi:type="notation:TextStyle" xmi:id="_7z2sQbJHEeql8Nh_8AGPlA"/>
+      <styles xmi:type="notation:LineTypeStyle" xmi:id="_7z2sQrJHEeql8Nh_8AGPlA"/>
+      <element xsi:nil="true"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7z2sQ7JHEeql8Nh_8AGPlA" x="-40" y="160" height="36"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_KefUsLJIEeql8Nh_8AGPlA" type="Note" fontName=".AppleSystemUIFont" description="A MutableGeneralProfile can be Complete or Incomplete" transparency="0" lineColor="6737151" lineWidth="1">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_KefUtLJIEeql8Nh_8AGPlA" source="PapyrusCSSForceValue">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KefUtbJIEeql8Nh_8AGPlA" key="lineColor" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KefUtrJIEeql8Nh_8AGPlA" key="fontHeight" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KefUt7JIEeql8Nh_8AGPlA" key="bold" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KefUuLJIEeql8Nh_8AGPlA" key="italic" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KefUubJIEeql8Nh_8AGPlA" key="fontColor" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_KefUurJIEeql8Nh_8AGPlA" key="fillColor" value="true"/>
+      </eAnnotations>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_Kef7wLJIEeql8Nh_8AGPlA" type="DiagramName">
+        <element xsi:nil="true"/>
+      </children>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_Kef7wbJIEeql8Nh_8AGPlA" type="Description">
+        <element xsi:nil="true"/>
+      </children>
+      <styles xmi:type="notation:TextStyle" xmi:id="_KefUsbJIEeql8Nh_8AGPlA"/>
+      <styles xmi:type="notation:LineTypeStyle" xmi:id="_KefUsrJIEeql8Nh_8AGPlA"/>
+      <element xsi:nil="true"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KefUs7JIEeql8Nh_8AGPlA" x="280" y="220" height="22"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_SkXPoLJIEeql8Nh_8AGPlA" type="Note" fontName=".AppleSystemUIFont" description="A ImmutableGeneralProfile can be Complete or Incomplete" transparency="0" lineColor="6737151" lineWidth="1">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SkXPpLJIEeql8Nh_8AGPlA" source="PapyrusCSSForceValue">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SkXPpbJIEeql8Nh_8AGPlA" key="lineColor" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SkXPprJIEeql8Nh_8AGPlA" key="fontHeight" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SkX2sLJIEeql8Nh_8AGPlA" key="bold" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SkX2sbJIEeql8Nh_8AGPlA" key="italic" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SkX2srJIEeql8Nh_8AGPlA" key="fontColor" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SkX2s7JIEeql8Nh_8AGPlA" key="fillColor" value="true"/>
+      </eAnnotations>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_SkX2tLJIEeql8Nh_8AGPlA" type="DiagramName">
+        <element xsi:nil="true"/>
+      </children>
+      <children xmi:type="notation:BasicDecorationNode" xmi:id="_SkX2tbJIEeql8Nh_8AGPlA" type="Description">
+        <element xsi:nil="true"/>
+      </children>
+      <styles xmi:type="notation:TextStyle" xmi:id="_SkXPobJIEeql8Nh_8AGPlA"/>
+      <styles xmi:type="notation:LineTypeStyle" xmi:id="_SkXPorJIEeql8Nh_8AGPlA"/>
+      <element xsi:nil="true"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SkXPo7JIEeql8Nh_8AGPlA" x="820" y="180" height="21"/>
+    </children>
     <styles xmi:type="notation:StringValueStyle" xmi:id="_C5tZ0bI2Eeqp-7fUAdwzTg" name="diagram_compatibility_version" stringValue="1.4.0"/>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_C5tZ0rI2Eeqp-7fUAdwzTg"/>
     <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_C5tZ07I2Eeqp-7fUAdwzTg" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
@@ -4605,23 +4687,25 @@
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_CLsgcLI6Eeqp-7fUAdwzTg" type="Generalization_Edge" source="_oCTAkLI3Eeqp-7fUAdwzTg" target="_JAo70LI2Eeqp-7fUAdwzTg">
       <children xmi:type="notation:DecorationNode" xmi:id="_CLtHgLI6Eeqp-7fUAdwzTg" type="Generalization_StereotypeLabel">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_CLtHgbI6Eeqp-7fUAdwzTg" y="40"/>
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_VnSDgLJHEeql8Nh_8AGPlA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_CLtHgbI6Eeqp-7fUAdwzTg" x="1" y="39"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_CLsgcbI6Eeqp-7fUAdwzTg"/>
       <element xmi:type="uml:Generalization" href="papyrus_diagram.uml#_CLRpsLI6Eeqp-7fUAdwzTg"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CLsgcrI6Eeqp-7fUAdwzTg" points="[520, 240, -643984, -643984]$[520, 161, -643984, -643984]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CMX14LI6Eeqp-7fUAdwzTg" id="(0.49079754601226994,0.0)"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CMX14LI6Eeqp-7fUAdwzTg" id="(0.5035971223021583,0.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CMX14bI6Eeqp-7fUAdwzTg" id="(0.46511627906976744,1.0)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_I97pQLI6Eeqp-7fUAdwzTg" type="Generalization_Edge" source="_VHaOcLI4Eeqp-7fUAdwzTg" target="_oCTAkLI3Eeqp-7fUAdwzTg">
       <children xmi:type="notation:DecorationNode" xmi:id="_I98QULI6Eeqp-7fUAdwzTg" type="Generalization_StereotypeLabel">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_I98QUbI6Eeqp-7fUAdwzTg" y="40"/>
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_VnkXYLJHEeql8Nh_8AGPlA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_I98QUbI6Eeqp-7fUAdwzTg" x="-1" y="39"/>
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_I97pQbI6Eeqp-7fUAdwzTg"/>
       <element xmi:type="uml:Generalization" href="papyrus_diagram.uml#_I9hZkLI6Eeqp-7fUAdwzTg"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_I97pQrI6Eeqp-7fUAdwzTg" points="[520, 440, -643984, -643984]$[520, 361, -643984, -643984]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_I-4rgLI6Eeqp-7fUAdwzTg" id="(0.4984423676012461,0.0)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_I-4rgbI6Eeqp-7fUAdwzTg" id="(0.49079754601226994,1.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_I-4rgbI6Eeqp-7fUAdwzTg" id="(0.5035971223021583,1.0)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_OYM5kLI6Eeqp-7fUAdwzTg" type="Generalization_Edge" source="_DUDXALI3Eeqp-7fUAdwzTg" target="_JAo70LI2Eeqp-7fUAdwzTg">
       <children xmi:type="notation:DecorationNode" xmi:id="_OYM5k7I6Eeqp-7fUAdwzTg" type="Generalization_StereotypeLabel">

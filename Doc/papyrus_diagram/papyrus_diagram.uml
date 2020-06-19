@@ -6733,7 +6733,7 @@ Voter's preferences : AntiSymmetric</body>
                 <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
               </ownedParameter>
             </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_NuvCoLI2Eeqp-7fUAdwzTg" name="getDoublon">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_NuvCoLI2Eeqp-7fUAdwzTg" name="getDuplicates">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_3K4lwLI2Eeqp-7fUAdwzTg" type="_PERdIGbSEeqrtc6dy-mPpg" direction="return"/>
             </ownedOperation>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_N9WtcLI2Eeqp-7fUAdwzTg" name="getAlternatives">
@@ -6753,10 +6753,10 @@ Voter's preferences : AntiSymmetric</body>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_c8TjkLI3Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRy0QLI3Eeqp-7fUAdwzTg" name="newName" type="_PF7qAGbSEeqrtc6dy-mPpg"/>
             </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_Ie2n8LI3Eeqp-7fUAdwzTg" name="addAlternatives">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_Ie2n8LI3Eeqp-7fUAdwzTg" name="addAlternative">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_i-koALI3Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
             </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_I1PHoLI3Eeqp-7fUAdwzTg" name="deleteAlternative">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_I1PHoLI3Eeqp-7fUAdwzTg" name="removeAlternative">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_lk8NULI3Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
             </ownedOperation>
           </packagedElement>
@@ -6775,10 +6775,10 @@ Voter's preferences : AntiSymmetric</body>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_G0ilwLI4Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_J0d6kLI4Eeqp-7fUAdwzTg" name="newName" type="_PF7qAGbSEeqrtc6dy-mPpg"/>
             </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_seSDsLI3Eeqp-7fUAdwzTg" name="addAlternatives">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_seSDsLI3Eeqp-7fUAdwzTg" name="addAlternative">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_OCrAYLI4Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
             </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_suEzMLI3Eeqp-7fUAdwzTg" name="deleteAlternative">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_suEzMLI3Eeqp-7fUAdwzTg" name="removeAlternative">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q_TwoLI4Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
             </ownedOperation>
           </packagedElement>
