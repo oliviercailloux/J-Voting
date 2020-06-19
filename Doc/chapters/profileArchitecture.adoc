@@ -27,7 +27,7 @@ Indeed, a MutableLinearPreferences is not a more precise version of a MutablePre
 Here is the reason why, when a preference is mutable it can be openly modified. Whereas if the preference is mutable and linear, each modification must maintain the linearity. 
 
 
-
+image:../assets/ProfilArchitectureClassDiagram.png[ProfilArchitectureClassDiagram]
 
 
 

@@ -6711,6 +6711,112 @@ Voter's preferences : AntiSymmetric</body>
           </packagedElement>
         </packagedElement>
       </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_vmrC4LI1Eeqp-7fUAdwzTg" name="ProfilArchitectureClassDiagram">
+        <packagedElement xmi:type="uml:Package" xmi:id="_WkaGALI6Eeqp-7fUAdwzTg" name="Objects">
+          <packagedElement xmi:type="uml:Class" xmi:id="_JAkDULI2Eeqp-7fUAdwzTg" name="GeneralProfile">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_LfTWoLI2Eeqp-7fUAdwzTg" name="getPreference" visibility="public">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Z63BQLI2Eeqp-7fUAdwzTg" name="v" type="_PIhD8GbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_eWCzILI2Eeqp-7fUAdwzTg" type="_QKjvwGbSEeqrtc6dy-mPpg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_NAVrkLI2Eeqp-7fUAdwzTg" name="getProfile">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_jVP4ELI2Eeqp-7fUAdwzTg" type="_POESUGbSEeqrtc6dy-mPpg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_NRBL4LI2Eeqp-7fUAdwzTg" name="getAllVoters" visibility="public">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_n8o58LI2Eeqp-7fUAdwzTg" name="i">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_qQzU8LI2Eeqp-7fUAdwzTg" type="_QrvxQmbSEeqrtc6dy-mPpg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_NgH-4LI2Eeqp-7fUAdwzTg" name="getNbVoterForPreference">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_xROqwLI2Eeqp-7fUAdwzTg" name="p" type="_QKjvwGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_y28rYLI2Eeqp-7fUAdwzTg" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_NuvCoLI2Eeqp-7fUAdwzTg" name="getDoublon">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_3K4lwLI2Eeqp-7fUAdwzTg" type="_PERdIGbSEeqrtc6dy-mPpg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_N9WtcLI2Eeqp-7fUAdwzTg" name="getAlternatives">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="__wOq8LI2Eeqp-7fUAdwzTg" type="_PERdIGbSEeqrtc6dy-mPpg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_DT_soLI3Eeqp-7fUAdwzTg" name="MutableLinearProfile">
+            <generalization xmi:type="uml:Generalization" xmi:id="_OXw0sLI6Eeqp-7fUAdwzTg" general="_JAkDULI2Eeqp-7fUAdwzTg"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_G7c7gLI3Eeqp-7fUAdwzTg" name="getPreference">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ly7AwLI3Eeqp-7fUAdwzTg" name="v" type="_PIhD8GbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_SFAC0LI3Eeqp-7fUAdwzTg" type="_QApbwJ26EeqyF8i-7JEYZQ" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_H4vqMLI3Eeqp-7fUAdwzTg" name="createMutableLinearProfile">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_YBQl4LI3Eeqp-7fUAdwzTg" name="votes" type="_POESUGbSEeqrtc6dy-mPpg"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_IME14LI3Eeqp-7fUAdwzTg" name="renameAlternative">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_c8TjkLI3Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_fRy0QLI3Eeqp-7fUAdwzTg" name="newName" type="_PF7qAGbSEeqrtc6dy-mPpg"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_Ie2n8LI3Eeqp-7fUAdwzTg" name="addAlternatives">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_i-koALI3Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_I1PHoLI3Eeqp-7fUAdwzTg" name="deleteAlternative">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_lk8NULI3Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_oCQkULI3Eeqp-7fUAdwzTg" name="MutableGeneralProfile" visibility="public">
+            <generalization xmi:type="uml:Generalization" xmi:id="_CLRpsLI6Eeqp-7fUAdwzTg" general="_JAkDULI2Eeqp-7fUAdwzTg"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_rz8GMLI3Eeqp-7fUAdwzTg" name="getPreference">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_vFuAALI3Eeqp-7fUAdwzTg" name="v" type="_PIhD8GbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_09ZlELI3Eeqp-7fUAdwzTg" type="_PWEXwGbSEeqrtc6dy-mPpg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_sBh2QLI3Eeqp-7fUAdwzTg" name="getMaxSizeOfPreference">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_DctuULI4Eeqp-7fUAdwzTg" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_sQzoYLI3Eeqp-7fUAdwzTg" name="renameAlternative">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_G0ilwLI4Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_J0d6kLI4Eeqp-7fUAdwzTg" name="newName" type="_PF7qAGbSEeqrtc6dy-mPpg"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_seSDsLI3Eeqp-7fUAdwzTg" name="addAlternatives">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_OCrAYLI4Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_suEzMLI3Eeqp-7fUAdwzTg" name="deleteAlternative">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q_TwoLI4Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_VHXyMLI4Eeqp-7fUAdwzTg" name="MutableCompleteGeneralProfile">
+            <generalization xmi:type="uml:Generalization" xmi:id="_I9hZkLI6Eeqp-7fUAdwzTg" general="_oCQkULI3Eeqp-7fUAdwzTg"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_m5CdALI4Eeqp-7fUAdwzTg" name="getPreference">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_q5YtALI4Eeqp-7fUAdwzTg" name="v" type="_PIhD8GbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_2IzLwLI4Eeqp-7fUAdwzTg" type="_PPIpUGbSEeqrtc6dy-mPpg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_4OOnMLI4Eeqp-7fUAdwzTg" name="ImmutableGeneralProfile">
+            <generalization xmi:type="uml:Generalization" xmi:id="_AE3W0LI6Eeqp-7fUAdwzTg" general="_JAkDULI2Eeqp-7fUAdwzTg"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_8FsA8LI4Eeqp-7fUAdwzTg" name="getPreference">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="__3KHcLI4Eeqp-7fUAdwzTg" name="v" type="_PIhD8GbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Elzn4LI5Eeqp-7fUAdwzTg" type="_PR8FsGbSEeqrtc6dy-mPpg" direction="return"/>
+            </ownedOperation>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_8YyjILI4Eeqp-7fUAdwzTg" name="getMaxSizeOfPreference">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Iu0EoLI5Eeqp-7fUAdwzTg" direction="return">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedParameter>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_UQJZ0LI5Eeqp-7fUAdwzTg" name="ImmutableLinearProfile">
+            <generalization xmi:type="uml:Generalization" xmi:id="_-NqkoLI5Eeqp-7fUAdwzTg" general="_J0PboLI5Eeqp-7fUAdwzTg"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_XJtA4LI5Eeqp-7fUAdwzTg" name="getPreference">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZUkV8LI5Eeqp-7fUAdwzTg" name="v" type="_PIhD8GbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_b9xM0LI5Eeqp-7fUAdwzTg" type="_PRTMgGbSEeqrtc6dy-mPpg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_J0PboLI5Eeqp-7fUAdwzTg" name="ImmutableCompleteProfile">
+            <generalization xmi:type="uml:Generalization" xmi:id="_-z6sULI5Eeqp-7fUAdwzTg" general="_4OOnMLI4Eeqp-7fUAdwzTg"/>
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_L9QWkLI5Eeqp-7fUAdwzTg" name="getPreference">
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_Qx9bsLI5Eeqp-7fUAdwzTg" name="v" type="_PIhD8GbSEeqrtc6dy-mPpg"/>
+              <ownedParameter xmi:type="uml:Parameter" xmi:id="_TPa8oLI5Eeqp-7fUAdwzTg" type="_PPIpUGbSEeqrtc6dy-mPpg" direction="return"/>
+            </ownedOperation>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_cIIGcHqFEeqm79lOJbMtXA" name="UseCaseDiagram" visibility="public">
       <packagedElement xmi:type="uml:Package" xmi:id="_wnPZgHqGEeqm79lOJbMtXA" name="GUI ">
