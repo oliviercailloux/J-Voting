@@ -33,3 +33,6 @@ image:./assets/j-voting-example.png[InterfacesProfilesDiagram]
 
 Partie de léo
 + Nouveau diagramme de classe des profils
+
+
+==== link:chapters/profileArchitecture.adoc[Profile architecture proposition]
