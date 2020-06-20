@@ -1,4 +1,4 @@
-= 2.2 GUI Input Files 
+= 2.2 Input/Output Files 
 
 ====== link:../README.adoc[Summary]
 

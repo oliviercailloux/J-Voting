@@ -1,4 +1,4 @@
-= 2.1 Old GUI understanding 
+= Annexe. Old GUI understanding 
 
 ====== link:../README.adoc[Summary]
 
