@@ -4450,7 +4450,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VHbclLI4Eeqp-7fUAdwzTg"/>
       </children>
       <element xmi:type="uml:Class" href="papyrus_diagram.uml#_VHXyMLI4Eeqp-7fUAdwzTg"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VHaOcbI4Eeqp-7fUAdwzTg" x="360" y="440" width="321" height="61"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VHaOcbI4Eeqp-7fUAdwzTg" x="380" y="440" width="321" height="61"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_4ORDcLI4Eeqp-7fUAdwzTg" type="Class_Shape">
       <children xmi:type="notation:DecorationNode" xmi:id="_4ORqgLI4Eeqp-7fUAdwzTg" type="Class_NameLabel"/>
@@ -4627,7 +4627,7 @@
       <styles xmi:type="notation:TextStyle" xmi:id="_KefUsbJIEeql8Nh_8AGPlA"/>
       <styles xmi:type="notation:LineTypeStyle" xmi:id="_KefUsrJIEeql8Nh_8AGPlA"/>
       <element xsi:nil="true"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KefUs7JIEeql8Nh_8AGPlA" x="280" y="220" height="22"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KefUs7JIEeql8Nh_8AGPlA" x="300" y="200" width="361" height="41"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_SkXPoLJIEeql8Nh_8AGPlA" type="Note" fontName=".AppleSystemUIFont" description="A ImmutableGeneralProfile can be Complete or Incomplete" transparency="0" lineColor="6737151" lineWidth="1">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SkXPpLJIEeql8Nh_8AGPlA" source="PapyrusCSSForceValue">
@@ -4647,7 +4647,7 @@
       <styles xmi:type="notation:TextStyle" xmi:id="_SkXPobJIEeql8Nh_8AGPlA"/>
       <styles xmi:type="notation:LineTypeStyle" xmi:id="_SkXPorJIEeql8Nh_8AGPlA"/>
       <element xsi:nil="true"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SkXPo7JIEeql8Nh_8AGPlA" x="820" y="180" height="21"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SkXPo7JIEeql8Nh_8AGPlA" x="820" y="160" height="41"/>
     </children>
     <styles xmi:type="notation:StringValueStyle" xmi:id="_C5tZ0bI2Eeqp-7fUAdwzTg" name="diagram_compatibility_version" stringValue="1.4.0"/>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_C5tZ0rI2Eeqp-7fUAdwzTg"/>
@@ -4692,9 +4692,9 @@
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_CLsgcbI6Eeqp-7fUAdwzTg"/>
       <element xmi:type="uml:Generalization" href="papyrus_diagram.uml#_CLRpsLI6Eeqp-7fUAdwzTg"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CLsgcrI6Eeqp-7fUAdwzTg" points="[520, 240, -643984, -643984]$[520, 161, -643984, -643984]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CMX14LI6Eeqp-7fUAdwzTg" id="(0.5035971223021583,0.0)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CMX14bI6Eeqp-7fUAdwzTg" id="(0.46511627906976744,1.0)"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CLsgcrI6Eeqp-7fUAdwzTg" points="[540, 240, -643984, -643984]$[520, 161, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CMX14LI6Eeqp-7fUAdwzTg" id="(0.8588957055214724,0.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CMX14bI6Eeqp-7fUAdwzTg" id="(0.9302325581395349,1.0)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_I97pQLI6Eeqp-7fUAdwzTg" type="Generalization_Edge" source="_VHaOcLI4Eeqp-7fUAdwzTg" target="_oCTAkLI3Eeqp-7fUAdwzTg">
       <children xmi:type="notation:DecorationNode" xmi:id="_I98QULI6Eeqp-7fUAdwzTg" type="Generalization_StereotypeLabel">
@@ -4705,7 +4705,7 @@
       <element xmi:type="uml:Generalization" href="papyrus_diagram.uml#_I9hZkLI6Eeqp-7fUAdwzTg"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_I97pQrI6Eeqp-7fUAdwzTg" points="[520, 440, -643984, -643984]$[520, 361, -643984, -643984]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_I-4rgLI6Eeqp-7fUAdwzTg" id="(0.4984423676012461,0.0)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_I-4rgbI6Eeqp-7fUAdwzTg" id="(0.5035971223021583,1.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_I-4rgbI6Eeqp-7fUAdwzTg" id="(0.49079754601226994,1.0)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_OYM5kLI6Eeqp-7fUAdwzTg" type="Generalization_Edge" source="_DUDXALI3Eeqp-7fUAdwzTg" target="_JAo70LI2Eeqp-7fUAdwzTg">
       <children xmi:type="notation:DecorationNode" xmi:id="_OYM5k7I6Eeqp-7fUAdwzTg" type="Generalization_StereotypeLabel">

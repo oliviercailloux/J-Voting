@@ -46,7 +46,7 @@ Voter's preferences : AntiSymmetric</body>
           </ownedComment>
         </packagedElement>
       </packagedElement>
-      <packagedElement xmi:type="uml:Package" xmi:id="_VLu44HgQEeqXB-JP2owAEA" name="OldGUIClassDiagram">
+      <packagedElement xmi:type="uml:Package" xmi:id="_VLu44HgQEeqXB-JP2owAEA" name="VizualisationGUIClassDiagram">
         <packagedElement xmi:type="uml:Package" xmi:id="_vd5ZkHqLEeqm79lOJbMtXA" name="Comments">
           <ownedComment xmi:type="uml:Comment" xmi:id="_xqxg0HqLEeqm79lOJbMtXA">
             <body>SOI = Strict Incomplete Profile&#xD;
@@ -6672,7 +6672,7 @@ Voter's preferences : AntiSymmetric</body>
         </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_oMADEIYtEeq0ksZO2OwcmQ" name="OldToNewCompletePreferenceImpl"/>
-      <packagedElement xmi:type="uml:Package" xmi:id="_3zuNgJpzEeqy6sHmH3R0hw" name="NewGUIClassDiagram">
+      <packagedElement xmi:type="uml:Package" xmi:id="_3zuNgJpzEeqy6sHmH3R0hw" name="EditionGUIClassDiagram">
         <packagedElement xmi:type="uml:Package" xmi:id="_r5kqcJ26EeqyF8i-7JEYZQ" name="links">
           <packagedElement xmi:type="uml:Association" xmi:id="_ZyrCcJp4Eeqy6sHmH3R0hw" memberEnd="_ZyrCc5p4Eeqy6sHmH3R0hw _Zy0zcpp4Eeqy6sHmH3R0hw">
             <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZyrCcZp4Eeqy6sHmH3R0hw" source="org.eclipse.papyrus">
@@ -6786,7 +6786,6 @@ Voter's preferences : AntiSymmetric</body>
             <generalization xmi:type="uml:Generalization" xmi:id="_I9hZkLI6Eeqp-7fUAdwzTg" general="_oCQkULI3Eeqp-7fUAdwzTg"/>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_m5CdALI4Eeqp-7fUAdwzTg" name="getPreference">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_q5YtALI4Eeqp-7fUAdwzTg" name="v" type="_PIhD8GbSEeqrtc6dy-mPpg"/>
-              <ownedParameter xmi:type="uml:Parameter" xmi:id="_2IzLwLI4Eeqp-7fUAdwzTg" type="_PPIpUGbSEeqrtc6dy-mPpg" direction="return"/>
             </ownedOperation>
           </packagedElement>
           <packagedElement xmi:type="uml:Class" xmi:id="_4OOnMLI4Eeqp-7fUAdwzTg" name="ImmutableGeneralProfile">
