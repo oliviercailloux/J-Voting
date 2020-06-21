@@ -1,3 +1,5 @@
 = Sugestion list :
 
 == Profile
+
+* Start creating profiles following our proposal for a new architecture 
