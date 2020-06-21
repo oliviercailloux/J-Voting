@@ -5,6 +5,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.*;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class EditionView {
@@ -12,6 +15,7 @@ public class EditionView {
     private TabItem editionTab;
     private Composite mainComposite;
     private GridLayout gridLayout;
+    private Map<Alternative, Text> alternativeFieldHistory;
 
     /**
      * Factory method to create the edition window 
@@ -25,8 +29,9 @@ public class EditionView {
     private EditionView(TabFolder mainTabFolder) {
         this.tabfolder = mainTabFolder;
         this.mainComposite = new Composite(tabfolder, SWT.NONE);
+        this.alternativeFieldHistory = new LinkedHashMap<>();
 
-        this.gridLayout = new GridLayout(2, false);
+        this.gridLayout = new GridLayout(1, false);
         this.mainComposite.setLayout(gridLayout);
 
         initEditionTab();
@@ -40,8 +45,6 @@ public class EditionView {
         editionTab.setText("Edition");
     }
 
-    // Changer constructeur de gridData
-
     /**
      * Creation and display the text field with the voter
      * 
@@ -52,10 +55,7 @@ public class EditionView {
         voter.setData("event", "voterBox");
         voter.setText(voterName);
 
-        GridData gridData = new GridData();
-        // This text field must take two spaces
-        gridData.horizontalSpan = 2;
-        gridData.horizontalAlignment = GridData.FILL;
+        GridData gridData = new GridData(GridData.FILL, GridData.VERTICAL_ALIGN_BEGINNING, false, false);
         voter.setLayoutData(gridData);
     }
 
@@ -71,15 +71,10 @@ public class EditionView {
             alt.setData("event", "alternativeBox");
             alt.setData("alt", a);
             alt.setText(a.toString());
-            GridData data = new GridData();
-            data.widthHint = 120;
+
+            GridData data = new GridData(120, 15);
             data.horizontalAlignment = GridData.BEGINNING;
             alt.setLayoutData(data);
-
-            Button btn = new Button(mainComposite, SWT.NONE);
-            btn.setText("Delete");
-            btn.setData("event", "deleteAlternativeBtn");
-            btn.setData("alt", a);
         }
 
         displayAddAlternatives( altSet.size()+1);
@@ -97,8 +92,7 @@ public class EditionView {
         editionTab.setControl(mainComposite);
         newAlt.setData("addAltID", controlId);
 
-        GridData data = new GridData();
-        data.widthHint = 120;
+        GridData data = new GridData(120, 15);
         newAlt.setLayoutData(data);
 
         Button btn = new Button(mainComposite, SWT.NONE);
@@ -114,7 +108,7 @@ public class EditionView {
     public Composite getComposite() {
         return this.mainComposite;
     }
-    
+
     /**
      * Delete window control
      * @param ctr the control to be removed
