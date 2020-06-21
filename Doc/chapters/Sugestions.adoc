@@ -11,6 +11,7 @@
 * Rename CompletePreference as ImmutableCompletePreference
 * Create the MutableCompletePreference implementing MutablePreference
 * Complete work on the transition from link:FromOldCompletePreferenceImplToCompletePreferenceImpl.adoc[old to newCompletePreference]
+* Perform encapsulation work on preference methods using link:NewGUI.adoc[decorators]
 
 == GUI
 
