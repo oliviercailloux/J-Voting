@@ -8,8 +8,6 @@ image:../assets/GUIUseCaseDiagram.png[GUIUseCaseDiagram]
 
 Currently, the GUI enables the user to view a SOC profile (either in rows, columns or wrapped visualization). For the moment the GUI only accepts .soc files already filled.
 
-We plan to allow the user to create a profile through the graphical user interface. In other words, the user should be able to create a profile file, alternatives, voters and complete preferences. Moreover, the user will be able to modify an existing profile by adding some voters (with their preference) and to reorganize preferences (for a strict profile). Therefore, we plan to implement additional methods in the GUI classes.
-
 === GUI Modeling
 
 image:../assets/GUIMainMenu.png[GUIMainMenu]
