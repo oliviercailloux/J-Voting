@@ -7,6 +7,8 @@ Be careful, this is not a picture of how profiles are currently implemented. We 
 image:../assets/ProfilArchitectureClassDiagram.png[ProfilArchitectureClassDiagram]
 
 
+Go to link:chapters/profileInterfaces.adoc[The notion of Profile] if you want to learn more about what is complete / Incomplete profile.
+
 == Notion of mutability 
 
 In the theory of social choice, a Profile (groupement of voters with their preference) can be mutable in two different ways : 
@@ -17,14 +19,14 @@ In other words, preferences are modifiable which means that the  alternatives ca
 - The preferences are fixed but the population isn't.
 In other words, here we can add new voters, or remove an existing one. However once a preference is made it can not be changed.
 
-We decided to build this new architecture proposition around the first definition. Indeed, we can say that if the population needs to be somehow changed. Then we can create a new profile duplicating the preferences but with other voters. 
+We decided to build this new architecture proposition around the first definition. Indeed, we can say that if the population needs to be somehow changed. Then, we can create a new profile duplicating the preferences but with other voters. 
 
 
 === Ok, but why a MutableLinearProfile does not extend a MutableGeneralProfile ? 
 
 Because a MutableLinearProfile manipulates MutableLinearPreferences and a MutableGeneralProfile manipulates MutablePreferences. 
 
-Indeed, a MutableLinearPreferences is not a more precise version of a MutablePreferences. Those two type of prefences have no relation link between them. The contrary would break their contract. 
+Futhermore, a MutableLinearPreferences is not a more precise version of a MutablePreferences. Those two type of prefences have no relation link between them. The contrary would break their contract. 
 
 Here is the reason why, when a preference is mutable it can be openly modified. Whereas if the preference is mutable and linear, each modification must maintain the linearity. 
 
@@ -34,7 +36,7 @@ Here is the reason why, when a preference is mutable it can be openly modified. 
 
 An Immutable Linear profile can extend an Immutable Complete profile without breaking its contract because the Linear Preferences manipulated are actually a more precise version of Complete Preferences. Indeed, because those two types of preferences are Immutable then we can deduce the Complete preference out of a Linear one. 
 
-Hint : Think about a person having a strict fixed opinion about something. Well it is actually possible to deduce its opinon by asking him question using only >= or < = on the way he ranks alternatives. 
+Hint : Think about a person having a strict fixed opinion about something. Well, it is actually possible to deduce his opinon by asking him question using only >= or <= on the way he ranks alternatives. 
 
 
 === Precision on the Profile Set of Alternatives
@@ -46,7 +48,7 @@ Inside a profile the set of alternatives is common to all the voters. It is actu
 
 === *GeneralProfile*
 
-[cols="1,1,2", options="header"] 
+[cols="1,2,1", options="header"] 
 |===
 |Method name
 |Contract
@@ -69,7 +71,7 @@ Inside a profile the set of alternatives is common to all the voters. It is actu
 |
 
 |getDuplicates(Preference p)
-| Return a set of all the duplicates preferences in the profiles
+| Return a set of all the duplicates preferences in the profiles.
 | If a preference has at least an equivalent in the general profile set then it is added in the set returned by this function. 
 If you want to retrieve the number of unique preferences you can just substract the main set with this set of duplicates.
 
@@ -103,7 +105,7 @@ If you want to retrieve the number of unique preferences you can just substract 
 
 === *MutableGeneralProfile*
 
-[cols="1,1,2", options="header"] 
+[cols="1,2,1", options="header"] 
 |===
 |Method name
 |Contract
@@ -130,7 +132,7 @@ If you want to retrieve the number of unique preferences you can just substract 
 
 === *MutableCompleteGeneralProfile*
 
-[cols="1,1,2", options="header"] 
+[cols="1,2,1", options="header"] 
 |===
 |Method name
 |Contract
@@ -140,6 +142,5 @@ If you want to retrieve the number of unique preferences you can just substract 
 | getPreference(Voter v)
 | Return the MutableCompletePreference of a given Voter v not null. 
 | Be careful, this type of preference does not exit yet in project. 
-
 
 |===
