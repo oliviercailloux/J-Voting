@@ -2,4 +2,4 @@
 
 == Profile
 
-* Start creating profiles following our proposal for a new architecture 
+* Start creating profiles following our proposal for a link:chapters/OldGUI.adoc[new architecture]
