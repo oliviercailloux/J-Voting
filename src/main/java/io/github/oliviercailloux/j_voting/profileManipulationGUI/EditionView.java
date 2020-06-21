@@ -1,6 +1,7 @@
 package io.github.oliviercailloux.j_voting.profileManipulationGUI;
 
 import io.github.oliviercailloux.j_voting.Alternative;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
@@ -15,7 +16,7 @@ public class EditionView {
     private TabItem editionTab;
     private Composite mainComposite;
     private GridLayout gridLayout;
-    private Map<Alternative, Text> alternativeFieldHistory;
+    private Map<Text, Button> addAlternativeControls;
 
     /**
      * Factory method to create the edition window 
@@ -29,7 +30,7 @@ public class EditionView {
     private EditionView(TabFolder mainTabFolder) {
         this.tabfolder = mainTabFolder;
         this.mainComposite = new Composite(tabfolder, SWT.NONE);
-        this.alternativeFieldHistory = new LinkedHashMap<>();
+        this.addAlternativeControls = new LinkedHashMap<>();
 
         this.gridLayout = new GridLayout(1, false);
         this.mainComposite.setLayout(gridLayout);
@@ -99,6 +100,7 @@ public class EditionView {
         btn.setText("Add Alternative");
         btn.setData("event", "addAlternativeBtn");
         btn.setData("addAltID", controlId);
+        this.addAlternativeControls.put(newAlt, btn);
     }
     
     /**
@@ -117,4 +119,11 @@ public class EditionView {
         ctr.dispose();
         this.mainComposite.layout();
     }
+
+    public void addAlternativeListener(Button ctr) {
+        ctr.addSelectionListener(new SelectionAdapter() {
+
+        });
+    }
+
 }

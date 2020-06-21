@@ -128,6 +128,10 @@ public class EditionController {
         });
     }
 
+    private void handleAddAlternative(String AlternativeId) {
+
+    }
+
     /**
      * Getter on the edition view in order to find a particular control by its ID
      * @param ctrName name given in the data object of the control to find
