@@ -98,7 +98,7 @@ If you want to retrieve the number of unique preferences you can just substract 
 |  Adds the specified alternative at the last rank of every preferences in the profile if it is not already present.
 
 
-|removeAlternative(Alternative a)
+|deleteAlternative(Alternative a)
 | Removes the specified alternative from every preferences in the profile if it is present.
 
 |===
@@ -123,9 +123,9 @@ If you want to retrieve the number of unique preferences you can just substract 
 | Adds an alternative to every preferences in the profile. This alternative is not preferred to any other in each preference, it is being added isolated.
 | 
 
-|removeAlternative(Alternative a)
+|deleteAlternative(Alternative a)
 | Removes the specified alternative from every preferences in the profile if it is present.
-| A voir !! 
+| This method is a proposition but not implemented yet.
 
 
 |===
