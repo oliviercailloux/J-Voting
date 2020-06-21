@@ -7,7 +7,7 @@ Be careful, this is not a picture of how profiles are currently implemented. We 
 image:../assets/ProfilArchitectureClassDiagram.png[ProfilArchitectureClassDiagram]
 
 
-Go to link:chapters/profileInterfaces.adoc[The notion of Profile] if you want to learn more about what is complete / Incomplete profile.
+Go to link:chapters/profileInterfaces.adoc[The notion of Profile] if you want to learn more about what is an complete / Incomplete profile.
 
 == Notion of mutability 
 
@@ -36,7 +36,7 @@ Here is the reason why, when a preference is mutable it can be openly modified. 
 
 An Immutable Linear profile can extend an Immutable Complete profile without breaking its contract because the Linear Preferences manipulated are actually a more precise version of Complete Preferences. Indeed, because those two types of preferences are Immutable then we can deduce the Complete preference out of a Linear one. 
 
-Hint : Think about a person having a strict fixed opinion about something. Well, it is actually possible to deduce his opinon by asking him question using only >= or <= on the way he ranks alternatives. 
+Hint : Think about a person having a strict fixed opinion about something. Well, it is actually possible to deduce his opinon by asking him question using only ">=" or "<=" on the way he ranks alternatives. 
 
 
 === Precision on the Profile Set of Alternatives
