@@ -12,33 +12,37 @@ import io.github.oliviercailloux.j_voting.Alternative;
 public interface MutableLinearPreference extends Preference {
 	
 	/**
-	 * Moves the alternative to the desired rank.
+	 * Moves an existing alternative to the desired rank in the preference. All the intermediate alternatives shift. More precisely, the given alternative is swapped with its neighbor until it reaches the given rank. 
 	 * 
 	 * @param alternative that we're going to move in the preference
-	 * @param rank desired
+	 * @param rank is the new rank where the alternative will be. The first alternative is at the rank 1. 
+	 * @return true if the preference has changed after this call. In other words, if the alternative was not already at this rank.
 	 */
-	public void changeOrder(Alternative alternative, int rank);
+	public boolean changeOrder(Alternative alternative, int rank);
 	
 	/**
-	 * Remove an alternative to the Preference. This alternative is deleted as well 
-	 * as the links between it and the other alternatives.
+	 * Removes the specified alternative from this preference if it is present.
 	 *
-	 * @param alternative who belongs to the preference
+	 * @param alternative to be removed from this preference, if present
+	 * @return true if this set contained the specified alternative 
 	 */
 	public boolean removeAlternative(Alternative alternative);
 	
 	/**
-	 * Adds an alternative to the Preference. Add a link between the "weakest" alternatives and the new
+	 * Adds the specified alternative at the last rank of this preference if it is not already present. 
 	 *
-	 * @param alternative to add to the preference.
+	 * @param alternative to be added to this preference
+	 * @return true if this preference did not already contain the specified alternative
 	 */
 	public boolean addAlternative(Alternative alternative);
 	
 	/**
-	 * This method enables to swap 2 alternatives of the preference.
+	 * This method enables to swap 2 alternatives of the preference. (If the specified alternatives are equal, invoking this method leaves the preference unchanged.)
 	 * 
 	 * @param alternative1 that will change places with alternative2
 	 * @param alternative2 that will change places with alternative1
+	 * @return true if the alternatives are contained in the preference and if the preference has changed after this call. Or equivalently, false if the specified alternatives are equal and contained in this preference.
 	 */
-	public void swap(Alternative alternative1, Alternative alternative2);
+	public boolean swap(Alternative alternative1, Alternative alternative2);
+	
 }

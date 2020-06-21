@@ -14,24 +14,53 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import com.google.common.graph.Graph;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
+import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl.MutableLinearSetDecorator;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 public class MutableLinearPreferenceImplTest {
 	
 	@Test
-	void testGraphDecorator() {
+	void testAddAllDelegate() {
+		Voter v = Voter.createVoter(1);
+		List<Alternative> toTestList = new ArrayList<>();		
+		toTestList.add(a1);
+		toTestList.add(a2);
+		toTestList.add(a3);
+		toTestList.add(a4);
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
+		
+		Set<Alternative> c = new HashSet<>();
+		c.add(a5);
+		c.add(a6);
+		toTestPref.getAlternatives().addAll(c);	
+		
+		List<Alternative> list1 = new ArrayList<>();	
+		list1.add(a1);
+		list1.add(a2);
+		list1.add(a3);
+		list1.add(a4);
+		list1.add(a5);
+		list1.add(a6);
+		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
+		assertEquals(toTestPref, pref1);
+	}
+	
+	@Test
+	void testRemoveAllDelegate() {
 		Voter v = Voter.createVoter(1);
 		List<Alternative> toTestList = new ArrayList<>();		
 		toTestList.add(a1);
@@ -39,11 +68,49 @@ public class MutableLinearPreferenceImplTest {
 		toTestList.add(a3);
 		toTestList.add(a4);
 		toTestList.add(a5);
+		toTestList.add(a6);
 		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
 		
-		MutableGraph<Alternative> graph1 = GraphBuilder.directed().allowsSelfLoops(true).build();
-		graph1 = (MutableGraph<Alternative>)toTestPref.asGraph();
-		//The cast can't be done thanks to the graph decorator. It throws a ClassCastException.
+		Set<Alternative> c = new HashSet<>();
+		c.add(a5);
+		c.add(a6);
+		toTestPref.getAlternatives().removeAll(c);	
+		
+		List<Alternative> list1 = new ArrayList<>();	
+		list1.add(a1);
+		list1.add(a2);
+		list1.add(a3);
+		list1.add(a4);
+		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
+		assertEquals(toTestPref, pref1);
+		
+	}
+	
+	@Test
+	void testRetainAllDelegate() {
+		//Voter v = Voter.createVoter(1);
+		List<Alternative> toTestList = new ArrayList<>();		
+		toTestList.add(a1);
+		toTestList.add(a2);
+		toTestList.add(a3);
+		toTestList.add(a4);
+		toTestList.add(a5);
+		toTestList.add(a6);
+		//MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
+		
+		Set<Alternative> c = new HashSet<>();
+		c.add(a1);
+		c.add(a2);
+		c.add(a3);
+		//toTestPref.getAlternatives().retainAll(c);	
+		
+		List<Alternative> list1 = new ArrayList<>();	
+		list1.add(a1);
+		list1.add(a2);
+		list1.add(a3);
+		//MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
+		//assertEquals(toTestPref, pref1);
+		
 	}
 
 	/**
@@ -60,23 +127,23 @@ public class MutableLinearPreferenceImplTest {
 		toTestList.add(a5);
 		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
 		
-		MutableGraph<Alternative> graph = GraphBuilder.directed().allowsSelfLoops(true).build();
-		graph.putEdge(a1, a1);
-		graph.putEdge(a1, a2);
-		graph.putEdge(a1, a3);
-		graph.putEdge(a1, a4);
-		graph.putEdge(a1, a5);
-		graph.putEdge(a2, a2);
-		graph.putEdge(a2, a3);
-		graph.putEdge(a2, a4);
-		graph.putEdge(a2, a5);
-		graph.putEdge(a3, a3);
-		graph.putEdge(a3, a4);
-		graph.putEdge(a3, a5);
-		graph.putEdge(a4, a4);
-		graph.putEdge(a4, a5);
-		graph.putEdge(a5, a5);
-		assertEquals(graph, toTestPref.asGraph());
+		MutableGraph<Alternative> expected  = GraphBuilder.directed().allowsSelfLoops(true).build();
+		expected.putEdge(a1, a1);
+		expected.putEdge(a1, a2);
+		expected.putEdge(a1, a3);
+		expected.putEdge(a1, a4);
+		expected.putEdge(a1, a5);
+		expected.putEdge(a2, a2);
+		expected.putEdge(a2, a3);
+		expected.putEdge(a2, a4);
+		expected.putEdge(a2, a5);
+		expected.putEdge(a3, a3);
+		expected.putEdge(a3, a4);
+		expected.putEdge(a3, a5);
+		expected.putEdge(a4, a4);
+		expected.putEdge(a4, a5);
+		expected.putEdge(a5, a5);
+		assertEquals(expected, toTestPref.asGraph());
 	}
 
 	/**
@@ -101,6 +168,10 @@ public class MutableLinearPreferenceImplTest {
 		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
 		toTestPref.addAlternative(a5);
 		assertEquals(toTestPref, pref1);
+		
+		list1.add(a6);
+		assertEquals(toTestPref, pref1);
+		
 	}
 
 	/**
@@ -207,7 +278,6 @@ public class MutableLinearPreferenceImplTest {
 		MutableLinearPreference pref5 = MutableLinearPreferenceImpl.given(v, list5);
 		toTestPref.getAlternatives().clear();
 		assertEquals(pref5,toTestPref);
-		
 	}
 
 	@Test
@@ -383,6 +453,25 @@ public class MutableLinearPreferenceImplTest {
 		MutableLinearPreference pref11 = MutableLinearPreferenceImpl.given(v, list11);
 		toTestPref1.swap(a1, a2); // swap(head,end) neighbour
 		assertEquals(pref11, toTestPref1);
+		
+		Graph<Alternative> expected = toTestPref.asGraph();
+		toTestPref.addAlternative(a6);
+		toTestPref.swap(a3,a4);
+		toTestPref.removeAlternative(a1);
+		assertEquals(expected, toTestPref.asGraph());
+		
+		Set<Alternative> set = toTestPref.getAlternatives();
+		set.add(a1);
+		set.remove(a6);
+		List<Alternative> list12 = new ArrayList<>();		
+		list12.add(a3);
+		list12.add(a2);
+		list12.add(a4);
+		list12.add(a5);
+		list12.add(a1);
+		MutableLinearPreference pref12 = MutableLinearPreferenceImpl.given(v, list12);
+		assertEquals(pref12, toTestPref);
+	
 	}
 }
 

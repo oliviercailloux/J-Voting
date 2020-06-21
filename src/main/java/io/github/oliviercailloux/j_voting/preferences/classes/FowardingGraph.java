@@ -8,7 +8,7 @@ import com.google.common.graph.EndpointPair;
 import com.google.common.graph.Graph;
 
 /**
- * A class to allow {@link Graph} implementations to be backed by a {@link BaseGraph}. This is not
+ * A class to allow {@link Graph} implementations to be backed by a {@link BaseGraph}. This class is a <a href="https://github.com/google/guava/blob/master/guava/src/com/google/common/graph/ForwardingGraph.java">copy</a> of a Guava class which is not
  * currently planned to be released as a general-purpose forwarding class.
  *
  * @author James Sexton
