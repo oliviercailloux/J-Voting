@@ -20,11 +20,11 @@ image:./assets/j-voting-example.png[InterfacesProfilesDiagram]
 ==== link:chapters/profileInterfaces.adoc[1.2 The notion of Profile]
 
 === Graphical User Interface (GUI)
-==== link:chapters/OldGUI.adoc[2.1 GUI understanding ]
-==== link:chapters/GUIInputFiles.adoc[2.2 GUI Input Files]
-==== link:chapters/NewGUI.adoc[2.3 New GUI implementation]
+==== link:chapters/NewGUI.adoc[2.1 GUI implementation]
+==== link:chapters/GUIInputFiles.adoc[2.2 Input/Output Files]
 
 === Annexes
+==== link:chapters/OldGUI.adoc[Old GUI understanding]
 ==== link:chapters/FromOldCompletePreferenceImplToCompletePreferenceImpl.adoc[OldCompletePreferenceImpl to CompletePreferenceImpl]
 ==== link:chapters/MutableLinearPreferenceImplChanges.adoc[Change of direction in MutableLinearPreferenceImpl]
 ==== link:chapters/decorator.adoc[Decorator documentation]

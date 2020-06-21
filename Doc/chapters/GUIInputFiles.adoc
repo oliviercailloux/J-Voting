@@ -1,11 +1,14 @@
-= 2.2 GUI Input Files 
+= 2.2 Input/Output Files 
 
 ====== link:../README.adoc[Summary]
 
+====== In addition to this document, you can consult the link:http://www.preflib.org/data/format.php#soc[Preflib documentation].
+
+
+
 == SOC file
 
-Currently, the application only allows us to use .soc files as input.
-A .soc file represents a strict complete profile _(for more information see link:../chapters/OldGUI.adoc[2.1])_.
+Each file with a soc extension contains a profile consisting of a complete, transitive, and asymmetric relation over a group of objects.
 
 If you want to create your own one, you have to imagine a profile and to follow some writing rules.
 Here is an example of a .soc file and its meaning.

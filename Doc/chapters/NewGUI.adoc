@@ -1,4 +1,4 @@
-= 2.3 New GUI implementation 
+= 2.1 GUI implementation 
 
 ====== link:../README.adoc[Summary]
 
@@ -52,7 +52,7 @@ image:../assets/NewGUIClassDiagram.png[NewGUIClassDiagram]
 |Explanation 
 
 |controller(MutableLinearPreference startModel)
-| Set the parent view and the common model shared by all child controllers
+| Creates the view and the two sub-controllers
 
 |withDefaultModel()
 | Creation of the LinearMutablePreference by default when launching the application
