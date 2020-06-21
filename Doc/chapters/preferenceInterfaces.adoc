@@ -84,7 +84,7 @@ Reflexive and transitive.
 
 |asMutableGraph()
 | Returns the Graph corresponding to the Preference. This graph is not necessarily transitive and not necessarily reflexive.
-| OK.
+| Need to add a decorator (check the problem with AsGraph)
 
 |addAlternative(Alternative a)
 | Adds an alternative to the Preference. This alternative is not preferred to any other of the preference, it is being added isolated.
@@ -110,7 +110,7 @@ Reflexive and transitive.
 
 |asMutableGraph()
 | This graph is not necessarily transitively closed and not necessarily reflexive. This method might refuse that an edge be added that would result in the transitive closure violating anti-symmetry, though it will not necessarily check.
-| Not Ok. The exception is not raised.
+| The exception is not raised. Need to add a decorator (check the problem with AsGraph)
 
 |addAlternative(Alternative a)
 | Adds an alternative to the Preference. This alternative is not preferred to any other of the preference, it is being added isolated.
@@ -165,7 +165,7 @@ Graph is rearranged : a transitive closure is applied to it
 
 |getAlternatives(int rank)
 | Returns the Alternative set at this rank. Empty set id there is no alternative at this rank.
-|OK. However, the method does not handle the case of a rank bigger than the number of sets contained in equivalenceClasses
+| Need to add a decorator. However, the method does not handle the case of a rank bigger than the number of sets contained in equivalenceClasses.
 
 |asEquivalenceClasses()
 |Returns the same data but in an Immutable list object. A set of alternative is strictly prefered to next sets. All the alternatives in a set are considered ex-aequo.
