@@ -120,7 +120,7 @@ public class EditionView {
      * @param ctr the control to be removed
      */
     public void removeControl(Control ctr) {
-        ctr.getParent().layout();
         ctr.dispose();
+        this.mainComposite.layout();
     }
 }
