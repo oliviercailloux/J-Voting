@@ -29,9 +29,6 @@ image:./assets/j-voting-example.png[InterfacesProfilesDiagram]
 
 = Suggestions for the next groups 
 
-Partie de léo
-+ Nouveau diagramme de classe des profils
-
-
+==== link:chapters/Sugestions.adoc[Sugestions of work]
 ==== link:chapters/profileArchitecture.adoc[Profile architecture proposition]
 ==== link:chapters/FromOldCompletePreferenceImplToCompletePreferenceImpl.adoc[OldCompletePreferenceImpl to CompletePreferenceImpl]
