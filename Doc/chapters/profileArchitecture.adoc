@@ -48,7 +48,7 @@ Inside a profile the set of alternatives is common to all the voters. It is actu
 
 === *GeneralProfile*
 
-[cols="1,2,1", options="header"] 
+[cols="1,2,2", options="header"] 
 |===
 |Method name
 |Contract
