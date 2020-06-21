@@ -35,7 +35,7 @@ Here is an example of a .soc file and its meaning.
 |Alternative 4
 
 |6,6,3
-|Number of voters, Nimber of voters who actually voted, number of different orders 
+|Number of voters, Number of voters who actually voted, Number of different orders 
 
 |2,1,2,3,4
 |2 voters chose this order : Alternative 1 > Alternative 2 > Alternative 3 > Alternative 4
