@@ -1,3 +1,17 @@
 = Iteration 5
 
+== First part of missions : correction of Iteration 4 following your feedback
 
+- Decorator documentation of the class MutableLinearPreference (Definition, utility and sequence diagram) : Jade & Thomas
+- Correction of the input diagram in the documentation in relation to the preferences : Julien
+- Restructuring of documentation and titles : Thomas
+- Conversion of the profil.soc and the corresponding explanation in the table ; Jade
+- Further explanation of the SOC format : Thomas
+- Correction of class diagrams in the documentation and improvement of the hierarchy in papyrus : Pierre
+- Updating the GUI class diagram with the existing one : Julien & Pierre
+
+
+== Second part of missions : Documentation of suggestions for future groups 
+
+- Overall document of suggestions for the next groups including indications for the GUI, profiles and preferences : Léo
+- Suggesting a new profile hierarchy : Julien & Léo & Pierre
