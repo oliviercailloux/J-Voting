@@ -4,13 +4,15 @@
 
 === Both current classes Diagram
 
+Currently, there are two classes representing a complete preference. To distinguish them, one is named 'Old'. Below are their class diagrams. 
+
 image:../assets/OldCPClassesDiagram.png[The old situation]
 
-To better see the difference between the two classes, please see below what has changed in their attributes and then, have a look at the comparative table of their respective methods.
+When the first class only has one attribute representing the preference by a List<Set<Alternative>>, the other one has four attributes. Its preference is represented by a ImmutableList<ImmutableSet<Alernative>> but also has a graph, a voter and a set of alternatives.
 
-When the first class only has one attribute representing the preference by a List<Set<Alternative>>, the other one has four attributes. Its preference is represented by a ImmutableList<ImmutableSet<Alernative>> and also has a graph, a voter and a set of alternatives.
+To better see the difference between the two classes, we made a table highlighting of their respective methods, so you understand what correponds between the two classes.
 
-In terms of methods, here is the comparative table :
+Here is the comparative table :
 
 [cols="1,1,2", options="header"] 
 |===
@@ -73,9 +75,9 @@ In terms of methods, here is the comparative table :
 
 
 We can see that a replacement from the old class to the new class cannot be done at this stage at all.
-Indeed, it will be necessary to start by adapting the code of the new one to meet the needs currently provided in the old one.
+Indeed, it was be necessary to start by adapting the code of the new one to meet the needs currently provided in the old one.
 
-Specifically, we need to create the missing methods such as :
+Specifically, we needed to create the missing methods such as :
 
 * size(List<Set<Alternative>> list) that we will rename atlernativeNumber.
 * contains(Alternative alter). This method uses the toAlternativeSet method but be careful, in the OldCP the method accepts a List<Set<Alernative>> and in the new one only a ImmutableList<ImmutableSet<Alernative>>.
@@ -84,4 +86,4 @@ Specifically, we need to create the missing methods such as :
 * isStrict().
 * toStrictPreference().
 
-Once these changes made, we can replace OldCompletePreference by CompletePreferencein in the Profile Interfaces and classes. 
+We made those, but some change still need to be made to replace OldCompletePreference by CompletePreferencein in the Profile Interfaces and classes. 
