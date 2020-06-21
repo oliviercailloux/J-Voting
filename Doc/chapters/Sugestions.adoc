@@ -8,5 +8,10 @@
 == Preference
 
 * Add a delete methode to MutablePreference
+* Rename CompletePreference as ImmutableCompletePreference
 * Create the MutableCompletePreference implementing MutablePreference
 * Complete work on the transition from link:FromOldCompletePreferenceImplToCompletePreferenceImpl.adoc[old to newCompletePreference]
+
+== GUI
+
+* Continue the work on the GUI by following the link:profileArchitecture.adoc[model]
