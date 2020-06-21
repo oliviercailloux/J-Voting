@@ -12,6 +12,7 @@
 * Create the MutableCompletePreference implementing MutablePreference
 * Complete work on the transition from link:FromOldCompletePreferenceImplToCompletePreferenceImpl.adoc[old to newCompletePreference]
 * Perform encapsulation work on preference methods using link:decorator.adoc[decorators]
+* Correct the link:preferenceInterfaces.adoc[relevances]
 
 == GUI
 
