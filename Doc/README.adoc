@@ -25,8 +25,6 @@ image:./assets/j-voting-example.png[InterfacesProfilesDiagram]
 
 === Annexes
 ==== link:chapters/OldGUI.adoc[Vizualisation GUI understanding]
-==== link:chapters/FromOldCompletePreferenceImplToCompletePreferenceImpl.adoc[OldCompletePreferenceImpl to CompletePreferenceImpl]
-==== link:chapters/MutableLinearPreferenceImplChanges.adoc[Change of direction in MutableLinearPreferenceImpl]
 ==== link:chapters/decorator.adoc[Decorator documentation]
 
 = Suggestions for the next groups 
@@ -36,3 +34,4 @@ Partie de léo
 
 
 ==== link:chapters/profileArchitecture.adoc[Profile architecture proposition]
+==== link:chapters/FromOldCompletePreferenceImplToCompletePreferenceImpl.adoc[OldCompletePreferenceImpl to CompletePreferenceImpl]
