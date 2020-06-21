@@ -6756,7 +6756,7 @@ Voter's preferences : AntiSymmetric</body>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_Ie2n8LI3Eeqp-7fUAdwzTg" name="addAlternative">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_i-koALI3Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
             </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_I1PHoLI3Eeqp-7fUAdwzTg" name="removeAlternative">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_I1PHoLI3Eeqp-7fUAdwzTg" name="deleteAlternative">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_lk8NULI3Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
             </ownedOperation>
           </packagedElement>
@@ -6778,7 +6778,7 @@ Voter's preferences : AntiSymmetric</body>
             <ownedOperation xmi:type="uml:Operation" xmi:id="_seSDsLI3Eeqp-7fUAdwzTg" name="addAlternative">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_OCrAYLI4Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
             </ownedOperation>
-            <ownedOperation xmi:type="uml:Operation" xmi:id="_suEzMLI3Eeqp-7fUAdwzTg" name="removeAlternative">
+            <ownedOperation xmi:type="uml:Operation" xmi:id="_suEzMLI3Eeqp-7fUAdwzTg" name="deleteAlternative">
               <ownedParameter xmi:type="uml:Parameter" xmi:id="_Q_TwoLI4Eeqp-7fUAdwzTg" name="a" type="_PFRisGbSEeqrtc6dy-mPpg"/>
             </ownedOperation>
           </packagedElement>
