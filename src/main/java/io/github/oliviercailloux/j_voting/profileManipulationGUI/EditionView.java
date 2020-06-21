@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.j_voting.mvc.gui;
+package io.github.oliviercailloux.j_voting.profileManipulationGUI;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import org.eclipse.swt.layout.GridData;

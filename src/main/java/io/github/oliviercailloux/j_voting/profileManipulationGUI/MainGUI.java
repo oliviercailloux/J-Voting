@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.j_voting.mvc.gui;
+package io.github.oliviercailloux.j_voting.profileManipulationGUI;
 
 import org.eclipse.swt.widgets.*;
 
