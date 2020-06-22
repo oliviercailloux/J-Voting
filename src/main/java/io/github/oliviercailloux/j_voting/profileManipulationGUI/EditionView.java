@@ -79,28 +79,21 @@ public class EditionView {
             this.alternativeControls.put(a, alt);
         }
 
-        displayAddAlternatives( altSet.size()+1);
-        mainComposite.layout(true);
+        displayAddAlternatives();
     }
     
     /**
      * Creation and display of the text field of the alternative to be added. 
      * Creation and display of the add button.
-     *
-     * @param controlId for the alternative id.
      */
-    public void displayAddAlternatives(int controlId) {
+    public void displayAddAlternatives() {
         Text newAlt = new Text(mainComposite, SWT.BORDER);
         editionTab.setControl(mainComposite);
-        newAlt.setData("addAltID", controlId);
 
         GridData data = new GridData(120, 15);
         newAlt.setLayoutData(data);
 
         Button btn = new Button(mainComposite, SWT.NONE);
-        btn.setText("Add Alternative");
-        btn.setData("event", "addAlternativeBtn");
-        btn.setData("addAltID", controlId);
         this.addAlternativeControls.put(btn, newAlt);
     }
 
