@@ -1,5 +1,14 @@
 package io.github.oliviercailloux.j_voting;
 
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.common.collect.ImmutableSet;
 
 public class AlternativeHelper {
@@ -32,12 +41,31 @@ public class AlternativeHelper {
     public static ImmutableSet<Alternative> a42 = ImmutableSet.of(a4, a2);
     public static ImmutableSet<Alternative> a43 = ImmutableSet.of(a4, a3);
     public static ImmutableSet<Alternative> a45 = ImmutableSet.of(a4, a5);
+    public static ImmutableSet<Alternative> a46 = ImmutableSet.of(a4, a6);
     public static ImmutableSet<Alternative> a51 = ImmutableSet.of(a5, a1);
     public static ImmutableSet<Alternative> a52 = ImmutableSet.of(a5, a2);
     public static ImmutableSet<Alternative> a53 = ImmutableSet.of(a5, a3);
     public static ImmutableSet<Alternative> a54 = ImmutableSet.of(a5, a4);
+    public static ImmutableSet<Alternative> a56 = ImmutableSet.of(a5, a6);
     public static ImmutableSet<Alternative> a1234 = ImmutableSet.of(a1, a2, a3,
             a4);
     public static ImmutableSet<Alternative> a12345 = ImmutableSet.of(a1, a2, a3,
                     a4, a5);
+    public static ImmutableSet<Alternative> a1235 = ImmutableSet.of(a1, a2, a3,
+            a5);
+    public static ImmutableSet<Alternative> a123546 = ImmutableSet.of(a1, a2, a3,
+            a5,a4,a6);
+    public static ImmutableSet<Alternative> a1256 = ImmutableSet.of(a1, a2, 
+            a5,a6);
+    
+    public static List<Alternative> a12345list = a12345.asList();
+    public static List<Alternative> a1234list = a1234.asList();
+    public static List<Alternative> a1235list = a1235.asList();
+    public static List<Alternative> a123546list = a123546.asList();
+    public static List<Alternative> a46list = a46.asList();
+    public static List<Alternative> a1256list = a1256.asList();
+    public static List<Alternative> a34list = a34.asList();
+    public static List<Alternative> a123456list = ImmutableSet.of(a1, a2, a3, a4, a5,a6).asList();
+
+
 }

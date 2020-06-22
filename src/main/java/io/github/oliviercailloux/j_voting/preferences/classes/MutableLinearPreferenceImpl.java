@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
+import com.google.common.base.VerifyException;
 import com.google.common.collect.ForwardingIterator;
 import com.google.common.collect.ForwardingList;
 import com.google.common.collect.ForwardingSet;
@@ -38,7 +39,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MutableLinearPreferenceImpl.class.getName());
 
 	private MutableLinearPreferenceImpl(Voter voter, List<Alternative> list) {
-		
+
 		this.voter = voter;
 		this.list = new ArrayList<>(list);
 		this.graph = GraphBuilder.directed().allowsSelfLoops(true).build();
@@ -50,15 +51,11 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		}
 		this.alternatives = graph.nodes();
 	}
-	
+
 	@Override
 	public String toString() {
-		 return MoreObjects.toStringHelper(this)
-	       .add("Voter", voter)
-	       .add("Graph", graph)
-	       .add("Set", alternatives)
-	       .add("List", list)
-	       .toString();
+		return MoreObjects.toStringHelper(this).add("Voter", voter).add("Graph", graph).add("Set", alternatives)
+				.add("List", list).toString();
 	}
 
 	/**
@@ -76,17 +73,17 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 
 	@Override
 	public boolean changeOrder(Alternative alternative, int rank) {
-		LOGGER.debug("MutableLinearPreferenceImpl tries to changeOrder of "+alternative+" at "+rank+" rank.");
+		LOGGER.debug("MutableLinearPreferenceImpl tries to changeOrder of " + alternative + " at " + rank + " rank.");
 		Preconditions.checkNotNull(alternative);
 		Preconditions.checkNotNull(rank);
-		
-		if(list.indexOf(alternative) == rank || !(list.contains(alternative))) {
+
+		if (list.indexOf(alternative) == rank || !(list.contains(alternative)) || rank < 1 || rank > list.size()) {
 			return false;
 		}
-		
+
 		int initRank = list.indexOf(alternative);
 		Alternative temp;
-		
+
 		if (initRank > rank) {
 			for (int i = initRank; i >= rank; i--) {
 				temp = list.get(i - 1);
@@ -100,13 +97,13 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		}
 		return true;
 	}
-
+	
 	@Override
 	public boolean removeAlternative(Alternative a) {
 		LOGGER.debug("MutableLinearPreferenceImpl deleteAlternative");
 		Preconditions.checkNotNull(a);
-		
-		if(alternatives.contains(a)) {
+
+		if (alternatives.contains(a)) {
 			graph.removeNode(a);
 			list.remove(a);
 			return true;
@@ -118,17 +115,18 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	public boolean addAlternative(Alternative a) {
 		LOGGER.debug("MutablePreferenceImpl addAlternative");
 		Preconditions.checkNotNull(a);
-
-		if(!(alternatives.contains(a))) {
-			list.add(a);
-			graph.addNode(a);
-
-			for (int i = 0; i < list.size(); i++) {
-				graph.putEdge(list.get(i), list.get(list.size() - 1));
-			}
-			return true;
+		
+		if(alternatives.contains(a)) {
+			return false;
 		}
-		return false;
+		
+		list.add(a);
+		graph.addNode(a);
+
+		for (int i = 0; i < list.size(); i++) {
+			graph.putEdge(list.get(i), list.get(list.size() - 1));
+		}
+		return true;
 	}
 
 	/**
@@ -140,7 +138,6 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		}
 		list.clear();
 	}
-
 
 	@Override
 	public Set<Alternative> getAlternatives() {
@@ -163,10 +160,13 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		LOGGER.debug("MutablePreferenceImpl Swap");
 		Preconditions.checkNotNull(alternative1);
 		Preconditions.checkNotNull(alternative2);
-		
-		if(alternative1.equals(alternative2) || !(alternatives.contains(alternative1)) || !(alternatives.contains(alternative2))) {
+
+		if (alternative1.equals(alternative2) || !(alternatives.contains(alternative1))
+				|| !(alternatives.contains(alternative2))) {
 			return false;
 		}
+		
+		boolean op1,op2,op3,op4;
 
 		Alternative best = alternative1;
 		Alternative worst = alternative2;
@@ -179,16 +179,26 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		List<Alternative> subList = list.subList(list.indexOf(best) + 1, list.indexOf(worst));
 
 		for (Alternative a : subList) {
-			if(!(graph.removeEdge(best, a) && graph.putEdge(a, best) && graph.removeEdge(a, worst) && graph.putEdge(worst, a) )) {
-				throw new IllegalArgumentException("There might be a bug in your stucture.");
+
+			op1 = graph.removeEdge(best, a);
+			op2 = graph.putEdge(a, best);
+			op3 = graph.removeEdge(a, worst);
+			op4 = graph.putEdge(worst, a);
+			
+			if(!(op1 && op2 && op3 && op4)) {			
+				throw new VerifyException("There might be a bug in the stucture.");
 			}
 		}
 
-		graph.removeEdge(best, worst);
-		graph.putEdge(worst, best);
-
-		Collections.swap(list, list.indexOf(alternative1), list.indexOf(alternative2));
+		op1 = graph.removeEdge(best, worst);
+		op2 = graph.putEdge(worst, best);
 		
+		if(!(op1 && op2)) {			
+			throw new VerifyException("There might be a bug in the stucture.");
+		}
+		
+		Collections.swap(list, list.indexOf(alternative1), list.indexOf(alternative2));
+
 		return true;
 	}
 
@@ -208,11 +218,12 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		MutableLinearPreferenceImpl mlp2 = (MutableLinearPreferenceImpl) o2;
 		return voter.equals(mlp2.voter) && list.equals(mlp2.list);
 	}
-	
+
 	/**
-	 * In the future, ideally, sets returned via this decorator should be protected from alteration.
+	 * In the future, ideally, sets returned via this decorator should be protected
+	 * from alteration.
 	 */
-	public class MutableLinearSetDecorator extends ForwardingSet<Alternative> {
+	public static class MutableLinearSetDecorator extends ForwardingSet<Alternative> {
 		private MutableLinearPreferenceImpl delegate;
 
 		private MutableLinearSetDecorator(MutableLinearPreferenceImpl delegate) {
@@ -260,7 +271,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 			LOGGER.debug("MutableLinearSetDecorator delegate clear");
 			delegate.clear();
 		}
-		
+
 //		@Override
 //		public Iterator<Alternative> iterator() {
 //			LOGGER.debug("MutableLinearSetDecorator delegate iterator");
@@ -272,10 +283,10 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 //			LOGGER.debug("MutableLinearSetDecorator delegate retainAll");
 //			return standardRetainAll(c);
 //		}
-		
+
 	}
-	
-//	public class MutableLinearIteratorDecorator extends ForwardingIterator<Alternative> {
+
+//	public static class MutableLinearIteratorDecorator extends ForwardingIterator<Alternative> {
 //		
 //		private Iterator<Alternative> iteratorDelegate;
 //
@@ -288,8 +299,14 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 //			this.iteratorDelegate = iteratorDelegate;
 //		}
 //	}
-
-	public class MutableLinearGraphDecorator extends ForwardingGraph<Alternative> {
+	/**
+	 * The sets accessible via this delegate are not currently editable
+	 * (google/guava#3034), which makes the implementation currently correct .
+	 * However, this is not guaranteed by contract, and therefore could change. <br><br>
+	 * FUTURE : Ideally, sets returned via this decorator should be protected against
+	 * changes.
+	 */
+	public static class MutableLinearGraphDecorator extends ForwardingGraph<Alternative> {
 
 		private MutableLinearPreferenceImpl delegate;
 
@@ -301,6 +318,6 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		private MutableLinearGraphDecorator(MutableLinearPreferenceImpl delegate) {
 			this.delegate = delegate;
 		}
-	}	
-	
+	}
+
 }
