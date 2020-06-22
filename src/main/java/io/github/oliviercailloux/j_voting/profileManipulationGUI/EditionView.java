@@ -55,10 +55,10 @@ public class EditionView {
      */
     public void displayVoters(String voterName) {
         Text voter = new Text(mainComposite, SWT.BORDER);
-        voter.setData("event", "voterBox");
         voter.setText(voterName);
 
-        GridData gridData = new GridData(GridData.FILL, GridData.VERTICAL_ALIGN_BEGINNING, false, false);
+        GridData gridData = new GridData(GridData.FILL, GridData.VERTICAL_ALIGN_BEGINNING,
+                false, false);
         voter.setLayoutData(gridData);
     }
 
@@ -71,8 +71,6 @@ public class EditionView {
     public void displayAlternatives(Set<Alternative> altSet) {
         for(Alternative a : altSet) {
             Text alt = new Text(mainComposite, SWT.BORDER);
-            alt.setData("event", "alternativeBox");
-            alt.setData("alt", a);
             alt.setText(a.toString());
 
             GridData data = new GridData(120, 15);
@@ -116,14 +114,6 @@ public class EditionView {
         return addAlternativeControls;
     }
 
-    /**
-     * Return the composite of the tab.
-     * @return mainComposite
-     */
-    public Composite getComposite() {
-        return this.mainComposite;
-    }
-
     public void cleanAltContent() {
         for(Text ctr : alternativeControls.values()) {
             ctr.dispose();
@@ -137,14 +127,4 @@ public class EditionView {
         this.alternativeControls.clear();
         this.addAlternativeControls.clear();
     }
-
-    /**
-     * Delete window control
-     * @param ctr the control to be removed
-     */
-    public void removeControl(Control ctr) {
-        ctr.dispose();
-        this.mainComposite.layout();
-    }
-
 }
