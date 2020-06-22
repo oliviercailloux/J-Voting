@@ -16,7 +16,8 @@ public class EditionView {
     private TabItem editionTab;
     private Composite mainComposite;
     private GridLayout gridLayout;
-    private Map<Text, Button> addAlternativeControls;
+    private Map<Button, Text> addAlternativeControls;
+    private Map<Alternative, Text> alternativeControls;
 
     /**
      * Factory method to create the edition window 
@@ -31,6 +32,7 @@ public class EditionView {
         this.tabfolder = mainTabFolder;
         this.mainComposite = new Composite(tabfolder, SWT.NONE);
         this.addAlternativeControls = new LinkedHashMap<>();
+        this.alternativeControls = new LinkedHashMap<>();
 
         this.gridLayout = new GridLayout(1, false);
         this.mainComposite.setLayout(gridLayout);
@@ -76,6 +78,7 @@ public class EditionView {
             GridData data = new GridData(120, 15);
             data.horizontalAlignment = GridData.BEGINNING;
             alt.setLayoutData(data);
+            this.alternativeControls.put(a, alt);
         }
 
         displayAddAlternatives( altSet.size()+1);
@@ -100,15 +103,39 @@ public class EditionView {
         btn.setText("Add Alternative");
         btn.setData("event", "addAlternativeBtn");
         btn.setData("addAltID", controlId);
-        this.addAlternativeControls.put(newAlt, btn);
+        this.addAlternativeControls.put(btn, newAlt);
     }
-    
+
+    public void attachAddAlternativeListener(SelectionAdapter behavior) {
+        for(Button btn : this.addAlternativeControls.keySet()) {
+            btn.addSelectionListener(behavior);
+        }
+    }
+
+    public Map<Button, Text> getAddAlternativeControls() {
+        return addAlternativeControls;
+    }
+
     /**
      * Return the composite of the tab.
      * @return mainComposite
      */
     public Composite getComposite() {
         return this.mainComposite;
+    }
+
+    public void cleanAltContent() {
+        for(Text ctr : alternativeControls.values()) {
+            ctr.dispose();
+        }
+        for (Button btn : addAlternativeControls.keySet()) {
+            btn.dispose();
+        }
+        for (Text text : addAlternativeControls.values()) {
+            text.dispose();
+        }
+        this.alternativeControls.clear();
+        this.addAlternativeControls.clear();
     }
 
     /**
@@ -118,12 +145,6 @@ public class EditionView {
     public void removeControl(Control ctr) {
         ctr.dispose();
         this.mainComposite.layout();
-    }
-
-    public void addAlternativeListener(Button ctr) {
-        ctr.addSelectionListener(new SelectionAdapter() {
-
-        });
     }
 
 }
