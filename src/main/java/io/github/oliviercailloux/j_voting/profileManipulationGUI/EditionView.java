@@ -57,8 +57,7 @@ public class EditionView {
         Text voter = new Text(mainComposite, SWT.BORDER);
         voter.setText(voterName);
 
-        GridData gridData = new GridData(GridData.FILL, GridData.VERTICAL_ALIGN_BEGINNING,
-                false, false);
+        GridData gridData = new GridData(GridData.FILL, GridData.VERTICAL_ALIGN_BEGINNING, false, false);
         voter.setLayoutData(gridData);
     }
 
@@ -80,6 +79,7 @@ public class EditionView {
         }
 
         displayAddAlternatives();
+        mainComposite.layout(true);
     }
     
     /**
@@ -94,6 +94,7 @@ public class EditionView {
         newAlt.setLayoutData(data);
 
         Button btn = new Button(mainComposite, SWT.NONE);
+        btn.setText("Add Alternative");
         this.addAlternativeControls.put(btn, newAlt);
     }
 
