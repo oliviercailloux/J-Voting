@@ -6,7 +6,19 @@ import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.v1;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.v2;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.v3;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.v4;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a21list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a321list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a231list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1234list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3214list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2314list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.v123set;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,27 +47,9 @@ public class MutableStrictProfileTest {
 
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-//		Alternative a1 = Alternative.withId(1);
-//		Alternative a2 = Alternative.withId(2);
-//		Alternative a3 = Alternative.withId(3);
-
-		Voter v1 = Voter.createVoter(1);
-		Voter v2 = Voter.createVoter(2);
-		Voter v3 = Voter.createVoter(3);
-
-		ArrayList<Alternative> list2 = new ArrayList<>();
-		list2.add(a3);
-		list2.add(a2);
-		list2.add(a1);
-
-		ArrayList<Alternative> list3 = new ArrayList<>();
-		list3.add(a2);
-		list3.add(a3);
-		list3.add(a1);
-
 		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a123list);
-		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, list2);
-		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, list3);
+		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a321list);
+		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a231list);
 
 		profile.put(v1, mlp1);
 		profile.put(v2, mlp2);
@@ -78,30 +72,10 @@ public class MutableStrictProfileTest {
 	public void addVoterTest() {
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-		Voter v1 = Voter.createVoter(1);
-		Voter v2 = Voter.createVoter(2);
-		Voter v3 = Voter.createVoter(3);
-		Voter v4 = Voter.createVoter(4);
-
-		ArrayList<Alternative> list1 = new ArrayList<>();
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
-
-		ArrayList<Alternative> list2 = new ArrayList<>();
-		list2.add(a3);
-		list2.add(a2);
-		list2.add(a1);
-
-		ArrayList<Alternative> list3 = new ArrayList<>();
-		list3.add(a2);
-		list3.add(a3);
-		list3.add(a1);
-
-		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, list1);
-		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, list2);
-		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, list3);
-		MutableLinearPreference mlp4 = MutableLinearPreferenceImpl.given(v4, list1);
+		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a123list);
+		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a321list);
+		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a231list);
+		MutableLinearPreference mlp4 = MutableLinearPreferenceImpl.given(v4, a123list);
 
 		profile.put(v1, mlp1);
 		profile.put(v2, mlp2);
@@ -129,21 +103,8 @@ public class MutableStrictProfileTest {
 	public void removeVoterTest() {
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-		Voter v1 = Voter.createVoter(1);
-		Voter v2 = Voter.createVoter(2);
-
-		ArrayList<Alternative> list1 = new ArrayList<>();
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
-
-		ArrayList<Alternative> list2 = new ArrayList<>();
-		list2.add(a3);
-		list2.add(a2);
-		list2.add(a1);
-
-		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, list1);
-		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, list2);
+		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a123list);
+		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a321list);
 
 		profile.put(v1, mlp1);
 		profile.put(v2, mlp2);
@@ -159,7 +120,6 @@ public class MutableStrictProfileTest {
 		
 		MutableStrictProfile msp1 = MutableStrictProfile.given(profile, alternativeNames, voterNames);
 		MutableStrictProfile toTest = createMSPToTest();
-		Voter v3 = Voter.createVoter(3);
 		toTest.removeVoter(v3);
 		assertEquals(msp1, toTest);
 	}
@@ -169,29 +129,9 @@ public class MutableStrictProfileTest {
 		
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-
-		Voter v1 = Voter.createVoter(1);
-		Voter v2 = Voter.createVoter(2);
-		Voter v3 = Voter.createVoter(3);
-
-		ArrayList<Alternative> list1 = new ArrayList<>();
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
-
-		ArrayList<Alternative> list2 = new ArrayList<>();
-		list2.add(a3);
-		list2.add(a2);
-		list2.add(a1);
-
-		ArrayList<Alternative> list3 = new ArrayList<>();
-		list3.add(a2);
-		list3.add(a3);
-		list3.add(a1);
-
-		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, list1);
-		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, list2);
-		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, list3);
+		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a123list);
+		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a321list);
+		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a231list);
 
 		profile.put(v1, mlp1);
 		profile.put(v2, mlp2);
@@ -217,31 +157,9 @@ public class MutableStrictProfileTest {
 	public void addAlternativeTest() {
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-		Voter v1 = Voter.createVoter(1);
-		Voter v2 = Voter.createVoter(2);
-		Voter v3 = Voter.createVoter(3);
-
-		ArrayList<Alternative> list1 = new ArrayList<>();
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
-		list1.add(a4);
-
-		ArrayList<Alternative> list2 = new ArrayList<>();
-		list2.add(a3);
-		list2.add(a2);
-		list2.add(a1);
-		list2.add(a4);
-
-		ArrayList<Alternative> list3 = new ArrayList<>();
-		list3.add(a2);
-		list3.add(a3);
-		list3.add(a1);
-		list3.add(a4);
-
-		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, list1);
-		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, list2);
-		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, list3);
+		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a1234list);
+		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a3214list);
+		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a2314list);
 
 		profile.put(v1, mlp1);
 		profile.put(v2, mlp2);
@@ -268,26 +186,9 @@ public class MutableStrictProfileTest {
 	public void removeAlternativeTest() {
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-
-		Voter v1 = Voter.createVoter(1);
-		Voter v2 = Voter.createVoter(2);
-		Voter v3 = Voter.createVoter(3);
-
-		ArrayList<Alternative> list1 = new ArrayList<>();
-		list1.add(a1);
-		list1.add(a2);
-
-		ArrayList<Alternative> list2 = new ArrayList<>();
-		list2.add(a2);
-		list2.add(a1);
-
-		ArrayList<Alternative> list3 = new ArrayList<>();
-		list3.add(a2);
-		list3.add(a1);
-
-		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, list1);
-		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, list2);
-		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, list3);
+		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a12list);
+		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a21list);
+		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a21list);
 
 		profile.put(v1, mlp1);
 		profile.put(v2, mlp2);
@@ -312,28 +213,9 @@ public class MutableStrictProfileTest {
 	public void renameAlternativeTest() {
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-		Voter v1 = Voter.createVoter(1);
-		Voter v2 = Voter.createVoter(2);
-		Voter v3 = Voter.createVoter(3);
-
-		ArrayList<Alternative> list1 = new ArrayList<>();
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
-
-		ArrayList<Alternative> list2 = new ArrayList<>();
-		list2.add(a3);
-		list2.add(a2);
-		list2.add(a1);
-
-		ArrayList<Alternative> list3 = new ArrayList<>();
-		list3.add(a2);
-		list3.add(a3);
-		list3.add(a1);
-
-		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, list1);
-		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, list2);
-		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, list3);
+		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a123list);
+		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a321list);
+		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a231list);
 
 		profile.put(v1, mlp1);
 		profile.put(v2, mlp2);
@@ -358,57 +240,23 @@ public class MutableStrictProfileTest {
 	@Test
 	public void getVotersTest() {
 		
-		Voter v1 = Voter.createVoter(1);
-		Voter v2 = Voter.createVoter(2);
-		Voter v3 = Voter.createVoter(3);
-		
-		Set<Voter> set = new HashSet<>();
-		set.add(v1);
-		set.add(v2);
-		set.add(v3);
-		
 		MutableStrictProfile toTest = createMSPToTest();
-		assertEquals(set, toTest.getVoters());
+		assertEquals(v123set, toTest.getVoters());
 	}
 
 	@Test
 	public void getAlternativesTest() {
-
-		
-		Set<Alternative> set = new HashSet<>();
-		set.add(a1);
-		set.add(a2);
-		set.add(a3);
 		
 		//MutableStrictProfile toTest = createMSPToTest();
-		//assertEquals(set, toTest.getAlternatives());
+		//assertEquals(a123list, toTest.getAlternatives());
 	}
 
 	@Test
 	public void getPreferenceTest() {
 
-		Voter v1 = Voter.createVoter(1);
-		Voter v2 = Voter.createVoter(2);
-		Voter v3 = Voter.createVoter(3);
-
-		ArrayList<Alternative> list1 = new ArrayList<>();
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
-
-		ArrayList<Alternative> list2 = new ArrayList<>();
-		list2.add(a3);
-		list2.add(a2);
-		list2.add(a1);
-
-		ArrayList<Alternative> list3 = new ArrayList<>();
-		list3.add(a2);
-		list3.add(a3);
-		list3.add(a1);
-
-		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, list1);
-		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, list2);
-		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, list3);
+		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a123list);
+		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a321list);
+		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a231list);
 		
 		MutableStrictProfile toTest = createMSPToTest();
 		assertEquals(mlp1, toTest.getPreference(v1));
