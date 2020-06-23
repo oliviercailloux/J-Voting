@@ -12,8 +12,8 @@ public class MainGUI {
 	}
 
 	/**
-     * Creating the main window and calling controllers and views
-     */
+	 * Creating the main window and calling controllers and views
+	 */
 	public void displayGUI() {
 		Display display = new Display();
 		Shell shell = new Shell(display, SWT.CLOSE | SWT.RESIZE);
@@ -38,8 +38,8 @@ public class MainGUI {
 	}
 
 	/**
-     * Center the window in the middle of the screen
-     */
+	 * Center the window in the middle of the screen
+	 */
 	private void centerOnScreen(Display display, Shell shell) {
 		Rectangle screenSize = display.getPrimaryMonitor().getBounds();
 		shell.setLocation((screenSize.width - shell.getBounds().width) / 2,

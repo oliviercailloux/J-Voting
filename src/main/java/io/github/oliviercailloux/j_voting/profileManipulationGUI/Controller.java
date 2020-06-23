@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Controller {
 	private MutableLinearPreference mlp;
-	
+
 	public MutableLinearPreference getModel() {
 		return mlp;
 	}
@@ -18,10 +18,11 @@ public class Controller {
 	public static Controller inst(MutableLinearPreference startModel) {
 		return new Controller(startModel);
 	}
-	
+
 	/**
-     * Creation of the LinearMutablePreference by default when launching the application
-     */
+	 * Creation of the LinearMutablePreference by default when launching the
+	 * application
+	 */
 	public static Controller withDefaultModel() {
 		Voter v1 = Voter.createVoter(1);
 		Alternative a = Alternative.withId(2);
@@ -33,11 +34,11 @@ public class Controller {
 		alt.add(a2);
 		alt.add(a3);
 		alt.add(a4);
-		MutableLinearPreference model = MutableLinearPreferenceImpl.given(v1,alt);
+		MutableLinearPreference model = MutableLinearPreferenceImpl.given(v1, alt);
 
 		return new Controller(model);
 	}
-	
+
 	private Controller(MutableLinearPreference startModel) {
 		this.mlp = startModel;
 	}
