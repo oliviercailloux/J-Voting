@@ -2,6 +2,12 @@ package io.github.oliviercailloux.j_voting.profiles;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123list;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -29,18 +35,13 @@ public class MutableStrictProfileTest {
 
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-		Alternative a1 = Alternative.withId(1);
-		Alternative a2 = Alternative.withId(2);
-		Alternative a3 = Alternative.withId(3);
+//		Alternative a1 = Alternative.withId(1);
+//		Alternative a2 = Alternative.withId(2);
+//		Alternative a3 = Alternative.withId(3);
 
 		Voter v1 = Voter.createVoter(1);
 		Voter v2 = Voter.createVoter(2);
 		Voter v3 = Voter.createVoter(3);
-
-		ArrayList<Alternative> list1 = new ArrayList<>();
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
 
 		ArrayList<Alternative> list2 = new ArrayList<>();
 		list2.add(a3);
@@ -52,7 +53,7 @@ public class MutableStrictProfileTest {
 		list3.add(a3);
 		list3.add(a1);
 
-		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, list1);
+		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a123list);
 		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, list2);
 		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, list3);
 
@@ -76,10 +77,6 @@ public class MutableStrictProfileTest {
 	@Test
 	public void addVoterTest() {
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
-
-		Alternative a1 = Alternative.withId(1);
-		Alternative a2 = Alternative.withId(2);
-		Alternative a3 = Alternative.withId(3);
 
 		Voter v1 = Voter.createVoter(1);
 		Voter v2 = Voter.createVoter(2);
@@ -132,10 +129,6 @@ public class MutableStrictProfileTest {
 	public void removeVoterTest() {
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-		Alternative a1 = Alternative.withId(1);
-		Alternative a2 = Alternative.withId(2);
-		Alternative a3 = Alternative.withId(3);
-
 		Voter v1 = Voter.createVoter(1);
 		Voter v2 = Voter.createVoter(2);
 
@@ -176,9 +169,6 @@ public class MutableStrictProfileTest {
 		
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-		Alternative a1 = Alternative.withId(1);
-		Alternative a2 = Alternative.withId(2);
-		Alternative a3 = Alternative.withId(3);
 
 		Voter v1 = Voter.createVoter(1);
 		Voter v2 = Voter.createVoter(2);
@@ -226,11 +216,6 @@ public class MutableStrictProfileTest {
 	@Test
 	public void addAlternativeTest() {
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
-
-		Alternative a1 = Alternative.withId(1);
-		Alternative a2 = Alternative.withId(2);
-		Alternative a3 = Alternative.withId(3);
-		Alternative a4 = Alternative.withId(4);
 
 		Voter v1 = Voter.createVoter(1);
 		Voter v2 = Voter.createVoter(2);
@@ -283,8 +268,6 @@ public class MutableStrictProfileTest {
 	public void removeAlternativeTest() {
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-		Alternative a1 = Alternative.withId(1);
-		Alternative a2 = Alternative.withId(2);
 
 		Voter v1 = Voter.createVoter(1);
 		Voter v2 = Voter.createVoter(2);
@@ -321,7 +304,6 @@ public class MutableStrictProfileTest {
 
 		MutableStrictProfile msp1 = MutableStrictProfile.given(profile, alternativeNames, voterNames);
 		MutableStrictProfile toTest = createMSPToTest();
-		Alternative a3 = Alternative.withId(3);
 		toTest.removeAlternative(a3);
 		assertEquals(msp1, toTest);
 	}
@@ -329,10 +311,6 @@ public class MutableStrictProfileTest {
 	@Test
 	public void renameAlternativeTest() {
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
-
-		Alternative a1 = Alternative.withId(1);
-		Alternative a2 = Alternative.withId(2);
-		Alternative a3 = Alternative.withId(3);
 
 		Voter v1 = Voter.createVoter(1);
 		Voter v2 = Voter.createVoter(2);
@@ -396,9 +374,6 @@ public class MutableStrictProfileTest {
 	@Test
 	public void getAlternativesTest() {
 
-		Alternative a1 = Alternative.withId(1);
-		Alternative a2 = Alternative.withId(2);
-		Alternative a3 = Alternative.withId(3);
 		
 		Set<Alternative> set = new HashSet<>();
 		set.add(a1);
@@ -411,10 +386,6 @@ public class MutableStrictProfileTest {
 
 	@Test
 	public void getPreferenceTest() {
-		
-		Alternative a1 = Alternative.withId(1);
-		Alternative a2 = Alternative.withId(2);
-		Alternative a3 = Alternative.withId(3);
 
 		Voter v1 = Voter.createVoter(1);
 		Voter v2 = Voter.createVoter(2);

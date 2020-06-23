@@ -47,6 +47,7 @@ public class AlternativeHelper {
     public static ImmutableSet<Alternative> a53 = ImmutableSet.of(a5, a3);
     public static ImmutableSet<Alternative> a54 = ImmutableSet.of(a5, a4);
     public static ImmutableSet<Alternative> a56 = ImmutableSet.of(a5, a6);
+    public static ImmutableSet<Alternative> a123 = ImmutableSet.of(a1, a2, a3);
     public static ImmutableSet<Alternative> a1234 = ImmutableSet.of(a1, a2, a3,
             a4);
     public static ImmutableSet<Alternative> a12345 = ImmutableSet.of(a1, a2, a3,
@@ -59,6 +60,7 @@ public class AlternativeHelper {
             a5,a6);
     
     public static List<Alternative> a12345list = a12345.asList();
+    public static List<Alternative> a123list = a123.asList();
     public static List<Alternative> a1234list = a1234.asList();
     public static List<Alternative> a1235list = a1235.asList();
     public static List<Alternative> a123546list = a123546.asList();
@@ -66,6 +68,25 @@ public class AlternativeHelper {
     public static List<Alternative> a1256list = a1256.asList();
     public static List<Alternative> a34list = a34.asList();
     public static List<Alternative> a123456list = ImmutableSet.of(a1, a2, a3, a4, a5,a6).asList();
+    public static List<Alternative> a1345list = ImmutableSet.of(a1, a3, a4, a5).asList();
+    public static List<Alternative> a345list = ImmutableSet.of(a3, a4, a5).asList();
+    public static List<Alternative> a41235list = ImmutableSet.of(a4, a1, a2, a3, a5).asList();
+    public static List<Alternative> a41325list = ImmutableSet.of(a4, a1, a3, a2, a5).asList();
+    public static List<Alternative> a43251list = ImmutableSet.of(a4, a3, a2, a5, a1).asList();
+    
+    public static List<Alternative> a52341list = ImmutableSet.of(a5, a2, a3, a4, a1).asList();
+    public static List<Alternative> a32541list = ImmutableSet.of(a3, a2, a5, a4, a1).asList();
+    public static List<Alternative> a34521list = ImmutableSet.of(a3, a4, a5, a2, a1).asList();
+    public static List<Alternative> a54321list = ImmutableSet.of(a5, a4, a3, a2, a1).asList();
+    public static List<Alternative> a51324list = ImmutableSet.of(a5, a1, a3, a2, a4).asList();
+    
+    public static List<Alternative> a41523list = ImmutableSet.of(a4, a1, a5, a2, a3).asList();
+    public static List<Alternative> a41253list = ImmutableSet.of(a4, a1, a2, a5, a3).asList();
+    public static List<Alternative> a14253list = ImmutableSet.of(a1, a4, a2, a5, a3).asList();
+    public static List<Alternative> a14235list = ImmutableSet.of(a1, a4, a2, a3, a5).asList();
+    public static List<Alternative> a12list = ImmutableSet.of(a1, a2).asList();
+    public static List<Alternative> a21list = ImmutableSet.of(a2,a1).asList();
+    public static List<Alternative> a32451list = ImmutableSet.of(a3, a2, a4, a5, a1).asList();
 
 
 }
