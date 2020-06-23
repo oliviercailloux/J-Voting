@@ -98,9 +98,13 @@ public class EditionView {
         this.addAlternativeControls.put(btn, newAlt);
     }
 
-    public void attachAddAlternativeListener(SelectionAdapter behavior) {
+    /**
+     * Attach a selection listener to all the add alternative button.
+     * @param callback to execute when the button is clicked.
+     */
+    public void attachAddAlternativeListener(SelectionAdapter callback) {
         for(Button btn : this.addAlternativeControls.keySet()) {
-            btn.addSelectionListener(behavior);
+            btn.addSelectionListener(callback);
         }
     }
 

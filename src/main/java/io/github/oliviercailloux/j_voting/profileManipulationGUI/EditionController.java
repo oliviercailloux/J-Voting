@@ -37,6 +37,10 @@ public class EditionController {
         editionView.attachAddAlternativeListener(this.buildAddAlternativeBehavior());
     }
 
+    /**
+     * Builds the behavior to add an alternative in the view
+     * @return the behavior to attach to a SelectionListener
+     */
     private SelectionAdapter buildAddAlternativeBehavior() {
         return new SelectionAdapter() {
             @Override
@@ -47,6 +51,11 @@ public class EditionController {
         };
     }
 
+    /**
+     * Definition of the add alternative behavior to execute when
+     * the corresponding button is clicked.
+     * @param btn the button clicked by the user.
+     */
     private void handleAddAlternative(Button btn) {
         Text textField = this.editionView.getAddAlternativeControls().get(btn);
         String string = textField.getText();
