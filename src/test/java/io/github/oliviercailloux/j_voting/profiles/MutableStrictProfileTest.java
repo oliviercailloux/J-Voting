@@ -75,7 +75,7 @@ public class MutableStrictProfileTest {
 		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a123list);
 		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a321list);
 		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a231list);
-		MutableLinearPreference mlp4 = MutableLinearPreferenceImpl.given(v4, a123list);
+		MutableLinearPreference mlp4 = MutableLinearPreferenceImpl.given(v4, a321list);
 
 		profile.put(v1, mlp1);
 		profile.put(v2, mlp2);
