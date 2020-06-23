@@ -8,11 +8,17 @@ import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.google.common.collect.ImmutableSet;
 
 public class AlternativeHelper {
 
+	public static Voter v1 = Voter.createVoter(1);
+	public static Voter v2 = Voter.createVoter(2);
+	public static Voter v3 = Voter.createVoter(3);
+	public static Voter v4 = Voter.createVoter(4);
+	public static Set<Voter> v123set = ImmutableSet.of(v1,v2,v3);
     public static Alternative a1 = Alternative.withId(1);
     public static Alternative a2 = Alternative.withId(2);
     public static Alternative a3 = Alternative.withId(3);
@@ -70,9 +76,13 @@ public class AlternativeHelper {
     public static List<Alternative> a123456list = ImmutableSet.of(a1, a2, a3, a4, a5,a6).asList();
     public static List<Alternative> a1345list = ImmutableSet.of(a1, a3, a4, a5).asList();
     public static List<Alternative> a345list = ImmutableSet.of(a3, a4, a5).asList();
+    public static List<Alternative> a321list = ImmutableSet.of(a3, a2, a1).asList();
+    public static List<Alternative> a231list = ImmutableSet.of(a2, a3, a1).asList();
     public static List<Alternative> a41235list = ImmutableSet.of(a4, a1, a2, a3, a5).asList();
     public static List<Alternative> a41325list = ImmutableSet.of(a4, a1, a3, a2, a5).asList();
     public static List<Alternative> a43251list = ImmutableSet.of(a4, a3, a2, a5, a1).asList();
+    public static List<Alternative> a3214list = ImmutableSet.of(a3, a2, a1, a4).asList();
+    public static List<Alternative> a2314list = ImmutableSet.of(a2, a3, a1, a4).asList();
     
     public static List<Alternative> a52341list = ImmutableSet.of(a5, a2, a3, a4, a1).asList();
     public static List<Alternative> a32541list = ImmutableSet.of(a3, a2, a5, a4, a1).asList();
