@@ -183,13 +183,9 @@ public class MutableStrictProfileTest {
 		
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a1234list);
-		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a3214list);
-		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a2314list);
-
-		profile.put(v1, mlp1);
-		profile.put(v2, mlp2);
-		profile.put(v3, mlp3);
+		profile.put(v1, v1a1234list);
+		profile.put(v2, v2a3214list);
+		profile.put(v3, v3a2314list);
 
 		BiMap<Alternative, String> alternativeNames = HashBiMap.create();
 		alternativeNames.put(a1, "Tartiflette");
@@ -237,13 +233,9 @@ public class MutableStrictProfileTest {
 		
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
-		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a12list);
-		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a21list);
-		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a21list);
-
-		profile.put(v1, mlp1);
-		profile.put(v2, mlp2);
-		profile.put(v3, mlp3);
+		profile.put(v1, v1a12list);
+		profile.put(v2, v2a21list);
+		profile.put(v3, v3a21list);
 
 		BiMap<Alternative, String> alternativeNames = HashBiMap.create();
 		alternativeNames.put(a1, "Tartiflette");
