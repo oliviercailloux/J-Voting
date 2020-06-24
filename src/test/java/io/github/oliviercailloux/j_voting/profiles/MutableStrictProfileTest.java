@@ -302,14 +302,4 @@ public class MutableStrictProfileTest {
 		Set<Alternative> emptySet = new HashSet<>();
 		assertEquals(emptySet, toTest1.getAlternatives());
 	}
-
-	@Test
-	public void getPreferenceTest() {
-
-		MutableStrictProfile toTest = createMSPToTest();
-		assertEquals(v1a123list, toTest.getPreference(v1));
-		assertEquals(v2a321list, toTest.getPreference(v2));
-		assertEquals(v3a231list, toTest.getPreference(v3));
-	}
-
 }
