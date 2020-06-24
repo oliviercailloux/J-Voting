@@ -179,8 +179,39 @@ public class MutableStrictProfileTest {
 
 		MutableStrictProfile msp1 = MutableStrictProfile.given(profile, alternativeNames, voterNames);
 		MutableStrictProfile toTest = createMSPToTest();
-		toTest.addAlternative(a4);
+		toTest.addAlternativeProfile(a4);
 		assertEquals(msp1, toTest);
+	}
+	
+	@Test
+	public void addAlternativePreferenceTest() {
+		
+		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
+
+		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a1234list);
+		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a3214list);
+		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a2314list);
+
+		profile.put(v1, mlp1);
+		profile.put(v2, mlp2);
+		profile.put(v3, mlp3);
+
+		BiMap<Alternative, String> alternativeNames = HashBiMap.create();
+		alternativeNames.put(a1, "Tartiflette");
+		alternativeNames.put(a2, "Pâte au saumon");
+		alternativeNames.put(a3, "Fondue Savoyarde");
+		alternativeNames.put(a4, "Alternative 4");
+
+		BiMap<Voter, String> voterNames = HashBiMap.create();
+		voterNames.put(v1, "Pierre");
+		voterNames.put(v2, "Thomas");
+		voterNames.put(v3, "Jade");
+		
+		MutableStrictProfile mspExpected = MutableStrictProfile.given(profile, alternativeNames, voterNames);
+
+		MutableStrictProfile toTest = createMSPToTest();
+		toTest.getPreference(v1).addAlternative(a4);
+		assertEquals(mspExpected, toTest);
 	}
 
 	@Test
@@ -206,8 +237,37 @@ public class MutableStrictProfileTest {
 
 		MutableStrictProfile msp1 = MutableStrictProfile.given(profile, alternativeNames, voterNames);
 		MutableStrictProfile toTest = createMSPToTest();
-		toTest.removeAlternative(a3);
+		toTest.removeAlternativeProfile(a3);
 		assertEquals(msp1, toTest);
+	}
+	
+	@Test
+	public void removeAlternativePreferenceTest() {
+		
+		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
+
+		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a12list);
+		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a21list);
+		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a21list);
+
+		profile.put(v1, mlp1);
+		profile.put(v2, mlp2);
+		profile.put(v3, mlp3);
+
+		BiMap<Alternative, String> alternativeNames = HashBiMap.create();
+		alternativeNames.put(a1, "Tartiflette");
+		alternativeNames.put(a2, "Pâte au saumon");
+
+		BiMap<Voter, String> voterNames = HashBiMap.create();
+		voterNames.put(v1, "Pierre");
+		voterNames.put(v2, "Thomas");
+		voterNames.put(v3, "Jade");
+
+		MutableStrictProfile mspExpected = MutableStrictProfile.given(profile, alternativeNames, voterNames);
+
+		MutableStrictProfile toTest = createMSPToTest();
+		toTest.getPreference(v1).removeAlternative(a3);
+		assertEquals(mspExpected, toTest);
 	}
 
 	@Test
@@ -256,16 +316,16 @@ public class MutableStrictProfileTest {
 		assertEquals(emptySet, toTest1.getAlternatives());
 	}
 
-	@Test
-	public void getPreferenceTest() {
-
-		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a123list);
-		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a321list);
-		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a231list);
-		
-		MutableStrictProfile toTest = createMSPToTest();
-		assertEquals(mlp1, toTest.getPreference(v1));
-		assertEquals(mlp2, toTest.getPreference(v2));
-		assertEquals(mlp3, toTest.getPreference(v3));
-	}
+//	@Test
+//	public void getPreferenceTest() {
+//
+//		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a123list);
+//		MutableLinearPreference mlp2 = MutableLinearPreferenceImpl.given(v2, a321list);
+//		MutableLinearPreference mlp3 = MutableLinearPreferenceImpl.given(v3, a231list);
+//		
+//		MutableStrictProfile toTest = createMSPToTest();
+//		assertEquals(mlp1, toTest.getPreference(v1));
+//		assertEquals(mlp2, toTest.getPreference(v2));
+//		assertEquals(mlp3, toTest.getPreference(v3));
+//	}
 }

@@ -22,6 +22,7 @@ import com.google.common.graph.Graph;
 
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
+import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl.MutableLinearSetDecorator;
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 import io.github.oliviercailloux.j_voting.Alternative;
 
@@ -63,6 +64,14 @@ public class MutableStrictProfile {
 		this.profile = new HashMap<>();
 		this.alternativeNames = HashBiMap.create();
 		this.voterNames =  HashBiMap.create();
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "MutableStrictProfile [profile=" + profile + ", alternativeNames=" + alternativeNames + ", voterNames="
+				+ voterNames + "]";
 	}
 
 	/**
@@ -148,14 +157,14 @@ public class MutableStrictProfile {
 	 * @param a a non existing alternative
 	 * @return true if the Alternative is not already in the Profile
 	 */
-	public boolean addAlternative(Alternative a) {
+	public boolean addAlternativeProfile(Alternative a) {
 
 		if (alternativeNames.containsKey(a)) {
 			return false;
 		}
 
 		for (Voter v : getVoters()) {
-			getPreference(v).addAlternative(a);
+			profile.get(v).addAlternative(a);
 		}
 
 		String alternativeName = "Alternative " + a.getId();
@@ -170,14 +179,14 @@ public class MutableStrictProfile {
 	 * @param a an existing alternative
 	 * @return true if the Alternative is in the Profile
 	 */
-	public boolean removeAlternative(Alternative a) {
+	public boolean removeAlternativeProfile(Alternative a) {
 
 		if (!(alternativeNames.containsKey(a))) {
 			return false;
 		}
 
 		for (Voter v : getVoters()) {
-			getPreference(v).removeAlternative(a);
+			profile.get(v).removeAlternative(a);
 		}
 
 		alternativeNames.remove(a);
@@ -240,31 +249,59 @@ public class MutableStrictProfile {
 	 * @return MutableLinearPreference
 	 */
 	public MutableLinearPreference getPreference(Voter v) {
-		return profile.get(v);
+		//return profile.get(v);
+		return new MutableLinearPreferenceDecorator(this,profile.get(v));
 	}
 	
 	/**
 	 *
 	 */
-	public static class ProfileMapDecorator extends ForwardingMap<Voter, MutableLinearPreference> {
+	public static class MutableLinearPreferenceDecorator implements MutableLinearPreference {
 		
-		private MutableStrictProfile delegate;
+		private MutableLinearPreference delegate;
+		private MutableStrictProfile profile;
+
+		private MutableLinearPreferenceDecorator(MutableStrictProfile profile, MutableLinearPreference delegate) {
+			this.delegate = delegate;
+			this.profile = profile;
+		}
 
 		@Override
-		protected Map<Voter, MutableLinearPreference> delegate() {
-			return delegate.profile;
-		}
-		
-		private ProfileMapDecorator(MutableStrictProfile delegate) {
-			this.delegate = delegate;
+		public Graph<Alternative> asGraph() {
+			return delegate.asGraph();
 		}
 
-	
+		@Override
+		public Set<Alternative> getAlternatives() {
+			return delegate.getAlternatives();
+		}
+
+		@Override
+		public Voter getVoter() {
+			return delegate.getVoter();
+		}
+
+		@Override
+		public boolean changeOrder(Alternative alternative, int rank) {
+			return delegate.changeOrder(alternative, rank);
+		}
+
+		@Override
+		public boolean removeAlternative(Alternative alternative) {
+			return profile.removeAlternativeProfile(alternative);
+		}
+
+		@Override
+		public boolean addAlternative(Alternative alternative) {
+			return profile.addAlternativeProfile(alternative);
+		}
+
+		@Override
+		public boolean swap(Alternative alternative1, Alternative alternative2) {
+			return delegate.swap(alternative1, alternative2);
+		}
 
 	}
-	
-	
-	
 
 	@Override
 	public int hashCode() {
