@@ -2,6 +2,8 @@ package io.github.oliviercailloux.j_voting.profiles;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,9 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.BiMap;
+import com.google.common.collect.ForwardingMap;
+import com.google.common.collect.HashBiMap;
+import com.google.common.graph.Graph;
 
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
@@ -55,9 +60,9 @@ public class MutableStrictProfile {
 	}
 	
 	private MutableStrictProfile() {
-		this.profile = null;
-		this.alternativeNames = null;
-		this.voterNames = null;
+		this.profile = new HashMap<>();
+		this.alternativeNames = HashBiMap.create();
+		this.voterNames =  HashBiMap.create();
 	}
 
 	/**
@@ -212,13 +217,20 @@ public class MutableStrictProfile {
 	/**
 	 * Get a Set containing all the Alternatives of the Profile.
 	 * 
-	 * @return Set<Alternative>
+	 * @return Set<Alternative><br>
+	 * <br>
+	 * FUTURE : To protect the profile, a decorator should be
+	 * implemented to coat alternativeNames.
 	 */
 	public Set<Alternative> getAlternatives() {
-		Set<Entry<Voter, MutableLinearPreference>> setProfile = profile.entrySet();
-		Iterator<Entry<Voter, MutableLinearPreference>> it = setProfile.iterator();
-		Set<Alternative> copySet = it.next().getValue().getAlternatives();
-		return copySet;
+		
+		Set<Alternative> set = new HashSet<>();
+		
+		if(!(profile.isEmpty()) && !alternativeNames.isEmpty() && ! voterNames.isEmpty() ) {
+			set = (alternativeNames.inverse().values());
+		}
+		
+		return set;
 	}
 
 	/**
@@ -230,6 +242,29 @@ public class MutableStrictProfile {
 	public MutableLinearPreference getPreference(Voter v) {
 		return profile.get(v);
 	}
+	
+	/**
+	 *
+	 */
+	public static class ProfileMapDecorator extends ForwardingMap<Voter, MutableLinearPreference> {
+		
+		private MutableStrictProfile delegate;
+
+		@Override
+		protected Map<Voter, MutableLinearPreference> delegate() {
+			return delegate.profile;
+		}
+		
+		private ProfileMapDecorator(MutableStrictProfile delegate) {
+			this.delegate = delegate;
+		}
+
+	
+
+	}
+	
+	
+	
 
 	@Override
 	public int hashCode() {

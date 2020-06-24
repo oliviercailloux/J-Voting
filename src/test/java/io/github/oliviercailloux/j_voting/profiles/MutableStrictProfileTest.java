@@ -10,6 +10,7 @@ import static io.github.oliviercailloux.j_voting.AlternativeHelper.v1;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.v2;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.v3;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.v4;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a21list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123list;
@@ -247,8 +248,12 @@ public class MutableStrictProfileTest {
 	@Test
 	public void getAlternativesTest() {
 		
-		//MutableStrictProfile toTest = createMSPToTest();
-		//assertEquals(a123list, toTest.getAlternatives());
+		MutableStrictProfile toTest = createMSPToTest();
+		assertEquals(a123, toTest.getAlternatives());
+		
+		MutableStrictProfile toTest1 = MutableStrictProfile.empty();
+		Set<Alternative> emptySet = new HashSet<>();
+		assertEquals(emptySet, toTest1.getAlternatives());
 	}
 
 	@Test
