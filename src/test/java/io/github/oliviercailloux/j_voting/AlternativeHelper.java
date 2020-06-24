@@ -1,16 +1,28 @@
 package io.github.oliviercailloux.j_voting;
 
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1234list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a21list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2314list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3214list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.v1;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.v2;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.v3;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import com.google.common.collect.ImmutableSet;
+
+import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
+import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 public class AlternativeHelper {
 
@@ -97,6 +109,20 @@ public class AlternativeHelper {
     public static List<Alternative> a12list = ImmutableSet.of(a1, a2).asList();
     public static List<Alternative> a21list = ImmutableSet.of(a2,a1).asList();
     public static List<Alternative> a32451list = ImmutableSet.of(a3, a2, a4, a5, a1).asList();
+    
+    public static MutableLinearPreference v1a123list = MutableLinearPreferenceImpl.given(v1, a123list);
+    public static MutableLinearPreference v2a321list = MutableLinearPreferenceImpl.given(v2, a321list);
+    public static MutableLinearPreference v3a231list = MutableLinearPreferenceImpl.given(v3, a231list);
+    public static MutableLinearPreference v4a321list = MutableLinearPreferenceImpl.given(v4, a321list);
+    
+    public static MutableLinearPreference v1a1234list = MutableLinearPreferenceImpl.given(v1, a1234list);
+    public static MutableLinearPreference v2a3214list = MutableLinearPreferenceImpl.given(v2, a3214list);
+    public static MutableLinearPreference v3a2314list = MutableLinearPreferenceImpl.given(v3, a2314list);
+    
+    public static MutableLinearPreference v1a12list = MutableLinearPreferenceImpl.given(v1, a12list);
+    public static MutableLinearPreference v2a21list = MutableLinearPreferenceImpl.given(v2, a21list);
+    public static MutableLinearPreference v3a21list = MutableLinearPreferenceImpl.given(v3, a21list);
 
+    
 
 }
