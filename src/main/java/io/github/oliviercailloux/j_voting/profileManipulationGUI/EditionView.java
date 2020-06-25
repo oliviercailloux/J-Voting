@@ -134,7 +134,12 @@ public class EditionView {
 		this.userIndication.setText(indication);
 	}
 
-	public void cleanAltContent() {
+	public void refreshAlternativeSection(Set<Alternative> newAltSet) {
+		this.cleanAltContent();
+		this.displayAlternatives(newAltSet);
+	}
+
+	private void cleanAltContent() {
 		for (Text ctr : alternativeControls.values()) {
 			ctr.dispose();
 		}

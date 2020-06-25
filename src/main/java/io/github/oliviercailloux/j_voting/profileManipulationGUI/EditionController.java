@@ -75,9 +75,8 @@ public class EditionController {
 			return;
 		}
 
-		editionView.cleanAltContent();
 		controller.getModel().addAlternative(newAlt);
-		editionView.displayAlternatives(controller.getModel().getAlternatives());
+		editionView.refreshAlternativeSection(controller.getModel().getAlternatives());
 		editionView.attachAddAlternativeListener(this.buildAddAlternativeBehavior());
 	}
 
