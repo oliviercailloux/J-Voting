@@ -134,6 +134,11 @@ public class EditionView {
 		this.userIndication.setText(indication);
 	}
 
+	/**
+	 * Update the gui with the new alternative data provided in newAltSet
+	 *
+	 * @param newAltSet the new alternative set to display
+	 */
 	public void refreshAlternativeSection(Set<Alternative> newAltSet) {
 		this.cleanAltContent();
 		this.displayAlternatives(newAltSet);
