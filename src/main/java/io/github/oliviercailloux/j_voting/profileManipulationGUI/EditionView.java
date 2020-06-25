@@ -10,7 +10,6 @@ import org.eclipse.swt.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 
 public class EditionView {
@@ -21,6 +20,7 @@ public class EditionView {
 	private Map<Button, Text> addAlternativeControls;
 	private Map<Alternative, Text> alternativeControls;
 	private Label userIndication;
+
 	/**
 	 * Factory method to create the edition window
 	 * 
@@ -120,13 +120,9 @@ public class EditionView {
 		}
 	}
 
-	public Map<Button, Text> getAddAlternativeControls() {
-		return addAlternativeControls;
-	}
-
 	/**
-	 * Return the text field content of the associated button provided
-	 * as parameter.
+	 * Return the text field content of the associated button provided as parameter.
+	 * 
 	 * @param btn the button associated to the desired text field not null
 	 */
 	public String getTextFieldContent(Button btn) {
