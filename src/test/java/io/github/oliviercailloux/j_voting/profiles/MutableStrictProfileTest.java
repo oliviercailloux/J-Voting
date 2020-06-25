@@ -6,10 +6,11 @@ import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v1;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v2;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v3;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v4;
+import static io.github.oliviercailloux.j_voting.VoterHelper.v1;
+import static io.github.oliviercailloux.j_voting.VoterHelper.v2;
+import static io.github.oliviercailloux.j_voting.VoterHelper.v3;
+import static io.github.oliviercailloux.j_voting.VoterHelper.v4;
+import static io.github.oliviercailloux.j_voting.VoterHelper.v123set;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a21list;
@@ -19,18 +20,23 @@ import static io.github.oliviercailloux.j_voting.AlternativeHelper.a231list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1234list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3214list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2314list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v123set;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v1a123list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v2a321list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v3a231list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v4a321list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v1a1234list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v2a3214list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v3a2314list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v1a12list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v2a21list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.v3a21list;
+import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv1a123list;
+import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv2a321list;
+import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv3a231list;
+import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv4a321list;
+import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv1a1234list;
+import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv2a3214list;
+import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv3a2314list;
+import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv1a12list;
+import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv2a21list;
+import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv3a21list;
 
+import static io.github.oliviercailloux.j_voting.ProfileHelper.mspa123v1234;
+import static io.github.oliviercailloux.j_voting.ProfileHelper.mspa12v12;
+import static io.github.oliviercailloux.j_voting.ProfileHelper.mspa123v123;
+import static io.github.oliviercailloux.j_voting.ProfileHelper.mspa1234v123;
+import static io.github.oliviercailloux.j_voting.ProfileHelper.mspa123v12;
+import static io.github.oliviercailloux.j_voting.ProfileHelper.mspa123v123renameA;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +48,8 @@ import org.junit.jupiter.api.Test;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+import com.google.common.collect.ImmutableBiMap;
+import com.google.common.collect.ImmutableMap;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
@@ -56,7 +64,6 @@ public class MutableStrictProfileTest {
 	 * @return an MutableStrictProfile to test
 	 */
 	public static MutableStrictProfile createMSPToTest() {
-
 		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
 
 		MutableLinearPreference mlp1 = MutableLinearPreferenceImpl.given(v1, a123list);
@@ -82,211 +89,68 @@ public class MutableStrictProfileTest {
 
 	@Test
 	public void addVoterTest() {
-		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
-		
-		profile.put(v1, v1a123list);
-		profile.put(v2, v2a321list);
-		profile.put(v3, v3a231list);
-		profile.put(v4, v4a321list);
-
-		BiMap<Alternative, String> alternativeNames = HashBiMap.create();
-		alternativeNames.put(a1, "Tartiflette");
-		alternativeNames.put(a2, "Pâte au saumon");
-		alternativeNames.put(a3, "Fondue Savoyarde");
-
-		BiMap<Voter, String> voterNames = HashBiMap.create();
-		voterNames.put(v1, "Pierre");
-		voterNames.put(v2, "Thomas");
-		voterNames.put(v3, "Jade");
-		voterNames.put(v4, "Voter 4");
-		
-		MutableStrictProfile msp1 = MutableStrictProfile.given(profile, alternativeNames, voterNames);
 		MutableStrictProfile toTest = createMSPToTest();
 		toTest.addVoter(v4);
-		assertEquals(msp1, toTest);
+		assertEquals(mspa123v1234, toTest);
 	}
 
 	@Test
 	public void removeVoterTest() {
-		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
-
-		profile.put(v1, v1a123list);
-		profile.put(v2, v2a321list);
-
-		BiMap<Alternative, String> alternativeNames = HashBiMap.create();
-		alternativeNames.put(a1, "Tartiflette");
-		alternativeNames.put(a2, "Pâte au saumon");
-		alternativeNames.put(a3, "Fondue Savoyarde");
-
-		BiMap<Voter, String> voterNames = HashBiMap.create();
-		voterNames.put(v1, "Pierre");
-		voterNames.put(v2, "Thomas");
-		
-		MutableStrictProfile msp1 = MutableStrictProfile.given(profile, alternativeNames, voterNames);
 		MutableStrictProfile toTest = createMSPToTest();
 		toTest.removeVoter(v3);
-		assertEquals(msp1, toTest);
+		assertEquals(mspa12v12, toTest);
 	}
 
 	@Test
 	public void renameVoterTest() {
-		
-		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
-
-		profile.put(v1, v1a123list);
-		profile.put(v2, v2a321list);
-		profile.put(v3, v3a231list);
-
-		BiMap<Alternative, String> alternativeNames = HashBiMap.create();
-		alternativeNames.put(a1, "Tartiflette");
-		alternativeNames.put(a2, "Pâte au saumon");
-		alternativeNames.put(a3, "Fondue Savoyarde");
-
-		BiMap<Voter, String> voterNames = HashBiMap.create();
-		voterNames.put(v1, "Léo");
-		voterNames.put(v2, "Thomas");
-		voterNames.put(v3, "Jade");
-		
-		MutableStrictProfile msp1 = MutableStrictProfile.given(profile, alternativeNames, voterNames);
 		MutableStrictProfile toTest = createMSPToTest();
 		toTest.renameVoter(v1, "Léo");
-		assertEquals(msp1, toTest);
+		assertEquals(mspa123v123, toTest);
 	}
 
 	@Test
 	public void addAlternativeTest() {
-		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
-
-		profile.put(v1, v1a1234list);
-		profile.put(v2, v2a3214list);
-		profile.put(v3, v3a2314list);
-
-		BiMap<Alternative, String> alternativeNames = HashBiMap.create();
-		alternativeNames.put(a1, "Tartiflette");
-		alternativeNames.put(a2, "Pâte au saumon");
-		alternativeNames.put(a3, "Fondue Savoyarde");
-		alternativeNames.put(a4, "Alternative 4");
-
-		BiMap<Voter, String> voterNames = HashBiMap.create();
-		voterNames.put(v1, "Pierre");
-		voterNames.put(v2, "Thomas");
-		voterNames.put(v3, "Jade");
-
-		MutableStrictProfile msp1 = MutableStrictProfile.given(profile, alternativeNames, voterNames);
 		MutableStrictProfile toTest = createMSPToTest();
 		toTest.addAlternativeProfile(a4);
-		assertEquals(msp1, toTest);
+		assertEquals(mspa1234v123, toTest);
 	}
 	
 	@Test
 	public void addAlternativePreferenceTest() {
-		
-		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
-
-		profile.put(v1, v1a1234list);
-		profile.put(v2, v2a3214list);
-		profile.put(v3, v3a2314list);
-
-		BiMap<Alternative, String> alternativeNames = HashBiMap.create();
-		alternativeNames.put(a1, "Tartiflette");
-		alternativeNames.put(a2, "Pâte au saumon");
-		alternativeNames.put(a3, "Fondue Savoyarde");
-		alternativeNames.put(a4, "Alternative 4");
-
-		BiMap<Voter, String> voterNames = HashBiMap.create();
-		voterNames.put(v1, "Pierre");
-		voterNames.put(v2, "Thomas");
-		voterNames.put(v3, "Jade");
-		
-		MutableStrictProfile mspExpected = MutableStrictProfile.given(profile, alternativeNames, voterNames);
-
 		MutableStrictProfile toTest = createMSPToTest();
 		toTest.getPreference(v1).addAlternative(a4);
-		assertEquals(mspExpected, toTest);
+		assertEquals(mspa1234v123, toTest);
 	}
 
 	@Test
 	public void removeAlternativeTest() {
-		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
-
-		profile.put(v1, v1a12list);
-		profile.put(v2, v2a21list);
-		profile.put(v3, v3a21list);
-
-		BiMap<Alternative, String> alternativeNames = HashBiMap.create();
-		alternativeNames.put(a1, "Tartiflette");
-		alternativeNames.put(a2, "Pâte au saumon");
-
-		BiMap<Voter, String> voterNames = HashBiMap.create();
-		voterNames.put(v1, "Pierre");
-		voterNames.put(v2, "Thomas");
-		voterNames.put(v3, "Jade");
-
-		MutableStrictProfile msp1 = MutableStrictProfile.given(profile, alternativeNames, voterNames);
 		MutableStrictProfile toTest = createMSPToTest();
 		toTest.removeAlternativeProfile(a3);
-		assertEquals(msp1, toTest);
+		assertEquals(mspa123v12, toTest);
 	}
 	
 	@Test
 	public void removeAlternativePreferenceTest() {
-		
-		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
-
-		profile.put(v1, v1a12list);
-		profile.put(v2, v2a21list);
-		profile.put(v3, v3a21list);
-
-		BiMap<Alternative, String> alternativeNames = HashBiMap.create();
-		alternativeNames.put(a1, "Tartiflette");
-		alternativeNames.put(a2, "Pâte au saumon");
-
-		BiMap<Voter, String> voterNames = HashBiMap.create();
-		voterNames.put(v1, "Pierre");
-		voterNames.put(v2, "Thomas");
-		voterNames.put(v3, "Jade");
-
-		MutableStrictProfile mspExpected = MutableStrictProfile.given(profile, alternativeNames, voterNames);
-
-		MutableStrictProfile toTest = createMSPToTest();
+		MutableStrictProfile toTest = createMSPToTest();	
 		toTest.getPreference(v1).removeAlternative(a3);
-		assertEquals(mspExpected, toTest);
+		assertEquals(mspa123v12, toTest);
 	}
 
 	@Test
 	public void renameAlternativeTest() {
-		Map<Voter, MutableLinearPreference> profile = new HashMap<>();
-
-		profile.put(v1, v1a123list);
-		profile.put(v2, v2a321list);
-		profile.put(v3, v3a231list);
-
-		BiMap<Alternative, String> alternativeNames = HashBiMap.create();
-		alternativeNames.put(a1, "Tartiflette");
-		alternativeNames.put(a2, "Couscous");
-		alternativeNames.put(a3, "Fondue Savoyarde");
-
-		BiMap<Voter, String> voterNames = HashBiMap.create();
-		voterNames.put(v1, "Pierre");
-		voterNames.put(v2, "Thomas");
-		voterNames.put(v3, "Jade");
-
-		MutableStrictProfile msp1 = MutableStrictProfile.given(profile, alternativeNames, voterNames);
 		MutableStrictProfile toTest = createMSPToTest();
 		toTest.renameAlternative(a2, "Couscous");
-		assertEquals(msp1, toTest);
+		assertEquals(mspa123v123renameA, toTest);
 	}
 
 	@Test
 	public void getVotersTest() {
-		
 		MutableStrictProfile toTest = createMSPToTest();
 		assertEquals(v123set, toTest.getVoters());
 	}
 
 	@Test
 	public void getAlternativesTest() {
-		
 		MutableStrictProfile toTest = createMSPToTest();
 		assertEquals(a123, toTest.getAlternatives());
 		

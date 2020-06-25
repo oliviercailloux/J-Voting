@@ -272,33 +272,33 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 			delegate.clear();
 		}
 
-//		@Override
-//		public Iterator<Alternative> iterator() {
-//			LOGGER.debug("MutableLinearSetDecorator delegate iterator");
-//			return new MutableLinearIteratorDecorator(this.iterator());
-//		}
-//		
-//		@Override
-//		public boolean retainAll(Collection<?> c) {
-//			LOGGER.debug("MutableLinearSetDecorator delegate retainAll");
-//			return standardRetainAll(c);
-//		}
+		@Override
+		public Iterator<Alternative> iterator() {
+			LOGGER.debug("MutableLinearSetDecorator delegate iterator");
+			return new MutableLinearIteratorDecorator(this.iterator());
+		}
+		
+		@Override
+		public boolean retainAll(Collection<?> c) {
+			LOGGER.debug("MutableLinearSetDecorator delegate retainAll");
+			return standardRetainAll(c);
+		}
 
 	}
 
-//	public static class MutableLinearIteratorDecorator extends ForwardingIterator<Alternative> {
-//		
-//		private Iterator<Alternative> iteratorDelegate;
-//
-//		@Override
-//		protected Iterator<Alternative> delegate() {
-//			return iteratorDelegate;
-//		}
-//		
-//		private MutableLinearIteratorDecorator(Iterator<Alternative> iteratorDelegate) {
-//			this.iteratorDelegate = iteratorDelegate;
-//		}
-//	}
+	public static class MutableLinearIteratorDecorator extends ForwardingIterator<Alternative> {
+		
+		private Iterator<Alternative> iteratorDelegate;
+
+		@Override
+		protected Iterator<Alternative> delegate() {
+			return iteratorDelegate;
+		}
+		
+		private MutableLinearIteratorDecorator(Iterator<Alternative> iteratorDelegate) {
+			this.iteratorDelegate = iteratorDelegate;
+		}
+	}
 	/**
 	 * The sets accessible via this delegate are not currently editable
 	 * (google/guava#3034), which makes the implementation currently correct .
