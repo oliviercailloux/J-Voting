@@ -1,5 +1,6 @@
 package io.github.oliviercailloux.j_voting.profileManipulationGUI;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import io.github.oliviercailloux.j_voting.Alternative;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.layout.GridData;
@@ -9,6 +10,7 @@ import org.eclipse.swt.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 public class EditionView {
@@ -18,7 +20,7 @@ public class EditionView {
 	private GridLayout gridLayout;
 	private Map<Button, Text> addAlternativeControls;
 	private Map<Alternative, Text> alternativeControls;
-
+	private Label userIndication;
 	/**
 	 * Factory method to create the edition window
 	 * 
@@ -38,6 +40,7 @@ public class EditionView {
 		this.gridLayout = new GridLayout(1, false);
 		this.mainComposite.setLayout(gridLayout);
 
+		addUserIndication();
 		initEditionTab();
 	}
 
@@ -47,6 +50,12 @@ public class EditionView {
 	private void initEditionTab() {
 		this.editionTab = new TabItem(this.tabfolder, SWT.NONE);
 		editionTab.setText("Edition");
+	}
+
+	private void addUserIndication() {
+		this.userIndication = new Label(mainComposite, SWT.NONE);
+		GridData gridData = new GridData(GridData.FILL, GridData.VERTICAL_ALIGN_BEGINNING, false, false);
+		userIndication.setLayoutData(gridData);
 	}
 
 	/**
@@ -113,6 +122,20 @@ public class EditionView {
 
 	public Map<Button, Text> getAddAlternativeControls() {
 		return addAlternativeControls;
+	}
+
+	/**
+	 * Return the text field content of the associated button provided
+	 * as parameter.
+	 * @param btn the button associated to the desired text field not null
+	 */
+	public String getTextFieldContent(Button btn) {
+		checkNotNull(btn);
+		return this.addAlternativeControls.get(btn).getText();
+	}
+
+	public void setUserIndicationText(String indication) {
+		this.userIndication.setText(indication);
 	}
 
 	public void cleanAltContent() {

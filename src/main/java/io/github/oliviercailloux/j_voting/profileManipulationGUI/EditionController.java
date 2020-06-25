@@ -57,22 +57,21 @@ public class EditionController {
 	 * @param btn the button clicked by the user.
 	 */
 	private void handleAddAlternative(Button btn) {
-		Text textField = this.editionView.getAddAlternativeControls().get(btn);
-		String string = textField.getText();
+		String textFieldContent = editionView.getTextFieldContent(btn);
 
 		// Method found on stackoverflow to check whether the provided string is a
 		// number
-		Matcher matcher = Pattern.compile("[0-9]*+$").matcher(string);
+		Matcher matcher = Pattern.compile("[0-9]*+$").matcher(textFieldContent);
 		if (!matcher.matches()) {
-			textField.setText("Not a number");
+			editionView.setUserIndicationText("Not a number");
 			return;
 		}
 
-		Integer textFieldId = Integer.parseInt(textField.getText());
+		Integer textFieldId = Integer.parseInt(textFieldContent);
 		Alternative newAlt = Alternative.withId(textFieldId);
 
 		if (controller.getModel().getAlternatives().contains(newAlt)) {
-			textField.setText("Alternative already exists");
+			editionView.setUserIndicationText("Alternative already exists");
 			return;
 		}
 
