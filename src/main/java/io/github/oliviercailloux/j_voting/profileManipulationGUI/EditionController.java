@@ -59,25 +59,21 @@ public class EditionController {
 	private void handleAddAlternative(Button btn) {
 		String textFieldContent = editionView.getTextFieldContent(btn);
 
-		// Method found on stackoverflow to check whether the provided string is a
-		// number
-		Matcher matcher = Pattern.compile("[0-9]*+$").matcher(textFieldContent);
-		if (!matcher.matches()) {
+		try {
+			Integer textFieldId = Integer.parseInt(textFieldContent);
+			Alternative newAlt = Alternative.withId(textFieldId);
+
+			if (controller.getModel().getAlternatives().contains(newAlt)) {
+				editionView.setUserIndicationText("Alternative already exists");
+				return;
+			}
+
+			controller.getModel().addAlternative(newAlt);
+			editionView.refreshAlternativeSection(controller.getModel().getAlternatives());
+			editionView.attachAddAlternativeListener(this.buildAddAlternativeBehavior());
+		} catch (NumberFormatException e) {
 			editionView.setUserIndicationText("Not a number");
-			return;
 		}
-
-		Integer textFieldId = Integer.parseInt(textFieldContent);
-		Alternative newAlt = Alternative.withId(textFieldId);
-
-		if (controller.getModel().getAlternatives().contains(newAlt)) {
-			editionView.setUserIndicationText("Alternative already exists");
-			return;
-		}
-
-		controller.getModel().addAlternative(newAlt);
-		editionView.refreshAlternativeSection(controller.getModel().getAlternatives());
-		editionView.attachAddAlternativeListener(this.buildAddAlternativeBehavior());
 	}
 
 }
