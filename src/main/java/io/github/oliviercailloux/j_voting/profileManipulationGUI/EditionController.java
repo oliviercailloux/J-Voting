@@ -24,14 +24,14 @@ public class EditionController {
 	}
 
 	/**
-	 * Display the default edition view when user enters the gui
+	 * Initiate the edition view with the originally default or chosen startModel.
 	 */
 	private void initEditionView() {
 		String voterName = this.controller.getModel().getVoter().toString();
 		editionView.displayVoters(voterName);
 
-		Set<Alternative> a = this.controller.getModel().getAlternatives();
-		editionView.displayAlternatives(a);
+		Set<Alternative> altSet = this.controller.getModel().getAlternatives();
+		editionView.displayAlternatives(altSet);
 		editionView.attachAddAlternativeListener(this.buildAddAlternativeBehavior());
 	}
 
