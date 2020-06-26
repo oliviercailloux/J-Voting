@@ -36,7 +36,8 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	private Set<Alternative> alternatives;
 	private List<Alternative> list;
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(MutableLinearPreferenceImpl.class.getName());
+	@SuppressWarnings("unused")
+	private static final Logger LOGGER = LoggerFactory.getLogger(MutableLinearPreferenceImpl.class);
 
 	private MutableLinearPreferenceImpl(Voter voter, List<Alternative> list) {
 
