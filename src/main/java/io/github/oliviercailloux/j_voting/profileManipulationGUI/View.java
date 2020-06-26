@@ -6,11 +6,13 @@ import org.eclipse.swt.*;
 public class View {
 	private Shell mainShell;
 	private TabFolder tabfolder;
+	private EditionView editionView;
+	private VisualizationView visualizationView;
 
 	/**
 	 * Factory method to create the main Shell
 	 * 
-	 * @param mainShell
+	 * @param mainShell the mainShell where to plug the tab folder
 	 * @return a new shell
 	 */
 	public static View create(Shell mainShell) {
@@ -20,6 +22,8 @@ public class View {
 	private View(Shell shell) {
 		this.mainShell = shell;
 		initTabFolder();
+		this.editionView = EditionView.create(this.tabfolder);
+		this.visualizationView = VisualizationView.create(this.tabfolder);
 	}
 
 	/**
@@ -30,18 +34,11 @@ public class View {
 		tabfolder.setSize(600, 400);
 	}
 
-	/**
-	 * Creating the editing tab
-	 */
-	public EditionView buildEditionView() {
-		return EditionView.create(this.tabfolder);
+	public EditionView getEditionView() {
+		return editionView;
 	}
 
-	/**
-	 * Creating the viewing tab
-	 */
-	public VisualizationView buildVisualizationView() {
-		return VisualizationView.create(this.tabfolder);
+	public VisualizationView getVisualizationView() {
+		return visualizationView;
 	}
-
 }

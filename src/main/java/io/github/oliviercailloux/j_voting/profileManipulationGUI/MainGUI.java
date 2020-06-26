@@ -22,8 +22,7 @@ public class MainGUI {
 		centerOnScreen(display, shell);
 
 		View view = View.create(shell);
-		EditionView editionView = view.buildEditionView();
-		view.buildVisualizationView();
+		EditionView editionView = view.getEditionView();
 
 		Controller controller = Controller.withDefaultModel();
 		controller.buildEditionController(editionView);
