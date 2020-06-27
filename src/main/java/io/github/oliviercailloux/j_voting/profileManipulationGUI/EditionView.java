@@ -129,6 +129,17 @@ public class EditionView {
 	}
 
 	/**
+	 * Attach a selection listener to all the delete alternative button.
+	 *
+	 * @param callback to execute when the delete button is clicked.
+	 */
+	public void attachDeleteAlternativeListener(SelectionAdapter callback) {
+		for (Button btn : this.deleteAlternativeControls.keySet()) {
+			btn.addSelectionListener(callback);
+		}
+	}
+
+	/**
 	 * Return the text field content of the associated button provided as parameter.
 	 * 
 	 * @param btn the button associated to the desired text field not null
@@ -136,6 +147,28 @@ public class EditionView {
 	public String getTextFieldContent(Button btn) {
 		checkNotNull(btn);
 		return this.addAlternativeControls.get(btn).getText();
+	}
+
+	/**
+	 * Return the alternative of the associated delete button provided as parameter.
+	 *
+	 * @param btn the delete button associated to the desired alternative not null
+	 */
+	public Alternative getAlternativeToDelete(Button btn) {
+		checkNotNull(btn);
+		return this.deleteAlternativeControls.get(btn);
+	}
+
+	public void deleteAlternative(Button btnClicked) {
+		checkNotNull(btnClicked);
+		Alternative alt = this.deleteAlternativeControls.get(btnClicked);
+		Text altCtr = this.alternativeControls.get(alt);
+
+		altCtr.dispose();
+		btnClicked.dispose();
+		this.alternativeControls.remove(alt);
+		this.deleteAlternativeControls.remove(btnClicked);
+		this.mainComposite.layout(true);
 	}
 
 	public void setUserIndicationText(String indication) {

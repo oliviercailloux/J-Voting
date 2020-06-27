@@ -31,6 +31,7 @@ public class EditionController {
 		Set<Alternative> altSet = this.controller.getModel().getAlternatives();
 		editionView.addPreference(altSet);
 		editionView.attachAddAlternativeListener(this.buildAddAlternativeBehavior());
+		editionView.attachDeleteAlternativeListener(this.buildDeleteAlternativeBehavior());
 	}
 
 	/**
@@ -47,6 +48,7 @@ public class EditionController {
 			}
 		};
 	}
+
 
 	/**
 	 * Definition of the add alternative behavior to execute when the corresponding
@@ -69,9 +71,32 @@ public class EditionController {
 			controller.getModel().addAlternative(newAlt);
 			editionView.refreshAlternativeSection(controller.getModel().getAlternatives());
 			editionView.attachAddAlternativeListener(this.buildAddAlternativeBehavior());
+			editionView.attachDeleteAlternativeListener(this.buildDeleteAlternativeBehavior());
 		} catch (NumberFormatException e) {
 			editionView.setUserIndicationText("Not a number");
 		}
 	}
+
+	/**
+	 * Builds the behavior to delete an alternative in the view
+	 *
+	 * @return the behavior to attach to a SelectionListener
+	 */
+	private SelectionAdapter buildDeleteAlternativeBehavior() {
+		return new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Button btnData = (Button) e.getSource();
+				handleDeleteAlternative(btnData);
+			}
+		};
+	}
+
+	private void handleDeleteAlternative(Button btn) {
+		Alternative altToDelete = editionView.getAlternativeToDelete(btn);
+		controller.getModel().removeAlternative(altToDelete);
+		editionView.deleteAlternative(btn);
+	}
+
 
 }
