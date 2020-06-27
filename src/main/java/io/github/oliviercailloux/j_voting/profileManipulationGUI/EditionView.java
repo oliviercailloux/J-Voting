@@ -7,8 +7,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 
-import com.google.common.base.Preconditions;
-
 import org.eclipse.swt.*;
 
 import java.util.LinkedHashMap;
@@ -35,7 +33,7 @@ public class EditionView {
 	}
 
 	private EditionView(TabFolder mainTabFolder) {
-		Preconditions.checkNotNull(mainTabFolder);
+		checkNotNull(mainTabFolder);
 		this.tabfolder = mainTabFolder;
 		this.mainComposite = new Composite(tabfolder, SWT.NONE);
 		this.addAlternativeControls = new LinkedHashMap<>();

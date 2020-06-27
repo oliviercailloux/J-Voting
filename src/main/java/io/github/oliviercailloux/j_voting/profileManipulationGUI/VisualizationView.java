@@ -2,7 +2,7 @@ package io.github.oliviercailloux.j_voting.profileManipulationGUI;
 
 import org.eclipse.swt.widgets.*;
 
-import com.google.common.base.Preconditions;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import org.eclipse.swt.*;
 
@@ -15,7 +15,7 @@ public class VisualizationView {
 	}
 
 	private VisualizationView(TabFolder mainTabFolder) {
-		Preconditions.checkNotNull(mainTabFolder);
+		checkNotNull(mainTabFolder);
 		this.tabfolder = mainTabFolder;
 		initVisualizationTab();
 	}
