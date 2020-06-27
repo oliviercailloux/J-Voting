@@ -29,7 +29,7 @@ public class EditionController {
 		editionView.addVoter(voterName);
 
 		Set<Alternative> altSet = this.controller.getModel().getAlternatives();
-		editionView.displayAlternatives(altSet);
+		editionView.addPreference(altSet);
 		editionView.attachAddAlternativeListener(this.buildAddAlternativeBehavior());
 	}
 

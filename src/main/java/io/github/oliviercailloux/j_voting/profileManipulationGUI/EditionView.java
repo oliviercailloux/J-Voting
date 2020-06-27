@@ -82,7 +82,7 @@ public class EditionView {
 	 * @param altSet for the set of alternatives to display in the Mutable Linear
 	 *               Preference..
 	 */
-	public void displayAlternatives(Set<Alternative> altSet) {
+	public void addPreference(Set<Alternative> altSet) {
 		for (Alternative a : altSet) {
 			Text alt = new Text(mainComposite, SWT.BORDER);
 			alt.setText(a.toString());
@@ -93,7 +93,7 @@ public class EditionView {
 			this.alternativeControls.put(a, alt);
 		}
 
-		displayAddAlternatives();
+		addAlternative();
 		mainComposite.layout(true);
 	}
 
@@ -101,7 +101,7 @@ public class EditionView {
 	 * Creation and display of the text field of the alternative to be added.
 	 * Creation and display of the add button.
 	 */
-	public void displayAddAlternatives() {
+	public void addAlternative() {
 		Text newAlt = new Text(mainComposite, SWT.BORDER);
 		editionTab.setControl(mainComposite);
 
@@ -145,7 +145,7 @@ public class EditionView {
 	 */
 	public void refreshAlternativeSection(Set<Alternative> newAltSet) {
 		this.cleanAltContent();
-		this.displayAlternatives(newAltSet);
+		this.addPreference(newAltSet);
 	}
 
 	private void cleanAltContent() {
