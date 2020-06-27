@@ -19,6 +19,7 @@ public class EditionView {
 	private Composite mainComposite;
 	private GridLayout gridLayout;
 	private Map<Button, Text> addAlternativeControls;
+	private Map<Button, Alternative> deleteAlternativeControls;
 	private Map<Alternative, Text> alternativeControls;
 	private Label userIndication;
 
@@ -38,8 +39,9 @@ public class EditionView {
 		this.mainComposite = new Composite(tabfolder, SWT.NONE);
 		this.addAlternativeControls = new LinkedHashMap<>();
 		this.alternativeControls = new LinkedHashMap<>();
+		this.deleteAlternativeControls = new LinkedHashMap<>();
 
-		this.gridLayout = new GridLayout(1, false);
+		this.gridLayout = new GridLayout(2, false);
 		this.mainComposite.setLayout(gridLayout);
 
 		addUserIndication();
@@ -69,7 +71,7 @@ public class EditionView {
 		Text voter = new Text(mainComposite, SWT.BORDER);
 		voter.setText(voterName);
 
-		GridData gridData = new GridData(GridData.FILL, GridData.VERTICAL_ALIGN_BEGINNING, false, false);
+		GridData gridData = new GridData(GridData.FILL, GridData.VERTICAL_ALIGN_BEGINNING, false, false, 2, SWT.NONE);
 		voter.setLayoutData(gridData);
 	}
 
@@ -89,6 +91,10 @@ public class EditionView {
 			data.horizontalAlignment = GridData.BEGINNING;
 			alt.setLayoutData(data);
 			this.alternativeControls.put(a, alt);
+
+			Button btn = new Button(mainComposite, SWT.NONE);
+			btn.setText("Delete");
+			this.deleteAlternativeControls.put(btn, a);
 		}
 
 		addAlternative();
@@ -156,7 +162,11 @@ public class EditionView {
 		for (Text text : addAlternativeControls.values()) {
 			text.dispose();
 		}
+		for (Button btn : deleteAlternativeControls.keySet()) {
+			btn.dispose();
+		}
 		this.alternativeControls.clear();
 		this.addAlternativeControls.clear();
+		this.deleteAlternativeControls.clear();
 	}
 }
