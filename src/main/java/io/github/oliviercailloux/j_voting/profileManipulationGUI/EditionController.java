@@ -1,8 +1,6 @@
 package io.github.oliviercailloux.j_voting.profileManipulationGUI;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.widgets.*;
@@ -28,7 +26,7 @@ public class EditionController {
 	 */
 	private void initEditionView() {
 		String voterName = this.controller.getModel().getVoter().toString();
-		editionView.displayVoters(voterName);
+		editionView.addVoter(voterName);
 
 		Set<Alternative> altSet = this.controller.getModel().getAlternatives();
 		editionView.displayAlternatives(altSet);

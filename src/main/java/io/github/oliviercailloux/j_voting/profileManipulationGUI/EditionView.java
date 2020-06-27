@@ -6,6 +6,9 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
+
+import com.google.common.base.Preconditions;
+
 import org.eclipse.swt.*;
 
 import java.util.LinkedHashMap;
@@ -32,6 +35,7 @@ public class EditionView {
 	}
 
 	private EditionView(TabFolder mainTabFolder) {
+		Preconditions.checkNotNull(mainTabFolder);
 		this.tabfolder = mainTabFolder;
 		this.mainComposite = new Composite(tabfolder, SWT.NONE);
 		this.addAlternativeControls = new LinkedHashMap<>();
@@ -63,7 +67,7 @@ public class EditionView {
 	 * 
 	 * @param voterName for the voter's name in the Mutable Linear Preference.
 	 */
-	public void displayVoters(String voterName) {
+	public void addVoter(String voterName) {
 		Text voter = new Text(mainComposite, SWT.BORDER);
 		voter.setText(voterName);
 
@@ -75,7 +79,7 @@ public class EditionView {
 	 * Creation and display of text fields with alternatives. Creating and
 	 * displaying buttons for deleting an alternative.
 	 * 
-	 * @param altSet for the list of alternatives to display in the Mutable Linear
+	 * @param altSet for the set of alternatives to display in the Mutable Linear
 	 *               Preference..
 	 */
 	public void displayAlternatives(Set<Alternative> altSet) {

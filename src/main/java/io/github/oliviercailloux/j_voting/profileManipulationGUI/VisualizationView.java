@@ -1,6 +1,9 @@
 package io.github.oliviercailloux.j_voting.profileManipulationGUI;
 
 import org.eclipse.swt.widgets.*;
+
+import com.google.common.base.Preconditions;
+
 import org.eclipse.swt.*;
 
 public class VisualizationView {
@@ -12,6 +15,7 @@ public class VisualizationView {
 	}
 
 	private VisualizationView(TabFolder mainTabFolder) {
+		Preconditions.checkNotNull(mainTabFolder);
 		this.tabfolder = mainTabFolder;
 		initVisualizationTab();
 	}
