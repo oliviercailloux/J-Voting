@@ -92,6 +92,12 @@ public class EditionController {
 		};
 	}
 
+	/**
+	 * Definition of the delete alternative behavior to execute when the corresponding
+	 * button is clicked.
+	 *
+	 * @param btn the button clicked by the user.
+	 */
 	private void handleDeleteAlternative(Button btn) {
 		Alternative altToDelete = editionView.getAlternativeToDelete(btn);
 		controller.getModel().removeAlternative(altToDelete);
