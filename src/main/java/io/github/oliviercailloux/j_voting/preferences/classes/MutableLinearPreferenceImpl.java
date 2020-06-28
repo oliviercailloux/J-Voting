@@ -272,12 +272,6 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 			LOGGER.debug("MutableLinearSetDecorator delegate clear");
 			delegate.clear();
 		}
-
-		@Override
-		public Iterator<Alternative> iterator() {
-			LOGGER.debug("MutableLinearSetDecorator delegate iterator");
-			return new MutableLinearIteratorDecorator(this.iterator());
-		}
 		
 		@Override
 		public boolean retainAll(Collection<?> c) {
@@ -285,6 +279,11 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 			return standardRetainAll(c);
 		}
 
+		@Override
+		public Iterator<Alternative> iterator() {
+			LOGGER.debug("MutableLinearSetDecorator delegate iterator");
+			return new MutableLinearIteratorDecorator(delegate.list.iterator());
+		}
 	}
 
 	public static class MutableLinearIteratorDecorator extends ForwardingIterator<Alternative> {
@@ -300,6 +299,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 			this.iteratorDelegate = iteratorDelegate;
 		}
 	}
+	
 	/**
 	 * The sets accessible via this delegate are not currently editable
 	 * (google/guava#3034), which makes the implementation currently correct .
