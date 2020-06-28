@@ -49,7 +49,6 @@ public class EditionController {
 		};
 	}
 
-
 	/**
 	 * Definition of the add alternative behavior to execute when the corresponding
 	 * button is clicked.
@@ -93,8 +92,8 @@ public class EditionController {
 	}
 
 	/**
-	 * Definition of the delete alternative behavior to execute when the corresponding
-	 * button is clicked.
+	 * Definition of the delete alternative behavior to execute when the
+	 * corresponding button is clicked.
 	 *
 	 * @param btn the button clicked by the user.
 	 */
@@ -103,6 +102,5 @@ public class EditionController {
 		controller.getModel().removeAlternative(altToDelete);
 		editionView.deleteAlternative(btn);
 	}
-
 
 }
