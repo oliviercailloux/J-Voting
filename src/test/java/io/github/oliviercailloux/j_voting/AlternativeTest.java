@@ -36,6 +36,6 @@ public class AlternativeTest {
     @Test
     public void testToString() {
         Alternative a = Alternative.withId(7);
-        assertEquals(a.toString(), Integer.toString(7));
+        assertEquals(a.toString(), "Alternative{id=7}");
     }
 }
