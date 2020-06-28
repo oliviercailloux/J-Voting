@@ -43,7 +43,7 @@ public class MutableStrictProfile {
 		LOGGER.debug("MutableLinearPreferenceImpl given");
 		return new MutableStrictProfile(profile, alternativeNames, voterNames);
 	}
-	
+
 	private MutableStrictProfile(Map<Voter, MutableLinearPreference> profile,
 			BiMap<Alternative, String> alternativeNames, BiMap<Voter, String> voterNames) {
 		Preconditions.checkNotNull(profile);
@@ -54,19 +54,17 @@ public class MutableStrictProfile {
 		this.alternativeNames = alternativeNames;
 		this.voterNames = voterNames;
 	}
-	
+
 	public static MutableStrictProfile empty() {
 		LOGGER.debug("MutableLinearPreferenceImpl empty");
 		return new MutableStrictProfile();
 	}
-	
+
 	private MutableStrictProfile() {
 		this.profile = new HashMap<>();
 		this.alternativeNames = HashBiMap.create();
-		this.voterNames =  HashBiMap.create();
+		this.voterNames = HashBiMap.create();
 	}
-	
-	
 
 	@Override
 	public String toString() {
@@ -227,18 +225,18 @@ public class MutableStrictProfile {
 	 * Get a Set containing all the Alternatives of the Profile.
 	 * 
 	 * @return Set<Alternative><br>
-	 * <br>
-	 * FUTURE : To protect the profile, a decorator should be
-	 * implemented to coat alternativeNames.
+	 *         <br>
+	 *         FUTURE : To protect the profile, a decorator should be implemented to
+	 *         coat alternativeNames.
 	 */
 	public Set<Alternative> getAlternatives() {
-		
+
 		Set<Alternative> set = new HashSet<>();
-		
-		if(!(profile.isEmpty()) && !alternativeNames.isEmpty() && ! voterNames.isEmpty() ) {
+
+		if (!(profile.isEmpty()) && !alternativeNames.isEmpty() && !voterNames.isEmpty()) {
 			set = (alternativeNames.inverse().values());
 		}
-		
+
 		return set;
 	}
 
@@ -249,15 +247,15 @@ public class MutableStrictProfile {
 	 * @return MutableLinearPreference
 	 */
 	public MutableLinearPreference getPreference(Voter v) {
-		//return profile.get(v);
-		return new MutableLinearPreferenceDecorator(this,profile.get(v));
+		// return profile.get(v);
+		return new MutableLinearPreferenceDecorator(this, profile.get(v));
 	}
-	
+
 	/**
 	 *
 	 */
 	public static class MutableLinearPreferenceDecorator implements MutableLinearPreference {
-		
+
 		private MutableLinearPreference delegate;
 		private MutableStrictProfile profile;
 

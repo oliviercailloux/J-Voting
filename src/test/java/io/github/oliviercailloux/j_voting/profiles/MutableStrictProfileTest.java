@@ -114,7 +114,7 @@ public class MutableStrictProfileTest {
 		toTest.addAlternativeProfile(a4);
 		assertEquals(mspa1234v123, toTest);
 	}
-	
+
 	@Test
 	public void addAlternativePreferenceTest() {
 		MutableStrictProfile toTest = createMSPToTest();
@@ -128,10 +128,10 @@ public class MutableStrictProfileTest {
 		toTest.removeAlternativeProfile(a3);
 		assertEquals(mspa123v12, toTest);
 	}
-	
+
 	@Test
 	public void removeAlternativePreferenceTest() {
-		MutableStrictProfile toTest = createMSPToTest();	
+		MutableStrictProfile toTest = createMSPToTest();
 		toTest.getPreference(v1).removeAlternative(a3);
 		assertEquals(mspa123v12, toTest);
 	}
@@ -153,7 +153,7 @@ public class MutableStrictProfileTest {
 	public void getAlternativesTest() {
 		MutableStrictProfile toTest = createMSPToTest();
 		assertEquals(a123, toTest.getAlternatives());
-		
+
 		MutableStrictProfile toTest1 = MutableStrictProfile.empty();
 		Set<Alternative> emptySet = new HashSet<>();
 		assertEquals(emptySet, toTest1.getAlternatives());

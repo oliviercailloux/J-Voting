@@ -98,7 +98,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		}
 		return true;
 	}
-	
+
 	@Override
 	public boolean removeAlternative(Alternative a) {
 		LOGGER.debug("MutableLinearPreferenceImpl deleteAlternative");
@@ -116,11 +116,11 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	public boolean addAlternative(Alternative a) {
 		LOGGER.debug("MutablePreferenceImpl addAlternative");
 		Preconditions.checkNotNull(a);
-		
-		if(alternatives.contains(a)) {
+
+		if (alternatives.contains(a)) {
 			return false;
 		}
-		
+
 		list.add(a);
 		graph.addNode(a);
 
@@ -166,8 +166,8 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 				|| !(alternatives.contains(alternative2))) {
 			return false;
 		}
-		
-		boolean op1,op2,op3,op4;
+
+		boolean op1, op2, op3, op4;
 
 		Alternative best = alternative1;
 		Alternative worst = alternative2;
@@ -185,19 +185,19 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 			op2 = graph.putEdge(a, best);
 			op3 = graph.removeEdge(a, worst);
 			op4 = graph.putEdge(worst, a);
-			
-			if(!(op1 && op2 && op3 && op4)) {			
+
+			if (!(op1 && op2 && op3 && op4)) {
 				throw new VerifyException("There might be a bug in the stucture.");
 			}
 		}
 
 		op1 = graph.removeEdge(best, worst);
 		op2 = graph.putEdge(worst, best);
-		
-		if(!(op1 && op2)) {			
+
+		if (!(op1 && op2)) {
 			throw new VerifyException("There might be a bug in the stucture.");
 		}
-		
+
 		Collections.swap(list, list.indexOf(alternative1), list.indexOf(alternative2));
 
 		return true;
@@ -272,7 +272,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 			LOGGER.debug("MutableLinearSetDecorator delegate clear");
 			delegate.clear();
 		}
-		
+
 		@Override
 		public boolean retainAll(Collection<?> c) {
 			LOGGER.debug("MutableLinearSetDecorator delegate retainAll");
@@ -287,25 +287,26 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	}
 
 	public static class MutableLinearIteratorDecorator extends ForwardingIterator<Alternative> {
-		
+
 		private Iterator<Alternative> iteratorDelegate;
 
 		@Override
 		protected Iterator<Alternative> delegate() {
 			return iteratorDelegate;
 		}
-		
+
 		private MutableLinearIteratorDecorator(Iterator<Alternative> iteratorDelegate) {
 			this.iteratorDelegate = iteratorDelegate;
 		}
 	}
-	
+
 	/**
 	 * The sets accessible via this delegate are not currently editable
 	 * (google/guava#3034), which makes the implementation currently correct .
-	 * However, this is not guaranteed by contract, and therefore could change. <br><br>
-	 * FUTURE : Ideally, sets returned via this decorator should be protected against
-	 * changes.
+	 * However, this is not guaranteed by contract, and therefore could change. <br>
+	 * <br>
+	 * FUTURE : Ideally, sets returned via this decorator should be protected
+	 * against changes.
 	 */
 	public static class MutableLinearGraphDecorator extends ForwardingGraph<Alternative> {
 

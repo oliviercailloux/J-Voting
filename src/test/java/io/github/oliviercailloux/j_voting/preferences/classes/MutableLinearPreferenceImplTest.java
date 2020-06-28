@@ -191,18 +191,15 @@ public class MutableLinearPreferenceImplTest {
 
 	@Test
 	void testRetainAllDelegate() {
-		 Voter v = Voter.createVoter(1);
-		 MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v,
-		 a123456list);
+		Voter v = Voter.createVoter(1);
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a123456list);
 
-		 Set<Alternative> c = new HashSet<>();
-		 c.add(a1);
-		 c.add(a2);
-		 c.add(a3);
-		 toTestPref.getAlternatives().retainAll(c);
+		Set<Alternative> c = new HashSet<>();
+		c.addAll(a123);
+		toTestPref.getAlternatives().retainAll(c);
 
-		 MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, a123list);
-		 assertEquals(prefExpected1, toTestPref);
+		MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, a123list);
+		assertEquals(prefExpected1, toTestPref);
 	}
 
 	@Test
