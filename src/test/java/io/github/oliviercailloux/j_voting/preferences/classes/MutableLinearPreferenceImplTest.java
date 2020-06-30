@@ -1,13 +1,42 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12345;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1234;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a6;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12345;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1234;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12345list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1234list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1235list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123546list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123456list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a46list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a34list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a345list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1345list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1256list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a56;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a41235list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a41325list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a43251list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a52341list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a32541list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a34521list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a54321list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a51324list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a41523list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a41253list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a14253list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a14235list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a21list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a32451list;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -21,6 +50,7 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import com.google.common.collect.ImmutableSet;
 import com.google.common.graph.Graph;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
@@ -32,86 +62,6 @@ import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPrefe
 import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 public class MutableLinearPreferenceImplTest {
-	
-	@Test
-	void testAddAllDelegate() {
-		Voter v = Voter.createVoter(1);
-		List<Alternative> toTestList = new ArrayList<>();		
-		toTestList.add(a1);
-		toTestList.add(a2);
-		toTestList.add(a3);
-		toTestList.add(a4);
-		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
-		
-		Set<Alternative> c = new HashSet<>();
-		c.add(a5);
-		c.add(a6);
-		toTestPref.getAlternatives().addAll(c);	
-		
-		List<Alternative> list1 = new ArrayList<>();	
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
-		list1.add(a4);
-		list1.add(a5);
-		list1.add(a6);
-		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
-		assertEquals(toTestPref, pref1);
-	}
-	
-	@Test
-	void testRemoveAllDelegate() {
-		Voter v = Voter.createVoter(1);
-		List<Alternative> toTestList = new ArrayList<>();		
-		toTestList.add(a1);
-		toTestList.add(a2);
-		toTestList.add(a3);
-		toTestList.add(a4);
-		toTestList.add(a5);
-		toTestList.add(a6);
-		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
-		
-		Set<Alternative> c = new HashSet<>();
-		c.add(a5);
-		c.add(a6);
-		toTestPref.getAlternatives().removeAll(c);	
-		
-		List<Alternative> list1 = new ArrayList<>();	
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
-		list1.add(a4);
-		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
-		assertEquals(toTestPref, pref1);
-		
-	}
-	
-	@Test
-	void testRetainAllDelegate() {
-		//Voter v = Voter.createVoter(1);
-		List<Alternative> toTestList = new ArrayList<>();		
-		toTestList.add(a1);
-		toTestList.add(a2);
-		toTestList.add(a3);
-		toTestList.add(a4);
-		toTestList.add(a5);
-		toTestList.add(a6);
-		//MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
-		
-		Set<Alternative> c = new HashSet<>();
-		c.add(a1);
-		c.add(a2);
-		c.add(a3);
-		//toTestPref.getAlternatives().retainAll(c);	
-		
-		List<Alternative> list1 = new ArrayList<>();	
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
-		//MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
-		//assertEquals(toTestPref, pref1);
-		
-	}
 
 	/**
 	 * Tests whether the preference is correctly expressed as a graph
@@ -119,15 +69,9 @@ public class MutableLinearPreferenceImplTest {
 	@Test
 	void testAsGraph() {
 		Voter v = Voter.createVoter(1);
-		List<Alternative> toTestList = new ArrayList<>();		
-		toTestList.add(a1);
-		toTestList.add(a2);
-		toTestList.add(a3);
-		toTestList.add(a4);
-		toTestList.add(a5);
-		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
-		
-		MutableGraph<Alternative> expected  = GraphBuilder.directed().allowsSelfLoops(true).build();
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a12345list);
+
+		MutableGraph<Alternative> expected = GraphBuilder.directed().allowsSelfLoops(true).build();
 		expected.putEdge(a1, a1);
 		expected.putEdge(a1, a2);
 		expected.putEdge(a1, a3);
@@ -147,31 +91,68 @@ public class MutableLinearPreferenceImplTest {
 	}
 
 	/**
+	 * Tests whether method getAlternatives returns a set with all the alternatives
+	 * of the preference. Here we are going to test the decorator.
+	 */
+	@Test
+	void testGetAlternatives() {
+		Voter v = Voter.createVoter(1);
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a1234list);
+
+		Set<Alternative> expected = a1234;
+		assertEquals(expected, toTestPref.getAlternatives());
+
+		MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, a12345list);
+		toTestPref.getAlternatives().add(a5);
+		assertEquals(prefExpected1, toTestPref);
+
+		MutableLinearPreference prefExpected2 = MutableLinearPreferenceImpl.given(v, a1235list);
+		toTestPref.getAlternatives().remove(a4);
+		assertEquals(prefExpected2, toTestPref);
+
+		MutableLinearPreference prefExpected3 = MutableLinearPreferenceImpl.given(v, a123546list);
+		toTestPref.getAlternatives().addAll(a46list);
+		assertEquals(prefExpected3, toTestPref);
+
+		MutableLinearPreference prefExpected4 = MutableLinearPreferenceImpl.given(v, a1256list);
+		toTestPref.getAlternatives().removeAll(a34list);
+		assertEquals(prefExpected4, toTestPref);
+
+		List<Alternative> emptyList = new ArrayList<>();
+		MutableLinearPreference prefExpected5 = MutableLinearPreferenceImpl.given(v, emptyList);
+		toTestPref.getAlternatives().clear();
+		assertEquals(prefExpected5, toTestPref);
+	}
+
+	/**
 	 * Tests whether the single alternative is added to the preferences
 	 */
 	@Test
 	void testAddAlternative() {
 		Voter v = Voter.createVoter(1);
-		List<Alternative> toTestList = new ArrayList<>();		
-		toTestList.add(a1);
-		toTestList.add(a2);
-		toTestList.add(a3);
-		toTestList.add(a4);
-		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
-		
-		List<Alternative> list1 = new ArrayList<>();	
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
-		list1.add(a4);
-		list1.add(a5);
-		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a1234list);
+
+		List<Alternative> toTestList = new ArrayList<>();
+		toTestList.addAll(a12345);
+		MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, toTestList);
 		toTestPref.addAlternative(a5);
-		assertEquals(toTestPref, pref1);
-		
-		list1.add(a6);
-		assertEquals(toTestPref, pref1);
-		
+		assertEquals(prefExpected1, toTestPref);
+
+		// Test if modifying the list after passing it to the constructor does not
+		// change the structure of the preference.
+		toTestList.add(a6);
+		assertEquals(prefExpected1, toTestPref);
+	}
+
+	@Test
+	void testAddAllDelegate() {
+		Voter v = Voter.createVoter(1);
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a1234list);
+		toTestPref.getAlternatives().addAll(a56);
+
+		MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, a123456list);
+		assertEquals(prefExpected1, toTestPref);
+		assertEquals(prefExpected1.asGraph(), toTestPref.asGraph());
 	}
 
 	/**
@@ -180,146 +161,63 @@ public class MutableLinearPreferenceImplTest {
 	@Test
 	void testRemoveAlternative() {
 		Voter v = Voter.createVoter(1);
-		List<Alternative> toTestList = new ArrayList<>();		
-		toTestList.add(a1);
-		toTestList.add(a2);
-		toTestList.add(a3);
-		toTestList.add(a4);
-		toTestList.add(a5);
-		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
-		
-		List<Alternative> list1 = new ArrayList<>();		
-		list1.add(a1);
-		list1.add(a3);
-		list1.add(a4);
-		list1.add(a5);
-		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a12345list);
+
+		MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, a1345list);
 		toTestPref.removeAlternative(a2);
-		assertEquals(toTestPref, pref1);
-		
-		List<Alternative> list2 = new ArrayList<>();		
-		list2.add(a3);
-		list2.add(a4);
-		list2.add(a5);
-		MutableLinearPreference pref2 = MutableLinearPreferenceImpl.given(v, list2);
+		assertEquals(prefExpected1, toTestPref);
+
+		MutableLinearPreference prefExpected2 = MutableLinearPreferenceImpl.given(v, a345list);
 		toTestPref.removeAlternative(a1);
-		assertEquals(toTestPref, pref2);
-		
-		List<Alternative> list3 = new ArrayList<>();		
-		list3.add(a3);
-		list3.add(a4);
-		MutableLinearPreference pref3 = MutableLinearPreferenceImpl.given(v, list3);
+		assertEquals(prefExpected2, toTestPref);
+
+		MutableLinearPreference prefExpected3 = MutableLinearPreferenceImpl.given(v, a34list);
 		toTestPref.removeAlternative(a5);
-		assertEquals(toTestPref, pref3);
+		assertEquals(prefExpected3, toTestPref);
 	}
 
-	/**
-	 * Tests whether method getAlternatives returns a set with all the alternatives
-	 * of the preference. Here we are going to test the decorator.
-	 */
 	@Test
-	void testGetAlternatives() {
+	void testRemoveAllDelegate() {
 		Voter v = Voter.createVoter(1);
-		List<Alternative> toTestList = new ArrayList<>();		
-		toTestList.add(a1);
-		toTestList.add(a2);
-		toTestList.add(a3);
-		toTestList.add(a4);
-		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
-		Set<Alternative> expected = a1234;
-		assertEquals(expected, toTestPref.getAlternatives());
-		
-		List<Alternative> list1 = new ArrayList<>();		
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
-		list1.add(a4);
-		list1.add(a5);
-		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);		
-		toTestPref.getAlternatives().add(a5);
-		assertEquals(toTestPref, pref1);
-		
-		List<Alternative> list2 = new ArrayList<>();		
-		list2.add(a1);
-		list2.add(a2);
-		list2.add(a3);
-		list2.add(a5);
-		MutableLinearPreference pref2 = MutableLinearPreferenceImpl.given(v, list2);		
-		toTestPref.getAlternatives().remove(a4);
-		assertEquals(toTestPref, pref2);
-		
-		List<Alternative> list3 = new ArrayList<>();		
-		list3.add(a1);
-		list3.add(a2);
-		list3.add(a3);
-		list3.add(a5);
-		list3.add(a4);
-		list3.add(a6);
-		MutableLinearPreference pref3 = MutableLinearPreferenceImpl.given(v, list3);
-		List<Alternative> addList = new ArrayList<>();
-		addList.add(a4);
-		addList.add(a6);
-		toTestPref.getAlternatives().addAll(addList);
-		assertEquals(pref3,toTestPref);
-		
-		List<Alternative> list4 = new ArrayList<>();		
-		list4.add(a1);
-		list4.add(a2);
-		list4.add(a5);
-		list4.add(a6);
-		MutableLinearPreference pref4 = MutableLinearPreferenceImpl.given(v, list4);
-		List<Alternative> removeList = new ArrayList<>();
-		removeList.add(a3);
-		removeList.add(a4);
-		toTestPref.getAlternatives().removeAll(removeList);
-		assertEquals(pref4,toTestPref);
-		
-		List<Alternative> list5 = new ArrayList<>();		
-		MutableLinearPreference pref5 = MutableLinearPreferenceImpl.given(v, list5);
-		toTestPref.getAlternatives().clear();
-		assertEquals(pref5,toTestPref);
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a123456list);
+
+		Set<Alternative> c = new HashSet<>();
+		c.addAll(a56);
+		toTestPref.getAlternatives().removeAll(c);
+
+		MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, a1234list);
+		assertEquals(prefExpected1, toTestPref);
+	}
+
+	@Test
+	void testRetainAllDelegate() {
+		Voter v = Voter.createVoter(1);
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a123456list);
+
+		Set<Alternative> c = new HashSet<>();
+		c.addAll(a123);
+		toTestPref.getAlternatives().retainAll(c);
+
+		MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, a123list);
+		assertEquals(prefExpected1, toTestPref);
 	}
 
 	@Test
 	void testChangeOrder() {
 		Voter v = Voter.createVoter(1);
-		List<Alternative> toTestList = new ArrayList<>();		
-		toTestList.add(a1);
-		toTestList.add(a2);
-		toTestList.add(a3);
-		toTestList.add(a4);
-		toTestList.add(a5);
-		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
-		
-		List<Alternative> list1 = new ArrayList<>();		
-		list1.add(a4);
-		list1.add(a1);
-		list1.add(a2);
-		list1.add(a3);
-		list1.add(a5);
-		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a12345list);
+
+		MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, a41235list);
 		toTestPref.changeOrder(a4, 1);
-		assertEquals(pref1, toTestPref);
-		
-		List<Alternative> list2 = new ArrayList<>();		
-		list2.add(a4);
-		list2.add(a1);
-		list2.add(a3);
-		list2.add(a2);
-		list2.add(a5);
-		MutableLinearPreference pref2 = MutableLinearPreferenceImpl.given(v, list2);
+		assertEquals(prefExpected1, toTestPref);
+
+		MutableLinearPreference prefExpected2 = MutableLinearPreferenceImpl.given(v, a41325list);
 		toTestPref.changeOrder(a2, 4);
-		assertEquals(pref2, toTestPref);
-		
-		List<Alternative> list3 = new ArrayList<>();		
-		list3.add(a4);
-		list3.add(a3);
-		list3.add(a2);
-		list3.add(a5);
-		list3.add(a1);
-		MutableLinearPreference pref3 = MutableLinearPreferenceImpl.given(v, list3);
+		assertEquals(prefExpected2, toTestPref);
+
+		MutableLinearPreference prefExpected3 = MutableLinearPreferenceImpl.given(v, a43251list);
 		toTestPref.changeOrder(a1, 5);
-		assertEquals(pref3, toTestPref);
+		assertEquals(prefExpected3, toTestPref);
 	}
 
 	/**
@@ -333,145 +231,64 @@ public class MutableLinearPreferenceImplTest {
 	@Test
 	void testSwap() {
 		Voter v = Voter.createVoter(1);
-		List<Alternative> toTestList = new ArrayList<>();		
-		toTestList.add(a1);
-		toTestList.add(a2);
-		toTestList.add(a3);
-		toTestList.add(a4);
-		toTestList.add(a5);
-		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, toTestList);
-		
-		List<Alternative> list1 = new ArrayList<>();		
-		list1.add(a5);
-		list1.add(a2);
-		list1.add(a3);
-		list1.add(a4);
-		list1.add(a1);
-		MutableLinearPreference pref1 = MutableLinearPreferenceImpl.given(v, list1);
+		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a12345list);
 
-		toTestPref.swap(a1, a5); // swap(head,end)	
-		assertEquals(pref1, toTestPref);
-		
-		List<Alternative> list2 = new ArrayList<>();		
-		list2.add(a3);
-		list2.add(a2);
-		list2.add(a5);
-		list2.add(a4);
-		list2.add(a1);
-		MutableLinearPreference pref2 = MutableLinearPreferenceImpl.given(v, list2);
-		toTestPref.swap(a5, a3); // swap(head,middle)	
-		assertEquals(pref2, toTestPref);
-		
-		List<Alternative> list3 = new ArrayList<>();		
-		list3.add(a3);
-		list3.add(a4);
-		list3.add(a5);
-		list3.add(a2);
-		list3.add(a1);
-		MutableLinearPreference pref3 = MutableLinearPreferenceImpl.given(v, list3);
-		toTestPref.swap(a2, a4); // swap(middle,middle)	
-		assertEquals(pref3, toTestPref);
-		
-		List<Alternative> list4 = new ArrayList<>();		
-		list4.add(a5);
-		list4.add(a4);
-		list4.add(a3);
-		list4.add(a2);
-		list4.add(a1);
-		MutableLinearPreference pref4 = MutableLinearPreferenceImpl.given(v, list4);
+		MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, a52341list);
+		toTestPref.swap(a1, a5); // swap(head,end)
+		assertEquals(prefExpected1, toTestPref);
+
+		MutableLinearPreference prefExpected2 = MutableLinearPreferenceImpl.given(v, a32541list);
+		toTestPref.swap(a5, a3); // swap(head,middle)
+		assertEquals(prefExpected2, toTestPref);
+
+		MutableLinearPreference prefExpected3 = MutableLinearPreferenceImpl.given(v, a34521list);
+		toTestPref.swap(a2, a4); // swap(middle,middle)
+		assertEquals(prefExpected3, toTestPref);
+
+		MutableLinearPreference prefExpected4 = MutableLinearPreferenceImpl.given(v, a54321list);
 		toTestPref.swap(a5, a3); // swap(middle,head)
-		assertEquals(pref4, toTestPref);
+		assertEquals(prefExpected4, toTestPref);
 
-		List<Alternative> list5 = new ArrayList<>();		
-		list5.add(a5);
-		list5.add(a1);
-		list5.add(a3);
-		list5.add(a2);
-		list5.add(a4);
-		MutableLinearPreference pref5 = MutableLinearPreferenceImpl.given(v, list5);
+		MutableLinearPreference prefExpected5 = MutableLinearPreferenceImpl.given(v, a51324list);
 		toTestPref.swap(a4, a1); // swap(middle,end)
-		assertEquals(pref5, toTestPref);
-		
-		List<Alternative> list6 = new ArrayList<>();		
-		list6.add(a4);
-		list6.add(a1);
-		list6.add(a3);
-		list6.add(a2);
-		list6.add(a5);
-		MutableLinearPreference pref6 = MutableLinearPreferenceImpl.given(v, list6);
+		assertEquals(prefExpected5, toTestPref);
+
+		MutableLinearPreference prefExpected6 = MutableLinearPreferenceImpl.given(v, a41325list);
 		toTestPref.swap(a4, a5); // swap(end,head)
-		assertEquals(pref6, toTestPref);
+		assertEquals(prefExpected6, toTestPref);
 
-		List<Alternative> list7 = new ArrayList<>();		
-		list7.add(a4);
-		list7.add(a1);
-		list7.add(a5);
-		list7.add(a2);
-		list7.add(a3);
-		MutableLinearPreference pref7 = MutableLinearPreferenceImpl.given(v, list7);
+		MutableLinearPreference prefExpected7 = MutableLinearPreferenceImpl.given(v, a41523list);
 		toTestPref.swap(a5, a3); // swap(end,middle)
-		assertEquals(pref7, toTestPref);
-		
-		List<Alternative> list8 = new ArrayList<>();		
-		list8.add(a4);
-		list8.add(a1);
-		list8.add(a2);
-		list8.add(a5);
-		list8.add(a3);
-		MutableLinearPreference pref8 = MutableLinearPreferenceImpl.given(v, list8);
-		toTestPref.swap(a5, a2); // swap(middle,middle) neighbour
-		assertEquals(pref8, toTestPref);
-		
-		List<Alternative> list9 = new ArrayList<>();		
-		list9.add(a1);
-		list9.add(a4);
-		list9.add(a2);
-		list9.add(a5);
-		list9.add(a3);
-		MutableLinearPreference pref9 = MutableLinearPreferenceImpl.given(v, list9);
-		toTestPref.swap(a4, a1); // swap(head,middle) neighbour
-		assertEquals(pref9, toTestPref);
+		assertEquals(prefExpected7, toTestPref);
 
-		List<Alternative> list10 = new ArrayList<>();		
-		list10.add(a1);
-		list10.add(a4);
-		list10.add(a2);
-		list10.add(a3);
-		list10.add(a5);
-		MutableLinearPreference pref10 = MutableLinearPreferenceImpl.given(v, list10);
+		MutableLinearPreference prefExpected8 = MutableLinearPreferenceImpl.given(v, a41253list);
+		toTestPref.swap(a5, a2); // swap(middle,middle) neighbour
+		assertEquals(prefExpected8, toTestPref);
+
+		MutableLinearPreference prefExpected9 = MutableLinearPreferenceImpl.given(v, a14253list);
+		toTestPref.swap(a4, a1); // swap(head,middle) neighbour
+		assertEquals(prefExpected9, toTestPref);
+
+		MutableLinearPreference prefExpected10 = MutableLinearPreferenceImpl.given(v, a14235list);
 		toTestPref.swap(a5, a3); // swap(middle,end) neighbour
-		assertEquals(pref10, toTestPref);
-		
-		List<Alternative> toTestList1 = new ArrayList<>();		
-		toTestList1.add(a1);
-		toTestList1.add(a2);
-		MutableLinearPreference toTestPref1 = MutableLinearPreferenceImpl.given(v, toTestList1);
-		
-		List<Alternative> list11 = new ArrayList<>();		
-		list11.add(a2);
-		list11.add(a1);
-		MutableLinearPreference pref11 = MutableLinearPreferenceImpl.given(v, list11);
+		assertEquals(prefExpected10, toTestPref);
+
+		MutableLinearPreference toTestPref1 = MutableLinearPreferenceImpl.given(v, a12list);
+		MutableLinearPreference prefExpected11 = MutableLinearPreferenceImpl.given(v, a21list);
 		toTestPref1.swap(a1, a2); // swap(head,end) neighbour
-		assertEquals(pref11, toTestPref1);
-		
+		assertEquals(prefExpected11, toTestPref1);
+
 		Graph<Alternative> expected = toTestPref.asGraph();
 		toTestPref.addAlternative(a6);
-		toTestPref.swap(a3,a4);
+		toTestPref.swap(a3, a4);
 		toTestPref.removeAlternative(a1);
 		assertEquals(expected, toTestPref.asGraph());
-		
+
 		Set<Alternative> set = toTestPref.getAlternatives();
 		set.add(a1);
 		set.remove(a6);
-		List<Alternative> list12 = new ArrayList<>();		
-		list12.add(a3);
-		list12.add(a2);
-		list12.add(a4);
-		list12.add(a5);
-		list12.add(a1);
-		MutableLinearPreference pref12 = MutableLinearPreferenceImpl.given(v, list12);
-		assertEquals(pref12, toTestPref);
-	
+		MutableLinearPreference prefExpected12 = MutableLinearPreferenceImpl.given(v, a32451list);
+		assertEquals(prefExpected12, toTestPref);
+
 	}
 }
-
