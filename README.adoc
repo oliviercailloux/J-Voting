@@ -16,6 +16,6 @@ The code is hereby published under the MIT License, with the permission of the c
 * MutableStrictProfile + tests
 
 .Léo : 
-* MutableLinearPreferenceV1 + tests
-* MutableLinearPreferenceV2 + tests
-* GUIV3
+* MutableLinearPreference + tests
+* SM/PO
+* GUI
