@@ -30,3 +30,8 @@ The code is hereby published under the MIT License, with the permission of the c
 * MutableLinearPreference + tests
 * MutableStrictProfile + tests
 * SM/PO
+
+.Julien : 
+* OldCompletePreference to CompletePreference
+* GUI
+* SM/PO
