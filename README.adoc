@@ -24,3 +24,9 @@ The code is hereby published under the MIT License, with the permission of the c
 * MutableLinearPreference + tests
 * SM/PO
 * GUI
+
+.Jade : 
+* OldCompletePreference to CompletePreference
+* MutableLinearPreference + tests
+* MutableStrictProfile + tests
+* SM/PO
