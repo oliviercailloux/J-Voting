@@ -10,9 +10,10 @@ A Java project developed during several sessions of the https://github.com/olivi
 
 The code is hereby published under the MIT License, with the permission of the contributors.
 
-Thomas : OldCompletePreference to CompletePreference
-         MutableLinearPreference
-         MutableStrictProfile
+.Thomas : 
+* OldCompletePreference to CompletePreference
+* MutableLinearPreference + tests
+* MutableStrictProfile + tests
 
 
 
