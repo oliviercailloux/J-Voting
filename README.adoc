@@ -19,3 +19,8 @@ The code is hereby published under the MIT License, with the permission of the c
 * MutableLinearPreference + tests
 * SM/PO
 * GUI
+
+.Pierre : 
+* MutableLinearPreference + tests
+* SM/PO
+* GUI
