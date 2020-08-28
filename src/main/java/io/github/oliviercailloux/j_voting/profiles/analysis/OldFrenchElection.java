@@ -20,18 +20,17 @@ import io.github.oliviercailloux.j_voting.profiles.management.StrictProfileBuild
  */
 public class OldFrenchElection implements SocialWelfareFunction {
 
-    private static final Logger LOGGER = LoggerFactory
-                    .getLogger(OldFrenchElection.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(OldFrenchElection.class.getName());
 
-    @Override
-    public OldCompletePreferenceImpl getSocietyPreference(ImmutableProfileI profile) {
-        LOGGER.debug("getSocietyPreference");
-        Preconditions.checkNotNull(profile);
-        if (!profile.isStrict()) {
-            throw new IllegalArgumentException(
-                            "A french election can only happen with a strict profile.");
-        }
-        ImmutableStrictProfileI newProf = StrictProfileBuilder.createStrictProfileBuilder((StrictProfileI) profile).createOneAlternativeProfile();
-        return Borda.withScores().getSocietyPreference(newProf);
-    }
+	@Override
+	public OldCompletePreferenceImpl getSocietyPreference(ImmutableProfileI profile) {
+		LOGGER.debug("getSocietyPreference");
+		Preconditions.checkNotNull(profile);
+		if (!profile.isStrict()) {
+			throw new IllegalArgumentException("A french election can only happen with a strict profile.");
+		}
+		ImmutableStrictProfileI newProf = StrictProfileBuilder.createStrictProfileBuilder((StrictProfileI) profile)
+				.createOneAlternativeProfile();
+		return Borda.withScores().getSocietyPreference(newProf);
+	}
 }

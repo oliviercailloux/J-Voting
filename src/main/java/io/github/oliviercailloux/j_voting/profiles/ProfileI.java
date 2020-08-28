@@ -15,107 +15,107 @@ import io.github.oliviercailloux.j_voting.Voter;
  */
 public interface ProfileI {
 
-    /**
-     * 
-     * @param v a voter not <code>null</code>
-     * @return the preference of the voter v in the profile.
-     */
-    public OldCompletePreferenceImpl getPreference(Voter v);
+	/**
+	 * 
+	 * @param v a voter not <code>null</code>
+	 * @return the preference of the voter v in the profile.
+	 */
+	public OldCompletePreferenceImpl getPreference(Voter v);
 
-    /**
-     * @return the maximum size of a Preference in an incomplete Profile
-     */
-    public int getMaxSizeOfPreference();
+	/**
+	 * @return the maximum size of a Preference in an incomplete Profile
+	 */
+	public int getMaxSizeOfPreference();
 
-    /**
-     * 
-     * @return the profile as a map mapping the voters to their preference.
-     */
-    public Map<Voter, ? extends OldCompletePreferenceImpl> getProfile();
+	/**
+	 * 
+	 * @return the profile as a map mapping the voters to their preference.
+	 */
+	public Map<Voter, ? extends OldCompletePreferenceImpl> getProfile();
 
-    /**
-     * 
-     * @return a sorted set of all the voters in the profile. The voters are
-     *         ordered by id.
-     */
-    public NavigableSet<Voter> getAllVoters();
+	/**
+	 * 
+	 * @return a sorted set of all the voters in the profile. The voters are ordered
+	 *         by id.
+	 */
+	public NavigableSet<Voter> getAllVoters();
 
-    /**
-     * 
-     * @return the number of voters in the profile
-     */
-    public int getNbVoters();
+	/**
+	 * 
+	 * @return the number of voters in the profile
+	 */
+	public int getNbVoters();
 
-    /**
-     * 
-     * @return the sum of the counted votes
-     */
-    public int getSumVoteCount();
+	/**
+	 * 
+	 * @return the sum of the counted votes
+	 */
+	public int getSumVoteCount();
 
-    /**
-     * 
-     * @return a set of all the different preferences in the profile.
-     */
-    public Set<OldCompletePreferenceImpl> getUniquePreferences();
+	/**
+	 * 
+	 * @return a set of all the different preferences in the profile.
+	 */
+	public Set<OldCompletePreferenceImpl> getUniquePreferences();
 
-    /**
-     * 
-     * @return the number of different preferences in the profile.
-     */
-    public int getNbUniquePreferences();
+	/**
+	 * 
+	 * @return the number of different preferences in the profile.
+	 */
+	public int getNbUniquePreferences();
 
-    /**
-     * 
-     * @return true if the profile is complete (all the preferences are about
-     *         the same alternatives exactly).
-     */
-    public boolean isComplete();
+	/**
+	 * 
+	 * @return true if the profile is complete (all the preferences are about the
+	 *         same alternatives exactly).
+	 */
+	public boolean isComplete();
 
-    /**
-     * 
-     * @return true if the profile is strict (the preferences don't have several
-     *         alternatives that have the same rank).
-     */
-    public boolean isStrict();
+	/**
+	 * 
+	 * @return true if the profile is strict (the preferences don't have several
+	 *         alternatives that have the same rank).
+	 */
+	public boolean isStrict();
 
-    /**
-     * 
-     * @param p a Preference not <code >null </code>
-     * @return the number of voters that voted for p.
-     */
-    public int getNbVoterForPreference(OldCompletePreferenceImpl p);
+	/**
+	 * 
+	 * @param p a Preference not <code >null </code>
+	 * @return the number of voters that voted for p.
+	 */
+	public int getNbVoterForPreference(OldCompletePreferenceImpl p);
 
-    /**
-     * 
-     * @param o an object not <code>null</code>
-     * @return true if both objects implement ProfileI, contain all the same
-     *         voters and each voter has the same preference in the calling
-     *         profile and in the profile given as parameter.
-     */
-    @Override
-    public boolean equals(Object o);
+	/**
+	 * 
+	 * @param o an object not <code>null</code>
+	 * @return true if both objects implement ProfileI, contain all the same voters
+	 *         and each voter has the same preference in the calling profile and in
+	 *         the profile given as parameter.
+	 */
+	@Override
+	public boolean equals(Object o);
 
-    /**
-     * 
-     * @return the stricter profile possible
-     */
-    public ProfileI restrictProfile();
+	/**
+	 * 
+	 * @return the stricter profile possible
+	 */
+	public ProfileI restrictProfile();
 
-    /**
-     * 
-     * @return the number of alternatives in the profile
-     */
-    public int getNbAlternatives();
+	/**
+	 * 
+	 * @return the number of alternatives in the profile
+	 */
+	public int getNbAlternatives();
 
-    /**
-     * 
-     * @return a set of all the alternatives in the profile
-     */
-    public Set<Alternative> getAlternatives();
+	/**
+	 * 
+	 * @return a set of all the alternatives in the profile
+	 */
+	public Set<Alternative> getAlternatives();
 
-    /**
-     * 
-     * @return the format of the Profile when restricted
-     */
-    public String getFormat();
+	/**
+	 * 
+	 * @return the format of the Profile when restricted
+	 */
+	public String getFormat();
 }

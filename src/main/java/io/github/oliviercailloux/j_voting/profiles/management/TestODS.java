@@ -24,40 +24,33 @@ import io.github.oliviercailloux.j_voting.Voter;
  */
 public class TestODS {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TestODS.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(TestODS.class);
 
-    public static void main(String[] args) throws Exception {
-        new TestODS().generateSpreadsheetDocument();
-    }
+	public static void main(String[] args) throws Exception {
+		new TestODS().generateSpreadsheetDocument();
+	}
 
-    public void generateSpreadsheetDocument() throws Exception {
-        try (InputStream inputStream = TestODS.class
-                        .getResourceAsStream("demo9_data.ods");
-                        SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
-                                        .loadDocument(inputStream)) {
-            List<Table> tables = spreadsheetDoc.getTableList();
-            for (Table table : tables) {
-                List<Voter> voters = new ArrayList<>();
-                for (Column column : table.getColumnList()) {
-                    List<Alternative> alternatives = new ArrayList<>();
-                    String firstCellText = column.getCellByIndex(0)
-                                    .getDisplayText();
-                    voters.add(Voter.createVoter(Integer.parseInt(firstCellText
-                                    .substring(firstCellText.length() - 1,
-                                                    firstCellText.indexOf(
-                                                                    ' ')))));
-                    for (int alt = Integer.parseInt(column.getCellByIndex(1)
-                                    .getDisplayText()); alt < column
-                                                    .getCellCount(); alt++) {
-                        alternatives.add(Alternative.withId(alt));
-                    }
-                }
-            }
-            Cell positionCell = spreadsheetDoc.getTableByName("B")
-                            .getCellByPosition("E1");
-            LOGGER.info("Found: {}.", positionCell.getDisplayText());
-            positionCell.setStringValue("ploum");
-            spreadsheetDoc.save("demo9s.ods");
-        }
-    }
+	public void generateSpreadsheetDocument() throws Exception {
+		try (InputStream inputStream = TestODS.class.getResourceAsStream("demo9_data.ods");
+				SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument.loadDocument(inputStream)) {
+			List<Table> tables = spreadsheetDoc.getTableList();
+			for (Table table : tables) {
+				List<Voter> voters = new ArrayList<>();
+				for (Column column : table.getColumnList()) {
+					List<Alternative> alternatives = new ArrayList<>();
+					String firstCellText = column.getCellByIndex(0).getDisplayText();
+					voters.add(Voter.createVoter(Integer.parseInt(
+							firstCellText.substring(firstCellText.length() - 1, firstCellText.indexOf(' ')))));
+					for (int alt = Integer.parseInt(column.getCellByIndex(1).getDisplayText()); alt < column
+							.getCellCount(); alt++) {
+						alternatives.add(Alternative.withId(alt));
+					}
+				}
+			}
+			Cell positionCell = spreadsheetDoc.getTableByName("B").getCellByPosition("E1");
+			LOGGER.info("Found: {}.", positionCell.getDisplayText());
+			positionCell.setStringValue("ploum");
+			spreadsheetDoc.save("demo9s.ods");
+		}
+	}
 }

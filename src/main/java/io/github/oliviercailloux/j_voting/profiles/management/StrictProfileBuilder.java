@@ -24,80 +24,75 @@ import io.github.oliviercailloux.j_voting.profiles.StrictProfileI;
  */
 public class StrictProfileBuilder extends ProfileBuilder {
 
-    private static final Logger LOGGER = LoggerFactory
-                    .getLogger(StrictProfileBuilder.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(StrictProfileBuilder.class.getName());
 
-    /**
-     * Factory method for StrictProfileBuilder without parameter
-     * 
-     * @return StrictProfileBuilder
-     */
-    public static StrictProfileBuilder createStrictProfileBuilder() {
-        LOGGER.debug("StrictProfileBuilder Factory without parameter");
-        return new StrictProfileBuilder();
-    }
+	/**
+	 * Factory method for StrictProfileBuilder without parameter
+	 * 
+	 * @return StrictProfileBuilder
+	 */
+	public static StrictProfileBuilder createStrictProfileBuilder() {
+		LOGGER.debug("StrictProfileBuilder Factory without parameter");
+		return new StrictProfileBuilder();
+	}
 
-    /**
-     * Factory method for StrictProfileBuilder with parameter
-     * 
-     * @param prof
-     * @return new StrictProfileBuilder
-     */
-    public static StrictProfileBuilder createStrictProfileBuilder(
-                    StrictProfileI prof) {
-        LOGGER.debug("StrictProfileBuilder Factory with parameter");
-        if (Objects.equals(prof, null))
-            return createStrictProfileBuilder();
-        return new StrictProfileBuilder(prof);
-    }
+	/**
+	 * Factory method for StrictProfileBuilder with parameter
+	 * 
+	 * @param prof
+	 * @return new StrictProfileBuilder
+	 */
+	public static StrictProfileBuilder createStrictProfileBuilder(StrictProfileI prof) {
+		LOGGER.debug("StrictProfileBuilder Factory with parameter");
+		if (Objects.equals(prof, null))
+			return createStrictProfileBuilder();
+		return new StrictProfileBuilder(prof);
+	}
 
-    private StrictProfileBuilder() {
-        LOGGER.debug("constructor empty:");
-        votes = new HashMap<>();
-    }
+	private StrictProfileBuilder() {
+		LOGGER.debug("constructor empty:");
+		votes = new HashMap<>();
+	}
 
-    private StrictProfileBuilder(StrictProfileI prof) {
-        LOGGER.debug("parameter prof : {}", prof);
-        votes = castMapExtendsToRegularVoterPref(prof.getProfile());
-    }
+	private StrictProfileBuilder(StrictProfileI prof) {
+		LOGGER.debug("parameter prof : {}", prof);
+		votes = castMapExtendsToRegularVoterPref(prof.getProfile());
+	}
 
-    /**
-     * 
-     * @param v    not <code> null </code>
-     * @param pref not <code> null </code>
-     * 
-     *             adds the preference pref for the voter v in the map. If the
-     *             preference isn't strict, it throws an
-     *             IllegalArgumentException.
-     */
-    @Override
-    public void addVote(Voter v, OldCompletePreferenceImpl pref) {
-        LOGGER.debug("addProfile:");
-        Preconditions.checkNotNull(v);
-        Preconditions.checkNotNull(pref);
-        LOGGER.debug("parameters: voter {} pref {}", v, pref);
-        if (!pref.isStrict()) {
-            throw new IllegalArgumentException(
-                            "The preference must be strict.");
-        }
-        votes.put(v, pref);
-    }
+	/**
+	 * 
+	 * @param v    not <code> null </code>
+	 * @param pref not <code> null </code>
+	 * 
+	 *             adds the preference pref for the voter v in the map. If the
+	 *             preference isn't strict, it throws an IllegalArgumentException.
+	 */
+	@Override
+	public void addVote(Voter v, OldCompletePreferenceImpl pref) {
+		LOGGER.debug("addProfile:");
+		Preconditions.checkNotNull(v);
+		Preconditions.checkNotNull(pref);
+		LOGGER.debug("parameters: voter {} pref {}", v, pref);
+		if (!pref.isStrict()) {
+			throw new IllegalArgumentException("The preference must be strict.");
+		}
+		votes.put(v, pref);
+	}
 
-    /**
-     * From a StrictProfileI, creates an ImmutableStrictProfileI where only the
-     * first alternative of each preference is taken into account.
-     * 
-     * @return
-     */
-    public ImmutableStrictProfileI createOneAlternativeProfile() {
-        LOGGER.debug("createOneAlternativeProfile");
-        for (Voter v : votes.keySet()) {
-            List<Alternative> alters = new ArrayList<>();
-            alters.add(votes.get(v).getAlternative(0));
-            OldLinearPreferenceImpl prefOneAlter = OldLinearPreferenceImpl
-                            .createStrictCompletePreferenceImpl(alters);
-            addVote(v, prefOneAlter);
-        }
-        return ImmutableStrictProfileI.createImmutableStrictProfileI(votes);
-    }
+	/**
+	 * From a StrictProfileI, creates an ImmutableStrictProfileI where only the
+	 * first alternative of each preference is taken into account.
+	 * 
+	 * @return
+	 */
+	public ImmutableStrictProfileI createOneAlternativeProfile() {
+		LOGGER.debug("createOneAlternativeProfile");
+		for (Voter v : votes.keySet()) {
+			List<Alternative> alters = new ArrayList<>();
+			alters.add(votes.get(v).getAlternative(0));
+			OldLinearPreferenceImpl prefOneAlter = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(alters);
+			addVote(v, prefOneAlter);
+		}
+		return ImmutableStrictProfileI.createImmutableStrictProfileI(votes);
+	}
 }

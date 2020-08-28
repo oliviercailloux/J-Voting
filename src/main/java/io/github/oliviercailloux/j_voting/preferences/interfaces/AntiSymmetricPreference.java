@@ -8,10 +8,10 @@ import io.github.oliviercailloux.j_voting.Alternative;
  * alternatives.
  */
 public interface AntiSymmetricPreference extends Preference {
-    
-    /**
-     * {@inheritDoc}
-     * This graph is antisymmetric.
-     */
-    @Override Graph<Alternative> asGraph();
+
+	/**
+	 * {@inheritDoc} This graph is antisymmetric.
+	 */
+	@Override
+	Graph<Alternative> asGraph();
 }
