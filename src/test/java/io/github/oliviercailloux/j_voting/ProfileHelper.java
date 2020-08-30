@@ -1,11 +1,8 @@
 package io.github.oliviercailloux.j_voting;
 
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a231list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a321list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv1a1234list;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv1a123list;
@@ -17,21 +14,18 @@ import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv3a21list;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv3a2314list;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv3a231list;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv4a321list;
-import static io.github.oliviercailloux.j_voting.VoterHelper.v1;
-import static io.github.oliviercailloux.j_voting.VoterHelper.v2;
-import static io.github.oliviercailloux.j_voting.VoterHelper.v3;
-import static io.github.oliviercailloux.j_voting.VoterHelper.v4;
+import static io.github.oliviercailloux.j_voting.Voter.v1;
+import static io.github.oliviercailloux.j_voting.Voter.v2;
+import static io.github.oliviercailloux.j_voting.Voter.v3;
+import static io.github.oliviercailloux.j_voting.Voter.v4;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
 import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableMap;
 
 import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
-import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.profiles.MutableStrictProfile;
 
 public class ProfileHelper {

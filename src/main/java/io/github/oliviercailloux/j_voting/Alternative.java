@@ -18,7 +18,7 @@ public class Alternative {
 
 	/**
 	 * Factory method for Alternative
-	 * 
+	 *
 	 * @param id <code> not null </code>
 	 * @return new Alternative
 	 */
@@ -42,12 +42,15 @@ public class Alternative {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null)
+		}
+		if (o == null) {
 			return false;
-		if (this.getClass() != o.getClass())
+		}
+		if (this.getClass() != o.getClass()) {
 			return false;
+		}
 		Alternative alter = (Alternative) o;
 		return this.getId() == alter.getId();
 	}

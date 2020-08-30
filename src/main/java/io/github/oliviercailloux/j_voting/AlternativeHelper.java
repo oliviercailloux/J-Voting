@@ -1,30 +1,8 @@
 package io.github.oliviercailloux.j_voting;
 
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1234list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a21list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2314list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3214list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
-import static io.github.oliviercailloux.j_voting.VoterHelper.v1;
-import static io.github.oliviercailloux.j_voting.VoterHelper.v2;
-import static io.github.oliviercailloux.j_voting.VoterHelper.v3;
-import static io.github.oliviercailloux.j_voting.VoterHelper.v4;
-import static io.github.oliviercailloux.j_voting.VoterHelper.v123set;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import com.google.common.collect.ImmutableSet;
-
-import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
-import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
 
 public class AlternativeHelper {
 

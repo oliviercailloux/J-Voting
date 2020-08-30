@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -16,17 +15,14 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.VerifyException;
 import com.google.common.collect.ForwardingIterator;
-import com.google.common.collect.ForwardingList;
 import com.google.common.collect.ForwardingSet;
 import com.google.common.graph.Graph;
 import com.google.common.graph.GraphBuilder;
-import com.google.common.graph.Graphs;
-import com.google.common.graph.ImmutableGraph;
 import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
-import io.github.oliviercailloux.j_voting.graph.ForwardingGraph;
+import io.github.oliviercailloux.j_voting.graph.GraphView;
 import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
 
 public class MutableLinearPreferenceImpl implements MutableLinearPreference {
@@ -124,8 +120,8 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 		list.add(a);
 		graph.addNode(a);
 
-		for (int i = 0; i < list.size(); i++) {
-			graph.putEdge(list.get(i), list.get(list.size() - 1));
+		for (Alternative element : list) {
+			graph.putEdge(element, list.get(list.size() - 1));
 		}
 		return true;
 	}
@@ -134,8 +130,8 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 	 * Clears the MutableLinearPreference (list + set + graph)
 	 */
 	private void clear() {
-		for (int i = 0; i < list.size(); i++) {
-			graph.removeNode(list.get(i));
+		for (Alternative element : list) {
+			graph.removeNode(element);
 		}
 		list.clear();
 	}
@@ -153,7 +149,7 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 
 	@Override
 	public Graph<Alternative> asGraph() {
-		return new MutableLinearGraphDecorator(this);
+		return GraphView.decorate(this.graph);
 	}
 
 	@Override
@@ -297,28 +293,6 @@ public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 
 		private MutableLinearIteratorDecorator(Iterator<Alternative> iteratorDelegate) {
 			this.iteratorDelegate = iteratorDelegate;
-		}
-	}
-
-	/**
-	 * The sets accessible via this delegate are not currently editable
-	 * (google/guava#3034), which makes the implementation currently correct .
-	 * However, this is not guaranteed by contract, and therefore could change. <br>
-	 * <br>
-	 * FUTURE : Ideally, sets returned via this decorator should be protected
-	 * against changes.
-	 */
-	public static class MutableLinearGraphDecorator extends ForwardingGraph<Alternative> {
-
-		private MutableLinearPreferenceImpl delegate;
-
-		@Override
-		protected Graph<Alternative> delegate() {
-			return delegate.graph;
-		}
-
-		private MutableLinearGraphDecorator(MutableLinearPreferenceImpl delegate) {
-			this.delegate = delegate;
 		}
 	}
 

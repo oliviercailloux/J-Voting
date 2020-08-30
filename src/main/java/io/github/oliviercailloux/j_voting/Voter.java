@@ -14,6 +14,14 @@ public class Voter implements Comparable<Voter> {
 
 	public static final Voter ZERO = new Voter(0);
 
+	public static Voter v1 = createVoter(1);
+
+	public static Voter v2 = createVoter(2);
+
+	public static Voter v3 = createVoter(3);
+
+	public static Voter v4 = createVoter(4);
+
 	private int id;
 
 	/**
@@ -45,7 +53,7 @@ public class Voter implements Comparable<Voter> {
 	 *         voter is smaller than the parameter, else >0.
 	 */
 	@Override
-	public int compareTo(Voter v2) {
+	public int compareTo(@SuppressWarnings("hiding") Voter v2) {
 		LOGGER.debug("compare:");
 		Preconditions.checkNotNull(v2);
 		LOGGER.debug("calling voter : v1 {}, parameter v2 {}", this.getId(), v2.getId());
