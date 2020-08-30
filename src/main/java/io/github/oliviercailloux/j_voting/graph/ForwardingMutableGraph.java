@@ -114,6 +114,11 @@ public class ForwardingMutableGraph<N> implements MutableGraph<N> {
 	}
 
 	@Override
+	public ElementOrder<N> incidentEdgeOrder() {
+		return delegate.incidentEdgeOrder();
+	}
+
+	@Override
 	public boolean equals(Object o2) {
 		return delegate.equals(o2);
 	}
