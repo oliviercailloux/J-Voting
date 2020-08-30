@@ -17,9 +17,7 @@ import io.github.oliviercailloux.j_voting.Voter;
  * is at least as good as <i>b</i>).
  *
  * A preference is associated to a Voter, which is established at construction
- * and never changes. The voter is the voter ZERO by default.
- *
- * @see io.github.oliviercailloux.j_voting.Voter
+ * and never changes. The default voter is {@link Voter#ZERO}.
  *
  */
 public interface Preference {

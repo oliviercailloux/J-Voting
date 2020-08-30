@@ -10,13 +10,15 @@ import com.google.common.base.Preconditions;
  * This class is immutable Contains an integer being the id of the voter
  */
 public class Voter implements Comparable<Voter> {
+	private static final Logger LOGGER = LoggerFactory.getLogger(Voter.class.getName());
+
+	public static final Voter ZERO = new Voter(0);
 
 	private int id;
-	private static final Logger LOGGER = LoggerFactory.getLogger(Voter.class.getName());
 
 	/**
 	 * Factory method for Voter
-	 * 
+	 *
 	 * @param id <code>not null</code>
 	 * @return a new Voter
 	 */
@@ -37,7 +39,7 @@ public class Voter implements Comparable<Voter> {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param v2 not <code> null </code>
 	 * @return an integer : 0 if the voters have the same id, <0 if the calling
 	 *         voter is smaller than the parameter, else >0.
@@ -56,12 +58,15 @@ public class Voter implements Comparable<Voter> {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null)
+		}
+		if (o == null) {
 			return false;
-		if (this.getClass() != o.getClass())
+		}
+		if (this.getClass() != o.getClass()) {
 			return false;
+		}
 		Voter voter = (Voter) o;
 		return this.getId() == voter.getId();
 	}
