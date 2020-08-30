@@ -17,14 +17,14 @@ import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
 import io.github.oliviercailloux.j_voting.preferences.ImmutableLinearPreference;
-import io.github.oliviercailloux.j_voting.preferences.classes.LinearPreferenceImpl;
+import io.github.oliviercailloux.j_voting.preferences.classes.ImmutableLinearPreferenceImpl;
 
 class FrenchElectionTest {
 
     private static ImmutableLinearPreference getLinearPref(Voter voter,
                     Alternative... alternatives)
                     throws EmptySetException, DuplicateValueException {
-        return LinearPreferenceImpl.asLinearPreference(voter,
+        return ImmutableLinearPreferenceImpl.asLinearPreference(voter,
                         ImmutableList.copyOf(alternatives));
     }
 

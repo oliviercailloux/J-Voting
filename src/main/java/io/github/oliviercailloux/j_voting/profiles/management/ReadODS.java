@@ -22,7 +22,7 @@ import io.github.oliviercailloux.j_voting.exceptions.BadFormatODSException;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
 import io.github.oliviercailloux.j_voting.preferences.ImmutableCompletePreference;
-import io.github.oliviercailloux.j_voting.preferences.classes.CompletePreferenceImpl;
+import io.github.oliviercailloux.j_voting.preferences.classes.ImmutableCompletePreferenceImpl;
 
 /**
  * Read .ODS file & extract elections data. The .ODS file must be Election Data
@@ -254,7 +254,7 @@ public class ReadODS {
 					equivalenceClasses.add(set);
 				nbChoice++;
 			}
-			completePreferences.add(CompletePreferenceImpl.asCompletePreference(voter, equivalenceClasses));
+			completePreferences.add(ImmutableCompletePreferenceImpl.asCompletePreference(voter, equivalenceClasses));
 		}
 		return ImmutableSet.copyOf(completePreferences);
 	}
@@ -285,7 +285,7 @@ public class ReadODS {
 			for (int i = 0; i < prefRange.getRowNumber(); i++) {
 				list.add(ImmutableSet.of(createAlternativeFromCellRange(j, i, prefRange)));
 			}
-			completePreferences.add(CompletePreferenceImpl.asCompletePreference(voter, list));
+			completePreferences.add(ImmutableCompletePreferenceImpl.asCompletePreference(voter, list));
 		}
 		return ImmutableSet.copyOf(completePreferences);
 	}

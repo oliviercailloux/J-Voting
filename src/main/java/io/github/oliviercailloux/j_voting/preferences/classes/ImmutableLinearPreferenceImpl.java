@@ -20,10 +20,10 @@ import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
 import io.github.oliviercailloux.j_voting.preferences.ImmutableLinearPreference;
 import io.github.oliviercailloux.j_voting.preferences.Preference;
 
-public class LinearPreferenceImpl extends CompletePreferenceImpl implements ImmutableLinearPreference {
+public class ImmutableLinearPreferenceImpl extends ImmutableCompletePreferenceImpl implements ImmutableLinearPreference {
 
 	ImmutableList<Alternative> list;
-	private static final Logger LOGGER = LoggerFactory.getLogger(LinearPreferenceImpl.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(ImmutableLinearPreferenceImpl.class.getName());
 
 	/**
 	 * 
@@ -42,7 +42,7 @@ public class LinearPreferenceImpl extends CompletePreferenceImpl implements Immu
 		for (Alternative alternative : listAlternatives) {
 			equivalenceClasses.add(ImmutableSet.of(alternative));
 		}
-		return new LinearPreferenceImpl(voter, equivalenceClasses);
+		return new ImmutableLinearPreferenceImpl(voter, equivalenceClasses);
 	}
 
 	/**
@@ -52,7 +52,7 @@ public class LinearPreferenceImpl extends CompletePreferenceImpl implements Immu
 	 * @throws EmptySetException
 	 * @throws DuplicateValueException
 	 */
-	private LinearPreferenceImpl(Voter voter, List<Set<Alternative>> equivalenceClasses)
+	private ImmutableLinearPreferenceImpl(Voter voter, List<Set<Alternative>> equivalenceClasses)
 			throws EmptySetException, DuplicateValueException {
 		super(voter, equivalenceClasses);
 		List<Alternative> tmpList = Lists.newArrayList();
@@ -84,7 +84,7 @@ public class LinearPreferenceImpl extends CompletePreferenceImpl implements Immu
 		if (!(o2 instanceof Preference)) {
 			return false;
 		}
-		Preference other = (LinearPreferenceImpl) o2;
+		Preference other = (ImmutableLinearPreferenceImpl) o2;
 		return this.asGraph().equals(other.asGraph());
 	}
 }

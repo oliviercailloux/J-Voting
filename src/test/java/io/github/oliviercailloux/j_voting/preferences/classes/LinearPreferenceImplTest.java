@@ -21,7 +21,7 @@ class LinearPreferenceImplTest {
 
     private static ImmutableLinearPreference getListedAlternatives()
                     throws EmptySetException, DuplicateValueException {
-        return LinearPreferenceImpl.asLinearPreference(Voter.createVoter(3),
+        return ImmutableLinearPreferenceImpl.asLinearPreference(Voter.createVoter(3),
                         ImmutableList.of(a1, a3, a2));
     }
 
@@ -40,19 +40,19 @@ class LinearPreferenceImplTest {
 
     @Test
     void throwsTest() {
-        assertThrows(Exception.class, () -> LinearPreferenceImpl
+        assertThrows(Exception.class, () -> ImmutableLinearPreferenceImpl
                         .asLinearPreference(null, ImmutableList.of(null)));
-        assertThrows(Exception.class, () -> LinearPreferenceImpl
+        assertThrows(Exception.class, () -> ImmutableLinearPreferenceImpl
                         .asLinearPreference(v1, ImmutableList.of(null)));
-        assertThrows(Exception.class, () -> LinearPreferenceImpl
+        assertThrows(Exception.class, () -> ImmutableLinearPreferenceImpl
                         .asLinearPreference(v1, null));
         assertThrows(Exception.class,
-                        () -> LinearPreferenceImpl.asLinearPreference(
+                        () -> ImmutableLinearPreferenceImpl.asLinearPreference(
                                         Voter.createVoter(1),
                                         ImmutableList.of(null)));
-        assertThrows(Exception.class, () -> LinearPreferenceImpl
+        assertThrows(Exception.class, () -> ImmutableLinearPreferenceImpl
                         .asLinearPreference(v1, null));
-        assertThrows(Exception.class, () -> LinearPreferenceImpl
+        assertThrows(Exception.class, () -> ImmutableLinearPreferenceImpl
                         .asLinearPreference(null, ImmutableList.of(null)));
     }
 }

@@ -25,13 +25,13 @@ import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
 import io.github.oliviercailloux.j_voting.preferences.ImmutableCompletePreference;
 
-public class CompletePreferenceImpl implements ImmutableCompletePreference {
+public class ImmutableCompletePreferenceImpl implements ImmutableCompletePreference {
 
 	private ImmutableList<ImmutableSet<Alternative>> equivalenceClasses;
 	private Voter voter;
 	private ImmutableGraph<Alternative> graph;
 	private ImmutableSet<Alternative> alternatives;
-	private static final Logger LOGGER = LoggerFactory.getLogger(CompletePreferenceImpl.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(ImmutableCompletePreferenceImpl.class.getName());
 
 	/**
 	 * 
@@ -48,7 +48,7 @@ public class CompletePreferenceImpl implements ImmutableCompletePreference {
 		LOGGER.debug("Factory CompletePreferenceImpl");
 		checkNotNull(equivalenceClasses);
 		checkNotNull(voter);
-		return new CompletePreferenceImpl(voter, equivalenceClasses);
+		return new ImmutableCompletePreferenceImpl(voter, equivalenceClasses);
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class CompletePreferenceImpl implements ImmutableCompletePreference {
 	 * @throws EmptySetException       if a Set is empty
 	 * @throws DuplicateValueException if an Alternative is duplicate
 	 */
-	protected CompletePreferenceImpl(Voter voter, List<? extends Set<Alternative>> equivalenceClasses)
+	protected ImmutableCompletePreferenceImpl(Voter voter, List<? extends Set<Alternative>> equivalenceClasses)
 			throws EmptySetException, DuplicateValueException {
 		LOGGER.debug("Constructor CompletePreferenceImpl");
 		this.voter = voter;
@@ -177,10 +177,10 @@ public class CompletePreferenceImpl implements ImmutableCompletePreference {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof CompletePreferenceImpl)) {
+		if (!(obj instanceof ImmutableCompletePreferenceImpl)) {
 			return false;
 		}
-		CompletePreferenceImpl other = (CompletePreferenceImpl) obj;
+		ImmutableCompletePreferenceImpl other = (ImmutableCompletePreferenceImpl) obj;
 		return Objects.equals(equivalenceClasses, other.equivalenceClasses) && Objects.equals(graph, other.graph)
 				&& Objects.equals(voter, other.voter);
 	}
