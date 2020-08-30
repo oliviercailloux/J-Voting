@@ -16,8 +16,8 @@ import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableAntiSymmetricPreference;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.Preference;
+import io.github.oliviercailloux.j_voting.preferences.MutableAntiSymmetricPreference;
+import io.github.oliviercailloux.j_voting.preferences.Preference;
 
 public class MutableAntiSymmetricPreferenceImpl implements MutableAntiSymmetricPreference {
 

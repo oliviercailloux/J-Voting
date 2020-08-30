@@ -20,8 +20,8 @@ import com.google.common.collect.Sets;
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.BadFormatODSException;
+import io.github.oliviercailloux.j_voting.preferences.CompletePreference;
 import io.github.oliviercailloux.j_voting.preferences.classes.CompletePreferenceImpl;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePreference;
 
 class ReadODSTest {
 

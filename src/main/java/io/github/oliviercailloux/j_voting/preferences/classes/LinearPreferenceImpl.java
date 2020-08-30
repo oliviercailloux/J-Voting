@@ -17,8 +17,8 @@ import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.LinearPreference;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.Preference;
+import io.github.oliviercailloux.j_voting.preferences.LinearPreference;
+import io.github.oliviercailloux.j_voting.preferences.Preference;
 
 public class LinearPreferenceImpl extends CompletePreferenceImpl implements LinearPreference {
 

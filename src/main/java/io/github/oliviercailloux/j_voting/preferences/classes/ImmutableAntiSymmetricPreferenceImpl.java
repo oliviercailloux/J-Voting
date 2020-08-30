@@ -9,7 +9,7 @@ import com.google.common.graph.Graph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.ImmutableAntiSymmetricPreference;
+import io.github.oliviercailloux.j_voting.preferences.ImmutableAntiSymmetricPreference;
 
 public class ImmutableAntiSymmetricPreferenceImpl extends ImmutablePreferenceImpl
 		implements ImmutableAntiSymmetricPreference {

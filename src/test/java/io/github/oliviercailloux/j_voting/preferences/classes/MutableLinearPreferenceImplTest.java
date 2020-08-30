@@ -57,9 +57,9 @@ import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
+import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl.MutableLinearSetDecorator;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 public class MutableLinearPreferenceImplTest {
 

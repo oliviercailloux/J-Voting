@@ -26,8 +26,8 @@ import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
-
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
+import io.github.oliviercailloux.j_voting.graph.ForwardingGraph;
+import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
 
 public class MutableLinearPreferenceImpl implements MutableLinearPreference {
 

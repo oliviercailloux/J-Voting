@@ -21,8 +21,8 @@ import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.BadFormatODSException;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
+import io.github.oliviercailloux.j_voting.preferences.CompletePreference;
 import io.github.oliviercailloux.j_voting.preferences.classes.CompletePreferenceImpl;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePreference;
 
 /**
  * Read .ODS file & extract elections data. The .ODS file must be Election Data

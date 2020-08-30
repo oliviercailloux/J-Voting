@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.j_voting.preferences.classes;
+package io.github.oliviercailloux.j_voting.graph;
 
 import java.util.Set;
 
@@ -16,7 +16,7 @@ import com.google.common.graph.Graph;
  *
  * @author James Sexton
  */
-abstract class ForwardingGraph<N> extends AbstractGraph<N> {
+public abstract class ForwardingGraph<N> extends AbstractGraph<N> {
 
 	protected abstract Graph<N> delegate();
 

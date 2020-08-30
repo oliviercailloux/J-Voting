@@ -1,9 +1,9 @@
-package io.github.oliviercailloux.j_voting.profileManipulationGUI;
+package io.github.oliviercailloux.j_voting.profile_gui;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
+import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 import java.util.ArrayList;
 import java.util.List;

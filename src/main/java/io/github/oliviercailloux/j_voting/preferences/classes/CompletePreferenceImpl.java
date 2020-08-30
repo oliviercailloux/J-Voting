@@ -23,7 +23,7 @@ import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.CompletePreference;
+import io.github.oliviercailloux.j_voting.preferences.CompletePreference;
 
 public class CompletePreferenceImpl implements CompletePreference {
 

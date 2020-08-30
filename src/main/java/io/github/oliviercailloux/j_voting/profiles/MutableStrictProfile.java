@@ -21,9 +21,9 @@ import com.google.common.collect.HashBiMap;
 import com.google.common.graph.Graph;
 
 import io.github.oliviercailloux.j_voting.Voter;
+import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl.MutableLinearSetDecorator;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 import io.github.oliviercailloux.j_voting.Alternative;
 
 /**

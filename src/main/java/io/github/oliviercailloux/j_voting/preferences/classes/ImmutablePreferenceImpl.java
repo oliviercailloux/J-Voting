@@ -11,8 +11,8 @@ import com.google.common.graph.ImmutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.ImmutablePreference;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.Preference;
+import io.github.oliviercailloux.j_voting.preferences.ImmutablePreference;
+import io.github.oliviercailloux.j_voting.preferences.Preference;
 
 public class ImmutablePreferenceImpl implements ImmutablePreference {
 

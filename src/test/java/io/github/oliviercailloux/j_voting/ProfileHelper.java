@@ -30,8 +30,8 @@ import com.google.common.collect.HashBiMap;
 import com.google.common.collect.ImmutableBiMap;
 import com.google.common.collect.ImmutableMap;
 
+import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 import io.github.oliviercailloux.j_voting.profiles.MutableStrictProfile;
 
 public class ProfileHelper {

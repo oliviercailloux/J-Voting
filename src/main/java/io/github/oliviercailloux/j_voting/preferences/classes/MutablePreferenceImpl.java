@@ -16,8 +16,8 @@ import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutablePreference;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.Preference;
+import io.github.oliviercailloux.j_voting.preferences.MutablePreference;
+import io.github.oliviercailloux.j_voting.preferences.Preference;
 
 /**
  * Implements MutablePreference interface.
@@ -25,8 +25,8 @@ import io.github.oliviercailloux.j_voting.preferences.interfaces.Preference;
  * The structure of a MutablePreference is a MutableGraph in which an edge
  * represents the relation "at least as good as".
  *
- * @see io.github.oliviercailloux.j_voting.preferences.interfaces.Preference
- * @see io.github.oliviercailloux.j_voting.preferences.interfaces.MutablePreference
+ * @see io.github.oliviercailloux.j_voting.preferences.Preference
+ * @see io.github.oliviercailloux.j_voting.preferences.MutablePreference
  */
 public class MutablePreferenceImpl implements MutablePreference {
 

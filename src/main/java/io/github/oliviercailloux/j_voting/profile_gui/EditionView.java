@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.j_voting.profileManipulationGUI;
+package io.github.oliviercailloux.j_voting.profile_gui;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import io.github.oliviercailloux.j_voting.Alternative;

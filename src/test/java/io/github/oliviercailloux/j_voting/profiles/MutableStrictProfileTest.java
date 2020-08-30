@@ -54,8 +54,8 @@ import com.google.common.collect.ImmutableMap;
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
+import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 public class MutableStrictProfileTest {
 

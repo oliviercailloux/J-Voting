@@ -23,8 +23,8 @@ import java.util.Set;
 
 import com.google.common.collect.ImmutableSet;
 
+import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 public class AlternativeHelper {
 

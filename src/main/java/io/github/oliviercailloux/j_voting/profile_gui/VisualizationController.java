@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.j_voting.profileManipulationGUI;
+package io.github.oliviercailloux.j_voting.profile_gui;
 
 public class VisualizationController {
 

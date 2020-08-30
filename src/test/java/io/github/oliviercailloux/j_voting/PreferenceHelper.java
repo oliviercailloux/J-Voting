@@ -14,8 +14,8 @@ import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2314list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a21list;
 
+import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.MutableLinearPreference;
 
 public class PreferenceHelper {
 	public static MutableLinearPreference mlpv1a123list = MutableLinearPreferenceImpl.given(v1, a123list);

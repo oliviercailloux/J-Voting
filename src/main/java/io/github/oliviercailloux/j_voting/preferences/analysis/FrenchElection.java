@@ -16,7 +16,7 @@ import com.google.common.collect.Sets;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.LinearPreference;
+import io.github.oliviercailloux.j_voting.preferences.LinearPreference;
 
 public class FrenchElection {
 

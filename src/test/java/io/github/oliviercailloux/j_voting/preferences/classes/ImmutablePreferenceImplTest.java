@@ -18,7 +18,7 @@ import com.google.common.graph.MutableGraph;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.ImmutablePreference;
+import io.github.oliviercailloux.j_voting.preferences.ImmutablePreference;
 
 class ImmutablePreferenceImplTest {
 

@@ -13,7 +13,7 @@ import com.google.common.collect.ImmutableList;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
-import io.github.oliviercailloux.j_voting.preferences.interfaces.LinearPreference;
+import io.github.oliviercailloux.j_voting.preferences.LinearPreference;
 
 class LinearPreferenceImplTest {
 

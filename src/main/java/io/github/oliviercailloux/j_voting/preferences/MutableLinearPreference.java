@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.j_voting.preferences.interfaces;
+package io.github.oliviercailloux.j_voting.preferences;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 
