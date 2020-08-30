@@ -20,7 +20,7 @@ import com.google.common.collect.Sets;
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.BadFormatODSException;
-import io.github.oliviercailloux.j_voting.preferences.CompletePreference;
+import io.github.oliviercailloux.j_voting.preferences.ImmutableCompletePreference;
 import io.github.oliviercailloux.j_voting.preferences.classes.CompletePreferenceImpl;
 
 class ReadODSTest {
@@ -108,9 +108,9 @@ class ReadODSTest {
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
         Table table = spreadsheetDoc.getSheetByIndex(0);
-        ImmutableSet<CompletePreference> completePreferences = ReadODS
+        ImmutableSet<ImmutableCompletePreference> completePreferences = ReadODS
                         .completeFormatRanksFormat(table);
-        ImmutableSet<CompletePreference> completePreferencesTest = ImmutableSet
+        ImmutableSet<ImmutableCompletePreference> completePreferencesTest = ImmutableSet
                         .of(CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),
                                         ImmutableList.of(getAlternatives(1),
@@ -147,9 +147,9 @@ class ReadODSTest {
         SpreadsheetDocument spreadsheetDoc = SpreadsheetDocument
                         .loadDocument(inputStream);
         Table table = spreadsheetDoc.getSheetByIndex(0);
-        ImmutableSet<CompletePreference> completePreferences = ReadODS
+        ImmutableSet<ImmutableCompletePreference> completePreferences = ReadODS
                         .completeFormatVotersToRankings(table);
-        ImmutableSet<CompletePreference> completePreferencesTest = ImmutableSet
+        ImmutableSet<ImmutableCompletePreference> completePreferencesTest = ImmutableSet
                         .of(CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),
                                         ImmutableList.of(getAlternatives(1),
@@ -192,9 +192,9 @@ class ReadODSTest {
     void checkFormatandReturnCompletePreference() throws Exception {
         InputStream inputStream = ReadODS.class.getResourceAsStream(
                         "profile_format_strict_reduced.ods");
-        ImmutableSet<CompletePreference> completePreferences = ReadODS
+        ImmutableSet<ImmutableCompletePreference> completePreferences = ReadODS
                         .checkFormatandReturnCompletePreference(inputStream);
-        ImmutableSet<CompletePreference> completePreferencesTest = ImmutableSet
+        ImmutableSet<ImmutableCompletePreference> completePreferencesTest = ImmutableSet
                         .of(CompletePreferenceImpl.asCompletePreference(
                                         Voter.createVoter(1),
                                         ImmutableList.of(getAlternatives(1),

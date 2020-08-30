@@ -21,7 +21,7 @@ import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.BadFormatODSException;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
-import io.github.oliviercailloux.j_voting.preferences.CompletePreference;
+import io.github.oliviercailloux.j_voting.preferences.ImmutableCompletePreference;
 import io.github.oliviercailloux.j_voting.preferences.classes.CompletePreferenceImpl;
 
 /**
@@ -205,7 +205,7 @@ public class ReadODS {
 	 * @param inputStream ods file
 	 * @return an ImmutableSet of CompletePreference
 	 */
-	public static ImmutableSet<CompletePreference> checkFormatandReturnCompletePreference(InputStream inputStream)
+	public static ImmutableSet<ImmutableCompletePreference> checkFormatandReturnCompletePreference(InputStream inputStream)
 			throws Exception {
 		Objects.requireNonNull(inputStream);
 		LOGGER.debug("Open Stream");
@@ -231,10 +231,10 @@ public class ReadODS {
 	 * @throws EmptySetException
 	 * @throws DuplicateValueException
 	 */
-	public static ImmutableSet<CompletePreference> completeFormatRanksFormat(Table table)
+	public static ImmutableSet<ImmutableCompletePreference> completeFormatRanksFormat(Table table)
 			throws DuplicateValueException, EmptySetException {
 		Objects.requireNonNull(table);
-		List<CompletePreference> completePreferences = Lists.newArrayList();
+		List<ImmutableCompletePreference> completePreferences = Lists.newArrayList();
 		List<Alternative> alternatives = getAlternatives(table);
 		int nbTotVoters = getnbTotVoters(table);
 		CellRange prefRange = table.getCellRangeByPosition(1, 1, nbTotVoters, alternatives.size());
@@ -269,17 +269,17 @@ public class ReadODS {
 	 * @throws EmptySetException
 	 * @throws DuplicateValueException
 	 */
-	public static ImmutableSet<CompletePreference> completeFormatVotersToRankings(Table table)
+	public static ImmutableSet<ImmutableCompletePreference> completeFormatVotersToRankings(Table table)
 			throws DuplicateValueException, EmptySetException {
 		Objects.requireNonNull(table);
-		List<CompletePreference> completePreferences = Lists.newArrayList();
+		List<ImmutableCompletePreference> completePreferences = Lists.newArrayList();
 		List<Alternative> alternatives = getAlternatives(table);
 		int nbTotVoters = getnbTotVoters(table);
 		CellRange prefRange = table.getCellRangeByPosition(0, 1, nbTotVoters - 1, alternatives.size());
 		for (int j = 0; j < prefRange.getColumnNumber(); j++) {
 			List<Set<Alternative>> list = Lists.newArrayList();
 			Voter voter = Voter.createVoter(Integer.parseInt(table.getCellByPosition(j, 0).getStringValue()));
-			for (CompletePreference completePreference : completePreferences)
+			for (ImmutableCompletePreference completePreference : completePreferences)
 				if (completePreference.getVoter() == voter)
 					throw new DuplicateValueException("Two voters can't have the same ID");
 			for (int i = 0; i < prefRange.getRowNumber(); i++) {

@@ -23,9 +23,9 @@ import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
-import io.github.oliviercailloux.j_voting.preferences.CompletePreference;
+import io.github.oliviercailloux.j_voting.preferences.ImmutableCompletePreference;
 
-public class CompletePreferenceImpl implements CompletePreference {
+public class CompletePreferenceImpl implements ImmutableCompletePreference {
 
 	private ImmutableList<ImmutableSet<Alternative>> equivalenceClasses;
 	private Voter voter;
@@ -43,7 +43,7 @@ public class CompletePreferenceImpl implements CompletePreference {
 	 * @throws DuplicateValueException if an Alternative is duplicate
 	 * @throws EmptySetException       if a Set is empty
 	 */
-	public static CompletePreference asCompletePreference(Voter voter,
+	public static ImmutableCompletePreference asCompletePreference(Voter voter,
 			List<? extends Set<Alternative>> equivalenceClasses) throws DuplicateValueException, EmptySetException {
 		LOGGER.debug("Factory CompletePreferenceImpl");
 		checkNotNull(equivalenceClasses);

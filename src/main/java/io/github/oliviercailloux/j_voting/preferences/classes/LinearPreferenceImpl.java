@@ -17,10 +17,10 @@ import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
-import io.github.oliviercailloux.j_voting.preferences.LinearPreference;
+import io.github.oliviercailloux.j_voting.preferences.ImmutableLinearPreference;
 import io.github.oliviercailloux.j_voting.preferences.Preference;
 
-public class LinearPreferenceImpl extends CompletePreferenceImpl implements LinearPreference {
+public class LinearPreferenceImpl extends CompletePreferenceImpl implements ImmutableLinearPreference {
 
 	ImmutableList<Alternative> list;
 	private static final Logger LOGGER = LoggerFactory.getLogger(LinearPreferenceImpl.class.getName());
@@ -33,7 +33,7 @@ public class LinearPreferenceImpl extends CompletePreferenceImpl implements Line
 	 * @throws EmptySetException
 	 * @throws DuplicateValueException
 	 */
-	public static LinearPreference asLinearPreference(Voter voter, List<Alternative> listAlternatives)
+	public static ImmutableLinearPreference asLinearPreference(Voter voter, List<Alternative> listAlternatives)
 			throws EmptySetException, DuplicateValueException {
 		LOGGER.debug("LinearPreferenceImpl Factory with list of Alternatives");
 		Preconditions.checkNotNull(voter);

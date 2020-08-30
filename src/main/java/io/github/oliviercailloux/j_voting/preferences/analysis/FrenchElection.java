@@ -16,7 +16,7 @@ import com.google.common.collect.Sets;
 
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
-import io.github.oliviercailloux.j_voting.preferences.LinearPreference;
+import io.github.oliviercailloux.j_voting.preferences.ImmutableLinearPreference;
 
 public class FrenchElection {
 
@@ -31,7 +31,7 @@ public class FrenchElection {
 	 * @param linearPreferences <code> not null </code>
 	 * @return new FrenchElection
 	 */
-	public static FrenchElection asFrenchElection(Set<LinearPreference> linearPreferences) {
+	public static FrenchElection asFrenchElection(Set<ImmutableLinearPreference> linearPreferences) {
 		LOGGER.debug("FrenchElection Factory");
 		Preconditions.checkNotNull(linearPreferences);
 		return new FrenchElection(linearPreferences);
@@ -42,11 +42,11 @@ public class FrenchElection {
 	 * @param linearPreferences <code> not null </code>
 	 * @return new FrenchElection
 	 */
-	private FrenchElection(Set<LinearPreference> linearPreferences) {
+	private FrenchElection(Set<ImmutableLinearPreference> linearPreferences) {
 		LOGGER.debug("FrenchElection Constructor");
 		Map<Alternative, Integer> tmpScores = Maps.newHashMap();
 		Set<Voter> tmpVoters = Sets.newHashSet();
-		for (LinearPreference linearPreference : linearPreferences) {
+		for (ImmutableLinearPreference linearPreference : linearPreferences) {
 			if (!tmpVoters.add(linearPreference.getVoter()))
 				throw new IllegalArgumentException("A voter can't vote two times in a same election");
 			for (Alternative alternative : linearPreference.getAlternatives())

@@ -6,11 +6,11 @@ import com.google.common.collect.ImmutableSet;
 import io.github.oliviercailloux.j_voting.Alternative;
 
 /**
- * A Complete Preference is is an immutable preference. A complete preference
- * represents a complete pre-order, also called a weak order. for each couple of
- * alternatives (a,b) we can find an order a>=b or b>=a.
+ * An immutable preference which represents a complete pre-order, also called a
+ * weak order. for each couple of alternatives (a,b) we can find an order a>=b
+ * or b>=a.
  */
-public interface CompletePreference extends ImmutablePreference {
+public interface ImmutableCompletePreference extends ImmutablePreference {
 
 	/**
 	 * The rank of an alternative is one plus the number of alternatives strictly

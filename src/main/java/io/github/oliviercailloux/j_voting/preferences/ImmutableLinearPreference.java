@@ -10,7 +10,7 @@ import io.github.oliviercailloux.j_voting.Alternative;
  * complete order, or equivalently, the reduction of a weak-order.
  * 
  */
-public interface LinearPreference extends CompletePreference {
+public interface ImmutableLinearPreference extends ImmutableCompletePreference {
 
 	/**
 	 * Best alternatives coming first in the list.

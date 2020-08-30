@@ -24,7 +24,7 @@ public interface Preference {
 
 	/**
 	 * In the graph : a relation from <i>a</i> to <i>b</i> means "a is at least as
-	 * good as b". This graph can't be modified, but is not necessarily immutable.
+	 * good as b". This graph can’t be modified, but is not necessarily immutable.
 	 * Reflexive and transitive.
 	 *
 	 * @return the Graph corresponding to the Preference

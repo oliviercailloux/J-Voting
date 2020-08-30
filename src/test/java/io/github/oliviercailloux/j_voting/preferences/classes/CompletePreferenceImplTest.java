@@ -17,7 +17,7 @@ import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
-import io.github.oliviercailloux.j_voting.preferences.CompletePreference;
+import io.github.oliviercailloux.j_voting.preferences.ImmutableCompletePreference;
 
 class CompletePreferenceImplTest {
 
@@ -35,7 +35,7 @@ class CompletePreferenceImplTest {
 
     @Test
     void getRankTest() throws Exception {
-        CompletePreference toTest = generateCompletePrefImpl();
+        ImmutableCompletePreference toTest = generateCompletePrefImpl();
         assertEquals(1, toTest.getRank(a1));
         assertEquals(2, toTest.getRank(a3));
     }
@@ -43,7 +43,7 @@ class CompletePreferenceImplTest {
     @Test
     public void getRankExceptionTest()
                     throws Exception {
-        CompletePreference toTest = generateCompletePrefImpl();
+        ImmutableCompletePreference toTest = generateCompletePrefImpl();
         assertThrows(Exception.class, () -> toTest.getRank(a4));
     }
 
@@ -63,7 +63,7 @@ class CompletePreferenceImplTest {
     public void asCompletePreferenceTestEmptyList()
                     throws Exception {
         List<ImmutableSet<Alternative>> empList = new ArrayList<>();
-        CompletePreference testCompletePreferenceImpl = CompletePreferenceImpl
+        ImmutableCompletePreference testCompletePreferenceImpl = CompletePreferenceImpl
                         .asCompletePreference(v1, empList);
         assertTrue(testCompletePreferenceImpl.asGraph().edges().isEmpty());
     }
@@ -71,7 +71,7 @@ class CompletePreferenceImplTest {
     @Test
     public void getAlternativesTest()
                     throws Exception {
-        CompletePreference toTest = generateCompletePrefImpl();
+        ImmutableCompletePreference toTest = generateCompletePrefImpl();
         ImmutableSet<Alternative> immutableSet = ImmutableSet.of(a1, a2);
         assertEquals(immutableSet, toTest.getAlternatives(1));
     }
@@ -79,7 +79,7 @@ class CompletePreferenceImplTest {
     @Test
     public void getAlternativesExceptionTest()
                     throws Exception {
-        CompletePreference toTest = generateCompletePrefImpl();
+        ImmutableCompletePreference toTest = generateCompletePrefImpl();
         assertThrows(ArrayIndexOutOfBoundsException.class,
                         () -> toTest.getAlternatives(3));
     }
@@ -87,7 +87,7 @@ class CompletePreferenceImplTest {
     @Test
     public void asEquivalenceClassesTest()
                     throws Exception {
-        CompletePreference toTest = generateCompletePrefImpl();
+        ImmutableCompletePreference toTest = generateCompletePrefImpl();
         List<ImmutableSet<Alternative>> list = new ArrayList<>(
                         Arrays.asList(ImmutableSet.of(a1, a2),
                                         ImmutableSet.of(a3)));
@@ -97,7 +97,7 @@ class CompletePreferenceImplTest {
     @Test
     public void getVoterTest()
                     throws Exception {
-        CompletePreference toTest = generateCompletePrefImpl();
+        ImmutableCompletePreference toTest = generateCompletePrefImpl();
         assertEquals(v1, toTest.getVoter());
     }
 

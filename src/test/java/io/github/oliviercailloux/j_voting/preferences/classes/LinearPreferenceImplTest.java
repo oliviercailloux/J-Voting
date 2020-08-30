@@ -13,13 +13,13 @@ import com.google.common.collect.ImmutableList;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
-import io.github.oliviercailloux.j_voting.preferences.LinearPreference;
+import io.github.oliviercailloux.j_voting.preferences.ImmutableLinearPreference;
 
 class LinearPreferenceImplTest {
 
     private static Voter v1 = Voter.createVoter(1);
 
-    private static LinearPreference getListedAlternatives()
+    private static ImmutableLinearPreference getListedAlternatives()
                     throws EmptySetException, DuplicateValueException {
         return LinearPreferenceImpl.asLinearPreference(Voter.createVoter(3),
                         ImmutableList.of(a1, a3, a2));
@@ -28,13 +28,13 @@ class LinearPreferenceImplTest {
     @Test
     void testlistToLinearPreference()
                     throws EmptySetException, DuplicateValueException {
-        LinearPreference toTest = getListedAlternatives();
+        ImmutableLinearPreference toTest = getListedAlternatives();
         assertEquals(ImmutableList.of(a1, a3, a2), toTest.asList());
     }
 
     @Test
     void testAsList() throws EmptySetException, DuplicateValueException {
-        LinearPreference toTest = getListedAlternatives();
+        ImmutableLinearPreference toTest = getListedAlternatives();
         assertEquals(ImmutableList.of(a1, a3, a2), toTest.asList());
     }
 
