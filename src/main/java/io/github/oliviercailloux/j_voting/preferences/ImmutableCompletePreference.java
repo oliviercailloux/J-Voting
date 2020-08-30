@@ -7,8 +7,8 @@ import io.github.oliviercailloux.j_voting.Alternative;
 
 /**
  * An immutable preference which represents a complete pre-order, also called a
- * weak order. for each couple of alternatives (a,b) we can find an order a>=b
- * or b>=a.
+ * weak order. for each couple of alternatives (a,b) we can find an order a ≥ b
+ * or b ≥ a.
  */
 public interface ImmutableCompletePreference extends ImmutablePreference {
 
@@ -26,10 +26,10 @@ public interface ImmutableCompletePreference extends ImmutablePreference {
 
 	/**
 	 *
-	 * @param n is a rank. Must be > 0.
+	 * @param rank at least 1.
 	 * @return the <code>Aternative</code> set at this rank. Empty set id there is
 	 *         no alternative at this rank.
-	 * @throws IllegalArgumentException if <code>n < 1</code>.
+	 * @throws IllegalArgumentException if rank is less than one.
 	 */
 	public ImmutableSet<Alternative> getAlternatives(int rank);
 

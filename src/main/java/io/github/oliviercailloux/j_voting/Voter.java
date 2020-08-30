@@ -49,8 +49,8 @@ public class Voter implements Comparable<Voter> {
 	/**
 	 *
 	 * @param v2 not <code> null </code>
-	 * @return an integer : 0 if the voters have the same id, <0 if the calling
-	 *         voter is smaller than the parameter, else >0.
+	 * @return an integer : 0 if the voters have the same id, &lt 0 if the calling
+	 *         voter is smaller than the parameter, else &gt 0.
 	 */
 	@Override
 	public int compareTo(@SuppressWarnings("hiding") Voter v2) {
@@ -61,21 +61,21 @@ public class Voter implements Comparable<Voter> {
 	}
 
 	/**
-	 * @param voter <code> not null</code>
+	 * @param o2 <code> not null</code>
 	 * @return whether two voters are equal, ie have the same id.
 	 */
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
+	public boolean equals(Object o2) {
+		if (this == o2) {
 			return true;
 		}
-		if (o == null) {
+		if (o2 == null) {
 			return false;
 		}
-		if (this.getClass() != o.getClass()) {
+		if (this.getClass() != o2.getClass()) {
 			return false;
 		}
-		Voter voter = (Voter) o;
+		Voter voter = (Voter) o2;
 		return this.getId() == voter.getId();
 	}
 
