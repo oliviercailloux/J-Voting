@@ -45,8 +45,6 @@ public class ImmutableCompletePreferenceImpl implements ImmutableCompletePrefere
 
 	private final ImmutableMap<Alternative, Integer> ranks;
 
-	private final ImmutableSet<Alternative> alternatives;
-
 	/**
 	 *
 	 * @param equivalenceClasses <code> not null </code> the best equivalence class
@@ -65,7 +63,6 @@ public class ImmutableCompletePreferenceImpl implements ImmutableCompletePrefere
 				.collect(ImmutableList.toImmutableList());
 		this.graph = asGraph(equivalenceClasses);
 		this.ranks = asRanks(equivalenceClasses);
-		this.alternatives = ImmutableSet.copyOf(graph.nodes());
 	}
 
 	private ImmutableGraph<Alternative> asGraph(
@@ -109,7 +106,7 @@ public class ImmutableCompletePreferenceImpl implements ImmutableCompletePrefere
 
 	@Override
 	public ImmutableSet<Alternative> getAlternatives() {
-		return this.alternatives;
+		return ranks.keySet();
 	}
 
 	@Override
@@ -137,7 +134,7 @@ public class ImmutableCompletePreferenceImpl implements ImmutableCompletePrefere
 	}
 
 	public boolean isAntiSymmetric() {
-		return (equivalenceClasses.size() == alternatives.size());
+		return (equivalenceClasses.size() == ranks.size());
 	}
 
 	@Override
