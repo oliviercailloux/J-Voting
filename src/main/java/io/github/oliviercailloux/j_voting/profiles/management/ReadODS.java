@@ -254,7 +254,7 @@ public class ReadODS {
 					equivalenceClasses.add(set);
 				nbChoice++;
 			}
-			completePreferences.add(ImmutableCompletePreferenceImpl.asCompletePreference(voter, equivalenceClasses));
+			completePreferences.add(ImmutableCompletePreferenceImpl.given(voter, equivalenceClasses));
 		}
 		return ImmutableSet.copyOf(completePreferences);
 	}
@@ -285,7 +285,7 @@ public class ReadODS {
 			for (int i = 0; i < prefRange.getRowNumber(); i++) {
 				list.add(ImmutableSet.of(createAlternativeFromCellRange(j, i, prefRange)));
 			}
-			completePreferences.add(ImmutableCompletePreferenceImpl.asCompletePreference(voter, list));
+			completePreferences.add(ImmutableCompletePreferenceImpl.given(voter, list));
 		}
 		return ImmutableSet.copyOf(completePreferences);
 	}

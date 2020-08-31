@@ -21,7 +21,6 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 
 import io.github.oliviercailloux.j_voting.Alternative;
-import io.github.oliviercailloux.j_voting.OldLinearPreferenceImpl;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.exceptions.DuplicateValueException;
 import io.github.oliviercailloux.j_voting.exceptions.EmptySetException;
@@ -33,13 +32,13 @@ class CompletePreferenceImplTest {
 
 	private ImmutableCompletePreferenceImpl generateCompletePrefImpl()
 			throws DuplicateValueException, EmptySetException {
-		return (ImmutableCompletePreferenceImpl) ImmutableCompletePreferenceImpl.asCompletePreference(v1,
+		return (ImmutableCompletePreferenceImpl) ImmutableCompletePreferenceImpl.given(v1,
 				ImmutableList.of(a12, ImmutableSet.of(a3)));
 	}
 
 	private ImmutableCompletePreferenceImpl generateStrictCompletePref()
 			throws DuplicateValueException, EmptySetException {
-		return (ImmutableCompletePreferenceImpl) ImmutableCompletePreferenceImpl.asCompletePreference(v1,
+		return (ImmutableCompletePreferenceImpl) ImmutableCompletePreferenceImpl.given(v1,
 				ImmutableList.of(ImmutableSet.of(a1), ImmutableSet.of(a3)));
 	}
 
@@ -58,19 +57,18 @@ class CompletePreferenceImplTest {
 
 	@Test
 	public void asCompletePreferenceTestException() {
-		assertThrows(Exception.class, () -> ImmutableCompletePreferenceImpl.asCompletePreference(v1, null));
+		assertThrows(Exception.class, () -> ImmutableCompletePreferenceImpl.given(v1, null));
 	}
 
 	@Test
 	public void asCompletePreferenceTestExceptionTow() {
-		assertThrows(Exception.class, () -> ImmutableCompletePreferenceImpl.asCompletePreference(null, null));
+		assertThrows(Exception.class, () -> ImmutableCompletePreferenceImpl.given(null, null));
 	}
 
 	@Test
 	public void asCompletePreferenceTestEmptyList() throws Exception {
 		List<ImmutableSet<Alternative>> empList = new ArrayList<>();
-		ImmutableCompletePreference testCompletePreferenceImpl = ImmutableCompletePreferenceImpl
-				.asCompletePreference(v1, empList);
+		ImmutableCompletePreference testCompletePreferenceImpl = ImmutableCompletePreferenceImpl.given(v1, empList);
 		assertTrue(testCompletePreferenceImpl.asGraph().edges().isEmpty());
 	}
 
@@ -103,16 +101,15 @@ class CompletePreferenceImplTest {
 
 	@Test
 	public void createDuplicateException() {
-		assertThrows(DuplicateValueException.class, () -> {
-			ImmutableCompletePreferenceImpl.asCompletePreference(v1, ImmutableList.of(a12, ImmutableSet.of(a2)));
+		assertThrows(IllegalArgumentException.class, () -> {
+			ImmutableCompletePreferenceImpl.given(v1, ImmutableList.of(a12, ImmutableSet.of(a2)));
 		});
 	}
 
 	@Test
 	public void createEmptySetException() {
-		assertThrows(EmptySetException.class, () -> {
-			ImmutableCompletePreferenceImpl.asCompletePreference(v1,
-					ImmutableList.of(ImmutableSet.of(), ImmutableSet.of(a2)));
+		assertThrows(IllegalArgumentException.class, () -> {
+			ImmutableCompletePreferenceImpl.given(v1, ImmutableList.of(ImmutableSet.of(), ImmutableSet.of(a2)));
 		});
 	}
 
@@ -126,27 +123,16 @@ class CompletePreferenceImplTest {
 	public void hasSameAlternativesTest() throws Exception {
 		ImmutableCompletePreferenceImpl toTest = generateCompletePrefImpl();
 		ImmutableCompletePreferenceImpl toTest2 = (ImmutableCompletePreferenceImpl) ImmutableCompletePreferenceImpl
-				.asCompletePreference(v1,
-						ImmutableList.of(ImmutableSet.of(a1), ImmutableSet.of(a2), ImmutableSet.of(a3)));
+				.given(v1, ImmutableList.of(ImmutableSet.of(a1), ImmutableSet.of(a2), ImmutableSet.of(a3)));
 		assertEquals(toTest.getAlternatives(), toTest2.getAlternatives());
-	}
-
-	@Test
-	public void toStrictPreferenceTest() throws Exception {
-		ImmutableCompletePreferenceImpl toTestComplete = (ImmutableCompletePreferenceImpl) ImmutableCompletePreferenceImpl
-				.asCompletePreference(v1,
-						ImmutableList.of(ImmutableSet.of(a1), ImmutableSet.of(a3), ImmutableSet.of(a2)));
-		OldLinearPreferenceImpl toTestLinear = OldLinearPreferenceImpl
-				.createStrictCompletePreferenceImpl(ImmutableList.of(a1, a3, a2));
-		assertEquals(toTestLinear, toTestComplete.toStrictPreference());
 	}
 
 	@Test
 	public void isIncludedInTest() throws Exception {
 		ImmutableCompletePreferenceImpl toTestIsContained = (ImmutableCompletePreferenceImpl) ImmutableCompletePreferenceImpl
-				.asCompletePreference(v1, ImmutableList.of(a12, ImmutableSet.of(a3)));
+				.given(v1, ImmutableList.of(a12, ImmutableSet.of(a3)));
 		ImmutableCompletePreferenceImpl toTestContains = (ImmutableCompletePreferenceImpl) ImmutableCompletePreferenceImpl
-				.asCompletePreference(v1, ImmutableList.of(a31, ImmutableSet.of(a2), ImmutableSet.of(a4)));
+				.given(v1, ImmutableList.of(a31, ImmutableSet.of(a2), ImmutableSet.of(a4)));
 		assertTrue(toTestContains.getAlternatives().containsAll(toTestIsContained.getAlternatives()));
 		assertFalse(toTestIsContained.getAlternatives().containsAll(toTestContains.getAlternatives()));
 	}
@@ -161,7 +147,7 @@ class CompletePreferenceImplTest {
 	public void isStrictTest() throws Exception {
 		ImmutableCompletePreferenceImpl toTestNonStrict = generateCompletePrefImpl();
 		ImmutableCompletePreferenceImpl toTestStrict = generateStrictCompletePref();
-		assertFalse(toTestNonStrict.isStrict());
-		assertTrue(toTestStrict.isStrict());
+		assertFalse(toTestNonStrict.isAntiSymmetric());
+		assertTrue(toTestStrict.isAntiSymmetric());
 	}
 }
