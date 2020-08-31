@@ -1,8 +1,8 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
+import static io.github.oliviercailloux.j_voting.Alternative.a1;
+import static io.github.oliviercailloux.j_voting.Alternative.a2;
+import static io.github.oliviercailloux.j_voting.Alternative.a3;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -17,42 +17,35 @@ import io.github.oliviercailloux.j_voting.preferences.ImmutableLinearPreference;
 
 class LinearPreferenceImplTest {
 
-    private static Voter v1 = Voter.createVoter(1);
+	private static Voter v1 = Voter.withId(1);
 
-    private static ImmutableLinearPreference getListedAlternatives()
-                    throws EmptySetException, DuplicateValueException {
-        return ImmutableLinearPreferenceImpl.asLinearPreference(Voter.createVoter(3),
-                        ImmutableList.of(a1, a3, a2));
-    }
+	private static ImmutableLinearPreference getListedAlternatives() throws EmptySetException, DuplicateValueException {
+		return ImmutableLinearPreferenceImpl.asLinearPreference(Voter.withId(3), ImmutableList.of(a1, a3, a2));
+	}
 
-    @Test
-    void testlistToLinearPreference()
-                    throws EmptySetException, DuplicateValueException {
-        ImmutableLinearPreference toTest = getListedAlternatives();
-        assertEquals(ImmutableList.of(a1, a3, a2), toTest.asList());
-    }
+	@Test
+	void testlistToLinearPreference() throws EmptySetException, DuplicateValueException {
+		ImmutableLinearPreference toTest = getListedAlternatives();
+		assertEquals(ImmutableList.of(a1, a3, a2), toTest.asList());
+	}
 
-    @Test
-    void testAsList() throws EmptySetException, DuplicateValueException {
-        ImmutableLinearPreference toTest = getListedAlternatives();
-        assertEquals(ImmutableList.of(a1, a3, a2), toTest.asList());
-    }
+	@Test
+	void testAsList() throws EmptySetException, DuplicateValueException {
+		ImmutableLinearPreference toTest = getListedAlternatives();
+		assertEquals(ImmutableList.of(a1, a3, a2), toTest.asList());
+	}
 
-    @Test
-    void throwsTest() {
-        assertThrows(Exception.class, () -> ImmutableLinearPreferenceImpl
-                        .asLinearPreference(null, ImmutableList.of(null)));
-        assertThrows(Exception.class, () -> ImmutableLinearPreferenceImpl
-                        .asLinearPreference(v1, ImmutableList.of(null)));
-        assertThrows(Exception.class, () -> ImmutableLinearPreferenceImpl
-                        .asLinearPreference(v1, null));
-        assertThrows(Exception.class,
-                        () -> ImmutableLinearPreferenceImpl.asLinearPreference(
-                                        Voter.createVoter(1),
-                                        ImmutableList.of(null)));
-        assertThrows(Exception.class, () -> ImmutableLinearPreferenceImpl
-                        .asLinearPreference(v1, null));
-        assertThrows(Exception.class, () -> ImmutableLinearPreferenceImpl
-                        .asLinearPreference(null, ImmutableList.of(null)));
-    }
+	@Test
+	void throwsTest() {
+		assertThrows(Exception.class,
+				() -> ImmutableLinearPreferenceImpl.asLinearPreference(null, ImmutableList.of(null)));
+		assertThrows(Exception.class,
+				() -> ImmutableLinearPreferenceImpl.asLinearPreference(v1, ImmutableList.of(null)));
+		assertThrows(Exception.class, () -> ImmutableLinearPreferenceImpl.asLinearPreference(v1, null));
+		assertThrows(Exception.class,
+				() -> ImmutableLinearPreferenceImpl.asLinearPreference(Voter.withId(1), ImmutableList.of(null)));
+		assertThrows(Exception.class, () -> ImmutableLinearPreferenceImpl.asLinearPreference(v1, null));
+		assertThrows(Exception.class,
+				() -> ImmutableLinearPreferenceImpl.asLinearPreference(null, ImmutableList.of(null)));
+	}
 }

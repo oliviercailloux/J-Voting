@@ -109,7 +109,7 @@ public class ReadODS {
 		stringBuilder.append("There are " + nbTotVoters + " voters\n");
 		CellRange prefRange = table.getCellRangeByPosition(1, 1, nbTotVoters, alternatives.size());
 		for (int j = 0; j < prefRange.getColumnNumber(); j++) {
-			Voter voter = Voter.createVoter(Integer.parseInt(table.getCellByPosition(j + 1, 0).getStringValue()));
+			Voter voter = Voter.withId(Integer.parseInt(table.getCellByPosition(j + 1, 0).getStringValue()));
 			stringBuilder.append("Voter " + voter.getId() + " : ");
 			int nbChoice = 1;
 			while (nbChoice <= alternatives.size()) {
@@ -156,7 +156,7 @@ public class ReadODS {
 		stringBuilder.append("There are " + nbTotVoters + " voters\n");
 		CellRange prefRange = table.getCellRangeByPosition(0, 1, nbTotVoters - 1, alternatives.size());
 		for (int j = 0; j < prefRange.getColumnNumber(); j++) {
-			Voter voter = Voter.createVoter(Integer.parseInt(table.getCellByPosition(j, 0).getStringValue()));
+			Voter voter = Voter.withId(Integer.parseInt(table.getCellByPosition(j, 0).getStringValue()));
 			stringBuilder.append("Voter " + voter.getId() + " : ");
 			for (int i = 0; i < prefRange.getRowNumber(); i++) {
 				stringBuilder.append(Integer.parseInt(prefRange.getCellByPosition(j, i).getStringValue()) + ">");
@@ -239,7 +239,7 @@ public class ReadODS {
 		int nbTotVoters = getnbTotVoters(table);
 		CellRange prefRange = table.getCellRangeByPosition(1, 1, nbTotVoters, alternatives.size());
 		for (int j = 0; j < prefRange.getColumnNumber(); j++) {
-			Voter voter = Voter.createVoter(Integer.parseInt(table.getCellByPosition(j + 1, 0).getStringValue()));
+			Voter voter = Voter.withId(Integer.parseInt(table.getCellByPosition(j + 1, 0).getStringValue()));
 			int nbChoice = 1;
 			List<Set<Alternative>> equivalenceClasses = Lists.newArrayList();
 			while (nbChoice <= alternatives.size()) {
@@ -278,7 +278,7 @@ public class ReadODS {
 		CellRange prefRange = table.getCellRangeByPosition(0, 1, nbTotVoters - 1, alternatives.size());
 		for (int j = 0; j < prefRange.getColumnNumber(); j++) {
 			List<Set<Alternative>> list = Lists.newArrayList();
-			Voter voter = Voter.createVoter(Integer.parseInt(table.getCellByPosition(j, 0).getStringValue()));
+			Voter voter = Voter.withId(Integer.parseInt(table.getCellByPosition(j, 0).getStringValue()));
 			for (ImmutableCompletePreference completePreference : completePreferences)
 				if (completePreference.getVoter() == voter)
 					throw new DuplicateValueException("Two voters can't have the same ID");

@@ -39,7 +39,7 @@ public class TestODS {
 				for (Column column : table.getColumnList()) {
 					List<Alternative> alternatives = new ArrayList<>();
 					String firstCellText = column.getCellByIndex(0).getDisplayText();
-					voters.add(Voter.createVoter(Integer.parseInt(
+					voters.add(Voter.withId(Integer.parseInt(
 							firstCellText.substring(firstCellText.length() - 1, firstCellText.indexOf(' ')))));
 					for (int alt = Integer.parseInt(column.getCellByIndex(1).getDisplayText()); alt < column
 							.getCellCount(); alt++) {

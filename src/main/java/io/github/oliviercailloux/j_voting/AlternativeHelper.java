@@ -1,15 +1,16 @@
 package io.github.oliviercailloux.j_voting;
 
+import static io.github.oliviercailloux.j_voting.Alternative.a1;
+import static io.github.oliviercailloux.j_voting.Alternative.a2;
+import static io.github.oliviercailloux.j_voting.Alternative.a3;
+import static io.github.oliviercailloux.j_voting.Alternative.a4;
+
 import java.util.List;
 
 import com.google.common.collect.ImmutableSet;
 
 public class AlternativeHelper {
 
-	public static Alternative a1 = Alternative.withId(1);
-	public static Alternative a2 = Alternative.withId(2);
-	public static Alternative a3 = Alternative.withId(3);
-	public static Alternative a4 = Alternative.withId(4);
 	public static Alternative a5 = Alternative.withId(5);
 	public static Alternative a6 = Alternative.withId(6);
 

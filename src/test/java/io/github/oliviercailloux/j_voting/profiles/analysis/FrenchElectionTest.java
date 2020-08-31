@@ -52,12 +52,12 @@ public class FrenchElectionTest {
         OldLinearPreferenceImpl p1 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list1);
         OldLinearPreferenceImpl p2 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list2);
         OldLinearPreferenceImpl p3 = OldLinearPreferenceImpl.createStrictCompletePreferenceImpl(list3);
-        Voter v1 = Voter.createVoter(1);
-        Voter v2 = Voter.createVoter(2);
-        Voter v3 = Voter.createVoter(3);
-        Voter v4 = Voter.createVoter(4);
-        Voter v5 = Voter.createVoter(5);
-        Voter v6 = Voter.createVoter(6);
+        Voter v1 = Voter.withId(1);
+        Voter v2 = Voter.withId(2);
+        Voter v3 = Voter.withId(3);
+        Voter v4 = Voter.withId(4);
+        Voter v5 = Voter.withId(5);
+        Voter v6 = Voter.withId(6);
         StrictProfileBuilder profBuild = StrictProfileBuilder.createStrictProfileBuilder();
         profBuild.addVote(v1, p1);
         profBuild.addVote(v2, p1);

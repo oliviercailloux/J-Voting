@@ -290,7 +290,7 @@ public class ProfileDefaultGUI {
 	 */
 	public void modif() {
 		LOGGER.debug("modif :");
-		Voter voter = Voter.createVoter(voterToModify);
+		Voter voter = Voter.withId(voterToModify);
 		LOGGER.debug("New preference for voter v {} : {}", voter, newpref);
 		// change preference for this Voter in global ProfileBuilder
 		profileBuilder.addVote(voter, newpref);

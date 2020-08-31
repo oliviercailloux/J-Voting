@@ -1,13 +1,13 @@
 package io.github.oliviercailloux.j_voting.profiles;
 
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
+import static io.github.oliviercailloux.j_voting.Alternative.a1;
+import static io.github.oliviercailloux.j_voting.Alternative.a2;
+import static io.github.oliviercailloux.j_voting.Alternative.a3;
+import static io.github.oliviercailloux.j_voting.Alternative.a4;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a231list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a321list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
 import static io.github.oliviercailloux.j_voting.ProfileHelper.mspa1234v123;
 import static io.github.oliviercailloux.j_voting.ProfileHelper.mspa123v12;
 import static io.github.oliviercailloux.j_voting.ProfileHelper.mspa123v123;

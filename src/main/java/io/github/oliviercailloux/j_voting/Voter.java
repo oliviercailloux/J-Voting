@@ -1,5 +1,7 @@
 package io.github.oliviercailloux.j_voting;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,15 +16,13 @@ public class Voter implements Comparable<Voter> {
 
 	public static final Voter ZERO = new Voter(0);
 
-	public static Voter v1 = createVoter(1);
+	public static Voter v1 = withId(1);
 
-	public static Voter v2 = createVoter(2);
+	public static Voter v2 = withId(2);
 
-	public static Voter v3 = createVoter(3);
+	public static Voter v3 = withId(3);
 
-	public static Voter v4 = createVoter(4);
-
-	private int id;
+	public static Voter v4 = withId(4);
 
 	/**
 	 * Factory method for Voter
@@ -30,10 +30,12 @@ public class Voter implements Comparable<Voter> {
 	 * @param id <code>not null</code>
 	 * @return a new Voter
 	 */
-	public static Voter createVoter(int id) {
-		Preconditions.checkNotNull(id);
+	public static Voter withId(int id) {
+		checkNotNull(id);
 		return new Voter(id);
 	}
+
+	private int id;
 
 	private Voter(int id) {
 		this.id = id;

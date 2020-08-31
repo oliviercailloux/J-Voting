@@ -1,9 +1,9 @@
 package io.github.oliviercailloux.j_voting;
 
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
+import static io.github.oliviercailloux.j_voting.Alternative.a1;
+import static io.github.oliviercailloux.j_voting.Alternative.a2;
+import static io.github.oliviercailloux.j_voting.Alternative.a3;
+import static io.github.oliviercailloux.j_voting.Alternative.a4;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv1a1234list;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv1a123list;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv1a12list;

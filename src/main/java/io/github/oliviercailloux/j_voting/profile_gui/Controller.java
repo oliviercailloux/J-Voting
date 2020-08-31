@@ -24,7 +24,7 @@ public class Controller {
 	 * application
 	 */
 	public static Controller withDefaultModel() {
-		Voter v1 = Voter.createVoter(1);
+		Voter v1 = Voter.withId(1);
 		Alternative a = Alternative.withId(2);
 		Alternative a2 = Alternative.withId(3);
 		Alternative a3 = Alternative.withId(4);

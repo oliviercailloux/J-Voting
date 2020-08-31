@@ -112,14 +112,14 @@ class ReadODSTest {
                         .completeFormatRanksFormat(table);
         ImmutableSet<ImmutableCompletePreference> completePreferencesTest = ImmutableSet
                         .of(ImmutableCompletePreferenceImpl.asCompletePreference(
-                                        Voter.createVoter(1),
+                                        Voter.withId(1),
                                         ImmutableList.of(getAlternatives(1),
                                                         getAlternatives(3),
                                                         getAlternatives(2, 4),
                                                         getAlternatives(5))),
                                         ImmutableCompletePreferenceImpl
                                                         .asCompletePreference(
-                                                                        Voter.createVoter(
+                                                                        Voter.withId(
                                                                                         2),
                                                                         ImmutableList.of(
                                                                                         getAlternatives(2,
@@ -129,7 +129,7 @@ class ReadODSTest {
                                                                                         getAlternatives(4))),
                                         ImmutableCompletePreferenceImpl
                                                         .asCompletePreference(
-                                                                        Voter.createVoter(
+                                                                        Voter.withId(
                                                                                         3),
                                                                         ImmutableList.of(
                                                                                         getAlternatives(5),
@@ -151,7 +151,7 @@ class ReadODSTest {
                         .completeFormatVotersToRankings(table);
         ImmutableSet<ImmutableCompletePreference> completePreferencesTest = ImmutableSet
                         .of(ImmutableCompletePreferenceImpl.asCompletePreference(
-                                        Voter.createVoter(1),
+                                        Voter.withId(1),
                                         ImmutableList.of(getAlternatives(1),
                                                         getAlternatives(3),
                                                         getAlternatives(2),
@@ -159,7 +159,7 @@ class ReadODSTest {
                                                         getAlternatives(5))),
                                         ImmutableCompletePreferenceImpl
                                                         .asCompletePreference(
-                                                                        Voter.createVoter(
+                                                                        Voter.withId(
                                                                                         2),
                                                                         ImmutableList.of(
                                                                                         getAlternatives(2),
@@ -169,7 +169,7 @@ class ReadODSTest {
                                                                                         getAlternatives(3))),
                                         ImmutableCompletePreferenceImpl
                                                         .asCompletePreference(
-                                                                        Voter.createVoter(
+                                                                        Voter.withId(
                                                                                         3),
                                                                         ImmutableList.of(
                                                                                         getAlternatives(4),
@@ -196,7 +196,7 @@ class ReadODSTest {
                         .checkFormatandReturnCompletePreference(inputStream);
         ImmutableSet<ImmutableCompletePreference> completePreferencesTest = ImmutableSet
                         .of(ImmutableCompletePreferenceImpl.asCompletePreference(
-                                        Voter.createVoter(1),
+                                        Voter.withId(1),
                                         ImmutableList.of(getAlternatives(1),
                                                         getAlternatives(3),
                                                         getAlternatives(2),
@@ -204,7 +204,7 @@ class ReadODSTest {
                                                         getAlternatives(5))),
                                         ImmutableCompletePreferenceImpl
                                                         .asCompletePreference(
-                                                                        Voter.createVoter(
+                                                                        Voter.withId(
                                                                                         2),
                                                                         ImmutableList.of(
                                                                                         getAlternatives(2),
@@ -214,7 +214,7 @@ class ReadODSTest {
                                                                                         getAlternatives(3))),
                                         ImmutableCompletePreferenceImpl
                                                         .asCompletePreference(
-                                                                        Voter.createVoter(
+                                                                        Voter.withId(
                                                                                         3),
                                                                         ImmutableList.of(
                                                                                         getAlternatives(4),
@@ -229,13 +229,13 @@ class ReadODSTest {
                         .checkFormatandReturnCompletePreference(inputStream);
         completePreferencesTest = ImmutableSet.of(
                         ImmutableCompletePreferenceImpl.asCompletePreference(
-                                        Voter.createVoter(1),
+                                        Voter.withId(1),
                                         ImmutableList.of(getAlternatives(1),
                                                         getAlternatives(3),
                                                         getAlternatives(2, 4),
                                                         getAlternatives(5))),
                         ImmutableCompletePreferenceImpl.asCompletePreference(
-                                        Voter.createVoter(2),
+                                        Voter.withId(2),
                                         ImmutableList.of(ImmutableSet.of(
                                                         Alternative.withId(2),
                                                         Alternative.withId(1)),
@@ -243,7 +243,7 @@ class ReadODSTest {
                                                         getAlternatives(5),
                                                         getAlternatives(4))),
                         ImmutableCompletePreferenceImpl.asCompletePreference(
-                                        Voter.createVoter(3),
+                                        Voter.withId(3),
                                         ImmutableList.of(getAlternatives(5),
                                                         getAlternatives(3),
                                                         getAlternatives(4),

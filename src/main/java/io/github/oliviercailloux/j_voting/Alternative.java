@@ -14,6 +14,10 @@ public class Alternative {
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LoggerFactory.getLogger(Alternative.class.getName());
+	public static Alternative a1 = Alternative.withId(1);
+	public static Alternative a2 = Alternative.withId(2);
+	public static Alternative a3 = Alternative.withId(3);
+	public static Alternative a4 = Alternative.withId(4);
 	private int id;
 
 	/**

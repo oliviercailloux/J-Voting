@@ -106,7 +106,7 @@ public class ReadProfile {
 					newPrefString.append("," + altText);
 				}
 			}
-			Voter voter = Voter.createVoter(column + 1);
+			Voter voter = Voter.withId(column + 1);
 			OldLinearPreferenceImpl newPref = new ReadProfile().createStrictPreferenceFrom(newPrefString.toString());
 			profileBuilder.addVote(voter, newPref);
 		}
@@ -132,7 +132,7 @@ public class ReadProfile {
 					newPrefString.append("," + altText);
 				}
 			}
-			Voter voter = Voter.createVoter(item + 1);
+			Voter voter = Voter.withId(item + 1);
 			OldLinearPreferenceImpl newPref = new ReadProfile().createStrictPreferenceFrom(newPrefString.toString());
 			profileBuilder.addVote(voter, newPref);
 		}

@@ -1,56 +1,50 @@
 package io.github.oliviercailloux.j_voting.preferences.classes;
 
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a4;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a6;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12345;
+import static io.github.oliviercailloux.j_voting.Alternative.a1;
+import static io.github.oliviercailloux.j_voting.Alternative.a2;
+import static io.github.oliviercailloux.j_voting.Alternative.a3;
+import static io.github.oliviercailloux.j_voting.Alternative.a4;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1234;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12345;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123456list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12345list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1234list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1235list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123546list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123456list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a46list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a34list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a345list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1345list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1256list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a56;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1235list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a123;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a41235list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a41325list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a43251list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a52341list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a32541list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a34521list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a54321list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a51324list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a41523list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a41253list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a14253list;
-import static io.github.oliviercailloux.j_voting.AlternativeHelper.a14235list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1256list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a1345list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a14235list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a14253list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a21list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a32451list;
-
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a32541list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a34521list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a345list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a34list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a41235list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a41253list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a41325list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a41523list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a43251list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a46list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a51324list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a52341list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a54321list;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a56;
+import static io.github.oliviercailloux.j_voting.AlternativeHelper.a6;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import com.google.common.collect.ImmutableSet;
 import com.google.common.graph.Graph;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
@@ -58,8 +52,6 @@ import com.google.common.graph.MutableGraph;
 import io.github.oliviercailloux.j_voting.Alternative;
 import io.github.oliviercailloux.j_voting.Voter;
 import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
-import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;
-import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl.MutableLinearSetDecorator;
 
 public class MutableLinearPreferenceImplTest {
 
@@ -68,7 +60,7 @@ public class MutableLinearPreferenceImplTest {
 	 */
 	@Test
 	void testAsGraph() {
-		Voter v = Voter.createVoter(1);
+		Voter v = Voter.withId(1);
 		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a12345list);
 
 		MutableGraph<Alternative> expected = GraphBuilder.directed().allowsSelfLoops(true).build();
@@ -96,7 +88,7 @@ public class MutableLinearPreferenceImplTest {
 	 */
 	@Test
 	void testGetAlternatives() {
-		Voter v = Voter.createVoter(1);
+		Voter v = Voter.withId(1);
 		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a1234list);
 
 		Set<Alternative> expected = a1234;
@@ -129,7 +121,7 @@ public class MutableLinearPreferenceImplTest {
 	 */
 	@Test
 	void testAddAlternative() {
-		Voter v = Voter.createVoter(1);
+		Voter v = Voter.withId(1);
 		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a1234list);
 
 		List<Alternative> toTestList = new ArrayList<>();
@@ -146,7 +138,7 @@ public class MutableLinearPreferenceImplTest {
 
 	@Test
 	void testAddAllDelegate() {
-		Voter v = Voter.createVoter(1);
+		Voter v = Voter.withId(1);
 		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a1234list);
 		toTestPref.getAlternatives().addAll(a56);
 
@@ -160,7 +152,7 @@ public class MutableLinearPreferenceImplTest {
 	 */
 	@Test
 	void testRemoveAlternative() {
-		Voter v = Voter.createVoter(1);
+		Voter v = Voter.withId(1);
 		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a12345list);
 
 		MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, a1345list);
@@ -178,7 +170,7 @@ public class MutableLinearPreferenceImplTest {
 
 	@Test
 	void testRemoveAllDelegate() {
-		Voter v = Voter.createVoter(1);
+		Voter v = Voter.withId(1);
 		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a123456list);
 
 		Set<Alternative> c = new HashSet<>();
@@ -191,7 +183,7 @@ public class MutableLinearPreferenceImplTest {
 
 	@Test
 	void testRetainAllDelegate() {
-		Voter v = Voter.createVoter(1);
+		Voter v = Voter.withId(1);
 		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a123456list);
 
 		Set<Alternative> c = new HashSet<>();
@@ -204,7 +196,7 @@ public class MutableLinearPreferenceImplTest {
 
 	@Test
 	void testChangeOrder() {
-		Voter v = Voter.createVoter(1);
+		Voter v = Voter.withId(1);
 		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a12345list);
 
 		MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, a41235list);
@@ -230,7 +222,7 @@ public class MutableLinearPreferenceImplTest {
 	 */
 	@Test
 	void testSwap() {
-		Voter v = Voter.createVoter(1);
+		Voter v = Voter.withId(1);
 		MutableLinearPreference toTestPref = MutableLinearPreferenceImpl.given(v, a12345list);
 
 		MutableLinearPreference prefExpected1 = MutableLinearPreferenceImpl.given(v, a52341list);

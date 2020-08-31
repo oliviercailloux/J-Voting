@@ -64,7 +64,7 @@ public class SWFCommander {
 		int voterId = 1;
 		while (keepGoing) {
 			LOGGER.debug("new voter id  : {}", voterId);
-			Voter v = Voter.createVoter(voterId);
+			Voter v = Voter.withId(voterId);
 			OldLinearPreferenceImpl oldLinearPreferenceImpl = askPreference();
 			LOGGER.debug("strictPreference :{}", oldLinearPreferenceImpl);
 			prof.addVote(v, oldLinearPreferenceImpl);

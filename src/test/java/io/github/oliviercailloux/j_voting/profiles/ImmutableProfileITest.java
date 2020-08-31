@@ -29,12 +29,12 @@ public class ImmutableProfileITest {
         Alternative a1 = Alternative.withId(1);
         Alternative a2 = Alternative.withId(2);
         Alternative a3 = Alternative.withId(3);
-        Voter v1 = Voter.createVoter(1);
-        Voter v2 = Voter.createVoter(2);
-        Voter v3 = Voter.createVoter(3);
-        Voter v4 = Voter.createVoter(4);
-        Voter v5 = Voter.createVoter(5);
-        Voter v6 = Voter.createVoter(6);
+        Voter v1 = Voter.withId(1);
+        Voter v2 = Voter.withId(2);
+        Voter v3 = Voter.withId(3);
+        Voter v4 = Voter.withId(4);
+        Voter v5 = Voter.withId(5);
+        Voter v6 = Voter.withId(6);
         List<Set<Alternative>> list1 = new ArrayList<>();
         List<Set<Alternative>> list2 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();
@@ -90,7 +90,7 @@ public class ImmutableProfileITest {
         Alternative a1 = Alternative.withId(1);
         Alternative a2 = Alternative.withId(2);
         Alternative a3 = Alternative.withId(3);
-        Voter v1 = Voter.createVoter(1);
+        Voter v1 = Voter.withId(1);
         List<Set<Alternative>> list1 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();
         Set<Alternative> s2 = new HashSet<>();
@@ -105,18 +105,18 @@ public class ImmutableProfileITest {
 
     @Test
     public void testContains() {
-        Voter v1 = Voter.createVoter(1);
+        Voter v1 = Voter.withId(1);
         assertTrue(createIPIToTest().votes.containsKey(v1));
     }
 
     @Test
     public void testGetAllVoters() {
-        Voter v1 = Voter.createVoter(1);
-        Voter v2 = Voter.createVoter(2);
-        Voter v3 = Voter.createVoter(3);
-        Voter v4 = Voter.createVoter(4);
-        Voter v5 = Voter.createVoter(5);
-        Voter v6 = Voter.createVoter(6);
+        Voter v1 = Voter.withId(1);
+        Voter v2 = Voter.withId(2);
+        Voter v3 = Voter.withId(3);
+        Voter v4 = Voter.withId(4);
+        Voter v5 = Voter.withId(5);
+        Voter v6 = Voter.withId(6);
         NavigableSet<Voter> set = new TreeSet<>();
         set.add(v1);
         set.add(v2);
@@ -209,12 +209,12 @@ public class ImmutableProfileITest {
         Alternative a1 = Alternative.withId(1);
         Alternative a2 = Alternative.withId(2);
         Alternative a3 = Alternative.withId(3);
-        Voter v1 = Voter.createVoter(1);
-        Voter v2 = Voter.createVoter(2);
-        Voter v3 = Voter.createVoter(3);
-        Voter v4 = Voter.createVoter(4);
-        Voter v5 = Voter.createVoter(5);
-        Voter v6 = Voter.createVoter(6);
+        Voter v1 = Voter.withId(1);
+        Voter v2 = Voter.withId(2);
+        Voter v3 = Voter.withId(3);
+        Voter v4 = Voter.withId(4);
+        Voter v5 = Voter.withId(5);
+        Voter v6 = Voter.withId(6);
         List<Set<Alternative>> list1 = new ArrayList<>();
         List<Set<Alternative>> list2 = new ArrayList<>();
         Set<Alternative> s1 = new HashSet<>();

@@ -71,7 +71,7 @@ public class ProfileBuilder {
 		LOGGER.debug("parameters : nbVoters {} for the preference {}", nbVoters, pref);
 		for (int m = 0; m < nbVoters; m++) {// we create as many profiles as
 											// voters
-			Voter v = Voter.createVoter(nextVoterId);
+			Voter v = Voter.withId(nextVoterId);
 			LOGGER.debug("adds the voter {} and the pref as parameter to the profile", nextVoterId);
 			nextVoterId++;
 			addVote(v, pref);

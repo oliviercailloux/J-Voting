@@ -15,7 +15,7 @@ public class Generator {
 	public static ImmutableSet<Voter> getVoters(int n) {
 		final ImmutableSet.Builder<Voter> builder = ImmutableSet.builder();
 		for (int i = 1; i <= n; ++i) {
-			builder.add(Voter.createVoter(i));
+			builder.add(Voter.withId(i));
 		}
 		return builder.build();
 	}
