@@ -2,6 +2,8 @@ package io.github.oliviercailloux.j_voting;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import java.util.Comparator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +15,8 @@ import com.google.common.base.Preconditions;
  */
 public class Voter implements Comparable<Voter> {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Voter.class.getName());
+
+	public static Comparator<Voter> BY_ID = Comparator.comparing(Voter::getId);
 
 	public static final Voter ZERO = new Voter(0);
 
