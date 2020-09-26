@@ -8,10 +8,10 @@ import static io.github.oliviercailloux.j_voting.AlternativeHelper.a2314list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a231list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a3214list;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a321list;
-import static io.github.oliviercailloux.j_voting.Voter.v1;
-import static io.github.oliviercailloux.j_voting.Voter.v2;
-import static io.github.oliviercailloux.j_voting.Voter.v3;
-import static io.github.oliviercailloux.j_voting.Voter.v4;
+import static io.github.oliviercailloux.j_voting.Generator.v1;
+import static io.github.oliviercailloux.j_voting.Generator.v2;
+import static io.github.oliviercailloux.j_voting.Generator.v3;
+import static io.github.oliviercailloux.j_voting.Generator.v4;
 
 import io.github.oliviercailloux.j_voting.preferences.MutableLinearPreference;
 import io.github.oliviercailloux.j_voting.preferences.classes.MutableLinearPreferenceImpl;

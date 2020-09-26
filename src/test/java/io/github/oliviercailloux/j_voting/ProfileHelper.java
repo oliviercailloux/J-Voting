@@ -1,9 +1,13 @@
 package io.github.oliviercailloux.j_voting;
 
-import static io.github.oliviercailloux.j_voting.Alternative.a1;
-import static io.github.oliviercailloux.j_voting.Alternative.a2;
-import static io.github.oliviercailloux.j_voting.Alternative.a3;
-import static io.github.oliviercailloux.j_voting.Alternative.a4;
+import static io.github.oliviercailloux.j_voting.Generator.a1;
+import static io.github.oliviercailloux.j_voting.Generator.a2;
+import static io.github.oliviercailloux.j_voting.Generator.a3;
+import static io.github.oliviercailloux.j_voting.Generator.a4;
+import static io.github.oliviercailloux.j_voting.Generator.v1;
+import static io.github.oliviercailloux.j_voting.Generator.v2;
+import static io.github.oliviercailloux.j_voting.Generator.v3;
+import static io.github.oliviercailloux.j_voting.Generator.v4;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv1a1234list;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv1a123list;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv1a12list;
@@ -14,10 +18,6 @@ import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv3a21list;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv3a2314list;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv3a231list;
 import static io.github.oliviercailloux.j_voting.PreferenceHelper.mlpv4a321list;
-import static io.github.oliviercailloux.j_voting.Voter.v1;
-import static io.github.oliviercailloux.j_voting.Voter.v2;
-import static io.github.oliviercailloux.j_voting.Voter.v3;
-import static io.github.oliviercailloux.j_voting.Voter.v4;
 
 import java.util.Map;
 

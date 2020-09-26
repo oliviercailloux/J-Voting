@@ -20,14 +20,6 @@ public class Voter implements Comparable<Voter> {
 
 	public static final Voter ZERO = new Voter(0);
 
-	public static Voter v1 = withId(1);
-
-	public static Voter v2 = withId(2);
-
-	public static Voter v3 = withId(3);
-
-	public static Voter v4 = withId(4);
-
 	/**
 	 * Factory method for Voter
 	 *

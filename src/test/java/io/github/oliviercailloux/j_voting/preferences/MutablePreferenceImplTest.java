@@ -1,9 +1,9 @@
 package io.github.oliviercailloux.j_voting.preferences;
 
-import static io.github.oliviercailloux.j_voting.Alternative.a1;
-import static io.github.oliviercailloux.j_voting.Alternative.a2;
-import static io.github.oliviercailloux.j_voting.Alternative.a3;
-import static io.github.oliviercailloux.j_voting.Alternative.a4;
+import static io.github.oliviercailloux.j_voting.Generator.a1;
+import static io.github.oliviercailloux.j_voting.Generator.a2;
+import static io.github.oliviercailloux.j_voting.Generator.a3;
+import static io.github.oliviercailloux.j_voting.Generator.a4;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a12345;
 import static io.github.oliviercailloux.j_voting.AlternativeHelper.a5;
 import static org.junit.jupiter.api.Assertions.assertEquals;
