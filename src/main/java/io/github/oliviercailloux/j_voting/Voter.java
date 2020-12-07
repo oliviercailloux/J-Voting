@@ -2,8 +2,6 @@ package io.github.oliviercailloux.j_voting;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import java.util.Comparator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,8 +13,6 @@ import com.google.common.base.Preconditions;
  */
 public class Voter implements Comparable<Voter> {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Voter.class.getName());
-
-	public static Comparator<Voter> BY_ID = Comparator.comparing(Voter::getId);
 
 	public static final Voter ZERO = new Voter(0);
 
@@ -51,7 +47,7 @@ public class Voter implements Comparable<Voter> {
 	 *         voter is smaller than the parameter, else &gt 0.
 	 */
 	@Override
-	public int compareTo(@SuppressWarnings("hiding") Voter v2) {
+	public int compareTo(Voter v2) {
 		LOGGER.debug("compare:");
 		Preconditions.checkNotNull(v2);
 		LOGGER.debug("calling voter : v1 {}, parameter v2 {}", this.getId(), v2.getId());
